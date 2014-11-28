@@ -1,0 +1,186 @@
+% Chapter Template
+
+\chapter{Heterogeneous Performance Analysis } % Main chapter title
+
+\label{Heterogeneous Performance Analysis } % Change X to a consecutive number; for referencing this chapter elsewhere, use \ref{ChapterX}
+
+\lhead{Chapter 2. \emph{Heterogeneous Performance Analysis}} % Change X to a consecutive number; this is for the header on each page - perhaps a shortened title
+
+%----------------------------------------------------------------------------------------
+%	SECTION 1
+%----------------------------------------------------------------------------------------
+
+In the conventional CPU model we have what is called linear or flat memory model. This appears to the programmer as a single contiguous address space. The CPU can directly address all the available memory, in other words there is almost no efficiency penalty in creating global data, local data, or even access data that is located on the opposite memory location, all of this can be access in the contiguous block. \cite{cook} Meanwhile on the GPU there are expectations, their exists different memory hierarchies which dramatically change the performance output. By allocation the optimal memory types, seed-up and increase throughput can be accomplished . To ensure a optimization, some analysis should be made, like comparing time and bandwidth between CUDA kernels. This can be done by using NVIDIA's Visual Profiler.
+
+
+\section{Performance Metrics}
+
+\cite{practices}
+
+\subsection{Timing}
+
+\subsection{Bandwidth}
+
+The bandwidth refers to the rate at which data can be transferred between host and device and vi-versa. The bandwidth is one of the most important factors for testing performance o the GPUs.  Choosing the right type of memory could dramatically increase performance and bandwidth.  There are two main memory to indicate performance, theoretical bandwidth and effective bandwidth.
+The theoretical bandwidth is base on the hardware specifications that is available by NVIDIA. This is calculated using the following formula:
+
+$$ theoretical bandwidth = (clock rate * (bit-wide-memory-interface / 8 )*2) / 10^9 $$
+
+For example the NVIDIA GeForce GTX 280 uses DDR RAM with a memory clock rate of 1,105 MhZ and a 512-bit-wide memory interface
+
+$$ (1107 * 10^6 * (512/8.0) *2 )/10^9 = 141.6 Gb /sec$$
+
+The GTX 280 has a theoretical bandwidth of $141.6Gb/sec$
+
+The effective bandwidth is calculated by timing  specific program activities and by knowing how data is accessed by the application. \cite{practices}
+
+$$effective-bandwidth = ((Br - Bw) / 109 )/time$$
+
+Where Br is the number of bytes read per kernel, Bw is the number of bytes written per kernel and  t is the elapsed time given in seconds.  \cite{fortran}
+
+In practice the difference between theoretical bandwidth and effective bandwidth indicated how much bandwidth is wasted on accessing memory and calculations. 
+
+If the effective bandwidth is low compared to the theortical badwidth is one indication that there is not enough work being done in the GPUs. There a several solutions, analyze the code to make  more paralleleze instructions, excute more computacional instructions on the GPUs, analyze the number of threads per block that are executing on execute kernels .
+
+Throughput is how many operations completed per cycle.
+%----------------------------------------------------------------------------------------
+%	SECTION 2
+%----------------------------------------------------------------------------------------
+
+\section{Visual Profiler}
+
+Visual Profiler is a tool provider by NVIDIA that allows to collect several information about different memory throughput measures. Is possible to analyze memory request inside the applications with the profiler. 
+
+  GPUs. From each kernel is possible to obtain various memory throughput measures, like global load Throughput
+  
+  The requested Global Load Throughput and request global store Throughput values indicate the global memory throughput requested by the kernel and therefore corresponding to the effective bandwidth mentioned in the last section.
+  The Visual profiler is very useful to indicate how much load and work is being done on the GPU, it also information about the memory throughput that can be helpful to indicate if the kernel is being actually optimized.  \cite{practices}
+  
+ \subsection{Kernel Analysis}
+
+Trough the Profiler the kernels are invoked several times to calculate all the necessary information about how to optimze each kernel depending on several results. Also the profilers
+
+\begin{description}
+
+ \item{Memory Bandwidth Bound} \hfill \\
+ This refers when the code/application is limited by memory access. Most GPUs card have 1GB- 6GB of memory, this is used to process the data on the GPU, while the CPU has massively amount of memory available for use. A solution to this is to reuse the data, change the type of memory used in the GPU. A multi-GPU approach, where is possible to handle more amount of memory in the device.
+  
+  \item{Compute Bound} \hfill \\
+  Is one which computations dominates the kernel time, under the assumption that  theres no problem with the memory on the kernel. This is actually the analysis time operations on the kernels. Theoretical bandwidth vs  effective Bandwidth can measure performance for a compute-bound Kernel. This a good way to measure if its possible to increase the FLOPS per device.
+  
+ \item{Latency Bound} \hfill \\
+ Is one whose predominate stall reason is due to memory fetches. This actually say if not saturating the global memory, or any type, but still have to wait to get the data into the kernel. Physically can be the data being sent from one part of the Device to the other. Also depends the time required to perform an operation, and are counted in cycles of operations. A way to reduce the latency is to increase the number of parallel instructions (more  calls per thread), in other words more work per thread and fewer threads.
+ \end{description} 
+
+The performance of relatively simple kernels, which perform computations across a large number of data elements, is more a function of the GPU's memory system performance than the processing performance. It can be beneficial for such memory-bound kernels to decrease the amount of memory access required by increasing the complexity of the computation. \cite{cook}
+ 
+
+\section{Memory Handling with CUDA}
+
+
+In this section four types of memory handling are going to be explained, shared memory, global memory (device memory) and finally host memory. In figure \ref{fig:memory} each memory type has it's bandwidth penalty of used and latency in cycles. Each one can be used in different applications to maximize the memory used. The shared Memory is very limited so it cannot be handler for all the kernels, when performed wrong on the device there is a huge latency and bandwidth penalty, instead having a gain in performance \cite{cook}.
+
+\begin{figure}[htbp]
+	\centering
+		\includegraphics[width=0.85\textwidth]{Figures/memory.png}
+		\rule{35em}{0.5pt}
+	\caption[Different memory types]{Different memory type and penalties usage}
+	\label{fig:memory}
+\end{figure}
+
+
+\subsection{Global Memory}
+
+
+Understanding how to efficiently use global memory is essential in CUDA memory management.
+Focusing on data reuse within the SM and caches avoids memory bandwidth limitations. Global memory on the GPU is designed to quickly stream memory blocks of data into the SM.  
+
+\begin{itemize}
+\item Get the data on to the Device, keep it there.
+\item Give the GPU enough workload, this using all the resources available from the GPU.
+\item Focus on data reuse within the GPGPU to avoid memory bandwidth limitations.
+\end{itemize}
+
+In other words the global memory resides on the device, and it can be anything from 0GB to 8GB. Also the  memory is visible to all the threads of the grid. Any thread can read and write to any location of the global memory, The memory is always allocated with \textit{cadaMalloc}. And only global memory can be passed to the kernels and are called with \twoline global \twoline.
+
+
+\cite{design}
+
+%\ref{fig:smi}
+
+%\begin{figure}[htbp]
+%	\centering
+%		\includegraphics[width=0.85\textwidth]{Figures/smi.png}
+%		\rule{35em}{0.5pt}
+%	\caption[GPU and CPU]{Different architecture between the GPU and CPU}
+%	\label{fig:smi}
+%\end{figure}
+
+\subsection{Shared Memory}
+
+CUDA C compiler treats variables differently than typical variable, it creates a copy of the variable for each block that is launched on the GPU, now every thread in that block can access the memory, this is why is called shared memory. This memory reside physically on the GPU, because the memory is very close the cache, the latency is typical very low.\cite{example}. One thing comes to mind, if the threads can communicate with others threads, so there should be way to synchronize all the threads. A simple case should be if thread A writes a value into the shared memory, and Thread B wants to access we need to synchronize, when thread A finish writing then Thread B can access it. This is typical case when shared memory with synchronize thread is needed. \cite{cook}
+Shared memory is magnitudes faster to access than global memory, essentially is like a local cache for each threads of a block. While  the shared memory is limited to 48K a block, the global memory is the amount of DRAM on the device. The duration of the shared memory on the device is the lifetime of the thread block. Using \twoline shared \twoline to the kernel call invocate shared memory.
+
+   %There is also one other very useful case with shared memory and that is where every thread in a warp reads the same bank address
+
+\subsection{Constant Memory}
+
+Is an excellent way to store and broadcast read-only data to all the threads on the GPU. One thing to keep in mind is that the constant memory is limited to 64KB. \cite{design}. A simple analogue is the  \textit{\#define} or \textit{const} attribute in the c++ programming language, the variable performed like a variable that cannot be modified. On CUDA is  excitability the same, the value can only be read and not written, the value will not change over the course of a kernel execution and only the host can write the constant memory.\cite{example}
+
+\subsection{Texture Memory}
+
+Like constant memory, texture memory is another variety of read-only memory that can improve performance and reduce memory traffic when reads have certain access patterns. . Traditionally Texture memory id used for computer graphics applications, but it can also be use for HPC. The main idea of this read-only memory is that threads are likely to read from address ''near' the address they nearby threads.\cite{example}
+
+
+\begin{figure}[htbp]
+	\centering
+		\includegraphics[width=0.7\textwidth]{Figures/texture.png}
+		\rule{35em}{0.5pt}
+	\caption[Texture Memory]{Mapping of threads into a two dimensional array of texture memory}
+	\label{fig:texture}
+\end{figure}
+
+This can be summarized in the following table:
+
+
+The texture Memory in a form works like the GPU graphics Texture, when you want to use the texture bind with some sort of data is necessary and when you finish using it unbind the texture from the data. The usage can be summarized in the following table.
+
+\begin{itemize}
+\item Allocate global memory in the Host.
+\item Create Texture reference and bind it to memory object.
+\item On the device obtain the reference from the texture.
+\item  Use Texture memory operations on the device
+\item  When the work is done on the Texture, unbind the texture reference on the host.
+\end{itemize}
+
+\subsection{Thread Synchronization}
+
+This refers to synchronizing threads operations,
+
+Will wait for all threads to finish there job.
+
+
+\section{Performance Issue}
+
+\subsection{Hardware constraints}
+
+This refers to the limit how many threads pero block a kernel lacuh can have. If exceed this values they kernel will never run. The threads per block really depends of the hardware capabilities. In a roughy summarized as:
+
+\begin{itemize}
+\item Each block cannot have more than 512/1024 threads in total, with compute Capability 1.x or 2.x-3.x
+\item The Maximum dimensions of each block are limited to [512,512, 64]/[1024, 1024, 64](compute 1,1.2,
+\item Each block cannot consume more than to 8k, 16k, 32K   registers total
+\item Each block cannot consume more than 16kb/48kb of shared memory
+\end{itemize}
+
+SM Resources, improve performance of an application by trading one resource usage for another.  \cite{practices}
+
+Another inefficiency that can cause low performance to the applications is the number transfers memory calls between the CPU and GPU. The GPU communicates with the CPU via a \textit{ePCI}, by this all the massive FLOPS per second that can be achieve cannot actually be sent to CPU. The GPU should be filled with the enough workload at the beginning of the application and at the end only return it to the CPU.
+
+\subsection{Thread Division}
+
+The hardware has its limits in how much thread per block a kernel can handle. Launching a kernel with the hardware constrains for above can only ensure that the kernel will actually be executed in the device, not a optimize set of threads per block. For this is necessary launch kernel with the amount of threads per block base on the hardware constains that will optimize the performance of the GPU. The impact of the block size that is choosed impacts on how much faster the code will run. By Benchmarking, is possible to find what configuration is the best for the problem. One thing to notice is that thread blocks should be a multiple number of SMs, with this idead is possible to obtain optimal thread block configuration.
+
+
+
+

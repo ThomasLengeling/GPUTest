@@ -1,0 +1,130 @@
+
+
+\chapter{Heterogeneous Computing} % Main chapter title
+
+\label{Heterogeneous Computing} % Change X to a consecutive number; for referencing this chapter elsewhere, use \ref{ChapterX}
+
+\lhead{Chapter 1. \emph{Heterogeneous Computing}} % Change X to a consecutive number; this is for the header on each page - perhaps a shortened title
+
+%----------------------------------------------------------------------------------------
+%	SECTION 1
+%----------------------------------------------------------------------------------------
+
+Heterogeneous computing refers a system that combines several processor types to gain more performance. Typically using a single or multi-core computer processing units (CPUs) and a  graphics processing units (GPUs).
+Typically GPUs are know for  3D graphics rendering and video games, but GPUs are becoming increasingly popular for accelerating computing applications and scientific research due to their low price, high performance and relatively low energy consumption per FLOPS (floating point operations per second) when compared with the CPUs. This chapter provides an overview of GPUs within the High Performance Computing (HPC) context, their advantages and disadvantages and how they can be integrated in to a scientific software and research. 
+
+%per watt better than cpu's
+
+
+\section{Motivation}
+
+
+The GPU has been essential part of personal computer since the early use. Over the course of 30 years the graphics architecture has evolve form drawing a simple 3d scene to be able to program each part of the GPU graphics pipeline. Their role became more important in the 90s with the first-person shooting video game DOOM by id Software. The demanding video game industry has brought year by year more realistic 3D graphics. Consequently new innovated hardware capabilities has been developed to increase the graphics pipeline and the render output. This lead to a more sophisticated programming environment with a massive parallel capabilities. At first the GPUs where only used for general-purpose computing like computer graphics, but in-till resent years the GPU has been used to accelerate scientific research, analytics, engineering, robotics and consumer applications.(GPGPU)\cite{physicsgpu}. 
+
+GPUs are attractive for certain type of scientific computation as they offer potential seed-up of multi-processors devices with the added advantages of being low cost, low maintenance, energy efficient, and relative simple to program. Many algorithms in applied physics are using GPUs to improve their performance over the CPU. Some examples are Euler Solver 16x seepd-up ( add Reference seed-up).
+
+In any case, for a given simulation a compromise between speed and accuracy is always made. The current tendency of the CPU relies on increases the clock seeped and adding more cores per unit and be able to work and a parallel manner, because of the there are some limitations\cite{quantitative}
+
+\begin{description}
+  \item[Power Wall] \hfill \\
+  The CPUs single core has not gone beyond the 4GHz barrier, a paradigm shift from a single core to a multi-core CPUs, also  the power use of CPUs is very high per Watt. The figure \ref{fig:gpu_cpu_s} shows the comparison of performance between the GPU and CPU.
+
+\begin{figure}[htbp]
+	\centering
+		\includegraphics[width=0.70\textwidth]{Figures/GPU_CPU_s.png}
+		\rule{35em}{0.5pt}
+	\caption[GPU and CPU]{GPU and CPU peak performance in gigaflops}
+	\label{fig:gpu_cpu_s}
+\end{figure}
+
+
+  \item[Memory Wall] \hfill \\
+  This refers to the growing disparity of speed between CPU  and the memory outside the CPU chip. Some applications have become memory bound, that is to say computing time is bounded by the transfer memory between the CPU and all the hardware devices connected to the CPU, commonly to the Peripheral Component Interconnect (PCI) chip. In conclusion the computing time is bounded by the memory not by the time calculations done on the CPU.
+
+  \item[Parallelism Wall] \hfill \\
+  This indicates a law that indicates the number of parallel processes. The number N parallel processes is never ideal and always depends on the problem.  The seed-up can be described by Amdahl's Law in terms of the fraction of parallelized work (f). \cite{quantitative}.
+  
+  $$speedup \leq \frac{N}{f + N(1-f)}$$
+\end{description}
+
+
+The current paradigm of using CPUs for computing growth is unsustainable. the largest supercomputers use around 10 megawatts (MWs) of power, this is enough to power a small town of 10,000 homes. If the current thread of power use continues, the next supercomputer would require 200 MWs of power, this would require a nuclear power reactor to run it! \cite{whatexascale}
+
+
+\section{GPUs as computing units}
+
+A insight of the architecture of GPU can give a idea of  why it outperforms the CPU on various benchmarking.
+
+The GPU, unlike its CPU cousin, has thousands for registers per SM (streaming multiprocessor), this are  arithmetic processing units.An SM can thought of like a multi-thread CPU core. On a typical CPU has two, four, six or eight cores. On a GPU as many as N SM core. We can see this in the figure \ref{fig:gpu_cpu}. For a particular calculation, all the stream
+processors within a group execute exactly the same instruction on a particular data stream, then the data is sent to the upper level, the host (CPU). \cite{cook}
+
+\begin{figure}[htbp]
+	\centering
+		\includegraphics[width=0.42\textwidth]{Figures/GPU_CPU.png}
+		\rule{35em}{0.5pt}
+	\caption[Architecture of a GPU]{Architecture of a NVIDIA GeForce GTX 580}
+	\label{fig:gpu_cpu}
+\end{figure}
+
+Being able to efficiently use a GPU for an application requires to expose the inherent data-parallelism Optimized for low-latency, serial computation. This can be seen in contrast with a CPU, which is optimized for sequential code performance, fast switching registers  and sophisticated control logic allowing to run single complex programs as fast as possible, which is not possible on the GPU. Memory management is very important for GPUs. this refers how to allocate memory space and transfer data between host (CPU) and device (GPU). While the CPU memory hierarchy is almost non-existent, on the GPU inherent data is important. In figure \ref{fig:arch} different levels of memory can be observer between the host and the device, which differs form the CPU \cite{hwu}.
+
+\begin{figure}[htbp]
+	\centering
+		\includegraphics[width=0.68\textwidth]{Figures/arch.png}
+		\rule{35em}{0.5pt}
+	\caption[Host and Device]{Memory transfer between the host and device}
+	\label{fig:arch}
+\end{figure}
+
+On the GPU precision and optimization are very important but there is a penalty for choosing performance or precession. All the GPUs are optimized for single precision floating operations, 24 bit size, Also provides double precision point, size of  53 bits. This is using the standard notation IEEE 754. Normally the GPU uses single precession(SP) by default, if choosed double precision (DP), normally there is a penalty of  2x - 4x seed-up. \cite{precision}
+Libraries such as CUBLAS and CUFFT provides useful information how NVIDIA handles floating point operations under the hood.
+
+\subsection{GPUs Architecture types}
+
+talk about different types of NVIDIA architecture, Fermin, Kepler.
+
+
+\section{Programming on GPUs}
+
+There exist, among many, two main computing platforms, NVIDIA's Compute Unified Device Architecture (CUDA), and Khronos's Open Computing Language (OpenCL). CUDA provides the necessary tools, frameworks and library to programs parallel computing using there GPUs. While OpenCL is a open standard framework meaning is not locked like CUDA. This two frameworks are develop in C language this is because C is close to the hardware layer. CUDA provides both a low level API and a higher level API.  \cite{hwu}
+
+The CUDA programming model views the GPU as an accelerator processor which calls parallel programs  throughout all the SMI. This programs are only executed on the device and are called kernels. The basic idea of programming on a GPU is simple. We can observer this in the figure \ref{fig:cycle}
+
+\begin{figure}[htbp]
+	\centering
+		\includegraphics[width=0.3\textwidth]{Figures/cycle.png}
+		\rule{35em}{0.5pt}
+	\caption[Programming Cycle]{Programming Cycle between the CPU and GPU}
+	\label{fig:cycle}
+\end{figure}
+
+
+\begin{itemize}
+\item Create memory(data) for the host and device
+\item Send the data created from the host to the highly parallel device.
+\item Do something with data on the device, e.g. matrix multiplication,calculation, parallel algorithm.
+\item Return the data from the device to the host.
+\end{itemize}
+
+A kernel is organized as a one, two or three dimensional grid of thread blocks, This is a thread is the simple executing process. Many threads form a block, and many blocks form a grid. This can be observer in figure \ref{fig:grid}. All the threads in a kernel can access the global memory, figure \ref{fig:arch}.
+Each of the threads can be access by implicit variable that identifies its position within the thread block and its grid. In a case of 1-D block. \cite{example}
+
+$$blockIdx.x \times blockDim.x + threadId.x$$
+
+\begin{figure}[htbp]
+	\centering
+		\includegraphics[width=0.6\textwidth]{Figures/grid.png}
+		\rule{35em}{0.5pt}
+	\caption[Part of the CUDA's 2D grid]{Part of a 2D CUDA's thread grid, divided in blocks, each block with it’s own respective threads.}
+	\label{fig:grid}
+\end{figure}
+
+
+
+
+
+
+
+
+
+
