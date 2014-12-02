@@ -49,7 +49,11 @@ In any case, for a given simulation a compromise between speed and accuracy is a
   This indicates a law that indicates the number of parallel processes. The number N parallel processes is never ideal and always depends on the problem.  The seed-up can be described by Amdahl's Law in terms of the fraction of parallelized work (f). \cite{quantitative}.
   
   $$speedup \leq \frac{N}{f + N(1-f)}$$
+  
+  
+  
 \end{description}
+
 
 
 The current paradigm of using CPUs for computing growth is unsustainable. the largest supercomputers use around 10 megawatts (MWs) of power, this is enough to power a small town of 10,000 homes. If the current thread of power use continues, the next supercomputer would require 200 MWs of power, this would require a nuclear power reactor to run it! \cite{whatexascale}.
@@ -125,7 +129,7 @@ $$blockIdx.x \times blockDim.x + threadId.x$$
 	\label{fig:grid}
 \end{figure}
 
-In CUDA. host and device have separate memory spaces. This can bee seen on the hardware DRAM. For example a NVIDIA GTX 660m comes with 2GB of memory, which is the global memory for the device. As told the host and device allocates data. The programmer needs to send data from the host memory to the device's global memory. We can see this in the figure  \ref{memorySpace:arch}.  Once the memory is transfer back to the host, is completely necessary to free the memory from the device and host. This is typically done with free or delete on C/C++. The CUDA's Application Programming Interface (API) functions performs this activities on behalf of the programmer.   \cite{hwu}
+In CUDA. host and device have separate memory spaces. This can bee seen on the host and device with the DRAM(Dynamic random-acess memory) data. For example a NVIDIA GTX 660m comes with 2GB of memory, which is the global memory for the device. As told the host and device allocates data. The programmer needs to send data from the host memory to the device's global memory. We can see this in the figure  \ref{memorySpace:arch}.  Once the memory is transfer back to the host, is completely necessary to free the memory from the device and host. This is typically done with free or delete on C/C++. The CUDA's Application Programming Interface (API) functions performs this activities on behalf of the programmer.   \cite{hwu}
 
 \begin{figure}[htbp]
 	\centering
