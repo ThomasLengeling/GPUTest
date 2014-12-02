@@ -1,16 +1,64 @@
 % Chapter Template
 
-\chapter{Heterogeneous Performance Analysis } % Main chapter title
+\chapter{Heterogeneous Performance Analysis and Practices} % Main chapter title
 
-\label{Heterogeneous Performance Analysis } % Change X to a consecutive number; for referencing this chapter elsewhere, use \ref{ChapterX}
+\label{Heterogeneous Performance Analysis and Practices} % Change X to a consecutive number; for referencing this chapter elsewhere, use \ref{ChapterX}
 
-\lhead{Chapter 2. \emph{Heterogeneous Performance Analysis}} % Change X to a consecutive number; this is for the header on each page - perhaps a shortened title
+\lhead{Chapter 2. \emph{Heterogeneous Performance Analysis and Practices}} % Change X to a consecutive number; this is for the header on each page - perhaps a shortened title
 
 %----------------------------------------------------------------------------------------
 %	SECTION 1
 %----------------------------------------------------------------------------------------
 
-When working with GPUs hardware challenges emerges. How can we make the best use of the GPU hardware, techniques, programming modles and hierarchies.  In the conventional CPU model we have what is called linear or flat memory model. This appears to the programmer as a single contiguous address space. The CPU can directly address all the available memory, in other words there is almost no efficiency penalty in creating global data, local data, or even access data that is located on the opposite memory location, all of this can be access in the contiguous block. \cite{cook} Meanwhile on the GPU there are expectations, their exists different memory hierarchies which dramatically change the performance output. By allocation the optimal memory types, seed-up and increase throughput can be accomplished . To ensure a optimization, some analysis should be made, like comparing time and bandwidth between CUDA kernels. This can be done by using NVIDIA's Visual Profiler.
+When working with GPUs hardware challenges emerges. How can we make the best use of the GPU hardware. In the conventional CPU model we have what is called linear or flat memory model. This appears to the programmer as a single contiguous address space. The CPU can directly address all the available memory, in other words there is almost no efficiency penalty in creating global data, local data, or even access data that is located on the opposite memory location, all of this can be access in the contiguous block. \cite{cook} Meanwhile on the GPU there are expectations, their exists different memory hierarchies which dramatically change the performance output. By allocation the optimal memory types, seed-up and increase throughput can be accomplished . To ensure a optimization, some analysis should be done, like comparing latency, memory hierarchies and data bandwidth between CUDA kernels. This can be done by using NVIDIA's Visual Profiler.
+
+
+% techniques, programming models and hierarchies. 
+\section{Practices}
+
+
+There are three rules to follow for creating a high performance GPGPU program.\cite{design}
+
+\begin{enumerate}
+  \item Get the data on the GPU device and keep it there
+  \item Process all the data en the GPU, give it enough work to do.
+  \item Focus on data reuse within the GPU context, to avoid memory bandwidth limitations
+\end{enumerate}
+
+GPUs are plugged into the PCI Express bus of the host computer. The PCIe bus has extremely slow bandwidth compared with the GPU. This is why is important to store the data on the GPU and keep it busy. And minimize the data transfer to the host and back to the device. We can see this in the following table \ref{fig:PCI}.  Because CUDA-enable GPUs can carry out petaFLOP performance, they are fast enough to compute large amount of data. So each Kernel launch needs to use all the available resources of the GPU and avoide wasting compute cycles. If a single Kernel doesn't use all of the available bandwidth, multiple kernels can be launched at the same time on a single GPU. 
+For example a DP vectors require 8 bytes of storage per vector element this will double the bandwidth requirement. So is important to take advantage of the memory usage, take advantage of the memory types, use less memory copies between the GPU. \cite{design}
+
+\begin{figure}[htbp]
+	\centering
+		\includegraphics[width=0.65\textwidth]{Figures/PCI.png}
+		\rule{35em}{0.5pt}
+	\caption[PCIe Bandwidth]{PCIe bus and GPU bandwidth comparison }
+	\label{fig:PCI}
+\end{figure}
+
+
+Some practices should keep in mind to rapidly identify the portions of code where it would be beneficial for GPU acceleration.  \cite{practices}
+
+\begin{figure}[htbp]
+	\centering
+		\includegraphics[width=0.55\textwidth]{Figures/apod.png}
+		\rule{35em}{0.5pt}
+	\caption[Different memory types]{Different memory type and penalties usage}
+	\label{fig:apod}
+\end{figure}
+
+\begin{description}
+
+ \item{Asses} \hfill \\
+ 
+ \item{Parallelize} \hfill \\
+  
+ \item{Optimize} \hfill \\
+ 
+ \item{Deploy} \hfill \\
+ 
+ \end{description} 
+
 
 
 \section{Performance Metrics}
@@ -40,7 +88,7 @@ Where Br is the number of bytes read per kernel, Bw is the number of bytes writt
 
 In practice the difference between theoretical bandwidth and effective bandwidth indicated how much bandwidth is wasted on accessing memory and calculations. 
 
-If the effective bandwidth is low compared to the theortical badwidth is one indication that there is not enough work being done in the GPUs. There a several solutions, analyze the code to make  more paralleleze instructions, excute more computacional instructions on the GPUs, analyze the number of threads per block that are executing on execute kernels .
+If the effective bandwidth is low compared to the theoretical bandwidth is one indication that there is not enough work being done in the GPUs. There a several solutions, analyze the code to make  more paralleleze instructions, execute more computational instructions on the GPUs, analyze the number of threads per block that are executing on execute kernels .
 
 Throughput is how many operations completed per cycle.
 %----------------------------------------------------------------------------------------
@@ -174,7 +222,7 @@ This refers to the limit how many threads pero block a kernel lacuh can have. If
 
 SM Resources, improve performance of an application by trading one resource usage for another.  \cite{practices}
 
-Another inefficiency that can cause low performance to the applications is the number transfers memory calls between the CPU and GPU. The GPU communicates with the CPU via a \textit{ePCI}, by this all the massive FLOPS per second that can be achieve cannot actually be sent to CPU. The GPU should be filled with the enough workload at the beginning of the application and at the end only return it to the CPU.
+Another inefficiency that can cause low performance to the applications is the number transfers memory calls between the CPU and GPU. The GPU communicates with the CPU via a \textit{PCIe} bus, by this all the massive FLOPS per second that can be achieve cannot actually be sent to CPU. The GPU should be filled with the enough workload at the beginning of the application and at the end only return it to the CPU.
 
 \subsection{Thread Division}
 

@@ -54,7 +54,7 @@ In any case, for a given simulation a compromise between speed and accuracy is a
 
 The current paradigm of using CPUs for computing growth is unsustainable. the largest supercomputers use around 10 megawatts (MWs) of power, this is enough to power a small town of 10,000 homes. If the current thread of power use continues, the next supercomputer would require 200 MWs of power, this would require a nuclear power reactor to run it! \cite{whatexascale}.
 
-As said the GPU exceeds the CPU in calculations per second FLOPS with a low energy consumption. However the GPU cannot execute a complex application like a web browser. Because of GPU architecture, which is designed to launching small amounts of data in parallel with only several instructions, while the CPU can perform a single operation on comparatively large set of data with only one instruction.
+As said the GPU exceeds the CPU in calculations per second FLOPS with a low energy consumption. However the GPU is designed to launch small amounts of data in parallel with only several instructions, in other words the GPU swap, switch threads very fast, they are extremely lightweight. In a typical system, thousands of threads are waiting to work. While the CPU only run upto 24 threads on a hex-core processor. They can execute a single operation on comparatively large set of data with only one instruction. Although this can be extremely cost-wise operation on the GPU.
 
 \section{GPUs as computing units}
 
@@ -132,7 +132,7 @@ In CUDA. host and device have separate memory spaces. This can bee seen on the h
 		\includegraphics[width=0.6\textwidth]{Figures/memorySpace.png}
 		\rule{35em}{0.5pt}
 	\caption[Memory Space GPU and CPU]{Separate memory spaces for the CPU and GPU}
-	\label{memorySpace:grid}
+	\label{fig:memorySpace}
 \end{figure}
 
 \section{Vector Addition Example}

@@ -6,11 +6,13 @@
 \contentsline {figure}{\numberline {1.5}{\ignorespaces Part of the CUDA's 2D grid}}{6}{figure.caption.18}
 \contentsline {figure}{\numberline {1.6}{\ignorespaces Memory Space GPU and CPU}}{6}{figure.caption.19}
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {2.1}{\ignorespaces Different memory types}}{11}{figure.caption.28}
-\contentsline {figure}{\numberline {2.2}{\ignorespaces Texture Memory}}{13}{figure.caption.33}
+\contentsline {figure}{\numberline {2.1}{\ignorespaces PCIe Bandwidth}}{9}{figure.caption.26}
+\contentsline {figure}{\numberline {2.2}{\ignorespaces Different memory types}}{9}{figure.caption.27}
+\contentsline {figure}{\numberline {2.3}{\ignorespaces Different memory types}}{12}{figure.caption.34}
+\contentsline {figure}{\numberline {2.4}{\ignorespaces Texture Memory}}{14}{figure.caption.39}
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {3.1}{\ignorespaces Euler Method}}{17}{figure.caption.43}
-\contentsline {figure}{\numberline {3.2}{\ignorespaces Fourth-order Runge and Kutta Method}}{18}{figure.caption.45}
+\contentsline {figure}{\numberline {3.1}{\ignorespaces Euler Method}}{18}{figure.caption.49}
+\contentsline {figure}{\numberline {3.2}{\ignorespaces Fourth-order Runge and Kutta Method}}{19}{figure.caption.51}
 \addvspace {10\p@ }
 \addvspace {10\p@ }
 \addvspace {10\p@ }
