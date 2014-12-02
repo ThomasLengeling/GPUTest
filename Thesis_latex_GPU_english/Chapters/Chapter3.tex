@@ -58,7 +58,7 @@ Advances in spintronics recognized by 2007 Nobel Prize in Physics have ennable o
 Base on this study numeric applications have been unfold. A interesting application using spintronics is new design for a new memory disk drive called racetrack memory by  Parkin in 2008\cite{racetrack}
 
 
-Therefore, a simulatenous solution of the diffusive Zhang and Li model togethr with the magnetization dynamics equation has uncovered a qualitativiely new feature of the spin-trasnfer torque effec in the presence of spin diffusion.
+Therefore, a simultaneous solution of the diffusive Zhang and Li model togethr with the magnetization dynamics equation has uncovered a qualitativiely new feature of the spin-transfer torque effect in the presence of spin diffusion.
 
 
 %-----------------------------------
@@ -71,9 +71,6 @@ The implementation of the GPU of Dr. Claudio is based on launching several kerne
 
 
 \subsection{Rungge and Kutta}
-
-
-The basic structure is computational solve rungge and kutta of for other.
 
 There exist several computational numeric methods to solver such equations, methods like euler, Midpoint Method and Runge-Kutta integrator method can solve this equations. The RG4 this method is used for the simulation because its numerically more accurate when compared to the others.
 
@@ -113,7 +110,7 @@ As the equations shows, each step the derivative is evaluated four times, once a
 
 \cite{numerical}
 
-
+%The basic structure is computational solve rungge and kutta of for other.
 
 %-----------------------------------
 %	SUBSECTION 2
@@ -124,7 +121,7 @@ As the equations shows, each step the derivative is evaluated four times, once a
 
 The GPU implementation. the application reads
 
-At inicialize the applications first it allocates all the CUDA arraries, and C arries.
+At initialize the applications first it allocates all the CUDA and c arrays.
 
 To allocate a big chunk of memory in the Device 
 
@@ -142,28 +139,67 @@ In the initialization function it also reads the magenetizacion data from a espe
 
 The initial values for the simulation are
 
+\begin{table}[h]
+\centering
+\begin{tabular}{| l | l |}
+\hline   
+NX     & 480                                            \\
+\hline   
+NY     & 120                                            \\
+\hline   
+NZ     & 1                                              \\
+\hline   
+TX     & 1200.0                                         \\
+\hline   
+TY     & 300.0                                          \\
+\hline   
+TZ     & 5.0                                            \\
+\hline   
+u      & 1                                              \\
+\hline   
+D      & 1.0e\textasciicircum 3 nm\textasciicircum 2/ns \\
+\hline   
+tau sd & 1.0e\textasciicircum -3 ns                     \\
+\hline   
+tau sf & 25.0e-3 ns      \\
+\hline   
+\end{tabular}
+\end{table}
+
+
+\subsection{Threads}
+
+The number of threads that are allocated within each kernel is a 2d grid.
+
+\begin{table}[h]
+\centering
+\begin{tabular}{| l | l |}
+\hline   
+Threads per block  X   & 32       \\
+\hline   
+Threads per block Y     & 32         \\
+\hline
+\end{tabular}
+\end{table}
+
+Depending on the harware configuration, each GPU can allocate different threads per block. To make a homogenous grid space for each GPU a simple calculation is made.
+
 \begin{lstlisting}[frame=none]
-#define NX	480		
-//Number of cells along direction y
-#define NY	120
-//Number of cells along direction z
-#define NZ	1
+NXCUDA = (int)powf(2,ceilf(logf(NX)/logf(2)));
+printf("NXCUDA = %i\n",NXCUDA);
+NYCUDA = (int)powf(2,ceilf(logf(NY)/logf(2)));
+printf("NYCUDA = %i\n",NYCUDA);
+if((int)powf(2,ceilf(logf(NZ)/logf(2))) < 1)
+	NZCUDA = 1;
+else
+        NZCUDA = (int)powf(2,ceilf(logf(NZ)/logf(2)));
+//printf("NZCUDA = %i\n",NZCUDA);
 
-//Size of calculation box
-#define TX	1200.0
-#define TY	300.0
-#define TZ	5.0
+//Setup optimum number of blocks
+XBLOCKS_PERGRID = (int)ceil((float)NX/(float)XTHREADS_PERBLOCK); 
+printf("XBLOCKS_PERGRID = %i\n",XBLOCKS_PERGRID);
 
-//Diffusion parameters
-#define u_const	1  		//nm/ns
-#define D  	1.0e3		//nm^2/ns
-#define tau_sd_const 	1.0e-3		//ns
-#define tau_sf_const 	25.0e-3		//ns
-#define unitsfactor 1e-3	//needed to scale integer arguments to real value
-
-//Threads and array sizes parameteres
-#define XTHREADS_PERBLOCK	32
-#define	YTHREADS_PERBLOCK	32
+YBLOCKS_PERGRID = (int)ceil((float)NY/(float)YTHREADS_PERBLOCK); 
 \end{lstlisting}
 
 
