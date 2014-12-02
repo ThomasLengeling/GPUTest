@@ -30,7 +30,7 @@ For example a DP vectors require 8 bytes of storage per vector element this will
 
 \begin{figure}[htbp]
 	\centering
-		\includegraphics[width=0.65\textwidth]{Figures/PCI.png}
+		\includegraphics[width=0.7\textwidth]{Figures/PCI.png}
 		\rule{35em}{0.5pt}
 	\caption[PCIe Bandwidth]{PCIe bus and GPU bandwidth comparison }
 	\label{fig:PCI}
@@ -41,7 +41,7 @@ Some practices should keep in mind to rapidly identify the portions of code wher
 
 \begin{figure}[htbp]
 	\centering
-		\includegraphics[width=0.55\textwidth]{Figures/apod.png}
+		\includegraphics[width=0.5\textwidth]{Figures/apod.png}
 		\rule{35em}{0.5pt}
 	\caption[Different memory types]{Different memory type and penalties usage}
 	\label{fig:apod}
@@ -50,22 +50,23 @@ Some practices should keep in mind to rapidly identify the portions of code wher
 \begin{description}
 
  \item{Asses} \hfill \\
- 
+ The first step is to locate the part of the code where the majority of the execution time occurs. The programmer can evaluate memory bottlenecks for GPU parallelization. 
  \item{Parallelize} \hfill \\
-  
+ Increase parallelization from the original code, could be either adding GPU-optimized libraries such as cuBLAS, cuFFT, or including more amount of parallelism exposure though the use of CUDA code.
  \item{Optimize} \hfill \\
- 
+The developer can optimize the implementation performance through a number of considerations, overlapping kernel executing, kernel profiling, memory handling and fine-tuning floating-point operations.
  \item{Deploy} \hfill \\
- 
+ Compare the outcome with the original expectation. Determinate the potential speedup by accelerating a given section. First a partial parallelization should be implementation before carrying out a complete change.
  \end{description} 
-
 
 
 \section{Performance Metrics}
 
-\cite{practices}
+There are many possible approaches to profiling the code, but in all cases the objective is the same: to identify the function or functions in which the application is spending most of its execution time and increase the throughput by a giving kernel. Throughput is how many operations completed per cycle.
 
 \subsection{Timing}
+
+Timing a launched kernel can be done on either the GPU or the CPU. Is important to remember that the CPU and GPU are not synchronized. So its necessary to synchronize the CPU thread with the GPU kernels launches. CUDA provides the required  functions to synchronize the CPU with the GPU calling immediately before starting the timer.\cite{practices}.  CUDA also can handle timers within the GPU, and record times in a floating-point value in milliseconds. This is done with $cudaEventRecord()$, just by including $start$ and $stop$ in the function inputs. Note that the timing are measured on the GPU clock, so the timing is independent from the OS. \cite{cook}.
 
 \subsection{Bandwidth}
 
@@ -88,16 +89,15 @@ Where Br is the number of bytes read per kernel, Bw is the number of bytes writt
 
 In practice the difference between theoretical bandwidth and effective bandwidth indicated how much bandwidth is wasted on accessing memory and calculations. 
 
-If the effective bandwidth is low compared to the theoretical bandwidth is one indication that there is not enough work being done in the GPUs. There a several solutions, analyze the code to make  more paralleleze instructions, execute more computational instructions on the GPUs, analyze the number of threads per block that are executing on execute kernels .
+If the effective bandwidth is low compared to the theoretical bandwidth is one indication that there is not enough work being done in the GPUs. There a several solutions, analyze the code to make  more parallelize instructions, execute more computational instructions on the GPUs, analyze the number of threads per block that are executing on execute kernels .
 
-Throughput is how many operations completed per cycle.
 %----------------------------------------------------------------------------------------
 %	SECTION 2
 %----------------------------------------------------------------------------------------
 
 \section{Visual Profiler}
 
-Visual Profiler is a tool provider by NVIDIA that allows to collect several information about different memory throughput measures. Is possible to analyze memory request inside the applications with the profiler. 
+NVIDIA's Visual Profiler is a tool that allows collect information about different memory throughput measures. Is possible to analyze memory request inside the applications with the profiler. 
 
   GPUs. From each kernel is possible to obtain various memory throughput measures, like global load Throughput
   
@@ -121,7 +121,6 @@ Refers to the computation time execution, in other works calculations done in th
  \end{description} 
 
 The performance of relatively simple kernels, which perform computations across a large number of data elements, is more a function of the GPU's memory system performance than the processing performance. It can be beneficial for such memory-bound kernels to decrease the amount of memory access required by increasing the complexity of the computation. \cite{cook}
- 
 
 \section{Memory Handling with CUDA}
 
@@ -187,10 +186,7 @@ Like constant memory, texture memory is another variety of read-only memory that
 	\label{fig:texture}
 \end{figure}
 
-This can be summarized in the following table:
-
-
-The texture Memory in a form works like the GPU graphics Texture, when you want to use the texture bind with some sort of data is necessary and when you finish using it unbind the texture from the data. The usage can be summarized in the following table.
+The texture Memory in a form works like the GPU graphics Texture, when you want to use the texture bind with some sort of data is necessary and when you finish using it unbind the texture from the data. The usage can be summarized in the following table:
 
 \begin{itemize}
 \item Allocate global memory in the Host.
@@ -209,14 +205,16 @@ Will wait for all threads to finish there job.
 
 \section{Performance Issue}
 
+Refers..
+
 \subsection{Hardware constraints}
 
-This refers to the limit how many threads pero block a kernel lacuh can have. If exceed this values they kernel will never run. The threads per block really depends of the hardware capabilities. In a roughy summarized as:
+This refers to the limit how many threads per block a kernel launch can have. If exceed this values they kernel will never run. The threads per block really depends of the hardware capabilities. In a roughly summarized as:
 
 \begin{itemize}
-\item Each block cannot have more than 512/1024 threads in total, with compute Capability 1.x or 2.x-3.x
-\item The Maximum dimensions of each block are limited to [512,512, 64]/[1024, 1024, 64](compute 1,1.2,
-\item Each block cannot consume more than to 8k, 16k, 32K   registers total
+\item Each block cannot have more than 512/1024 threads in total. (Capability 1.x or 2.x-3.x)
+\item The Maximum dimensions of each block are limited to [512,512, 64]/[1024, 1024, 64](compute 1,1.2)
+\item Each block cannot consume more than to 8k, 16k, 32K registers total
 \item Each block cannot consume more than 16kb/48kb of shared memory
 \end{itemize}
 
@@ -226,7 +224,7 @@ Another inefficiency that can cause low performance to the applications is the n
 
 \subsection{Thread Division}
 
-The hardware has its limits in how much thread per block a kernel can handle. Launching a kernel with the hardware constrains for above can only ensure that the kernel will actually be executed in the device, not a optimize set of threads per block. For this is necessary launch kernel with the amount of threads per block base on the hardware constains that will optimize the performance of the GPU. The impact of the block size that is choosed impacts on how much faster the code will run. By Benchmarking, is possible to find what configuration is the best for the problem. One thing to notice is that thread blocks should be a multiple number of SMs, with this idead is possible to obtain optimal thread block configuration.
+The hardware has its limits in how much thread per block a kernel can handle. Launching a kernel with the hardware constrains for above can only ensure that the kernel will actually be executed in the device, not a optimize set of threads per block. For this is necessary launch kernel with the amount of threads per block base on the hardware contains that will optimize the performance of the GPU. The impact of the block size that is choosed impacts on how much faster the code will run. By Benchmarking, is possible to find what configuration is the best for the problem. One thing to notice is that thread blocks should be a multiple number of SMs, with this idead is possible to obtain optimal thread block configuration.
 
 
 
