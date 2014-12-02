@@ -97,12 +97,8 @@ If the effective bandwidth is low compared to the theoretical bandwidth is one i
 
 \section{Visual Profiler}
 
-NVIDIA's Visual Profiler is a tool that allows collect information about different memory throughput measures. Is possible to analyze memory request inside the applications with the profiler. 
-
-  GPUs. From each kernel is possible to obtain various memory throughput measures, like global load Throughput
-  
-  The requested Global Load Throughput and request global store Throughput values indicate the global memory throughput requested by the kernel and therefore corresponding to the effective bandwidth mentioned in the last section.
-  The Visual profiler is very useful to indicate how much load and work is being done on the GPU, it also information about the memory throughput that can be helpful to indicate if the kernel is being actually optimized.  \cite{practices}
+NVIDIA's Visual Profiler will execute your application, examining special performance counters built into the GPU. The profiler will launch several times the kernels to collate precise information of the high-performance application. Also is possible to analyze memory request inside the application\cite{example}. The Profiler can verify how long the application spends executing each kernel as well the number of blocks and threads.Through is possible to obtain various memory throughput measures, like global load throughput and global store throughput, indicate the global memory throughput requested by the kernel and therefore corresponding to the effective bandwidth mentioned in the last section.
+The Visual profiler is very useful to indicate how much load and work is being done on the GPU, it also information about the memory throughput that can be helpful to indicate if the kernel is being actually optimized.  \cite{practices}
   
  \subsection{Kernel Analysis}
 
@@ -136,7 +132,6 @@ In this section four types of memory handling are going to be explained, shared 
 
 
 \subsection{Global Memory}
-
 
 Understanding how to efficiently use global memory is essential in CUDA memory management.
 Focusing on data reuse within the SM and caches avoids memory bandwidth limitations. Global memory on the GPU is designed to quickly stream memory blocks of data into the SM.  
@@ -224,7 +219,7 @@ Another inefficiency that can cause low performance to the applications is the n
 
 \subsection{Thread Division}
 
-The hardware has its limits in how much thread per block a kernel can handle. Launching a kernel with the hardware constrains for above can only ensure that the kernel will actually be executed in the device, not a optimize set of threads per block. For this is necessary launch kernel with the amount of threads per block base on the hardware contains that will optimize the performance of the GPU. The impact of the block size that is choosed impacts on how much faster the code will run. By Benchmarking, is possible to find what configuration is the best for the problem. One thing to notice is that thread blocks should be a multiple number of SMs, with this idead is possible to obtain optimal thread block configuration.
+The hardware has its limits in how much thread per block a kernel can handle. Launching a kernel with the hardware constrains for above can only ensure that the kernel will actually be executed in the device, not a optimize set of threads per block. For this is necessary launch kernel with the amount of threads per block base on the hardware contains that will optimize the performance of the GPU. The impact of the block size that is choosed impacts on how much faster the code will run. By Benchmarking, is possible to find what configuration is the best for the problem. One thing to notice is that thread blocks should be a multiple number of SMs, with this idea is possible to obtain optimal thread block configuration.
 
 
 
