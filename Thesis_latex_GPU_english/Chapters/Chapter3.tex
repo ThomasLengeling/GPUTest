@@ -14,11 +14,9 @@ This chapter is a overview of the theory and experiments behind Dr. Cluadio's wo
 
 \section{Theory}
 
+Spintronics is a new type of electronics that exploits the spin degree of freedom of an electron in addition to its charge. It is expected that electronics technology and devices will be faster, compacter and more engery-saving \cite{spinz}
 
-
-%
-
-We study spin-diffuse effect within a continuously variable magnetization distribution, integrating with micromagenectis with diffuse model of Zhang and LI \cite{claudio}
+The study spin-diffuse effect within a continuously variable magnetization distribution, integrating with micromagenectis with diffuse model of Zhang and LI \cite{claudio}
 
 Spin-transfer torque is a torque that exerts on a magnetization by conduction electron spins, in other words the angular momentum transferred from spins to magnetic  moment \cite{zhang}.
 
@@ -182,7 +180,7 @@ Threads per block Y     & 32         \\
 \end{tabular}
 \end{table}
 
-Depending on the harware configuration, each GPU can allocate different threads per block. To make a homogenous grid space for each GPU a simple calculation is made.
+Depending on the hardware configuration, each GPU can allocate different threads per block. To make a homogeneous grid space for each GPU a simple calculation is made.
 
 \begin{lstlisting}[frame=none]
 NXCUDA = (int)powf(2,ceilf(logf(NX)/logf(2)));
