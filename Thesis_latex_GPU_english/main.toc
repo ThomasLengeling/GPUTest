@@ -28,30 +28,30 @@
 \contentsline {subsection}{\numberline {2.5.2}Thread Division}{16}{subsection.43}
 \contentsline {chapter}{\numberline {3}Introduction to Domain Wall Dynamics and a Implementation with CUDA}{17}{chapter.44}
 \contentsline {section}{\numberline {3.1}Theory}{17}{section.45}
-\contentsline {section}{\numberline {3.2}Domain Wall Dynamics on the GPU}{19}{section.47}
-\contentsline {subsection}{\numberline {3.2.1}Rungge and Kutta}{19}{subsection.48}
-\contentsline {subsection}{\numberline {3.2.2}Kernels}{20}{subsection.52}
-\contentsline {subsection}{\numberline {3.2.3}Threads}{21}{subsection.58}
-\contentsline {subsection}{\numberline {3.2.4}CPU}{21}{subsection.76}
-\contentsline {subsection}{\numberline {3.2.5}GPU}{22}{subsection.77}
-\contentsline {subsection}{\numberline {3.2.6}KG4}{23}{subsection.88}
-\contentsline {subsection}{\numberline {3.2.7}effective values}{24}{subsection.98}
-\contentsline {subsection}{\numberline {3.2.8}time}{24}{subsection.105}
-\contentsline {section}{\numberline {3.3}Validation}{24}{section.106}
-\contentsline {section}{\numberline {3.4}Help Kernels}{25}{section.107}
-\contentsline {section}{\numberline {3.5}Data Flow}{25}{section.108}
-\contentsline {chapter}{\numberline {4}Optimization Results}{26}{chapter.109}
-\contentsline {section}{\numberline {4.1}Supercomputer ``Piritakua''}{26}{section.110}
-\contentsline {subsection}{\numberline {4.1.1}Experiment detail}{27}{subsection.111}
-\contentsline {section}{\numberline {4.2}Results}{27}{section.112}
-\contentsline {subsection}{\numberline {4.2.1}Initial Test}{27}{subsection.113}
-\contentsline {subsubsection}{\numberline {4.2.1.1}Visual profiler}{27}{subsubsection.114}
-\contentsline {subsection}{\numberline {4.2.2}Obtimized}{28}{subsection.115}
-\contentsline {subsection}{\numberline {4.2.3}Subsection 2}{28}{subsection.116}
-\contentsline {section}{\numberline {4.3}Main Section 2}{28}{section.117}
-\contentsline {chapter}{\numberline {5}Conclusions and future work}{29}{chapter.118}
-\contentsline {section}{\numberline {5.1}Main Section 1}{29}{section.119}
+\contentsline {section}{\numberline {3.2}Domain Wall Dynamics on the GPU}{19}{section.48}
+\contentsline {subsection}{\numberline {3.2.1}Rungge and Kutta}{19}{subsection.49}
+\contentsline {subsection}{\numberline {3.2.2}Kernels}{20}{subsection.53}
+\contentsline {subsection}{\numberline {3.2.3}Threads}{21}{subsection.59}
+\contentsline {subsection}{\numberline {3.2.4}CPU}{22}{subsection.77}
+\contentsline {subsection}{\numberline {3.2.5}GPU}{22}{subsection.78}
+\contentsline {subsection}{\numberline {3.2.6}KG4}{24}{subsection.89}
+\contentsline {subsection}{\numberline {3.2.7}effective values}{24}{subsection.99}
+\contentsline {subsection}{\numberline {3.2.8}time}{25}{subsection.106}
+\contentsline {section}{\numberline {3.3}Validation}{25}{section.107}
+\contentsline {section}{\numberline {3.4}Help Kernels}{25}{section.108}
+\contentsline {section}{\numberline {3.5}Data Flow}{25}{section.109}
+\contentsline {chapter}{\numberline {4}Optimization Results}{26}{chapter.110}
+\contentsline {section}{\numberline {4.1}Supercomputer ``Piritakua''}{26}{section.111}
+\contentsline {subsection}{\numberline {4.1.1}Experiment detail}{27}{subsection.112}
+\contentsline {section}{\numberline {4.2}Results}{27}{section.113}
+\contentsline {subsection}{\numberline {4.2.1}Initial Test}{27}{subsection.114}
+\contentsline {subsubsection}{\numberline {4.2.1.1}Visual profiler}{27}{subsubsection.115}
+\contentsline {subsection}{\numberline {4.2.2}Obtimized}{28}{subsection.116}
+\contentsline {subsection}{\numberline {4.2.3}Subsection 2}{28}{subsection.117}
+\contentsline {section}{\numberline {4.3}Main Section 2}{28}{section.118}
+\contentsline {chapter}{\numberline {5}Conclusions and future work}{29}{chapter.119}
+\contentsline {section}{\numberline {5.1}Main Section 1}{29}{section.120}
 \vspace {2em}
-\contentsline {chapter}{\numberline {A}Appendix Title Here}{30}{appendix.120}
+\contentsline {chapter}{\numberline {A}Appendix Title Here}{30}{appendix.121}
 \vspace {2em}
-\contentsline {chapter}{Bibliography}{31}{dummy.121}
+\contentsline {chapter}{Bibliography}{31}{dummy.122}
