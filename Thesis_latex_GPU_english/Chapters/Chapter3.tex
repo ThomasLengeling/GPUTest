@@ -30,8 +30,7 @@ An abrupt in magnetization at the boundary of two anti-aligned domains is not a 
 
 The study spin-diffuse effect within a continuously variable magnetization distribution, integrating with micromagenectis with diffuse model of Zhang and LI \cite{claudio}
 
-
-NUmerical Methods
+Numerical Methods
 \cite{methods}
 
 
@@ -39,7 +38,7 @@ Spin-transfer torque is a torque that exerts on a magnetization by conduction el
 
 This has simulated research into domain wall (DW) dynamics, particularly those resulting from interactions with current passing through the DW via the phenomenon of spin momentum transfer (SMT) \cite{handbookspin}
 
-Some application include racetrack technology by fellow IBM scientific Parkin \cite{racetrack}
+
 
 
 
@@ -55,9 +54,9 @@ which is the following equation.
 
 Base on the work of Dr. Claudio \cite{claudio}
 
-At first we investigate the steady-sate velocity regime of DWs in NiFe soft nanostrips. applying current desities similar to those reported in experiments. The results that we are going to obtain 
+At first we investigate the steady-sate velocity regime of DWs in NiFe soft nanostrips. applying current densities similar to those reported in experiments. The results that we are going to obtain 
 
-Experimentally measured spin-diffusion parametres are used, we want to the solution of. 
+Experimentally measured spin-diffusion parameters are used, we want to the solution of. 
 
 \begin{equation}
  \frac{\partial \delta \vec{m} }{\partial t} =  D\bigtriangleup \delta \vec{m} + \frac{1}{\tau_{sd}} \vec{m} \times \delta  \vec{m} - \frac{1}{\tau_{sf}}\delta \vec{m} - u \partial_{x}  \vec{m}
@@ -66,14 +65,14 @@ Experimentally measured spin-diffusion parametres are used, we want to the solut
 
 The sample that is considerate is a 300 nm wide and 5 nm tick NiFe soft nanostrip. This dimensions are widely used for experimental use.
 
+Therefore, a simultaneous solution of the diffusive Zhang and Li model together with the magnetization dynamics equation has uncovered a qualitatively new feature of the spin-transfer torque effect in the presence of spin diffusion.
 
-Advances in spintronics recognized by 2007 Nobel Prize in Physics have ennable over the last decade advances in computer memory, in hard drives, this is a metal based structures which utilize magnetoresisite effects to save and read data from a magnetic disk. \cite{handbookspin} 
 
+Advances in spintronics recognized by 2007 Nobel Prize in Physics have enable over the last decade advances in computer memory, in hard drives, this is a metal based structures which utilize magnetoresisite effects to save and read data from a magnetic disk. \cite{handbookspin} 
+
+Some application include racetrack technology by the IBM fellow scientific Parkin \cite{racetrack}
 
 Base on this study numeric applications have been unfold. A interesting application using spintronics is new design for a new memory disk drive called racetrack memory by  Parkin in 2008\cite{racetrack}
-
-
-Therefore, a simultaneous solution of the diffusive Zhang and Li model togethr with the magnetization dynamics equation has uncovered a qualitativiely new feature of the spin-transfer torque effect in the presence of spin diffusion.
 
 
 %-----------------------------------
@@ -85,9 +84,93 @@ Therefore, a simultaneous solution of the diffusive Zhang and Li model togethr w
 The implementation of the GPU of Dr. Claudio is based on launching several kernels into a single GPU node.
 
 
-\subsection{Rungge and Kutta}
+The differential evaluation in one-dimention,
+The Second order Taylor expansion readily yields expressions for the first and seconds central derivates
 
-There exist several computational numeric methods to solver such equations, methods like euler, Midpoint Method and Runge-Kutta integrator method can solve this equations. The RG4 this method is used for the simulation because its numerically more accurate when compared to the others.
+$$ \dfrac{df}{dx} = \dfrac{f_{i+1} - f_{i-1} }{2a}$$
+
+and
+
+$$ \dfrac{d^{2}f}{dx^{2}} = \dfrac{f_{i+1} - 2f_{i}+f_{i-1} }{a^2}$$
+
+\begin{figure}[htbp]
+	\centering
+		\includegraphics[width=0.4\textwidth]{Figures/taylor.png}
+		\rule{35em}{0.2pt}
+	\caption[Sampled at regular intervals a, Taylor expansion]{Sampled at regular intervals a}
+	\label{fig:taylor}
+\end{figure}
+
+Taylor expasion of the function $f(x)$ around $x=x_i$ yields where $f^{(k)}(x_i) = f(x)$ if $k=0$
+
+$$f(x) = \sum\limits_{k=0}^{\infty} \dfrac{(x-x_i)^k}{k!}f^{(k)}(x_i) = \sum\limits_{k=0}^{\infty} \dfrac{(x-x_i)^k}{k!}f^{(k)}$$
+
+Applying the previous equation to nearest and next neares neigborar to grid pint i and tructation tht the 4th order yields a set of four equations:
+
+\begin{align}
+\begin{bmatrix}
+    -2a & \dfrac{(-2a)^2}{2!} & \dfrac{-(2a)^3}{3!} & \dfrac{(-2a)^4}{4!}\\
+    -a & \dfrac{(-a)^2}{2!} & \dfrac{(-a)^3}{3!} & \dfrac{(-a)^4}{4!}\\
+    a & \dfrac{(a)^2}{2!} & \dfrac{(a)^3}{3!} & \dfrac{(a)^4}{4!}\\
+    2a & \dfrac{(2a)^2}{2!} & \dfrac{(2a)^3}{3!} & \dfrac{(2a)^4}{4!}
+\end{bmatrix}
+\begin{bmatrix}
+    f_i^{(1)}  \vphantom{ \dfrac{d^4}{d} }\\
+    f_i^{(2)}  \vphantom{ \dfrac{d^4}{d} } \\
+    f_i^{(3)}  \vphantom{ \dfrac{d^4}{d} } \\
+    f_i^{(4)}  \vphantom{ \dfrac{d^4}{d} }
+\end{bmatrix}
+=
+\begin{bmatrix}
+    f_{i-2} - f_{i}    \vphantom{ \dfrac{d^4}{d}} \\
+    f_{i-1} - f_{i}    \vphantom{ \dfrac{d^4}{d}} \\
+    f_{i+1} - f_{i}    \vphantom{ \dfrac{d^4}{d}} \\
+    f_{i+2} - f_{i}    \vphantom{ \dfrac{d^4}{d}} 
+\end{bmatrix}
+\end{align}
+
+The set of linear equations provide numerical estimates for the first, second, third and fourth derivatives of $f$ at any given point $i$.
+
+The general form of the first and second derivate based on second nearest neighbors expansion reads:
+
+\begin{align*}
+f^{(1)}_i &= \dfrac{f_{i-2}-8f_{i-1} + 8f_{i+1} - f_{i+2}}{12a} \\
+f^{(2)}_i &= \dfrac{f_{i-2}+16f_{i-1} -30f_{i} + 16f_{i+1} - f_{i+1}}{12a^2}
+\end{align*}
+
+
+\begin{align}
+\begin{bmatrix}
+    -2a & \dfrac{(-2a)^2}{2!} & \dfrac{-(2a)^3}{3!} & \dfrac{(-2a)^4}{4!}\\
+    -a & \dfrac{(-a)^2}{2!} & \dfrac{(-a)^3}{3!} & \dfrac{(-a)^4}{4!}\\
+    a & \dfrac{(a)^2}{2!} & \dfrac{(a)^3}{3!} & \dfrac{(a)^4}{4!}\\
+    1 & \dfrac{(3a)}{2} & \dfrac{(3a/2)^3}{3!} & \dfrac{(3a/2)^4}{4!}
+\end{bmatrix}
+\begin{bmatrix}
+    f_i^{(1)}  \vphantom{ \dfrac{d^4}{d} }\\
+    f_i^{(2)}  \vphantom{ \dfrac{d^4}{d} } \\
+    f_i^{(3)}  \vphantom{ \dfrac{d^4}{d} } \\
+    f_i^{(4)}  \vphantom{ \dfrac{d^4}{d} }
+\end{bmatrix}
+=
+\begin{bmatrix}
+    f_{i-2} - f_{i}    \vphantom{ \dfrac{d^4}{d}} \\
+    f_{i-1} - f_{i}    \vphantom{ \dfrac{d^4}{d}} \\
+    f_{i+1} - f_{i}    \vphantom{ \dfrac{d^4}{d}} \\
+    f_{i+2}(x_R)   \vphantom{ \dfrac{d^4}{d}} 
+\end{bmatrix}
+\end{align}
+     
+
+\cite{methods}
+
+
+
+Modern numerical algorithms for the solution of ordinary differential equations are also base on the method of the Taylor series. Each algorithm such as Runge-Kutta method are constructed so they give an expression depending of the parameter $(h)$, in other works the step as an approximate solution of the first terms of the Taylor series.
+
+\subsection{Runge and Kutta}
+
+There exist several computational numeric methods to solver such equations, methods like Euler, Midpoint Method and Runge-Kutta integrator method can solve this equations. The RG4 this method is used for the simulation because its numerically more accurate when compared to the others.
 
 The RG4 method differs widely from the Euler method and the Midpoint method. The euler method is the simplest, the derivative at the starting point of each interval is extrapolated to find the next function value, see figure \ref{fig:euler}. The method is only has first order accuracy while RG4 its fourth order integrator.
 
