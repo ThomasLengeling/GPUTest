@@ -14,11 +14,13 @@ This chapter is a overview of the theory and experiments behind Dr. Cluadio's wo
 
 \section{Theory}
 
-Spintronics is a new type of electronics that exploits the spin degree of freedom of an electron in addition to its charge. It is expected that electronics technology and devices will be faster, compacter and more energy-saving \cite{spinz}
+Contrarily to charge, spin accumulate in metals, The associated diffusion current flows in all directions, giving rise to nonlocal effects, Beyond transport properties, conduction electrons spin resonance and spin pumping provide further testimonies for non-locality in spin transport. These works all refer  to samples consisting in piecewise uniform layers or blocks, magnetic or not. Of special significance to the present work in the non-collinear geometry where a spin current with polarization transverse to the magnetization exists, whose absorption in the vicinity of the surface of a magnetic layer creates a torque on the magnetization, known as spin transfer torque (SFF),  \cite{claudio}
+
+Spintronics is a new type of electronics that exploits the spin degree of freedom of an electron in addition to its charge. \cite{spinz}
 
 \cite{ferro}
 
-An abrupt in magnetization at the boundary of two anti-aligned domains is not a favorable condition. Domain walls form between suc domains as means of minimizing the energy of the two anti-aligned domains. Domains walls are transitions layers in which the magnetization changes gradually from on magnetization to another.  The gradual change prevents the large increase in exchange energy that would accompany an abrupt change in the magnetization angle. \cite{spindomain}
+An abrupt in magnetization at the boundary of two anti-aligned domains is not a favorable condition. Domain walls form between such domains as means of minimizing the energy of the two anti-aligned domains. Domains walls are transitions layers in which the magnetization changes gradually from on magnetization to another. In other words the boundaries between regions of uniform magnetization.  The gradual change prevents the large increase in exchange energy that would accompany an abrupt change in the magnetization angle. Common domain wall geometrias include Bloch walls, N$\acute{e}$el walls and vortex walls. In the case of Vortex wall the magnetization rotates in the place perpedicualr to the domain wall, but the local magnetization is wrapped around a single vortex point \cite{spindomain}. This can seen in figure \label{eq:kg4}.
 
 \begin{figure}[htbp]
 	\centering
@@ -28,29 +30,19 @@ An abrupt in magnetization at the boundary of two anti-aligned domains is not a 
 	\label{fig:vortex}
 \end{figure}
 
-The study spin-diffuse effect within a continuously variable magnetization distribution, integrating with micromagenectis with diffuse model of Zhang and LI \cite{claudio}
-
-Numerical Methods
-\cite{methods}
-
+Domain walls are the basis for various spintronics devices that uses magnetic momentums, in other words spin of electronics. the used of the spin degree of freedom. With this it is expected that electronics technology and devices will be faster, compacter and more energy-saving. A interesting application using this idea is new design for a different type memory disk drive called racetrack memory by Parkin in 2008\cite{racetrack}
 
 Spin-transfer torque is a torque that exerts on a magnetization by conduction electron spins, in other words the angular momentum transferred from spins to magnetic  moment \cite{zhang}.
-
 This has simulated research into domain wall (DW) dynamics, particularly those resulting from interactions with current passing through the DW via the phenomenon of spin momentum transfer (SMT) \cite{handbookspin}
 
-
-
-
-
-Contrarily to charge, spin accumulate in metals, The associated diffusion current flows in all directions, giving rise to nonlocal effects, Beyond transport properties, conduction electrons spin resonance and spin pumping provide further testimonies for non-locality in spin transport. These works all refer  to samples consisting in piecewise uniform layers or blocks, magnetic or not. Of special significance to the present work in the non-collinear geometry where a spin current with polarization transverse to the magnetization exists, whose absorption in the vicinity of the surface of a magnetic layer creates a torque on the magnetization, known as spin transfer torque (SFF), 
-
-
-%Within a nanostip wire 
+The study spin-diffuse effect within a continuously variable magnetization distribution, integrating with micromagenectis with diffuse model of Zhang and LI \cite{claudio}
 
 We Quantitatively test the effects of spin diffusion, on real Domain walls structures, this is done by numerically solve the Zhang-Li model \cite{zhang} into micro-magnetics.
 The Zhang Li model refers to:
 
 which is the following equation.
+
+\subsection{Experiment}
 
 Base on the work of Dr. Claudio \cite{claudio}
 
@@ -62,7 +54,6 @@ Experimentally measured spin-diffusion parameters are used, we want to the solut
  \frac{\partial \delta \vec{m} }{\partial t} =  D\bigtriangleup \delta \vec{m} + \frac{1}{\tau_{sd}} \vec{m} \times \delta  \vec{m} - \frac{1}{\tau_{sf}}\delta \vec{m} - u \partial_{x}  \vec{m}
 \end{equation}
 
-
 The sample that is considerate is a 300 nm wide and 5 nm tick NiFe soft nanostrip. This dimensions are widely used for experimental use.
 
 Therefore, a simultaneous solution of the diffusive Zhang and Li model together with the magnetization dynamics equation has uncovered a qualitatively new feature of the spin-transfer torque effect in the presence of spin diffusion.
@@ -72,19 +63,22 @@ Advances in spintronics recognized by 2007 Nobel Prize in Physics have enable ov
 
 Some application include racetrack technology by the IBM fellow scientific Parkin \cite{racetrack}
 
-Base on this study numeric applications have been unfold. A interesting application using spintronics is new design for a new memory disk drive called racetrack memory by  Parkin in 2008\cite{racetrack}
+Base on this study numeric applications have been unfold. 
 
 
 %-----------------------------------
 %	SUBSECTION 1
 %-----------------------------------
-\section{Domain Wall Dynamics on the GPU}
+\section{Numerical Methods}
 
 
-The implementation of the GPU of Dr. Claudio is based on launching several kernels into a single GPU node.
+%The implementation of the GPU of Dr. Claudio is based on launching several kernels into a single GPU node.
 
 
-The differential evaluation in one-dimention,
+Numerical Methods
+\cite{methods}
+
+The differential evaluation in one-dimension,
 The Second order Taylor expansion readily yields expressions for the first and seconds central derivates
 
 $$ \dfrac{df}{dx} = \dfrac{f_{i+1} - f_{i-1} }{2a}$$

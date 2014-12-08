@@ -3,8 +3,8 @@
 \contentsline {chapter}{Acknowledgements}{ii}{dummy.3}
 \vspace {1.2em}
 \contentsline {chapter}{Contents}{iii}{dummy.4}
-\contentsline {chapter}{List of Figures}{v}{dummy.6}
-\contentsline {chapter}{Introduction}{vi}{dummy.8}
+\contentsline {chapter}{List of Figures}{iv}{dummy.6}
+\contentsline {chapter}{Introduction}{v}{dummy.8}
 \contentsline {chapter}{\numberline {1}Heterogeneous Computing}{1}{chapter.10}
 \contentsline {section}{\numberline {1.1}Motivation}{1}{section.11}
 \contentsline {section}{\numberline {1.2}GPUs as computing units}{3}{section.13}
@@ -34,10 +34,10 @@
 \contentsline {subsection}{\numberline {3.2.3}Threads}{23}{subsection.62}
 \contentsline {subsection}{\numberline {3.2.4}CPU}{24}{subsection.80}
 \contentsline {subsection}{\numberline {3.2.5}GPU}{24}{subsection.81}
-\contentsline {subsection}{\numberline {3.2.6}KG4}{25}{subsection.92}
+\contentsline {subsection}{\numberline {3.2.6}KG4}{26}{subsection.92}
 \contentsline {subsection}{\numberline {3.2.7}effective values}{26}{subsection.102}
-\contentsline {subsection}{\numberline {3.2.8}time}{26}{subsection.109}
-\contentsline {section}{\numberline {3.3}Validation}{26}{section.110}
+\contentsline {subsection}{\numberline {3.2.8}time}{27}{subsection.109}
+\contentsline {section}{\numberline {3.3}Validation}{27}{section.110}
 \contentsline {section}{\numberline {3.4}Help Kernels}{27}{section.111}
 \contentsline {section}{\numberline {3.5}Data Flow}{27}{section.112}
 \contentsline {chapter}{\numberline {4}Optimization Results}{28}{chapter.113}
