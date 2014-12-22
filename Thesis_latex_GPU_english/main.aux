@@ -21,8 +21,8 @@
 \@writefile{toc}{\contentsline {chapter}{Acknowledgements}{ii}{dummy.3}}
 \@writefile{toc}{\vspace  {1.2em}}
 \@writefile{toc}{\contentsline {chapter}{Contents}{iii}{dummy.4}}
-\@writefile{toc}{\contentsline {chapter}{List of Figures}{iv}{dummy.6}}
-\@writefile{toc}{\contentsline {chapter}{Introduction}{v}{dummy.8}}
+\@writefile{toc}{\contentsline {chapter}{List of Figures}{v}{dummy.6}}
+\@writefile{toc}{\contentsline {chapter}{Introduction}{vi}{dummy.8}}
 \@writefile{toc}{\contentsline {chapter}{\numberline {1}Heterogeneous Computing}{1}{chapter.10}}
 \@writefile{lof}{\addvspace {10\p@ }}
 \@writefile{lot}{\addvspace {10\p@ }}
@@ -103,6 +103,7 @@
 \citation{practices}
 \@writefile{toc}{\contentsline {subsection}{\numberline {2.5.2}Thread Division}{16}{subsection.43}}
 \citation{claudio}
+\citation{claudio}
 \citation{spinz}
 \citation{ferro}
 \citation{spindomain}
@@ -111,10 +112,10 @@
 \@writefile{lot}{\addvspace {10\p@ }}
 \newlabel{Introduction to DW Dynamics}{{3}{17}{Introduction to Domain Wall Dynamics and a Implementation with CUDA}{chapter.44}{}}
 \@writefile{toc}{\contentsline {section}{\numberline {3.1}Theory}{17}{section.45}}
-\citation{claudio}
-\citation{methods}
+\citation{racetrack}
 \citation{zhang}
 \citation{handbookspin}
+\citation{claudio}
 \citation{zhang}
 \newlabel{eq:kg4}{{3.1}{18}{Theory}{section.45}{}}
 \@writefile{lof}{\contentsline {figure}{\numberline {3.1}{\ignorespaces Domain Wall - Vortex}}{18}{figure.caption.46}}
@@ -122,51 +123,52 @@
 \citation{claudio}
 \citation{handbookspin}
 \citation{racetrack}
-\citation{racetrack}
-\@writefile{toc}{\contentsline {section}{\numberline {3.2}Domain Wall Dynamics on the GPU}{19}{section.48}}
-\@writefile{lof}{\contentsline {figure}{\numberline {3.2}{\ignorespaces Sampled at regular intervals a, Taylor expansion}}{20}{figure.caption.49}}
-\newlabel{fig:taylor}{{3.2}{20}{Sampled at regular intervals a, Taylor expansion}{figure.caption.49}{}}
 \citation{methods}
-\@writefile{toc}{\contentsline {subsection}{\numberline {3.2.1}Runge and Kutta}{21}{subsection.52}}
-\newlabel{eq:kg4}{{3.4}{21}{Runge and Kutta}{equation.54}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.1.1}Experiment}{19}{subsection.47}}
+\@writefile{toc}{\contentsline {section}{\numberline {3.2}Numerical Methods}{19}{section.49}}
+\@writefile{lof}{\contentsline {figure}{\numberline {3.2}{\ignorespaces Sampled at regular intervals a, Taylor expansion}}{20}{figure.caption.50}}
+\newlabel{fig:taylor}{{3.2}{20}{Sampled at regular intervals a, Taylor expansion}{figure.caption.50}{}}
+\citation{methods}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.2.1}Runge and Kutta}{21}{subsection.53}}
+\@writefile{lof}{\contentsline {figure}{\numberline {3.3}{\ignorespaces Euler Method}}{21}{figure.caption.54}}
+\newlabel{fig:euler}{{3.3}{21}{Euler Method}{figure.caption.54}{}}
 \citation{numerical}
-\@writefile{lof}{\contentsline {figure}{\numberline {3.3}{\ignorespaces Euler Method}}{22}{figure.caption.53}}
-\newlabel{fig:euler}{{3.3}{22}{Euler Method}{figure.caption.53}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {3.4}{\ignorespaces Fourth-order Runge and Kutta Method}}{22}{figure.caption.55}}
-\newlabel{fig:kutta}{{3.4}{22}{Fourth-order Runge and Kutta Method}{figure.caption.55}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {3.2.2}Kernels}{22}{subsection.56}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {3.2.3}Threads}{23}{subsection.62}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {3.2.4}CPU}{24}{subsection.80}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {3.2.5}GPU}{24}{subsection.81}}
-\newlabel{eq:gsource}{{3.5}{25}{GPU}{equation.91}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {3.2.6}KG4}{26}{subsection.92}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {3.2.7}effective values}{26}{subsection.102}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {3.2.8}time}{27}{subsection.109}}
-\@writefile{toc}{\contentsline {section}{\numberline {3.3}Validation}{27}{section.110}}
-\@writefile{toc}{\contentsline {section}{\numberline {3.4}Help Kernels}{27}{section.111}}
-\@writefile{toc}{\contentsline {section}{\numberline {3.5}Data Flow}{27}{section.112}}
-\@writefile{toc}{\contentsline {chapter}{\numberline {4}Optimization Results}{28}{chapter.113}}
+\newlabel{eq:kg4}{{3.4}{22}{Runge and Kutta}{equation.55}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {3.4}{\ignorespaces Fourth-order Runge and Kutta Method}}{22}{figure.caption.56}}
+\newlabel{fig:kutta}{{3.4}{22}{Fourth-order Runge and Kutta Method}{figure.caption.56}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.2.2}Kernels}{22}{subsection.57}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.2.3}Threads}{23}{subsection.63}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.2.4}CPU}{24}{subsection.81}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.2.5}GPU}{24}{subsection.82}}
+\newlabel{eq:gsource}{{3.5}{25}{GPU}{equation.92}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.2.6}KG4}{25}{subsection.93}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.2.7}effective values}{26}{subsection.103}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.2.8}time}{26}{subsection.110}}
+\@writefile{toc}{\contentsline {section}{\numberline {3.3}Validation}{26}{section.111}}
+\@writefile{toc}{\contentsline {section}{\numberline {3.4}Help Kernels}{27}{section.112}}
+\@writefile{toc}{\contentsline {section}{\numberline {3.5}Data Flow}{27}{section.113}}
+\@writefile{toc}{\contentsline {chapter}{\numberline {4}Optimization Results}{28}{chapter.114}}
 \@writefile{lof}{\addvspace {10\p@ }}
 \@writefile{lot}{\addvspace {10\p@ }}
-\newlabel{Optimization Results}{{4}{28}{Optimization Results}{chapter.113}{}}
-\@writefile{toc}{\contentsline {section}{\numberline {4.1}Supercomputer ``Piritakua''}{28}{section.114}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.1.1}Experiment detail}{29}{subsection.115}}
-\@writefile{toc}{\contentsline {section}{\numberline {4.2}Results}{29}{section.116}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.2.1}Initial Test}{29}{subsection.117}}
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {4.2.1.1}Visual profiler}{29}{subsubsection.118}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.2.2}Obtimized}{30}{subsection.119}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.2.3}Subsection 2}{30}{subsection.120}}
-\@writefile{toc}{\contentsline {section}{\numberline {4.3}Main Section 2}{30}{section.121}}
-\@writefile{toc}{\contentsline {chapter}{\numberline {5}Conclusions and future work}{31}{chapter.122}}
+\newlabel{Optimization Results}{{4}{28}{Optimization Results}{chapter.114}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {4.1}Supercomputer ``Piritakua''}{28}{section.115}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.1.1}Experiment detail}{29}{subsection.116}}
+\@writefile{toc}{\contentsline {section}{\numberline {4.2}Results}{29}{section.117}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.2.1}Initial Test}{29}{subsection.118}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {4.2.1.1}Visual profiler}{29}{subsubsection.119}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.2.2}Obtimized}{30}{subsection.120}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.2.3}Subsection 2}{30}{subsection.121}}
+\@writefile{toc}{\contentsline {section}{\numberline {4.3}Main Section 2}{30}{section.122}}
+\@writefile{toc}{\contentsline {chapter}{\numberline {5}Conclusions and future work}{31}{chapter.123}}
 \@writefile{lof}{\addvspace {10\p@ }}
 \@writefile{lot}{\addvspace {10\p@ }}
-\newlabel{Conclusions and future work}{{5}{31}{Conclusions and future work}{chapter.122}{}}
-\@writefile{toc}{\contentsline {section}{\numberline {5.1}Main Section 1}{31}{section.123}}
+\newlabel{Conclusions and future work}{{5}{31}{Conclusions and future work}{chapter.123}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {5.1}Main Section 1}{31}{section.124}}
 \@writefile{toc}{\vspace  {2em}}
-\@writefile{toc}{\contentsline {chapter}{\numberline {A}Appendix Title Here}{32}{appendix.124}}
+\@writefile{toc}{\contentsline {chapter}{\numberline {A}Appendix Title Here}{32}{appendix.125}}
 \@writefile{lof}{\addvspace {10\p@ }}
 \@writefile{lot}{\addvspace {10\p@ }}
-\newlabel{AppendixA}{{A}{32}{Appendix Title Here}{appendix.124}{}}
+\newlabel{AppendixA}{{A}{32}{Appendix Title Here}{appendix.125}{}}
 \@writefile{toc}{\vspace  {2em}}
 \citation{*}
 \bibstyle{abbrv}
@@ -182,8 +184,8 @@
 \bibcite{hwu}{{9}{}{{}}{{}}}
 \bibcite{landaverde}{{10}{}{{}}{{}}}
 \bibcite{mag}{{11}{}{{}}{{}}}
-\@writefile{toc}{\contentsline {chapter}{Bibliography}{33}{dummy.125}}
-\newlabel{Bibliography}{{6}{33}{Appendix Title Here}{dummy.125}{}}
+\@writefile{toc}{\contentsline {chapter}{Bibliography}{33}{dummy.126}}
+\newlabel{Bibliography}{{6}{33}{Appendix Title Here}{dummy.126}{}}
 \bibcite{Nickolls}{{12}{}{{}}{{}}}
 \bibcite{practices}{{13}{}{{}}{{}}}
 \bibcite{racetrack}{{14}{}{{}}{{}}}

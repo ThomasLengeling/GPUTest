@@ -3,8 +3,8 @@
 \contentsline {chapter}{Acknowledgements}{ii}{dummy.3}
 \vspace {1.2em}
 \contentsline {chapter}{Contents}{iii}{dummy.4}
-\contentsline {chapter}{List of Figures}{iv}{dummy.6}
-\contentsline {chapter}{Introduction}{v}{dummy.8}
+\contentsline {chapter}{List of Figures}{v}{dummy.6}
+\contentsline {chapter}{Introduction}{vi}{dummy.8}
 \contentsline {chapter}{\numberline {1}Heterogeneous Computing}{1}{chapter.10}
 \contentsline {section}{\numberline {1.1}Motivation}{1}{section.11}
 \contentsline {section}{\numberline {1.2}GPUs as computing units}{3}{section.13}
@@ -28,30 +28,31 @@
 \contentsline {subsection}{\numberline {2.5.2}Thread Division}{16}{subsection.43}
 \contentsline {chapter}{\numberline {3}Introduction to Domain Wall Dynamics and a Implementation with CUDA}{17}{chapter.44}
 \contentsline {section}{\numberline {3.1}Theory}{17}{section.45}
-\contentsline {section}{\numberline {3.2}Domain Wall Dynamics on the GPU}{19}{section.48}
-\contentsline {subsection}{\numberline {3.2.1}Runge and Kutta}{21}{subsection.52}
-\contentsline {subsection}{\numberline {3.2.2}Kernels}{22}{subsection.56}
-\contentsline {subsection}{\numberline {3.2.3}Threads}{23}{subsection.62}
-\contentsline {subsection}{\numberline {3.2.4}CPU}{24}{subsection.80}
-\contentsline {subsection}{\numberline {3.2.5}GPU}{24}{subsection.81}
-\contentsline {subsection}{\numberline {3.2.6}KG4}{26}{subsection.92}
-\contentsline {subsection}{\numberline {3.2.7}effective values}{26}{subsection.102}
-\contentsline {subsection}{\numberline {3.2.8}time}{27}{subsection.109}
-\contentsline {section}{\numberline {3.3}Validation}{27}{section.110}
-\contentsline {section}{\numberline {3.4}Help Kernels}{27}{section.111}
-\contentsline {section}{\numberline {3.5}Data Flow}{27}{section.112}
-\contentsline {chapter}{\numberline {4}Optimization Results}{28}{chapter.113}
-\contentsline {section}{\numberline {4.1}Supercomputer ``Piritakua''}{28}{section.114}
-\contentsline {subsection}{\numberline {4.1.1}Experiment detail}{29}{subsection.115}
-\contentsline {section}{\numberline {4.2}Results}{29}{section.116}
-\contentsline {subsection}{\numberline {4.2.1}Initial Test}{29}{subsection.117}
-\contentsline {subsubsection}{\numberline {4.2.1.1}Visual profiler}{29}{subsubsection.118}
-\contentsline {subsection}{\numberline {4.2.2}Obtimized}{30}{subsection.119}
-\contentsline {subsection}{\numberline {4.2.3}Subsection 2}{30}{subsection.120}
-\contentsline {section}{\numberline {4.3}Main Section 2}{30}{section.121}
-\contentsline {chapter}{\numberline {5}Conclusions and future work}{31}{chapter.122}
-\contentsline {section}{\numberline {5.1}Main Section 1}{31}{section.123}
+\contentsline {subsection}{\numberline {3.1.1}Experiment}{19}{subsection.47}
+\contentsline {section}{\numberline {3.2}Numerical Methods}{19}{section.49}
+\contentsline {subsection}{\numberline {3.2.1}Runge and Kutta}{21}{subsection.53}
+\contentsline {subsection}{\numberline {3.2.2}Kernels}{22}{subsection.57}
+\contentsline {subsection}{\numberline {3.2.3}Threads}{23}{subsection.63}
+\contentsline {subsection}{\numberline {3.2.4}CPU}{24}{subsection.81}
+\contentsline {subsection}{\numberline {3.2.5}GPU}{24}{subsection.82}
+\contentsline {subsection}{\numberline {3.2.6}KG4}{25}{subsection.93}
+\contentsline {subsection}{\numberline {3.2.7}effective values}{26}{subsection.103}
+\contentsline {subsection}{\numberline {3.2.8}time}{26}{subsection.110}
+\contentsline {section}{\numberline {3.3}Validation}{26}{section.111}
+\contentsline {section}{\numberline {3.4}Help Kernels}{27}{section.112}
+\contentsline {section}{\numberline {3.5}Data Flow}{27}{section.113}
+\contentsline {chapter}{\numberline {4}Optimization Results}{28}{chapter.114}
+\contentsline {section}{\numberline {4.1}Supercomputer ``Piritakua''}{28}{section.115}
+\contentsline {subsection}{\numberline {4.1.1}Experiment detail}{29}{subsection.116}
+\contentsline {section}{\numberline {4.2}Results}{29}{section.117}
+\contentsline {subsection}{\numberline {4.2.1}Initial Test}{29}{subsection.118}
+\contentsline {subsubsection}{\numberline {4.2.1.1}Visual profiler}{29}{subsubsection.119}
+\contentsline {subsection}{\numberline {4.2.2}Obtimized}{30}{subsection.120}
+\contentsline {subsection}{\numberline {4.2.3}Subsection 2}{30}{subsection.121}
+\contentsline {section}{\numberline {4.3}Main Section 2}{30}{section.122}
+\contentsline {chapter}{\numberline {5}Conclusions and future work}{31}{chapter.123}
+\contentsline {section}{\numberline {5.1}Main Section 1}{31}{section.124}
 \vspace {2em}
-\contentsline {chapter}{\numberline {A}Appendix Title Here}{32}{appendix.124}
+\contentsline {chapter}{\numberline {A}Appendix Title Here}{32}{appendix.125}
 \vspace {2em}
-\contentsline {chapter}{Bibliography}{33}{dummy.125}
+\contentsline {chapter}{Bibliography}{33}{dummy.126}
