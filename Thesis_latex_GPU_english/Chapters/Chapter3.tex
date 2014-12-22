@@ -46,9 +46,9 @@ which is the following equation.
 
 Base on the work of Dr. Claudio \cite{claudio}
 
-At first we investigate the steady-sate velocity regime of DWs in NiFe soft nanostrips. applying current densities similar to those reported in experiments. The results that we are going to obtain 
+At first we investigate the steady-sate velocity regime of DWs in NiFe soft nanostrips. applying current densities similar to those reported in experiments. The results that we are going to obtain
 
-Experimentally measured spin-diffusion parameters are used, we want to the solution of. 
+Experimentally measured spin-diffusion parameters are used, we want to the solution of.
 
 \begin{equation}
  \frac{\partial \delta \vec{m} }{\partial t} =  D\bigtriangleup \delta \vec{m} + \frac{1}{\tau_{sd}} \vec{m} \times \delta  \vec{m} - \frac{1}{\tau_{sf}}\delta \vec{m} - u \partial_{x}  \vec{m}
@@ -59,11 +59,11 @@ The sample that is considerate is a 300 nm wide and 5 nm tick NiFe soft nanostri
 Therefore, a simultaneous solution of the diffusive Zhang and Li model together with the magnetization dynamics equation has uncovered a qualitatively new feature of the spin-transfer torque effect in the presence of spin diffusion.
 
 
-Advances in spintronics recognized by 2007 Nobel Prize in Physics have enable over the last decade advances in computer memory, in hard drives, this is a metal based structures which utilize magnetoresisite effects to save and read data from a magnetic disk. \cite{handbookspin} 
+Advances in spintronics recognized by 2007 Nobel Prize in Physics have enable over the last decade advances in computer memory, in hard drives, this is a metal based structures which utilize magnetoresisite effects to save and read data from a magnetic disk. \cite{handbookspin}
 
 Some application include racetrack technology by the IBM fellow scientific Parkin \cite{racetrack}
 
-Base on this study numeric applications have been unfold. 
+Base on this study numeric applications have been unfold.
 
 
 %-----------------------------------
@@ -119,7 +119,7 @@ Applying the previous equation to nearest and next neares neigborar to grid pint
     f_{i-2} - f_{i}    \vphantom{ \dfrac{d^4}{d}} \\
     f_{i-1} - f_{i}    \vphantom{ \dfrac{d^4}{d}} \\
     f_{i+1} - f_{i}    \vphantom{ \dfrac{d^4}{d}} \\
-    f_{i+2} - f_{i}    \vphantom{ \dfrac{d^4}{d}} 
+    f_{i+2} - f_{i}    \vphantom{ \dfrac{d^4}{d}}
 \end{bmatrix}
 \end{align}
 
@@ -151,12 +151,14 @@ f^{(2)}_i &= \dfrac{f_{i-2}+16f_{i-1} -30f_{i} + 16f_{i+1} - f_{i+1}}{12a^2}
     f_{i-2} - f_{i}    \vphantom{ \dfrac{d^4}{d}} \\
     f_{i-1} - f_{i}    \vphantom{ \dfrac{d^4}{d}} \\
     f_{i+1} - f_{i}    \vphantom{ \dfrac{d^4}{d}} \\
-    f_{i+2}(x_R)   \vphantom{ \dfrac{d^4}{d}} 
+    f_{i+2}(x_R)   \vphantom{ \dfrac{d^4}{d}}
 \end{bmatrix}
 \end{align}
-     
+
 
 \cite{methods}
+
+\subsection{Finite Differences in the Time Domain}
 
 
 
@@ -179,7 +181,7 @@ The RG4 method differs widely from the Euler method and the Midpoint method. The
 RK4 goes as follows:
 
 \begin{equation} \label{eq:kg4}
-y_{n+1} = y_{n} + 1/6 K_{1} + 1/3 K_{2} +1/3 K_{3} + 1/6 K_{4} 
+y_{n+1} = y_{n} + 1/6 K_{1} + 1/3 K_{2} +1/3 K_{3} + 1/6 K_{4}
 \end{equation}
 where
 
@@ -215,7 +217,7 @@ The GPU implementation. the application reads
 
 At initialize the applications first it allocates all the CUDA and c arrays.
 
-To allocate a big chunk of memory in the Device 
+To allocate a big chunk of memory in the Device
 
 \begin{lstlisting}[frame=none]
 cudaMalloc
@@ -234,27 +236,27 @@ The initial values for the simulation are
 \begin{table}[h]
 \centering
 \begin{tabular}{| l | l |}
-\hline   
+\hline
 NX     & 480                                            \\
-\hline   
+\hline
 NY     & 120                                            \\
-\hline   
+\hline
 NZ     & 1                                              \\
-\hline   
+\hline
 TX     & 1200.0                                         \\
-\hline   
+\hline
 TY     & 300.0                                          \\
-\hline   
+\hline
 TZ     & 5.0                                            \\
-\hline   
+\hline
 u      & 1                                              \\
-\hline   
+\hline
 D      & 1.0e\textasciicircum 3 nm\textasciicircum 2/ns \\
-\hline   
+\hline
 tau sd & 1.0e\textasciicircum -3 ns                     \\
-\hline   
+\hline
 tau sf & 25.0e-3 ns      \\
-\hline   
+\hline
 \end{tabular}
 \end{table}
 
@@ -266,9 +268,9 @@ The number of threads that are allocated within each kernel is a 2d grid.
 \begin{table}[h]
 \centering
 \begin{tabular}{| l | l |}
-\hline   
+\hline
 Threads per block  X   & 32       \\
-\hline   
+\hline
 Threads per block Y     & 32         \\
 \hline
 \end{tabular}
@@ -288,10 +290,10 @@ else
 //printf("NZCUDA = %i\n",NZCUDA);
 
 //Setup optimum number of blocks
-XBLOCKS_PERGRID = (int)ceil((float)NX/(float)XTHREADS_PERBLOCK); 
+XBLOCKS_PERGRID = (int)ceil((float)NX/(float)XTHREADS_PERBLOCK);
 printf("XBLOCKS_PERGRID = %i\n",XBLOCKS_PERGRID);
 
-YBLOCKS_PERGRID = (int)ceil((float)NY/(float)YTHREADS_PERBLOCK); 
+YBLOCKS_PERGRID = (int)ceil((float)NY/(float)YTHREADS_PERBLOCK);
 \end{lstlisting}
 
 
@@ -309,7 +311,7 @@ The file is divide into two blocks of data, the first block of 57600 rows are th
 
 here two data sets are created. The coordinates point data $(x,y)$ and the magnetization data $(x, y, z)$.
 
-Afther this initilization data, the next step is to send this data, that is actually read on the CPU (host) to de GPU(device). 
+Afther this initilization data, the next step is to send this data, that is actually read on the CPU (host) to de GPU(device).
 
 
 First we print the Initial and final coordinates that read, this is to ensure that the values ared sucuefully.
@@ -405,7 +407,7 @@ The final calculation is just the sum of all the elements of $beta_diff_num$ and
 This final single values tells us...
 
 
-This is the final step of the simulations this is where $beta\_diff$ is obtained. 
+This is the final step of the simulations this is where $beta\_diff$ is obtained.
 
 The final data is saved
 \subsection{time}
