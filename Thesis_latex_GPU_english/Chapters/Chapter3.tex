@@ -166,9 +166,9 @@ Modern numerical algorithms for the solution of ordinary differential equations 
 
 \subsection{Runge and Kutta}
 
-There exist several computational numeric methods to solver such equations, methods like Euler, Midpoint Method and Runge-Kutta integrator method can solve this equations. The RG4 this method is used for the simulation because its numerically more accurate when compared to the others.
+There exist several computational numeric methods to solver such equations, methods like Euler, Midpoint Method and Runge-Kutta integrator method can solve this type of equations. The RG4 this method is used for the simulation because its numerically more accurate when compared to the others.
 
-The RG4 method differs widely from the Euler method and the Midpoint method. The euler method is the simplest, the derivative at the starting point of each interval is extrapolated to find the next function value, see figure \ref{fig:euler}. The method is only has first order accuracy while RG4 its fourth order integrator.
+The RG4 method differs widely from the Euler method and the Midpoint method. The euler method is the simplest, the derivative at the starting point of each interval is extrapolated to find the next function value, see figure \ref{fig:euler}. Euler method only has first order accuracy while the RG4 its fourth order integrator.
 
 \begin{figure}[htbp]
 	\centering
@@ -228,7 +228,7 @@ And C with
 malloc
 \end{lstlisting}
 
-In the initialization function it also reads the magenetizacion data from a especific file in this specific case from ``upVW-magn-2.5nm.data''
+In the initialization function it also reads the magnetization data from a especific file in this specific case from ``upVW-magn-2.5nm.data''
 
 
 The initial values for the simulation are
@@ -280,14 +280,14 @@ Depending on the hardware configuration, each GPU can allocate different threads
 
 \begin{lstlisting}[frame=none]
 NXCUDA = (int)powf(2,ceilf(logf(NX)/logf(2)));
-printf("NXCUDA = %i\n",NXCUDA);
+
+
 NYCUDA = (int)powf(2,ceilf(logf(NY)/logf(2)));
-printf("NYCUDA = %i\n",NYCUDA);
+
 if((int)powf(2,ceilf(logf(NZ)/logf(2))) < 1)
 	NZCUDA = 1;
 else
         NZCUDA = (int)powf(2,ceilf(logf(NZ)/logf(2)));
-//printf("NZCUDA = %i\n",NZCUDA);
 
 //Setup optimum number of blocks
 XBLOCKS_PERGRID = (int)ceil((float)NX/(float)XTHREADS_PERBLOCK);
@@ -297,8 +297,7 @@ YBLOCKS_PERGRID = (int)ceil((float)NY/(float)YTHREADS_PERBLOCK);
 \end{lstlisting}
 
 
-The calculations are divided into two parts, the CPU code and GPU code. Most of the code is on the GPU. On the CPU only minor  process are taken place, like I/O to a .data.
-On GPU is were all the computation is happening and simulation.
+The calculations are divided into two parts, the CPU code and the GPU code. All the intense computation and simulation is done on the GPU, while on the CPU only minor calculations are done, such as I/O  data.
 
 \subsection{CPU}
 In the $initial_calculations$ functions it calculates the terms on magnetization components
@@ -419,9 +418,11 @@ When the simulation is done, it will repeat the process intil the values converg
 
 The validate the code, that is obtained from the simulation
 
-Once obtain the results from the simulation, the results are saved into two seperated data sets. .eff and .spin. depending of the configuration of the application is possible to obtain the uVW or the. Because CUDA framework is highly parallel system is farly easy to obtain errenois data from the calculations, even setting up the threads per block incorrectly is possible to get data set that a wrong, or results that don't diverge. It is necessary that when finishing making changes to the code validating the results with a valid data set is done.
+Once obtain the results from the simulation, the results are written into two separated data files; .eff and .spin. depending of the configuration of the application is possible to obtain the uVW or the. Because CUDA framework is highly parallel system is farly easy to obtain errenois data from the calculations, even setting up the threads per block incorrectly is possible to get data set that a wrong, or results that don't diverge. It is necessary that when finishing making changes to the code validating the results with a valid data set is done.
 
 The validation is done by checking the output the simulation with a valid data set, the output of the validation application tells us the error factor of the current data with the valid set. So for each data set there is a threshold value, that can tell if the that is close enough to the results. A example of the validation performed.
+
+//validation float error precision
 
 
 \section{Help Kernels}
