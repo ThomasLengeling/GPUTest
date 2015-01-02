@@ -14,7 +14,7 @@ This chapter is the results of the CUDA code implementation launched on several 
 
 \section{Supercomputer ``Piritakua''}
 
-The experiments are  carried out using the supercomputer “Piritakua”. The massive GPU cluster was design and built by Dr. Claudio from the University of Guanajuato Campus Irapuato-Salamanca. The GPU cluster is located at a small town of Mexico, Yuriria. The supercomputer at the Front-end has a 8 core Intel Xeon at 2.4 Ghz, at the back-end several GPU are connected, one NVIDIA Tesla K20, two Tesla M2070 and a GTX 580.
+The experiments are carried out using the supercomputer “Piritakua”. The massive GPU cluster was design and built by Dr. Claudio from the University of Guanajuato Campus Yuriria. The GPU cluster is located at a small town of Mexico, Yuriria. The supercomputer at the Front-end has a 8 core Intel Xeon at 2.4 Ghz, at the back-end several GPU are connected, one NVIDIA Tesla K20, two Tesla M2070 and a GTX 580.
 
 The specifications of the front-end cluster.
 
@@ -35,8 +35,12 @@ The specifications of the front-end cluster.
   \end{tabular}
 
 
- Rge CUDA Code was launched into two CPUs, a high-end laptop with a eight core intel i7-3630QM and a CPU Xeon Phi 7120p from the cluster.
- When accessing ``Piritakua'' is possible to use all the GPUs available. The Specifications of the GPU connected to the front-end are as follows.
+ The CUDA Code was launched on only two CPUs, a high-end laptop with a eight core intel i7-3630QM and a CPU Xeon Phi 7120p from the cluster.
+ 
+ Talk about the Xeon Phi.
+ 
+ When accessing ``Piritakua'' remotely is possible to use all the GPUs available on the cluster.
+ The specifications of the GPU connected to the front-end are as follow.
 
   \begin{tabular}{ |  l  |  l  |  l  |  l  |  l  | l | }
     \hline
@@ -54,16 +58,16 @@ The specifications of the front-end cluster.
    \hline
   \end{tabular}
 
-   The code was launched on Piritakua's GPUs and on laptop with a NVIDIA GPU, the GeForce GTX 670m. The 670m card is design for less power used but with high graphics power, it even has more cores than some Tesla models, but with less Bandwidth.
+   The code was launched on all Piritakua's GPUs and on external GeForce GTX 670m, located on a laptop. The "m" stands for the mobil graphic card version. In addition the 670m card is design for less power usage, but with high graphics power, it even has more cores than some Tesla models, however this types of cards has way more less Bandwidth than standard versions.
 
-There two main GPU architectures that NVIDIA developed, the Fermi and Kepler. The Tesla K20m is base on ``Kepler'' GPU architecture and Tesla M2070, Tesla M2050 and GeForce GTX 580 on the Fermi architecture. The Kepler is a newer architecture than the Fermi. The big difference between the is the number of CUDA cores per SM.
+There are two GPU architectures that code was launched, the Fermi and the Kepler. The Tesla K20m is base on ``Kepler'' GPU architecture and Tesla M2070, Tesla M2050 and GeForce GTX 580 on the Fermi architecture. The Kepler is a newer architecture than the Fermi. The big difference between the is the number of CUDA cores per SM.
 
 
  \subsection{Experiment detail}
 
 \section{Results}
 
-The CUDA code was launched in each GPU of the piritakua supercomputer. As we know the supercomputer has different GPU architectures so we can test the performance of the code.
+The CUDA code was launched on each GPU of the Piritakua supercomputer. As we know the supercomputer has different GPU, as well as several architectures and different number of CUDA cores.
 
 
 
