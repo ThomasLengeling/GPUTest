@@ -10,7 +10,7 @@
 %	SECTION 1
 %----------------------------------------------------------------------------------------
 
-This chapter is the results of the CUDA code implementation launched on several different GPUs nodes. The test are performed on various GPUs architectures, which, has different hardware characteristics. Each GPU node is analyzed using the NVIDIA's Visual Profiler, in addition the CUDA kernels are evaluated in performance; throughput, bandwidth, executing and parallel time. Furthermore the results, are analyzed and optimized using the schemes from chapter 3. Lastly the code is executed on the supercomputer ``Piritakua'' of the  University of Guanajuato, Campus Yuriria.
+This chapter is the results of the CUDA code implementation launched on several different GPUs nodes. The test are performed on various GPUs architectures, which, has different hardware characteristics. Each GPU node is analyzed using the NVIDIA's Visual Profiler, in addition the CUDA kernels are evaluated in performance; throughput, bandwidth, executing and parallel time. Furthermore the results, are analyzed and optimized using the schemes from chapter 3. Lastly the code is executed remotely on the supercomputer ``Piritakua'' of the  University of Guanajuato, Campus Yuriria.
 
 \section{Supercomputer ``Piritakua''}
 
@@ -35,10 +35,10 @@ The specifications of the front-end cluster.
   \end{tabular}
 
 
- The CUDA Code was launched on only two CPUs, a high-end laptop with a eight core intel i7-3630QM and a CPU Xeon Phi 7120p from the cluster.
- 
+ The CUDA Code was launched on only two CPUs, a laptop with a eight core intel i7-3630QM and a high-end CPU Xeon Phi 7120p from the cluster. In addition the Xeon Phi was used for all the test for the Cluster's GPUs.
+
  Talk about the Xeon Phi.
- 
+
  When accessing ``Piritakua'' remotely is possible to use all the GPUs available on the cluster.
  The specifications of the GPU connected to the front-end are as follow.
 
