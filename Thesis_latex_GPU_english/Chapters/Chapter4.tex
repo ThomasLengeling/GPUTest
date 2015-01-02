@@ -10,7 +10,7 @@
 %	SECTION 1
 %----------------------------------------------------------------------------------------
 
-This chapter is the outcomes of the CUDA code implementation. The CUDA code is compiled and launched in-to a single GPU, where the experiments are performed on various GPUs nodes. The initial implementation by Dr. Claudio is executed several times on several GPUs. The parallel process  are analyzed using the NVIDIA's Visual Profiler. In accordance with the results, optimization schemes from chapter 3 are applied. The GPU experiments are performed using the supercomputer ``Piritakua'' from the  University of Guanajuato.
+This chapter is the results of the CUDA code implementation launched on several different GPUs nodes. The test are performed on various GPUs architectures, which, has different hardware characteristics. Each GPU node is analyzed using the NVIDIA's Visual Profiler, in addition the CUDA kernels are evaluated in performance; throughput, bandwidth, executing and parallel time. Furthermore the results, are analyzed and optimized using the schemes from chapter 3. Lastly the code is executed on the supercomputer ``Piritakua'' of the  University of Guanajuato, Campus Yuriria.
 
 \section{Supercomputer ``Piritakua''}
 
@@ -18,8 +18,8 @@ The experiments are  carried out using the supercomputer “Piritakua”. The ma
 
 The specifications of the front-end cluster.
 
-\begin{tabular}{ | p{7.1cm}  | l | l | l |}      
-  \hline   
+\begin{tabular}{ | p{7.1cm}  | l | l | l |}
+  \hline
   Processor & Number & Cores & RAM  \\
   \hline
   Servidor Dell Intel Xeon E5620 2.4 GHz & 1 & 8 & 12 GB \\
@@ -33,12 +33,12 @@ The specifications of the front-end cluster.
    CPU Xeon Phi 7120p  & 1 & 8 & 16 GB\\
    \hline
   \end{tabular}
-  
 
- Rge CUDA Code was launched into two CPUs, a high-end laptop with a eight core intel i7-3630QM and a CPU Xeon Phi 7120p from the cluster. 
+
+ Rge CUDA Code was launched into two CPUs, a high-end laptop with a eight core intel i7-3630QM and a CPU Xeon Phi 7120p from the cluster.
  When accessing ``Piritakua'' is possible to use all the GPUs available. The Specifications of the GPU connected to the front-end are as follows.
-  
-  \begin{tabular}{ |  l  |  l  |  l  |  l  |  l  | l | }      
+
+  \begin{tabular}{ |  l  |  l  |  l  |  l  |  l  | l | }
     \hline
     Model & Cores & RAM & DP & SP & Bandwidth \\
     \hline
@@ -53,13 +53,13 @@ The specifications of the front-end cluster.
    GeForce GTX 670MX & 960 & 3GB & 520 Gflops & 1,154 Gflops & 67.2 GB/s \\
    \hline
   \end{tabular}
-  
+
    The code was launched on Piritakua's GPUs and on laptop with a NVIDIA GPU, the GeForce GTX 670m. The 670m card is design for less power used but with high graphics power, it even has more cores than some Tesla models, but with less Bandwidth.
-  
+
 There two main GPU architectures that NVIDIA developed, the Fermi and Kepler. The Tesla K20m is base on ``Kepler'' GPU architecture and Tesla M2070, Tesla M2050 and GeForce GTX 580 on the Fermi architecture. The Kepler is a newer architecture than the Fermi. The big difference between the is the number of CUDA cores per SM.
-  
-  
- \subsection{Experiment detail}  
+
+
+ \subsection{Experiment detail}
 
 \section{Results}
 
@@ -78,7 +78,7 @@ The visual profiler.
 The visual profiler was used on Laptop with GeForce GTX 670m with the intel eight core  i7-3630QM.
 
 
-the 
+the
 
 
 \subsection{Obtimized}
