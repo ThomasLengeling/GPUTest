@@ -205,7 +205,47 @@ We can notice if we set N to be a large number, the function "add" could take a 
 
 \subsection{GPU Code}
 
-We can ac
+We can accomplish the same operation very similar in the GPU with CUDA.
+
+\begin{lstlisting}[language=C++, caption={GPU Vector Addition}]
+#include <iostream>
+
+#define N 100
+
+void add( int *a, int *b, int *c );
+
+int main()
+{
+    int A[N];
+    int B[N];
+    int C[N];
+    
+    //fill the arrays with values
+    for(int i = 0; i < N; i++){
+        A[i] = 1;
+        B[i] = i;
+    }
+    
+    add(A, B, C);
+    
+    //Display the results
+    for (int i = 0; i < N; i++) {
+        std::cout << A[i] << ", " << B[i] << ", " << C[i] << std::endl;
+    }
+    
+    return 0;
+}
+
+void add( int * A, int * B, int * C )
+{
+    int index = 0;
+    
+    //go through each index of the arrays and make the operation
+    while(index < N){
+        C[index] = A[index] + B[index];
+        index++;
+    }
+}
 
 \cite{example}
 

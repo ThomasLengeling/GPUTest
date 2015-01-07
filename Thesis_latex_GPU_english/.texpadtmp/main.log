@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013) (format=pdflatex 2013.5.30)  6 JAN 2015 22:01
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013) (format=pdflatex 2013.5.30)  6 JAN 2015 22:08
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -7,78 +7,6 @@ entering extended mode
 (./main.tex
 LaTeX2e <2011/06/27>
 Babel <3.9f> and hyphenation patterns for 78 languages loaded.
-
-./main.tex:2: LaTeX Error: Missing \begin{document}.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.2 <
-     <<<<<< HEAD
-You're in trouble here.  Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
-
-Missing character: There is no < in font nullfont!
-Missing character: There is no < in font nullfont!
-Missing character: There is no < in font nullfont!
-Missing character: There is no < in font nullfont!
-Missing character: There is no < in font nullfont!
-Missing character: There is no < in font nullfont!
-Missing character: There is no < in font nullfont!
-Missing character: There is no H in font nullfont!
-Missing character: There is no E in font nullfont!
-Missing character: There is no A in font nullfont!
-Missing character: There is no D in font nullfont!
-Missing character: There is no = in font nullfont!
-Missing character: There is no = in font nullfont!
-Missing character: There is no = in font nullfont!
-Missing character: There is no = in font nullfont!
-Missing character: There is no = in font nullfont!
-Missing character: There is no = in font nullfont!
-Missing character: There is no = in font nullfont!
-Missing character: There is no > in font nullfont!
-Missing character: There is no > in font nullfont!
-Missing character: There is no > in font nullfont!
-Missing character: There is no > in font nullfont!
-Missing character: There is no > in font nullfont!
-Missing character: There is no > in font nullfont!
-Missing character: There is no > in font nullfont!
-Missing character: There is no F in font nullfont!
-Missing character: There is no E in font nullfont!
-Missing character: There is no T in font nullfont!
-Missing character: There is no C in font nullfont!
-Missing character: There is no H in font nullfont!
-./main.tex:8: Missing $ inserted.
-<inserted text> 
-                $
-l.8 >>>>>>> FETCH_
-                  HEAD
-I've inserted a begin-math/end-math symbol since I think
-you left one out. Proceed, with fingers crossed.
-
-LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <7> on input line 8.
-LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <5> on input line 8.
-./main.tex:10: Missing $ inserted.
-<inserted text> 
-                $
-l.10 
-     
-I've inserted a begin-math/end-math symbol since I think
-you left one out. Proceed, with fingers crossed.
-
-
-Overfull \hbox (20.0pt too wide) in paragraph at lines 2--10
-[]
- []
-
-
-Overfull \hbox (31.6pt too wide) in paragraph at lines 2--10
-[]\OML/cmm/m/it/10 EAD$ 
- []
-
 (./Thesis.cls
 Document Class: Thesis 2007/22/02 v1.0 LaTeX document class
 (/usr/local/texlive/2013/texmf-dist/tex/latex/base/book.cls
@@ -98,7 +26,7 @@ File: bk11.clo 2007/10/19 v1.4h Standard LaTeX file (size option)
 \abovecaptionskip=\skip41
 \belowcaptionskip=\skip42
 \bibindent=\dimen102
- [1{/usr/local/texlive/2013/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]) (/usr/local/texlive/2013/texmf-dist/tex/latex/setspace/setspace.sty
+) (/usr/local/texlive/2013/texmf-dist/tex/latex/setspace/setspace.sty
 Package: setspace 2011/12/19 v6.7a set line spacing
 ) (/usr/local/texlive/2013/texmf-dist/tex/latex/vmargin/vmargin.sty
 Package: vmargin 2004/07/15 V2.5 set document margins (VK)
@@ -471,20 +399,7 @@ Package: natbib 2010/09/13 8.31b (PWD, AO)
 \bibsep=\skip66
 LaTeX Info: Redefining \cite on input line 694.
 \c@NAT@ctr=\count133
-)
-
-./main.tex:21: LaTeX Error: Missing \begin{document}.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.21 <
-      <<<<<< HEAD
-You're in trouble here.  Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
-
-(/usr/local/texlive/2013/texmf-dist/tex/latex/xcolor/xcolor.sty
+) (/usr/local/texlive/2013/texmf-dist/tex/latex/xcolor/xcolor.sty
 Package: xcolor 2007/01/21 v2.11 LaTeX color extensions (UK)
  (/usr/local/texlive/2013/texmf-dist/tex/latex/latexconfig/color.cfg
 File: color.cfg 2007/01/18 v1.5 color configuration of teTeX/TeXLive
@@ -500,41 +415,26 @@ Package xcolor Info: Model `HSB' substituted by `hsb' on input line 1358.
 Package xcolor Info: Model `Gray' substituted by `gray' on input line 1359.
 Package xcolor Info: Model `wave' substituted by `hsb' on input line 1360.
 )
-Runaway argument?
-{ frame=tb, tabsize=4, showstringspaces=false, numbers=left, comments\ETC.
-./main.tex:67: Paragraph ended before \lstset@ was complete.
-<to be read again> 
-                   \par 
-l.67 
-     
-I suspect you've forgotten a `}', causing me to apply this
-control sequence to too much text. How can we recover?
-My plan is to forget the whole thing and hope for the best.
-
-Package hyperref Info: Option `colorlinks' set `true' on input line 68.
-(/Users/tom/Documents/GitHub/GPUTest/Thesis_latex_GPU_english/.texpadtmp/main.aux
-
-LaTeX Warning: Label `eq:kg4' multiply defined.
-
-)
+Package hyperref Info: Option `colorlinks' set `true' on input line 44.
+ (/Users/tom/Documents/GitHub/GPUTest/Thesis_latex_GPU_english/.texpadtmp/main.aux)
 \openout1 = `main.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 74.
-LaTeX Font Info:    ... okay on input line 74.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 74.
-LaTeX Font Info:    ... okay on input line 74.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 74.
-LaTeX Font Info:    ... okay on input line 74.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 74.
-LaTeX Font Info:    ... okay on input line 74.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 74.
-LaTeX Font Info:    ... okay on input line 74.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 74.
-LaTeX Font Info:    ... okay on input line 74.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 74.
-LaTeX Font Info:    ... okay on input line 74.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 74.
-LaTeX Font Info:    ... okay on input line 74.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 50.
+LaTeX Font Info:    ... okay on input line 50.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 50.
+LaTeX Font Info:    ... okay on input line 50.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 50.
+LaTeX Font Info:    ... okay on input line 50.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 50.
+LaTeX Font Info:    ... okay on input line 50.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 50.
+LaTeX Font Info:    ... okay on input line 50.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 50.
+LaTeX Font Info:    ... okay on input line 50.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 50.
+LaTeX Font Info:    ... okay on input line 50.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 50.
+LaTeX Font Info:    ... okay on input line 50.
 Package caption Info: Begin \AtBeginDocument code.
 Package caption Info: hyperref package is loaded.
 Package caption Info: listings package is loaded.
@@ -560,7 +460,7 @@ Package caption Info: End \AtBeginDocument code.
 )
 \c@lstlisting=\count140
 \AtBeginShipoutBox=\box36
-Package hyperref Info: Link coloring ON on input line 74.
+Package hyperref Info: Link coloring ON on input line 50.
  (/usr/local/texlive/2013/texmf-dist/tex/latex/hyperref/nameref.sty
 Package: nameref 2012/10/27 v2.43 Cross-referencing by name of section
  (/usr/local/texlive/2013/texmf-dist/tex/generic/oberdiek/gettitlestring.sty
@@ -568,79 +468,52 @@ Package: gettitlestring 2010/12/03 v1.4 Cleanup title references (HO)
 )
 \c@section@level=\count141
 )
-LaTeX Info: Redefining \ref on input line 74.
-LaTeX Info: Redefining \pageref on input line 74.
-LaTeX Info: Redefining \nameref on input line 74.
+LaTeX Info: Redefining \ref on input line 50.
+LaTeX Info: Redefining \pageref on input line 50.
+LaTeX Info: Redefining \nameref on input line 50.
  (/Users/tom/Documents/GitHub/GPUTest/Thesis_latex_GPU_english/.texpadtmp/main.out) (/Users/tom/Documents/GitHub/GPUTest/Thesis_latex_GPU_english/.texpadtmp/main.out)
 \@outlinefile=\write3
 \openout3 = `main.out'.
 
- [2
-
-]
 \dunder=\skip67
- <Figures/uni.jpg, id=244, 277.035pt x 329.73187pt>
+ <Figures/uni.jpg, id=52, 277.035pt x 329.73187pt>
 File: Figures/uni.jpg Graphic file (type jpg)
  <use Figures/uni.jpg>
-Package pdftex.def Info: Figures/uni.jpg used on input line 109.
+Package pdftex.def Info: Figures/uni.jpg used on input line 85.
 (pdftex.def)             Requested size: 125.24318pt x 149.06725pt.
-LaTeX Font Info:    Try loading font information for U+msa on input line 124.
+LaTeX Font Info:    Try loading font information for U+msa on input line 100.
  (/usr/local/texlive/2013/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 124.
+LaTeX Font Info:    Try loading font information for U+msb on input line 100.
  (/usr/local/texlive/2013/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 ) [1
 
 
- <./Figures/uni.jpg>]
+
+{/usr/local/texlive/2013/texmf-var/fonts/map/pdftex/updmap/pdftex.map} <./Figures/uni.jpg>]
 ------------------------------------------------------------------------------
  Abstract Page
 ------------------------------------------------------------------------------
-./main.tex:157: Missing $ inserted.
-<inserted text> 
-                $
-l.157 >>>>>>> FETCH_
-                    HEAD
-I've inserted a begin-math/end-math symbol since I think
-you left one out. Proceed, with fingers crossed.
-
-./main.tex:158: Extra }, or forgotten $.
-l.158 }
-       
-I've deleted a group-closing symbol because it seems to be
-spurious, as in `$x}$'. But perhaps the } is legitimate and
-you forgot something else, as in `\hbox{$x}'. In such cases
-the way to recover is to insert both the forgotten and the
-deleted material, e.g., by typing `I$}'.
-
-./main.tex:159: Missing $ inserted.
-<inserted text> 
-                $
-l.159 
-      
-I've inserted a begin-math/end-math symbol since I think
-you left one out. Proceed, with fingers crossed.
-
-[1] [2]
+[1]
 ------------------------------------------------------------------------------
  Acknowledgements
 ------------------------------------------------------------------------------
-[3
+[2
 
 ]
 ------------------------------------------------------------------------------
  Table of Contents
 ------------------------------------------------------------------------------
-(/Users/tom/Documents/GitHub/GPUTest/Thesis_latex_GPU_english/.texpadtmp/main.toc [4
-
-
-])
+(/Users/tom/Documents/GitHub/GPUTest/Thesis_latex_GPU_english/.texpadtmp/main.toc)
 \tf@toc=\write4
 \openout4 = `main.toc'.
 
- [5]
+ [3
+
+
+]
 ------------------------------------------------------------------------------
  List of Figures
 ------------------------------------------------------------------------------
@@ -648,14 +521,14 @@ you left one out. Proceed, with fingers crossed.
 \tf@lof=\write5
 \openout5 = `main.lof'.
 
- [6
+ [4
 
 
 ]
 ------------------------------------------------------------------------------
  Introduction
 ------------------------------------------------------------------------------
-[7
+[5
 
 
 ] (./Chapters/Chapter1.tex
@@ -667,22 +540,51 @@ Chapter 1.
 
 
 
-] <Figures/GPU_CPU_s.png, id=385, 493.845pt x 245.91875pt>
+]
+
+Package natbib Warning: Citation `physicsgpu' on page 2 undefined on input line 26.
+
+
+Package natbib Warning: Citation `quantitative' on page 2 undefined on input line 30.
+
+<Figures/GPU_CPU_s.png, id=94, 493.845pt x 245.91875pt>
 File: Figures/GPU_CPU_s.png Graphic file (type png)
  <use Figures/GPU_CPU_s.png>
 Package pdftex.def Info: Figures/GPU_CPU_s.png used on input line 38.
 (pdftex.def)             Requested size: 292.22987pt x 145.51857pt.
- [2 <./Figures/GPU_CPU_s.png (PNG copy)>] <Figures/GPU_CPU.png, id=396, 307.1475pt x 250.9375pt>
+ [2 <./Figures/GPU_CPU_s.png (PNG copy)>]
+
+Package natbib Warning: Citation `quantitative' on page 3 undefined on input line 49.
+
+
+Package natbib Warning: Citation `whatexascale' on page 3 undefined on input line 59.
+
+
+Package natbib Warning: Citation `cook' on page 3 undefined on input line 68.
+
+<Figures/GPU_CPU.png, id=102, 307.1475pt x 250.9375pt>
 File: Figures/GPU_CPU.png Graphic file (type png)
  <use Figures/GPU_CPU.png>
 Package pdftex.def Info: Figures/GPU_CPU.png used on input line 74.
 (pdftex.def)             Requested size: 175.33792pt x 143.25027pt.
- [3] <Figures/arch.png, id=407, 1104.125pt x 604.2575pt>
+
+
+Package natbib Warning: Citation `hwu' on page 3 undefined on input line 80.
+
+[3] <Figures/arch.png, id=111, 1104.125pt x 604.2575pt>
 File: Figures/arch.png Graphic file (type png)
  <use Figures/arch.png>
 Package pdftex.def Info: Figures/arch.png used on input line 86.
 (pdftex.def)             Requested size: 283.87862pt x 155.36063pt.
- [4 <./Figures/GPU_CPU.png (PNG copy)> <./Figures/arch.png>] <Figures/cycle.png, id=416, 250.9375pt x 216.81pt>
+
+
+Package natbib Warning: Citation `precision' on page 4 undefined on input line 94.
+
+[4 <./Figures/GPU_CPU.png (PNG copy)> <./Figures/arch.png>]
+
+Package natbib Warning: Citation `hwu' on page 5 undefined on input line 100.
+
+<Figures/cycle.png, id=118, 250.9375pt x 216.81pt>
 File: Figures/cycle.png Graphic file (type png)
  <use Figures/cycle.png>
 Package pdftex.def Info: Figures/cycle.png used on input line 106.
@@ -693,7 +595,14 @@ File: omscmr.fd 1999/05/25 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10.95> not available
 (Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 114.
- [5 <./Figures/cycle.png>] <Figures/grid.png, id=426, 195.73125pt x 99.37125pt>
+ [5 <./Figures/cycle.png>]
+
+Package natbib Warning: Citation `hwu' on page 6 undefined on input line 122.
+
+
+Package natbib Warning: Citation `example' on page 6 undefined on input line 124.
+
+<Figures/grid.png, id=126, 195.73125pt x 99.37125pt>
 File: Figures/grid.png Graphic file (type png)
  <use Figures/grid.png>
 Package pdftex.def Info: Figures/grid.png used on input line 130.
@@ -708,12 +617,15 @@ Missing character: There is no ô in font cmr10!
 
 LaTeX Warning: Reference `memorySpace:arch' on page 6 undefined on input line 136.
 
-<Figures/memorySpace.png, id=428, 443.6575pt x 125.46875pt>
+
+Package natbib Warning: Citation `hwu' on page 6 undefined on input line 136.
+
+<Figures/memorySpace.png, id=127, 443.6575pt x 125.46875pt>
 File: Figures/memorySpace.png Graphic file (type png)
  <use Figures/memorySpace.png>
 Package pdftex.def Info: Figures/memorySpace.png used on input line 140.
 (pdftex.def)             Requested size: 250.48637pt x 70.83827pt.
- [6 <./Figures/grid.png (PNG copy)>] <Figures/sum.png, id=436, 405.515pt x 253.94875pt>
+ [6 <./Figures/grid.png (PNG copy)>] <Figures/sum.png, id=135, 405.515pt x 253.94875pt>
 File: Figures/sum.png Graphic file (type png)
  <use Figures/sum.png>
 Package pdftex.def Info: Figures/sum.png used on input line 152.
@@ -724,157 +636,59 @@ File: lstlang1.sty 2004/09/05 1.3 listings language file
 File: lstlang1.sty 2004/09/05 1.3 listings language file
 ) (/usr/local/texlive/2013/texmf-dist/tex/latex/listings/lstmisc.sty
 File: lstmisc.sty 2007/02/22 1.4 (Carsten Heinz)
-)
-LaTeX Font Info:    Font shape `OT1/cmtt/bx/n' in size <8> not available
-(Font)              Font shape `OT1/cmtt/m/n' tried instead on input line 163.
- [7 <./Figures/memorySpace.png> <./Figures/sum.png>]) (./Chapters/Chapter2.tex [8] [9]
-Chapter 2.
-------------------------------------------------------------------------------
- 2 Heterogeneous Performance Analysis and Practices
-------------------------------------------------------------------------------
-[10
-
-] <Figures/PCI.png, id=508, 499.8675pt x 69.25874pt>
-File: Figures/PCI.png Graphic file (type png)
- <use Figures/PCI.png>
-Package pdftex.def Info: Figures/PCI.png used on input line 33.
-(pdftex.def)             Requested size: 292.22987pt x 40.49135pt.
- <Figures/apod.png, id=510, 677.53125pt x 550.055pt>
-File: Figures/apod.png Graphic file (type png)
- <use Figures/apod.png>
-Package pdftex.def Info: Figures/apod.png used on input line 44.
-(pdftex.def)             Requested size: 208.73653pt x 169.46614pt.
-
-Overfull \hbox (9.9577pt too wide) in paragraph at lines 54--56
-\OT1/cmr/m/n/10.95 Increase par-al-leliza-tion from the orig-i-nal code, could be ei-ther adding GPU-optimized
+) [7 <./Figures/memorySpace.png> <./Figures/sum.png>] [8])
+Overfull \hbox (2372.2887pt too wide) in paragraph at lines 252--192
+[][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
  []
 
-[11 <./Figures/PCI.png> <./Figures/apod.png>] [12] [13] [14] <Figures/memory.png, id=541, 807.015pt x 107.40125pt>
-File: Figures/memory.png Graphic file (type png)
- <use Figures/memory.png>
-Package pdftex.def Info: Figures/memory.png used on input line 127.
-(pdftex.def)             Requested size: 354.85464pt x 47.22554pt.
- [15 <./Figures/memory.png>] <Figures/texture.png, id=553, 460.72125pt x 182.6825pt>
-File: Figures/texture.png Graphic file (type png)
- <use Figures/texture.png>
-Package pdftex.def Info: Figures/texture.png used on input line 178.
-(pdftex.def)             Requested size: 292.22987pt x 115.87106pt.
- [16] [17 <./Figures/texture.png>]) (./Chapters/Chapter3.tex [18]
-Chapter 3.
-------------------------------------------------------------------------------
- 3 Introduction to Domain Wall Dynamics and a Implementation with CUDA
-------------------------------------------------------------------------------
-[19
 
-] <Figures/vortex.png, id=580, 552.0625pt x 418.56375pt>
-File: Figures/vortex.png Graphic file (type png)
- <use Figures/vortex.png>
-Package pdftex.def Info: Figures/vortex.png used on input line 27.
-(pdftex.def)             Requested size: 208.73653pt x 158.26392pt.
- [20 <./Figures/vortex.png>] [21] <Figures/taylor.png, id=607, 317.185pt x 215.80624pt>
-File: Figures/taylor.png Graphic file (type png)
- <use Figures/taylor.png>
-Package pdftex.def Info: Figures/taylor.png used on input line 92.
-(pdftex.def)             Requested size: 166.98668pt x 113.61609pt.
- [22 <./Figures/taylor.png>] <Figures/euler.png, id=617, 370.38374pt x 194.7275pt>
-File: Figures/euler.png Graphic file (type png)
- <use Figures/euler.png>
-Package pdftex.def Info: Figures/euler.png used on input line 175.
-(pdftex.def)             Requested size: 292.22987pt x 153.63988pt.
- [23] <Figures/rk4.png, id=625, 293.095pt x 156.585pt>
-File: Figures/rk4.png Graphic file (type png)
- <use Figures/rk4.png>
-Package pdftex.def Info: Figures/rk4.png used on input line 199.
-(pdftex.def)             Requested size: 208.73653pt x 111.5154pt.
- [24 <./Figures/euler.png> <./Figures/rk4.png>] [25]
-Overfull \hbox (16.03653pt too wide) in paragraph at lines 335--337
+Overfull \hbox (36.43698pt too wide) in paragraph at lines 198--199
+[][][][] 
+ []
+
+
+Overfull \hbox (36.43698pt too wide) in paragraph at lines 200--202
+[][][][] 
+ []
+
+
+Overfull \hbox (5.8363pt too wide) in paragraph at lines 206--207
 [][][][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
  []
 
-
-Overfull \hbox (51.73732pt too wide) in paragraph at lines 338--339
-[][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
+[9]
+Overfull \hbox (36.43698pt too wide) in paragraph at lines 217--218
+[][][][] 
  []
 
 
-Overfull \hbox (82.338pt too wide) in paragraph at lines 339--340
-[][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
+Overfull \hbox (36.43698pt too wide) in paragraph at lines 219--221
+[][][][] 
  []
 
-[26] [27] [28]) (./Chapters/Chapter4.tex [29]
-Chapter 4.
-------------------------------------------------------------------------------
- 4 Optimization Results
-------------------------------------------------------------------------------
-Missing character: There is no ‚ in font cmr10!
-Missing character: There is no Ä in font cmr10!
-Missing character: There is no ú in font cmr10!
-Missing character: There is no ‚ in font cmr10!
-Missing character: There is no Ä in font cmr10!
-Missing character: There is no ù in font cmr10!
-[30
 
-] [31]) (./Chapters/Chapter5.tex [32]
-Chapter 5.
-------------------------------------------------------------------------------
- 5 Conclusions and future work
-------------------------------------------------------------------------------
-) (./Appendices/AppendixA.tex [33
-
-]
-Appendix A.
-------------------------------------------------------------------------------
- A Appendix Title Here
-------------------------------------------------------------------------------
-) [34
-
-]
-------------------------------------------------------------------------------
- Bibliography
-------------------------------------------------------------------------------
-(./main.bbl [35
+Overfull \hbox (46.6372pt too wide) in paragraph at lines 227--229
+[][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
+ []
 
 
-]
-Missing character: There is no ‚ in font cmr10!
-Missing character: There is no Ä in font cmr10!
-Missing character: There is no ô in font cmr10!
+Overfull \hbox (189.44037pt too wide) in paragraph at lines 229--231
+[][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
+ []
+
 )
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 259.
- [36]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 259.
- (/Users/tom/Documents/GitHub/GPUTest/Thesis_latex_GPU_english/.texpadtmp/main.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 259.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 259.
-Package rerunfilecheck Info: File `main.out' has not changed.
-(rerunfilecheck)             Checksum: 57DC5C5EFBCA5A2EA3ED9DE2D9CA2396;8528.
+! Emergency stop.
+<*> main.tex
+            
+*** (job aborted, no legal \end found)
 
-
-LaTeX Warning: There were undefined references.
-
-
-LaTeX Warning: There were multiply-defined labels.
-
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 259.
- )
-(\end occurred inside a group at level 2)
-
-### simple group (level 2) entered at line 150 ({)
-### semi simple group (level 1) entered at line 41 (\begingroup)
-### bottom level 
+ 
 Here is how much of TeX's memory you used:
- 13816 strings out of 493315
- 195217 string characters out of 6137904
- 309132 words of memory out of 5000000
- 16817 multiletter control sequences out of 15000+600000
- 14119 words of font info for 52 fonts, out of 8000000 for 9000
+ 13657 strings out of 493315
+ 192274 string characters out of 6137904
+ 315089 words of memory out of 5000000
+ 16785 multiletter control sequences out of 15000+600000
+ 13598 words of font info for 50 fonts, out of 8000000 for 9000
  957 hyphenation exceptions out of 8191
- 49i,19n,60p,1323b,2855s stack positions out of 5000i,500n,10000p,200000b,80000s
-</usr/local/texlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/local/texlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/local/texlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmcsc10.pfb></usr/local/texlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/local/texlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmitt10.pfb></usr/local/texlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/texlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/local/texlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/local/texlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/local/texlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/texlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/texlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/local/texlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb></usr/local/texlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt8.pfb>
-Output written on /Users/tom/Documents/GitHub/GPUTest/Thesis_latex_GPU_english/.texpadtmp/main.pdf (46 pages, 1240614 bytes).
-PDF statistics:
- 845 PDF objects out of 1000 (max. 8388607)
- 751 compressed objects within 8 object streams
- 241 named destinations out of 1000 (max. 500000)
- 537 words of extra memory for PDF output out of 10000 (max. 10000000)
-
+ 49i,12n,60p,1050b,1859s stack positions out of 5000i,500n,10000p,200000b,80000s
+!  ==> Fatal error occurred, no output PDF file produced!
