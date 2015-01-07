@@ -77,6 +77,8 @@ talk about what is a CUDA core, historical comparison with new GPUs.
 	\label{fig:gpu_cpu}
 \end{figure}
 
+As commonly named CUDA cores is the number of SM in a single NVIDIA GPU chip. Depending on the device it can be anywhere from 
+
 Being able to efficiently use a GPU for an application requires to expose the inherent data-parallelism Optimized for low-latency, serial computation. This can be seen in contrast with a CPU, which is optimized for sequential code performance, fast switching registers  and sophisticated control logic allowing to run single complex programs as fast as possible, which is not possible on the GPU. Memory management is very important for GPUs. this refers how to allocate memory space and transfer data between host (CPU) and device (GPU). While the CPU memory hierarchy is almost non-existent, on the GPU inherent data is important. In figure \ref{fig:arch} different levels of memory can be observer between the host and the device, which differs form the CPU \cite{hwu}.
 
 talk about what is a CUDA core, historical comparison with new GPUs.
@@ -143,9 +145,9 @@ In CUDA. host and device have separate memory spaces. This can bee seen on the h
 	\label{fig:memorySpace}
 \end{figure}
 
-\section{Vector Addition Example}
+\subsection{Vector Addition Example}
 
-A simple example of a vector addition to show the comparison between the GPU and CPU, input, two list of number which is sum up each corresponded element to produce a final output with the addition of both list. Figure \ref{fig:sum} shows this process.
+A simple example of a vector addition to show the comparison between the GPU and CPU, input, two list of number which is sum up each corresponded element to produce a final output with the addition of both list. Figure \ref{fig:sum} shows this process. \cite{example}
 
 \begin{figure}[htbp]
 	\centering
@@ -155,9 +157,9 @@ A simple example of a vector addition to show the comparison between the GPU and
 	\label{fig:sum}
 \end{figure}
 
-\subsection{CPU Code}
+\subsubsection{CPU Code}
 
-This first example illustrates the CPU code executed in a single thread. The code is straight forward to understand. First create the memory for each array, A, B and C with size N. Then calculate the sum of the two vectors with the function "add". As we can see in the function "add", we use the while loop to go through each element of the arrays A and B, which are added into a single array C.
+This first example illustrates the CPU code executed in a single thread. The code is straight forward to understand. First create the memory for each array, A, B and C with size N. Then calculate the sum of the two vectors with the function \textit{add}. As we can see in the function \textit{add}, we use the while loop to go through each element of the arrays A and B, which are added into a single array C.
 
 \begin{lstlisting}[language=C++, caption={CPU Vector Addition}]
 #include <iostream>
@@ -168,9 +170,7 @@ void add( int *a, int *b, int *c );
 
 int main()
 {
-    int A[N];
-    int B[N];
-    int C[N];
+    int A[N], B[N], C[N];
     
     //fill the arrays with values
     for(int i = 0; i < N; i++){
@@ -201,53 +201,63 @@ void add( int * A, int * B, int * C )
 
 \end{lstlisting}
 
-We can notice if we set N to be a large number, the function "add" could take a large amount of time to execute. But the example only illustrates the used of the CPU as a single core, however nowadays CPUs commonly have around 4-8 cores. To be able to execute the previous code on all the cores available in the CPU, threads are needed to be implemented. But you would need reasonable amount of code and debugging to make that happen. Also is a complicated task to schedule all the threads in the CPU. 
+We can notice if we set N to be a large number, the function \textit{add} could take a large amount of time to execute. But the example only illustrates the used of the CPU as a single core, however nowadays CPUs commonly have around 4-8 cores. To be able to execute the previous code on all the cores available in the CPU, threads are needed to be implemented. But you would need reasonable amount of code and debugging to make that happen. Also is a complicated task to schedule all the threads in the CPU. 
 
-\subsection{GPU Code}
+\subsubsection{GPU Code}
 
-We can accomplish the same operation very similar in the GPU with CUDA.
+We can accomplish the same operation very similar in the GPU with CUDA. First create CPU and GPU memory with there corresponded code. Send the CPU memory to the device, make calculations on the highly parallel GPU, finally return the results the CPU.
 
 \begin{lstlisting}[language=C++, caption={GPU Vector Addition}]
 #include <iostream>
 
 #define N 100
 
-void add( int *a, int *b, int *c );
+// CUDA KERNEL
+__global__ void add( int *a, int *b, int *c );
 
 int main()
-{
-    int A[N];
-    int B[N];
-    int C[N];
+{    int a[N], b[N], c[N];    int *dev_a, *dev_b, *dev_c;
+    // allocate the memory on the GPU    cudaMalloc( (void**)&dev_a, N * sizeof(int) ) );
+    cudaMalloc( (void**)&dev_b, N * sizeof(int) ) );
+    cudaMalloc( (void**)&dev_c, N * sizeof(int) ) );
     
-    //fill the arrays with values
+    //allocate the memory on the CPU
     for(int i = 0; i < N; i++){
         A[i] = 1;
         B[i] = i;
     }
     
-    add(A, B, C);
+    //calculate the vector addition in the GPU
+    add<<<N,1>>>( dev_a, dev_b, dev_c );
     
-    //Display the results
+    //copy back the result from the GPU to the CPU 
+    cudaMemcpy( c, dev_c, N * sizeof(int), cudaMemcpyDeviceToHost ) );
+     
+         //Display the results
     for (int i = 0; i < N; i++) {
         std::cout << A[i] << ", " << B[i] << ", " << C[i] << std::endl;
     }
     
+    cudaFree( dev_a );    cudaFree( dev_b );    cudaFree( dev_c );
+    
     return 0;
 }
+\end{lstlisting}
 
+As we can see the function \textit{cudaMalloc} and \textit{cudaFree} are very similar to the C code functions \textit{malloc} and \textit{fee} for allocating memory and deleting memory.
+
+CUDA automatically spams the threads to it correspondend block, so we only need to acces the index of the block and pass it to the index arrays. To parrallel code will stop in-till the block index reaches the number of elements of the arrays, N.
+
+\begin{lstlisting}[language=C++, caption={GPU Vector Addition}]
 void add( int * A, int * B, int * C )
 {
-    int index = 0;
-    
-    //go through each index of the arrays and make the operation
-    while(index < N){
-        C[index] = A[index] + B[index];
-        index++;
-    }
+    // handle the data at this index if (tid < N)
+    int index = blockIdx.x;     if(index < N)        c[index] = a[index] + b[index];
 }
+\end{lstlisting} \\
 
-\cite{example}
+\bigskip
+
 
 This chapter provided a quick overview of heterogeneous programming in a modern context. CUDA  enhance the C language with parallel computing support. Which is possible to launch  enormous amounts of parallel threads, oppose of few threads on the CPU. The number of GPU cores will continue to increase in proportion to increase in available transistors as silicon process improve. In addition, GPUs will continue to go through vigorous architectural evolution. Despite their demonstration high performance on data-parallel applications. \cite{hwu}
 

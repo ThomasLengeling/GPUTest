@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013) (format=pdflatex 2013.5.30)  6 JAN 2015 22:08
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013) (format=pdflatex 2013.5.30)  6 JAN 2015 22:43
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -416,7 +416,11 @@ Package xcolor Info: Model `Gray' substituted by `gray' on input line 1359.
 Package xcolor Info: Model `wave' substituted by `hsb' on input line 1360.
 )
 Package hyperref Info: Option `colorlinks' set `true' on input line 44.
- (/Users/tom/Documents/GitHub/GPUTest/Thesis_latex_GPU_english/.texpadtmp/main.aux)
+ (/Users/tom/Documents/GitHub/GPUTest/Thesis_latex_GPU_english/.texpadtmp/main.aux
+
+LaTeX Warning: Label `eq:kg4' multiply defined.
+
+)
 \openout1 = `main.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 50.
@@ -476,7 +480,7 @@ LaTeX Info: Redefining \nameref on input line 50.
 \openout3 = `main.out'.
 
 \dunder=\skip67
- <Figures/uni.jpg, id=52, 277.035pt x 329.73187pt>
+ <Figures/uni.jpg, id=229, 277.035pt x 329.73187pt>
 File: Figures/uni.jpg Graphic file (type jpg)
  <use Figures/uni.jpg>
 Package pdftex.def Info: Figures/uni.jpg used on input line 85.
@@ -506,14 +510,14 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 ------------------------------------------------------------------------------
  Table of Contents
 ------------------------------------------------------------------------------
-(/Users/tom/Documents/GitHub/GPUTest/Thesis_latex_GPU_english/.texpadtmp/main.toc)
+(/Users/tom/Documents/GitHub/GPUTest/Thesis_latex_GPU_english/.texpadtmp/main.toc [3
+
+
+])
 \tf@toc=\write4
 \openout4 = `main.toc'.
 
- [3
-
-
-]
+ [4]
 ------------------------------------------------------------------------------
  List of Figures
 ------------------------------------------------------------------------------
@@ -521,14 +525,14 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 \tf@lof=\write5
 \openout5 = `main.lof'.
 
- [4
+ [5
 
 
 ]
 ------------------------------------------------------------------------------
  Introduction
 ------------------------------------------------------------------------------
-[5
+[6
 
 
 ] (./Chapters/Chapter1.tex
@@ -547,7 +551,7 @@ Package natbib Warning: Citation `physicsgpu' on page 2 undefined on input line 
 
 Package natbib Warning: Citation `quantitative' on page 2 undefined on input line 30.
 
-<Figures/GPU_CPU_s.png, id=94, 493.845pt x 245.91875pt>
+<Figures/GPU_CPU_s.png, id=364, 493.845pt x 245.91875pt>
 File: Figures/GPU_CPU_s.png Graphic file (type png)
  <use Figures/GPU_CPU_s.png>
 Package pdftex.def Info: Figures/GPU_CPU_s.png used on input line 38.
@@ -562,50 +566,50 @@ Package natbib Warning: Citation `whatexascale' on page 3 undefined on input lin
 
 Package natbib Warning: Citation `cook' on page 3 undefined on input line 68.
 
-<Figures/GPU_CPU.png, id=102, 307.1475pt x 250.9375pt>
+<Figures/GPU_CPU.png, id=370, 307.1475pt x 250.9375pt>
 File: Figures/GPU_CPU.png Graphic file (type png)
  <use Figures/GPU_CPU.png>
 Package pdftex.def Info: Figures/GPU_CPU.png used on input line 74.
 (pdftex.def)             Requested size: 175.33792pt x 143.25027pt.
+ [3]
 
+Package natbib Warning: Citation `hwu' on page 4 undefined on input line 82.
 
-Package natbib Warning: Citation `hwu' on page 3 undefined on input line 80.
-
-[3] <Figures/arch.png, id=111, 1104.125pt x 604.2575pt>
+<Figures/arch.png, id=378, 1104.125pt x 604.2575pt>
 File: Figures/arch.png Graphic file (type png)
  <use Figures/arch.png>
-Package pdftex.def Info: Figures/arch.png used on input line 86.
+Package pdftex.def Info: Figures/arch.png used on input line 88.
 (pdftex.def)             Requested size: 283.87862pt x 155.36063pt.
 
 
-Package natbib Warning: Citation `precision' on page 4 undefined on input line 94.
+Package natbib Warning: Citation `precision' on page 4 undefined on input line 96.
 
 [4 <./Figures/GPU_CPU.png (PNG copy)> <./Figures/arch.png>]
 
-Package natbib Warning: Citation `hwu' on page 5 undefined on input line 100.
+Package natbib Warning: Citation `hwu' on page 5 undefined on input line 102.
 
-<Figures/cycle.png, id=118, 250.9375pt x 216.81pt>
+<Figures/cycle.png, id=384, 250.9375pt x 216.81pt>
 File: Figures/cycle.png Graphic file (type png)
  <use Figures/cycle.png>
-Package pdftex.def Info: Figures/cycle.png used on input line 106.
+Package pdftex.def Info: Figures/cycle.png used on input line 108.
 (pdftex.def)             Requested size: 125.24318pt x 108.21284pt.
-LaTeX Font Info:    Try loading font information for OMS+cmr on input line 114.
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 116.
  (/usr/local/texlive/2013/texmf-dist/tex/latex/base/omscmr.fd
 File: omscmr.fd 1999/05/25 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10.95> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 114.
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 116.
  [5 <./Figures/cycle.png>]
 
-Package natbib Warning: Citation `hwu' on page 6 undefined on input line 122.
+Package natbib Warning: Citation `hwu' on page 6 undefined on input line 124.
 
 
-Package natbib Warning: Citation `example' on page 6 undefined on input line 124.
+Package natbib Warning: Citation `example' on page 6 undefined on input line 126.
 
-<Figures/grid.png, id=126, 195.73125pt x 99.37125pt>
+<Figures/grid.png, id=391, 195.73125pt x 99.37125pt>
 File: Figures/grid.png Graphic file (type png)
  <use Figures/grid.png>
-Package pdftex.def Info: Figures/grid.png used on input line 130.
+Package pdftex.def Info: Figures/grid.png used on input line 132.
 (pdftex.def)             Requested size: 250.48637pt x 127.17656pt.
 Missing character: There is no ‚ in font cmr10!
 Missing character: There is no Ä in font cmr10!
@@ -615,20 +619,24 @@ Missing character: There is no Ä in font cmr10!
 Missing character: There is no ô in font cmr10!
 
 
-LaTeX Warning: Reference `memorySpace:arch' on page 6 undefined on input line 136.
+LaTeX Warning: Reference `memorySpace:arch' on page 6 undefined on input line 138.
 
 
-Package natbib Warning: Citation `hwu' on page 6 undefined on input line 136.
+Package natbib Warning: Citation `hwu' on page 6 undefined on input line 138.
 
-<Figures/memorySpace.png, id=127, 443.6575pt x 125.46875pt>
+<Figures/memorySpace.png, id=392, 443.6575pt x 125.46875pt>
 File: Figures/memorySpace.png Graphic file (type png)
  <use Figures/memorySpace.png>
-Package pdftex.def Info: Figures/memorySpace.png used on input line 140.
+Package pdftex.def Info: Figures/memorySpace.png used on input line 142.
 (pdftex.def)             Requested size: 250.48637pt x 70.83827pt.
- [6 <./Figures/grid.png (PNG copy)>] <Figures/sum.png, id=135, 405.515pt x 253.94875pt>
+ [6 <./Figures/grid.png (PNG copy)>]
+
+Package natbib Warning: Citation `example' on page 7 undefined on input line 150.
+
+<Figures/sum.png, id=400, 405.515pt x 253.94875pt>
 File: Figures/sum.png Graphic file (type png)
  <use Figures/sum.png>
-Package pdftex.def Info: Figures/sum.png used on input line 152.
+Package pdftex.def Info: Figures/sum.png used on input line 154.
 (pdftex.def)             Requested size: 187.8616pt x 117.64706pt.
  (/usr/local/texlive/2013/texmf-dist/tex/latex/listings/lstlang1.sty
 File: lstlang1.sty 2004/09/05 1.3 listings language file
@@ -636,59 +644,268 @@ File: lstlang1.sty 2004/09/05 1.3 listings language file
 File: lstlang1.sty 2004/09/05 1.3 listings language file
 ) (/usr/local/texlive/2013/texmf-dist/tex/latex/listings/lstmisc.sty
 File: lstmisc.sty 2007/02/22 1.4 (Carsten Heinz)
-) [7 <./Figures/memorySpace.png> <./Figures/sum.png>] [8])
-Overfull \hbox (2372.2887pt too wide) in paragraph at lines 252--192
-[][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
+) [7 <./Figures/memorySpace.png> <./Figures/sum.png>] [8] [9]
+
+./Chapters/Chapter1.tex:267: LaTeX Error: There's no line here to end.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.267 
+      
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
+
+
+Package natbib Warning: Citation `hwu' on page 10 undefined on input line 271.
+
+) (./Chapters/Chapter2.tex [10]
+Chapter 2.
+------------------------------------------------------------------------------
+ 2 Heterogeneous Performance Analysis and Practices
+------------------------------------------------------------------------------
+
+Package natbib Warning: Citation `cook' on page 11 undefined on input line 13.
+
+
+Package natbib Warning: Citation `design' on page 11 undefined on input line 20.
+
+
+Package natbib Warning: Citation `design' on page 11 undefined on input line 29.
+
+[11
+
+] <Figures/PCI.png, id=516, 499.8675pt x 69.25874pt>
+File: Figures/PCI.png Graphic file (type png)
+ <use Figures/PCI.png>
+Package pdftex.def Info: Figures/PCI.png used on input line 33.
+(pdftex.def)             Requested size: 292.22987pt x 40.49135pt.
+
+
+Package natbib Warning: Citation `practices' on page 12 undefined on input line 40.
+
+<Figures/apod.png, id=517, 677.53125pt x 550.055pt>
+File: Figures/apod.png Graphic file (type png)
+ <use Figures/apod.png>
+Package pdftex.def Info: Figures/apod.png used on input line 44.
+(pdftex.def)             Requested size: 208.73653pt x 169.46614pt.
+
+Overfull \hbox (9.9577pt too wide) in paragraph at lines 54--56
+\OT1/cmr/m/n/10.95 Increase par-al-leliza-tion from the orig-i-nal code, could be ei-ther adding GPU-optimized
  []
 
+[12 <./Figures/PCI.png> <./Figures/apod.png>]
 
-Overfull \hbox (36.43698pt too wide) in paragraph at lines 198--199
-[][][][] 
- []
-
-
-Overfull \hbox (36.43698pt too wide) in paragraph at lines 200--202
-[][][][] 
- []
+Package natbib Warning: Citation `practices' on page 13 undefined on input line 69.
 
 
-Overfull \hbox (5.8363pt too wide) in paragraph at lines 206--207
+Package natbib Warning: Citation `cook' on page 13 undefined on input line 69.
+
+[13]
+
+Package natbib Warning: Citation `practices' on page 14 undefined on input line 84.
+
+
+Package natbib Warning: Citation `fortran' on page 14 undefined on input line 88.
+
+
+Package natbib Warning: Citation `example' on page 14 undefined on input line 100.
+
+
+Package natbib Warning: Citation `practices' on page 14 undefined on input line 101.
+
+[14]
+
+Package natbib Warning: Citation `cook' on page 15 undefined on input line 119.
+
+[15]
+
+Package natbib Warning: Citation `cook' on page 16 undefined on input line 123.
+
+<Figures/memory.png, id=539, 807.015pt x 107.40125pt>
+File: Figures/memory.png Graphic file (type png)
+ <use Figures/memory.png>
+Package pdftex.def Info: Figures/memory.png used on input line 127.
+(pdftex.def)             Requested size: 354.85464pt x 47.22554pt.
+
+
+Package natbib Warning: Citation `design' on page 16 undefined on input line 148.
+
+
+Package natbib Warning: Citation `example' on page 16 undefined on input line 162.
+
+
+Package natbib Warning: Citation `cook' on page 16 undefined on input line 162.
+
+[16 <./Figures/memory.png>]
+
+Package natbib Warning: Citation `design' on page 17 undefined on input line 169.
+
+
+Package natbib Warning: Citation `example' on page 17 undefined on input line 169.
+
+
+Package natbib Warning: Citation `example' on page 17 undefined on input line 173.
+
+<Figures/texture.png, id=544, 460.72125pt x 182.6825pt>
+File: Figures/texture.png Graphic file (type png)
+ <use Figures/texture.png>
+Package pdftex.def Info: Figures/texture.png used on input line 178.
+(pdftex.def)             Requested size: 292.22987pt x 115.87106pt.
+ [17] [18 <./Figures/texture.png>]
+
+Package natbib Warning: Citation `practices' on page 19 undefined on input line 216.
+
+) (./Chapters/Chapter3.tex [19]
+Chapter 3.
+------------------------------------------------------------------------------
+ 3 Introduction to Domain Wall Dynamics and a Implementation with CUDA
+------------------------------------------------------------------------------
+
+Package natbib Warning: Citation `claudio' on page 20 undefined on input line 12.
+
+
+Package natbib Warning: Citation `claudio' on page 20 undefined on input line 17.
+
+
+Package natbib Warning: Citation `spinz' on page 20 undefined on input line 19.
+
+
+Package natbib Warning: Citation `ferro' on page 20 undefined on input line 21.
+
+
+Package natbib Warning: Citation `spindomain' on page 20 undefined on input line 23.
+
+[20
+
+] <Figures/vortex.png, id=563, 552.0625pt x 418.56375pt>
+File: Figures/vortex.png Graphic file (type png)
+ <use Figures/vortex.png>
+Package pdftex.def Info: Figures/vortex.png used on input line 27.
+(pdftex.def)             Requested size: 208.73653pt x 158.26392pt.
+
+
+Package natbib Warning: Citation `racetrack' on page 21 undefined on input line 33.
+
+
+Package natbib Warning: Citation `zhang' on page 21 undefined on input line 35.
+
+
+Package natbib Warning: Citation `handbookspin' on page 21 undefined on input line 36.
+
+
+Package natbib Warning: Citation `claudio' on page 21 undefined on input line 38.
+
+
+Package natbib Warning: Citation `zhang' on page 21 undefined on input line 40.
+
+[21 <./Figures/vortex.png>]
+
+Package natbib Warning: Citation `claudio' on page 22 undefined on input line 47.
+
+
+Package natbib Warning: Citation `handbookspin' on page 22 undefined on input line 62.
+
+
+Package natbib Warning: Citation `racetrack' on page 22 undefined on input line 64.
+
+
+Package natbib Warning: Citation `methods' on page 22 undefined on input line 79.
+
+[22] <Figures/taylor.png, id=576, 317.185pt x 215.80624pt>
+File: Figures/taylor.png Graphic file (type png)
+ <use Figures/taylor.png>
+Package pdftex.def Info: Figures/taylor.png used on input line 92.
+(pdftex.def)             Requested size: 166.98668pt x 113.61609pt.
+ [23 <./Figures/taylor.png>]
+
+Package natbib Warning: Citation `methods' on page 24 undefined on input line 159.
+
+<Figures/euler.png, id=585, 370.38374pt x 194.7275pt>
+File: Figures/euler.png Graphic file (type png)
+ <use Figures/euler.png>
+Package pdftex.def Info: Figures/euler.png used on input line 175.
+(pdftex.def)             Requested size: 292.22987pt x 153.63988pt.
+ [24] <Figures/rk4.png, id=594, 293.095pt x 156.585pt>
+File: Figures/rk4.png Graphic file (type png)
+ <use Figures/rk4.png>
+Package pdftex.def Info: Figures/rk4.png used on input line 199.
+(pdftex.def)             Requested size: 208.73653pt x 111.5154pt.
+
+
+Package natbib Warning: Citation `numerical' on page 25 undefined on input line 205.
+
+[25 <./Figures/euler.png> <./Figures/rk4.png>] [26]
+Overfull \hbox (16.03653pt too wide) in paragraph at lines 335--337
 [][][][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
  []
 
-[9]
-Overfull \hbox (36.43698pt too wide) in paragraph at lines 217--218
-[][][][] 
- []
+[27] [28] [29]) (./Chapters/Chapter4.tex [30]
+Chapter 4.
+------------------------------------------------------------------------------
+ 4 Optimization Results
+------------------------------------------------------------------------------
+Missing character: There is no ‚ in font cmr10!
+Missing character: There is no Ä in font cmr10!
+Missing character: There is no ú in font cmr10!
+Missing character: There is no ‚ in font cmr10!
+Missing character: There is no Ä in font cmr10!
+Missing character: There is no ù in font cmr10!
+[31
+
+] [32]) (./Chapters/Chapter5.tex [33]
+Chapter 5.
+------------------------------------------------------------------------------
+ 5 Conclusions and future work
+------------------------------------------------------------------------------
+) (./Appendices/AppendixA.tex [34
+
+]
+Appendix A.
+------------------------------------------------------------------------------
+ A Appendix Title Here
+------------------------------------------------------------------------------
+) [35
+
+]
+------------------------------------------------------------------------------
+ Bibliography
+------------------------------------------------------------------------------
+(/Users/tom/Documents/GitHub/GPUTest/Thesis_latex_GPU_english/.texpadtmp/main.bbl)
+
+Package natbib Warning: There were undefined citations.
+
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 231.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 231.
+(/Users/tom/Documents/GitHub/GPUTest/Thesis_latex_GPU_english/.texpadtmp/main.aux)
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 231.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 231.
+Package rerunfilecheck Info: File `main.out' has not changed.
+(rerunfilecheck)             Checksum: 57DC5C5EFBCA5A2EA3ED9DE2D9CA2396;8528.
 
 
-Overfull \hbox (36.43698pt too wide) in paragraph at lines 219--221
-[][][][] 
- []
+LaTeX Warning: There were undefined references.
 
 
-Overfull \hbox (46.6372pt too wide) in paragraph at lines 227--229
-[][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
- []
+LaTeX Warning: There were multiply-defined labels.
 
-
-Overfull \hbox (189.44037pt too wide) in paragraph at lines 229--231
-[][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
- []
-
-)
-! Emergency stop.
-<*> main.tex
-            
-*** (job aborted, no legal \end found)
-
- 
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 231.
+ ) 
 Here is how much of TeX's memory you used:
- 13657 strings out of 493315
- 192274 string characters out of 6137904
- 315089 words of memory out of 5000000
- 16785 multiletter control sequences out of 15000+600000
+ 13784 strings out of 493315
+ 194750 string characters out of 6137904
+ 310298 words of memory out of 5000000
+ 16769 multiletter control sequences out of 15000+600000
  13598 words of font info for 50 fonts, out of 8000000 for 9000
  957 hyphenation exceptions out of 8191
- 49i,12n,60p,1050b,1859s stack positions out of 5000i,500n,10000p,200000b,80000s
-!  ==> Fatal error occurred, no output PDF file produced!
+ 49i,19n,60p,1064b,1855s stack positions out of 5000i,500n,10000p,200000b,80000s
+</usr/local/texlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/local/texlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/local/texlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmcsc10.pfb></usr/local/texlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/local/texlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/texlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/local/texlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/local/texlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/texlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/texlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/local/texlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb></usr/local/texlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt8.pfb>
+Output written on /Users/tom/Documents/GitHub/GPUTest/Thesis_latex_GPU_english/.texpadtmp/main.pdf (42 pages, 1216984 bytes).
+PDF statistics:
+ 794 PDF objects out of 1000 (max. 8388607)
+ 706 compressed objects within 8 object streams
+ 259 named destinations out of 1000 (max. 500000)
+ 529 words of extra memory for PDF output out of 10000 (max. 10000000)
+

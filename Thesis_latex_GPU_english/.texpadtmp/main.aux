@@ -21,8 +21,8 @@
 \@writefile{toc}{\contentsline {chapter}{Acknowledgements}{ii}{dummy.3}}
 \@writefile{toc}{\vspace  {1.2em}}
 \@writefile{toc}{\contentsline {chapter}{Contents}{iii}{dummy.4}}
-\@writefile{toc}{\contentsline {chapter}{List of Figures}{iv}{dummy.6}}
-\@writefile{toc}{\contentsline {chapter}{Introduction}{v}{dummy.8}}
+\@writefile{toc}{\contentsline {chapter}{List of Figures}{v}{dummy.6}}
+\@writefile{toc}{\contentsline {chapter}{Introduction}{vi}{dummy.8}}
 \@writefile{toc}{\contentsline {chapter}{\numberline {1}Heterogeneous Computing}{1}{chapter.10}}
 \@writefile{lof}{\addvspace {10\p@ }}
 \@writefile{lot}{\addvspace {10\p@ }}
@@ -36,8 +36,8 @@
 \citation{quantitative}
 \citation{whatexascale}
 \citation{cook}
-\citation{hwu}
 \@writefile{toc}{\contentsline {section}{\numberline {1.2}GPUs as computing units}{3}{section.13}}
+\citation{hwu}
 \citation{precision}
 \@writefile{lof}{\contentsline {figure}{\numberline {1.2}{\ignorespaces Architecture of a GPU}}{4}{figure.caption.14}}
 \newlabel{fig:gpu_cpu}{{1.2}{4}{Architecture of a GPU}{figure.caption.14}{}}
@@ -52,12 +52,133 @@
 \citation{hwu}
 \@writefile{lof}{\contentsline {figure}{\numberline {1.5}{\ignorespaces Part of the CUDA's 2D grid}}{6}{figure.caption.18}}
 \newlabel{fig:grid}{{1.5}{6}{Part of the CUDA's 2D grid}{figure.caption.18}{}}
+\citation{example}
 \@writefile{lof}{\contentsline {figure}{\numberline {1.6}{\ignorespaces Memory Space GPU and CPU}}{7}{figure.caption.19}}
 \newlabel{fig:memorySpace}{{1.6}{7}{Memory Space GPU and CPU}{figure.caption.19}{}}
-\@writefile{toc}{\contentsline {section}{\numberline {1.4}Vector Addition Example}{7}{section.20}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {1.3.1}Vector Addition Example}{7}{subsection.20}}
 \@writefile{lof}{\contentsline {figure}{\numberline {1.7}{\ignorespaces Vector Addition Example}}{7}{figure.caption.21}}
 \newlabel{fig:sum}{{1.7}{7}{Vector Addition Example}{figure.caption.21}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {1.4.1}CPU Code}{7}{subsection.22}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {1.3.1.1}CPU Code}{7}{subsubsection.22}}
 \@writefile{lol}{\contentsline {lstlisting}{\numberline {1.1}CPU Vector Addition}{7}{lstlisting.23}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {1.4.2}GPU Code}{8}{subsection.63}}
-\@writefile{lol}{\contentsline {lstlisting}{\numberline {1.2}GPU Vector Addition}{8}{lstlisting.64}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {1.3.1.2}GPU Code}{8}{subsubsection.61}}
+\@writefile{lol}{\contentsline {lstlisting}{\numberline {1.2}GPU Vector Addition}{8}{lstlisting.62}}
+\@writefile{lol}{\contentsline {lstlisting}{\numberline {1.3}GPU Vector Addition}{9}{lstlisting.104}}
+\citation{hwu}
+\citation{cook}
+\citation{design}
+\citation{design}
+\@writefile{toc}{\contentsline {chapter}{\numberline {2}Heterogeneous Performance Analysis and Practices}{11}{chapter.112}}
+\@writefile{lof}{\addvspace {10\p@ }}
+\@writefile{lot}{\addvspace {10\p@ }}
+\newlabel{Heterogeneous Performance Analysis and Practices}{{2}{11}{Heterogeneous Performance Analysis and Practices}{chapter.112}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {2.1}Practices}{11}{section.113}}
+\citation{practices}
+\@writefile{lof}{\contentsline {figure}{\numberline {2.1}{\ignorespaces PCIe Bandwidth}}{12}{figure.caption.117}}
+\newlabel{fig:PCI}{{2.1}{12}{PCIe Bandwidth}{figure.caption.117}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {2.2}{\ignorespaces Different memory types}}{12}{figure.caption.118}}
+\newlabel{fig:apod}{{2.2}{12}{Different memory types}{figure.caption.118}{}}
+\citation{practices}
+\citation{cook}
+\@writefile{toc}{\contentsline {section}{\numberline {2.2}Performance Metrics}{13}{section.119}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.2.1}Timing}{13}{subsection.120}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.2.2}Bandwidth}{13}{subsection.121}}
+\citation{practices}
+\citation{fortran}
+\citation{example}
+\citation{practices}
+\@writefile{toc}{\contentsline {section}{\numberline {2.3}Visual Profiler}{14}{section.122}}
+\citation{cook}
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.3.1}Kernel Analysis}{15}{subsection.123}}
+\citation{cook}
+\citation{design}
+\citation{example}
+\citation{cook}
+\@writefile{toc}{\contentsline {section}{\numberline {2.4}Memory Handling with CUDA}{16}{section.124}}
+\@writefile{lof}{\contentsline {figure}{\numberline {2.3}{\ignorespaces Different memory types}}{16}{figure.caption.125}}
+\newlabel{fig:memory}{{2.3}{16}{Different memory types}{figure.caption.125}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.4.1}Global Memory}{16}{subsection.126}}
+\citation{design}
+\citation{example}
+\citation{example}
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.4.2}Shared Memory}{17}{subsection.127}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.4.3}Constant Memory}{17}{subsection.128}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.4.4}Texture Memory}{17}{subsection.129}}
+\@writefile{lof}{\contentsline {figure}{\numberline {2.4}{\ignorespaces Texture Memory}}{18}{figure.caption.130}}
+\newlabel{fig:texture}{{2.4}{18}{Texture Memory}{figure.caption.130}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.4.5}Thread Synchronization}{18}{subsection.131}}
+\@writefile{toc}{\contentsline {section}{\numberline {2.5}Performance Issue}{18}{section.132}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.5.1}Hardware constraints}{18}{subsection.133}}
+\citation{practices}
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.5.2}Thread Division}{19}{subsection.134}}
+\citation{claudio}
+\citation{claudio}
+\citation{spinz}
+\citation{ferro}
+\citation{spindomain}
+\@writefile{toc}{\contentsline {chapter}{\numberline {3}Introduction to Domain Wall Dynamics and a Implementation with CUDA}{20}{chapter.135}}
+\@writefile{lof}{\addvspace {10\p@ }}
+\@writefile{lot}{\addvspace {10\p@ }}
+\newlabel{Introduction to DW Dynamics}{{3}{20}{Introduction to Domain Wall Dynamics and a Implementation with CUDA}{chapter.135}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {3.1}Theory}{20}{section.136}}
+\citation{racetrack}
+\citation{zhang}
+\citation{handbookspin}
+\citation{claudio}
+\citation{zhang}
+\newlabel{eq:kg4}{{3.1}{21}{Theory}{section.136}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {3.1}{\ignorespaces Domain Wall - Vortex}}{21}{figure.caption.137}}
+\newlabel{fig:vortex}{{3.1}{21}{Domain Wall - Vortex}{figure.caption.137}{}}
+\citation{claudio}
+\citation{handbookspin}
+\citation{racetrack}
+\citation{methods}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.1.1}Experiment}{22}{subsection.138}}
+\@writefile{toc}{\contentsline {section}{\numberline {3.2}Numerical Methods}{22}{section.140}}
+\@writefile{lof}{\contentsline {figure}{\numberline {3.2}{\ignorespaces Sampled at regular intervals a, Taylor expansion}}{23}{figure.caption.141}}
+\newlabel{fig:taylor}{{3.2}{23}{Sampled at regular intervals a, Taylor expansion}{figure.caption.141}{}}
+\citation{methods}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.2.1}Finite Differences in the Time Domain}{24}{subsection.144}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.2.2}Runge and Kutta}{24}{subsection.145}}
+\newlabel{eq:kg4}{{3.4}{24}{Runge and Kutta}{equation.147}{}}
+\citation{numerical}
+\@writefile{lof}{\contentsline {figure}{\numberline {3.3}{\ignorespaces Euler Method}}{25}{figure.caption.146}}
+\newlabel{fig:euler}{{3.3}{25}{Euler Method}{figure.caption.146}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {3.4}{\ignorespaces Fourth-order Runge and Kutta Method}}{25}{figure.caption.148}}
+\newlabel{fig:kutta}{{3.4}{25}{Fourth-order Runge and Kutta Method}{figure.caption.148}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.2.3}Kernels}{25}{subsection.149}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.2.4}Threads}{26}{subsection.155}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.2.5}CPU}{27}{subsection.173}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.2.6}GPU}{27}{subsection.174}}
+\newlabel{eq:gsource}{{3.5}{28}{GPU}{equation.184}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.2.7}KG4}{28}{subsection.185}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.2.8}effective values}{29}{subsection.195}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.2.9}time}{29}{subsection.202}}
+\@writefile{toc}{\contentsline {section}{\numberline {3.3}Validation}{29}{section.203}}
+\@writefile{toc}{\contentsline {section}{\numberline {3.4}Help Kernels}{30}{section.204}}
+\@writefile{toc}{\contentsline {section}{\numberline {3.5}Data Flow}{30}{section.205}}
+\@writefile{toc}{\contentsline {chapter}{\numberline {4}Optimization Results}{31}{chapter.206}}
+\@writefile{lof}{\addvspace {10\p@ }}
+\@writefile{lot}{\addvspace {10\p@ }}
+\newlabel{Optimization Results}{{4}{31}{Optimization Results}{chapter.206}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {4.1}Supercomputer ``Piritakua''}{31}{section.207}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.1.1}Experiment detail}{32}{subsection.208}}
+\@writefile{toc}{\contentsline {section}{\numberline {4.2}Results}{32}{section.209}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.2.1}Initial Test}{32}{subsection.210}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {4.2.1.1}Visual profiler}{32}{subsubsection.211}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.2.2}Obtimized}{33}{subsection.212}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.2.3}Subsection 2}{33}{subsection.213}}
+\@writefile{toc}{\contentsline {section}{\numberline {4.3}Main Section 2}{33}{section.214}}
+\@writefile{toc}{\contentsline {chapter}{\numberline {5}Conclusions and future work}{34}{chapter.215}}
+\@writefile{lof}{\addvspace {10\p@ }}
+\@writefile{lot}{\addvspace {10\p@ }}
+\newlabel{Conclusions and future work}{{5}{34}{Conclusions and future work}{chapter.215}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {5.1}Main Section 1}{34}{section.216}}
+\@writefile{toc}{\vspace  {2em}}
+\@writefile{toc}{\contentsline {chapter}{\numberline {A}Appendix Title Here}{35}{appendix.217}}
+\@writefile{lof}{\addvspace {10\p@ }}
+\@writefile{lot}{\addvspace {10\p@ }}
+\newlabel{AppendixA}{{A}{35}{Appendix Title Here}{appendix.217}{}}
+\@writefile{toc}{\vspace  {2em}}
+\citation{*}
+\bibstyle{abbrv}
+\bibdata{Bibliography}
