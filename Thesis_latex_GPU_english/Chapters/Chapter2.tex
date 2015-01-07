@@ -98,11 +98,34 @@ If the effective bandwidth is low compared to the theoretical bandwidth is one i
 \section{Visual Profiler}
 
 NVIDIA's Visual Profiler will execute your application, examining special performance counters built into the GPU. The profiler will launch several times the kernels to collate precise information of the high-performance application. Also is possible to analyze memory request inside the application\cite{example}. The Profiler can verify how long the application spends executing each kernel as well the number of blocks and threads.Through is possible to obtain various memory throughput measures, like global load throughput and global store throughput, indicate the global memory throughput requested by the kernel and therefore corresponding to the effective bandwidth mentioned in the last section.
-The Visual profiler is very useful to indicate how much load and work is being done on the GPU, it also information about the memory throughput that can be helpful to indicate if the kernel is being actually optimized.  \cite{practices}
+The Visual profiler is very useful to indicate how much load and work is being done on the GPU, it also infors about the memory throughput that can be helpful to indicate if the kernel is being optimized or not. As the figure \ref{fig:visual01} shows, each Kernel has its own percentage of execution time of the overall application.\cite{practices}
 
- \subsection{Kernel Analysis}
+\begin{figure}[htbp]
+	\centering
+		\includegraphics[width=0.6\textwidth]{Figures/visual01.png}
+		\rule{35em}{0.5pt}
+	\caption[Visual Profiler example]{Visual Profiler kernel execution}
+	\label{fig:visual01}
+\end{figure}
+
+\subsection{Profiler Kernel Report}
+
+As we know the profiler executes the application several time to collect data about each kernel. The information obtained by each kernel can be sum-up in-to a report, which has the following information.
+
+\begin{enumerate}
+  \item Compute, Bandwidth, or latency Bound
+  \item Instructions and Memory Latency
+  \item Compute Resources
+  \item Floating-Point Operation Counts
+  \item Memory Bandwidth
+\end{enumerate}
+
+
+\subsection{Kernel Analysis}
 
 Through the NVIDIAs Profiler the kernels are invoked several times to gather optimal results. The an Once they information about how to optimize each kernel depending on several results. Also the profilers
+
+
 
 \begin{description}
 

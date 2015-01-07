@@ -91,7 +91,6 @@ Being able to efficiently use a GPU for an application requires to expose the in
 \end{figure}
 
 
-
 On the GPU precision and optimization are very important but there is a penalty for choosing performance or precession. All the GPUs are optimized for single precision floating operations, 24 bit size, Also provides double precision point, size of  53 bits. This is using the standard notation IEEE 754. Normally the GPU uses single precession(SP) by default, if choosed double precision (DP), normally there is a penalty of  2x - 4x seed-up. \cite{precision}
 Libraries such as CUBLAS and CUFFT provides useful information how NVIDIA handles floating point operations under the hood.
 
