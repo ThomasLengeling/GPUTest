@@ -10,10 +10,10 @@
 %	SECTION 1
 %----------------------------------------------------------------------------------------
 
-When working with GPUs hardware challenges emerges. How can we make the best use of the GPU hardware. In the conventional CPU model we have what is called linear or flat memory model. This appears to the programmer as a single contiguous address space. The CPU can directly address all the available memory, in other words there is almost no efficiency penalty in creating global data, local data, or even access data that is located on the opposite memory location, all of this can be access in the contiguous block. \cite{cook} Meanwhile on the GPU there are expectations, their exists different memory hierarchies which dramatically change the performance output. By allocation the optimal memory types, seed-up and increase throughput can be accomplished . To ensure a optimization, some analysis should be done, like comparing latency, memory hierarchies and data bandwidth between CUDA kernels. This can be done by using NVIDIA's Visual Profiler.
+When working with GPUs hardware challenges emerges. How can we make the best usage of the GPU hardware. In the conventional CPU model we have what is called linear or flat memory model. This appears to the programmer as a single contiguous address space. The CPU can directly address all the available memory, in other words there is almost no efficiency penalty in creating global data, local data, or even access data that is located on a opposite memory location, all of this can be access as a contiguous block. \cite{cook} Meanwhile on the GPU there are expectations, their exists different memory hierarchies which dramatically change the performance output. By allocation the optimal memory types, seed-up and increase throughput can be accomplished, but also analyzing. To ensure optimization, some analysis should be done, like comparing latency, memory hierarchies and data bandwidth between CUDA kernels, The study of the performance of the CUDA code can be done by using NVIDIA's Visual Profiler.
 
 
-% techniques, programming models and hierarchies. 
+% techniques, programming models and hierarchies.
 \section{Practices}
 
 
@@ -25,7 +25,7 @@ There are three rules to follow for creating a high performance GPGPU program.\c
   \item Focus on data reuse within the GPU context, to avoid memory bandwidth limitations
 \end{enumerate}
 
-GPUs are plugged into the PCI Express bus of the host computer. The PCIe bus has extremely slow bandwidth compared with the GPU. This is why is important to store the data on the GPU and keep it busy. And minimize the data transfer to the host and back to the device. We can see this in the following table \ref{fig:PCI}.  Because CUDA-enable GPUs can carry out petaFLOP performance, they are fast enough to compute large amount of data. So each Kernel launch needs to use all the available resources of the GPU and avoide wasting compute cycles. If a single Kernel doesn't use all of the available bandwidth, multiple kernels can be launched at the same time on a single GPU. 
+GPUs are plugged into the PCI Express bus of the host computer. The PCIe bus has extremely slow bandwidth compared with the GPU. This is why is important to store the data on the GPU and keep it busy. And minimize the data transfer to the host and back to the device. We can see this in the following table \ref{fig:PCI}.  Because CUDA-enable GPUs can carry out petaFLOP performance, they are fast enough to compute large amount of data. So each Kernel launch needs to use all the available resources of the GPU and avoide wasting compute cycles. If a single Kernel doesn't use all of the available bandwidth, multiple kernels can be launched at the same time on a single GPU.
 For example a DP vectors require 8 bytes of storage per vector element this will double the bandwidth requirement. So is important to take advantage of the memory usage, take advantage of the memory types, use less memory copies between the GPU. \cite{design}
 
 \begin{figure}[htbp]
@@ -50,14 +50,14 @@ Some practices should keep in mind to rapidly identify the portions of code wher
 \begin{description}
 
  \item{Asses} \hfill \\
- The first step is to locate the part of the code where the majority of the execution time occurs. The programmer can evaluate memory bottlenecks for GPU parallelization. 
+ The first step is to locate the part of the code where the majority of the execution time occurs. The programmer can evaluate memory bottlenecks for GPU parallelization.
  \item{Parallelize} \hfill \\
  Increase parallelization from the original code, could be either adding GPU-optimized libraries such as cuBLAS, cuFFT, or including more amount of parallelism exposure though the use of CUDA code.
  \item{Optimize} \hfill \\
 The developer can optimize the implementation performance through a number of considerations, overlapping kernel executing, kernel profiling, memory handling and fine-tuning floating-point operations.
  \item{Deploy} \hfill \\
  Compare the outcome with the original expectation. Determinate the potential speedup by accelerating a given section. First a partial parallelization should be implementation before carrying out a complete change.
- \end{description} 
+ \end{description}
 
 
 \section{Performance Metrics}
@@ -87,7 +87,7 @@ $$effective-bandwidth = ((Br - Bw) / 109 )/time$$
 
 Where Br is the number of bytes read per kernel, Bw is the number of bytes written per kernel and  t is the elapsed time given in seconds.  \cite{fortran}
 
-In practice the difference between theoretical bandwidth and effective bandwidth indicated how much bandwidth is wasted on accessing memory and calculations. 
+In practice the difference between theoretical bandwidth and effective bandwidth indicated how much bandwidth is wasted on accessing memory and calculations.
 
 If the effective bandwidth is low compared to the theoretical bandwidth is one indication that there is not enough work being done in the GPUs. There a several solutions, analyze the code to make  more parallelize instructions, execute more computational instructions on the GPUs, analyze the number of threads per block that are executing on execute kernels .
 
@@ -99,7 +99,7 @@ If the effective bandwidth is low compared to the theoretical bandwidth is one i
 
 NVIDIA's Visual Profiler will execute your application, examining special performance counters built into the GPU. The profiler will launch several times the kernels to collate precise information of the high-performance application. Also is possible to analyze memory request inside the application\cite{example}. The Profiler can verify how long the application spends executing each kernel as well the number of blocks and threads.Through is possible to obtain various memory throughput measures, like global load throughput and global store throughput, indicate the global memory throughput requested by the kernel and therefore corresponding to the effective bandwidth mentioned in the last section.
 The Visual profiler is very useful to indicate how much load and work is being done on the GPU, it also information about the memory throughput that can be helpful to indicate if the kernel is being actually optimized.  \cite{practices}
-  
+
  \subsection{Kernel Analysis}
 
 Through the NVIDIAs Profiler the kernels are invoked several times to gather optimal results. The an Once they information about how to optimize each kernel depending on several results. Also the profilers
@@ -108,13 +108,13 @@ Through the NVIDIAs Profiler the kernels are invoked several times to gather opt
 
  \item{Memory Bandwidth Bound} \hfill \\
  This refers when the code/application is limited by memory access. Most GPUs card have 1GB- 6GB of memory, this is used to process the data on the GPU, while the CPU has massively amount of memory available for use. A solution to this is to reuse the data, change the type of memory used in the GPU. A multi-GPU approach, launching kernels in several GPUs at once. This will dramatically increase the amount of memory in the application.
-  
+
   \item{Compute Bound} \hfill \\
 Refers to the computation time execution, in other works calculations done in the device, under the assumption that  theres is enough memory for the calculations. what is actually the analysis time operations on the kernels. Theoretical bandwidth vs  effective Bandwidth can measure performance for a compute-bound Kernel. Therefore its possible to increase the FLOPS per device.
-  
+
  \item{Latency Bound} \hfill \\
  Is one whose predominate stall reason is due to memory fetches. This is actually the saturating the global memory, or any type, but still have to wait to get the data into the kernel. Physically can be the data being sent from one part of the Device to the other. Also depends the time required to perform an operation, and are counted in cycles of operations. A way to reduce the latency is to increase the number of parallel instructions (more  calls per thread), in other words more work per thread and fewer threads.
- \end{description} 
+ \end{description}
 
 The performance of relatively simple kernels, which perform computations across a large number of data elements, is more a function of the GPU's memory system performance than the processing performance. It can be beneficial for such memory-bound kernels to decrease the amount of memory access required by increasing the complexity of the computation. \cite{cook}
 
@@ -134,7 +134,7 @@ In this section four types of memory handling are going to be explained, shared 
 \subsection{Global Memory}
 
 Understanding how to efficiently use global memory is essential in CUDA memory management.
-Focusing on data reuse within the SM and caches avoids memory bandwidth limitations. Global memory on the GPU is designed to quickly stream memory blocks of data into the SM.  
+Focusing on data reuse within the SM and caches avoids memory bandwidth limitations. Global memory on the GPU is designed to quickly stream memory blocks of data into the SM.
 
 \begin{itemize}
 \item Get the data on to the Device, keep it there.
