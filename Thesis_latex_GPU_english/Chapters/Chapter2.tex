@@ -97,17 +97,21 @@ If the effective bandwidth is low compared to the theoretical bandwidth is one i
 
 \section{Visual Profiler}
 
-NVIDIA's Visual Profiler will execute your application, examining special performance counters built into the GPU. The profiler will launch several times the kernels to collate precise information of the high-performance application. Also is possible to analyze memory request inside the application\cite{example}. The Profiler can verify how long the application spends executing each kernel as well the number of blocks and threads.Through is possible to obtain various memory throughput measures, like global load throughput and global store throughput, indicate the global memory throughput requested by the kernel and therefore corresponding to the effective bandwidth mentioned in the last section.
-
-The Profiler enable a step-by-step optimization guidance.
+The NVIDIA's Visual Profiler is a profiling tool that can be used to measure performance and find pontencial opportunities for optimization in order to archive maximum performance on the GPUs. The profiler provides metrics in the form of plots and graphs, which discribes opportunities to fully utilize the compute anda data movements capabilities of the GPU, as well of each kernel launch in the application. See Figure \ref{fig:visualgraph}.
 
 \begin{figure}[htbp]
 	\centering
-		\includegraphics[width=0.4\textwidth]{Figures/kernel.png}
-		\rule{35em}{0.5pt}
-	\caption[Visual Profiler example]{Visual Profiler kernel execution}
-	\label{fig:visual01}
+		\includegraphics[width=0.9\textwidth]{Figures/visualgraph.png}
+		\rule{35em}{0.2pt}
+	\caption[Visual Profiler metrics graphs and plots]{Profiler provides optimization metrics}
+	\label{fig:visualgraph}
 \end{figure}
+
+The profiler comes in various flavores; standalone profiler thorugh the visual profiler compiler nvvp, integrated in a GUI Nsight Eclipse Editio as nsight command, or as a comman-line profiler though nvprof command. Each one has its disavantages and advantages. The comman-line profiler is usfull for remontly access, where a GUI is not available, while the Nsight can show graphs, plots and timiline of the application.
+
+ will execute your application, examining special performance counters built into the GPU. The profiler will launch several times the kernels to collate precise information of the high-performance application. Also is possible to analyze memory request inside the application\cite{example}. The Profiler can verify how long the application spends executing each kernel as well the number of blocks and threads.Through is possible to obtain various memory throughput measures, like global load throughput and global store throughput, indicate the global memory throughput requested by the kernel and therefore corresponding to the effective bandwidth mentioned in the last section.
+
+The Profiler enable a step-by-step optimization guidance.
 
 
 The Visual profiler is very useful to indicate how much load and work is being done on the GPU, it also infors about the memory throughput that can be helpful to indicate if the kernel is being optimized or not. As the figure \ref{fig:visual01} shows, each Kernel has its own percentage of execution time of the overall application.\cite{practices}

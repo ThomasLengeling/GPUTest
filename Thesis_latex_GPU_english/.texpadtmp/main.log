@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013) (format=pdflatex 2013.5.30)  7 JAN 2015 11:45
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013) (format=pdflatex 2013.5.30)  7 JAN 2015 12:08
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -418,9 +418,6 @@ Package xcolor Info: Model `wave' substituted by `hsb' on input line 1360.
 Package hyperref Info: Option `colorlinks' set `true' on input line 44.
  (/Users/tom/Documents/GitHub/GPUTest/Thesis_latex_GPU_english/.texpadtmp/main.aux
 
-LaTeX Warning: Label `fig:visual01' multiply defined.
-
-
 LaTeX Warning: Label `eq:kg4' multiply defined.
 
 )
@@ -626,25 +623,25 @@ Overfull \hbox (9.9577pt too wide) in paragraph at lines 54--56
 \OT1/cmr/m/n/10.95 Increase par-al-leliza-tion from the orig-i-nal code, could be ei-ther adding GPU-optimized
  []
 
-[12 <./Figures/PCI.png> <./Figures/apod.png>] [13] [14] <Figures/kernel.png, id=586, 518.93875pt x 385.44pt>
-File: Figures/kernel.png Graphic file (type png)
- <use Figures/kernel.png>
-Package pdftex.def Info: Figures/kernel.png used on input line 106.
-(pdftex.def)             Requested size: 166.98668pt x 124.03143pt.
- <Figures/visual01.png, id=589, 1215.54124pt x 661.47125pt>
+[12 <./Figures/PCI.png> <./Figures/apod.png>] [13] <Figures/visualgraph.png, id=580, 419.5675pt x 81.30376pt>
+File: Figures/visualgraph.png Graphic file (type png)
+ <use Figures/visualgraph.png>
+Package pdftex.def Info: Figures/visualgraph.png used on input line 104.
+(pdftex.def)             Requested size: 375.7232pt x 72.80795pt.
+ [14] <Figures/visual01.png, id=590, 1215.54124pt x 661.47125pt>
 File: Figures/visual01.png Graphic file (type png)
  <use Figures/visual01.png>
-Package pdftex.def Info: Figures/visual01.png used on input line 117.
+Package pdftex.def Info: Figures/visual01.png used on input line 121.
 (pdftex.def)             Requested size: 250.48637pt x 136.309pt.
- [15 <./Figures/kernel.png> <./Figures/visual01.png>] [16] <Figures/memory.png, id=608, 807.015pt x 107.40125pt>
+ [15 <./Figures/visualgraph.png> <./Figures/visual01.png>] [16] <Figures/memory.png, id=608, 807.015pt x 107.40125pt>
 File: Figures/memory.png Graphic file (type png)
  <use Figures/memory.png>
-Package pdftex.def Info: Figures/memory.png used on input line 162.
+Package pdftex.def Info: Figures/memory.png used on input line 166.
 (pdftex.def)             Requested size: 354.85464pt x 47.22554pt.
  [17 <./Figures/memory.png>] <Figures/texture.png, id=619, 460.72125pt x 182.6825pt>
 File: Figures/texture.png Graphic file (type png)
  <use Figures/texture.png>
-Package pdftex.def Info: Figures/texture.png used on input line 213.
+Package pdftex.def Info: Figures/texture.png used on input line 217.
 (pdftex.def)             Requested size: 229.61145pt x 91.04276pt.
  [18] [19 <./Figures/texture.png>]) (./Chapters/Chapter3.tex [20]
 Chapter 3.
@@ -735,18 +732,18 @@ LaTeX Warning: There were multiply-defined labels.
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 231.
  ) 
 Here is how much of TeX's memory you used:
- 13894 strings out of 493315
- 196487 string characters out of 6137904
- 308222 words of memory out of 5000000
- 16838 multiletter control sequences out of 15000+600000
+ 13895 strings out of 493315
+ 196529 string characters out of 6137904
+ 308297 words of memory out of 5000000
+ 16839 multiletter control sequences out of 15000+600000
  13598 words of font info for 50 fonts, out of 8000000 for 9000
  957 hyphenation exceptions out of 8191
  49i,19n,60p,1062b,1853s stack positions out of 5000i,500n,10000p,200000b,80000s
 </usr/local/texlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/local/texlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/local/texlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmcsc10.pfb></usr/local/texlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/local/texlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/texlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/local/texlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/local/texlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/texlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/texlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/local/texlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb></usr/local/texlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt8.pfb>
-Output written on /Users/tom/Documents/GitHub/GPUTest/Thesis_latex_GPU_english/.texpadtmp/main.pdf (45 pages, 1761985 bytes).
+Output written on /Users/tom/Documents/GitHub/GPUTest/Thesis_latex_GPU_english/.texpadtmp/main.pdf (45 pages, 1729044 bytes).
 PDF statistics:
  918 PDF objects out of 1000 (max. 8388607)
- 822 compressed objects within 9 object streams
+ 823 compressed objects within 9 object streams
  298 named destinations out of 1000 (max. 500000)
  563 words of extra memory for PDF output out of 10000 (max. 10000000)
 
