@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013) (format=pdflatex 2013.5.30)  6 JAN 2015 23:59
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013) (format=pdflatex 2013.5.30)  7 JAN 2015 11:45
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -418,6 +418,9 @@ Package xcolor Info: Model `wave' substituted by `hsb' on input line 1360.
 Package hyperref Info: Option `colorlinks' set `true' on input line 44.
  (/Users/tom/Documents/GitHub/GPUTest/Thesis_latex_GPU_english/.texpadtmp/main.aux
 
+LaTeX Warning: Label `fig:visual01' multiply defined.
+
+
 LaTeX Warning: Label `eq:kg4' multiply defined.
 
 )
@@ -480,7 +483,7 @@ LaTeX Info: Redefining \nameref on input line 50.
 \openout3 = `main.out'.
 
 \dunder=\skip67
- <Figures/uni.jpg, id=237, 277.035pt x 329.73187pt>
+ <Figures/uni.jpg, id=241, 277.035pt x 329.73187pt>
 File: Figures/uni.jpg Graphic file (type jpg)
  <use Figures/uni.jpg>
 Package pdftex.def Info: Figures/uni.jpg used on input line 85.
@@ -544,22 +547,22 @@ Chapter 1.
 
 
 
-] <Figures/GPU_CPU_s.png, id=378, 493.845pt x 245.91875pt>
+] <Figures/GPU_CPU_s.png, id=385, 493.845pt x 245.91875pt>
 File: Figures/GPU_CPU_s.png Graphic file (type png)
  <use Figures/GPU_CPU_s.png>
 Package pdftex.def Info: Figures/GPU_CPU_s.png used on input line 38.
 (pdftex.def)             Requested size: 292.22987pt x 145.51857pt.
- [2 <./Figures/GPU_CPU_s.png (PNG copy)>] <Figures/GPU_CPU.png, id=389, 307.1475pt x 250.9375pt>
+ [2 <./Figures/GPU_CPU_s.png (PNG copy)>] <Figures/GPU_CPU.png, id=396, 307.1475pt x 250.9375pt>
 File: Figures/GPU_CPU.png Graphic file (type png)
  <use Figures/GPU_CPU.png>
 Package pdftex.def Info: Figures/GPU_CPU.png used on input line 74.
 (pdftex.def)             Requested size: 175.33792pt x 143.25027pt.
- [3] <Figures/arch.png, id=400, 1104.125pt x 604.2575pt>
+ [3] <Figures/arch.png, id=407, 1104.125pt x 604.2575pt>
 File: Figures/arch.png Graphic file (type png)
  <use Figures/arch.png>
 Package pdftex.def Info: Figures/arch.png used on input line 87.
 (pdftex.def)             Requested size: 283.87862pt x 155.36063pt.
- [4 <./Figures/GPU_CPU.png (PNG copy)>] <Figures/cycle.png, id=410, 250.9375pt x 216.81pt>
+ [4 <./Figures/GPU_CPU.png (PNG copy)>] <Figures/cycle.png, id=417, 250.9375pt x 216.81pt>
 File: Figures/cycle.png Graphic file (type png)
  <use Figures/cycle.png>
 Package pdftex.def Info: Figures/cycle.png used on input line 107.
@@ -570,7 +573,7 @@ File: omscmr.fd 1999/05/25 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10.95> not available
 (Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 115.
- [5 <./Figures/arch.png> <./Figures/cycle.png>] <Figures/grid.png, id=419, 195.73125pt x 99.37125pt>
+ [5 <./Figures/arch.png> <./Figures/cycle.png>] <Figures/grid.png, id=426, 195.73125pt x 99.37125pt>
 File: Figures/grid.png Graphic file (type png)
  <use Figures/grid.png>
 Package pdftex.def Info: Figures/grid.png used on input line 131.
@@ -585,12 +588,12 @@ Missing character: There is no ™ in font cmr10!
 
 LaTeX Warning: Reference `memorySpace:arch' on page 6 undefined on input line 137.
 
-[6 <./Figures/grid.png (PNG copy)>] <Figures/memorySpace.png, id=427, 443.6575pt x 125.46875pt>
+[6 <./Figures/grid.png (PNG copy)>] <Figures/memorySpace.png, id=434, 443.6575pt x 125.46875pt>
 File: Figures/memorySpace.png Graphic file (type png)
  <use Figures/memorySpace.png>
 Package pdftex.def Info: Figures/memorySpace.png used on input line 141.
 (pdftex.def)             Requested size: 250.48637pt x 70.83827pt.
- <Figures/sum.png, id=431, 405.515pt x 253.94875pt>
+ <Figures/sum.png, id=438, 405.515pt x 253.94875pt>
 File: Figures/sum.png Graphic file (type png)
  <use Figures/sum.png>
 Package pdftex.def Info: Figures/sum.png used on input line 153.
@@ -608,12 +611,12 @@ Chapter 2.
 ------------------------------------------------------------------------------
 [11
 
-] <Figures/PCI.png, id=552, 499.8675pt x 69.25874pt>
+] <Figures/PCI.png, id=559, 499.8675pt x 69.25874pt>
 File: Figures/PCI.png Graphic file (type png)
  <use Figures/PCI.png>
 Package pdftex.def Info: Figures/PCI.png used on input line 33.
 (pdftex.def)             Requested size: 292.22987pt x 40.49135pt.
- <Figures/apod.png, id=554, 677.53125pt x 550.055pt>
+ <Figures/apod.png, id=561, 677.53125pt x 550.055pt>
 File: Figures/apod.png Graphic file (type png)
  <use Figures/apod.png>
 Package pdftex.def Info: Figures/apod.png used on input line 44.
@@ -623,44 +626,49 @@ Overfull \hbox (9.9577pt too wide) in paragraph at lines 54--56
 \OT1/cmr/m/n/10.95 Increase par-al-leliza-tion from the orig-i-nal code, could be ei-ther adding GPU-optimized
  []
 
-[12 <./Figures/PCI.png> <./Figures/apod.png>] [13] [14] <Figures/visual01.png, id=581, 1215.54124pt x 661.47125pt>
+[12 <./Figures/PCI.png> <./Figures/apod.png>] [13] [14] <Figures/kernel.png, id=586, 518.93875pt x 385.44pt>
+File: Figures/kernel.png Graphic file (type png)
+ <use Figures/kernel.png>
+Package pdftex.def Info: Figures/kernel.png used on input line 106.
+(pdftex.def)             Requested size: 166.98668pt x 124.03143pt.
+ <Figures/visual01.png, id=589, 1215.54124pt x 661.47125pt>
 File: Figures/visual01.png Graphic file (type png)
  <use Figures/visual01.png>
-Package pdftex.def Info: Figures/visual01.png used on input line 105.
+Package pdftex.def Info: Figures/visual01.png used on input line 117.
 (pdftex.def)             Requested size: 250.48637pt x 136.309pt.
- [15 <./Figures/visual01.png>] <Figures/memory.png, id=595, 807.015pt x 107.40125pt>
+ [15 <./Figures/kernel.png> <./Figures/visual01.png>] [16] <Figures/memory.png, id=608, 807.015pt x 107.40125pt>
 File: Figures/memory.png Graphic file (type png)
  <use Figures/memory.png>
-Package pdftex.def Info: Figures/memory.png used on input line 150.
+Package pdftex.def Info: Figures/memory.png used on input line 162.
 (pdftex.def)             Requested size: 354.85464pt x 47.22554pt.
- [16] [17 <./Figures/memory.png>] <Figures/texture.png, id=610, 460.72125pt x 182.6825pt>
+ [17 <./Figures/memory.png>] <Figures/texture.png, id=619, 460.72125pt x 182.6825pt>
 File: Figures/texture.png Graphic file (type png)
  <use Figures/texture.png>
-Package pdftex.def Info: Figures/texture.png used on input line 201.
-(pdftex.def)             Requested size: 292.22987pt x 115.87106pt.
- [18 <./Figures/texture.png>] [19]) (./Chapters/Chapter3.tex [20]
+Package pdftex.def Info: Figures/texture.png used on input line 213.
+(pdftex.def)             Requested size: 229.61145pt x 91.04276pt.
+ [18] [19 <./Figures/texture.png>]) (./Chapters/Chapter3.tex [20]
 Chapter 3.
 ------------------------------------------------------------------------------
  3 Introduction to Domain Wall Dynamics and a Implementation with CUDA
 ------------------------------------------------------------------------------
 [21
 
-] <Figures/vortex.png, id=637, 552.0625pt x 418.56375pt>
+] <Figures/vortex.png, id=646, 552.0625pt x 418.56375pt>
 File: Figures/vortex.png Graphic file (type png)
  <use Figures/vortex.png>
 Package pdftex.def Info: Figures/vortex.png used on input line 27.
 (pdftex.def)             Requested size: 208.73653pt x 158.26392pt.
- [22 <./Figures/vortex.png>] [23] <Figures/taylor.png, id=664, 317.185pt x 215.80624pt>
+ [22 <./Figures/vortex.png>] [23] <Figures/taylor.png, id=673, 317.185pt x 215.80624pt>
 File: Figures/taylor.png Graphic file (type png)
  <use Figures/taylor.png>
 Package pdftex.def Info: Figures/taylor.png used on input line 92.
 (pdftex.def)             Requested size: 166.98668pt x 113.61609pt.
- [24 <./Figures/taylor.png>] <Figures/euler.png, id=675, 370.38374pt x 194.7275pt>
+ [24 <./Figures/taylor.png>] <Figures/euler.png, id=684, 370.38374pt x 194.7275pt>
 File: Figures/euler.png Graphic file (type png)
  <use Figures/euler.png>
 Package pdftex.def Info: Figures/euler.png used on input line 175.
 (pdftex.def)             Requested size: 292.22987pt x 153.63988pt.
- [25] <Figures/rk4.png, id=683, 293.095pt x 156.585pt>
+ [25] <Figures/rk4.png, id=693, 293.095pt x 156.585pt>
 File: Figures/rk4.png Graphic file (type png)
  <use Figures/rk4.png>
 Package pdftex.def Info: Figures/rk4.png used on input line 199.
@@ -727,44 +735,18 @@ LaTeX Warning: There were multiply-defined labels.
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 231.
  ) 
 Here is how much of TeX's memory you used:
- 13900 strings out of 493315
- 196509 string characters out of 6137904
- 308219 words of memory out of 5000000
- 16833 multiletter control sequences out of 15000+600000
+ 13894 strings out of 493315
+ 196487 string characters out of 6137904
+ 308222 words of memory out of 5000000
+ 16838 multiletter control sequences out of 15000+600000
  13598 words of font info for 50 fonts, out of 8000000 for 9000
  957 hyphenation exceptions out of 8191
  49i,19n,60p,1062b,1853s stack positions out of 5000i,500n,10000p,200000b,80000s
-pdfTeX warning (dest): name{dummy.225} has been referenced but does not exist, replaced by a fixed one
-
-pdfTeX warning (dest): name{appendix.224} has been referenced but does not exist, replaced by a fixed one
-
-pdfTeX warning (dest): name{section.223} has been referenced but does not exist, replaced by a fixed one
-
-pdfTeX warning (dest): name{chapter.222} has been referenced but does not exist, replaced by a fixed one
-
-pdfTeX warning (dest): name{section.221} has been referenced but does not exist, replaced by a fixed one
-
-pdfTeX warning (dest): name{subsection.219} has been referenced but does not exist, replaced by a fixed one
-
-pdfTeX warning (dest): name{subsubsection.218} has been referenced but does not exist, replaced by a fixed one
-
-pdfTeX warning (dest): name{subsection.217} has been referenced but does not exist, replaced by a fixed one
-
-pdfTeX warning (dest): name{section.216} has been referenced but does not exist, replaced by a fixed one
-
-pdfTeX warning (dest): name{subsection.215} has been referenced but does not exist, replaced by a fixed one
-
-pdfTeX warning (dest): name{section.214} has been referenced but does not exist, replaced by a fixed one
-
-pdfTeX warning (dest): name{chapter.213} has been referenced but does not exist, replaced by a fixed one
-
-pdfTeX warning (dest): name{section.211} has been referenced but does not exist, replaced by a fixed one
-
 </usr/local/texlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/local/texlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/local/texlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmcsc10.pfb></usr/local/texlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/local/texlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/texlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/local/texlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/local/texlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/texlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/texlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/local/texlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb></usr/local/texlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt8.pfb>
-Output written on /Users/tom/Documents/GitHub/GPUTest/Thesis_latex_GPU_english/.texpadtmp/main.pdf (45 pages, 1695320 bytes).
+Output written on /Users/tom/Documents/GitHub/GPUTest/Thesis_latex_GPU_english/.texpadtmp/main.pdf (45 pages, 1761985 bytes).
 PDF statistics:
- 925 PDF objects out of 1000 (max. 8388607)
- 831 compressed objects within 9 object streams
- 310 named destinations out of 1000 (max. 500000)
- 550 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 918 PDF objects out of 1000 (max. 8388607)
+ 822 compressed objects within 9 object streams
+ 298 named destinations out of 1000 (max. 500000)
+ 563 words of extra memory for PDF output out of 10000 (max. 10000000)
 
