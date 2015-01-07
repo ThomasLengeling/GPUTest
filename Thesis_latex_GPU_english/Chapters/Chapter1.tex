@@ -141,7 +141,67 @@ In CUDA. host and device have separate memory spaces. This can bee seen on the h
 
 \section{Vector Addition Example}
 
-Include a Simple Vector addition example with the GPU and CPU. \\
+A simple exmaple of a vector addition to show the comparision between the GPU and CPU, input, two list of number which is sum up each corresponded element to produce a final output with the addition of both list. Figure \ref{fig:sum} shows this process.
+
+\begin{figure}[htbp]
+	\centering
+		\includegraphics[width=0.45\textwidth]{Figures/sum.png}
+		\rule{35em}{0.3pt}
+	\caption[Vector Addition Example]{Simple Vector Addition Example}
+	\label{fig:sum}
+\end{figure}
+
+\subsection{CPU Code}
+
+This first example illustrates the CPU code executed in a single thread. The code is straight foward to understand. First create the memory for each array, A, B and C with size N. Then calculate the sum of the two vectors with the function "add". As we can see in the function "add", we use the while loop to go through each element of the arrays A and B, which are added into a single array C.
+
+\begin{lstlisting}[language=C++, caption={CPU Vector Addition}]
+#include <iostream>
+
+#define N 100
+
+void add( int *a, int *b, int *c );
+
+int main()
+{
+    int A[N];
+    int B[N];
+    int C[N];
+    
+    //fill the arrays with values
+    for(int i = 0; i < N; i++){
+        A[i] = 1;
+        B[i] = i;
+    }
+    
+    add(A, B, C);
+    
+    //Display the results
+    for (int i = 0; i < N; i++) {
+        std::cout << A[i] << ", " << B[i] << ", " << C[i] << std::endl;    }
+    
+    return 0;
+}
+
+void add( int * A, int * B, int * C )
+{
+    int index = 0;
+    
+    //go through each index of the arrays and make the operration
+    while(index < N){
+        C[index] = A[index] + B[index];
+        index++;
+    }
+}
+
+\end{lstlisting}
+
+We can notice if we set N to be a large number, the function "add" could take a large amount of time to execute. But the example only illustrates the used of the CPU as a single core, however nowadays CPUs commonly have around 4-8 cores. To use
+
+\subsection{GPU Code}
+
+
+\cite{example}
 
 This chapter provided a quick overview of heterogeneous programming in a modern context. CUDA  enhance the C language with parallel computing support. Which is possible to launch  enormous amounts of parallel threads, oppose of few threads on the CPU. The number of GPU cores will continue to increase in proportion to increase in available transistors as silicon process improve. In addition, GPUs will continue to go through vigorous architectural evolution. Despite their demonstration high performance on data-parallel applications. \cite{hwu}
 

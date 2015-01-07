@@ -181,7 +181,7 @@
 %	defined as \examname above so you cite it as \examname
 %----------------------------------------------------------------------------------------
 
-\thesistitle{Study of "Domain Wall Dynamics under Nonlocal Spin-Transfer Torque" using heterogeneous computing} % Your thesis title - this is used in the title and abstract
+\thesistitle{Study of Domain Wall Dynamics under Nonlocal Spin-Transfer Torque using heterogeneous computing} % Your thesis title - this is used in the title and abstract
 %-------------------------------------------------  
 \supervisor{Dr. Claudio Gonz\'alez David } % You supervisor's name - this is used in the title page
 %-------------------------------------------------   

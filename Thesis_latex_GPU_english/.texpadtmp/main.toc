@@ -1,0 +1,60 @@
+\contentsline {chapter}{Abstract}{i}{dummy.2}
+\vspace {1em}
+\contentsline {chapter}{Acknowledgements}{ii}{dummy.3}
+\vspace {1.2em}
+\contentsline {chapter}{Contents}{iii}{dummy.4}
+\contentsline {chapter}{List of Figures}{v}{dummy.6}
+\contentsline {chapter}{Introduction}{vi}{dummy.8}
+\contentsline {chapter}{\numberline {1}Heterogeneous Computing}{1}{chapter.10}
+\contentsline {section}{\numberline {1.1}Motivation}{1}{section.11}
+\contentsline {section}{\numberline {1.2}GPUs as computing units}{3}{section.13}
+\contentsline {section}{\numberline {1.3}Programming on GPUs}{5}{section.16}
+\contentsline {section}{\numberline {1.4}Vector Addition Example}{6}{section.20}
+\contentsline {subsection}{\numberline {1.4.1}CPU Code}{7}{subsection.22}
+\contentsline {subsection}{\numberline {1.4.2}GPU Code}{8}{subsection.63}
+\contentsline {chapter}{\numberline {2}Heterogeneous Performance Analysis and Practices}{9}{chapter.64}
+\contentsline {section}{\numberline {2.1}Practices}{9}{section.65}
+\contentsline {section}{\numberline {2.2}Performance Metrics}{11}{section.71}
+\contentsline {subsection}{\numberline {2.2.1}Timing}{11}{subsection.72}
+\contentsline {subsection}{\numberline {2.2.2}Bandwidth}{11}{subsection.73}
+\contentsline {section}{\numberline {2.3}Visual Profiler}{12}{section.74}
+\contentsline {subsection}{\numberline {2.3.1}Kernel Analysis}{13}{subsection.75}
+\contentsline {section}{\numberline {2.4}Memory Handling with CUDA}{14}{section.76}
+\contentsline {subsection}{\numberline {2.4.1}Global Memory}{14}{subsection.78}
+\contentsline {subsection}{\numberline {2.4.2}Shared Memory}{15}{subsection.79}
+\contentsline {subsection}{\numberline {2.4.3}Constant Memory}{15}{subsection.80}
+\contentsline {subsection}{\numberline {2.4.4}Texture Memory}{15}{subsection.81}
+\contentsline {subsection}{\numberline {2.4.5}Thread Synchronization}{16}{subsection.83}
+\contentsline {section}{\numberline {2.5}Performance Issue}{16}{section.84}
+\contentsline {subsection}{\numberline {2.5.1}Hardware constraints}{16}{subsection.85}
+\contentsline {subsection}{\numberline {2.5.2}Thread Division}{17}{subsection.86}
+\contentsline {chapter}{\numberline {3}Introduction to Domain Wall Dynamics and a Implementation with CUDA}{18}{chapter.87}
+\contentsline {section}{\numberline {3.1}Theory}{18}{section.88}
+\contentsline {subsection}{\numberline {3.1.1}Experiment}{20}{subsection.90}
+\contentsline {section}{\numberline {3.2}Numerical Methods}{20}{section.92}
+\contentsline {subsection}{\numberline {3.2.1}Runge and Kutta}{22}{subsection.96}
+\contentsline {subsection}{\numberline {3.2.2}Kernels}{23}{subsection.100}
+\contentsline {subsection}{\numberline {3.2.3}Threads}{24}{subsection.106}
+\contentsline {subsection}{\numberline {3.2.4}CPU}{25}{subsection.124}
+\contentsline {subsection}{\numberline {3.2.5}GPU}{25}{subsection.125}
+\contentsline {subsection}{\numberline {3.2.6}KG4}{26}{subsection.136}
+\contentsline {subsection}{\numberline {3.2.7}effective values}{27}{subsection.146}
+\contentsline {subsection}{\numberline {3.2.8}time}{27}{subsection.153}
+\contentsline {section}{\numberline {3.3}Validation}{27}{section.154}
+\contentsline {section}{\numberline {3.4}Help Kernels}{28}{section.155}
+\contentsline {section}{\numberline {3.5}Data Flow}{28}{section.156}
+\contentsline {chapter}{\numberline {4}Optimization Results}{29}{chapter.157}
+\contentsline {section}{\numberline {4.1}Supercomputer ``Piritakua''}{29}{section.158}
+\contentsline {subsection}{\numberline {4.1.1}Experiment detail}{30}{subsection.159}
+\contentsline {section}{\numberline {4.2}Results}{30}{section.160}
+\contentsline {subsection}{\numberline {4.2.1}Initial Test}{30}{subsection.161}
+\contentsline {subsubsection}{\numberline {4.2.1.1}Visual profiler}{30}{subsubsection.162}
+\contentsline {subsection}{\numberline {4.2.2}Obtimized}{31}{subsection.163}
+\contentsline {subsection}{\numberline {4.2.3}Subsection 2}{31}{subsection.164}
+\contentsline {section}{\numberline {4.3}Main Section 2}{31}{section.165}
+\contentsline {chapter}{\numberline {5}Conclusions and future work}{32}{chapter.166}
+\contentsline {section}{\numberline {5.1}Main Section 1}{32}{section.167}
+\vspace {2em}
+\contentsline {chapter}{\numberline {A}Appendix Title Here}{33}{appendix.168}
+\vspace {2em}
+\contentsline {chapter}{Bibliography}{34}{dummy.169}
