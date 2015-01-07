@@ -1,0 +1,142 @@
+\begin{thebibliography}{10}
+
+\bibitem{Anderson}
+J.~A. Anderson, C.~D. Lorenz, and A.~Travesset.
+\newblock General purpose molecular dynamics simulations fully implemented on
+  graphics processing units.
+\newblock {\em J. Comput. Phys.}, 227(10):5342--5359, May 2008.
+
+\bibitem{5306797}
+S.~Che, M.~Boyer, J.~Meng, D.~Tarjan, J.~Sheaffer, S.-H. Lee, and K.~Skadron.
+\newblock Rodinia: A benchmark suite for heterogeneous computing.
+\newblock pages 44--54, 2009.
+
+\bibitem{claudio}
+D.~Claudio-Gonzalez, A.~Thiaville, and J.~Miltat.
+\newblock Domain wall dynamics under nonlocal spin-transfer torque.
+\newblock {\em Phys. Rev. Lett.}, 108:227208, Jun 2012.
+
+\bibitem{cook}
+S.~Cook.
+\newblock {\em CUDA Programming: A Developer's Guide to Parallel Computing with
+  GPUs}.
+\newblock Morgan Kaufmann Publishers Inc., San Francisco, CA, USA, 1st edition,
+  2012.
+
+\bibitem{methods}
+J.~Fagerberg, D.~C. Mowery, and R.~R. Nelson.
+\newblock {\em Handbook of magnetism and advanced magnetic materials},
+  volume~2.
+\newblock Wiley-Interscience, Chichester, Sep 2007.
+
+\bibitem{design}
+R.~Farber.
+\newblock {\em CUDA Application Design and Development}.
+\newblock Morgan Kaufmann Publishers Inc., San Francisco, CA, USA, 1st edition,
+  2011.
+
+\bibitem{spindomain}
+E.~Golovatski.
+\newblock {\em Spin Torque and Interactions in Ferromagnetic Semiconductor
+  Domain Walls}.
+\newblock BiblioBazaar, 2012.
+
+\bibitem{physicsgpu}
+A.~Harju, T.~Siro, F.~Canova, S.~Hakala, and T.~Rantalaiho.
+\newblock Computational physics on graphics processing units.
+\newblock 7782:3--26, 2013.
+
+\bibitem{hwu}
+D.~B. Kirk and W.-m.~W. Hwu.
+\newblock {\em Programming Massively Parallel Processors: A Hands-on Approach}.
+\newblock Morgan Kaufmann Publishers Inc., San Francisco, CA, USA, 1st edition,
+  2010.
+
+\bibitem{landaverde}
+R.~Landaverde, T.~Zhang, A.~K. Coskun, and M.~Herbordt.
+\newblock An investigation of unified memory access performance in cuda.
+\newblock 2014.
+
+\bibitem{mag}
+K.-J. Lee, M.~Stiles, H.-W. Lee, J.-H. Moon, K.-W. Kim, and S.-W. Lee.
+\newblock Self-consistent calculation of spin transport and magnetization
+  dynamics.
+\newblock {\em Physics Reports}, 531(2):89 -- 113, 2013.
+\newblock Self-consistent calculation of spin transport and magnetization
+  dynamics.
+
+\bibitem{Nickolls}
+J.~Nickolls and W.~J. Dally.
+\newblock The gpu computing era.
+\newblock {\em IEEE Micro}, 30(2):56--69, mar 2010.
+
+\bibitem{practices}
+nVidia.
+\newblock {\em {CUDA C Best Practices Guide}}, Oct. 2014.
+
+\bibitem{racetrack}
+S.~S. Parkin, M.~Hayashi, and L.~Thomas.
+\newblock Magnetic domain-wall racetrack memory.
+\newblock {\em Science}, 320(5873):190--194, 2008.
+
+\bibitem{quantitative}
+D.~A. Patterson and J.~L. Hennessy.
+\newblock {\em Computer Architecture: A Quantitative Approach}.
+\newblock Morgan Kaufmann Publishers Inc., San Francisco, CA, USA, 1990.
+
+\bibitem{numerical}
+W.~H. Press, S.~A. Teukolsky, W.~T. Vetterling, and B.~P. Flannery.
+\newblock {\em Numerical Recipes in C (2Nd Ed.): The Art of Scientific
+  Computing}.
+\newblock Cambridge University Press, New York, NY, USA, 1992.
+
+\bibitem{ferro}
+C.~Richard, M.~Houzet, and J.~Meyer.
+\newblock Andreev current induced by ferromagnetic resonance.
+\newblock {\em Phys. Rev. Lett.}, 109:057002, Jul 2012.
+
+\bibitem{fortran}
+G.~Ruetsch and M.~Fatica.
+\newblock {\em CUDA Fortran for Scientists and Engineers: Best Practices for
+  Efficient CUDA Fortran Programming}.
+\newblock Elsevier Science, 2013.
+
+\bibitem{example}
+J.~Sanders and E.~Kandrot.
+\newblock {\em CUDA by Example: An Introduction to General-Purpose GPU
+  Programming}.
+\newblock Addison-Wesley Professional, 1st edition, 2010.
+
+\bibitem{whatexascale}
+R.~F. Service.
+\newblock What it’ll take to go exascale.
+\newblock {\em Science}, 335(January):394--396, 2012.
+
+\bibitem{handbookspin}
+E.~Tsymbal and I.~Zutic.
+\newblock {\em Handbook of Spin Transport and Magnetism}.
+\newblock Taylor and Francis, 2011.
+
+\bibitem{precision}
+N.~Whitehead and A.~Fit-florea.
+\newblock Precision and performance: Floating point and ieee 754 compliance for
+  nvidia gpus.
+
+\bibitem{handbook}
+N.~Wilt.
+\newblock {\em The CUDA Handbook: A Comprehensive Guide to GPU Programming}.
+\newblock Pearson Education, 2013.
+
+\bibitem{spinz}
+V.~Zayets.
+\newblock Spin and charge transport in materials with spin-dependent
+  conductivity.
+\newblock {\em Phys. Rev. B}, 86:174415, Nov 2012.
+
+\bibitem{zhang}
+S.~Zhang and Z.~Li.
+\newblock Roles of nonequilibrium conduction electrons on the magnetization
+  dynamics of ferromagnets.
+\newblock {\em Phys. Rev. Lett.}, 93:127204, Sep 2004.
+
+\end{thebibliography}

@@ -1,47 +1,55 @@
 This is BibTeX, Version 0.99d (TeX Live 2013)
 Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
 The top-level auxiliary file: main.aux
-I found no \bibdata command---while reading file main.aux
-I found no \bibstyle command---while reading file main.aux
-You've used 7 entries,
-            0 wiz_defined-function locations,
-            90 strings with 539 characters,
-and the built_in function-call counts, 0 in all, are:
-= -- 0
-> -- 0
-< -- 0
-+ -- 0
-- -- 0
-* -- 0
-:= -- 0
-add.period$ -- 0
-call.type$ -- 0
-change.case$ -- 0
+The style file: abbrv.bst
+Database file #1: ../Bibliography.bib
+Warning--string name "august" is undefined
+--line 195 of file ../Bibliography.bib
+Warning--I'm ignoring practices's extra "month" field
+--line 196 of file ../Bibliography.bib
+Warning--empty journal in 5306797
+Warning--can't use both author and editor fields in methods
+Warning--empty journal in physicsgpu
+Warning--empty journal in landaverde
+You've used 25 entries,
+            2118 wiz_defined-function locations,
+            644 strings with 7400 characters,
+and the built_in function-call counts, 7486 in all, are:
+= -- 698
+> -- 382
+< -- 2
++ -- 154
+- -- 126
+* -- 520
+:= -- 1292
+add.period$ -- 74
+call.type$ -- 25
+change.case$ -- 131
 chr.to.int$ -- 0
-cite$ -- 0
-duplicate$ -- 0
-empty$ -- 0
-format.name$ -- 0
-if$ -- 0
+cite$ -- 29
+duplicate$ -- 285
+empty$ -- 587
+format.name$ -- 126
+if$ -- 1534
 int.to.chr$ -- 0
-int.to.str$ -- 0
-missing$ -- 0
-newline$ -- 0
-num.names$ -- 0
-pop$ -- 0
-preamble$ -- 0
-purify$ -- 0
+int.to.str$ -- 25
+missing$ -- 34
+newline$ -- 127
+num.names$ -- 48
+pop$ -- 160
+preamble$ -- 1
+purify$ -- 114
 quote$ -- 0
-skip$ -- 0
+skip$ -- 182
 stack$ -- 0
-substring$ -- 0
-swap$ -- 0
-text.length$ -- 0
+substring$ -- 357
+swap$ -- 31
+text.length$ -- 2
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 0
-warning$ -- 0
-while$ -- 0
-width$ -- 0
-write$ -- 0
-(There were 2 error messages)
+type$ -- 78
+warning$ -- 4
+while$ -- 64
+width$ -- 27
+write$ -- 267
+(There were 6 warnings)

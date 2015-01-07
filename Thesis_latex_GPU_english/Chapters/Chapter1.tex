@@ -67,7 +67,7 @@ A insight of the architecture of GPU can give a idea of  why it outperforms the 
 The GPU, unlike its CPU cousin, has thousands for registers per SM (streaming multiprocessor), this are  arithmetic processing units. An SM can thought of like a multi-thread CPU core. On a typical CPU has two, four, six or eight cores. On a GPU as many as N SM core. We can see this in the figure \ref{fig:gpu_cpu}. For a particular calculation, all the stream
 processors within a group execute exactly the same instruction on a particular data stream, then the data is sent to the upper level, the host (CPU). \cite{cook}
 
-talk about what is a CUDA core, historical comparison with new GPUs.
+As commonly named CUDA cores are the number of procesors in a single NVIDIA GPU chip. For example one of the first GPU capabile of running CUDA code was the NVIDIA 9800 GT, which had 112 cores, while the latest high-end GPU GTX 980 has 2048 cores.
 
 \begin{figure}[htbp]
 	\centering
@@ -77,11 +77,10 @@ talk about what is a CUDA core, historical comparison with new GPUs.
 	\label{fig:gpu_cpu}
 \end{figure}
 
-As commonly named CUDA cores is the number of SM in a single NVIDIA GPU chip. Depending on the device it can be anywhere from 
+
+Each CUDA core  can execute a sequantial thread, just like a CPU thread, which NVIDIA calls it Single Instruction, Multiple Thread (SIMT). In addition all cores in the same group execute the same instruction at the same time, much like classical SIMD (Single instruction, multiple data) processors. SIMT handles conditionals somewhat differently than SIMD, though the effect is much the same, where some cores are disabled for conditional operations, in other word a single instruction is executed throughout the device.
 
 Being able to efficiently use a GPU for an application requires to expose the inherent data-parallelism Optimized for low-latency, serial computation. This can be seen in contrast with a CPU, which is optimized for sequential code performance, fast switching registers  and sophisticated control logic allowing to run single complex programs as fast as possible, which is not possible on the GPU. Memory management is very important for GPUs. this refers how to allocate memory space and transfer data between host (CPU) and device (GPU). While the CPU memory hierarchy is almost non-existent, on the GPU inherent data is important. In figure \ref{fig:arch} different levels of memory can be observer between the host and the device, which differs form the CPU \cite{hwu}.
-
-talk about what is a CUDA core, historical comparison with new GPUs.
 
 \begin{figure}[htbp]
 	\centering
@@ -100,6 +99,7 @@ Libraries such as CUBLAS and CUFFT provides useful information how NVIDIA handle
 \section{Programming on GPUs}
 
 There exist, among many, two main computing platforms, NVIDIA's Compute Unified Device Architecture (CUDA), and Khronos's Open Computing Language (OpenCL). NVIDIA's CUDA provides the necessary tools, frameworks and library to programs parallel computing, but for there GPUs. While OpenCL is a open standard framework meaning that is possible to do parallel computing on other GPUs, like on AMD cards. Programmers can easily port their code to others graphics cars.  However CUDA has more robust debugging and profiling for GPGPU computing. This two frameworks are developed to be close to the hardware layer, using C programming language. CUDA provides both a low level API and a higher level API. Those who are familiar to OpenCL and CUDa, can easily modify their code to work on either platform.\cite{hwu}
+
 
 The CUDA programming model views the GPU as an accelerator processor which calls parallel programs  throughout all the SMI. This programs are only called on the device and are called kernels, which launch a large amounts of threads to execute CUDA code. The basic idea of programming on a GPU is simple. We can observer this in the figure \ref{fig:cycle}
 
@@ -254,7 +254,7 @@ void add( int * A, int * B, int * C )
     // handle the data at this index if (tid < N)
     int index = blockIdx.x;     if(index < N)        c[index] = a[index] + b[index];
 }
-\end{lstlisting} \\
+\end{lstlisting}
 
 \bigskip
 
