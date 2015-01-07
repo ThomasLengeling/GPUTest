@@ -95,68 +95,6 @@ If the effective bandwidth is low compared to the theoretical bandwidth is one i
 %	SECTION 2
 %----------------------------------------------------------------------------------------
 
-\section{Visual Profiler}
-
-The NVIDIA's Visual Profiler is a profiling tool that can be used to measure performance and find pontencial opportunities for optimization in order to archive maximum performance on the GPUs. The profiler provides metrics in the form of plots and graphs, which discribes opportunities to fully utilize the compute anda data movements capabilities of the GPU, as well of each kernel launch in the application. See Figure \ref{fig:visualgraph}.
-
-\begin{figure}[htbp]
-	\centering
-		\includegraphics[width=0.9\textwidth]{Figures/visualgraph.png}
-		\rule{35em}{0.2pt}
-	\caption[Visual Profiler metrics graphs and plots]{Profiler provides optimization metrics}
-	\label{fig:visualgraph}
-\end{figure}
-
-The profiler comes in various flavores; standalone profiler thorugh the visual profiler compiler nvvp, integrated in a GUI Nsight Eclipse Editio as nsight command, or as a comman-line profiler though nvprof command. Each one has its disavantages and advantages. The comman-line profiler is usfull for remontly access, where a GUI is not available, while the Nsight can show graphs, plots and timiline of the application.
-
- will execute your application, examining special performance counters built into the GPU. The profiler will launch several times the kernels to collate precise information of the high-performance application. Also is possible to analyze memory request inside the application\cite{example}. The Profiler can verify how long the application spends executing each kernel as well the number of blocks and threads.Through is possible to obtain various memory throughput measures, like global load throughput and global store throughput, indicate the global memory throughput requested by the kernel and therefore corresponding to the effective bandwidth mentioned in the last section.
-
-The Profiler enable a step-by-step optimization guidance.
-
-
-The Visual profiler is very useful to indicate how much load and work is being done on the GPU, it also infors about the memory throughput that can be helpful to indicate if the kernel is being optimized or not. As the figure \ref{fig:visual01} shows, each Kernel has its own percentage of execution time of the overall application.\cite{practices}
-
-\begin{figure}[htbp]
-	\centering
-		\includegraphics[width=0.6\textwidth]{Figures/visual01.png}
-		\rule{35em}{0.5pt}
-	\caption[Visual Profiler example]{Visual Profiler kernel execution}
-	\label{fig:visual01}
-\end{figure}
-
-\subsection{Profiler Kernel Report}
-
-As we know the profiler executes the application several time to collect data about each kernel. The information obtained by each kernel can be sum-up in-to a report, which has the following information.
-
-\begin{enumerate}
-  \item Compute, Bandwidth, or latency Bound
-  \item Instructions and Memory Latency
-  \item Compute Resources
-  \item Floating-Point Operation Counts
-  \item Memory Bandwidth
-\end{enumerate}
-
-
-\subsection{Kernel Analysis}
-
-Through the NVIDIAs Profiler the kernels are invoked several times to gather optimal results. The an Once they information about how to optimize each kernel depending on several results. Also the profilers
-
-
-
-\begin{description}
-
- \item{Memory Bandwidth Bound} \hfill \\
- This refers when the code/application is limited by memory access. Most GPUs card have 1GB- 6GB of memory, this is used to process the data on the GPU, while the CPU has massively amount of memory available for use. A solution to this is to reuse the data, change the type of memory used in the GPU. A multi-GPU approach, launching kernels in several GPUs at once. This will dramatically increase the amount of memory in the application.
-
-  \item{Compute Bound} \hfill \\
-Refers to the computation time execution, in other works calculations done in the device, under the assumption that  theres is enough memory for the calculations. what is actually the analysis time operations on the kernels. Theoretical bandwidth vs  effective Bandwidth can measure performance for a compute-bound Kernel. Therefore its possible to increase the FLOPS per device.
-
- \item{Latency Bound} \hfill \\
- Is one whose predominate stall reason is due to memory fetches. This is actually the saturating the global memory, or any type, but still have to wait to get the data into the kernel. Physically can be the data being sent from one part of the Device to the other. Also depends the time required to perform an operation, and are counted in cycles of operations. A way to reduce the latency is to increase the number of parallel instructions (more  calls per thread), in other words more work per thread and fewer threads.
- \end{description}
-
-The performance of relatively simple kernels, which perform computations across a large number of data elements, is more a function of the GPU's memory system performance than the processing performance. It can be beneficial for such memory-bound kernels to decrease the amount of memory access required by increasing the complexity of the computation. \cite{cook}
-
 \section{Memory Handling with CUDA}
 
 In this section four types of memory handling are going to be explained, shared memory, global memory (device memory) and finally host memory. In figure \ref{fig:memory} each memory type has it's bandwidth penalty of used and latency in cycles. Each one can be used in different applications to maximize the memory used. The shared Memory is very limited so it cannot be handler for all the kernels, when performed wrong on the device there is a huge latency and bandwidth penalty, instead having a gain in performance \cite{cook}.
@@ -236,6 +174,24 @@ This refers to synchronizing threads operations,
 
 Will wait for all threads to finish there job.
 
+\section{Kernel Analysis}
+
+Through the NVIDIAs Profiler the kernels are invoked several times to gather optimal results. The an Once they information about how to optimize each kernel depending on several results. Also the profilers
+
+\begin{description}
+
+ \item{Memory Bandwidth Bound} \hfill \\
+ This refers when the code/application is limited by memory access. Most GPUs card have 1GB- 6GB of memory, this is used to process the data on the GPU, while the CPU has massively amount of memory available for use. A solution to this is to reuse the data, change the type of memory used in the GPU. A multi-GPU approach, launching kernels in several GPUs at once. This will dramatically increase the amount of memory in the application.
+
+  \item{Compute Bound} \hfill \\
+Refers to the computation time execution, in other works calculations done in the device, under the assumption that  theres is enough memory for the calculations. what is actually the analysis time operations on the kernels. Theoretical bandwidth vs  effective Bandwidth can measure performance for a compute-bound Kernel. Therefore its possible to increase the FLOPS per device.
+
+ \item{Latency Bound} \hfill \\
+ Is one whose predominate stall reason is due to memory fetches. This is actually the saturating the global memory, or any type, but still have to wait to get the data into the kernel. Physically can be the data being sent from one part of the Device to the other. Also depends the time required to perform an operation, and are counted in cycles of operations. A way to reduce the latency is to increase the number of parallel instructions (more  calls per thread), in other words more work per thread and fewer threads.
+ \end{description}
+
+The performance of relatively simple kernels, which perform computations across a large number of data elements, is more a function of the GPU's memory system performance than the processing performance. It can be beneficial for such memory-bound kernels to decrease the amount of memory access required by increasing the complexity of the computation. \cite{cook}
+
 
 \section{Performance Issue}
 
@@ -260,6 +216,64 @@ Another inefficiency that can cause low performance to the applications is the n
 
 The hardware has its limits in how much thread per block a kernel can handle. Launching a kernel with the hardware constrains for above can only ensure that the kernel will actually be executed in the device, not a optimize set of threads per block. For this is necessary launch kernel with the amount of threads per block base on the hardware contains that will optimize the performance of the GPU. The impact of the block size that is choosed impacts on how much faster the code will run. By Benchmarking, is possible to find what configuration is the best for the problem. One thing to notice is that thread blocks should be a multiple number of SMs, with this idea is possible to obtain optimal thread block configuration.
 
+
+\section{Visual Profiler}
+
+The NVIDIA's Visual Profiler is a profiling tool that can be used to measure performance and find pontencial opportunities for optimization in order to archive maximum performance on the GPUs. The Profiler provides metrics in the form of plots and graphs, which discribes opportunities to fully utilize the compute anda data movements capabilities of the GPU, as well of each kernel launch in the application. See Figure \ref{fig:visualgraph}.
+
+\begin{figure}[htbp]
+	\centering
+		\includegraphics[width=0.9\textwidth]{Figures/visualgraph.png}
+		\rule{35em}{0.2pt}
+	\caption[Visual Profiler metrics graphs and plots]{Profiler provides optimization metrics}
+	\label{fig:visualgraph}
+\end{figure}
+
+NVIDIA's profiling tools comes in various flavores; a astandalone profiler through the visual profiler compiler nvvp, integrated in a GUI Nsight Eclipse Edition as nsight command (Visual Profiler), and as a comman-line profiler though nvprof command. Each one has its disavantages and advantages. The comman-line profiler is usfull for remontly access, where a GUI is not available, while the Nsight can show graphs, plots and timiline of the application. The Profiler support CUDA applications as well as openCL applications, however both have some expetions. 
+
+The Visual Profiler, by default, will execute the entire application, nonetheless typically only some parts of application only need performace optimization. This enables to determend kernels, code where critical performances is needed. The common situations where profiling a regiong of the application is helpful.\cite{tool}
+
+\begin{itemize}
+  \item Analyze data intialization and movement in the CPU and GPU, as well as evaluating CUDA calls.
+  \item The application perates in phases, where a algorithm operates throughout each region. The application can be optimized independently from other phases of the code.
+  \item The application contains algorithms thar operate though a large number of iterations. In this caes is possible to collect data from a portion of the iterations.
+\end{itemize}
+
+The Visual Profiler enable a step-by-step optimization guidance, where is possible to evaluating GPU usage, examine individual kernels and analyze timineline of the application which the profiler shows memory movments and usage, CUDA calls, number of threads and performance. The figure \ref{fig:visual01} shows, each Kernel has its own percentage of execution time of the overall application.\cite{practices}
+
+\begin{figure}[htbp]
+	\centering
+		\includegraphics[width=0.35\textwidth]{Figures/visual01.png}
+		\rule{35em}{0.5pt}
+	\caption[Visual Profiler example]{Visual Profiler kernel execution}
+	\label{fig:visual01}
+\end{figure}
+
+\subsection{Profiler Kernel Report}
+
+The profiler will execute several times the application to callate data from each kernels. This enables to precisly optimizae phases of the application\cite{example}. The profilling tools can verify how long the application spends executing each kernel as well the number of used blocks and threads. Through this is possible to obtain various memory throughput measures, like global load throughput and global store throughput, indicate the global memory throughput requested by the kernel and therefore corresponding to the effective bandwidth mentioned in the last section.
+
+As we know the profiler executes the application several time to collect data about each kernel. The information obtained by each kernel can be sum-up in-to a report, which has the following information.
+
+\begin{enumerate}
+  \item \textbf{Compute, Bandwidth, or Latency Bound} \hfill \\
+      The performance determines if the kernel is bounded by computation, memory badwidth, or instructions/memory latancy. It shows how is limiting the performace respectively.
+  
+  \item \textbf{Instructions and Memory Latency} \hfill \\Instruction and memory latency limit the performance of a kernel when the GPU does not have enough work to keep busy. The performance of latency-limited kernels can often be improved by increasing occupancy. Occupancy is a measure of how many warps the kernel has active on the GPU, relative to the maximum number of warps supported by the GPU.
+  
+  \item \textbf{Compute Resources} \hfill \\GPU compute resources limit the performance of a kernel when those resources are insufficient or poorly utilized. Compute resources are used most efficiently when instructions do not overuse a function unit. 
+  \item \textbf{Floating-Point Operation Counts} \hfill \\
+  floating-point operations executed by the kernel, can be either single presision or double presision.
+  
+  \item \textbf{Memory Bandwidth} \hfill \\
+  Memory bandwidth limits the performance of a kernel when one or more memories in the GPU cannot provide data at the rate requested by the kernel.
+\end{enumerate}
+
+The Visual profiler ..
+
+\vspace{3em}
+
+Finally...
 
 
 
