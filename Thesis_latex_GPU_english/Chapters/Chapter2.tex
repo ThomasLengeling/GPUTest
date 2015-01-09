@@ -176,7 +176,7 @@ Will wait for all threads to finish there job.
 
 \section{Kernel Analysis}
 
-As said before, kernels are the essencial part of CUDA programming, threads are launched automatically throughout each thread blocks of the device. Furthermore it millions of threads execute the code.
+As said before, kernels are the essencial part of CUDA programming, threads are launched automatically throughout each thread blocks of the device. Furthermore it millions of threads execute the same code parallel, which is  When execution the 
 
 
 \begin{description}
@@ -221,6 +221,8 @@ The hardware has its limits in how much thread per block a kernel can handle. La
 \section{Visual Profiler}
 
 The NVIDIA's Visual Profiler is a profiling tool that can be used to measure performance and find pontencial opportunities for optimization in order to archive maximum performance on the GPUs. The Profiler provides metrics in the form of plots and graphs, which discribes opportunities to fully utilize the compute anda data movements capabilities of the GPU, as well of each kernel launch in the application. See Figure \ref{fig:visualgraph}.
+
+dificult to keep track of each individual thread. This becomes dificult for debugging 
 
 \begin{figure}[htbp]
 	\centering
@@ -272,7 +274,7 @@ As we know the profiler executes the application several time to collect data ab
 
 As we can see NVIDIA's profiling tools is u
 
-\vspace{3em}
+\vspace{3.5em}
 
 Finally, this chaper gived a overview of do 
 
