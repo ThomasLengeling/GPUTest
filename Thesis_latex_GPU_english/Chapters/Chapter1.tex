@@ -264,9 +264,9 @@ void add( int * A, int * B, int * C )
 }
 \end{lstlisting}
 
-The biggest difference between the CPU code and the GPU code is the while loop and the kernel. The CPU code has it only have one thread there is only one loop, however if the CPU has multiples thread, an extra loop is requiered for each aditional thread. Bases on this idea, the GPU kernel lauches to code thoughout th threads of the device chip. 
+The biggest difference between the CPU code and the GPU code is how threads are managed with-in the process. The CPU code has only one thread, thrus one loop, however if we whant to expand the CPU code to multiples threads, extra loops are requiered for each aditional thread. Based on this idea, the GPU code lauches to code thoughout every threads accesable by the device chip. 
 
-\vspace{3em}
+\vspace{3.2em}
 
 Finally, this chapter provided a quick overview of heterogeneous programming in a modern context. CUDA  enhance the C language with parallel computing support. Which is possible to launch  enormous amounts of parallel threads, oppose of few threads on the CPU. The number of GPU cores will continue to increase in proportion to increase in available transistors as silicon process improve. In addition, GPUs will continue to go through vigorous architectural evolution. Despite their demonstration high performance on data-parallel applications. \cite{hwu}
 

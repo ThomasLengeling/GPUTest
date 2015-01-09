@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013) (format=pdflatex 2013.5.30)  7 JAN 2015 23:26
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013) (format=pdflatex 2013.5.30)  8 JAN 2015 18:51
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -636,12 +636,12 @@ Package pdftex.def Info: Figures/texture.png used on input line 155.
  [16 <./Figures/texture.png>] [17] [18] <Figures/visualgraph.png, id=615, 419.5675pt x 81.30376pt>
 File: Figures/visualgraph.png Graphic file (type png)
  <use Figures/visualgraph.png>
-Package pdftex.def Info: Figures/visualgraph.png used on input line 226.
+Package pdftex.def Info: Figures/visualgraph.png used on input line 227.
 (pdftex.def)             Requested size: 375.7232pt x 72.80795pt.
  [19 <./Figures/visualgraph.png>] <Figures/visual01.png, id=624, 463.7325pt x 513.92pt>
 File: Figures/visual01.png Graphic file (type png)
  <use Figures/visual01.png>
-Package pdftex.def Info: Figures/visual01.png used on input line 246.
+Package pdftex.def Info: Figures/visual01.png used on input line 247.
 (pdftex.def)             Requested size: 146.11812pt x 161.9327pt.
  [20 <./Figures/visual01.png>]) (./Chapters/Chapter3.tex [21]
 Chapter 3.
@@ -740,7 +740,7 @@ Here is how much of TeX's memory you used:
  957 hyphenation exceptions out of 8191
  49i,19n,60p,1062b,1853s stack positions out of 5000i,500n,10000p,200000b,80000s
 </usr/local/texlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/local/texlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/local/texlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmcsc10.pfb></usr/local/texlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/local/texlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/texlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/local/texlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/local/texlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/texlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/texlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/local/texlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb></usr/local/texlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt8.pfb>
-Output written on /Users/tom/Documents/GitHub/GPUTest/Thesis_latex_GPU_english/.texpadtmp/main.pdf (46 pages, 1556631 bytes).
+Output written on /Users/tom/Documents/GitHub/GPUTest/Thesis_latex_GPU_english/.texpadtmp/main.pdf (46 pages, 1556679 bytes).
 PDF statistics:
  924 PDF objects out of 1000 (max. 8388607)
  828 compressed objects within 9 object streams
