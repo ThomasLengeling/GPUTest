@@ -70,19 +70,27 @@ J.~Nickolls and W.~J. Dally.
 \newblock The gpu computing era.
 \newblock {\em IEEE Micro}, 30(2):56--69, mar 2010.
 
+\bibitem{applications}
+NVIDIA.
+\newblock Popular gpu-accelerated applications.
+\newblock
+  \url{http://www.nvidia.com/docs/IO/64497/NV_GPU_Accelerated_Applications.pdf},
+  2012, Cited January 2015.
+
 \bibitem{practices}
 nVidia.
 \newblock {\em {CUDA C Best Practices Guide}}, Oct. 2014.
 
 \bibitem{tool}
 NVIDIA.
-\newblock {\em CUDA Toolkit Documentation}.
-\newblock Cited January 2015.
+\newblock Cuda documentation.
+\newblock \url{http://docs.nvidia.com/cuda/#axzz3ORV92FoV}, 2014, Cited January
+  2015.
 
 \bibitem{titan}
 N.~L. Oak~Ridge.
-\newblock {\em Titan}.
-\newblock Cited January 2015.
+\newblock Titan.
+\newblock \url{https://www.olcf.ornl.gov/titan/}, 2013, Cited January 2015.
 
 \bibitem{racetrack}
 S.~S. Parkin, M.~Hayashi, and L.~Thomas.

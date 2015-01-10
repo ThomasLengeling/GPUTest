@@ -25,7 +25,7 @@ The fixed graphics pipeline (fixed functions on the GPU) was introduced in the e
 
 At first the GPUs where only used for general-purpose computing like computer graphics, but in-till resent years the GPU has been used to accelerate scientific research, analytics, engineering, robotics and consumer applications.(GPGPU)\cite{physicsgpu}.
 
-GPUs are attractive for certain type of scientific computation as they offer potential seed-up of multi-processors devices with the added advantages of being low cost, low maintenance, energy efficient, and relative simple to program. Many algorithms in applied physics are using GPUs to improve their performance over the CPU. Some examples are Euler Solver 16x seed-up (add Reference seed-up).
+GPUs are attractive for certain type of scientific computation as they offer potential seed-up of multi-processors devices with the added advantages of being low cost, low maintenance, energy efficient, and relative simple to program. Many algorithms in applied physics are using GPUs to improve their performance over the CPU. Some area of scientific research that obtain the benefit of heterogenous computing are: Molecular Dynamics, Quantum Chemistry, Computational Structural Mechanics and Computational Physics \cite{applications}.
 
 In any case, for a given simulation a compromise between speed and accuracy is always made. The current tendency of the CPU relies on increases the clock seeped, decreasing the size of transistor and finally adding more cores per unit and be able to work and a parallel manner, because of the there are some limitations\cite{quantitative}
 
@@ -88,7 +88,7 @@ Being able to efficiently use a GPU for an application requires to expose the in
 \end{figure}
 
 
-On the GPU precision and optimization are very important but there is a penalty for choosing performance or precession. All the GPUs are optimized for single precision floating operations, 24 bit size, Also provides double precision point, size of  53 bits. This is using the standard notation IEEE 754. Normally the GPU uses single precession(SP) by default, if choosed double precision (DP), normally there is a penalty of  2x - 4x seed-up. \cite{precision}
+On the GPU precision and optimization are very important but there is a penalty for choosing performance or precession. All the GPUs are optimized for single precision floating operations, 24 bit size, Also provides double precision point, size of  53 bits. This is using the standard notation IEEE 754. Normally the GPU uses single precession(SP) by default, if chosen double precision (DP), normally there is a penalty of  2x - 4x seed-up. \cite{precision}
 Libraries such as CUBLAS and CUFFT provides useful information how NVIDIA handles floating point operations under the hood.
 
 
@@ -240,7 +240,7 @@ int main()
 }
 \end{lstlisting}
 
-As sowned the function \textit{cudaMalloc} and \textit{cudaFree} are very similar to the C functions \textit{malloc} and \textit{fee}, which allocating memory and deleting memory respectively.
+The function \textit{cudaMalloc} and \textit{cudaFree} are very similar to the C functions \textit{malloc} and \textit{fee}, which allocating memory and deleting memory respectively.
 
 CUDA automatically spams the threads to it correspondent block, so we only need to access the index of the block and pass it to the index arrays. To parallel code will stop in-till the block index reaches the number of elements of the arrays, N.
 
