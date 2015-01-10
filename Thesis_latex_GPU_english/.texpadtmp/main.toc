@@ -25,7 +25,7 @@
 \contentsline {subsection}{\numberline {2.3.5}Thread Synchronization}{17}{subsection.122}
 \contentsline {section}{\numberline {2.4}Kernel Analysis}{17}{section.123}
 \contentsline {section}{\numberline {2.5}Hardware constraints}{18}{section.124}
-\contentsline {subsection}{\numberline {2.5.1}Thread Division}{18}{subsection.125}
+\contentsline {subsection}{\numberline {2.5.1}Thread Division}{19}{subsection.125}
 \contentsline {section}{\numberline {2.6}Visual Profiler}{19}{section.126}
 \contentsline {subsection}{\numberline {2.6.1}Profiler Kernel Report}{20}{subsection.129}
 \contentsline {chapter}{\numberline {3}Introduction to Domain Wall Dynamics and a Implementation with CUDA}{22}{chapter.135}

@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013) (format=pdflatex 2013.5.30)  9 JAN 2015 23:10
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013) (format=pdflatex 2013.5.30)  9 JAN 2015 23:43
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -616,32 +616,32 @@ Package pdftex.def Info: Figures/PCI.png used on input line 32.
  <Figures/apod.png, id=552, 677.53125pt x 550.055pt>
 File: Figures/apod.png Graphic file (type png)
  <use Figures/apod.png>
-Package pdftex.def Info: Figures/apod.png used on input line 43.
+Package pdftex.def Info: Figures/apod.png used on input line 42.
 (pdftex.def)             Requested size: 208.73653pt x 169.46614pt.
 
-Overfull \hbox (9.9577pt too wide) in paragraph at lines 53--55
+Overfull \hbox (9.9577pt too wide) in paragraph at lines 52--54
 \OT1/cmr/m/n/10.95 Increase par-al-leliza-tion from the orig-i-nal code, could be ei-ther adding GPU-optimized
  []
 
 [12 <./Figures/PCI.png> <./Figures/apod.png>] [13] <Figures/memory.png, id=571, 807.015pt x 107.40125pt>
 File: Figures/memory.png Graphic file (type png)
  <use Figures/memory.png>
-Package pdftex.def Info: Figures/memory.png used on input line 103.
+Package pdftex.def Info: Figures/memory.png used on input line 97.
 (pdftex.def)             Requested size: 354.85464pt x 47.22554pt.
  [14] [15 <./Figures/memory.png>] <Figures/texture.png, id=588, 460.72125pt x 182.6825pt>
 File: Figures/texture.png Graphic file (type png)
  <use Figures/texture.png>
-Package pdftex.def Info: Figures/texture.png used on input line 152.
+Package pdftex.def Info: Figures/texture.png used on input line 146.
 (pdftex.def)             Requested size: 229.61145pt x 91.04276pt.
- [16 <./Figures/texture.png>] [17] [18] <Figures/visualgraph.png, id=605, 419.5675pt x 81.30376pt>
+ [16 <./Figures/texture.png>] [17] [18] <Figures/visualgraph.png, id=607, 419.5675pt x 81.30376pt>
 File: Figures/visualgraph.png Graphic file (type png)
  <use Figures/visualgraph.png>
-Package pdftex.def Info: Figures/visualgraph.png used on input line 221.
+Package pdftex.def Info: Figures/visualgraph.png used on input line 218.
 (pdftex.def)             Requested size: 375.7232pt x 72.80795pt.
- [19 <./Figures/visualgraph.png>] <Figures/visual01.png, id=614, 463.7325pt x 513.92pt>
+ [19 <./Figures/visualgraph.png>] <Figures/visual01.png, id=615, 463.7325pt x 513.92pt>
 File: Figures/visual01.png Graphic file (type png)
  <use Figures/visual01.png>
-Package pdftex.def Info: Figures/visual01.png used on input line 241.
+Package pdftex.def Info: Figures/visual01.png used on input line 238.
 (pdftex.def)             Requested size: 146.11812pt x 161.9327pt.
  [20 <./Figures/visual01.png>]) (./Chapters/Chapter3.tex [21]
 Chapter 3.
@@ -650,22 +650,22 @@ Chapter 3.
 ------------------------------------------------------------------------------
 [22
 
-] <Figures/vortex.png, id=642, 552.0625pt x 418.56375pt>
+] <Figures/vortex.png, id=644, 552.0625pt x 418.56375pt>
 File: Figures/vortex.png Graphic file (type png)
  <use Figures/vortex.png>
 Package pdftex.def Info: Figures/vortex.png used on input line 27.
 (pdftex.def)             Requested size: 208.73653pt x 158.26392pt.
- [23 <./Figures/vortex.png>] [24] <Figures/taylor.png, id=670, 317.185pt x 215.80624pt>
+ [23 <./Figures/vortex.png>] [24] <Figures/taylor.png, id=672, 317.185pt x 215.80624pt>
 File: Figures/taylor.png Graphic file (type png)
  <use Figures/taylor.png>
 Package pdftex.def Info: Figures/taylor.png used on input line 92.
 (pdftex.def)             Requested size: 166.98668pt x 113.61609pt.
- [25 <./Figures/taylor.png>] <Figures/euler.png, id=680, 370.38374pt x 194.7275pt>
+ [25 <./Figures/taylor.png>] <Figures/euler.png, id=682, 370.38374pt x 194.7275pt>
 File: Figures/euler.png Graphic file (type png)
  <use Figures/euler.png>
 Package pdftex.def Info: Figures/euler.png used on input line 175.
 (pdftex.def)             Requested size: 292.22987pt x 153.63988pt.
- [26] <Figures/rk4.png, id=688, 293.095pt x 156.585pt>
+ [26] <Figures/rk4.png, id=691, 293.095pt x 156.585pt>
 File: Figures/rk4.png Graphic file (type png)
  <use Figures/rk4.png>
 Package pdftex.def Info: Figures/rk4.png used on input line 199.
@@ -740,10 +740,10 @@ Here is how much of TeX's memory you used:
  957 hyphenation exceptions out of 8191
  49i,19n,60p,1097b,1859s stack positions out of 5000i,500n,10000p,200000b,80000s
 </usr/local/texlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/local/texlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/local/texlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmcsc10.pfb></usr/local/texlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/local/texlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/texlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/local/texlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/local/texlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/texlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/texlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/local/texlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb></usr/local/texlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt8.pfb>
-Output written on /Users/tom/Documents/GitHub/GPUTest/Thesis_latex_GPU_english/.texpadtmp/main.pdf (47 pages, 1558412 bytes).
+Output written on /Users/tom/Documents/GitHub/GPUTest/Thesis_latex_GPU_english/.texpadtmp/main.pdf (47 pages, 1559521 bytes).
 PDF statistics:
- 917 PDF objects out of 1000 (max. 8388607)
- 820 compressed objects within 9 object streams
+ 919 PDF objects out of 1000 (max. 8388607)
+ 822 compressed objects within 9 object streams
  294 named destinations out of 1000 (max. 500000)
  555 words of extra memory for PDF output out of 10000 (max. 10000000)
 

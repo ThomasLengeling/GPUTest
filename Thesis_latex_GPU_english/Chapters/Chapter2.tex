@@ -16,7 +16,7 @@ When working with GPUs hardware challenges emerges. How can we make the best usa
 % techniques, programming models and hierarchies.
 \section{Practices}
 
-There are three rules based on NVIDIAs standers to follow for creating a high performance GPGPU (General-purpose on the GPu) program.\cite{design}
+There are three rules based on NVIDIAs standers to follow for creating a high performance GPGPU (General-purpose on the GPU) program.\cite{design}
 
 \begin{enumerate}
   \item Get the data on the GPU device and keep it there
@@ -35,8 +35,7 @@ For example a DP vectors require 8 bytes of storage per vector element this will
 	\label{fig:PCI}
 \end{figure}
 
-
-Some practices should keep in mind to rapidly identify the portions of code where it would be beneficial for GPU acceleration.  \cite{practices}
+Some practices should keep in mind to rapidly identify the portions of code where it would be beneficial for GPU acceleration.\cite{practices}
 
 \begin{figure}[htbp]
 	\centering
@@ -58,7 +57,6 @@ The developer can optimize the implementation performance through a number of co
  Compare the outcome with the original expectation. Determinate the potential speedup by accelerating a given section. First a partial parallelization should be implementation before carrying out a complete change.
  \end{description}
 
-
 \section{Performance Metrics}
 
 Before trying to make your simulation run faster, you should understand how it currently performs and where the bottlenecks are. There are many possible approaches to profiling the code, but in all cases the objective is the same: to identify the function or functions in which the application is spending most of its execution time and increase the throughput by a giving kernel. Throughput is how many operations completed per cycle.
@@ -69,8 +67,7 @@ Timing a launched kernel can be done on either the GPU or the CPU. Is important 
 
 \subsection{Bandwidth}
 
-The bandwidth refers to the rate at which data can be transferred between host and device and vi-versa. The bandwidth is one of the most important factors for testing performance o the GPUs.  Choosing the right type of memory could dramatically increase performance and bandwidth.  There are two main memory to indicate performance, theoretical bandwidth and effective bandwidth.
-The theoretical bandwidth is base on the hardware specifications that is available by NVIDIA. This is calculated using the following formula:
+The bandwidth refers to the rate at which data can be transferred between host and device and vi-versa. The bandwidth is one of the most important factors for testing performance o the GPUs. Choosing the right type of memory could dramatically increase performance and bandwidth. There are two main memory to indicate performance, theoretical bandwidth and effective bandwidth. The theoretical bandwidth is base on the hardware specifications that is available by NVIDIA. This is calculated using the following formula:
 
 $$ theoretical bandwidth = (clock rate * (bit-wide-memory-interface / 8 )*2) / 10^9 $$
 
@@ -78,17 +75,14 @@ For example the NVIDIA GeForce GTX 280 uses DDR RAM with a memory clock rate of 
 
 $$ (1107 * 10^6 * (512/8.0) *2 )/10^9 = 141.6 Gb /sec$$
 
-The GTX 280 has a theoretical bandwidth of $141.6Gb/sec$
-
-The effective bandwidth is calculated by timing  specific program activities and by knowing how data is accessed by the application. \cite{practices}
+The GTX 280 has a theoretical bandwidth of $141.6Gb/sec$.
+The effective bandwidth is calculated by timing specific program activities and by knowing how data is accessed by the application. \cite{practices}
 
 $$effective-bandwidth = ((Br - Bw) / 109 )/time$$
 
 Where Br is the number of bytes read per kernel, Bw is the number of bytes written per kernel and  t is the elapsed time given in seconds.  \cite{fortran}
 
-In practice the difference between theoretical bandwidth and effective bandwidth indicated how much bandwidth is wasted on accessing memory and calculations.
-
-If the effective bandwidth is low compared to the theoretical bandwidth is one indication that there is not enough work being done in the GPUs. There a several solutions, analyze the code to make  more parallelize instructions, execute more computational instructions on the GPUs, analyze the number of threads per block that are executing on execute kernels .
+In practice the difference between theoretical bandwidth and effective bandwidth indicated how much bandwidth is wasted on accessing memory and calculations. If the effective bandwidth is low compared to the theoretical bandwidth is one indication that there is not enough work being done in the GPUs. There a several solutions, analyze the code to make more parallelize instructions, execute more computational instructions on the GPUs, finally analyze the number of threads per block that are executing on execute kernels .
 
 %----------------------------------------------------------------------------------------
 %	SECTION 2
@@ -118,7 +112,7 @@ Focusing on data reuse within the SM and caches avoids memory bandwidth limitati
 \item Focus on data reuse within the GPGPU to avoid memory bandwidth limitations.
 \end{itemize}
 
-In other words the global memory resides on the device, and it can be anything from 0GB to 8GB, depending on the GPU. Also the memory is visible to all the threads of the grid. Any thread can read and write to any location of the global memory, The memory is always allocated with \textit{cadaMalloc}. And only global memory can be passed to the kernels and are called with \twoline global \twoline. \cite{design}
+In other words the global memory resides on the device, and it can be anything from 1 byte to 8GB, depending on the GPU. Also the memory is visible to all the threads of the grid. Any thread can read and write to any location of the global memory, The memory is always allocated with \textit{cadaMalloc}. And only global memory can be passed to the kernels and are called with \twoline global \twoline. \cite{design}
 
 
 %\ref{fig:smi}
@@ -167,14 +161,18 @@ The texture Memory in a form works like the GPU graphics Texture, when you want 
 
 \subsection{Thread Synchronization}
 
-This refers to synchronizing threads operations,
+This refers to synchronizing threads operations. For efficiency, a pipeline can be created by queuing a number of kernels to keep the GPGPU busy for as long as possible. Further, some form of synchronization is required so that the host can determine when the kernel or pipeline has completed. \cite{design} Commonly used synchronization mechanisms are:
 
-Will wait for all threads to finish there job.
+\begin{itemize}
+  \item Explicitly calling cudaThreadSynchronize(), which acts as a barrier causing the host to stop and wait for all queued kernels to complete.
+  \item Performing a blocking data transfer with cudaMemcpy() as cudaThreadSynchronize() is called inside cudaMemcpy().
+\end{itemize}
+
+The basic unit of work on the GPU is a thread. It is important to understand from a software point of view that each thread is separate from every other thread. Every thread acts as if it has its own processor with separate registers and identity. Will wait for all threads to finish there job. \cite{design}
 
 \section{Kernel Analysis}
 
 As said before, kernels are the essencial part of CUDA programming, threads are launched automatically throughout each thread blocks of the device. Furthermore it millions of threads execute the same code parallel, which is  When execution the 
-
 
 \begin{description}
 
@@ -190,7 +188,6 @@ Refers to the computation time execution, in other works calculations done in th
 
 The performance of relatively simple kernels, which perform computations across a large number of data elements, is more a function of the GPU's memory system performance than the processing performance. It can be beneficial for such memory-bound kernels to decrease the amount of memory access required by increasing the complexity of the computation. \cite{cook}
 
-
 \section{Hardware constraints}
 
 This refers to the limit how many threads per block a kernel launch can have. If exceed this values they kernel will never run. The threads per block really depends of the hardware capabilities. In a roughly summarized as:
@@ -204,11 +201,11 @@ This refers to the limit how many threads per block a kernel launch can have. If
 
 SM Resources, improve performance of an application by trading one resource usage for another.  \cite{practices}
 
-Another inefficiency that can cause low performance to the applications is the number transfers memory calls between the CPU and GPU. The GPU communicates with the CPU via a \textit{PCIe} bus, in addition all of the massive FLOPS per second that can be achieve cannot actually be sent to CPU. The GPU should be filled with the enough workload at the beginning of the application and at the end only return it to the CPU.
+Another inefficiency that can cause low performance to the applications is the number transfers memory calls between the CPU and GPU. The GPU communicates with the CPU via a \textit{PCIe} bus, in addition all of the massive FLOPS per second that can be achieve cannot actually be sent to CPU. The GPU should be filled with the enough workload at the beginning of the application and at the end only return the memory to the CPU.
 
 \subsection{Thread Division}
 
-The hardware has its limits in how much thread per block a kernel can handle. Launching a kernel with the hardware constrains for above can only ensure that the kernel will actually be executed in the device, not a optimize set of threads per block. For this is necessary launch kernel with the amount of threads per block base on the hardware contains that will optimize the performance of the GPU. The impact of the block size that is choosed impacts on how much faster the code will run. By Benchmarking, is possible to find what configuration is the best for the problem. One thing to notice is that thread blocks should be a multiple number of SMs, with this idea is possible to obtain optimal thread block configuration.
+The hardware has its limits, how much thread per block a kernel can handle. Launching a kernel with the hardware constrains for above can only ensure us that the kernel will actually be executed in the device, nonthelss not 100$\%$ optimal. Furthermore is necessary to launch kernels with the amount of threads per block base on the hardware contains and the problem. The block size that is choosed will determine how faster the code will run. By Benchmarking, is possible to find what configuration is the best for the problem. One thing to notice is that thread blocks should be a multiple number of SMs, with this idea is possible to obtain optimal thread block configuration.
 
 \section{Visual Profiler}
 
@@ -248,7 +245,7 @@ The Visual Profiler provides a step-by-step optimization guidance, where is poss
 
 The profiler will execute several times the application to callate data from each kernels. This enables to precisly optimizae phases of the application\cite{example}. The profilling tools can verify how long the application spends executing each kernel as well the number of used blocks and threads. Through this is possible to obtain various memory throughput measures, like global load throughput and global store throughput, indicate the global memory throughput requested by the kernel and therefore corresponding to the effective bandwidth mentioned in the last section.
 
-As we know the profiler executes the application several time to collect data about each kernel. The information obtained by each kernel can be sum-up in-to a report, which has the following information.
+As we know the profiler executes the application several time to collect data about each kernel. The information obtained by each kernel can be sum-up in-to a report that can be exported in a pdf file, which has the following information.
 
 \begin{enumerate}
   \item \textbf{Compute, Bandwidth, or Latency Bound} \hfill \\
@@ -266,8 +263,8 @@ GPU compute resources limit the performance of a kernel when those resources are
   Memory bandwidth limits the performance of a kernel when one or more memories in the GPU cannot provide data at the rate requested by the kernel.
 \end{enumerate}
 
-\vspace{3.5em}
+\vspace{3.2em}
 
-Finally, this chaper gived a overview of practices and performance studies fror GPGPU. Better unnderstanding of the hardware and memory managment, as well as hardware limitation, will help us how to derminate the best usage of the GPUs. As we can see NVIDIA's profiling tools is useful to analyze different stages of our application, moreover to determined which parts of the CUDA code is better to obtimize from others, to gain more performace.
+Finally, this chaper gived a overview of practices and performance studies for GPGPU. Better unnderstanding of the hardware and memory managment, as well as hardware limitation, will help us how to derminate the best usage of the GPUs. As we can see NVIDIA's profiling tools is useful to analyze different stages of our application, moreover to determined which parts of the CUDA code is better to obtimize from others, to gain more performace.
 
 
