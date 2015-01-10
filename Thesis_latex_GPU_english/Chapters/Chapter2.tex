@@ -16,8 +16,7 @@ When working with GPUs hardware challenges emerges. How can we make the best usa
 % techniques, programming models and hierarchies.
 \section{Practices}
 
-
-There are three rules to follow for creating a high performance GPGPU program.\cite{design}
+There are three rules based on NVIDIAs standers to follow for creating a high performance GPGPU (General-purpose on the GPu) program.\cite{design}
 
 \begin{enumerate}
   \item Get the data on the GPU device and keep it there
@@ -62,7 +61,7 @@ The developer can optimize the implementation performance through a number of co
 
 \section{Performance Metrics}
 
-There are many possible approaches to profiling the code, but in all cases the objective is the same: to identify the function or functions in which the application is spending most of its execution time and increase the throughput by a giving kernel. Throughput is how many operations completed per cycle.
+Before trying to make your simulation run faster, you should understand how it currently performs and where the bottlenecks are. There are many possible approaches to profiling the code, but in all cases the objective is the same: to identify the function or functions in which the application is spending most of its execution time and increase the throughput by a giving kernel. Throughput is how many operations completed per cycle.
 
 \subsection{Timing}
 
@@ -119,10 +118,8 @@ Focusing on data reuse within the SM and caches avoids memory bandwidth limitati
 \item Focus on data reuse within the GPGPU to avoid memory bandwidth limitations.
 \end{itemize}
 
-In other words the global memory resides on the device, and it can be anything from 0GB to 8GB, depending on the GPU. Also the memory is visible to all the threads of the grid. Any thread can read and write to any location of the global memory, The memory is always allocated with \textit{cadaMalloc}. And only global memory can be passed to the kernels and are called with \twoline global \twoline.
+In other words the global memory resides on the device, and it can be anything from 0GB to 8GB, depending on the GPU. Also the memory is visible to all the threads of the grid. Any thread can read and write to any location of the global memory, The memory is always allocated with \textit{cadaMalloc}. And only global memory can be passed to the kernels and are called with \twoline global \twoline. \cite{design}
 
-
-\cite{design}
 
 %\ref{fig:smi}
 
@@ -194,11 +191,7 @@ Refers to the computation time execution, in other works calculations done in th
 The performance of relatively simple kernels, which perform computations across a large number of data elements, is more a function of the GPU's memory system performance than the processing performance. It can be beneficial for such memory-bound kernels to decrease the amount of memory access required by increasing the complexity of the computation. \cite{cook}
 
 
-\section{Performance Issue}
-
-Refers..
-
-\subsection{Hardware constraints}
+\section{Hardware constraints}
 
 This refers to the limit how many threads per block a kernel launch can have. If exceed this values they kernel will never run. The threads per block really depends of the hardware capabilities. In a roughly summarized as:
 
@@ -211,12 +204,11 @@ This refers to the limit how many threads per block a kernel launch can have. If
 
 SM Resources, improve performance of an application by trading one resource usage for another.  \cite{practices}
 
-Another inefficiency that can cause low performance to the applications is the number transfers memory calls between the CPU and GPU. The GPU communicates with the CPU via a \textit{PCIe} bus, by this all the massive FLOPS per second that can be achieve cannot actually be sent to CPU. The GPU should be filled with the enough workload at the beginning of the application and at the end only return it to the CPU.
+Another inefficiency that can cause low performance to the applications is the number transfers memory calls between the CPU and GPU. The GPU communicates with the CPU via a \textit{PCIe} bus, in addition all of the massive FLOPS per second that can be achieve cannot actually be sent to CPU. The GPU should be filled with the enough workload at the beginning of the application and at the end only return it to the CPU.
 
 \subsection{Thread Division}
 
 The hardware has its limits in how much thread per block a kernel can handle. Launching a kernel with the hardware constrains for above can only ensure that the kernel will actually be executed in the device, not a optimize set of threads per block. For this is necessary launch kernel with the amount of threads per block base on the hardware contains that will optimize the performance of the GPU. The impact of the block size that is choosed impacts on how much faster the code will run. By Benchmarking, is possible to find what configuration is the best for the problem. One thing to notice is that thread blocks should be a multiple number of SMs, with this idea is possible to obtain optimal thread block configuration.
-
 
 \section{Visual Profiler}
 
@@ -262,9 +254,11 @@ As we know the profiler executes the application several time to collect data ab
   \item \textbf{Compute, Bandwidth, or Latency Bound} \hfill \\
       The performance determines if the kernel is bounded by computation, memory badwidth, or instructions/memory latancy. It shows how is limiting the performace respectively.
   
-  \item \textbf{Instructions and Memory Latency} \hfill \\Instruction and memory latency limit the performance of a kernel when the GPU does not have enough work to keep busy. The performance of latency-limited kernels can often be improved by increasing occupancy. Occupancy is a measure of how many warps the kernel has active on the GPU, relative to the maximum number of warps supported by the GPU.
+  \item \textbf{Instructions and Memory Latency} \hfill \\
+Instruction and memory latency limit the performance of a kernel when the GPU does not have enough work to keep busy. The performance of latency-limited kernels can often be improved by increasing occupancy. Occupancy is a measure of how many warps the kernel has active on the GPU, relative to the maximum number of warps supported by the GPU.
   
-  \item \textbf{Compute Resources} \hfill \\GPU compute resources limit the performance of a kernel when those resources are insufficient or poorly utilized. Compute resources are used most efficiently when instructions do not overuse a function unit. 
+  \item \textbf{Compute Resources} \hfill \\
+GPU compute resources limit the performance of a kernel when those resources are insufficient or poorly utilized. Compute resources are used most efficiently when instructions do not overuse a function unit. 
   \item \textbf{Floating-Point Operation Counts} \hfill \\
   floating-point operations executed by the kernel, can be either single presision or double presision.
   
@@ -272,11 +266,8 @@ As we know the profiler executes the application several time to collect data ab
   Memory bandwidth limits the performance of a kernel when one or more memories in the GPU cannot provide data at the rate requested by the kernel.
 \end{enumerate}
 
-As we can see NVIDIA's profiling tools is u
-
 \vspace{3.5em}
 
-Finally, this chaper gived a overview of do 
-
+Finally, this chaper gived a overview of practices and performance studies fror GPGPU. Better unnderstanding of the hardware and memory managment, as well as hardware limitation, will help us how to derminate the best usage of the GPUs. As we can see NVIDIA's profiling tools is useful to analyze different stages of our application, moreover to determined which parts of the CUDA code is better to obtimize from others, to gain more performace.
 
 

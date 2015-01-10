@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013) (format=pdflatex 2013.5.30)  9 JAN 2015 10:07
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013) (format=pdflatex 2013.5.30)  9 JAN 2015 23:10
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -480,7 +480,7 @@ LaTeX Info: Redefining \nameref on input line 50.
 \openout3 = `main.out'.
 
 \dunder=\skip67
- <Figures/uni.jpg, id=241, 277.035pt x 329.73187pt>
+ <Figures/uni.jpg, id=237, 277.035pt x 329.73187pt>
 File: Figures/uni.jpg Graphic file (type jpg)
  <use Figures/uni.jpg>
 Package pdftex.def Info: Figures/uni.jpg used on input line 85.
@@ -544,40 +544,36 @@ Chapter 1.
 
 
 
-] <Figures/GPU_CPU_s.png, id=385, 493.845pt x 245.91875pt>
+] <Figures/GPU_CPU_s.png, id=380, 493.845pt x 245.91875pt>
 File: Figures/GPU_CPU_s.png Graphic file (type png)
  <use Figures/GPU_CPU_s.png>
 Package pdftex.def Info: Figures/GPU_CPU_s.png used on input line 38.
 (pdftex.def)             Requested size: 292.22987pt x 145.51857pt.
- [2 <./Figures/GPU_CPU_s.png (PNG copy)>]
-
-Package natbib Warning: Citation `titan' on page 3 undefined on input line 56.
-
-[3] <Figures/GPU_CPU.png, id=404, 307.1475pt x 250.9375pt>
+ [2 <./Figures/GPU_CPU_s.png (PNG copy)>] [3] <Figures/GPU_CPU.png, id=401, 307.1475pt x 250.9375pt>
 File: Figures/GPU_CPU.png Graphic file (type png)
  <use Figures/GPU_CPU.png>
-Package pdftex.def Info: Figures/GPU_CPU.png used on input line 72.
+Package pdftex.def Info: Figures/GPU_CPU.png used on input line 71.
 (pdftex.def)             Requested size: 175.33792pt x 143.25027pt.
- <Figures/arch.png, id=407, 1104.125pt x 604.2575pt>
+ [4 <./Figures/GPU_CPU.png (PNG copy)>] <Figures/arch.png, id=409, 1104.125pt x 604.2575pt>
 File: Figures/arch.png Graphic file (type png)
  <use Figures/arch.png>
-Package pdftex.def Info: Figures/arch.png used on input line 85.
+Package pdftex.def Info: Figures/arch.png used on input line 84.
 (pdftex.def)             Requested size: 283.87862pt x 155.36063pt.
- [4 <./Figures/GPU_CPU.png (PNG copy)>] <Figures/cycle.png, id=417, 250.9375pt x 216.81pt>
+ [5 <./Figures/arch.png>] <Figures/cycle.png, id=419, 250.9375pt x 216.81pt>
 File: Figures/cycle.png Graphic file (type png)
  <use Figures/cycle.png>
-Package pdftex.def Info: Figures/cycle.png used on input line 105.
+Package pdftex.def Info: Figures/cycle.png used on input line 104.
 (pdftex.def)             Requested size: 125.24318pt x 108.21284pt.
-LaTeX Font Info:    Try loading font information for OMS+cmr on input line 113.
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 112.
  (/usr/local/texlive/2013/texmf-dist/tex/latex/base/omscmr.fd
 File: omscmr.fd 1999/05/25 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10.95> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 113.
- [5 <./Figures/arch.png>] <Figures/grid.png, id=427, 195.73125pt x 99.37125pt>
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 112.
+ <Figures/grid.png, id=424, 195.73125pt x 99.37125pt>
 File: Figures/grid.png Graphic file (type png)
  <use Figures/grid.png>
-Package pdftex.def Info: Figures/grid.png used on input line 129.
+Package pdftex.def Info: Figures/grid.png used on input line 128.
 (pdftex.def)             Requested size: 250.48637pt x 127.17656pt.
 Missing character: There is no â in font cmr10!
 Missing character: There is no € in font cmr10!
@@ -585,67 +581,67 @@ Missing character: There is no ™ in font cmr10!
 Missing character: There is no â in font cmr10!
 Missing character: There is no € in font cmr10!
 Missing character: There is no ™ in font cmr10!
+ [6 <./Figures/cycle.png>]
 
+LaTeX Warning: Reference `memorySpace:arch' on page 7 undefined on input line 134.
 
-LaTeX Warning: Reference `memorySpace:arch' on page 6 undefined on input line 135.
-
-[6 <./Figures/cycle.png>] <Figures/memorySpace.png, id=435, 443.6575pt x 125.46875pt>
+<Figures/memorySpace.png, id=432, 443.6575pt x 125.46875pt>
 File: Figures/memorySpace.png Graphic file (type png)
  <use Figures/memorySpace.png>
-Package pdftex.def Info: Figures/memorySpace.png used on input line 139.
+Package pdftex.def Info: Figures/memorySpace.png used on input line 138.
 (pdftex.def)             Requested size: 250.48637pt x 70.83827pt.
- <Figures/sum.png, id=439, 405.515pt x 253.94875pt>
+ <Figures/sum.png, id=436, 405.515pt x 253.94875pt>
 File: Figures/sum.png Graphic file (type png)
  <use Figures/sum.png>
-Package pdftex.def Info: Figures/sum.png used on input line 151.
+Package pdftex.def Info: Figures/sum.png used on input line 150.
 (pdftex.def)             Requested size: 187.8616pt x 117.64706pt.
- (/usr/local/texlive/2013/texmf-dist/tex/latex/listings/lstlang1.sty
+ [7 <./Figures/grid.png (PNG copy)> <./Figures/memorySpace.png>] (/usr/local/texlive/2013/texmf-dist/tex/latex/listings/lstlang1.sty
 File: lstlang1.sty 2004/09/05 1.3 listings language file
 ) (/usr/local/texlive/2013/texmf-dist/tex/latex/listings/lstlang1.sty
 File: lstlang1.sty 2004/09/05 1.3 listings language file
 ) (/usr/local/texlive/2013/texmf-dist/tex/latex/listings/lstmisc.sty
 File: lstmisc.sty 2007/02/22 1.4 (Carsten Heinz)
-) [7 <./Figures/grid.png (PNG copy)> <./Figures/memorySpace.png>] [8 <./Figures/sum.png>] [9]) (./Chapters/Chapter2.tex [10]
+) [8 <./Figures/sum.png>] [9]) (./Chapters/Chapter2.tex [10]
 Chapter 2.
 ------------------------------------------------------------------------------
  2 Heterogeneous Performance Analysis and Practices
 ------------------------------------------------------------------------------
 [11
 
-] <Figures/PCI.png, id=560, 499.8675pt x 69.25874pt>
+] <Figures/PCI.png, id=550, 499.8675pt x 69.25874pt>
 File: Figures/PCI.png Graphic file (type png)
  <use Figures/PCI.png>
-Package pdftex.def Info: Figures/PCI.png used on input line 33.
+Package pdftex.def Info: Figures/PCI.png used on input line 32.
 (pdftex.def)             Requested size: 292.22987pt x 40.49135pt.
- <Figures/apod.png, id=562, 677.53125pt x 550.055pt>
+ <Figures/apod.png, id=552, 677.53125pt x 550.055pt>
 File: Figures/apod.png Graphic file (type png)
  <use Figures/apod.png>
-Package pdftex.def Info: Figures/apod.png used on input line 44.
+Package pdftex.def Info: Figures/apod.png used on input line 43.
 (pdftex.def)             Requested size: 208.73653pt x 169.46614pt.
 
-Overfull \hbox (9.9577pt too wide) in paragraph at lines 54--56
+Overfull \hbox (9.9577pt too wide) in paragraph at lines 53--55
 \OT1/cmr/m/n/10.95 Increase par-al-leliza-tion from the orig-i-nal code, could be ei-ther adding GPU-optimized
  []
 
-[12 <./Figures/PCI.png> <./Figures/apod.png>] [13] <Figures/memory.png, id=582, 807.015pt x 107.40125pt>
+[12 <./Figures/PCI.png> <./Figures/apod.png>] [13] <Figures/memory.png, id=571, 807.015pt x 107.40125pt>
 File: Figures/memory.png Graphic file (type png)
  <use Figures/memory.png>
-Package pdftex.def Info: Figures/memory.png used on input line 104.
+Package pdftex.def Info: Figures/memory.png used on input line 103.
 (pdftex.def)             Requested size: 354.85464pt x 47.22554pt.
- [14] [15 <./Figures/memory.png>] <Figures/texture.png, id=598, 460.72125pt x 182.6825pt>
+ [14] [15 <./Figures/memory.png>] <Figures/texture.png, id=588, 460.72125pt x 182.6825pt>
 File: Figures/texture.png Graphic file (type png)
  <use Figures/texture.png>
-Package pdftex.def Info: Figures/texture.png used on input line 155.
+Package pdftex.def Info: Figures/texture.png used on input line 152.
 (pdftex.def)             Requested size: 229.61145pt x 91.04276pt.
- [16 <./Figures/texture.png>] [17] [18] <Figures/visualgraph.png, id=615, 419.5675pt x 81.30376pt>
+ [16 <./Figures/texture.png>] [17] [18] <Figures/visualgraph.png, id=605, 419.5675pt x 81.30376pt>
 File: Figures/visualgraph.png Graphic file (type png)
  <use Figures/visualgraph.png>
-Package pdftex.def Info: Figures/visualgraph.png used on input line 229.
+Package pdftex.def Info: Figures/visualgraph.png used on input line 221.
 (pdftex.def)             Requested size: 375.7232pt x 72.80795pt.
- [19 <./Figures/visualgraph.png>] <Figures/visual01.png, id=624, 463.7325pt x 513.92pt>
+ [19 <./Figures/visualgraph.png>] <Figures/visual01.png, id=614, 463.7325pt x 513.92pt>
 File: Figures/visual01.png Graphic file (type png)
  <use Figures/visual01.png>
-Package pdftex.def Info: Figures/visual01.png used on input line 249.
+Package pdftex.def Info: Figures/visual01.png used on input line 241.
 (pdftex.def)             Requested size: 146.11812pt x 161.9327pt.
  [20 <./Figures/visual01.png>]) (./Chapters/Chapter3.tex [21]
 Chapter 3.
@@ -654,22 +650,22 @@ Chapter 3.
 ------------------------------------------------------------------------------
 [22
 
-] <Figures/vortex.png, id=652, 552.0625pt x 418.56375pt>
+] <Figures/vortex.png, id=642, 552.0625pt x 418.56375pt>
 File: Figures/vortex.png Graphic file (type png)
  <use Figures/vortex.png>
 Package pdftex.def Info: Figures/vortex.png used on input line 27.
 (pdftex.def)             Requested size: 208.73653pt x 158.26392pt.
- [23 <./Figures/vortex.png>] [24] <Figures/taylor.png, id=680, 317.185pt x 215.80624pt>
+ [23 <./Figures/vortex.png>] [24] <Figures/taylor.png, id=670, 317.185pt x 215.80624pt>
 File: Figures/taylor.png Graphic file (type png)
  <use Figures/taylor.png>
 Package pdftex.def Info: Figures/taylor.png used on input line 92.
 (pdftex.def)             Requested size: 166.98668pt x 113.61609pt.
- [25 <./Figures/taylor.png>] <Figures/euler.png, id=691, 370.38374pt x 194.7275pt>
+ [25 <./Figures/taylor.png>] <Figures/euler.png, id=680, 370.38374pt x 194.7275pt>
 File: Figures/euler.png Graphic file (type png)
  <use Figures/euler.png>
 Package pdftex.def Info: Figures/euler.png used on input line 175.
 (pdftex.def)             Requested size: 292.22987pt x 153.63988pt.
- [26] <Figures/rk4.png, id=699, 293.095pt x 156.585pt>
+ [26] <Figures/rk4.png, id=688, 293.095pt x 156.585pt>
 File: Figures/rk4.png Graphic file (type png)
  <use Figures/rk4.png>
 Package pdftex.def Info: Figures/rk4.png used on input line 199.
@@ -717,12 +713,9 @@ Appendix A.
 Missing character: There is no â in font cmr10!
 Missing character: There is no € in font cmr10!
 Missing character: There is no ™ in font cmr10!
-)
-
-Package natbib Warning: There were undefined citations.
-
+ [39])
 Package atveryend Info: Empty hook `BeforeClearDocument' on input line 231.
-[39]
+ [40]
 Package atveryend Info: Empty hook `AfterLastShipout' on input line 231.
  (/Users/tom/Documents/GitHub/GPUTest/Thesis_latex_GPU_english/.texpadtmp/main.aux)
 Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 231.
@@ -739,18 +732,18 @@ LaTeX Warning: There were multiply-defined labels.
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 231.
  ) 
 Here is how much of TeX's memory you used:
- 13901 strings out of 493315
- 196582 string characters out of 6137904
- 307608 words of memory out of 5000000
- 16843 multiletter control sequences out of 15000+600000
+ 13896 strings out of 493315
+ 196510 string characters out of 6137904
+ 304917 words of memory out of 5000000
+ 16844 multiletter control sequences out of 15000+600000
  13598 words of font info for 50 fonts, out of 8000000 for 9000
  957 hyphenation exceptions out of 8191
- 49i,19n,60p,1062b,1851s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 49i,19n,60p,1097b,1859s stack positions out of 5000i,500n,10000p,200000b,80000s
 </usr/local/texlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/local/texlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/local/texlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmcsc10.pfb></usr/local/texlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/local/texlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/texlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/local/texlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/local/texlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/texlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/texlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/local/texlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb></usr/local/texlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt8.pfb>
-Output written on /Users/tom/Documents/GitHub/GPUTest/Thesis_latex_GPU_english/.texpadtmp/main.pdf (46 pages, 1557623 bytes).
+Output written on /Users/tom/Documents/GitHub/GPUTest/Thesis_latex_GPU_english/.texpadtmp/main.pdf (47 pages, 1558412 bytes).
 PDF statistics:
- 924 PDF objects out of 1000 (max. 8388607)
- 828 compressed objects within 9 object streams
- 300 named destinations out of 1000 (max. 500000)
- 563 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 917 PDF objects out of 1000 (max. 8388607)
+ 820 compressed objects within 9 object streams
+ 294 named destinations out of 1000 (max. 500000)
+ 555 words of extra memory for PDF output out of 10000 (max. 10000000)
 

@@ -53,16 +53,15 @@ In any case, for a given simulation a compromise between speed and accuracy is a
 
 \end{description}
 
-The current paradigm of using CPUs for computing growth is unsustainable. In 2012, Japan among the countries with elite supercomputers, builded the machine "K Computer", with 705,024 multi-core CPUs, it can achieve 11.3 petaflops ($10^5$ flops). Furthermore the computer is one of the most power efficient supercomputer in the world with a total of 12.66 megawatts (MW), in other words 830 Mflops/watt. This is this is enough to power a small town of 10,000 homes. If the current thread of power use continues, the next supercomputer would require 200 MW of power, this would require a nuclear power reactor to run it.\cite{whatexascale}. However in 2013 Oak Ridge Nacional Laboratory (U.S) built a supercomputer that combines CPUs and GPUs, the Titan. It can archive an astonish 24 petaflops theoretical peak. Moreover with a power consumption of 8.2 MW. Combining CPUs GPUs is possible to built supercomputers with a higher performance and lower power consumption. \cite{titan}
+The current paradigm of using CPUs for computing is growth unsustainable. In 2012, Japan among the countries with elite supercomputers, builded the machine "K Computer", with 705,024 multi-core CPUs, it can achieve 11.3 petaflops ($10^5$ flops). Furthermore the computer is one of the most power efficient supercomputer in the world with a total of 12.66 megawatts (MW), in other words 830 Mflops/watt. This is this is enough to power a small town of 10,000 homes. If the current thread of power use continues, the next supercomputer would require 200 MW of power, this would require a nuclear power reactor to run it.\cite{whatexascale}. However in 2013 Oak Ridge Nacional Laboratory (U.S) built a supercomputer that combines CPUs and GPUs, the Titan. It can archive an astonish 24 petaflops theoretical peak. Moreover with a power consumption of 8.2 MW. As showed is possible to built a supercomputers that combines CPUs and GPUs, which has a higher performance and lower power consumption compared to a CPU based supercomputer. \cite{titan}
 
-
-As said the GPU exceeds the CPU in calculations per second FLOPS with a low energy consumption. However the GPU is designed to launch small amounts of data in parallel with only several instructions, in other words the GPU swap, switch threads very fast, they are extremely lightweight. In a typical system, thousands of threads are waiting to work. While the CPU only run up-to 24 threads on a hex-core processor. They can execute a single operation on comparatively large set of data with only one instruction. Although this can be extremely cost-wise operation on the GPU.
+As said the GPU exceeds the CPU in calculations per second FLOPS with a low energy consumption. However the GPU is designed to launch small amounts of data in parallel with only several instructions, in other words the GPU swap, switch threads very fast and they are extremely lightweight. In a typical system, thousands of threads are waiting to work. While the CPU only run up-to 24 threads on a hex-core processor. They can execute a single operation on comparatively large set of data with only one instruction. Although this can be extremely cost-wise operation on the GPU.
 
 \section{GPUs as computing units}
 
 A insight of the architecture of GPU can give a idea of  why it outperforms the CPU on various benchmarking.
 
-The GPU, unlike its CPU cousin, has thousands for registers per SM (streaming multiprocessor), this are  arithmetic processing units. An SM can thought of like a multi-thread CPU core. On a typical CPU has two, four, six or eight cores. On a GPU as many as N SM core. We can see this in the figure \ref{fig:gpu_cpu}. For a particular calculation, all the stream
+The GPU, unlike its CPU cousin, has thousands for registers per SM (streaming multiprocessor), this are arithmetic processing units. An SM can thought of like a multi-thread CPU core. On a typical CPU has two, four, six or eight cores. On a GPU as many as N SM core. We can see this in the figure \ref{fig:gpu_cpu}. For a particular calculation, all the stream
 processors within a group execute exactly the same instruction on a particular data stream, then the data is sent to the upper level, the host (CPU). \cite{cook}
 
 As commonly named CUDA cores are the number of processors in a single NVIDIA GPU chip. For example one of the first GPU capable of running CUDA code was the NVIDIA 9800 GT, which had 112 cores, while the latest high-end GPU GTX 980 has 2048 cores.
@@ -76,7 +75,7 @@ As commonly named CUDA cores are the number of processors in a single NVIDIA GPU
 \end{figure}
 
 
-Each CUDA core  can execute a sequential thread, just like a CPU thread, which NVIDIA calls it Single Instruction, Multiple Thread (SIMT). In addition all cores in the same group execute the same instruction at the same time, much like classical SIMD (Single instruction, multiple data) processors. SIMT handles conditionals somewhat differently than SIMD, though the effect is much the same, where some cores are disabled for conditional operations, in other word a single instruction is executed throughout the device.
+Each CUDA core can execute a sequential thread, just like a CPU thread, which NVIDIA calls it Single Instruction, Multiple Thread (SIMT). In addition all cores in the same group execute the same instruction at the same time, much like classical SIMD (Single instruction, multiple data) processors. SIMT handles conditionals somewhat differently than SIMD, though the effect is much the same, where some cores are disabled for conditional operations, in other word a single instruction is executed throughout the device.
 
 Being able to efficiently use a GPU for an application requires to expose the inherent data-parallelism Optimized for low-latency, serial computation. This can be seen in contrast with a CPU, which is optimized for sequential code performance, fast switching registers  and sophisticated control logic allowing to run single complex programs as fast as possible, which is not possible on the GPU. Memory management is very important for GPUs. this refers how to allocate memory space and transfer data between host (CPU) and device (GPU). While the CPU memory hierarchy is almost non-existent, on the GPU inherent data is important. In figure \ref{fig:arch} different levels of memory can be observer between the host and the device, which differs form the CPU \cite{hwu}.
 
@@ -160,7 +159,6 @@ This first example illustrates the CPU code executed in a single thread. The cod
 
 \begin{lstlisting}[language=C++, caption={CPU Vector Addition}]
 #include <iostream>
-
 #define N 100
 
 void add( int *a, int *b, int *c );
@@ -171,16 +169,14 @@ int main()
     
     //fill the arrays with values
     for(int i = 0; i < N; i++){
-        A[i] = 1;
-        B[i] = i;
+        A[i] = 1; B[i] = i;
     }
     
     add(A, B, C);
     
     //Display the results
-    for (int i = 0; i < N; i++) {
+    for (int i = 0; i < N; i++)
         std::cout << A[i] << ", " << B[i] << ", " << C[i] << std::endl;
-    }
     
     return 0;
 }
@@ -202,11 +198,10 @@ We can notice if we set N to be a large number, the function \textit{add} could 
 
 \subsubsection{GPU Code}
 
-We can accomplish the same operation very similar in the GPU with CUDA. First create CPU and GPU memory with there corresponded code. Send the CPU memory to the device, make calculations on the highly parallel GPU, finally return the results the CPU.
+We can accomplish the same operation very similar in the GPU with CUDA. First create CPU and GPU memory, with there corresponded code. Send the CPU memory to the device, make calculations on the highly parallel GPU, finally return the results the CPU.
 
 \begin{lstlisting}[language=C++, caption={GPU Vector Addition}]
 #include <iostream>
-
 #define N 100
 
 // CUDA KERNEL
@@ -224,8 +219,7 @@ int main()
     
     //allocate the memory on the CPU
     for(int i = 0; i < N; i++){
-        A[i] = 1;
-        B[i] = i;
+        A[i] = 1; B[i] = i;
     }
     
     //calculate the vector addition in the GPU
@@ -234,11 +228,9 @@ int main()
     //copy back the result from the GPU to the CPU 
     cudaMemcpy( c, dev_c, N * sizeof(int), cudaMemcpyDeviceToHost ) );
      
-     
     //Display the results
-    for (int i = 0; i < N; i++) {
+    for (int i = 0; i < N; i++)
         std::cout << A[i] << ", " << B[i] << ", " << C[i] << std::endl;
-    }
     
     cudaFree( dev_a );
     cudaFree( dev_b );
@@ -248,7 +240,7 @@ int main()
 }
 \end{lstlisting}
 
-As we can see the function \textit{cudaMalloc} and \textit{cudaFree} are very similar to the C code functions \textit{malloc} and \textit{fee} for allocating memory and deleting memory.
+As sowned the function \textit{cudaMalloc} and \textit{cudaFree} are very similar to the C functions \textit{malloc} and \textit{fee}, which allocating memory and deleting memory respectively.
 
 CUDA automatically spams the threads to it correspondent block, so we only need to access the index of the block and pass it to the index arrays. To parallel code will stop in-till the block index reaches the number of elements of the arrays, N.
 
@@ -266,7 +258,7 @@ The biggest difference between the CPU code and the GPU code is how threads are 
 
 \vspace{3.2em}
 
-Finally, this chapter provided a quick overview of heterogeneous programming in a modern context. CUDA  enhance the C language with parallel computing support. Which is possible to launch  enormous amounts of parallel threads, oppose of few threads on the CPU. The number of GPU cores will continue to increase in proportion to increase in available transistors as silicon process improve. In addition, GPUs will continue to go through vigorous architectural evolution. Despite their demonstration high performance on data-parallel applications. \cite{hwu}
+Finally, this chapter provided a overview of heterogeneous programming in a modern context. CUDA  enhance the C language with parallel computing support. Which is possible to launch  enormous amounts of parallel threads, oppose of few threads on the CPU. The number of GPU cores will continue to increase in proportion to increase in available transistors as silicon process improve. In addition, GPUs will continue to go through vigorous architectural evolution. Despite their demonstration high performance on data-parallel applications. \cite{hwu}
 
 
 
