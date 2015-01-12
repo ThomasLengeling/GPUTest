@@ -9,7 +9,7 @@
 %----------------------------------------------------------------------------------------
 %	SECTION 1
 %----------------------------------------------------------------------------------------
-This chapter is a overview of the theory and experiments behind Dr. Cluadio's work "Domain Wall Dynamics under Nonlocal Spin-Transfer Torque". This is a quantitatively test the effects of spin-diffusion, on real Domain Wall (DW) structures, by numerically implementing the Zhang-LI model into a NiFe soft nanostrip \cite{claudio}. The implementation takes advantage of the highly parallel process capabilities of the GPU.
+This chapter is a overview of the theory and experiments behind the study of Domain Wall Dynamics under Nonlocal Spin-Transfer Torque. This is a quantitatively test the effects of spin-diffusion, on real Domain Wall (DW) structures, by numerically implementing the Zhang-LI model into a NiFe soft nanostrip \cite{claudio}. The numericall implementation takes advantage of the highly parallel process capabilities of the GPU. The numerical method used for the solution is a the method known as Finite Differences in the Time Domain (FDTD) whose integration is done using a 4th order Runge - Kutta integration.
 
 
 \section{Theory}
@@ -159,8 +159,6 @@ f^{(2)}_i &= \dfrac{f_{i-2}+16f_{i-1} -30f_{i} + 16f_{i+1} - f_{i+1}}{12a^2}
 \cite{methods}
 
 \subsection{Finite Differences in the Time Domain}
-
-
 
 Modern numerical algorithms for the solution of ordinary differential equations are also base on the method of the Taylor series. Each algorithm such as Runge-Kutta method are constructed so they give an expression depending of the parameter $(h)$, in other works the step as an approximate solution of the first terms of the Taylor series.
 
