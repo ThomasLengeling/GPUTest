@@ -270,6 +270,11 @@ There are three common remote profiling use cases that can be addressed by using
 
 Remote profiling is the process of collecting profile data from a remote system that is different than the host system at which that profile data will be viewed and analyzed. There are two ways to perform remote profiling. You can profile your remote application directly from nsight or nvvp. Or you can use nvprof to collect the profile data on the remote system and then use nvvp on the host system to view and analyze the data.
 
+To use nvvp remote profiling you must install the same version of the CUDA Toolkit on both the host and remote systems. It is not necessary for the host system to have an NVIDIA GPU.
+
+Read more at: http://docs.nvidia.com/cuda/profiler-users-guide/index.html#ixzz3OflmRt64 
+Follow us: @GPUComputing on Twitter | NVIDIA on Facebook
+
 \vspace{3.2em}
 
 Finally, this chapter gives a overview of practices and performance studies for GPGPU. A better understanding of the hardware and memory management, as well as hardware limitation, will help us how to determinate the best usage of the GPUs. As we can see NVIDIA's profiling tools is useful to analyze different stages of our application, moreover to determined which parts of the CUDA code is better to optimize from others, to gain more performance.
