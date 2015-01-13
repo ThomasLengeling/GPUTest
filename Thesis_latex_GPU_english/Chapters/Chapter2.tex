@@ -261,6 +261,15 @@ GPU compute resources limit the performance of a kernel when those resources are
   Memory bandwidth limits the performance of a kernel when one or more memories in the GPU cannot provide data at the rate requested by the kernel.
 \end{enumerate}
 
+\subsection{Collect Data On Remote System}
+
+Is also possible to collect data from a remote system where a GUI is not available. 
+
+There are three common remote profiling use cases that can be addressed by using nvprof and nvvp.
+
+
+Remote profiling is the process of collecting profile data from a remote system that is different than the host system at which that profile data will be viewed and analyzed. There are two ways to perform remote profiling. You can profile your remote application directly from nsight or nvvp. Or you can use nvprof to collect the profile data on the remote system and then use nvvp on the host system to view and analyze the data.
+
 \vspace{3.2em}
 
 Finally, this chapter gives a overview of practices and performance studies for GPGPU. A better understanding of the hardware and memory management, as well as hardware limitation, will help us how to determinate the best usage of the GPUs. As we can see NVIDIA's profiling tools is useful to analyze different stages of our application, moreover to determined which parts of the CUDA code is better to optimize from others, to gain more performance.
