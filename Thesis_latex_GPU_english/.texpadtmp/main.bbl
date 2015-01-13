@@ -125,6 +125,11 @@ J.~Sanders and E.~Kandrot.
   Programming}.
 \newblock Addison-Wesley Professional, 1st edition, 2010.
 
+\bibitem{ufdtd}
+J.~B. Schneider.
+\newblock Understanding the finite-difference time-domain method,
+  www.eecs.wsu.edu/~schneidj/ufdtd, 2010.
+
 \bibitem{whatexascale}
 R.~F. Service.
 \newblock What it’ll take to go exascale.

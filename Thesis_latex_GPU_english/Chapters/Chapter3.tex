@@ -9,16 +9,20 @@
 %----------------------------------------------------------------------------------------
 %	SECTION 1
 %----------------------------------------------------------------------------------------
-This chapter is a overview of the theory and experiments behind the study of Domain Wall Dynamics under Nonlocal Spin-Transfer Torque. This is a quantitatively test the effects of spin-diffusion, on real Domain Wall (DW) structures, by numerically implementing the Zhang-LI model into a NiFe soft nanostrip \cite{claudio}. The numericall implementation takes advantage of the highly parallel process capabilities of the GPU. The numerical method used for the solution is a the method known as Finite Differences in the Time Domain (FDTD) whose integration is done using a 4th order Runge - Kutta integration.
+This chapter is a overview of the theory and experiments behind the study of Domain Wall Dynamics under Nonlocal Spin-Transfer Torque. This is a quantitatively test the effects of spin-diffusion, on real Domain Wall (DW) structures, by numerically implementing the Zhang-LI model into a NiFe soft nanostrip. The numericall implementation takes advantage of the highly parallel process capabilities of the GPU. The numerical method used for the solution is a the method known as Finite Differences in the Time Domain (FDTD) whose integration is done using a 4th order Runge - Kutta integration.
 
 
 \section{Theory}
+
+ \cite{claudio}
 
 Contrarily to charge, spin accumulate in metals, The associated diffusion current flows in all directions, giving rise to nonlocal effects, Beyond transport properties, conduction electrons spin resonance and spin pumping provide further testimonies for non-locality in spin transport. These works all refer  to samples consisting in piecewise uniform layers or blocks, magnetic or not. Of special significance to the present work in the non-collinear geometry where a spin current with polarization transverse to the magnetization exists, whose absorption in the vicinity of the surface of a magnetic layer creates a torque on the magnetization, known as spin transfer torque (SFF),  \cite{claudio}
 
 Spintronics is a new type of electronics that exploits the spin degree of freedom of an electron in addition to its charge. \cite{spinz}
 
 \cite{ferro}
+
+\subsection{Domain Wall}
 
 An abrupt in magnetization at the boundary of two anti-aligned domains is not a favorable condition. Domain walls form between such domains as means of minimizing the energy of the two anti-aligned domains. Domains walls are transitions layers in which the magnetization changes gradually from on magnetization to another. In other words the boundaries between regions of uniform magnetization.  The gradual change prevents the large increase in exchange energy that would accompany an abrupt change in the magnetization angle. Common domain wall geometrias include Bloch walls, N$\acute{e}$el walls and vortex walls. In the case of Vortex wall the magnetization rotates in the place perpendicular to the domain wall, but the local magnetization is wrapped around a single vortex point \cite{spindomain}. This can seen in figure \label{eq:kg4}.
 
@@ -42,7 +46,9 @@ The Zhang Li model refers to:
 
 which is the following equation.
 
-\subsection{Experiment}
+
+
+\section{Experiment}
 
 Base on the work of Dr. Claudio \cite{claudio}
 
@@ -74,9 +80,10 @@ Base on this study numeric applications have been unfold.
 
 %The implementation of the GPU of Dr. Claudio is based on launching several kernels into a single GPU node.
 
+\subsection{Laplacian}
 
-Numerical Methods
-\cite{methods}
+
+\cite{landaverde}
 
 The differential evaluation in one-dimension,
 The Second order Taylor expansion readily yields expressions for the first and seconds central derivates
@@ -160,9 +167,13 @@ f^{(2)}_i &= \dfrac{f_{i-2}+16f_{i-1} -30f_{i} + 16f_{i+1} - f_{i+1}}{12a^2}
 
 \subsection{Finite Differences in the Time Domain}
 
-Modern numerical algorithms for the solution of ordinary differential equations are also base on the method of the Taylor series. Each algorithm such as Runge-Kutta method are constructed so they give an expression depending of the parameter $(h)$, in other works the step as an approximate solution of the first terms of the Taylor series.
+Modern numerical algorithms for the solution of ordinary differential equations are also base on the method of the Taylor series. Each algorithm such as Runge-Kutta method are constructed so they give an expression depending of the parameter $(h)$, in other works the step as an approximate solution of the first terms of the Taylor series. \cite{ufdtd}
+The method can acurately tackle a wide range of problems as weel as can solve complicated problem, but it is generally computacinaly expensive. Solutions requiere large amount of memory and computacional time. 
 
-\subsection{Runge and Kutta}
+The FDTD method employs finite differences as approximations to both the spatial and temporal derivates that appear in Maxwell's equations
+
+
+\subsection{Fourth order Runge and Kutta method}
 
 There exist several computational numeric methods to solver such equations, methods like Euler, Midpoint Method and Runge-Kutta integrator method can solve this type of equations. The RG4 this method is used for the simulation because its numerically more accurate when compared to the others.
 
@@ -209,7 +220,13 @@ As the equations shows, each step, the derivative is evaluated four times, once 
 %-----------------------------------
 
 
-\subsection{Kernels}
+\section{Numerical Methods on the GPUs}
+
+
+\subsection{Finite Difference Time Domain}
+
+
+\subsection{Fourth order Runge and Kutta}
 
 The GPU implementation. the application reads
 
@@ -259,7 +276,7 @@ tau sf & 25.0e-3 ns      \\
 \end{table}
 
 
-\subsection{Threads}
+\section{structure}
 
 The number of threads that are allocated within each kernel is a 2d grid.
 
@@ -425,14 +442,11 @@ The validation is done by checking the output the simulation with a valid data s
 \subsection{Validation}
 
 
-\section{Help Kernels}
-
 
 %----------------------------------------------------------------------------------------
 %	SECTION 2
 %----------------------------------------------------------------------------------------
 
 \section{Data Flow}
-
 
 The initial data flow of the kernels goes as follow, Fi

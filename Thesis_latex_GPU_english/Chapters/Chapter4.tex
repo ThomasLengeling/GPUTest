@@ -10,7 +10,7 @@
 %	SECTION 1
 %----------------------------------------------------------------------------------------
 
-This chapter is the results of the CUDA code implementation launched on several different GPUs nodes. The test are performed on various GPUs architectures, which, has different hardware characteristics. Each GPU node is analyzed using the NVIDIA's Visual Profiler, in addition the CUDA kernels are evaluated in performance; throughput, bandwidth, executing and parallel time. Furthermore the results, are analyzed and optimized using the schemes from chapter 3. Lastly the code is executed remotely on the supercomputer ``Piritakua'' of the  University of Guanajuato, Campus Yuriria.
+This chapter is the results of the CUDA code implementation launched on several different GPUs nodes. The test are performed on various GPUs architectures, which, has different hardware characteristics. Each GPU node is analyzed using the NVIDIA's Visual Profiler, in addition the CUDA kernels are evaluated in performance; throughput, bandwidth, executing and parallel time. Furthermore the results, are analyzed and optimized using the schemes from chapter 3. Lastly the code is executed remotely on the supercomputer ``Piritakua'' at the Department of Multidisciplinary Studies Yuriria, University of Guanjauato
 
 \section{Supercomputer ``Piritakua''}
 
@@ -63,6 +63,8 @@ There are two GPU architectures that code was launched, the Fermi and the Kepler
 
 \subsection{Experiment detail}
 
+
+
 \section{Results}
 
 The CUDA code was launched on each GPU of the Piritakua supercomputer. As we know the supercomputer has different GPU, as well as several architectures and different number of CUDA cores.
@@ -73,6 +75,14 @@ metion cuda versions. as well as the compiler used for the test.
 
 \subsection{Initial Test}
 
+
+\subsection{Finite Precision}
+
+We all know summing one-third three times yields to one.
+
+$$\dfrac{1}{3} + \dfrac{1}{3} + \dfrac{1}{3} = 1$$
+
+ However this is not allways true on a computer. It actually dependes of the floating-point precition. 
 
 
 \subsubsection{Visual profiler}
