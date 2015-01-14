@@ -28,39 +28,40 @@
 \contentsline {subsection}{\numberline {2.5.1}Thread Division}{19}{subsection.125}
 \contentsline {section}{\numberline {2.6}Visual Profiler}{19}{section.126}
 \contentsline {subsection}{\numberline {2.6.1}Profiler Kernel Report}{20}{subsection.129}
-\contentsline {chapter}{\numberline {3}Introduction to Domain Wall Dynamics and a Implementation with CUDA}{22}{chapter.135}
-\contentsline {section}{\numberline {3.1}Theory}{22}{section.136}
-\contentsline {subsection}{\numberline {3.1.1}Domain Wall}{23}{subsection.137}
-\contentsline {section}{\numberline {3.2}Experiment}{24}{section.139}
-\contentsline {section}{\numberline {3.3}Numerical Methods}{25}{section.141}
-\contentsline {subsection}{\numberline {3.3.1}Laplacian}{25}{subsection.142}
-\contentsline {subsection}{\numberline {3.3.2}Finite Differences in the Time Domain}{26}{subsection.146}
-\contentsline {subsection}{\numberline {3.3.3}Fourth order Runge and Kutta method}{26}{subsection.147}
-\contentsline {section}{\numberline {3.4}Numerical Methods on the GPUs}{28}{section.151}
-\contentsline {subsection}{\numberline {3.4.1}Finite Difference Time Domain}{28}{subsection.152}
-\contentsline {subsection}{\numberline {3.4.2}Fourth order Runge and Kutta}{28}{subsection.153}
-\contentsline {section}{\numberline {3.5}structure}{29}{section.159}
-\contentsline {subsection}{\numberline {3.5.1}CPU}{29}{subsection.177}
-\contentsline {subsection}{\numberline {3.5.2}GPU}{30}{subsection.178}
-\contentsline {subsection}{\numberline {3.5.3}KG4}{31}{subsection.189}
-\contentsline {subsection}{\numberline {3.5.4}effective values}{31}{subsection.199}
-\contentsline {subsection}{\numberline {3.5.5}time}{32}{subsection.206}
-\contentsline {section}{\numberline {3.6}Validation}{32}{section.207}
-\contentsline {subsection}{\numberline {3.6.1}Validation}{32}{subsection.208}
-\contentsline {section}{\numberline {3.7}Data Flow}{32}{section.209}
-\contentsline {chapter}{\numberline {4}Optimization Results}{33}{chapter.210}
-\contentsline {section}{\numberline {4.1}Supercomputer ``Piritakua''}{33}{section.211}
-\contentsline {subsection}{\numberline {4.1.1}Experiment detail}{35}{subsection.212}
-\contentsline {section}{\numberline {4.2}Results}{35}{section.213}
-\contentsline {subsection}{\numberline {4.2.1}Initial Test}{35}{subsection.214}
-\contentsline {subsection}{\numberline {4.2.2}Finite Precision}{35}{subsection.215}
-\contentsline {subsubsection}{\numberline {4.2.2.1}Visual profiler}{35}{subsubsection.216}
-\contentsline {subsection}{\numberline {4.2.3}Obtimized}{35}{subsection.217}
-\contentsline {subsection}{\numberline {4.2.4}Subsection 2}{35}{subsection.218}
-\contentsline {section}{\numberline {4.3}Main Section 2}{35}{section.219}
-\contentsline {chapter}{\numberline {5}Conclusions and future work}{36}{chapter.220}
-\contentsline {section}{\numberline {5.1}Main Section 1}{36}{section.221}
+\contentsline {subsection}{\numberline {2.6.2}Collect Data On Remote System}{21}{subsection.135}
+\contentsline {chapter}{\numberline {3}Introduction to Domain Wall Dynamics and a Implementation with CUDA}{23}{chapter.136}
+\contentsline {section}{\numberline {3.1}Theory}{23}{section.137}
+\contentsline {subsection}{\numberline {3.1.1}Domain Wall}{24}{subsection.138}
+\contentsline {section}{\numberline {3.2}Experiment}{25}{section.140}
+\contentsline {section}{\numberline {3.3}Numerical Methods}{26}{section.142}
+\contentsline {subsection}{\numberline {3.3.1}Laplacian}{26}{subsection.143}
+\contentsline {subsection}{\numberline {3.3.2}Finite Differences in the Time Domain}{27}{subsection.147}
+\contentsline {subsection}{\numberline {3.3.3}Fourth order Runge and Kutta method}{27}{subsection.148}
+\contentsline {section}{\numberline {3.4}Numerical Methods on the GPUs}{29}{section.152}
+\contentsline {subsection}{\numberline {3.4.1}Finite Difference Time Domain}{29}{subsection.153}
+\contentsline {subsection}{\numberline {3.4.2}Fourth order Runge and Kutta}{29}{subsection.154}
+\contentsline {section}{\numberline {3.5}structure}{30}{section.160}
+\contentsline {subsection}{\numberline {3.5.1}CPU}{30}{subsection.178}
+\contentsline {subsection}{\numberline {3.5.2}GPU}{31}{subsection.179}
+\contentsline {subsection}{\numberline {3.5.3}KG4}{32}{subsection.190}
+\contentsline {subsection}{\numberline {3.5.4}effective values}{32}{subsection.200}
+\contentsline {subsection}{\numberline {3.5.5}time}{33}{subsection.207}
+\contentsline {section}{\numberline {3.6}Validation}{33}{section.208}
+\contentsline {subsection}{\numberline {3.6.1}Validation}{33}{subsection.209}
+\contentsline {section}{\numberline {3.7}Data Flow}{33}{section.210}
+\contentsline {chapter}{\numberline {4}Optimization Results}{34}{chapter.211}
+\contentsline {section}{\numberline {4.1}Supercomputer ``Piritakua''}{34}{section.212}
+\contentsline {subsection}{\numberline {4.1.1}Experiment metrics}{35}{subsection.213}
+\contentsline {section}{\numberline {4.2}Results}{36}{section.215}
+\contentsline {subsection}{\numberline {4.2.1}Initial Test}{36}{subsection.216}
+\contentsline {subsection}{\numberline {4.2.2}Finite Precision}{37}{subsection.218}
+\contentsline {subsubsection}{\numberline {4.2.2.1}Visual profiler}{37}{subsubsection.219}
+\contentsline {subsection}{\numberline {4.2.3}Obtimized}{37}{subsection.220}
+\contentsline {subsection}{\numberline {4.2.4}Subsection 2}{37}{subsection.221}
+\contentsline {section}{\numberline {4.3}Main Section 2}{37}{section.222}
+\contentsline {chapter}{\numberline {5}Conclusions and future work}{38}{chapter.223}
+\contentsline {section}{\numberline {5.1}Main Section 1}{38}{section.224}
 \vspace {2em}
-\contentsline {chapter}{\numberline {A}Appendix Title Here}{37}{appendix.222}
+\contentsline {chapter}{\numberline {A}Appendix Title Here}{39}{appendix.225}
 \vspace {2em}
-\contentsline {chapter}{Bibliography}{38}{dummy.223}
+\contentsline {chapter}{Bibliography}{40}{dummy.226}

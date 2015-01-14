@@ -61,7 +61,43 @@ When accessing ``Piritakua'' remotely is possible to use all the GPUs available 
 There are two GPU architectures that code was launched, the Fermi and the Kepler. The Tesla K20m is base on ``Kepler'' GPU architecture and Tesla M2070, Tesla M2050 and GeForce GTX 580 on the Fermi architecture. The Kepler is a newer architecture than the Fermi. The big difference between the is the number of CUDA cores per SM.
 
 
-\subsection{Experiment detail}
+\subsection{Experiment metrics}
+
+The initial implementation was launched on several GPU nodes as well as several times on the same node. The implementation was launched 10 times on each node, For example the following table are the results of the initial implementation launched on the NVIDIA Tesla K20m.
+
+\begin{table}[h]
+\centering
+  \begin{tabular} { |  l  |  l  |  }
+    \hline
+    number & time  \\
+    \hline
+    1 &  64846.0 \\
+   \hline
+    2 & 59010.4 \\
+   \hline
+    3 & 67332.4\\
+   \hline
+    4 & 68171.8 \\
+   \hline
+    5 & 61818.0 \\
+   \hline
+    6 & 65111.3\\
+    \hline
+    7 &  67346.4\\
+    \hline
+    8 & 65666.6 \\
+    \hline
+    9 & 67343.3 \\
+    \hline
+    10 & 65681.8      \\
+   \hline
+  \end{tabular}
+  \end{table}
+  
+As we can see each time the code is executed, different time results.  . The order in which operations are evaluated can significantly affect the final value of a floating point computation; t
+It's possible that the first issued block might be issued to different multiprocessor each time, and if there are an uneven number of blocks across multiprocessors, then the execution order could vary slightly between runs \cite{cook}.
+
+As we know there is no garanty that threads will execute at the same order. To accomplish such task thread sycronization is needed.
 
 
 
@@ -75,8 +111,15 @@ metion cuda versions. as well as the compiler used for the test.
 
 \subsection{Initial Test}
 
-The initial results obtained by the visual profiler can be summurize as the following tests.
+The initial implementation was launched on several GPU nodes, as previous mentioned.  As we know .Se figure.\ref{fig:iniresults}.
 
+\begin{figure}[htbp]
+	\centering
+		\includegraphics[width=0.5\textwidth]{Figures/initial_results.png}
+		\rule{35em}{0.2pt}
+	\caption[Initial GPU results]{Initial resutls of the implementation runing on several differen GPU nodes}
+	\label{fig:iniresults}
+\end{figure}
 
 
 \subsection{Finite Precision}

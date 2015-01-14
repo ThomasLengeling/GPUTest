@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Labels</key>
+	<string>GPU Vs CPU
+Processor, GPU vs CPU
+Time (S)
+Time vs CPU
+Time inicial vs GPU
+Time optimized vs GPU
+Time vs CPU
+</string>
+	<key>Text</key>
+	<string></string>
+</dict>
+</plist>
