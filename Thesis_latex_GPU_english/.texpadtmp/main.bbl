@@ -6,6 +6,11 @@ J.~A. Anderson, C.~D. Lorenz, and A.~Travesset.
   graphics processing units.
 \newblock {\em J. Comput. Phys.}, 227(10):5342--5359, May 2008.
 
+\bibitem{centos}
+CentOS.
+\newblock Centos project.
+\newblock \url{http://www.centos.org/}, 2015, Cited January 2015.
+
 \bibitem{5306797}
 S.~Che, M.~Boyer, J.~Meng, D.~Tarjan, J.~Sheaffer, S.-H. Lee, and K.~Skadron.
 \newblock Rodinia: A benchmark suite for heterogeneous computing.

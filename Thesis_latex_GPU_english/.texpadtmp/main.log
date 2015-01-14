@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013) (format=pdflatex 2013.5.30)  13 JAN 2015 20:21
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013) (format=pdflatex 2013.5.30)  13 JAN 2015 21:03
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -655,22 +655,22 @@ Chapter 3.
 ------------------------------------------------------------------------------
 [23
 
-] <Figures/vortex.png, id=675, 552.0625pt x 418.56375pt>
+] <Figures/vortex.png, id=676, 552.0625pt x 418.56375pt>
 File: Figures/vortex.png Graphic file (type png)
  <use Figures/vortex.png>
 Package pdftex.def Info: Figures/vortex.png used on input line 31.
 (pdftex.def)             Requested size: 208.73653pt x 158.26392pt.
- [24 <./Figures/vortex.png>] [25] <Figures/taylor.png, id=704, 317.185pt x 215.80624pt>
+ [24 <./Figures/vortex.png>] [25] <Figures/taylor.png, id=705, 317.185pt x 215.80624pt>
 File: Figures/taylor.png Graphic file (type png)
  <use Figures/taylor.png>
 Package pdftex.def Info: Figures/taylor.png used on input line 99.
 (pdftex.def)             Requested size: 166.98668pt x 113.61609pt.
- [26 <./Figures/taylor.png>] [27] <Figures/euler.png, id=724, 370.38374pt x 194.7275pt>
+ [26 <./Figures/taylor.png>] [27] <Figures/euler.png, id=725, 370.38374pt x 194.7275pt>
 File: Figures/euler.png Graphic file (type png)
  <use Figures/euler.png>
 Package pdftex.def Info: Figures/euler.png used on input line 184.
 (pdftex.def)             Requested size: 292.22987pt x 153.63988pt.
- <Figures/rk4.png, id=726, 293.095pt x 156.585pt>
+ <Figures/rk4.png, id=727, 293.095pt x 156.585pt>
 File: Figures/rk4.png Graphic file (type png)
  <use Figures/rk4.png>
 Package pdftex.def Info: Figures/rk4.png used on input line 208.
@@ -693,16 +693,16 @@ Missing character: There is no Ä in font cmr10!
 Missing character: There is no ù in font cmr10!
 [34
 
-] [35] <Figures/initial_results.png, id=812, 802.9197pt x 485.6544pt>
+] [35] <Figures/initial_results.png, id=816, 802.9197pt x 485.6544pt>
 File: Figures/initial_results.png Graphic file (type png)
  <use Figures/initial_results.png>
-Package pdftex.def Info: Figures/initial_results.png used on input line 115.
-(pdftex.def)             Requested size: 208.73653pt x 126.25233pt.
- [36 <./Figures/initial_results.png>]
+Package pdftex.def Info: Figures/initial_results.png used on input line 120.
+(pdftex.def)             Requested size: 271.35493pt x 164.1273pt.
+ [36]
 Missing character: There is no ‚ in font cmr10!
 Missing character: There is no Ä in font cmr10!
 Missing character: There is no ì in font cmr10!
-) (./Chapters/Chapter5.tex [37]
+) (./Chapters/Chapter5.tex [37 <./Figures/initial_results.png>]
 Chapter 5.
 ------------------------------------------------------------------------------
  5 Conclusions and future work
@@ -724,12 +724,12 @@ Appendix A.
 
 
 ]
-Underfull \hbox (badness 10000) in paragraph at lines 85--89
+Underfull \hbox (badness 10000) in paragraph at lines 90--94
 []\OT1/cmr/m/n/10.95 NVIDIA.  Cuda doc-u-men-ta-tion.  [][]$\OT1/cmtt/m/n/10.95 http : / / docs . nvidia . com / cuda /
  []
 
 
-Underfull \hbox (badness 1603) in paragraph at lines 129--132
+Underfull \hbox (badness 1603) in paragraph at lines 134--137
 []\OT1/cmr/m/n/10.95 J. B. Schnei-der.  Un-der-stand-ing the finite-difference time-domain method,
  []
 
@@ -755,18 +755,18 @@ LaTeX Warning: There were multiply-defined labels.
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 232.
  ) 
 Here is how much of TeX's memory you used:
- 13924 strings out of 493315
- 196985 string characters out of 6137904
- 305029 words of memory out of 5000000
- 16860 multiletter control sequences out of 15000+600000
+ 13928 strings out of 493315
+ 197038 string characters out of 6137904
+ 305045 words of memory out of 5000000
+ 16863 multiletter control sequences out of 15000+600000
  13598 words of font info for 50 fonts, out of 8000000 for 9000
  957 hyphenation exceptions out of 8191
  49i,19n,60p,1097b,1859s stack positions out of 5000i,500n,10000p,200000b,80000s
 </usr/local/texlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/local/texlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/local/texlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmcsc10.pfb></usr/local/texlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/local/texlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/texlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/local/texlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/local/texlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/texlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/texlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/local/texlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb></usr/local/texlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb></usr/local/texlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt8.pfb>
-Output written on /Users/tom/Documents/GitHub/GPUTest/Thesis_latex_GPU_english/.texpadtmp/main.pdf (49 pages, 1655681 bytes).
+Output written on /Users/tom/Documents/GitHub/GPUTest/Thesis_latex_GPU_english/.texpadtmp/main.pdf (49 pages, 1656689 bytes).
 PDF statistics:
- 974 PDF objects out of 1000 (max. 8388607)
- 872 compressed objects within 9 object streams
- 305 named destinations out of 1000 (max. 500000)
+ 979 PDF objects out of 1000 (max. 8388607)
+ 877 compressed objects within 9 object streams
+ 306 named destinations out of 1000 (max. 500000)
  600 words of extra memory for PDF output out of 10000 (max. 10000000)
 

@@ -11,45 +11,45 @@ Warning--empty journal in 5306797
 Warning--can't use both author and editor fields in methods
 Warning--empty journal in physicsgpu
 Warning--empty journal in landaverde
-You've used 29 entries,
+You've used 30 entries,
             2118 wiz_defined-function locations,
-            661 strings with 7861 characters,
-and the built_in function-call counts, 8307 in all, are:
-= -- 775
-> -- 410
+            666 strings with 7939 characters,
+and the built_in function-call counts, 8515 in all, are:
+= -- 795
+> -- 417
 < -- 2
-+ -- 166
-- -- 134
-* -- 544
-:= -- 1429
-add.period$ -- 85
-call.type$ -- 29
-change.case$ -- 147
++ -- 169
+- -- 136
+* -- 550
+:= -- 1464
+add.period$ -- 88
+call.type$ -- 30
+change.case$ -- 151
 chr.to.int$ -- 0
-cite$ -- 33
-duplicate$ -- 313
-empty$ -- 675
-format.name$ -- 134
-if$ -- 1715
+cite$ -- 34
+duplicate$ -- 320
+empty$ -- 697
+format.name$ -- 136
+if$ -- 1761
 int.to.chr$ -- 0
-int.to.str$ -- 29
+int.to.str$ -- 30
 missing$ -- 34
-newline$ -- 146
-num.names$ -- 56
-pop$ -- 193
+newline$ -- 151
+num.names$ -- 58
+pop$ -- 201
 preamble$ -- 1
-purify$ -- 126
+purify$ -- 129
 quote$ -- 0
-skip$ -- 211
+skip$ -- 218
 stack$ -- 0
-substring$ -- 377
-swap$ -- 35
+substring$ -- 382
+swap$ -- 36
 text.length$ -- 2
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 94
+type$ -- 98
 warning$ -- 4
-while$ -- 72
-width$ -- 31
-write$ -- 305
+while$ -- 74
+width$ -- 32
+write$ -- 315
 (There were 6 warnings)

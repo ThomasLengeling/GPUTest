@@ -54,7 +54,7 @@
 \contentsline {subsection}{\numberline {4.1.1}Experiment metrics}{35}{subsection.213}
 \contentsline {section}{\numberline {4.2}Results}{36}{section.215}
 \contentsline {subsection}{\numberline {4.2.1}Initial Test}{36}{subsection.216}
-\contentsline {subsection}{\numberline {4.2.2}Finite Precision}{37}{subsection.218}
+\contentsline {subsection}{\numberline {4.2.2}Finite Precision}{36}{subsection.218}
 \contentsline {subsubsection}{\numberline {4.2.2.1}Visual profiler}{37}{subsubsection.219}
 \contentsline {subsection}{\numberline {4.2.3}Obtimized}{37}{subsection.220}
 \contentsline {subsection}{\numberline {4.2.4}Subsection 2}{37}{subsection.221}
