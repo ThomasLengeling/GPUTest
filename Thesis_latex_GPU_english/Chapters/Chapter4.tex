@@ -62,7 +62,6 @@ When accessing ``Piritakua'' remotely is possible to use all the GPUs available 
 
 There are two GPU architectures that code was launched, the Fermi and the Kepler. The Tesla K20m is base on ``Kepler'' GPU architecture and Tesla M2070, Tesla M2050 and GeForce GTX 580 on the Fermi architecture. The Kepler is a newer architecture than the Fermi. The big difference between the is the number of CUDA cores per SM.
 
-
 \subsection{Experiment metrics}
 
 The initial implementation was launched on several GPU nodes as well as several times on the same node. The implementation was launched 10 times on each node, For example the following table are the results of the initial implementation launched on the NVIDIA Tesla K20m.
@@ -110,6 +109,23 @@ The CUDA code was launched on each GPU of the Piritakua supercomputer. As we kno
 
 metion cuda versions. as well as the compiler used for the test.
 
+
+\begin{table}[h]
+\centering
+  \begin{tabular} { |  l  |  l  |  l  | l |}
+    \hline
+    Node & initial Avg time & 1st optimization & 2nd optimization \\
+    \hline
+    Tesla K20m &  64846.0 & 55 & 33\\
+   \hline
+    Tesla M2070 & 64846.0 & 55 & 33\\
+   \hline
+    GeForce GTX 580 & 64846.0 & 55 & 33\\
+   \hline
+    GeForce 670m & 64846.0 & 55 & 33\\
+   \hline
+  \end{tabular}
+  \end{table}
 
 \subsection{Initial Test}
 
