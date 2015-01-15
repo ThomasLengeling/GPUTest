@@ -159,6 +159,12 @@ The texture Memory in a form works like the GPU graphics Texture, when you want 
 \item  When the work is done on the Texture, unbind the texture reference on the host.
 \end{itemize}
 
+
+
+talk about concurencie and steam kernels.
+
+why not use steam kernels in htis implimentations
+
 \subsection{Thread Synchronization}
 
 This refers to synchronizing threads operations. For efficiency, a pipeline can be created by queuing a number of kernels to keep the GPGPU busy for as long as possible. Further, some form of synchronization is required so that the host can determine when the kernel or pipeline has completed. \cite{design} Commonly used synchronization mechanisms are:
