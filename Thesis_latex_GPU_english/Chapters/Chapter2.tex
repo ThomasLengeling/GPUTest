@@ -100,6 +100,19 @@ In this section four types of memory handling are going to be explained, shared 
 	\label{fig:memory}
 \end{figure}
 
+So how does the memory hierarchy is store in the chip\ref{fig:cores}
+
+
+
+\begin{figure}[htbp]
+	\centering
+		\includegraphics[width=0.85\textwidth]{Figures/cores.png}
+		\rule{35em}{0.4pt}
+	\caption[schematic cache hierarchy of a CUDA GPU]{The schematic cache hierarchy of a CUDA GPU with 4 Streaming Multiprocessors and 8 CUDA Cores each.}
+	\label{fig:cores}
+\end{figure}
+
+
 
 \subsection{Global Memory}
 
@@ -159,12 +172,6 @@ The texture Memory in a form works like the GPU graphics Texture, when you want 
 \item  When the work is done on the Texture, unbind the texture reference on the host.
 \end{itemize}
 
-
-
-talk about concurencie and steam kernels.
-
-why not use steam kernels in htis implimentations
-
 \subsection{Thread Synchronization}
 
 This refers to synchronizing threads operations. For efficiency, a pipeline can be created by queuing a number of kernels to keep the GPGPU busy for as long as possible. Further, some form of synchronization is required so that the host can determine when the kernel or pipeline has completed. \cite{design} Commonly used synchronization mechanisms are:
@@ -178,7 +185,7 @@ The basic unit of work on the GPU is a thread. It is important to understand fro
 
 \section{Concurrent Kernels}
 
-As we seen kernels are executed in a sequencial form with parallel instructions. Wih CUDA's streams is possible to launche several kernels in parallel, overlap kernel in the same launch sequence. As illustrated in Figure \ref{fig:streams}.
+As we seen kernels are executed in a sequential form with parallel instructions. With CUDA's streams is possible to launch several kernels in parallel, overlap kernel in the same launch sequence. As illustrated in Figure \ref{fig:streams}.
 
 \begin{figure}[htbp]
 	\centering
@@ -188,10 +195,11 @@ As we seen kernels are executed in a sequencial form with parallel instructions.
 	\label{fig:streams}
 \end{figure}
 
-To overlap kernel execution and data transfers, in addition to pinned host memory, the data transfer and kernel must use different, nondefault streams. Nondefault streams are required for this overlap because memory copy, memory set functions, and kernel calls that use the default stream begin only after all preceding calls on the device (in any stream) have completed, and no operation on the device (in any stream) commences until they are finished. The following is an example of overlapping kernelexecution and data transfer. As the \ref{fig:streams} shows. \cite{hwu}
+To overlap kernel execution and data transfers, in addition to pinned host memory, the data transfer and kernel must use different, non-default streams. Non-default streams are required for this overlap because memory copy, memory set functions, and kernel calls that use the default stream begin only after all preceding calls on the device (in any stream) have completed, and no operation on the device (in any stream) commences until they are finished. The following is an example of overlapping kernel
+execution and data transfer. As the \ref{fig:streams} shows. \cite{hwu}
 
 
-By using two or more CUDA streams, we can allow the GPU to simulateneously execute a kernel while performing a copy between the host and the GPU. We need to careful about two things. First, the host memory involved needs to be allocated, since we will queue our memory copies, we need to asyncronize those copies. Second. we need to be aware that the order in wich we add operations to our streams will affect out capacity to achieve overlapping of copies and kernel execution. The general guideline involves a breadth-first, or round robin, to assign work and queue work to the kernels. \cite{example}
+By using two or more CUDA streams, we can allow the GPU to simultaneously execute a kernel while performing a copy between the host and the GPU. We need to careful about two things. First, the host memory involved needs to be allocated, since we will queue our memory copies, we need to asyncronize those copies. Second. we need to be aware that the order in which we add operations to our streams will affect out capacity to achieve overlapping of copies and kernel execution. The general guideline involves a breadth-first, or round robin, to assign work and queue work to the kernels. \cite{example}
 
 \section{Kernel Analysis}
 
@@ -242,7 +250,7 @@ Is a hard task to keep track of each individual thread. This becomes difficult f
 	\label{fig:visualgraph}
 \end{figure}
 
-NVIDIA's profiling tools comes in various flavors; a standalone profiler through the visual profiler compiler nvvp, integrated in a GUI Nsight Eclipse Edition as nsight command (Visual Profiler), and as a command-line profiler though nvprof command. Each one has its disadvantages and advantages. The command-line profiler is useful for remotely access, where a GUI is not available, while the Nsight can show graphs, plots and timeline of the application. The Profiler support CUDA applications as well as openCL applications, however both have some exceptions. 
+NVIDIA's profiling tools comes in various flavors; a standalone profiler through the visual profiler compiler nvvp, integrated in a GUI Nsight Eclipse Edition as NSight command (Visual Profiler), and as a command-line profiler though nvprof command. Each one has its disadvantages and advantages. The command-line profiler is useful for remotely access, where a GUI is not available, while the Nsight can show graphs, plots and timeline of the application. The Profiler support CUDA applications as well as openCL applications, however both have some exceptions. 
 
 The Visual Profiler, by default, will execute the entire application, nonetheless typically only some parts of application only need performance optimization. This enables to determine kernels, code where critical performances is needed. The common situations where profiling a region of the application is helpful.\cite{tool}
 
@@ -286,7 +294,7 @@ GPU compute resources limit the performance of a kernel when those resources are
 
 \subsection{Collect Data On Remote System}
 
-As metion before, is possible to collect data from a remote system where a GUI is not available, using the command-line nvprof. Remote profiling is the process of collecting profile data from a remote system that is different than the host system at which that profile data will be viewed and analyzed. Once the data is collected is possible to access the data using the Visual profiler, which enables a GUI and more comprensive information about the application. There are two ways to perform remote profiling. To use nvvp remote profiling you must install the same version of the CUDA Toolkit on both the host and remote systems. It is not necessary for the host system to have an NVIDIA GPU. \cite{tool}
+As mention before, is possible to collect data from a remote system where a GUI is not available, using the command-line nvprof. Remote profiling is the process of collecting profile data from a remote system that is different than the host system at which that profile data will be viewed and analyzed. Once the data is collected is possible to access the data using the Visual profiler, which enables a GUI and more comprensive information about the application. There are two ways to perform remote profiling. To use nvvp remote profiling you must install the same version of the CUDA Toolkit on both the host and remote systems. It is not necessary for the host system to have an NVIDIA GPU. \cite{tool}
 
 \vspace{3.2em}
 

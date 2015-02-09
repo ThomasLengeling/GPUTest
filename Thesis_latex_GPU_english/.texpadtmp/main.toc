@@ -9,7 +9,7 @@
 \contentsline {section}{\numberline {1.1}Motivation}{1}{section.11}
 \contentsline {section}{\numberline {1.2}GPUs as computing units}{4}{section.13}
 \contentsline {section}{\numberline {1.3}Programming on GPUs}{5}{section.16}
-\contentsline {subsection}{\numberline {1.3.1}Vector Addition Example}{8}{subsection.20}
+\contentsline {subsection}{\numberline {1.3.1}Vector Addition Example}{7}{subsection.20}
 \contentsline {subsubsection}{\numberline {1.3.1.1}CPU Code}{8}{subsubsection.22}
 \contentsline {subsubsection}{\numberline {1.3.1.2}GPU Code}{9}{subsubsection.58}
 \contentsline {chapter}{\numberline {2}Heterogeneous Performance Analysis and Practices}{11}{chapter.105}
@@ -18,53 +18,54 @@
 \contentsline {subsection}{\numberline {2.2.1}Timing}{13}{subsection.113}
 \contentsline {subsection}{\numberline {2.2.2}Bandwidth}{13}{subsection.114}
 \contentsline {section}{\numberline {2.3}Memory Handling with CUDA}{14}{section.115}
-\contentsline {subsection}{\numberline {2.3.1}Global Memory}{15}{subsection.117}
-\contentsline {subsection}{\numberline {2.3.2}Shared Memory}{15}{subsection.118}
-\contentsline {subsection}{\numberline {2.3.3}Constant Memory}{16}{subsection.119}
-\contentsline {subsection}{\numberline {2.3.4}Texture Memory}{16}{subsection.120}
-\contentsline {subsection}{\numberline {2.3.5}Thread Synchronization}{17}{subsection.122}
-\contentsline {section}{\numberline {2.4}Concurrent Kernels}{17}{section.123}
-\contentsline {section}{\numberline {2.5}Kernel Analysis}{18}{section.125}
-\contentsline {section}{\numberline {2.6}Hardware constraints}{19}{section.126}
-\contentsline {subsection}{\numberline {2.6.1}Thread Division}{20}{subsection.127}
-\contentsline {section}{\numberline {2.7}Visual Profiler}{20}{section.128}
-\contentsline {subsection}{\numberline {2.7.1}Profiler Kernel Report}{21}{subsection.131}
-\contentsline {subsection}{\numberline {2.7.2}Collect Data On Remote System}{22}{subsection.137}
-\contentsline {chapter}{\numberline {3}Introduction to Domain Wall Dynamics and a Implementation with CUDA}{24}{chapter.138}
-\contentsline {section}{\numberline {3.1}Theory}{24}{section.139}
-\contentsline {subsection}{\numberline {3.1.1}Domain Wall}{25}{subsection.140}
-\contentsline {section}{\numberline {3.2}Experiment}{26}{section.142}
-\contentsline {section}{\numberline {3.3}Numerical Methods}{27}{section.144}
-\contentsline {subsection}{\numberline {3.3.1}Laplacian}{27}{subsection.145}
-\contentsline {subsection}{\numberline {3.3.2}Finite Differences in the Time Domain}{28}{subsection.149}
-\contentsline {subsection}{\numberline {3.3.3}Fourth order Runge and Kutta method}{28}{subsection.150}
-\contentsline {section}{\numberline {3.4}Numerical Methods on the GPUs}{30}{section.154}
-\contentsline {subsection}{\numberline {3.4.1}Finite Difference Time Domain}{30}{subsection.155}
-\contentsline {subsection}{\numberline {3.4.2}Fourth order Runge and Kutta}{30}{subsection.156}
-\contentsline {section}{\numberline {3.5}structure}{31}{section.162}
-\contentsline {subsection}{\numberline {3.5.1}CPU}{31}{subsection.180}
-\contentsline {subsection}{\numberline {3.5.2}GPU}{32}{subsection.181}
-\contentsline {subsection}{\numberline {3.5.3}KG4}{33}{subsection.192}
-\contentsline {subsection}{\numberline {3.5.4}effective values}{33}{subsection.202}
-\contentsline {subsection}{\numberline {3.5.5}time}{34}{subsection.209}
-\contentsline {section}{\numberline {3.6}Validation}{34}{section.210}
-\contentsline {subsection}{\numberline {3.6.1}Validation}{34}{subsection.211}
-\contentsline {section}{\numberline {3.7}Data Flow}{34}{section.212}
-\contentsline {chapter}{\numberline {4}Optimization Results}{35}{chapter.213}
-\contentsline {section}{\numberline {4.1}Supercomputer ``Piritakua''}{35}{section.214}
-\contentsline {subsection}{\numberline {4.1.1}Experiment metrics}{36}{subsection.215}
-\contentsline {section}{\numberline {4.2}Results}{37}{section.217}
-\contentsline {subsection}{\numberline {4.2.1}Initial Test}{37}{subsection.219}
-\contentsline {subsection}{\numberline {4.2.2}Finite Precision}{38}{subsection.221}
-\contentsline {subsubsection}{\numberline {4.2.2.1}Visual profiler}{38}{subsubsection.222}
-\contentsline {subsection}{\numberline {4.2.3}Concurrent Kernels}{38}{subsection.223}
-\contentsline {subsection}{\numberline {4.2.4}Shared Memory}{38}{subsection.224}
-\contentsline {subsection}{\numberline {4.2.5}Obtimized}{39}{subsection.225}
-\contentsline {subsection}{\numberline {4.2.6}Subsection 2}{39}{subsection.226}
-\contentsline {section}{\numberline {4.3}Main Section 2}{39}{section.227}
-\contentsline {chapter}{\numberline {5}Conclusions and future work}{40}{chapter.228}
-\contentsline {section}{\numberline {5.1}Main Section 1}{40}{section.229}
+\contentsline {subsection}{\numberline {2.3.1}Global Memory}{15}{subsection.118}
+\contentsline {subsection}{\numberline {2.3.2}Shared Memory}{16}{subsection.119}
+\contentsline {subsection}{\numberline {2.3.3}Constant Memory}{16}{subsection.120}
+\contentsline {subsection}{\numberline {2.3.4}Texture Memory}{16}{subsection.121}
+\contentsline {subsection}{\numberline {2.3.5}Thread Synchronization}{17}{subsection.123}
+\contentsline {section}{\numberline {2.4}Concurrent Kernels}{17}{section.124}
+\contentsline {section}{\numberline {2.5}Kernel Analysis}{18}{section.126}
+\contentsline {section}{\numberline {2.6}Hardware constraints}{19}{section.127}
+\contentsline {subsection}{\numberline {2.6.1}Thread Division}{20}{subsection.128}
+\contentsline {section}{\numberline {2.7}Visual Profiler}{20}{section.129}
+\contentsline {subsection}{\numberline {2.7.1}Profiler Kernel Report}{21}{subsection.132}
+\contentsline {subsection}{\numberline {2.7.2}Collect Data On Remote System}{23}{subsection.138}
+\contentsline {chapter}{\numberline {3}Introduction to Domain Wall Dynamics and a Implementation with CUDA}{24}{chapter.139}
+\contentsline {section}{\numberline {3.1}Theory}{24}{section.140}
+\contentsline {subsection}{\numberline {3.1.1}Domain Wall}{25}{subsection.141}
+\contentsline {section}{\numberline {3.2}Experiment}{26}{section.143}
+\contentsline {section}{\numberline {3.3}Numerical Methods}{27}{section.145}
+\contentsline {subsection}{\numberline {3.3.1}Laplacian}{27}{subsection.146}
+\contentsline {subsection}{\numberline {3.3.2}Finite Differences in the Time Domain}{28}{subsection.150}
+\contentsline {subsection}{\numberline {3.3.3}Fourth order Runge and Kutta method}{28}{subsection.151}
+\contentsline {section}{\numberline {3.4}Numerical Methods on the GPUs}{30}{section.155}
+\contentsline {subsection}{\numberline {3.4.1}Finite Difference Time Domain}{30}{subsection.156}
+\contentsline {subsection}{\numberline {3.4.2}Fourth order Runge and Kutta}{30}{subsection.157}
+\contentsline {section}{\numberline {3.5}structure}{31}{section.163}
+\contentsline {subsection}{\numberline {3.5.1}CPU}{31}{subsection.181}
+\contentsline {subsection}{\numberline {3.5.2}GPU}{32}{subsection.182}
+\contentsline {subsection}{\numberline {3.5.3}KG4}{33}{subsection.193}
+\contentsline {subsection}{\numberline {3.5.4}effective values}{33}{subsection.203}
+\contentsline {subsection}{\numberline {3.5.5}time}{34}{subsection.210}
+\contentsline {section}{\numberline {3.6}Validation}{34}{section.211}
+\contentsline {subsection}{\numberline {3.6.1}Validation}{34}{subsection.212}
+\contentsline {section}{\numberline {3.7}Data Flow}{34}{section.213}
+\contentsline {chapter}{\numberline {4}Optimization Results}{35}{chapter.214}
+\contentsline {section}{\numberline {4.1}Supercomputer ``Piritakua''}{35}{section.215}
+\contentsline {subsection}{\numberline {4.1.1}Architecture Differences}{36}{subsection.216}
+\contentsline {subsection}{\numberline {4.1.2}Experiment metrics}{37}{subsection.218}
+\contentsline {section}{\numberline {4.2}Results}{38}{section.220}
+\contentsline {subsection}{\numberline {4.2.1}Initial Test}{38}{subsection.222}
+\contentsline {subsection}{\numberline {4.2.2}Finite Precision}{38}{subsection.224}
+\contentsline {subsubsection}{\numberline {4.2.2.1}Visual profiler}{39}{subsubsection.225}
+\contentsline {subsection}{\numberline {4.2.3}Concurrent Kernels}{39}{subsection.226}
+\contentsline {subsection}{\numberline {4.2.4}Shared Memory}{39}{subsection.227}
+\contentsline {subsection}{\numberline {4.2.5}Obtimized}{39}{subsection.228}
+\contentsline {subsection}{\numberline {4.2.6}Subsection 2}{39}{subsection.229}
+\contentsline {section}{\numberline {4.3}Main Section 2}{39}{section.230}
+\contentsline {chapter}{\numberline {5}Conclusions and future work}{40}{chapter.231}
+\contentsline {section}{\numberline {5.1}Main Section 1}{40}{section.232}
 \vspace {2em}
-\contentsline {chapter}{\numberline {A}Appendix Title Here}{41}{appendix.230}
+\contentsline {chapter}{\numberline {A}Appendix Title Here}{41}{appendix.233}
 \vspace {2em}
-\contentsline {chapter}{Bibliography}{42}{dummy.231}
+\contentsline {chapter}{Bibliography}{42}{dummy.234}

@@ -91,14 +91,6 @@ Being able to efficiently use a GPU for an application requires to expose the in
 On the GPU precision and optimization are very important but there is a penalty for choosing performance or precession. All the GPUs are optimized for single precision floating operations, 24 bit size, Also provides double precision point, size of  53 bits. This is using the standard notation IEEE 754. Normally the GPU uses single precession(SP) by default, if chosen double precision (DP), normally there is a penalty of  2x - 4x seed-up. \cite{precision}
 Libraries such as CUBLAS and CUFFT provides useful information how NVIDIA handles floating point operations under the hood.
 
-explain L1 and L2 chache memories systems
-
-http://stackoverflow.com/questions/19627702/l2-cache-in-kepler
-
-kepler, fermin
-
-http://www.nvidia.com/content/PDF/kepler/NVIDIA-kepler-GK110-Architecture-Whitepaper.pdf
-
 
 \section{Programming on GPUs}
 
@@ -262,7 +254,7 @@ void add( int * A, int * B, int * C )
 }
 \end{lstlisting}
 
-The biggest difference between the CPU code and the GPU code is how threads are managed with-in the process. The CPU code has only one thread, thrust one loop, however if we want to expand the CPU code to multiples threads, extra loops are required for each additional thread. Based on this idea, the GPU code launches to code throughout every threads accessible by the device chip. 
+The biggest difference between the CPU code and the GPU code is how threads are managed with-in the process. The CPU code has only one thread, thrust one loop, however if we want to expand the CPU code to multiples threads, extra loops are required for each additional thread. Based on this idea, the GPU code launches to code throughout every threads accessible by the device chip.
 
 \vspace{3.2em}
 
