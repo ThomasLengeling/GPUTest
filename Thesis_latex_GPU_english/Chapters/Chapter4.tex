@@ -10,13 +10,13 @@
 %	SECTION 1
 %----------------------------------------------------------------------------------------
 
-This chapter is the results of the CUDA code implementation launched on several different GPUs nodes. The test are performed on various GPUs architectures, which, has different hardware characteristics. Each GPU node is analyzed using the NVIDIA's Visual Profiler, in addition the CUDA kernels are evaluated in performance; throughput, bandwidth, executing and parallel time. Furthermore the results, are analyzed and optimized using the schemes from chapter 3. Lastly the code is executed remotely on the supercomputer ``Piritakua'' at the Department of Multidisciplinary Studies Yuriria, University of Guanjauato
+This chapter is the results of the CUDA code implementation launched on several different GPUs nodes. The test are performed on various GPUs architectures, which, has different hardware characteristics. Each GPU node is analyzed using the NVIDIA's Visual Profiler, in addition the CUDA kernels are evaluated in performance; throughput, bandwidth, executing and parallel time. Furthermore the results, are analyzed and optimized using the schemes from chapter 3. Lastly the code is executed remotely on the supercomputer ``Piritakua'' at the Department of Multidisciplinary Studies Yuriria, University of Guanajuato
 
 \section{Supercomputer ``Piritakua''}
 
 The experiments are carried out using the supercomputer “Piritakua”. The massive GPU cluster was design and built by Dr. Claudio from the University of Guanajuato Multidisciplinary Studies Yuriria. The GPU cluster is located at a small town of Mexico, Yuriria. The supercomputer at the Front-end has a eight core Intel Xeon at 2.4 Ghz, at the back-end several GPU are connected, one NVIDIA Tesla K20, two Tesla M2070 and a GTX 580.
 
-A GNU$ \ $LINUX distributionis installed on the system, the CentOS 64 bits version 6.4. CentOS stands for Community Enterprise Operating System which is free operating system and one of the most popular GNU$ \ $Linux distribution for web servers and as well is supported by RHEL (Red Hat Enterprise Linux). \cite{centos} 
+A GNU$ \ $LINUX distribution installed on the system, the CentOS 64 bits version 6.4. CentOS stands for Community Enterprise Operating System which is free operating system and one of the most popular GNU$ \ $Linux distribution for web servers and as well is supported by RHEL (Red Hat Enterprise Linux). \cite{centos} 
 
 The specifications of the front-end cluster.
 
@@ -36,36 +36,35 @@ The specifications of the front-end cluster.
    \hline
   \end{tabular}
 
-
- The CUDA Code was launched on only two CPUs, a laptop with a eight core intel i7-3630QM and a high-end CPU Xeon Phi 7120p from the cluster. In addition the Xeon Phi was used for all the experiments for the Cluster's GPUs. The Xeon Phi 720p is capable of achieveing f 1.2 teraflops of double precision floating point instructions with 352 GB/sec memory bandwidth at 300 W.
+ The CUDA Code was launched on only two CPUs, a laptop with a eight core intel i7-3630QM and a high-end CPU Xeon Phi 7120p from the cluster. In addition the Xeon Phi was used for all the experiments for the Cluster's GPUs. The Xeon Phi 720p is capable of achieving f 1.2 teraflops of double precision floating point instructions with 352 GB/sec memory bandwidth at 300 W.
 
 When accessing ``Piritakua'' remotely is possible to use all the GPUs available on the cluster.
- The specifications of the GPU connected to the front-end are as follow.
+ The specifications of the GPU connected to the back-end are as follow.
 
-  \begin{tabular}{ |  l  |  l  |  l  |  l  |  l  | l | }
+  \begin{tabular}{ |  l  |  l  |  l  |  l  |  l  | l | l |}
     \hline
-    Model & Cores & RAM & DP & SP & Bandwidth \\
+    Model & Cores & RAM & DP & SP & Bandwidth & Compute Capability \\
     \hline
-    Tesla K20m & 2496 & 5GB & 1.17 Tflops & 3.52 Tflops & 208 GB/s \\
+    Tesla K20m & 2496 & 5GB & 1.17 Tflops & 3.52 Tflops & 208 GB/s & 3.5 \\
    \hline
-    Tesla M2070 & 448 & 6GB & 515 Gflops & 1030 Gflops & 150 GB/s \\
+    Tesla M2070 & 448 & 6GB & 515 Gflops & 1030 Gflops & 150 GB/s & 2.0 \\
    \hline
-     Tesla C2050 & 448 & 2.5GB & 512 Gflops & 1030 Gflops & 144 GB/s \\
+     Tesla C2050 & 448 & 2.5GB & 512 Gflops & 1030 Gflops & 144 GB/s & 2.0  \\
    \hline
-      GeForce GTX 580 & 512 & 1.5GB & 520 Gflops & 1,154 Gflops & 192.2 GB/s \\
+      GeForce GTX 580 & 512 & 1.5GB & 520 Gflops & 1,154 Gflops & 192.2 GB/s & 2.0  \\
    \hline
-   GeForce GTX 670MX & 960 & 3GB & 520 Gflops & 1,154 Gflops & 67.2 GB/s \\
+   GeForce GTX 670MX & 960 & 3GB & 520 Gflops & 1,154 Gflops & 67.2 GB/s 3.0  \\
    \hline
   \end{tabular}
 
    The code was launched on all Piritakua's GPUs and on external GeForce GTX 670m, located on a laptop. The "m" stands for the mobil graphic card version. In addition the 670m card is design for less power usage, but with high graphics power, it even has more cores than some Tesla models, however this types of cards has way more less Bandwidth than standard versions.
 
-There are two GPU architectures that code was launched, the Fermi and the Kepler. The Tesla K20m is base on ``Kepler'' GPU architecture and Tesla M2070, Tesla M2050 and GeForce GTX 580 on the Fermi architecture. The Kepler is a newer architecture than the Fermi. The big difference between the is the number of CUDA cores per SM.
-
   
 \subsection{Architecture Differences}
 
-  architecture dependent technical differences of Nvidia GPUs. During CUDA development a lot of internal features have been improved, but most paradigms for the programmer stayed the same. For example a streaming processor can now handle 2048 threads at a time, but the maximum block size stayed at 1024. This results in a 100$\%$ theoretical occupancy for block sizes of 1024 compared to 66$\%$ of Fermi. Another example is the use of Shared Memory. Maxwell has 64KB dedicated Shared Memory. The maximum amount of Shared Memory per Block is 48KB for all three architectures.
+  Architecture dependent technical differences of NVIDIA GPUs. During CUDA development a lot of internal features have been improved, but most paradigms for the programmer stayed the same. For example a streaming processor can now handle 2048 threads at a time, but the maximum block size stayed at 1024. This results in a 100$\%$ theoretical occupancy for block sizes of 1024 compared to 66$\%$ of Fermi. Another example is the use of Shared Memory. Maxwell has 64KB dedicated Shared Memory. The maximum amount of Shared Memory per Block is 48KB for all three architectures. \cite{hoermanngpu}
+  
+  There are two GPU architectures that code was launched, the Fermi and the Kepler. The Tesla K20m is base on ``Kepler'' GPU architecture and the Tesla M2070, M2050 and GeForce GTX 580 on the Fermi architecture. The Kepler is a newer architecture than the Fermi. The big difference between the is the number of CUDA cores per SM. Roughly summarized as:
   
 \begin{table}[h]
 \centering
@@ -97,11 +96,9 @@ There are two GPU architectures that code was launched, the Fermi and the Kepler
    \hline
    Warp Size & \multicolumn{6}{c|}{32}  \\
    \hline
-
   \end{tabular}
   \end{table}
   
-
 \subsection{Experiment metrics}
 
 The initial implementation was launched on several GPU nodes as well as several times on the same node. The implementation was launched 10 times on each node, For example the following table are the results of the initial implementation launched on the NVIDIA Tesla K20m.
@@ -135,19 +132,21 @@ The initial implementation was launched on several GPU nodes as well as several 
   \end{tabular}
   \end{table}
   
-As we can see each time the code is executed, different time results.  . The order in which operations are evaluated can significantly affect the final value of a floating point computation; t
+As we can see each time the code is executed, different time results. The order in which operations are evaluated can significantly affect the final value of a floating point computation; t
 It's possible that the first issued block might be issued to different multiprocessor each time, and if there are an uneven number of blocks across multiprocessors, then the execution order could vary slightly between runs \cite{cook}.
 
-As we know there is no garanty that threads will execute at the same order. To accomplish such task thread sycronization is needed.
+As we know there is no guaranty that threads will execute at the same order. To accomplish such task thread synchronization is needed.
+
+\subsection{Validation}
 
 
 
 \section{Results}
 
-The CUDA code was launched on each GPU of the Piritakua supercomputer. As we know the supercomputer has different GPU, as well as several architectures and different number of CUDA cores.
+The CUDA code was launched on each GPU of the "Piritakua" supercomputer. As we know the supercomputer has different GPU, as well as several architectures and different number of CUDA cores.
 
 
-metion cuda versions. as well as the compiler used for the test.
+mention CUDA versions. as well as the compiler used for the test.
 
 
 \begin{table}[h]
@@ -173,13 +172,13 @@ metion cuda versions. as well as the compiler used for the test.
   
 \subsection{Initial Test}
 
-The initial implementation was launched on several GPU nodes, as previous mentioned.  As we know .Se figure.\ref{fig:iniresults}.
+The initial implementation was launched on several GPU nodes, as previous mentioned.  As we know. Se figure.\ref{fig:iniresults}.
 
 \begin{figure}[htbp]
 	\centering
 		\includegraphics[width=0.65\textwidth]{Figures/initial_results.png}
 		\rule{35em}{0.2pt}
-	\caption[Initial GPU results]{Initial resutls of the implementation runing on several differen GPU nodes}
+	\caption[Initial GPU results]{Initial results of the implementation running on several different GPU nodes}
 	\label{fig:iniresults}
 \end{figure}
 
@@ -190,7 +189,7 @@ We all know summing one-third three times yields to one.
 
 $$\dfrac{1}{3} + \dfrac{1}{3} + \dfrac{1}{3} = 1$$
 
- However this is not allways true on a computer. It actually dependes of the floating-point precition.
+ However this is not always true on a computer. It actually depends of the floating-point precision.
  
  
   
@@ -208,8 +207,41 @@ the
 command
 
  nvprof –o nvprof.log ./command
+ 
+ 
+ \section{Branching}
+ 
+ CUDA follows the Single Instruction Multiple Thread architecture. This means that there are running several threads executing the same code. Each thread can operate on its own data and has its own address counter. They are free to use each data dependent path. But also each thread is executing the same operation at the same time. When a thread within a warp branches differently the other threads get deactivated. This can be described by the following listing and illustrated by \cite{hoermanngpu}.
+ 
+ \ref{fig:threads}
+ \begin{lstlisting}[language=C++, caption={CPU Vector Addition}]__global__ void kernel(int* out){
+ 
+idx = threadIdx.x;int result;
+
+if(idx == 0){
+	result = foo();} else {
+	result = bar();
+	out[idx] = result;
+}
+\end{lstlisting}
+
+
+\begin{figure}[htbp]
+	\centering
+		\includegraphics[width=0.65\textwidth]{Figures/threads.png}
+		\rule{35em}{0.2pt}
+	\caption[he execution flow]{The execution flow of a branching code, with warp size 8. Black arrows are active threads, and the grey ones are disabled.}
+	\label{fig:threads}
+\end{figure}
+
+
+
+\subsection{Ocupancy}
+ 
 
 \subsection{Concurrent Kernels}
+
+The initial 
 
 \subsection{Shared Memory}
 
@@ -218,7 +250,7 @@ load reduction, reference to
 http://www.bu.edu/pasi/files/2011/07/Lecture31.pdf
 
 
-\subsection{Obtimized}
+\subsection{Optimized}
 
 
 %-----------------------------------

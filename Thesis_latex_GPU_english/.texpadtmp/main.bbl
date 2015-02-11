@@ -46,6 +46,12 @@ E.~Golovatski.
   Domain Walls}.
 \newblock BiblioBazaar, 2012.
 
+\bibitem{hoermanngpu}
+T.~H{ \"{o} }rmann.
+\newblock Gpu-optimised implementation of high-dimensional tensor applications.
+\newblock Master's thesis, Institut f{\"{u}}r Informatik, Technische
+  Universit{\"{a}}t M{\"{u}}nchen, Dec. 2014.
+
 \bibitem{physicsgpu}
 A.~Harju, T.~Siro, F.~Canova, S.~Hakala, and T.~Rantalaiho.
 \newblock Computational physics on graphics processing units.

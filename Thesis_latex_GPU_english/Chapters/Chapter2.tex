@@ -90,19 +90,7 @@ In practice the difference between theoretical bandwidth and effective bandwidth
 
 \section{Memory Handling with CUDA}
 
-In this section four types of memory handling are going to be explained, shared memory, global memory (device memory) and finally host memory. In figure \ref{fig:memory} each memory type has it's bandwidth penalty of used and latency in cycles. Each one can be used in different applications to maximize the memory used. The shared Memory is very limited so it cannot be handler for all the kernels, when performed wrong on the device there is a huge latency and bandwidth penalty, instead having a gain in performance \cite{cook}.
-
-\begin{figure}[htbp]
-	\centering
-		\includegraphics[width=0.85\textwidth]{Figures/memory.png}
-		\rule{35em}{0.5pt}
-	\caption[Different memory types]{Different memory type and penalties usage}
-	\label{fig:memory}
-\end{figure}
-
-So how does the memory hierarchy is store in the chip\ref{fig:cores}
-
-
+In this section four types of memory handling are going to be explained, shared memory, global memory (device memory) and finally host memory. As the figure \ref{fig:cores} illustrates the position of the different types of memory inside the device chip. The global memory is faraway the registers and CUDA core locations, however is very large in comparison to the shared memory. \cite{cook}.
 
 \begin{figure}[htbp]
 	\centering
@@ -113,6 +101,15 @@ So how does the memory hierarchy is store in the chip\ref{fig:cores}
 \end{figure}
 
 
+ In figure \ref{fig:memory} each memory type has it's bandwidth penalty of used and latency in cycles. Each one can be used in different applications to maximize the memory used. The shared Memory is very limited so it cannot be handler for all the kernels, when performed wrong on the device there is a huge latency and bandwidth penalty, instead having a gain in performance
+ 
+\begin{figure}[htbp]
+	\centering
+		\includegraphics[width=0.85\textwidth]{Figures/memory.png}
+		\rule{35em}{0.45pt}
+	\caption[Different memory types]{Different memory type and penalties usage}
+	\label{fig:memory}
+\end{figure}
 
 \subsection{Global Memory}
 
@@ -221,7 +218,7 @@ The performance of relatively simple kernels, which perform computations across 
 
 \section{Hardware constraints}
 
-This refers to the limit how many threads per block a kernel launch can have. If exceed this values they kernel will never run. The threads per block really depends of the hardware capabilities. In a roughly summarized as:
+This refers to the limit how many threads per block a kernel launch can have. If exceed this values they kernel will never run. The threads per block really depends of the hardware capabilities.  The compute capabilitiesThe compute capability of a device is represented by a version number, also sometimes called its "SM version". This version number identifies the features supported by the GPU hardware and is used by applications at runtime to determine which hardware features and/or instructions are available on the present GPU.\cite{tool} In a roughly summarized as:
 
 \begin{itemize}
 \item Each block cannot have more than 512/1024 threads in total. (Capability 1.x or 2.x-3.x)
@@ -250,7 +247,7 @@ Is a hard task to keep track of each individual thread. This becomes difficult f
 	\label{fig:visualgraph}
 \end{figure}
 
-NVIDIA's profiling tools comes in various flavors; a standalone profiler through the visual profiler compiler nvvp, integrated in a GUI Nsight Eclipse Edition as NSight command (Visual Profiler), and as a command-line profiler though nvprof command. Each one has its disadvantages and advantages. The command-line profiler is useful for remotely access, where a GUI is not available, while the Nsight can show graphs, plots and timeline of the application. The Profiler support CUDA applications as well as openCL applications, however both have some exceptions. 
+NVIDIA's profiling tools comes in various flavors; a standalone profiler through the visual profiler compiler nvvp, integrated in a GUI Nsight Eclipse Edition as NSight command (Visual Profiler), and as a command-line profiler though nvprof command. Each one has its disadvantages and advantages. The command-line profiler is useful for remotely access, where a GUI is not available, while the NSight can show graphs, plots and timeline of the application. The Profiler support CUDA applications as well as openCL applications, however both have some exceptions. 
 
 The Visual Profiler, by default, will execute the entire application, nonetheless typically only some parts of application only need performance optimization. This enables to determine kernels, code where critical performances is needed. The common situations where profiling a region of the application is helpful.\cite{tool}
 
@@ -294,10 +291,10 @@ GPU compute resources limit the performance of a kernel when those resources are
 
 \subsection{Collect Data On Remote System}
 
-As mention before, is possible to collect data from a remote system where a GUI is not available, using the command-line nvprof. Remote profiling is the process of collecting profile data from a remote system that is different than the host system at which that profile data will be viewed and analyzed. Once the data is collected is possible to access the data using the Visual profiler, which enables a GUI and more comprensive information about the application. There are two ways to perform remote profiling. To use nvvp remote profiling you must install the same version of the CUDA Toolkit on both the host and remote systems. It is not necessary for the host system to have an NVIDIA GPU. \cite{tool}
+As mention before, is possible to collect data from a remote system where a GUI is not available, using the command-line nvprof. Remote profiling is the process of collecting profile data from a remote system that is different than the host system at which that profile data will be viewed and analyzed. Once the data is collected is possible to access the data using the Visual profiler, which enables a GUI and more compressive information about the application. There are two ways to perform remote profiling. To use nvvp remote profiling you must install the same version of the CUDA Toolkit on both the host and remote systems. It is not necessary for the host system to have an NVIDIA GPU. \cite{tool}
 
 \vspace{3.2em}
 
-Finally, this chapter gives a overview of practices and performance studies for GPGPU. A better understanding of the hardware and memory management, as well as hardware limitation, will help us how to determinate the best usage of the GPUs. As we can see NVIDIA's profiling tools is useful to analyze different stages of our application, moreover to determined which parts of the CUDA code is better to optimize from others, to gain more performance.
+Finally, this chapter gives a overview of practices and performance studies for GPGPU. Also a better understanding of the hardware and memory management, as well as hardware limitation, which determinate the best usage of the GPUs. As we can see NVIDIA's profiling tools is useful to analyze different stages of our application, moreover to determined which parts of the CUDA code is better to optimize from others to gain more performance.
 
 
