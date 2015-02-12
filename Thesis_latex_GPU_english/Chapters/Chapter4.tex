@@ -1,0 +1,254 @@
+% Chapter Template
+
+\chapter{CUDA implementation} % Main chapter title
+
+\label{CUDA implementation} % Change X to a consecutive number; for referencing this chapter elsewhere, use \ref{ChapterX}
+
+\lhead{Chapter 4. \emph{CUDA implementation}} % Change X to a consecutive number; this is for the header on each page - perhaps a shortened title
+
+%----------------------------------------------------------------------------------------
+%	SECTION 1
+%----------------------------------------------------------------------------------------
+
+
+% techniques, programming models and hierarchies.
+\section{Practices}
+
+
+
+
+%-----------------------------------
+%	SUBSECTION 2
+%-----------------------------------
+
+
+\section{Numerical Methods on the GPUs}
+
+
+\subsection{Finite Difference Time Domain}
+
+
+\subsection{Fourth order Runge and Kutta}
+
+The GPU implementation. the application reads
+
+At initialize the applications first it allocates all the CUDA and c arrays.
+
+To allocate a big chunk of memory in the Device
+
+\begin{lstlisting}[frame=none]
+cudaMalloc
+\end{lstlisting}
+And C with
+
+\begin{lstlisting}[frame=none]
+malloc
+\end{lstlisting}
+
+In the initialization function it also reads the magnetization data from a especific file in this specific case from ``upVW-magn-2.5nm.data''
+
+
+The initial values for the simulation are
+
+\begin{table}[h]
+\centering
+\begin{tabular}{| l | l |}
+\hline
+NX     & 480                                            \\
+\hline
+NY     & 120                                            \\
+\hline
+NZ     & 1                                              \\
+\hline
+TX     & 1200.0                                         \\
+\hline
+TY     & 300.0                                          \\
+\hline
+TZ     & 5.0                                            \\
+\hline
+u      & 1                                              \\
+\hline
+D      & 1.0e\textasciicircum 3 nm\textasciicircum 2/ns \\
+\hline
+tau sd & 1.0e\textasciicircum -3 ns                     \\
+\hline
+tau sf & 25.0e-3 ns      \\
+\hline
+\end{tabular}
+\end{table}
+
+
+\section{structure}
+
+The number of threads that are allocated within each kernel is a 2d grid.
+
+\begin{table}[h]
+\centering
+\begin{tabular}{| l | l |}
+\hline
+Threads per block  X   & 32       \\
+\hline
+Threads per block Y     & 32         \\
+\hline
+\end{tabular}
+\end{table}
+
+Depending on the hardware configuration, each GPU can allocate different threads per block. To make a homogeneous grid space for each GPU a simple calculation is made.
+
+\begin{lstlisting}[frame=none]
+NXCUDA = (int)powf(2,ceilf(logf(NX)/logf(2)));
+
+
+NYCUDA = (int)powf(2,ceilf(logf(NY)/logf(2)));
+
+if((int)powf(2,ceilf(logf(NZ)/logf(2))) < 1)
+	NZCUDA = 1;
+else
+        NZCUDA = (int)powf(2,ceilf(logf(NZ)/logf(2)));
+
+//Setup optimum number of blocks
+XBLOCKS_PERGRID = (int)ceil((float)NX/(float)XTHREADS_PERBLOCK);
+printf("XBLOCKS_PERGRID = %i\n",XBLOCKS_PERGRID);
+
+YBLOCKS_PERGRID = (int)ceil((float)NY/(float)YTHREADS_PERBLOCK);
+\end{lstlisting}
+
+
+The calculations are divided into two parts, the CPU code and the GPU code. All the intense computation and simulation is done on the GPU, while on the CPU only minor calculations are done, such as I/O  data.
+
+\subsection{CPU}
+In the $initial_calculations$ functions it calculates the terms on magnetization components
+
+
+the read magnetization data.
+This function basically reads data from a .dat file and allocates the memory for each blocks, it reads
+
+The file is divide into two blocks of data, the first block of 57600 rows are the coordinate X and the coordinate Y. Then the next 57600 rows by 3 columns are the magnetization data. Base on the information read the matrices of data is created.
+
+here two data sets are created. The coordinates point data $(x,y)$ and the magnetization data $(x, y, z)$.
+
+Afther this initilization data, the next step is to send this data, that is actually read on the CPU (host) to de GPU(device).
+
+
+First we print the Initial and final coordinates that read, this is to ensure that the values ared sucuefully.
+
+
+\subsection{GPU}
+
+
+Array are created on the on the Host and sento the Device using
+
+In the type it can be either cudaMemcpyHostToDevice or cudaMemcpyDeviceToHost, depeding, if the memory thats is being copied is sent to the host or to the device.
+
+\begin{lstlisting}[frame=none]
+cudaMemcpy(dst, src, size_in_bytes, type);
+\end{lstlisting}
+
+after initialization the coordinates points an the magnetization data in the device are done, does values are sent to the GPU, with the function cudaMemcpy() and value set to cudaMemcpyHostToDevice.
+
+In the Initialization of the calculations most of the arrays are filled up with values base on the data read from the .dat magenetization.
+
+\begin{lstlisting}[frame=none]
+__global__ void gsource(double *sm_out, double *matrix_in, double u, int grid_width);
+
+__global__ void gm_x_source(double *tempx, double *tempy, double *tempz,
+							 double *mx, double *my, double *mz,
+							 double *sm_x, double *sm_y, double *sm_z,
+							 int grid_width);
+\end{lstlisting}
+
+
+The function gsource
+
+Makes the following calculation of the $double *matrix\_in$ or m
+
+
+\begin{equation} \label{eq:gsource}
+out[i] = (m[i-2] - 8.0*m[i-1] + 8.0*m[i+1] - m[i+2]) * \dfrac{u}{12 * deltaX }
+\end{equation}
+
+where
+
+$$deltaX = \frac{TX}{NX}$$
+
+This calculation is done for the arrays read from the .dat file, for dev\_mx, dev\_my and dev\_mz and are saved in a temporary arrays dev\_sm\_x, dev\_sm\_y, and dev\_sm\_z.
+
+The method.
+
+$gm\_x\_source$ calculates the coss producto of the array $m_{xyx}$ and $sm_{xyz}$, this is done twice.
+
+THis data is saved on the arrays $dev_sm_{xyz}$,
+
+Afther launching this two kernels the initial setup is done, the next step is the actual simulation using runge and kutta integrator.
+
+
+\subsection{KG4}
+
+As seed  in Runge and Kutta section, this method is implementation to numerically solve the differential equation. Intuitivelly the implementation on CUDA code is done with 4 kernls, where each kernel calculates respectivelly the order of the integrator. In the last term calculation is where all the magic occurr, the sum of the previous 3 calculated terms.
+
+\begin{lstlisting}[frame=none]
+__global__ void gterm1_RK1( . . .);
+__global__ void gterm2_RK2( . . .);
+__global__ void gterm3_RK3( . . .);
+__global__ void gterm4_RK4( . . .);
+\end{lstlisting}
+
+Between each term calculation of RG4 laplacian calculation kernels are launched.
+
+\begin{lstlisting}[frame=none]
+__global__ void glaplacianx( . . . );
+__global__ void glaplacianyboundaries( . . . );
+__global__ void glaplaciany( . . . );
+\end{lstlisting}
+
+The final kernel is launched $void gterm4_RK4()$ obtain the array $deltam_{xyz}$, which is the final result of the RK4 integrator. This array is sent to the last step.
+
+\subsection{effective values}
+
+When the rg4 integretaor is done effective values are calculatated, this values sirve the porpese of calculation  the.
+
+
+\begin{lstlisting}[frame=none]
+__global__ void gm_x_sm( . . . );
+__global__ void gu_eff( . . . );
+__global__ void gu_eff_beta_eff( . . . );
+__global__ void gbeta_eff( . . . );
+__global__ void gbeta_diff( . . . );
+\end{lstlisting}
+
+The last kernel $ void gbeta\_diff( . . . );$ is where the two final arrays are obtain,
+which then are sent to the CPU for the final calculation.
+
+The final calculation is just the sum of all the elements of $beta_diff_num$ and $beta_diff_den$, there divided.
+This final single values tells us...
+
+
+This is the final step of the simulations this is where $beta\_diff$ is obtained.
+
+The final data is saved
+\subsection{time}
+
+When the simulation is done, it will repeat the process intil the values converges.
+
+
+\section{Validation}
+
+The validate the code, that is obtained from the simulation
+
+Once obtain the results from the simulation, the results are written into two separated data files; .eff and .spin. depending of the configuration of the application is possible to obtain the uVW or the. Because CUDA framework is highly parallel system is fairly easy to obtain erroneous data from the calculations, even setting up the threads per block incorrectly is possible to get data set that a wrong, or results that don't diverge. It is necessary that when finishing making changes to the code validating the results with a valid data set is done.
+
+The validation is done by checking the output the simulation with a valid data set, the output of the validation application tells us the error factor of the current data with the valid set. So for each data set there is a threshold value, that can tell if the that is close enough to the results. A example of the validation performed.
+
+//validation float error precision
+
+\subsection{Validation}
+
+
+
+%----------------------------------------------------------------------------------------
+%	SECTION 2
+%----------------------------------------------------------------------------------------
+
+\section{Data Flow}
+
+The initial data flow of the kernels goes as follow, Fi
