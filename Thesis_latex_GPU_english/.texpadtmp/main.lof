@@ -22,6 +22,12 @@
 \contentsline {figure}{\numberline {3.4}{\ignorespaces Fourth-order Runge and Kutta Method}}{30}{figure.caption.154}
 \addvspace {10\p@ }
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {5.1}{\ignorespaces Initial GPU results}}{39}{figure.caption.226}
-\contentsline {figure}{\numberline {5.2}{\ignorespaces he execution flow}}{41}{figure.caption.242}
+\contentsline {figure}{\numberline {5.1}{\ignorespaces Initial GPU results}}{39}{figure.caption.225}
+\contentsline {figure}{\numberline {5.2}{\ignorespaces he execution flow}}{41}{figure.caption.241}
+\contentsline {figure}{\numberline {5.3}{\ignorespaces Initial Streams}}{41}{figure.caption.244}
+\contentsline {figure}{\numberline {5.4}{\ignorespaces Streams kernels Tesla K20}}{42}{figure.caption.292}
+\contentsline {figure}{\numberline {5.5}{\ignorespaces Shared Memory Strategy}}{43}{figure.caption.298}
+\contentsline {figure}{\numberline {5.6}{\ignorespaces Array of structures (AOS)}}{44}{figure.caption.301}
+\contentsline {figure}{\numberline {5.7}{\ignorespaces Structure of Arrays (SAO)}}{44}{figure.caption.302}
+\addvspace {10\p@ }
 \addvspace {10\p@ }

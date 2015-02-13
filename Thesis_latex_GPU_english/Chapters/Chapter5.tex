@@ -229,7 +229,6 @@ if(idx == 0){
 }
 \end{lstlisting}
 
-
 \begin{figure}[htbp]
 	\centering
 		\includegraphics[width=0.65\textwidth]{Figures/threads.png}
@@ -239,33 +238,204 @@ if(idx == 0){
 	\label{fig:threads}
 \end{figure}
 
-
+The optimizacion
 
 \subsection{Occupancy}
  
 
 \subsection{Concurrent Kernels}
 
-The initial 
+Initially each kernel was launched in the default steam 0, the figure \ref{fig:streams} illustrates such result in the Visual Profiler. Each kernel that is being launched cannot run simultaneously because the next kernel launche needs to compute data, in other words the kernels are not independent from each other.
+
+\begin{figure}[htbp]
+	\centering
+		\includegraphics[width=0.65\textwidth]{Figures/ini_steams.png}
+		\rule{35em}{0.2pt}
+	\caption[Initial Streams]{Kernels running in the default 0 Stream.
+}
+	\label{fig:streams}
+\end{figure}
+
+
+The gsolution kernel computes the Zhang an Li model for x, y, z coordinates using extensively the global memory from the device. The kernel which is launched in the default stream cannot run in parallel with others kernels. To manage concurrency the kernel is divided into three kernels which computes individual each coordinate. 
+
+\begin{lstlisting}[language=C++, caption={Evaluation of x, y, z coordinates of the Zhang and Li model in a single kernel}]
+__global__ void gsolution(double *sfrelax_x, double *sfrelax_y, double *sfrelax_z,
+                          double *sm_x, double *sm_y, double *sm_z,
+                          double *sdex_x, double *sdex_y, double *sdex_z,
+                          double *lapl_x, double *lapl_y, double *lapl_z,
+                          double *deltam_x, double *deltam_y, double *deltam_z,
+                          int grid_width)
+{
+	int i = blockIdx.x * blockDim.x + threadIdx.x + 2;
+  	int j = blockIdx.y * blockDim.y + threadIdx.y;
+    
+  	int index = j * grid_width + i;
+
+  	if (i > 1 && i < NX + 2 && j >= 0 && j < NY)
+  	{
+  		deltam_x[index] = sfrelax_x[index] + sdex_x[index] + lapl_x[index]
+                          - sm_x[index];
+     	deltam_y[index] = sfrelax_y[index] + sdex_y[index] + lapl_y[index]
+                          - sm_y[index];
+     	deltam_z[index] = sfrelax_z[index] + sdex_z[index] + lapl_z[index]
+                          - sm_z[index];
+  }
+}
+\end{lstlisting}
+
+To achieve concurrent kernels the streams need to access memory blocks that are pinned to a stream. So each memory block corresponding x, y, z are mapped to 3 streams, furthermore all the matrices corresponding for example x are mapped to stream 1. 
+
+
+\begin{lstlisting}[language=C++, caption={Evaluation of individual coordinates of the Zhang and Li model}]
+__global__ void gsolution(double *deltam,
+					      double *sfrelax, double *sm, double *sdex, double *lapl)
+{
+    int i = blockIdx.x * blockDim.x + threadIdx.x + 2;
+    int j = blockIdx.y * blockDim.y + threadIdx.y;
+ 
+    int index = j * NXCUDA_CONST + i;
+
+    if (i > 1 && i < NX + 2 && j >= 0 && j < NY)
+    {
+        deltam[index] = sfrelax[index] + sdex[index] + lapl[index] - sm[index];
+    }
+}
+\end{lstlisting}
+
+
+This same method is applied to every kernel that can be seperated into three kernels calls. Some kernels cannot be separate such as the cross product, because the product uses memory block from the other streams. Instead of running one big kernel, three individual kernels are launched simultaneous. The figure \ref{fig:concurrent} shows the results of concurrent kernels in the Tesla K20.
+
+\begin{lstlisting}[language=C++, caption={Evaluation of individual coordinates of the Zhang and Li model}]
+for (int i  = 0; i < 3; i++)
+{
+gsolution<<<blocks, threads, 0, stream[i]>>>(spinAccXYZ[i]->getDev_deltam(),
+											 spinAccXYZ[i]->getDev_sfrelax(), 
+											 spinAccXYZ[i]->getDev_sm(), 
+											 spinAccXYZ[i]->getDev_sdex(),
+											 spinAccXYZ[i]->getDev_lapl());
+
+}
+\end{lstlisting}
+
+
+\begin{figure}[htbp]
+	\centering
+		\includegraphics[width=0.65\textwidth]{Figures/concurent.png}
+		\rule{35em}{0.2pt}
+	\caption[Streams kernels Tesla K20]{Concurrent kernels in the Tesla K20
+}
+	\label{fig:concurrent}
+\end{figure}
+
+
+\subsubsection{Results}
+
+graphic.
+
+k20  6.0 speed up.
+
+However
+
 
 \subsection{Shared Memory}
 
-load reduction, reference to
+Shared memory was
+
+To increase ocupancy
+
+\begin{lstlisting}[language=C++, caption={Evaluation of individual coordinates of the Zhang and Li model}]
+
+
+\end{lstlisting}
+
+
+\begin{figure}[htbp]
+	\centering
+		\includegraphics[width=0.45\textwidth]{Figures/shared.png}
+		\rule{35em}{0.2pt}
+	\caption[Shared Memory Strategy]{Shared Memory Strategy }
+	\label{fig:shared}
+\end{figure}
 
 http://www.bu.edu/pasi/files/2011/07/Lecture31.pdf
 
 
-\subsection{Optimized}
+\subsubsection{Results}
 
 
-%-----------------------------------
-%	SUBSECTION 2
-%-----------------------------------
+\subsection{Structure of Arrays (SAO)}
 
-\subsection{Subsection 2}
 
-%----------------------------------------------------------------------------------------
-%	SECTION 2
-%----------------------------------------------------------------------------------------
 
-\section{Main Section 2}
+AoS and SoA refer to "Array of Structures" and "Structure of Arrays" respectively. These two terms refer to two different ways of laying out your data in memory. This is illustrated in figure \ref{fig:aos} and \ref{fig:sao} respectively. AOS, grouping properties of an object together and making an array of those objects in memory, whereas a structure of arrays would be a single structure in which you make an array for each property. The structure of arrays can allow for better cache utilization, easier to access continues data, making better use of each read you make from memory, providing a more effective route to memory. 
+
+\begin{figure}[htbp]
+	\centering
+		\includegraphics[width=0.65\textwidth]{Figures/aos.png}
+		\rule{35em}{0.2pt}
+	\caption[Array of structures (AOS)]{AOS memory layout }
+	\label{fig:aos}
+\end{figure}
+
+
+\begin{figure}[htbp]
+	\centering
+		\includegraphics[width=0.65\textwidth]{Figures/soa.png}
+		\rule{35em}{0.2pt}
+	\caption[Structure of Arrays (SAO)]{SAO memory layout}
+	\label{fig:sao}
+\end{figure}
+
+The code changed from.
+
+\subsubsection{Results}
+
+
+
+\section{Optimized}
+
+
+
+Summarize the data
+
+\begin{table}[h]
+\centering
+  \begin{tabular} { |  l  |  l | l  |  l  | l | l | l |}
+    \hline
+    GPU & Original & Constant & Streams & Shared & SAO & Shared 2 \\
+    \hline
+    Tesla K20m & 0 & 0 & 0 & 0 & 0 & 0\\
+   \hline
+    Tesla M2070 & 107468.0 & 0 & 0 & 0 & 0 & 0\\
+    \hline
+    Tesla C2050 & 0 & 0 & 0 & 0 & 0 & 0\\
+   \hline
+    GeForce GTX 580 & 0 & 0 & 76407.4 & 0 & 0 & 0\\
+   \hline
+    GeForce 670m & 0 & 0 & 0 & 0 & 0 & 0\\
+   \hline
+  \end{tabular}
+  \end{table}
+  
+  
+  seed-up
+  \begin{table}[h]
+\centering
+  \begin{tabular} { |  l  |  l | l  |  l  | l | l | l |}
+    \hline
+    GPU & Original & Constant & Streams & Shared & SAO & Shared 2 \\
+    \hline
+    Tesla K20m & 0 & 0 & 0 & 0 & 0 & 0\\
+   \hline
+    Tesla M2070 & 3.512x & 0 & 0 & 0 & 0 & 0\\
+    \hline
+    Tesla M2070 & 0 & 0 & 0 & 0 & 0 & 0\\
+   \hline
+    GeForce GTX 580 & 0 & 0 & 76407.4 & 0 & 0 & 0\\
+   \hline
+    GeForce 670m & 0 & 0 & 0 & 0 & 0 & 0\\
+   \hline
+  \end{tabular}
+  \end{table}
+  
