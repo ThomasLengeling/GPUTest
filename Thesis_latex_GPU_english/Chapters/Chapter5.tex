@@ -209,7 +209,7 @@ command
  nvprof –o nvprof.log ./command
  
  
- \section{Branching}
+ \subsection{Branching}
  
  CUDA follows the Single Instruction Multiple Thread architecture. This means that there are running several threads executing the same code. Each thread can operate on its own data and has its own address counter. They are free to use each data dependent path. But also each thread is executing the same operation at the same time. When a thread within a warp branches differently the other threads get deactivated. This can be described by the following listing and illustrated by \cite{hoermanngpu}.
  
@@ -304,7 +304,7 @@ __global__ void gsolution(double *deltam,
 \end{lstlisting}
 
 
-This same method is applied to every kernel that can be seperated into three kernels calls. Some kernels cannot be separate such as the cross product, because the product uses memory block from the other streams. Instead of running one big kernel, three individual kernels are launched simultaneous. The figure \ref{fig:concurrent} shows the results of concurrent kernels in the Tesla K20.
+This same method is applied to every kernel that can be separated into three kernels calls. Some kernels cannot be separate such as the cross product, because the product uses memory block from the other streams. Instead of running one big kernel, three individual kernels are launched simultaneous. The figure \ref{fig:concurrent} shows the results of concurrent kernels in the Tesla K20.
 
 \begin{lstlisting}[language=C++, caption={Evaluation of individual coordinates of the Zhang and Li model}]
 for (int i  = 0; i < 3; i++)
@@ -340,9 +340,9 @@ However
 
 \subsection{Shared Memory}
 
-Shared memory was
+As we know shared memory is faster than global memory, however shared memory is very limited. 
 
-To increase ocupancy
+To increase occupancy
 
 \begin{lstlisting}[language=C++, caption={Evaluation of individual coordinates of the Zhang and Li model}]
 
@@ -367,7 +367,6 @@ http://www.bu.edu/pasi/files/2011/07/Lecture31.pdf
 \subsection{Structure of Arrays (SAO)}
 
 
-
 AoS and SoA refer to "Array of Structures" and "Structure of Arrays" respectively. These two terms refer to two different ways of laying out your data in memory. This is illustrated in figure \ref{fig:aos} and \ref{fig:sao} respectively. AOS, grouping properties of an object together and making an array of those objects in memory, whereas a structure of arrays would be a single structure in which you make an array for each property. The structure of arrays can allow for better cache utilization, easier to access continues data, making better use of each read you make from memory, providing a more effective route to memory. 
 
 \begin{figure}[htbp]
@@ -387,7 +386,24 @@ AoS and SoA refer to "Array of Structures" and "Structure of Arrays" respectivel
 	\label{fig:sao}
 \end{figure}
 
-The code changed from.
+
+The initial implementation the  x, y, z data was allocated in separated blocks. Furthermore when accessing blocks of the the same coordinates, the register access the data as the figure\ref{fig:aos}.
+
+\begin{lstlisting}[language=C++, caption={AOS implementation}]
+deltam_x = (double **)calloc(NYCUDA, sizeof(double));
+deltam_y = (double **)calloc(NXCUDA, sizeof(double *));
+deltam_z = (double **)calloc(NXCUDA, sizeof(double *));
+\end{lstlisting}
+
+To solve this issue, first a custom class named GPUMatrix was programmed. Moreover it allocated the data for each coordinate and free the memory automatically when the simulation is done. The allocation of the memory is ralated to the operations that are being done by the kernels for faster memory access. 
+
+\begin{lstlisting}[language=C++, caption={SOA implementation}]
+
+    GPUMatrix<T> *dev_deltam;
+    GPUMatrix<T> *dev_sdex; //Exchange term
+    GPUMatrix<T> *dev_sfrelax;
+    GPUMatrix<T> *dev_m; 
+\end{lstlisting}
 
 \subsubsection{Results}
 
@@ -407,11 +423,11 @@ Summarize the data
     \hline
     Tesla K20m & 0 & 0 & 0 & 0 & 0 & 0\\
    \hline
-    Tesla M2070 & 107468.0 & 0 & 0 & 0 & 0 & 0\\
+    Tesla M2070 & 107468.0 & 0 & 130754.1 & 97343.4 & 73938.1 & 0\\
     \hline
-    Tesla C2050 & 0 & 0 & 0 & 0 & 0 & 0\\
+    Tesla C2050 & 106303.6 & 0 & 128516.6 & 96762.0 & 72964.5 & 0\\
    \hline
-    GeForce GTX 580 & 0 & 0 & 76481.9 & 0 & 51603.7 & 0\\
+    GeForce GTX 580 & 69341.9 & 0 & 76481.9 & 70567.1 & 51603.7 & 0\\
    \hline
     GeForce 670m & 0 & 0 & 0 & 0 & 0 & 0\\
    \hline
@@ -428,11 +444,11 @@ Summarize the data
     \hline
     Tesla K20m & 0 & 0 & 0 & 0 & 0 & 0\\
    \hline
-    Tesla M2070 & 3.512x & 0 & 0 & 0 & 0 & 0\\
+    Tesla M2070 & 3.512x & 0 & 2.888x & 3.879x & 5.107x & 0\\
     \hline
-    Tesla M2070 & 0 & 0 & 0 & 0 & 0 & 0\\
+    Tesla C2050 & 3.550x & 0 & 2.938x & 3.902x & 5.175x & 0\\
    \hline
-    GeForce GTX 580 & 0 & 0 & 4.937x & 0 & 7.317x & 0\\
+    GeForce GTX 580 & 5.443x & 0 & 4.937x & 5.351x & 7.317x & 0\\
    \hline
     GeForce 670m & 0 & 0 & 0 & 0 & 0 & 0\\
    \hline

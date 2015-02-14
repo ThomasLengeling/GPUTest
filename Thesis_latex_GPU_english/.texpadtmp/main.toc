@@ -60,18 +60,18 @@
 \contentsline {subsection}{\numberline {5.2.1}Initial Test}{39}{subsection.224}
 \contentsline {subsection}{\numberline {5.2.2}Finite Precision}{39}{subsection.226}
 \contentsline {subsubsection}{\numberline {5.2.2.1}Visual profiler}{40}{subsubsection.227}
-\contentsline {section}{\numberline {5.3}Branching}{40}{section.228}
-\contentsline {subsection}{\numberline {5.3.1}Occupancy}{41}{subsection.242}
-\contentsline {subsection}{\numberline {5.3.2}Concurrent Kernels}{41}{subsection.243}
-\contentsline {subsubsection}{\numberline {5.3.2.1}Results}{43}{subsubsection.293}
-\contentsline {subsection}{\numberline {5.3.3}Shared Memory}{43}{subsection.294}
-\contentsline {subsubsection}{\numberline {5.3.3.1}Results}{43}{subsubsection.299}
-\contentsline {subsection}{\numberline {5.3.4}Structure of Arrays (SAO)}{43}{subsection.300}
-\contentsline {subsubsection}{\numberline {5.3.4.1}Results}{44}{subsubsection.303}
-\contentsline {section}{\numberline {5.4}Optimized}{44}{section.304}
-\contentsline {chapter}{\numberline {6}Conclusions and future work}{45}{chapter.307}
-\contentsline {section}{\numberline {6.1}Main Section 1}{45}{section.308}
+\contentsline {subsection}{\numberline {5.2.3}Branching}{40}{subsection.228}
+\contentsline {subsection}{\numberline {5.2.4}Occupancy}{41}{subsection.242}
+\contentsline {subsection}{\numberline {5.2.5}Concurrent Kernels}{41}{subsection.243}
+\contentsline {subsubsection}{\numberline {5.2.5.1}Results}{43}{subsubsection.293}
+\contentsline {subsection}{\numberline {5.2.6}Shared Memory}{43}{subsection.294}
+\contentsline {subsubsection}{\numberline {5.2.6.1}Results}{43}{subsubsection.299}
+\contentsline {subsection}{\numberline {5.2.7}Structure of Arrays (SAO)}{43}{subsection.300}
+\contentsline {subsubsection}{\numberline {5.2.7.1}Results}{45}{subsubsection.313}
+\contentsline {section}{\numberline {5.3}Optimized}{45}{section.314}
+\contentsline {chapter}{\numberline {6}Conclusions and future work}{46}{chapter.317}
+\contentsline {section}{\numberline {6.1}Main Section 1}{46}{section.318}
 \vspace {2em}
-\contentsline {chapter}{\numberline {A}Appendix Title Here}{46}{appendix.309}
+\contentsline {chapter}{\numberline {A}Appendix Title Here}{47}{appendix.319}
 \vspace {2em}
-\contentsline {chapter}{Bibliography}{47}{dummy.310}
+\contentsline {chapter}{Bibliography}{48}{dummy.320}
