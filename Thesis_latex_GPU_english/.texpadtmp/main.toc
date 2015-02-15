@@ -3,8 +3,8 @@
 \contentsline {chapter}{Acknowledgements}{ii}{dummy.3}
 \vspace {1.2em}
 \contentsline {chapter}{Contents}{iii}{dummy.4}
-\contentsline {chapter}{List of Figures}{vi}{dummy.6}
-\contentsline {chapter}{Introduction}{vii}{dummy.8}
+\contentsline {chapter}{List of Figures}{v}{dummy.6}
+\contentsline {chapter}{Introduction}{vi}{dummy.8}
 \contentsline {chapter}{\numberline {1}Heterogeneous Computing}{1}{chapter.10}
 \contentsline {section}{\numberline {1.1}Motivation}{1}{section.11}
 \contentsline {section}{\numberline {1.2}GPUs as computing units}{4}{section.13}
@@ -30,7 +30,7 @@
 \contentsline {section}{\numberline {2.7}Visual Profiler}{20}{section.129}
 \contentsline {subsection}{\numberline {2.7.1}Profiler Kernel Report}{21}{subsection.132}
 \contentsline {subsection}{\numberline {2.7.2}Collect Data On Remote System}{23}{subsection.138}
-\contentsline {chapter}{\numberline {3}Introduction to Domain Wall Dynamics and a Implementation with CUDA}{24}{chapter.139}
+\contentsline {chapter}{\numberline {3}Introduction to Domain Wall Dynamics}{24}{chapter.139}
 \contentsline {section}{\numberline {3.1}Theory}{24}{section.140}
 \contentsline {subsection}{\numberline {3.1.1}Domain Wall}{25}{subsection.141}
 \contentsline {section}{\numberline {3.2}Experiment}{26}{section.143}
@@ -38,40 +38,35 @@
 \contentsline {subsection}{\numberline {3.3.1}Laplacian}{27}{subsection.146}
 \contentsline {subsection}{\numberline {3.3.2}Finite Differences in the Time Domain}{28}{subsection.150}
 \contentsline {subsection}{\numberline {3.3.3}Fourth order Runge and Kutta method}{28}{subsection.151}
-\contentsline {chapter}{\numberline {4}CUDA implementation}{31}{chapter.155}
-\contentsline {section}{\numberline {4.1}Numerical Methods on the GPUs}{31}{section.156}
-\contentsline {subsection}{\numberline {4.1.1}Finite Difference Time Domain}{31}{subsection.157}
-\contentsline {subsection}{\numberline {4.1.2}Fourth order Runge and Kutta}{31}{subsection.158}
-\contentsline {section}{\numberline {4.2}structure}{31}{section.164}
-\contentsline {subsection}{\numberline {4.2.1}CPU}{32}{subsection.182}
-\contentsline {subsection}{\numberline {4.2.2}GPU}{33}{subsection.183}
-\contentsline {subsection}{\numberline {4.2.3}KG4}{34}{subsection.194}
-\contentsline {subsection}{\numberline {4.2.4}effective values}{34}{subsection.204}
-\contentsline {subsection}{\numberline {4.2.5}time}{35}{subsection.211}
-\contentsline {section}{\numberline {4.3}Validation}{35}{section.212}
-\contentsline {subsection}{\numberline {4.3.1}Validation}{35}{subsection.213}
-\contentsline {section}{\numberline {4.4}Data Flow}{35}{section.214}
-\contentsline {chapter}{\numberline {5}Optimization Results}{36}{chapter.215}
-\contentsline {section}{\numberline {5.1}Supercomputer ``Piritakua''}{36}{section.216}
-\contentsline {subsection}{\numberline {5.1.1}Architecture Differences}{37}{subsection.217}
-\contentsline {subsection}{\numberline {5.1.2}Experiment metrics}{38}{subsection.219}
-\contentsline {subsection}{\numberline {5.1.3}Validation}{39}{subsection.221}
-\contentsline {section}{\numberline {5.2}Results}{39}{section.222}
-\contentsline {subsection}{\numberline {5.2.1}Initial Test}{39}{subsection.224}
-\contentsline {subsection}{\numberline {5.2.2}Finite Precision}{39}{subsection.226}
-\contentsline {subsubsection}{\numberline {5.2.2.1}Visual profiler}{40}{subsubsection.227}
-\contentsline {subsection}{\numberline {5.2.3}Branching}{40}{subsection.228}
-\contentsline {subsection}{\numberline {5.2.4}Occupancy}{41}{subsection.242}
-\contentsline {subsection}{\numberline {5.2.5}Concurrent Kernels}{41}{subsection.243}
-\contentsline {subsubsection}{\numberline {5.2.5.1}Results}{43}{subsubsection.293}
-\contentsline {subsection}{\numberline {5.2.6}Shared Memory}{43}{subsection.294}
-\contentsline {subsubsection}{\numberline {5.2.6.1}Results}{43}{subsubsection.299}
-\contentsline {subsection}{\numberline {5.2.7}Structure of Arrays (SAO)}{43}{subsection.300}
-\contentsline {subsubsection}{\numberline {5.2.7.1}Results}{45}{subsubsection.313}
-\contentsline {section}{\numberline {5.3}Optimized}{45}{section.314}
-\contentsline {chapter}{\numberline {6}Conclusions and future work}{46}{chapter.317}
-\contentsline {section}{\numberline {6.1}Main Section 1}{46}{section.318}
+\contentsline {chapter}{\numberline {4}Implementation of DW Dynamics under Nonlocal Spin-Transfer Torque}{31}{chapter.155}
+\contentsline {section}{\numberline {4.1}Simulation}{31}{section.156}
+\contentsline {subsection}{\numberline {4.1.1}Data allocation and threads}{31}{subsection.158}
+\contentsline {subsection}{\numberline {4.1.2}Initial Calculations}{33}{subsection.170}
+\contentsline {subsection}{\numberline {4.1.3}Fourth order Runge and Kutta}{33}{subsection.171}
+\contentsline {subsection}{\numberline {4.1.4}Calculate effective beta}{34}{subsection.208}
+\contentsline {subsection}{\numberline {4.1.5}Calculate beta variation}{35}{subsection.215}
+\contentsline {section}{\numberline {4.2}Validation}{35}{section.216}
+\contentsline {subsection}{\numberline {4.2.1}Finite Precision}{36}{subsection.217}
+\contentsline {chapter}{\numberline {5}Optimization Results}{37}{chapter.218}
+\contentsline {section}{\numberline {5.1}Supercomputer ``Piritakua''}{37}{section.219}
+\contentsline {subsection}{\numberline {5.1.1}Architecture Differences}{38}{subsection.220}
+\contentsline {subsection}{\numberline {5.1.2}Experiment metrics}{39}{subsection.222}
+\contentsline {subsection}{\numberline {5.1.3}Validation}{40}{subsection.224}
+\contentsline {section}{\numberline {5.2}Results}{40}{section.225}
+\contentsline {subsection}{\numberline {5.2.1}Initial Test}{40}{subsection.227}
+\contentsline {subsubsection}{\numberline {5.2.1.1}Visual profiler}{40}{subsubsection.229}
+\contentsline {subsection}{\numberline {5.2.2}Branching}{41}{subsection.230}
+\contentsline {subsection}{\numberline {5.2.3}Occupancy}{43}{subsection.297}
+\contentsline {subsection}{\numberline {5.2.4}Concurrent Kernels}{43}{subsection.298}
+\contentsline {subsubsection}{\numberline {5.2.4.1}Results}{45}{subsubsection.348}
+\contentsline {subsection}{\numberline {5.2.5}Shared Memory}{45}{subsection.349}
+\contentsline {subsubsection}{\numberline {5.2.5.1}Results}{45}{subsubsection.354}
+\contentsline {subsection}{\numberline {5.2.6}Structure of Arrays, SAO}{45}{subsection.355}
+\contentsline {subsubsection}{\numberline {5.2.6.1}Results}{47}{subsubsection.368}
+\contentsline {section}{\numberline {5.3}Optimized}{47}{section.369}
+\contentsline {chapter}{\numberline {6}Conclusions and future work}{48}{chapter.372}
+\contentsline {section}{\numberline {6.1}Main Section 1}{48}{section.373}
 \vspace {2em}
-\contentsline {chapter}{\numberline {A}Appendix Title Here}{47}{appendix.319}
+\contentsline {chapter}{\numberline {A}Appendix Title Here}{49}{appendix.374}
 \vspace {2em}
-\contentsline {chapter}{Bibliography}{48}{dummy.320}
+\contentsline {chapter}{Bibliography}{50}{dummy.375}

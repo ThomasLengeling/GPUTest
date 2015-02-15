@@ -182,19 +182,6 @@ The initial implementation was launched on several GPU nodes, as previous mentio
 	\label{fig:iniresults}
 \end{figure}
 
-
-\subsection{Finite Precision}
-
-We all know summing one-third three times yields to one.
-
-$$\dfrac{1}{3} + \dfrac{1}{3} + \dfrac{1}{3} = 1$$
-
- However this is not always true on a computer. It actually depends of the floating-point precision.
- 
- 
-  
-
-
 \subsubsection{Visual profiler}
 
 The visual profiler.
@@ -237,6 +224,69 @@ if(idx == 0){
 }
 	\label{fig:threads}
 \end{figure}
+
+
+This problem ocurr when analysing the boundary condition for the matrices, only a single kernel was checking boundaring. Which a bottleneck ocurr. Bec
+
+This implementation gets the job done, however a minor part of the threads are working, which is a waste of computation. 
+\begin{lstlisting}[language=C++, caption={Evaluation of x, y, z coordinates of the Zhang and Li model in a single kernel}]
+
+//Compute laplacian in Y direction
+__global__ void glaplaciany(...);
+
+//Compute laplacian in X direction
+__global__ void glaplacianx(...);
+
+__global__ void glaplacianyboundaries(...){
+    if (i > 1 && i < NX + 2 && j == 0)
+    {
+     	// Update Laplacian Boundaries
+    }
+    else if (i > 1 && i < NX + 2 && j == 1)
+    {
+  		// Update Laplacian Boundaries
+    }
+    else if (i > 1 && i < NX + 2 && j == NY - 2)
+    {
+        // Update Laplacian Boundaries
+    }
+    else if (i > 1 && i < NX + 2 && j == NY - 1)
+    {
+        // Update Laplacian Boundaries
+    }
+}
+\end{lstlisting}
+
+Solving the issue is including more work on the laplacian boundaries calculation. 
+
+\begin{lstlisting}[language=C++, caption={Evaluation of x, y, z coordinates of the Zhang and Li model in a single kernel}]
+
+__global__ void glaplacianyboundaries(...){
+    if (i > 1 && i < NX + 2 && j == 0)
+    {
+     	// Update Laplacian Boundaries
+    }
+    else if (i > 1 && i < NX + 2 && j == 1)
+    {
+  		// Update Laplacian Boundaries
+    }
+    else if (i > 1 && i < NX + 2 && j == NY - 2)
+    {
+        // Update Laplacian Boundaries
+    }
+    else if (i > 1 && i < NX + 2 && j == NY - 1)
+    {
+        // Update Laplacian Boundaries
+    }
+    
+    //Compute laplacian in Y direction
+    glaplaciany(...);
+
+	//Compute laplacian in X direction
+	glaplacianx(...);
+    
+}
+\end{lstlisting}
 
 The optimization
 
@@ -364,7 +414,7 @@ http://www.bu.edu/pasi/files/2011/07/Lecture31.pdf
 \subsubsection{Results}
 
 
-\subsection{Structure of Arrays (SAO)}
+\subsection{Structure of Arrays, SAO}
 
 
 AoS and SoA refer to "Array of Structures" and "Structure of Arrays" respectively. These two terms refer to two different ways of laying out your data in memory. This is illustrated in figure \ref{fig:aos} and \ref{fig:sao} respectively. AOS, grouping properties of an object together and making an array of those objects in memory, whereas a structure of arrays would be a single structure in which you make an array for each property. The structure of arrays can allow for better cache utilization, easier to access continues data, making better use of each read you make from memory, providing a more effective route to memory. 
