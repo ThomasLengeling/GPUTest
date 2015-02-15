@@ -292,6 +292,20 @@ The optimization
 
 \subsection{Occupancy}
  
+ 
+ 
+ Increase the used of constant memory in the device with values that only change during run-time for example the code int 
+ 
+ 
+ \begin{lstlisting}[language=C++, caption={Evaluation of x, y, z coordinates of the Zhang and Li model in a single kernel}]
+ gsource << <blocks, threads >> >(u_val, dev_sm_z, dev_mz, NXCUDA);
+  
+ sfrelax_y[index] = -deltam_y[index] / tau_sf;
+     
+ DELTAX = (double)TX / (double)NX;
+\end{lstlisting}
+ 
+ 
 
 \subsection{Concurrent Kernels}
 
