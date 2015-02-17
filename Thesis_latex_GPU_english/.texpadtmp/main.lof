@@ -1,0 +1,40 @@
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {1.1}{\ignorespaces GPU and CPU}}{2}{figure.caption.12}
+\contentsline {figure}{\numberline {1.2}{\ignorespaces Architecture of a GPU}}{4}{figure.caption.14}
+\contentsline {figure}{\numberline {1.3}{\ignorespaces Host and Device}}{5}{figure.caption.15}
+\contentsline {figure}{\numberline {1.4}{\ignorespaces Programming Cycle}}{6}{figure.caption.17}
+\contentsline {figure}{\numberline {1.5}{\ignorespaces Part of the CUDA's 2D grid}}{7}{figure.caption.18}
+\contentsline {figure}{\numberline {1.6}{\ignorespaces Memory Space GPU and CPU}}{7}{figure.caption.19}
+\contentsline {figure}{\numberline {1.7}{\ignorespaces Vector Addition Example}}{8}{figure.caption.21}
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {2.1}{\ignorespaces PCIe Bandwidth}}{12}{figure.caption.110}
+\contentsline {figure}{\numberline {2.2}{\ignorespaces Different memory types}}{12}{figure.caption.111}
+\contentsline {figure}{\numberline {2.3}{\ignorespaces schematic cache hierarchy of a CUDA GPU}}{15}{figure.caption.116}
+\contentsline {figure}{\numberline {2.4}{\ignorespaces Different memory types}}{15}{figure.caption.117}
+\contentsline {figure}{\numberline {2.5}{\ignorespaces Texture Memory}}{17}{figure.caption.122}
+\contentsline {figure}{\numberline {2.6}{\ignorespaces Concurent Kernels}}{18}{figure.caption.125}
+\contentsline {figure}{\numberline {2.7}{\ignorespaces Visual Profiler metrics graphs and plots}}{21}{figure.caption.130}
+\contentsline {figure}{\numberline {2.8}{\ignorespaces Visual Profiler example}}{22}{figure.caption.131}
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {3.1}{\ignorespaces Domain Wall VW, ATW}}{25}{figure.caption.144}
+\contentsline {figure}{\numberline {3.2}{\ignorespaces Domain Wall - Vortex}}{27}{figure.caption.153}
+\contentsline {figure}{\numberline {3.3}{\ignorespaces Domain Wall - Vortex}}{27}{figure.caption.154}
+\contentsline {figure}{\numberline {3.4}{\ignorespaces Sampled at regular intervals a, Taylor expansion}}{29}{figure.caption.157}
+\contentsline {figure}{\numberline {3.5}{\ignorespaces Euler Method}}{30}{figure.caption.164}
+\contentsline {figure}{\numberline {3.6}{\ignorespaces Fourth-order Runge and Kutta Method}}{31}{figure.caption.167}
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {4.1}{\ignorespaces Control flow}}{33}{figure.caption.172}
+\contentsline {figure}{\numberline {4.2}{\ignorespaces 2D Flatten array}}{34}{figure.caption.174}
+\contentsline {figure}{\numberline {4.3}{\ignorespaces Grid layout}}{35}{figure.caption.181}
+\contentsline {figure}{\numberline {4.4}{\ignorespaces Runge and Kutta Integration Code Flow}}{36}{figure.caption.207}
+\contentsline {figure}{\numberline {4.5}{\ignorespaces Laplacian block calculation}}{37}{figure.caption.217}
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {5.1}{\ignorespaces Initial GPU results}}{44}{figure.caption.286}
+\contentsline {figure}{\numberline {5.2}{\ignorespaces he execution flow}}{45}{figure.caption.301}
+\contentsline {figure}{\numberline {5.3}{\ignorespaces Initial Streams}}{47}{figure.caption.363}
+\contentsline {figure}{\numberline {5.4}{\ignorespaces Streams kernels Tesla K20}}{49}{figure.caption.410}
+\contentsline {figure}{\numberline {5.5}{\ignorespaces Shared Memory Strategy}}{49}{figure.caption.416}
+\contentsline {figure}{\numberline {5.6}{\ignorespaces Array of structures (AOS)}}{50}{figure.caption.419}
+\contentsline {figure}{\numberline {5.7}{\ignorespaces Structure of Arrays (SAO)}}{50}{figure.caption.420}
+\addvspace {10\p@ }
+\addvspace {10\p@ }

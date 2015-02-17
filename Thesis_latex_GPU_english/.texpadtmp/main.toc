@@ -1,0 +1,80 @@
+\contentsline {chapter}{Abstract}{i}{dummy.2}
+\vspace {1em}
+\contentsline {chapter}{Acknowledgements}{ii}{dummy.3}
+\vspace {1.2em}
+\contentsline {chapter}{Contents}{iii}{dummy.4}
+\contentsline {chapter}{List of Figures}{vi}{dummy.6}
+\contentsline {chapter}{Introduction}{vii}{dummy.8}
+\contentsline {chapter}{\numberline {1}Heterogeneous Computing}{1}{chapter.10}
+\contentsline {section}{\numberline {1.1}Motivation}{1}{section.11}
+\contentsline {section}{\numberline {1.2}GPUs as computing units}{4}{section.13}
+\contentsline {section}{\numberline {1.3}Programming on GPUs}{5}{section.16}
+\contentsline {subsection}{\numberline {1.3.1}Vector Addition Example}{7}{subsection.20}
+\contentsline {subsubsection}{\numberline {1.3.1.1}CPU Code}{8}{subsubsection.22}
+\contentsline {subsubsection}{\numberline {1.3.1.2}GPU Code}{9}{subsubsection.58}
+\contentsline {chapter}{\numberline {2}Heterogeneous Performance Analysis and Practices}{11}{chapter.105}
+\contentsline {section}{\numberline {2.1}Practices}{11}{section.106}
+\contentsline {section}{\numberline {2.2}Performance Metrics}{13}{section.112}
+\contentsline {subsection}{\numberline {2.2.1}Timing}{13}{subsection.113}
+\contentsline {subsection}{\numberline {2.2.2}Bandwidth}{13}{subsection.114}
+\contentsline {section}{\numberline {2.3}Memory Handling with CUDA}{14}{section.115}
+\contentsline {subsection}{\numberline {2.3.1}Global Memory}{15}{subsection.118}
+\contentsline {subsection}{\numberline {2.3.2}Shared Memory}{16}{subsection.119}
+\contentsline {subsection}{\numberline {2.3.3}Constant Memory}{16}{subsection.120}
+\contentsline {subsection}{\numberline {2.3.4}Texture Memory}{16}{subsection.121}
+\contentsline {subsection}{\numberline {2.3.5}Thread Synchronization}{17}{subsection.123}
+\contentsline {section}{\numberline {2.4}Concurrent Kernels}{17}{section.124}
+\contentsline {section}{\numberline {2.5}Kernel Analysis}{18}{section.126}
+\contentsline {section}{\numberline {2.6}Hardware constraints}{19}{section.127}
+\contentsline {subsection}{\numberline {2.6.1}Thread Division}{20}{subsection.128}
+\contentsline {section}{\numberline {2.7}Visual Profiler}{20}{section.129}
+\contentsline {subsection}{\numberline {2.7.1}Profiler Kernel Report}{21}{subsection.132}
+\contentsline {subsection}{\numberline {2.7.2}Collect Data On Remote System}{23}{subsection.138}
+\contentsline {chapter}{\numberline {3}Introduction to Domain Wall Dynamics}{24}{chapter.139}
+\contentsline {section}{\numberline {3.1}Theory}{24}{section.140}
+\contentsline {subsection}{\numberline {3.1.1}Domain Wall}{25}{subsection.141}
+\contentsline {subsubsection}{\numberline {3.1.1.1}Vortex Wall}{25}{subsubsection.142}
+\contentsline {subsubsection}{\numberline {3.1.1.2}Asymmetric Transverse Wall}{25}{subsubsection.143}
+\contentsline {section}{\numberline {3.2}Zhang and Li Model}{26}{section.145}
+\contentsline {section}{\numberline {3.3}Numerical Solution of spin accumulation}{27}{section.151}
+\contentsline {section}{\numberline {3.4}Numerical Methods}{28}{section.155}
+\contentsline {subsection}{\numberline {3.4.1}Laplacian}{28}{subsection.156}
+\contentsline {subsection}{\numberline {3.4.2}Finite Differences in the Time Domain}{30}{subsection.162}
+\contentsline {subsection}{\numberline {3.4.3}Fourth order Runge and Kutta method}{30}{subsection.163}
+\contentsline {chapter}{\numberline {4}Implementation of DW Dynamics under Nonlocal Spin-Transfer Torque}{32}{chapter.168}
+\contentsline {section}{\numberline {4.1}Simulation}{32}{section.169}
+\contentsline {subsection}{\numberline {4.1.1}Data allocation and threads}{34}{subsection.173}
+\contentsline {subsection}{\numberline {4.1.2}Initial Calculations}{35}{subsection.190}
+\contentsline {subsection}{\numberline {4.1.3}Numerical Methods}{36}{subsection.206}
+\contentsline {subsubsection}{\numberline {4.1.3.1}Cross pruduct}{37}{subsubsection.208}
+\contentsline {subsubsection}{\numberline {4.1.3.2}Zhang and Li Model}{37}{subsubsection.209}
+\contentsline {subsubsection}{\numberline {4.1.3.3}Finite Difference }{37}{subsubsection.216}
+\contentsline {subsubsection}{\numberline {4.1.3.4}Runge and Kutta}{38}{subsubsection.245}
+\contentsline {subsubsection}{\numberline {4.1.3.5}Relaxation}{39}{subsubsection.253}
+\contentsline {subsubsection}{\numberline {4.1.3.6}Final evaluation}{39}{subsubsection.254}
+\contentsline {subsection}{\numberline {4.1.4}Calculate effective beta}{39}{subsection.266}
+\contentsline {subsection}{\numberline {4.1.5}Calculate beta variation}{39}{subsection.273}
+\contentsline {section}{\numberline {4.2}Validation}{40}{section.274}
+\contentsline {chapter}{\numberline {5}Optimization Results}{41}{chapter.276}
+\contentsline {section}{\numberline {5.1}Supercomputer ``Piritakua''}{41}{section.277}
+\contentsline {subsection}{\numberline {5.1.1}Architecture Differences}{42}{subsection.278}
+\contentsline {subsection}{\numberline {5.1.2}Experiment metrics}{43}{subsection.280}
+\contentsline {subsection}{\numberline {5.1.3}Validation}{44}{subsection.282}
+\contentsline {section}{\numberline {5.2}Results}{44}{section.283}
+\contentsline {subsection}{\numberline {5.2.1}Initial Test}{44}{subsection.285}
+\contentsline {subsubsection}{\numberline {5.2.1.1}Visual profiler}{44}{subsubsection.287}
+\contentsline {subsection}{\numberline {5.2.2}Branching}{45}{subsection.288}
+\contentsline {subsection}{\numberline {5.2.3}Occupancy}{47}{subsection.355}
+\contentsline {subsection}{\numberline {5.2.4}Concurrent Kernels}{47}{subsection.362}
+\contentsline {subsubsection}{\numberline {5.2.4.1}Results}{49}{subsubsection.411}
+\contentsline {subsection}{\numberline {5.2.5}Shared Memory}{49}{subsection.412}
+\contentsline {subsubsection}{\numberline {5.2.5.1}Results}{50}{subsubsection.417}
+\contentsline {subsection}{\numberline {5.2.6}Structure of Arrays, SAO}{50}{subsection.418}
+\contentsline {subsubsection}{\numberline {5.2.6.1}Results}{51}{subsubsection.431}
+\contentsline {section}{\numberline {5.3}Optimized}{51}{section.432}
+\contentsline {chapter}{\numberline {6}Conclusions and future work}{52}{chapter.435}
+\contentsline {section}{\numberline {6.1}Main Section 1}{52}{section.436}
+\vspace {2em}
+\contentsline {chapter}{\numberline {A}Appendix Title Here}{53}{appendix.437}
+\vspace {2em}
+\contentsline {chapter}{Bibliography}{54}{dummy.438}

@@ -9,56 +9,124 @@
 %----------------------------------------------------------------------------------------
 %	SECTION 1
 %----------------------------------------------------------------------------------------
-This chapter is a overview of the theory and simulation behind the study of Domain Wall Dynamics under Nonlocal Spin-Transfer Torque. This is a quantitatively test the effects of spin-diffusion, on real Domain Wall (DW) structures, by numerically implementing the Zhang-LI model into a NiFe soft nanostrip. The numerical implementation takes advantage of the highly parallel process capabilities of the GPU. The numerical method used for the solution is a the method known as Finite Differences in the Time Domain (FDTD) whose integration is done using a 4th order Runge-Kutta integration.
+This chapter is a overview of the theory behind the study of Domain Wall Dynamics under Nonlocal Spin-Transfer Torque. This is a quantitatively test the effects of spin-diffusion, on real Domain Wall (DW) structures, by numerically implementing the Zhang-LI model into a NiFe soft nanostrip. 
+
+
+The numerical implementation takes advantage of the highly parallel process capabilities of the GPU. The numerical method used for the solution is a the method known as Finite Differences in the Time Domain (FDTD) whose integration is done using a 4th order Runge-Kutta integration.
 
 
 \section{Theory}
 
- \cite{claudio}
-
-Contrarily to charge, spin accumulate in metals, The associated diffusion current flows in all directions, giving rise to nonlocal effects, Beyond transport properties, conduction electrons spin resonance and spin pumping provide further testimonies for non-locality in spin transport. These works all refer  to samples consisting in piecewise uniform layers or blocks, magnetic or not. Of special significance to the present work in the non-collinear geometry where a spin current with polarization transverse to the magnetization exists, whose absorption in the vicinity of the surface of a magnetic layer creates a torque on the magnetization, known as spin transfer torque (SFF),  \cite{claudio}
-
 Spintronics is a new type of electronics that exploits the spin degree of freedom of an electron in addition to its charge. \cite{spinz}
+
+Contrarily to charge, spin accumulate in metals, The associated diffusion current flows in all directions, giving rise to nonlocal effects, Beyond transport properties, conduction electrons spin resonance and spin pumping provide further testimonies for non-locality in spin transport. These works all refer to samples consisting in piecewise uniform layers or blocks, magnetic or not. Of special significance to the present work in the non-collinear geometry where a spin current with polarization transverse to the magnetization exists, whose absorption in the vicinity of the surface of a magnetic layer creates a torque on the magnetization, known as spin transfer torque (SFF),  \cite{claudio}
+
+
+
+Spin-transfer torque is a torque that exerts on a magnetization by conduction electron spins, in other words the angular momentum transferred from spins to magnetic  moment \cite{zhang}.
+This has simulated research into domain wall (DW) dynamics, particularly those resulting from interactions with current passing through the DW via the phenomenon of spin momentum transfer (SMT) \cite{handbookspin}
+
 
 \cite{ferro}
 
 \subsection{Domain Wall}
 
-An abrupt in magnetization at the boundary of two anti-aligned domains is not a favorable condition. Domain walls form between such domains as means of minimizing the energy of the two anti-aligned domains. Domains walls are transitions layers in which the magnetization changes gradually from on magnetization to another. In other words the boundaries between regions of uniform magnetization.  The gradual change prevents the large increase in exchange energy that would accompany an abrupt change in the magnetization angle. Common domain wall geometrias include Bloch walls, N$\acute{e}$el walls and vortex walls. In the case of Vortex wall the magnetization rotates in the place perpendicular to the domain wall, but the local magnetization is wrapped around a single vortex point \cite{spindomain}. This can seen in figure \label{eq:kg4}.
+An abrupt in magnetization at the boundary of two anti-aligned domains is not a favorable condition. Domain walls form between such domains as means of minimizing the energy of the two anti-aligned domains. Domains walls are transitions layers in which the magnetization changes gradually from on magnetization to another. In other words the boundaries between regions of uniform magnetization.  The gradual change prevents the large increase in exchange energy that would accompany an abrupt change in the magnetization angle. Common domain wall geometric include Bloch walls, N$\acute{e}$el walls and vortex walls.  \cite{spindomain}.
+
+
+\subsubsection{Vortex Wall} In the case of Vortex wall the magnetization rotates in the place perpendicular to the domain wall, but the local magnetization is wrapped around a single vortex point. See figure \label{eq:kg4}.
+
+\subsubsection{Asymmetric Transverse Wall}
+
+This structure is a variant of the STW that becomes stable at larger film thickness h.
+The half-hedgehog vortex is no longer aligned with the half-antivortex along the
+transverse direction, but shows some offset \label{eq:kg4}.
 
 \begin{figure}[htbp]
 	\centering
-		\includegraphics[width=0.5\textwidth]{Figures/vortex.png}
+		\includegraphics[width=0.5\textwidth]{Figures/dw.png}
 		\rule{35em}{0.5pt}
-	\caption[Domain Wall - Vortex]{Domain Wall - Vortex}
-	\label{fig:vortex}
+	\caption[Domain Wall VW, ATW]{Vortex Wall (VW) and Asymmetric Transverse Wall (ATW)}
+	\label{fig:dw}
 \end{figure}
 
 Domain walls are the basis for various spintronics devices that uses magnetic momentums, in other words spin of electronics. the used of the spin degree of freedom. With this it is expected that electronics technology and devices will be faster, compacter and more energy-saving. A interesting application using this idea is new design for a different type memory disk drive called racetrack memory by Parkin in 2008\cite{racetrack}
 
-Spin-transfer torque is a torque that exerts on a magnetization by conduction electron spins, in other words the angular momentum transferred from spins to magnetic  moment \cite{zhang}.
-This has simulated research into domain wall (DW) dynamics, particularly those resulting from interactions with current passing through the DW via the phenomenon of spin momentum transfer (SMT) \cite{handbookspin}
+
 
 The study spin-diffuse effect within a continuously variable magnetization distribution, integrating with micromagenectis with diffuse model of Zhang and LI \cite{claudio}
+
 
 We Quantitatively test the effects of spin diffusion, on real Domain walls structures, this is done by numerically solve the Zhang-Li model \cite{zhang} into micro-magnetics.
 The Zhang Li model refers to:
 
-which is the following equation.
-
-
-
-\section{Experiment}
-
-Base on the work of Dr. Claudio \cite{claudio}
 
 At first we investigate the steady-sate velocity regime of DWs in NiFe soft nanostrips. applying current densities similar to those reported in experiments. The results that we are going to obtain
 
 Experimentally measured spin-diffusion parameters are used, we want to the solution of.
 
+\section{Zhang and Li Model}
+
+Interaction between spins of itinerant and localized electrons in an "sd" Hamiltonian
+
 \begin{equation}
- \frac{\partial \delta \vec{m} }{\partial t} =  D\bigtriangleup \delta \vec{m} + \frac{1}{\tau_{sd}} \vec{m} \times \delta  \vec{m} - \frac{1}{\tau_{sf}}\delta \vec{m} - u \partial_{x}  \vec{m}
+H_{sd} = -J_{ex}s \cdot S
 \end{equation}
+
+
+Localization electrons approximated as a classical magnetization vector
+\begin{equation}
+m(r,t) = m_{0}(r,t) + \delta m_{0}(r,t) = n_{o} \frac{M(r,t)}{M_{s}} + \delta m(r,t)
+\end{equation}
+
+
+Induced spin density consisting of adiabatic plus deviation terms
+\begin{equation}
+J(r,t) = J_{0}(r,t) + \delta J(r,t)
+\end{equation}
+
+
+Non adiabatic spin current density, from spin parallel to local magnetization plus out of equilibrium spin density.
+
+\begin{equation}
+=-(\mu_{B} P/e)j_{e} \otimes \frac{M(r,t)}{M_{s}} + \delta J(r,t)
+\end{equation}
+
+
+\begin{equation}
+D_{0}\bigtriangledown^{2} \delta \vec{m}  \frac{1}{\tau_{sd}} \delta \vec{m} \times \vec{M} + \frac{1}{\tau_{sf}}\delta \vec{m} = -\frac{\mu_{B}P}{e}(j_{e} \cdot \bigtriangledown) \vec{M}
+\end{equation}
+
+The equation is physically realistic however computationally expensive.
+
+\section{Numerical Solution of spin accumulation}
+
+\begin{equation} \label{eq:zhang}
+ \frac{\partial \delta \vec{m} }{\partial t} =  D_{0}\bigtriangledown^{2} \delta \vec{m} - \frac{1}{\tau_{sd}} \delta \vec{m} \times \vec{M} - \frac{1}{\tau_{sf}}\delta \vec{m} +(\vec{\mu} \cdot\vec{\bigtriangledown} )\vec{M}
+\end{equation}
+
+
+Asymmetric Transverse Wall (ATW), maps of magnetization components of non equilibrium spin accumulation under a uniform current density with $D = 0, 1$ and $10 nm^2 / ps$. Figure \ref{fig:atw}.
+
+\begin{figure}[htbp]
+	\centering
+		\includegraphics[width=0.6\textwidth]{Figures/ATW.png}
+		\rule{35em}{0.5pt}
+	\caption[Domain Wall - Vortex]{Domain Wall - Vortex}
+	\label{fig:atw}
+\end{figure}
+
+Vortex Wall (VW) same as for ATW, we point out the noticeable effect of the diffusion constant around the vortex core, which is the smallest feature of the wall. Figure \ref{fig:vw}.
+
+\begin{figure}[htbp]
+	\centering
+		\includegraphics[width=0.6\textwidth]{Figures/VW.png}
+		\rule{35em}{0.5pt}
+	\caption[Domain Wall - Vortex]{Domain Wall - Vortex}
+	\label{fig:vw}
+\end{figure}
+
+
 
 The sample that is considerate is a 300 nm wide and 5 nm tick NiFe soft nanostrip. This dimensions are widely used for experimental use.
 
@@ -77,6 +145,8 @@ Base on this study numeric applications have been unfold.
 %-----------------------------------
 \section{Numerical Methods}
 
+ The numerical method used for the solution is a the method known as Finite Differences in the Time Domain (FDTD) whose integration is done using a 4th order Runge-Kutta integration.
+ 
 
 %The implementation of the GPU of Dr. Claudio is based on launching several kernels into a single GPU node.
 
@@ -108,8 +178,18 @@ $$f(x) = \sum\limits_{k=0}^{\infty} \dfrac{(x-x_i)^k}{k!}f^{(k)}(x_i) = \sum\lim
 
 Applying the previous equation to nearest and next neares neigborar to grid pint i and tructation tht the 4th order yields a set of four equations:
 
+The set of linear equations provide numerical estimates for the first, second, third and fourth derivatives of $f$ at any given point $i$.
+
+The general form of the first and second derivate based on second nearest neighbors expansion reads:
+
+\begin{align} \label{eq:nn}
+f^{(1)}_i &= \dfrac{f_{i-2}-8f_{i-1} + 8f_{i+1} - f_{i+2}}{12a} \\
+f^{(2)}_i &= \dfrac{f_{i-2}+16f_{i-1} -30f_{i} + 16f_{i+1} - f_{i+1}}{12a^2}
+\end{align}
+
+
 \begin{align}
-\begin{bmatrix}
+\begin{bmatrix} \label{eq:matrix4}
     -2a & \dfrac{(-2a)^2}{2!} & \dfrac{-(2a)^3}{3!} & \dfrac{(-2a)^4}{4!}\\
     -a & \dfrac{(-a)^2}{2!} & \dfrac{(-a)^3}{3!} & \dfrac{(-a)^4}{4!}\\
     a & \dfrac{(a)^2}{2!} & \dfrac{(a)^3}{3!} & \dfrac{(a)^4}{4!}\\
@@ -126,39 +206,26 @@ Applying the previous equation to nearest and next neares neigborar to grid pint
     f_{i-2} - f_{i}    \vphantom{ \dfrac{d^4}{d}} \\
     f_{i-1} - f_{i}    \vphantom{ \dfrac{d^4}{d}} \\
     f_{i+1} - f_{i}    \vphantom{ \dfrac{d^4}{d}} \\
-    f_{i+2} - f_{i}    \vphantom{ \dfrac{d^4}{d}}
+    f^{(1)}(x_R)   \vphantom{ \dfrac{d^4}{d}}
 \end{bmatrix}
 \end{align}
 
-The set of linear equations provide numerical estimates for the first, second, third and fourth derivatives of $f$ at any given point $i$.
-
-The general form of the first and second derivate based on second nearest neighbors expansion reads:
-
-\begin{align*}
-f^{(1)}_i &= \dfrac{f_{i-2}-8f_{i-1} + 8f_{i+1} - f_{i+2}}{12a} \\
-f^{(2)}_i &= \dfrac{f_{i-2}+16f_{i-1} -30f_{i} + 16f_{i+1} - f_{i+1}}{12a^2}
-\end{align*}
-
-
-\begin{align}
+\begin{align} \label{eq:matrix3}
 \begin{bmatrix}
-    -2a & \dfrac{(-2a)^2}{2!} & \dfrac{-(2a)^3}{3!} & \dfrac{(-2a)^4}{4!}\\
-    -a & \dfrac{(-a)^2}{2!} & \dfrac{(-a)^3}{3!} & \dfrac{(-a)^4}{4!}\\
-    a & \dfrac{(a)^2}{2!} & \dfrac{(a)^3}{3!} & \dfrac{(a)^4}{4!}\\
-    1 & \dfrac{(3a)}{2} & \dfrac{(3a/2)^3}{3!} & \dfrac{(3a/2)^4}{4!}
+    -2a & \dfrac{(-2a)^2}{2!} & \dfrac{-(2a)^3}{3!}\\
+    -a & \dfrac{(-a)^2}{2!} & \dfrac{(-a)^3}{3!}\\
+    1 & \dfrac{(+a)}{2} & \dfrac{(+a/2)^3}{2!}
 \end{bmatrix}
 \begin{bmatrix}
     f_i^{(1)}  \vphantom{ \dfrac{d^4}{d} }\\
     f_i^{(2)}  \vphantom{ \dfrac{d^4}{d} } \\
-    f_i^{(3)}  \vphantom{ \dfrac{d^4}{d} } \\
-    f_i^{(4)}  \vphantom{ \dfrac{d^4}{d} }
+    f_i^{(3)}  \vphantom{ \dfrac{d^4}{d} }
 \end{bmatrix}
 =
 \begin{bmatrix}
     f_{i-2} - f_{i}    \vphantom{ \dfrac{d^4}{d}} \\
     f_{i-1} - f_{i}    \vphantom{ \dfrac{d^4}{d}} \\
-    f_{i+1} - f_{i}    \vphantom{ \dfrac{d^4}{d}} \\
-    f_{i+2}(x_R)   \vphantom{ \dfrac{d^4}{d}}
+    f^{(1)}(x_R)   \vphantom{ \dfrac{d^4}{d}}
 \end{bmatrix}
 \end{align}
 
@@ -189,17 +256,18 @@ The RG4 method differs widely from the Euler method and the Midpoint method. The
 
 RK4 goes as follows:
 
-\begin{equation} \label{eq:kg4}
+\begin{equation} \label{eq:rk4}
 y_{n+1} = y_{n} + 1/6 K_{1} + 1/3 K_{2} +1/3 K_{3} + 1/6 K_{4}
 \end{equation}
 where
-
-\begin{align*}
+\begin{equation}
+\begin{split} \label{eq:rksplit}
 K_{1} &= h \dot f(x_{n}, y_{n}) \\
 K_{2} &= h \dot f(x_{n} + h/2, y_{n} + k_{1}/2) \\
 K_{3} &= h \dot f(x_{n} + h/2, y_{n} + k_{2}/2) \\
 K_{4} &= h \dot f(x_{n} + h, y_{n} + k_{3})
-\end{align*}
+\end{split}
+\end{equation}
 
 As the equations shows, each step, the derivative is evaluated four times, once at the initial point, twice at trial midpoints, and once at a trial endpoint. From these four values, the final value is calculated, just like the following equation \ref{eq:kg4}
 
@@ -214,3 +282,8 @@ As the equations shows, each step, the derivative is evaluated four times, once 
 \cite{numerical}
 
 %The basic structure is computational solve rungge and kutta of for other.
+
+\vspace{3.2em}
+
+
+In summarize, 

@@ -368,7 +368,7 @@ __global__ void gsolution(double *deltam,
 \end{lstlisting}
 
 
-This same method is applied to every kernel that can be separated into three kernels calls. Some kernels cannot be separate such as the cross product, because the product uses memory block from the other streams. Instead of running one big kernel, three individual kernels are launched simultaneous. The figure \ref{fig:concurrent} shows the results of concurrent kernels in the Tesla K20.
+This same method is applied to every kernel that can be separated into three kernels calls. Some kernels cannot be separate such as the cross product, because the product uses pinned memory block from the other streams. Instead of running one big kernel, three individual kernels are launched simultaneous. The figure \ref{fig:concurrent} shows the results of concurrent kernels in the Tesla K20.
 
 \begin{lstlisting}[language=C++, caption={Evaluation of individual coordinates of the Zhang and Li model}]
 for (int i  = 0; i < 3; i++)
@@ -378,7 +378,6 @@ gsolution<<<blocks, threads, 0, stream[i]>>>(spinAccXYZ[i]->getDev_deltam(),
 											 spinAccXYZ[i]->getDev_sm(), 
 											 spinAccXYZ[i]->getDev_sdex(),
 											 spinAccXYZ[i]->getDev_lapl());
-
 }
 \end{lstlisting}
 
@@ -518,4 +517,10 @@ Summarize the data
    \hline
   \end{tabular}
   \end{table}
+  
+  
+  \vspace{3.2em}
+
+
+Finally, 
   
