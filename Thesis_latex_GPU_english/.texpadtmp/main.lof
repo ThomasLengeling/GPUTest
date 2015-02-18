@@ -23,11 +23,11 @@
 \contentsline {figure}{\numberline {3.5}{\ignorespaces Euler Method}}{30}{figure.caption.164}
 \contentsline {figure}{\numberline {3.6}{\ignorespaces Fourth-order Runge and Kutta Method}}{31}{figure.caption.167}
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {4.1}{\ignorespaces Control flow}}{33}{figure.caption.172}
-\contentsline {figure}{\numberline {4.2}{\ignorespaces 2D Flatten array}}{34}{figure.caption.174}
-\contentsline {figure}{\numberline {4.3}{\ignorespaces Grid layout}}{35}{figure.caption.181}
-\contentsline {figure}{\numberline {4.4}{\ignorespaces Runge and Kutta Integration Code Flow}}{36}{figure.caption.207}
-\contentsline {figure}{\numberline {4.5}{\ignorespaces Laplacian block calculation}}{37}{figure.caption.217}
+\contentsline {figure}{\numberline {4.1}{\ignorespaces Control flow}}{33}{figure.caption.174}
+\contentsline {figure}{\numberline {4.2}{\ignorespaces 2D Flatten array}}{34}{figure.caption.176}
+\contentsline {figure}{\numberline {4.3}{\ignorespaces Grid layout}}{35}{figure.caption.183}
+\contentsline {figure}{\numberline {4.4}{\ignorespaces Runge and Kutta Integration Code Flow}}{36}{figure.caption.209}
+\contentsline {figure}{\numberline {4.5}{\ignorespaces Laplacian block calculation}}{37}{figure.caption.211}
 \addvspace {10\p@ }
 \contentsline {figure}{\numberline {5.1}{\ignorespaces Initial GPU results}}{44}{figure.caption.286}
 \contentsline {figure}{\numberline {5.2}{\ignorespaces he execution flow}}{45}{figure.caption.301}

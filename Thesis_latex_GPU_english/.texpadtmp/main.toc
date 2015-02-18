@@ -41,20 +41,19 @@
 \contentsline {subsection}{\numberline {3.4.1}Laplacian}{28}{subsection.156}
 \contentsline {subsection}{\numberline {3.4.2}Finite Differences in the Time Domain}{30}{subsection.162}
 \contentsline {subsection}{\numberline {3.4.3}Fourth order Runge and Kutta method}{30}{subsection.163}
-\contentsline {chapter}{\numberline {4}Implementation of DW Dynamics under Nonlocal Spin-Transfer Torque}{32}{chapter.168}
-\contentsline {section}{\numberline {4.1}Simulation}{32}{section.169}
-\contentsline {subsection}{\numberline {4.1.1}Data allocation and threads}{34}{subsection.173}
-\contentsline {subsection}{\numberline {4.1.2}Initial Calculations}{35}{subsection.190}
-\contentsline {subsection}{\numberline {4.1.3}Numerical Methods}{36}{subsection.206}
-\contentsline {subsubsection}{\numberline {4.1.3.1}Cross pruduct}{37}{subsubsection.208}
-\contentsline {subsubsection}{\numberline {4.1.3.2}Zhang and Li Model}{37}{subsubsection.209}
-\contentsline {subsubsection}{\numberline {4.1.3.3}Finite Difference }{37}{subsubsection.216}
-\contentsline {subsubsection}{\numberline {4.1.3.4}Runge and Kutta}{38}{subsubsection.245}
-\contentsline {subsubsection}{\numberline {4.1.3.5}Relaxation}{39}{subsubsection.253}
-\contentsline {subsubsection}{\numberline {4.1.3.6}Final evaluation}{39}{subsubsection.254}
+\contentsline {subsection}{\numberline {3.4.4}Effective Beta}{31}{subsection.168}
+\contentsline {chapter}{\numberline {4}Implementation of DW Dynamics under Nonlocal Spin-Transfer Torque}{32}{chapter.170}
+\contentsline {section}{\numberline {4.1}Simulation}{32}{section.171}
+\contentsline {subsection}{\numberline {4.1.1}Data allocation and threads}{34}{subsection.175}
+\contentsline {subsection}{\numberline {4.1.2}Initial Calculations}{35}{subsection.192}
+\contentsline {subsection}{\numberline {4.1.3}Numerical Methods}{36}{subsection.208}
+\contentsline {subsubsection}{\numberline {4.1.3.1}Finite Difference }{36}{subsubsection.210}
+\contentsline {subsubsection}{\numberline {4.1.3.2}Zhang and Li Model}{38}{subsubsection.239}
+\contentsline {subsubsection}{\numberline {4.1.3.3}Runge and Kutta}{38}{subsubsection.246}
+\contentsline {subsubsection}{\numberline {4.1.3.4}Final evaluation}{39}{subsubsection.254}
 \contentsline {subsection}{\numberline {4.1.4}Calculate effective beta}{39}{subsection.266}
 \contentsline {subsection}{\numberline {4.1.5}Calculate beta variation}{39}{subsection.273}
-\contentsline {section}{\numberline {4.2}Validation}{40}{section.274}
+\contentsline {section}{\numberline {4.2}Validation}{39}{section.274}
 \contentsline {chapter}{\numberline {5}Optimization Results}{41}{chapter.276}
 \contentsline {section}{\numberline {5.1}Supercomputer ``Piritakua''}{41}{section.277}
 \contentsline {subsection}{\numberline {5.1.1}Architecture Differences}{42}{subsection.278}

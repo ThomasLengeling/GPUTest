@@ -186,24 +186,6 @@ This step is where all the computational intense operations are performed. The f
 \end{figure}
 
 
-\subsubsection{Cross pruduct}
-
-\subsubsection{Zhang and Li Model}
-
-The equation of Zhang - Li Model \ref{eq:zhang} is solved using the following following code \ref{lst:rkcuda}. This function is used for the \ref{eq:rk4} integration equation. The first term of the equation \textit{sfrelax} is calculated in the in the relaxation process at the end of the RK4 integration process \ref{fig:sim}. The term \textit{sdex} is evaluated once at the beginning the RK term integration, in the Cross Product. The matrix \textit{sm} is only calculated once at the initial calculations process, in the kernel \textif{gsource}. Finally the lapl matrix is evaluated in the Laplacian X, Y and boundary condition. In addition this process is the most computational expensive  operation.
-
-   
-\begin{lstlisting}[language=C++, label={lst:zhangcuda}, caption={Runge and Kutta 4th Terms}]
-		sfrelax[idx] = -deltam[idx] / tau_sf;
-		sdex[idx] = -(deltam[idx] * m[index] - deltam[idx] * m[idx]) / tau_sd;
-		
-		//Evaluate Zhang - Li Method
-        solveZhangLi[idx] = sfrelax[idx] + sdex[idx] + lapl[idx] - sm[idx];
-\end{lstlisting}
-
-
-The output  \textif{solveZhangLi} of the Zhang - Li Model evaluation \ref{lst:zhangcuda}  (last term}, past to the calculation of the i term of the Runge Kutta Integration.
-
 \subsubsection{Finite Difference }
 
 Base on the equations from chapter three \ref{eq:nn}. The first and second derivate base on seconds nearest neighbors expands are calculated. The base idea is showed on the figure	 \label{fig:laplacian}
@@ -253,6 +235,20 @@ __global__ void glaplacianBoundaries(...){
 __global__ void glaplacianx(...){} //Compute laplacian in X direction
 \end{lstlisting}
 
+\subsubsection{Zhang and Li Model}
+
+The equation of Zhang - Li Model \ref{eq:zhang} is solved using the following following code \ref{lst:rkcuda}. This function is used for the \ref{eq:rk4} integration equation. The first term of the equation \textit{sfrelax} is calculated in the in the relaxation process at the end of the RK4 integration process \ref{fig:sim}. The term \textit{sdex} is evaluated once at the beginning the RK term integration, in the Cross Product. The matrix \textit{sm} is only calculated once at the initial calculations process, in the kernel \textit{gsource}. Finally the lapl matrix is evaluated in the Laplacian X, Y and boundary condition. In addition this process is the most computational expensive  operation.
+
+\begin{lstlisting}[language=C++, label={lst:zhangcuda}, caption={Runge and Kutta 4th Terms}]
+		sfrelax[idx] = -deltam[idx] / tau_sf;
+		sdex[idx] = -(deltam[idx] * m[index] - deltam[idx] * m[idx]) / tau_sd;
+		
+		//Evaluate Zhang - Li Method
+        solveZhangLi[idx] = sfrelax[idx] + sdex[idx] + lapl[idx] - sm[idx];
+\end{lstlisting}
+
+
+The output  \textit{solveZhangLi} of the Zhang - Li Model evaluation \ref{lst:zhangcuda}  (last term), past to the calculation of the i term of the Runge Kutta Integration.
 
 \subsubsection{Runge and Kutta}
  
@@ -266,8 +262,6 @@ __global__ void glaplacianx(...){} //Compute laplacian in X direction
      deltam[idx] = temp[idx] + (rk1[idx] + 2.0 * (rk2[idx] + rk3[idx])
                                   + rk4[idx]) / 6.0;
 \end{lstlisting}
-
-\subsubsection{Relaxation}
 
 
 \subsubsection{Final evaluation}
@@ -305,6 +299,8 @@ The final calculation of the simulation. The following kernels are launched only
 \subsection{Calculate beta variation}
 
 The final step of the simulation is calculating on the host the single value beta variation.
+
+
 
 \section{Validation}
 
