@@ -6,7 +6,7 @@
 
 \lhead{Chapter 4. \emph{Implementation of DW Dynamics under Nonlocal Spin-Transfer Torque}} % Change X to a consecutive number; this is for the header on each page - perhaps a shortened title
 
-This chapter is the study of the heterogenous implementation of Domain Wall Dynamics under Nonlocal Spin-Transfer Torque. We use the massively parallel capabilities of a single GPU to numerically solve a mathematical equation, known as the Zhang-Li model. The numerical method used for the solution is a the method known as Finite Differences in the Time Domain (FDTD) whose integration is done using the  4th order Runge - Kutta.
+This chapter is the study of the heterogenous implementation of Domain Wall Dynamics under Nonlocal Spin-Transfer Torque. We use the massively parallel capabilities of a single GPU to numerically solve a mathematical equation, known as the Zhang-Li model. The numerical method used for the solution is a the method known as Finite Differences in the Time Domain (FDTD) whose integration is done using the 4th order Runge - Kutta. The integration is done on a 3D grid space which outputs a single value, the effective beta.
 
 \section{Simulation}
 
@@ -168,6 +168,8 @@ As mention before the matrices for CUDA are square matrices 512 x 128, however t
 
 \subsection{Numerical Methods}
 
+micromagnetic simulation and demonstrate how to advance the configuration of the system through time. we do not know for how long we need to integrate the system until it stops in a local energy minimum configuration.
+
 This step is where all the computational intense operations are performed. The figure \ref{fig:sim} demonstrates the operations 
 
 
@@ -182,8 +184,7 @@ This step is where all the computational intense operations are performed. The f
 
 \subsubsection{Finite differences in the time domain}
 
-
-Base on the equations from chapter three \ref{eq:nn}. The first and second derivate base on seconds nearest neighbors expands are calculated. The base idea is showed on the figure	 \label{fig:laplacian}. The equation \ref{eq:nn} is evaluated for three coordinates x, y and z.
+The finite differences method requires the domain of interest to be broken down into small regions. Such a subdivision of space is known as a mesh or grid, cell division is explained in the table \ref{tab:mesh}, whose implementation in CUDA threads and blocks are done with \ref{tab:cuda} and \ref{tab:threads}. Based on the equations from chapter three \ref{eq:nn}. The first and second derivate base on seconds nearest neighbors expands are calculated. The base idea is showed on the figure	 \label{fig:laplacian}. The equation \ref{eq:nn} is evaluated for three coordinates x, y and z.
 
 \begin{figure}[htbp]
 	\centering
@@ -292,6 +293,8 @@ The final calculation of the simulation, which calculates the effective beta. Th
 
 The final step of the simulation is calculating on the host the single value beta variation.
 
+
+Note that the execution time can generally be reduced significantly by decreasing the amount of converges of the effective bete. However, this can result in wrong data.
 
 \section{Validation}
 
