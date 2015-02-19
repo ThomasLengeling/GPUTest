@@ -52,6 +52,12 @@ T.~H{ \"{o} }rmann.
 \newblock Master's thesis, Institut f{\"{u}}r Informatik, Technische
   Universit{\"{a}}t M{\"{u}}nchen, Dec. 2014.
 
+\bibitem{nonlocalspin}
+P.~Haney and T.~U. of~Texas~at Austin.~Physics.
+\newblock {\em Spintronics in Ferromagnets and Antiferromagnets from First
+  Principles}.
+\newblock University of Texas at Austin, 2007.
+
 \bibitem{physicsgpu}
 A.~Harju, T.~Siro, F.~Canova, S.~Hakala, and T.~Rantalaiho.
 \newblock Computational physics on graphics processing units.
@@ -150,6 +156,13 @@ R.~F. Service.
 E.~Tsymbal and I.~Zutic.
 \newblock {\em Handbook of Spin Transport and Magnetism}.
 \newblock Taylor and Francis, 2011.
+
+\bibitem{nonlocal}
+S.~O. Valenzuela.
+\newblock Nonlocal electronic spin detection, spin accumulation and the spin
+  hall effect.
+\newblock {\em International Journal of Modern Physics B}, 23(11):2413--2438,
+  2009.
 
 \bibitem{precision}
 N.~Whitehead and A.~Fit-florea.

@@ -8,13 +8,7 @@
 
 This chapter is the study of the heterogenous implementation of Domain Wall Dynamics under Nonlocal Spin-Transfer Torque. We use the massively parallel capabilities of a single GPU to numerically solve a mathematical equation, known as the Zhang-Li model. The numerical method used for the solution is a the method known as Finite Differences in the Time Domain (FDTD) whose integration is done using the  4th order Runge - Kutta.
 
-
-
-
-
 \section{Simulation}
-
-
 
 The simulation consist of the integration of the equation \ref{eq:zhang}, know as the Zhang and Li model for $1ns$ in a grid of 57,600 cells. The sample considered is a 300nm wide in y direction and 5nm thick in z direction NiFe (nickel–iron alloy) soft nanostrip, a material and size widely uses in experiments with this characteristics. Using this size the asymmetric transverse wall \ref{fig:atw}, and the vortex wall. have nearly equal energies. The numerical mesh size is 3 x 3 x 5 $nm^3$, and the calculation box has a length (x direction) of 1,200 or 3,172 nm. The table \ref{tab:mesh} illustrates mesh information and calculation box for the simulation \cite{claudio}.
 
@@ -186,9 +180,10 @@ This step is where all the computational intense operations are performed. The f
 \end{figure}
 
 
-\subsubsection{Finite Difference }
+\subsubsection{Finite differences in the time domain}
 
-Base on the equations from chapter three \ref{eq:nn}. The first and second derivate base on seconds nearest neighbors expands are calculated. The base idea is showed on the figure	 \label{fig:laplacian}
+
+Base on the equations from chapter three \ref{eq:nn}. The first and second derivate base on seconds nearest neighbors expands are calculated. The base idea is showed on the figure	 \label{fig:laplacian}. The equation \ref{eq:nn} is evaluated for three coordinates x, y and z.
 
 \begin{figure}[htbp]
 	\centering
@@ -214,7 +209,6 @@ lapy[idx] = - deltam[idx + 2] / 12.0 + 4.0 * deltam[idx + 1] / 3.0
 
 However the calculation of the nearest neighbors only work for values points inside  inside a grid of [-2, 2] in x, y, and z. In addition we need to calculate the boundaries values for those values that are in the edge of the grid, such as the beginning points and the end points. To solve the boundaries issue we use two square matrices matrices from chapter three, The equation \ref{eq:matrix3} for boundaries at $j = 0$ and $j = NY - 1$ for all values in the i cell, and the equation \ref{eq:matrix4} for the condition $j = 1$ and $j = NY - 2$ for all i values. The code \ref{lst:lap} demonstrate how the implementation was done, to achieve the correct values first the laplacian in the y direction is calculated, then the boundary condition, and finally the in the x direction. 
 
-
 \begin{lstlisting}[language=C++, label={lst:lap}, caption={Evaluation of Laplacian X, Y with boundary condition}]
 __global__ void glaplaciany(...){} //Compute laplacian in Y direction
 
@@ -234,6 +228,8 @@ __global__ void glaplacianBoundaries(...){
 }
 __global__ void glaplacianx(...){} //Compute laplacian in X direction
 \end{lstlisting}
+
+The three CUDA kernels \textit{glaplaciany}, \textit{glaplacianx} and \textit{glaplaciany} are evaluated for each x, y and z coordinate. In addition the three coordinate sum up to 172,800 cell points to be calculated.
 
 \subsubsection{Zhang and Li Model}
 
@@ -266,9 +262,8 @@ The output  \textit{solveZhangLi} of the Zhang - Li Model evaluation \ref{lst:zh
 
 \subsubsection{Final evaluation}
 
-The integration can be sum up as follow were
-\ref{lst:rk4}
-\begin{lstlisting}[language=C++, label={lst:rk4}, caption={Runge y Kutta integration}]	
+The integration can be sum up as two for cycles. The first \textif{for} calculating the RK4 and the second one each x, y, and z coordinate \ref{lst:rk4}.
+\begin{lstlisting}[language=C++, label={lst:rk4}, caption={Summarize Runge and Kutta Integration}]	
 
 for(int term = 0; term < 4; term++)
 	for(int coord = 0; coord < 3; coord++)
@@ -284,10 +279,9 @@ for(int term = 0; term < 4; term++)
 
 \subsection{Calculate effective beta}
 
-The final calculation of the simulation. The following kernels are launched only when the simulation is done performing.
+The final calculation of the simulation, which calculates the effective beta. The following kernels are launched only when the RK4 integration is done, for this implementations is 50,000 iterations of RK4. \ref{fig:flow}
 
-
-\begin{lstlisting}[language=C++, label={lst:rk4}, caption={Runge y Kutta integration}]	
+\begin{lstlisting}[language=C++, label={lst:beta}, caption={Calculate effective beta}]	
     gm_x_sm << <blocks, threads >> >(...); //Calculate
     gu_eff << <blocks, threads >> >(...);  //Calculate 
     gu_eff_beta_eff << <blocks, threads >> >(...); 	//Calculate
@@ -296,10 +290,7 @@ The final calculation of the simulation. The following kernels are launched only
 \end{lstlisting}
 
 
-\subsection{Calculate beta variation}
-
 The final step of the simulation is calculating on the host the single value beta variation.
-
 
 
 \section{Validation}
