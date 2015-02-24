@@ -146,7 +146,7 @@ The initial calculation is only a minor part of the whole simulation. However on
     gsource << <blocks, threads >> >(...);
 
     //Project source term on magnetization components by computing
-    //a cross product twice
+    //a cross product twicse
     gm_x_source << <blocks, threads >> >(...);
     gm_x_source << <blocks, threads >> >(...);
 \end{lstlisting}
@@ -172,19 +172,43 @@ micromagnetic simulation and demonstrate how to advance the configuration of the
 
 This step is where all the computational intense operations are performed. The figure \ref{fig:sim} demonstrates the operations 
 
-
-\begin{figure}[htbp]
-	\centering
-		\includegraphics[width=0.4\textwidth]{Figures/rk4flow.png}
-		\rule{35em}{0.2pt}
-	\caption[Runge and Kutta Integration Code Flow]{RK4 code flow and matrices used for every process}
-	\label{fig:sim}
-\end{figure}
-
+\begin{algorithm}[H]
+ \KwData{deltam}
+ \KwResult{how to write algorithm with \LaTeX2e }
+ initialization\;
+ \While{$b_{eff} < 1.0e^{-9}$}{
+  Runge and Kutta 4th\;
+  \For{$i = 1; i <= 4; i+=1$ }{  
+  sdex $\gets$ crossProduct(deltam, mag); calculate cross product \\
+  FDTD with boundary condition\\
+  laplacian $\gets$ laplacianXYBoundary(deltam);\\
+  evaluate Zhang-Li model \\
+  solveZhangLi  $\gets$ solveZhang(sfrelax, sdex, laplacian, sm); \\
+  
+  RK4 evaluation \\
+  rkterm(i) $\gets$  rktime(i, solveZhangLi, dt); \\
+  
+  \eIf {$i == 4$}{
+    deltam $\gets$ rk4(solveZhangLi, temp, dt, rkterm(1), rkterm(2), rkterm(3), rkterm(4))
+    }{
+	deltam $\gets$ rk4(solveZhanLi, temp, dt)\\
+   }
+  evaluate RK4 term\\
+  deltam $\gets$ rk4(solveZhanLi, temp, dt) \\
+  sfrelax $\gets$ relaxation(deltam, tau) \\
+  
+  \If {$i == 4$}{
+    temp $\gets$ copy(rkterm(4));\\
+   }
+	
+  }
+ }
+ \caption{Runge and Kutta 4th integration implementation}
+\end{algorithm}
 
 \subsubsection{Finite differences in the time domain}
 
-The finite differences method requires the domain of interest to be broken down into small regions. Such a subdivision of space is known as a mesh or grid, cell division is explained in the table \ref{tab:mesh}, whose implementation in CUDA threads and blocks are done with \ref{tab:cuda} and \ref{tab:threads}. Based on the equations from chapter three \ref{eq:nn}. The first and second derivate base on seconds nearest neighbors expands are calculated. The base idea is showed on the figure	 \label{fig:laplacian}. The equation \ref{eq:nn} is evaluated for three coordinates x, y and z.
+The finite differences method requires the domain of interest to be broken down into small regions. Such a subdivision of space is known as a mesh or grid, cell division is explained in the table \ref{tab:mesh}, whose implementation in CUDA threads and blocks are done with \ref{tab:cuda} and \ref{tab:threads}. Based on the equations from chapter three \ref{eq:nn}. The first and second derivate are based on seconds nearest neighbors expands are calculated. The base idea is showed on the figure	 \label{fig:laplacian}. The equation \ref{eq:nn} is evaluated for three coordinates x, y and z.
 
 \begin{figure}[htbp]
 	\centering
@@ -263,8 +287,9 @@ The output  \textit{solveZhangLi} of the Zhang - Li Model evaluation \ref{lst:zh
 
 \subsubsection{Final evaluation}
 
-The integration can be sum up as two for cycles. The first \textif{for} calculating the RK4 and the second one each x, y, and z coordinate \ref{lst:rk4}.
-\begin{lstlisting}[language=C++, label={lst:rk4}, caption={Summarize Runge and Kutta Integration}]	
+The integration can be sum up as two for cycles. The first \textit{for} calculating the RK4 and the second one each x, y, and z coordinate \ref{lst:rk4}.
+
+\begin{lstlisting}[language=C++, label={lst:rk4}, caption={Summarize of Runge and Kutta Integration}]	
 
 for(int term = 0; term < 4; term++)
 	for(int coord = 0; coord < 3; coord++)
@@ -304,10 +329,7 @@ The validation is done by checking the output of the simulation with a valid dat
 According to our results, new code shouldn't produce errors in the $*$-spin.dat data 
 greater than 7.0e-17, in other words valid code don't lead to differences greater than
 the precision expected from computations with double precision 1.0e-16 in the case of
-eff data the errors are in the order of 1.0e-11 and no greater than 6e-11.
-
-For the diffuse beta variation the precision expected to be within the double precision range of 1e-16. 
-
+eff data the errors are in the order of 1.0e-11 and no greater than 6e-11. For the diffuse beta variation the precision expected to be within the double precision range of 1e-16. 
 
 For example the validation test are done with the following output values.
 
@@ -327,9 +349,9 @@ ATWpm magnetization & 377409.2ms & 4.054674178687585e-02 \\
 \end{table}
 
 
-\vspace{3.2em}
+\vspace{3.3em}
 
-To conclude
+To conclude, the simulating at its core uses the RK4 for integration which uses as function the equation of Zhang-li \ref{eq:zhang}. In addition to solve such differential equations the FDTD method is used. As we can expected the simulation is computational expensive, because the RK4 evaluates fourth times the Zhang-Li equation. Moreoever,
 
 
 

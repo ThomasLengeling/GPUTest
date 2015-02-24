@@ -17,25 +17,23 @@
 \contentsline {figure}{\numberline {2.8}{\ignorespaces Visual Profiler example}}{22}{figure.caption.131}
 \addvspace {10\p@ }
 \contentsline {figure}{\numberline {3.1}{\ignorespaces Domain Wall VW, ATW}}{26}{figure.caption.142}
-\contentsline {figure}{\numberline {3.2}{\ignorespaces Domain Wall - Vortex}}{27}{figure.caption.151}
-\contentsline {figure}{\numberline {3.3}{\ignorespaces Domain Wall - Vortex}}{28}{figure.caption.152}
-\contentsline {figure}{\numberline {3.4}{\ignorespaces FDTD grid}}{28}{figure.caption.154}
-\contentsline {figure}{\numberline {3.5}{\ignorespaces Sampled at regular intervals a, Taylor expansion}}{29}{figure.caption.155}
-\contentsline {figure}{\numberline {3.6}{\ignorespaces Euler Method}}{32}{figure.caption.163}
-\contentsline {figure}{\numberline {3.7}{\ignorespaces Fourth-order Runge and Kutta Method}}{32}{figure.caption.166}
+\contentsline {figure}{\numberline {3.2}{\ignorespaces Domain Wall - Vortex}}{28}{figure.caption.148}
+\contentsline {figure}{\numberline {3.3}{\ignorespaces Domain Wall - Vortex}}{28}{figure.caption.149}
+\contentsline {figure}{\numberline {3.4}{\ignorespaces FDTD grid}}{29}{figure.caption.151}
+\contentsline {figure}{\numberline {3.5}{\ignorespaces Sampled at regular intervals a, Taylor expansion}}{29}{figure.caption.152}
+\contentsline {figure}{\numberline {3.6}{\ignorespaces Euler Method}}{32}{figure.caption.160}
+\contentsline {figure}{\numberline {3.7}{\ignorespaces Fourth-order Runge and Kutta Method}}{33}{figure.caption.163}
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {4.1}{\ignorespaces Control flow}}{35}{figure.caption.173}
-\contentsline {figure}{\numberline {4.2}{\ignorespaces 2D Flatten array}}{36}{figure.caption.175}
-\contentsline {figure}{\numberline {4.3}{\ignorespaces Grid layout}}{37}{figure.caption.182}
-\contentsline {figure}{\numberline {4.4}{\ignorespaces Runge and Kutta Integration Code Flow}}{38}{figure.caption.208}
-\contentsline {figure}{\numberline {4.5}{\ignorespaces Laplacian block calculation}}{39}{figure.caption.210}
+\contentsline {figure}{\numberline {4.1}{\ignorespaces Control flow}}{36}{figure.caption.171}
+\contentsline {figure}{\numberline {4.2}{\ignorespaces 2D Flatten array}}{36}{figure.caption.173}
+\contentsline {figure}{\numberline {4.3}{\ignorespaces Grid layout}}{37}{figure.caption.180}
+\contentsline {figure}{\numberline {4.4}{\ignorespaces Laplacian block calculation}}{40}{figure.caption.209}
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {5.1}{\ignorespaces Initial GPU results}}{46}{figure.caption.285}
-\contentsline {figure}{\numberline {5.2}{\ignorespaces he execution flow}}{47}{figure.caption.300}
-\contentsline {figure}{\numberline {5.3}{\ignorespaces Initial Streams}}{49}{figure.caption.362}
-\contentsline {figure}{\numberline {5.4}{\ignorespaces Streams kernels Tesla K20}}{51}{figure.caption.409}
-\contentsline {figure}{\numberline {5.5}{\ignorespaces Shared Memory Strategy}}{51}{figure.caption.415}
-\contentsline {figure}{\numberline {5.6}{\ignorespaces Array of structures (AOS)}}{52}{figure.caption.418}
-\contentsline {figure}{\numberline {5.7}{\ignorespaces Structure of Arrays (SAO)}}{52}{figure.caption.419}
-\addvspace {10\p@ }
+\contentsline {figure}{\numberline {5.1}{\ignorespaces Initial GPU results}}{47}{figure.caption.284}
+\contentsline {figure}{\numberline {5.2}{\ignorespaces he execution flow}}{49}{figure.caption.299}
+\contentsline {figure}{\numberline {5.3}{\ignorespaces Initial Streams}}{50}{figure.caption.361}
+\contentsline {figure}{\numberline {5.4}{\ignorespaces Streams kernels Tesla K20}}{52}{figure.caption.408}
+\contentsline {figure}{\numberline {5.5}{\ignorespaces Shared Memory Strategy}}{53}{figure.caption.414}
+\contentsline {figure}{\numberline {5.6}{\ignorespaces Array of structures (AOS)}}{53}{figure.caption.417}
+\contentsline {figure}{\numberline {5.7}{\ignorespaces Structure of Arrays (SAO)}}{53}{figure.caption.418}
 \addvspace {10\p@ }
