@@ -4,52 +4,54 @@ The top-level auxiliary file: /Users/tom/Documents/GitHub/GPUTest/Thesis_latex_G
 The style file: abbrv.bst
 Database file #1: ../Bibliography.bib
 Warning--string name "august" is undefined
---line 195 of file ../Bibliography.bib
+--line 211 of file ../Bibliography.bib
 Warning--I'm ignoring practices's extra "month" field
---line 196 of file ../Bibliography.bib
+--line 212 of file ../Bibliography.bib
+Warning--entry type for "cornell" isn't style-file defined
+--line 378 of file ../Bibliography.bib
 Warning--empty journal in 5306797
 Warning--can't use both author and editor fields in methods
 Warning--empty journal in physicsgpu
 Warning--empty journal in landaverde
-You've used 33 entries,
+You've used 35 entries,
             2118 wiz_defined-function locations,
-            682 strings with 8604 characters,
-and the built_in function-call counts, 9278 in all, are:
-= -- 872
-> -- 444
+            690 strings with 8828 characters,
+and the built_in function-call counts, 9783 in all, are:
+= -- 919
+> -- 464
 < -- 2
-+ -- 180
-- -- 144
-* -- 595
-:= -- 1599
-add.period$ -- 97
-call.type$ -- 33
-change.case$ -- 164
++ -- 188
+- -- 150
+* -- 624
+:= -- 1684
+add.period$ -- 102
+call.type$ -- 35
+change.case$ -- 173
 chr.to.int$ -- 0
-cite$ -- 37
-duplicate$ -- 351
-empty$ -- 762
-format.name$ -- 144
-if$ -- 1917
+cite$ -- 39
+duplicate$ -- 369
+empty$ -- 809
+format.name$ -- 150
+if$ -- 2023
 int.to.chr$ -- 0
-int.to.str$ -- 33
-missing$ -- 37
-newline$ -- 166
-num.names$ -- 64
-pop$ -- 216
+int.to.str$ -- 35
+missing$ -- 38
+newline$ -- 175
+num.names$ -- 68
+pop$ -- 228
 preamble$ -- 1
-purify$ -- 139
+purify$ -- 146
 quote$ -- 0
-skip$ -- 237
+skip$ -- 253
 stack$ -- 0
-substring$ -- 428
-swap$ -- 38
+substring$ -- 456
+swap$ -- 40
 text.length$ -- 2
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 108
+type$ -- 116
 warning$ -- 4
-while$ -- 82
-width$ -- 35
-write$ -- 347
-(There were 6 warnings)
+while$ -- 87
+width$ -- 37
+write$ -- 366
+(There were 7 warnings)

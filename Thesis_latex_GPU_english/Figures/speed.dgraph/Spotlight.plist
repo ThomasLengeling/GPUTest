@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Labels</key>
+	<string>GPU
+Speedup
+</string>
+	<key>Text</key>
+	<string>The examples in the earlier graphs just counted how many were in each bin.  But the bins really break the table into sub tables that have the same entry in the Type column.  Instead of just reporting how many are in each sub table you can compute a statistic for each sub table.
+</string>
+</dict>
+</plist>

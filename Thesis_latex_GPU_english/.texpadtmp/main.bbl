@@ -82,6 +82,12 @@ K.-J. Lee, M.~Stiles, H.-W. Lee, J.-H. Moon, K.-W. Kim, and S.-W. Lee.
 \newblock Self-consistent calculation of spin transport and magnetization
   dynamics.
 
+\bibitem{zhang2004}
+Z.~Li and S.~Zhang.
+\newblock Domain-wall dynamics and spin-wave excitations with spin-transfer
+  torques.
+\newblock {\em Phys. Rev. Lett.}, 92:207203, May 2004.
+
 \bibitem{Nickolls}
 J.~Nickolls and W.~J. Dally.
 \newblock The gpu computing era.
@@ -163,6 +169,11 @@ S.~O. Valenzuela.
   hall effect.
 \newblock {\em International Journal of Modern Physics B}, 23(11):2413--2438,
   2009.
+
+\bibitem{cornell}
+C.~Wang.
+\newblock Characterization of spin transfer torque and magnetization
+  manipulation in magnetic nanostructures, 2012.
 
 \bibitem{precision}
 N.~Whitehead and A.~Fit-florea.
