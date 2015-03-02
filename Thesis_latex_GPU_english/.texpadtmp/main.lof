@@ -29,14 +29,14 @@
 \contentsline {figure}{\numberline {4.3}{\ignorespaces Grid layout}}{38}{figure.caption.182}
 \contentsline {figure}{\numberline {4.4}{\ignorespaces Laplacian block calculation}}{41}{figure.caption.211}
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {5.1}{\ignorespaces Initial GPU results}}{47}{figure.caption.282}
-\contentsline {figure}{\numberline {5.2}{\ignorespaces he execution flow}}{48}{figure.caption.294}
-\contentsline {figure}{\numberline {5.3}{\ignorespaces Initial Streams}}{50}{figure.caption.348}
-\contentsline {figure}{\numberline {5.4}{\ignorespaces Streams kernels Tesla K20}}{52}{figure.caption.395}
-\contentsline {figure}{\numberline {5.5}{\ignorespaces Waiting time concurrent kernels}}{52}{figure.caption.396}
-\contentsline {figure}{\numberline {5.6}{\ignorespaces Shared Memory Strategy}}{53}{figure.caption.398}
-\contentsline {figure}{\numberline {5.7}{\ignorespaces Array of structures (AOS)}}{54}{figure.caption.414}
-\contentsline {figure}{\numberline {5.8}{\ignorespaces Structure of Arrays (SAO)}}{54}{figure.caption.415}
-\contentsline {figure}{\numberline {5.9}{\ignorespaces Structure of Arrays (SAO)}}{56}{figure.caption.429}
-\contentsline {figure}{\numberline {5.10}{\ignorespaces Structure of Arrays (SAO)}}{56}{figure.caption.430}
+\contentsline {figure}{\numberline {5.1}{\ignorespaces Initial GPU results}}{48}{figure.caption.283}
+\contentsline {figure}{\numberline {5.2}{\ignorespaces he execution flow}}{49}{figure.caption.295}
+\contentsline {figure}{\numberline {5.3}{\ignorespaces Initial Streams}}{51}{figure.caption.348}
+\contentsline {figure}{\numberline {5.4}{\ignorespaces Streams kernels Tesla K20}}{53}{figure.caption.393}
+\contentsline {figure}{\numberline {5.5}{\ignorespaces Waiting time concurrent kernels}}{53}{figure.caption.394}
+\contentsline {figure}{\numberline {5.6}{\ignorespaces Shared Memory Strategy}}{53}{figure.caption.396}
+\contentsline {figure}{\numberline {5.7}{\ignorespaces Array of structures (AOS)}}{54}{figure.caption.412}
+\contentsline {figure}{\numberline {5.8}{\ignorespaces Structure of Arrays (SAO)}}{55}{figure.caption.413}
+\contentsline {figure}{\numberline {5.9}{\ignorespaces Structure of Arrays (SAO)}}{56}{figure.caption.427}
+\contentsline {figure}{\numberline {5.10}{\ignorespaces Structure of Arrays (SAO)}}{56}{figure.caption.428}
 \addvspace {10\p@ }

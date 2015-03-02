@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013) (format=pdflatex 2013.5.30)  1 MAR 2015 13:26
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013) (format=pdflatex 2013.5.30)  1 MAR 2015 21:20
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -470,9 +470,6 @@ LaTeX Warning: Label `fig:laplacian' multiply defined.
 LaTeX Warning: Label `tab:threads' multiply defined.
 
 
-LaTeX Warning: Label `tab:threads' multiply defined.
-
-
 LaTeX Warning: Label `fig:streams' multiply defined.
 
 
@@ -781,26 +778,26 @@ LaTeX Warning: `h' float specifier changed to `ht'.
 ] <Figures/flow.png, id=874, 398.6895pt x 571.1739pt>
 File: Figures/flow.png Graphic file (type png)
  <use Figures/flow.png>
-Package pdftex.def Info: Figures/flow.png used on input line 57.
+Package pdftex.def Info: Figures/flow.png used on input line 55.
 (pdftex.def)             Requested size: 175.33792pt x 251.18655pt.
  <Figures/flaten.png, id=877, 338.76563pt x 137.01187pt>
 File: Figures/flaten.png Graphic file (type png)
  <use Figures/flaten.png>
-Package pdftex.def Info: Figures/flaten.png used on input line 69.
+Package pdftex.def Info: Figures/flaten.png used on input line 67.
 (pdftex.def)             Requested size: 166.98668pt x 67.5378pt.
  [36] <Figures/block.png, id=889, 796.8972pt x 369.2997pt>
 File: Figures/block.png Graphic file (type png)
  <use Figures/block.png>
-Package pdftex.def Info: Figures/block.png used on input line 101.
+Package pdftex.def Info: Figures/block.png used on input line 99.
 (pdftex.def)             Requested size: 250.48637pt x 116.07643pt.
  [37 <./Figures/flow.png> <./Figures/flaten.png (PNG copy)>] [38 <./Figures/block.png (PNG copy)>] [39] <Figures/laplacian.png, id=940, 723.6636pt x 313.17pt>
 File: Figures/laplacian.png Graphic file (type png)
  <use Figures/laplacian.png>
-Package pdftex.def Info: Figures/laplacian.png used on input line 214.
+Package pdftex.def Info: Figures/laplacian.png used on input line 212.
 (pdftex.def)             Requested size: 250.48637pt x 108.39737pt.
  [40] [41 <./Figures/laplacian.png (PNG copy)>]
 
-LaTeX Warning: Reference `fig:sim' on page 42 undefined on input line 260.
+LaTeX Warning: Reference `fig:sim' on page 42 undefined on input line 258.
 
 [42] [43]) (./Chapters/Chapter5.tex [44]
 Chapter 5.
@@ -819,98 +816,104 @@ LaTeX Warning: `h' float specifier changed to `ht'.
 [45
 
 ]
-Overfull \hbox (8.3968pt too wide) in paragraph at lines 51--66
+Overfull \hbox (5.05098pt too wide) in paragraph at lines 48--63
  [][] 
  []
 
-[46] <Figures/gpu_initial.png, id=1062, 1113.6807pt x 426.03165pt>
+[46]
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+<Figures/gpu_initial.png, id=1065, 1113.6807pt x 426.03165pt>
 File: Figures/gpu_initial.png Graphic file (type png)
  <use Figures/gpu_initial.png>
-Package pdftex.def Info: Figures/gpu_initial.png used on input line 121.
+Package pdftex.def Info: Figures/gpu_initial.png used on input line 150.
 (pdftex.def)             Requested size: 271.35493pt x 103.80334pt.
- [47 <./Figures/gpu_initial.png>] <Figures/threads.png, id=1074, 649.42625pt x 198.7425pt>
+ [47] [48 <./Figures/gpu_initial.png>] <Figures/threads.png, id=1084, 649.42625pt x 198.7425pt>
 File: Figures/threads.png Graphic file (type png)
  <use Figures/threads.png>
-Package pdftex.def Info: Figures/threads.png used on input line 150.
+Package pdftex.def Info: Figures/threads.png used on input line 178.
 (pdftex.def)             Requested size: 212.90897pt x 65.15459pt.
- [48 <./Figures/threads.png>] [49] <Figures/ini_steams.png, id=1141, 679.03688pt x 48.18pt>
+ [49 <./Figures/threads.png>]
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+[50] <Figures/ini_steams.png, id=1156, 679.03688pt x 48.18pt>
 File: Figures/ini_steams.png Graphic file (type png)
  <use Figures/ini_steams.png>
-Package pdftex.def Info: Figures/ini_steams.png used on input line 262.
+Package pdftex.def Info: Figures/ini_steams.png used on input line 276.
 (pdftex.def)             Requested size: 271.35493pt x 19.25327pt.
- [50 <./Figures/ini_steams.png>]
-Overfull \hbox (0.73619pt too wide) in paragraph at lines 274--275
-[][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
- []
-
-
-Overfull \hbox (0.73619pt too wide) in paragraph at lines 302--303
+ [51 <./Figures/ini_steams.png>]
+Overfull \hbox (0.73619pt too wide) in paragraph at lines 314--315
 [][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
  []
 
-[51] <Figures/concurent.png, id=1194, 1277.77374pt x 107.40125pt>
+<Figures/concurent.png, id=1181, 1277.77374pt x 107.40125pt>
 File: Figures/concurent.png Graphic file (type png)
  <use Figures/concurent.png>
-Package pdftex.def Info: Figures/concurent.png used on input line 331.
+Package pdftex.def Info: Figures/concurent.png used on input line 342.
 (pdftex.def)             Requested size: 271.35493pt x 22.8073pt.
 
 
-LaTeX Warning: Reference `ref:waittime' on page 52 undefined on input line 338.
+LaTeX Warning: Reference `ref:waittime' on page 52 undefined on input line 349.
 
-<Figures/waittime.png, id=1195, 764.1348pt x 149.1171pt>
+[52] <Figures/waittime.png, id=1216, 764.1348pt x 149.1171pt>
 File: Figures/waittime.png Graphic file (type png)
  <use Figures/waittime.png>
-Package pdftex.def Info: Figures/waittime.png used on input line 342.
+Package pdftex.def Info: Figures/waittime.png used on input line 353.
 (pdftex.def)             Requested size: 229.61145pt x 44.806pt.
- [52 <./Figures/concurent.png> <./Figures/waittime.png>]
 
-LaTeX Warning: Reference `Implementation of DW Dynamics under Nonlocal Spin-Transfer Torque' on page 53 undefined on input line 356.
 
-<Figures/shared.png, id=1219, 678.535pt x 653.44125pt>
+LaTeX Warning: Reference `Implementation of DW Dynamics under Nonlocal Spin-Transfer Torque' on page 53 undefined on input line 367.
+
+<Figures/shared.png, id=1218, 678.535pt x 653.44125pt>
 File: Figures/shared.png Graphic file (type png)
  <use Figures/shared.png>
-Package pdftex.def Info: Figures/shared.png used on input line 360.
+Package pdftex.def Info: Figures/shared.png used on input line 371.
 (pdftex.def)             Requested size: 125.24318pt x 120.60556pt.
-
-Overfull \hbox (0.73619pt too wide) in paragraph at lines 374--375
+ [53 <./Figures/concurent.png> <./Figures/waittime.png> <./Figures/shared.png>]
+Overfull \hbox (0.73619pt too wide) in paragraph at lines 385--386
 [][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
  []
 
-[53 <./Figures/shared.png>] <Figures/aos.png, id=1241, 483.8075pt x 129.48375pt>
+<Figures/aos.png, id=1229, 483.8075pt x 129.48375pt>
 File: Figures/aos.png Graphic file (type png)
  <use Figures/aos.png>
-Package pdftex.def Info: Figures/aos.png used on input line 397.
+Package pdftex.def Info: Figures/aos.png used on input line 408.
 (pdftex.def)             Requested size: 271.35493pt x 72.62695pt.
- <Figures/soa.png, id=1242, 482.80376pt x 128.48pt>
+ <Figures/soa.png, id=1230, 482.80376pt x 128.48pt>
 File: Figures/soa.png Graphic file (type png)
  <use Figures/soa.png>
-Package pdftex.def Info: Figures/soa.png used on input line 406.
+Package pdftex.def Info: Figures/soa.png used on input line 417.
 (pdftex.def)             Requested size: 271.35493pt x 72.21295pt.
- [54 <./Figures/aos.png> <./Figures/soa.png>]
+ [54 <./Figures/aos.png>]
 
-LaTeX Warning: Reference `speed' on page 55 undefined on input line 435.
+LaTeX Warning: Reference `speed' on page 55 undefined on input line 446.
 
 
-Overfull \hbox (10.32703pt too wide) in paragraph at lines 439--454
+Overfull \hbox (10.32703pt too wide) in paragraph at lines 450--465
  [][] 
  []
 
-<Figures/gpuOptimization.png, id=1256, 931.5603pt x 801.4743pt>
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+<Figures/gpuOptimization.png, id=1251, 931.5603pt x 801.4743pt>
 File: Figures/gpuOptimization.png Graphic file (type png)
  <use Figures/gpuOptimization.png>
-Package pdftex.def Info: Figures/gpuOptimization.png used on input line 483.
+Package pdftex.def Info: Figures/gpuOptimization.png used on input line 492.
 (pdftex.def)             Requested size: 200.38528pt x 172.39922pt.
- <Figures/speed.png, id=1258, 768.9528pt x 403.62794pt>
+ [55 <./Figures/soa.png>] <Figures/speed.png, id=1270, 768.9528pt x 403.62794pt>
 File: Figures/speed.png Graphic file (type png)
  <use Figures/speed.png>
-Package pdftex.def Info: Figures/speed.png used on input line 497.
+Package pdftex.def Info: Figures/speed.png used on input line 511.
 (pdftex.def)             Requested size: 208.73653pt x 109.56609pt.
- [55]) (./Chapters/Chapter6.tex [56 <./Figures/gpuOptimization.png> <./Figures/speed.png>]
+ [56 <./Figures/gpuOptimization.png> <./Figures/speed.png>]) (./Chapters/Chapter6.tex [57]
 Chapter 6.
 ------------------------------------------------------------------------------
  6 Conclusions and future work
 ------------------------------------------------------------------------------
-[57
+[58
 
 ]
 Missing character: There is no â in font cmr10!
@@ -925,7 +928,7 @@ Missing character: There is no ™ in font cmr10!
 Missing character: There is no â in font cmr10!
 Missing character: There is no € in font cmr10!
 Missing character: There is no ™ in font cmr10!
- [58]) (/Users/tom/Documents/GitHub/GPUTest/Thesis_latex_GPU_english/.texpadtmp/main.bbl [59] [60
+ [59]) (/Users/tom/Documents/GitHub/GPUTest/Thesis_latex_GPU_english/.texpadtmp/main.bbl [60] [61
 
 ]
 Underfull \hbox (badness 10000) in paragraph at lines 108--112
@@ -937,13 +940,13 @@ Underfull \hbox (badness 1603) in paragraph at lines 152--155
 []\OT1/cmr/m/n/10.95 J. B. Schnei-der.  Un-der-stand-ing the finite-difference time-domain method,
  []
 
-[61]
+[62]
 Missing character: There is no â in font cmr10!
 Missing character: There is no € in font cmr10!
 Missing character: There is no ™ in font cmr10!
 )
 Package atveryend Info: Empty hook `BeforeClearDocument' on input line 238.
- [62]
+ [63]
 Package atveryend Info: Empty hook `AfterLastShipout' on input line 238.
  (/Users/tom/Documents/GitHub/GPUTest/Thesis_latex_GPU_english/.texpadtmp/main.aux)
 Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 238.
@@ -960,18 +963,18 @@ LaTeX Warning: There were multiply-defined labels.
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 238.
  ) 
 Here is how much of TeX's memory you used:
- 15729 strings out of 493315
- 222544 string characters out of 6137904
- 356574 words of memory out of 5000000
- 18409 multiletter control sequences out of 15000+600000
+ 15737 strings out of 493315
+ 222613 string characters out of 6137904
+ 351652 words of memory out of 5000000
+ 18418 multiletter control sequences out of 15000+600000
  13944 words of font info for 51 fonts, out of 8000000 for 9000
  957 hyphenation exceptions out of 8191
  49i,19n,60p,1187b,1859s stack positions out of 5000i,500n,10000p,200000b,80000s
 </usr/local/texlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/local/texlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/local/texlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmcsc10.pfb></usr/local/texlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/local/texlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/texlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/local/texlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/local/texlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/local/texlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/local/texlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/texlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/local/texlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/texlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/local/texlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb></usr/local/texlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb></usr/local/texlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt8.pfb>
-Output written on /Users/tom/Documents/GitHub/GPUTest/Thesis_latex_GPU_english/.texpadtmp/main.pdf (70 pages, 4675501 bytes).
+Output written on /Users/tom/Documents/GitHub/GPUTest/Thesis_latex_GPU_english/.texpadtmp/main.pdf (71 pages, 4682808 bytes).
 PDF statistics:
- 1493 PDF objects out of 1728 (max. 8388607)
- 1329 compressed objects within 14 object streams
- 537 named destinations out of 1000 (max. 500000)
+ 1498 PDF objects out of 1728 (max. 8388607)
+ 1333 compressed objects within 14 object streams
+ 536 named destinations out of 1000 (max. 500000)
  698 words of extra memory for PDF output out of 10000 (max. 10000000)
 

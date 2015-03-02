@@ -6,13 +6,11 @@
 
 \lhead{Chapter 4. \emph{Implementation of Domain Wall Dynamics under Nonlocal STT}} % Change X to a consecutive number; this is for the header on each page - perhaps a shortened title
 
-This chapter is the study of the heterogenous implementation of Domain Wall Dynamics under Nonlocal Spin-Transfer Torque. We use the massively parallel capabilities of a single GPU to numerically solve a mathematical equation, known as the Zhang-Li model. The numerical method used for the solution is a the method known as Finite Differences in the Time Domain (FDTD) whose integration is done using the 4th order Runge - Kutta. The integration is done on a 3D grid space which outputs the magnetization data of the Vortex Wall, Asymmetric Transverse Wall and a single value, the effective beta.
+This chapter is the study of the heterogenous implementation of Domain Wall Dynamics under Nonlocal Spin-Transfer Torque. We use the massively parallel capabilities of a single GPU to numerically solve a mathematical equation, known as the Zhang-Li model. The numerical method used for the solution is a the method known as Finite Differences in the Time Domain (FDTD) whose integration is done using the 4th order Runge-Kutta. The integration is done on a 3D grid space which outputs the magnetization data of the Vortex Wall, Asymmetric Transverse Wall and a single value, the effective beta.
 
 \section{Simulation}
 
-The simulation consist of the integration of the equation \ref{eq:zhang}, know as the Zhang and Li model for $1ns$ in a grid of 57,600 cells. The sample considered is a 300nm wide in y direction and 5nm thick in z direction NiFe (nickel–iron alloy) soft nanostrip, a material and size widely uses in experiments with this characteristics. Using this size the asymmetric transverse wall \ref{fig:atw}, and the vortex wall. have nearly equal energies. The numerical mesh size is 3 x 3 x 5 $nm^3$, and the calculation box has a length (x direction) of 1,200 or 3,172 nm. The table \ref{tab:mesh} illustrates mesh information and calculation box for the simulation \cite{claudio}.
-
-The table \ref{tab:drk} shows the constant values for the equation \ref{eq:zhang} such as $\mu$, $D_{0}$, $\tau_{sd}$ and $\tau_{sf}$.
+The simulation consist of the integration of the equation \ref{eq:zhang}, know as the Zhang and Li model for $1ns$ in a grid of 57,600 cells. The sample considered is a 300nm wide in y direction and 5nm thick in z direction NiFe (nickel–iron alloy) soft nanostrip, a material and size widely uses in experiments with this characteristics. Using this size the asymmetric transverse wall \ref{fig:atw}, and the vortex wall. have nearly equal energies. The numerical mesh size is 3 x 3 x 5 $nm^3$, and the calculation box has a length (x direction) of 1,200 or 3,172 nm. The table \ref{tab:mesh} illustrates mesh information and calculation box for the simulation \cite{claudio}. In addition the table \ref{tab:drk} shows the constant values for the numerical solution of the equation \ref{eq:zhang} such as $\mu$, $D_{0}$, $\tau_{sd}$ and $\tau_{sf}$.
 
 \begin{table}[h]
 \centering
@@ -315,7 +313,7 @@ The final calculation of the simulation, which calculates the effective beta. Th
 \end{lstlisting}
 
 
-The final step of the simulation is calculating on the host the single value beta variation. This value tell us....
+The final step of the simulation is calculating the beta variation value. This value tell us....
 
 
 Once the effective beta diverges to $1^{-9}$ the simulation stops and the magnetization data is written. Depending on the application configuration is possible to write  either  the magnetization results for the VW or for the ATW. The magnetization data is written into two separated data files, which contains the effective data .eff and the spin accumulation data .spin.

@@ -16,10 +16,7 @@ This chapter is the results of the CUDA code implementation launched on a single
 
 The experiments are carried out using the supercomputer “Piritakua”. The massive GPU cluster was design and built by Dr. Claudio from the University of Guanajuato Multidisciplinary Studies Yuriria. The GPU cluster is located at a small town of Mexico, Yuriria. The supercomputer at the Front-end has a eight core Intel Xeon at 2.4 Ghz, at the back-end several GPU are connected, one NVIDIA Tesla K20, two Tesla M2070 and a GTX 580.
 
-A GNU$ \ $LINUX distribution installed on the system, the CentOS 64 bits version 6.4. CentOS stands for Community Enterprise Operating System which is free operating system and one of the most popular GNU$ \ $Linux distribution for web servers and as well is supported by RHEL (Red Hat Enterprise Linux). \cite{centos} 
-
-The specifications of the front-end cluster.
-
+A GNU$ \ $LINUX distribution installed on the system, the CentOS 64 bits version 6.4. CentOS stands for Community Enterprise Operating System which is free operating system and one of the most popular GNU$ \ $Linux distribution for web servers and as well is supported by RHEL (Red Hat Enterprise Linux) \cite{centos}.  The specifications of the front-end cluster are \ref{tab:cpus}.
 
 \begin{table}[h]
 \centering
@@ -42,7 +39,7 @@ The specifications of the front-end cluster.
   \label{tab:cpus}
   \end{table}
   
- The CUDA Code was launched on only two CPUs, a laptop with a eight core intel i7-3630QM and a high-end CPU Xeon Phi 7120p from the cluster. In addition the Xeon Phi was used for all the experiments for the Cluster's GPUs. The Xeon Phi 720p is capable of achieving f 1.2 teraflops of double precision floating point instructions with 352 GB/sec memory bandwidth at 300 W.
+ The CUDA Code was launched on only two CPUs, a laptop with a eight core intel i7-3630QM and a high-end CPU Xeon Phi 7120p from the cluster. In addition the Xeon Phi was used for all the experiments for the Cluster's GPUs. The Xeon Phi 720p is capable of achieving f 1.2 teraflops of double precision floating point instructions with 352 GB/sec memory bandwidth at 300 W. The code was executed on laptop to show the performance comparison between a lightweight GPU and a server based GPU.
 
 When accessing ``Piritakua'' remotely is possible to use all the GPUs nodes available on the cluster. The specifications of the GPU connected to the back-end are as follow, CC stands for compute capability.
 
@@ -60,21 +57,20 @@ When accessing ``Piritakua'' remotely is possible to use all the GPUs nodes avai
    \hline
       GeForce 580 & 512 & 1.5GB & 520 & 1,154 & 192.2GB/s & 1.5 & 2.0 & 244W \\
    \hline
-   GeForce 670MX & 960 & 3GB & 520 & 1,154 & 67.2GB/s & 0.6 & 3.0 &  - \\
+   GeForce 670mx & 960 & 3GB & 520 & 1,154 & 67.2GB/s & 0.6 & 3.0 &  - \\
    \hline
   \end{tabular}
     \caption{GPU technical specifications}
   \label{tab:gpus}
   \end{table}
   
-   The code was launched on all Piritakua's GPUs and on external GeForce GTX 670m, located on a laptop. The "m" stands for the mobil graphic card version. In addition the 670m card is design for less power usage, but with high graphics power, it even has more cores than some Tesla models, however this types of cards has way more less Bandwidth than standard versions.
-
-  
+  The code was launched on all Piritakua's GPUs and on external GeForce GTX 670m, located on a laptop. The "m" stands for the mobil graphic cards. In addition the 670m card is design for less power usage, but with high graphics power, it even has more cores than some Tesla models, However, this types of cards has way more less Bandwidth than standard versions.
+   
 \subsection{Architecture Differences}
 
-  Architecture dependent technical differences of NVIDIA GPUs. During CUDA development a lot of internal features have been improved, but most paradigms for the programmer stayed the same. For example a streaming processor can now handle 2048 threads at a time, but the maximum block size stayed at 1024. This results in a 100$\%$ theoretical occupancy for block sizes of 1024 compared to 66$\%$ of Fermi. Another example is the use of Shared Memory. Maxwell has 64KB dedicated Shared Memory. The maximum amount of Shared Memory per Block is 48KB for all three architectures \cite{hoermanngpu}. Ho
+  Architecture dependent technical differences of NVIDIA GPUs. During CUDA development a lot of internal features have been improved, but most paradigms for the programmer stayed the same. For example a streaming processor can now handle 2048 threads at a time, but the maximum block size stayed at 1024. This results in a 100$\%$ theoretical occupancy for block sizes of 1024 compared to 66$\%$ of Fermi. Another example is the use of Shared Memory. Maxwell has 64KB dedicated Shared Memory. The maximum amount of Shared Memory per Block is 48KB for all three architectures \cite{hoermanngpu}.
   
-  There are two GPU architectures that code was launched, the Fermi and the Kepler. The Tesla K20m is base on ``Kepler'' GPU architecture and the Tesla M2070, M2050 and GeForce GTX 580 on the Fermi architecture. The Kepler is a newer architecture than the Fermi. The big difference between the is the number of CUDA cores per SM. However the Maxwell architecture wasn't used, it is showed as reference for future analysis. The architecture differences can be summarized as:
+  There are two GPU architectures that code was launched, the Fermi and the Kepler. The Tesla K20m and the GeForce 670mx is base on ``Kepler'' GPU architecture and the Tesla M2070, M2050 and GeForce GTX 580 on the Fermi architecture. The Kepler is a newer architecture than the Fermi. The big difference between the is the number of CUDA cores per SM. However the Maxwell architecture wasn't used, it is showed as reference for future analysis. The architecture differences can be summarized as:
   
 \begin{table}[h]
 \centering
@@ -111,12 +107,45 @@ When accessing ``Piritakua'' remotely is possible to use all the GPUs nodes avai
   \label{tab:arch}
   \end{table}
  
-
 \section{Optimization}
 
 The CUDA code was launched on each one of "Piritakua"'s GPUs. As we know the supercomputer has different GPUs, as well as several different  architectures. Furthermore the initial results in time execution of the implementation can been seen in figure \ref{fig:iniresults}.
 
-\begin{figure}[htbp]
+Using the NVIDIA's Visual Profiler we obtain kernel metrics of the Tesla K20m. The output is organized by kernel performance throughout the  simulation.  As we can notice the laplacian evaluation; $glaplacinay$, $gLaplacianx$ and  $gLaplacianYBoundaries$ uses up-to 44.37$\%$ of the overall simulation. The $gsolution$ kernels which solves Zhang and Li model \ref{eq:zhang} uses 14.04$\%$. The terms calculation for the RK4 integration only uses a minor part of the overall simulation. However the $gSolution$, $gsdExchange$ and laplacian calculation are part of the RK4 integration, which overall is about 99$\%$.
+
+ The optimization focus on giving the GPUs as much work as possible, using at the fullest the GPU hardware capabilities. In addition reducing the performance time of most time consuming kernels in the table \ref{tab:nvprof}.
+\begin{table}[h]
+\centering
+  \begin{tabular} { | l | l | l | l | l | l | l |}
+    \hline
+    Time$\%$& Time & Calls & Avg & Min & Max & Kernel \\
+    \hline
+    23.50 & 3.6s & 26521 & 137.5us & 96.0us & 597.1us&$gLaplaciany$ \\
+    \hline
+    17.04 & 2.6s & 26521 & 99.7us & 57.0us & 561.1us&$gSolution$ \\
+    \hline
+    16.75 & 2.6s & 26522 & 98.0us & 62.8us & 400.6us&$gLaplacianx$ \\
+     \hline
+      13.37 & 2.0s & 26522 & 78.2us & 40.8us & 453.8us&$gsdExchange$\\
+      \hline
+    7.22 & 1.1s & 26522 & 42.2us & 23.4us & 326.0us &$gsfRelaxation$\\
+       \hline
+    6.22 & 965.2ms & 6630 & 145.6us & 79.2us & 722.6us &$gTerm4RK4$\\
+       \hline
+    4.12 & 640.3ms & 26522 & 24.1us & 21.8us  &138.7us &$gLaplacianYBoundaries$\\
+       \hline
+    3.41  & 529.2ms & 6630 & 79.8us & 41.6us  & 478.8us & $gTerm2RK4$\\
+       \hline
+    3.36 & 520.8ms & 6630 & 78.5us & 41.5us & 372.2us & $gTerm3RK4$\\
+       \hline
+    3.35 & 519.5ms & 6631 & 78.3us & 41.1us & 372.2us & $gTerm1RK4$ \\
+   \hline
+  \end{tabular}
+  \caption{Kernel executing and time int the Tesla K20}
+  \label{tab:nvprof}
+  \end{table}
+ 
+  \begin{figure}[htbp]
 	\centering
 		\includegraphics[width=0.65\textwidth]{Figures/gpu_initial.png}
 		\rule{35em}{0.2pt}
@@ -124,15 +153,14 @@ The CUDA code was launched on each one of "Piritakua"'s GPUs. As we know the sup
 	\label{fig:iniresults}
 \end{figure}
 
-As we can see in figure \ref{fig:iniresults} the GeForce GTX 580 is the card with the least amount of time execution, and the Tesla K20m the fastest amongs the Tesla Cards. 
+As we can see in figure \ref{fig:iniresults} the GeForce GTX 580 is the card with the least amount of time execution, and the Tesla K20m the fastest amongst the Tesla Cards. 
 
-The following sections are the optimization techniques or methods applied to the application. In addition demonstrating the comparison between the initial implementation and the modified version. Five versions of the code are describe; Branching, Occupancy, Concurrent Kernels, Shared Memory and Structure of Arrays. Branching refers how the threads are executing and their executing flow in the application.  Occupancy number of threads per devices being used. Concurrent Kernels execution several kernels at once. Shared Memory, using as much shared memory as possible. Finally Structure of Arrays modifying the memory allocation in the device.  The optimization was mainly focused on giving the GPU as much work as possible, using at the fullest the GPU hardware capabilities. 
- 
+The following sections are the optimization techniques or methods applied to the application. In addition demonstrating the comparison between the initial implementation and the modified version. Five versions of the code are describe; Branching, Occupancy, Concurrent Kernels, Shared Memory and Structure of Arrays. Branching refers how the threads are executing and their executing flow in the application. Occupancy number of threads per devices being used. Concurrent Kernels execution several kernels at once. Shared Memory, using as much shared memory as possible. Finally Structure of Arrays modifying the memory allocation in the device.
+
  \subsection{Branching}
  
  CUDA follows the Single Instruction Multiple Thread architecture. This means that there are running several threads executing the same code. Each thread can operate on its own data and has its own address counter . They are free to use each data dependent path. But also each thread is executing the same operation at the same time. When a thread within a warp branches differently the other threads get deactivated\cite{hoermanngpu}. This can be described by the following code \ref{lst:branch} and illustration \ref{fig:threads}.
 
- 
 \begin{lstlisting}[language=C++, label={lst:branch}, caption={Threads Branching}]
 __global__ void kernel(int* out){
 idx = threadIdx.x;
@@ -209,7 +237,7 @@ This technique was applied to all parts of the code, eliminated inactive threads
  
 Increase the used of constant memory in the device with values that only change during run-time for example the code int 
  
- \begin{lstlisting}[language=C++, caption={Evaluation of x, y, z coordinates of the Zhang and Li model in a single kernel}]
+ \begin{lstlisting}[language=C++, caption={Constant Memory changes}]
  gsource << <blocks, threads >> >(u_val, dev_sm_z, dev_mz, NXCUDA);
   
  sfrelax_y[index] = -deltam_y[index] / tau_sf;
@@ -218,7 +246,7 @@ Increase the used of constant memory in the device with values that only change 
 \end{lstlisting}
  
 
-However, the table \ref{tab:threads} illustrate the GeForce 580 threads per block configuration on the initial implementation. The different numbers of threads can change dramatically the performance of the application. Furthermore the optimal configuration was 16x16 threads per block and as well the shared memory.
+However, the table \ref{tab:threads} illustrate the GeForce 580 threads per block configuration on the initial implementation. The different numbers of threads can change dramatically the performance of the application. Furthermore the optimal configuration for the Fermin cards was 16x16 threads per block and as well the shared memory and for the Kepler cards was 32x32 threads per block.
 
 \begin{table}[h]
 \centering
@@ -234,24 +262,10 @@ However, the table \ref{tab:threads} illustrate the GeForce 580 threads per bloc
   \caption{GPU Architecture Specifications}
   \label{tab:threads}
   \end{table}
-  
-  The profiler illustrate the number of kernel execution in the simulation 
-  
-  \begin{table}[h]
-\centering
-  \begin{tabular} { | l | l | l | l | }
-    \hline
-    Threads per Block & shared Memory & speed up & time \\
-    \hline
-     8x8 & shared Memory & speed up & time \\
-    \hline
-     8x8 & shared Memory & speed up & time \\
-    \hline
-  \end{tabular}
-  \caption{GPU Architecture Specifications}
-  \label{tab:threads}
-  \end{table}
+
  
+ 
+ inlude table of ocpuaccy comparing initial and final implementation 
 
 \subsection{Concurrent Kernels}
 
@@ -268,29 +282,27 @@ Initially each kernel was launched in the default steam 0, the figure \ref{fig:s
 
  Kernels by default cannot run in parallel with others kernels. Furthermore CUDA doesn't provide an automatic parallel kernel executing. In addition the programmer needs to tell the CUDA compiler that some portion of the code or kernel can run in parallel. However, the compiler cannot always execute concurrent kernels, depends on the hardware capabilities and as well the number of threads per block and the number of SM available. If the compiler finds available space to run another kernel simultaneously it will do so. 
 
-For example, the gsolution \ref{lst:concurrent} kernel computes the Zhang an Li model for x, y, z coordinates, which uses extensively the global memory of the device. To achieve concurrent kernels the streams need to access memory blocks that are pinned to a stream. So each memory block corresponding x, y, z are mapped to 3 streams. Furthermore, all the matrices corresponding to the coordinate x are mapped to the stream 1, y to stream 2 and z to stream 3.
+For example, the $gsolution$ \ref{lst:concurrent} kernel computes the Zhang an Li model for x, y, z coordinates, which uses extensively the global memory of the device. To achieve concurrent kernels the streams need to access memory blocks that are pinned to a stream. So each memory block corresponding x, y, z are mapped to 3 streams. Furthermore, all the matrices corresponding to the coordinate x are mapped to the stream 1, y to stream 2 and z to stream 3.
 
 \begin{lstlisting}[language=C++, label={lst:concurrent}, caption={Evaluation of x, y, z coordinates of the Zhang and Li model in a single kernel}]
-__global__ void gsolution(double *sfrelax_x, double *sfrelax_y, double *sfrelax_z,
-                          double *sm_x, double *sm_y, double *sm_z,
-                          double *sdex_x, double *sdex_y, double *sdex_z,
-                          double *lapl_x, double *lapl_y, double *lapl_z,
-                          double *deltam_x, double *deltam_y, double *deltam_z,
-                          int grid_width)
-{
+__global__ void gsolution(double *sfrelaxX, double *sfrelaxY, double *sfrelaxZ,
+                          double *smX, double *smY, double *smZ,
+                          double *sdexX, double *sdexY, double *sdexZ,
+                          double *laplX, double *laplY, double *laplZ,
+                          double *deltamX, double *deltamY, double *deltamZ,
+                          int grid_width){
 	int i = blockIdx.x * blockDim.x + threadIdx.x + 2;
   	int j = blockIdx.y * blockDim.y + threadIdx.y;
-    
   	int index = j * grid_width + i;
 
   	if (i > 1 && i < NX + 2 && j >= 0 && j < NY)
   	{
-  		deltam_x[index] = sfrelax_x[index] + sdex_x[index] + lapl_x[index]
-                          - sm_x[index];
-     	deltam_y[index] = sfrelax_y[index] + sdex_y[index] + lapl_y[index]
-                          - sm_y[index];
-     	deltam_z[index] = sfrelax_z[index] + sdex_z[index] + lapl_z[index]
-                          - sm_z[index];
+  		deltamX[index] = sfrelaxX[index] + sdexX[index] + laplX[index]
+                          - smX[index];
+     	deltamY[index] = sfrelaxY[index] + sdexY[index] + laplY[index]
+                          - smY[index];
+     	deltamZ[index] = sfrelaxZ[index] + sdexZ[index] + laplZ[index]
+                          - smZ[index];
   }
 }
 \end{lstlisting}
@@ -314,7 +326,7 @@ __global__ void gsolution(double *deltam,
 \end{lstlisting}
 
 This same method is applied to every kernel that can be separated into three kernels calls. Some kernels cannot be separate such as the cross product, because the product uses pinned memory block from the other streams.  The figure \ref{fig:concurrent} shows the results of concurrent kernels in the Tesla K20.
-\begin{lstlisting}[language=C++, caption={Evaluation of individual coordinates of the Zhang and Li model}]
+\begin{lstlisting}[language=C++, caption={Evaluate Zhang and Li model}]
 for (int i  = 0; i < 3; i++)
 {
 gsolution<<<blocks, threads, 0, stream[i]>>>(spinAccXYZ[i]->getDev_deltam(),
@@ -324,7 +336,6 @@ gsolution<<<blocks, threads, 0, stream[i]>>>(spinAccXYZ[i]->getDev_deltam(),
 											 spinAccXYZ[i]->getDev_lapl());
 }
 \end{lstlisting}
-
 
 \begin{figure}[htbp]
 	\centering
@@ -475,9 +486,7 @@ This section is the overview of the optimization results compared with each vers
     \caption{Speedup performance}
   \label{tab:speed}
   \end{table}
-    
-    
-    2.165 
+
 \begin{figure}[htbp]
 	\centering
 		\includegraphics[width=0.48\textwidth]{Figures/gpuOptimization.png}
@@ -485,6 +494,11 @@ This section is the overview of the optimization results compared with each vers
 	\caption[Structure of Arrays (SAO)]{SAO memory layout}
 	\label{fig:sao}
 \end{figure}
+
+Final table.
+
+
+
 
     
 The Tesla K20m was the only card which each implementation did not lose performance over the course of each optimization. The stream optimization, where each kernel was divided into 3 separated kernels to calculate x, y, z independently. The K20m is the only GPU card with CC of 3.5. This is important to mention, because the card has access to Hyper-Q. moreover this improvement can synchronize automatically the kernels for them to run in a concurrent manner. 
