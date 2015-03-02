@@ -495,13 +495,30 @@ This section is the overview of the optimization results compared with each vers
 	\label{fig:sao}
 \end{figure}
 
-Final table.
+The initial Profiler test \ref{fig:iniresults} illustrated us that the laplacian evaluating took about half of the overall simulation time. However, in the final optimization \ref{fig:final} the laplacian was reduced from 44.37$\%$ to 26.24 $\%$ execution time. The same occur for the Runge and Kutta term evaluation. Furthermore, the $gsdExchangeFull$ incremented from 13.37$\%$. 23.35$\%$, which... (not neccerry good).
 
-
+\begin{figure}[htbp]
+	\centering
+	  \begin{tabular} { |  l  |  l | l  | l | l |}
+	      \hline
+	    Time $\%$& Time & Calls & Avg & Kernel \\
+    \hline
+   35.24 & 21.33s & 216330 & 98.5us & $gSolTermRK4Relaxation$ \\
+   \hline
+   26.24 & 15.88s & 288441 & 55.0us & $glaplacianXYBroundaries$\\
+   \hline
+   23.35 & 14.13s & 160000 & 88.3us & $gsdExchangeFull$ \\
+   \hline
+   15.17 & 9.18s & 72108 & 127.2us & $gSolTerm4RK4Relaxation$\\ 
+   \hline
+    \end{tabular}
+	\caption[Optimization results with the Profiler]{Final optimization results using NVIDIA's profiler, on the Tesla K20m}
+	\label{fig:final}
+\end{figure}
 
 
     
-The Tesla K20m was the only card which each implementation did not lose performance over the course of each optimization. The stream optimization, where each kernel was divided into 3 separated kernels to calculate x, y, z independently. The K20m is the only GPU card with CC of 3.5. This is important to mention, because the card has access to Hyper-Q. moreover this improvement can synchronize automatically the kernels for them to run in a concurrent manner. 
+The Tesla K20m was the only card which implementation did not lose performance over the course of each optimization. The stream optimization, where each kernel was divided into 3 separated kernels to calculate x, y, z independently. The K20m is the only GPU card with CC of 3.5. This is important to mention, because the card has access to Hyper-Q. moreover this improvement can synchronize automatically the kernels for them to run in a concurrent manner. 
 
 The SOA optimization overall improved dramatically the performance of the application, obtaining a 1.2x - 2.0x speed up in all GPU cards \ref{fig:speedup}.
 
