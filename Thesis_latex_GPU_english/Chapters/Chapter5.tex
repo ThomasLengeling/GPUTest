@@ -285,37 +285,16 @@ Initially each kernel was launched in the default steam 0, the figure \ref{fig:s
 For example, the $gsolution$ \ref{lst:concurrent} kernel computes the Zhang an Li model for x, y, z coordinates, which uses extensively the global memory of the device. To achieve concurrent kernels the streams need to access memory blocks that are pinned to a stream. So each memory block corresponding x, y, z are mapped to 3 streams. Furthermore, all the matrices corresponding to the coordinate x are mapped to the stream 1, y to stream 2 and z to stream 3.
 
 \begin{lstlisting}[language=C++, label={lst:concurrent}, caption={Evaluation of x, y, z coordinates of the Zhang and Li model in a single kernel}]
-__global__ void gsolution(double *sfrelaxX, double *sfrelaxY, double *sfrelaxZ,
-                          double *smX, double *smY, double *smZ,
-                          double *sdexX, double *sdexY, double *sdexZ,
-                          double *laplX, double *laplY, double *laplZ,
-                          double *deltamX, double *deltamY, double *deltamZ,
-                          int grid_width){
-	int i = blockIdx.x * blockDim.x + threadIdx.x + 2;
-  	int j = blockIdx.y * blockDim.y + threadIdx.y;
-  	int index = j * grid_width + i;
-
-  	if (i > 1 && i < NX + 2 && j >= 0 && j < NY)
-  	{
-  		deltamX[index] = sfrelaxX[index] + sdexX[index] + laplX[index]
-                          - smX[index];
-     	deltamY[index] = sfrelaxY[index] + sdexY[index] + laplY[index]
-                          - smY[index];
-     	deltamZ[index] = sfrelaxZ[index] + sdexZ[index] + laplZ[index]
-                          - smZ[index];
-  }
-}
+deltamX[index] = sfrelaxX[index] + sdexX[index] + laplX[index] - smX[index];
+deltamY[index] = sfrelaxY[index] + sdexY[index] + laplY[index] - smY[index];
+deltamZ[index] = sfrelaxZ[index] + sdexZ[index] + laplZ[index] - smZ[index];
 \end{lstlisting}
  
 The CUDA code \ref{lst:concurrent} is divided into a single kernel \ref{lst:consingle}. In addition this new generic kernel can be launch in parallel. Instead of running one big kernel, three individual kernels are launched simultaneous. Dividing each kernel is possible to implement shared memory though each kernel which otherwise wasn't possible. 
 
 \begin{lstlisting}[language=C++, label={lst:consingle}, caption={Evaluation of individual coordinates of the Zhang and Li model}]
-__global__ void gsolution(double *deltam,
-					      double *sfrelax, double *sm, double *sdex, double *lapl)
-{
     int i = blockIdx.x * blockDim.x + threadIdx.x + 2;
     int j = blockIdx.y * blockDim.y + threadIdx.y;
- 
     int index = j * NXCUDA_CONST + i;
 
     if (i > 1 && i < NX + 2 && j >= 0 && j < NY)
@@ -328,13 +307,11 @@ __global__ void gsolution(double *deltam,
 This same method is applied to every kernel that can be separated into three kernels calls. Some kernels cannot be separate such as the cross product, because the product uses pinned memory block from the other streams.  The figure \ref{fig:concurrent} shows the results of concurrent kernels in the Tesla K20.
 \begin{lstlisting}[language=C++, caption={Evaluate Zhang and Li model}]
 for (int i  = 0; i < 3; i++)
-{
-gsolution<<<blocks, threads, 0, stream[i]>>>(spinAccXYZ[i]->getDev_deltam(),
-											 spinAccXYZ[i]->getDev_sfrelax(), 
-											 spinAccXYZ[i]->getDev_sm(), 
-											 spinAccXYZ[i]->getDev_sdex(),
-											 spinAccXYZ[i]->getDev_lapl());
-}
+	gsolution<<<blocks, threads, 0, stream[i]>>>(spinAccXYZ[i]->getDev_deltam(),
+												 spinAccXYZ[i]->getDev_sfrelax(), 
+												 spinAccXYZ[i]->getDev_sm(), 
+											 	 spinAccXYZ[i]->getDev_sdex(),
+											 	 spinAccXYZ[i]->getDev_lapl());
 \end{lstlisting}
 
 \begin{figure}[htbp]
@@ -364,7 +341,25 @@ As we know shared memory is faster than global memory, however shared memory is 
 
 The idea behind shared memory is to reduce the amount of global memory calls. This is done by allocating the data from the thread block into a temporary array, which is the shared memory.In addition the kernel can make calculation on this temporary array and write the values onto the global memory.
 
-To calculate the laplacian we need to access a great amount of global memory which is located near the value of interest. See chapter \ref{Implementation of DW Dynamics under Nonlocal Spin-Transfer Torque}. The implementation \ref{fig:shared}.
+\begin{lstlisting}[language=C++, label={lst:shared}, caption={Shared memory}]
+int i = blockIdx.x * blockDim.x + threadIdx.x;
+int j = blockIdx.y * blockDim.y + threadIdx.y;
+int index = j * NXCUDA_CONST + i;
+
+if (i > 1 && i < NX + 2 && j >= 0 && j < NY){
+     int cacheIdx = threadIdx.y * blockDim.x + threadIdx.x;
+     __shared__ double deltamS[THREADS_SHARED * THREADS_SHARED];
+
+	 //load memory into shared memory
+     deltamS[cacheIdx] = operationGlobal(globalMemory);
+     __syncthreads();
+
+	 //copy back the shared memory to global memory
+     deltam[index]  = deltamS[cacheIdx];
+}
+\end{lstlisting}
+
+To calculate the laplacian we need to access a great amount of global memory which is located near the value of interest. See chapter 3 \ref{fig:shared}.
 
 \begin{figure}[htbp]
 	\centering
@@ -377,29 +372,30 @@ To calculate the laplacian we need to access a great amount of global memory whi
 
 As we know there is no guaranty that threads will execute at the same order. To accomplish such task thread synchronization is needed.
 
-http://www.bu.edu/pasi/files/2011/07/Lecture31.pdf
 
 
 \begin{lstlisting}[language=C++, label={lst:consingle}, caption={Evaluation of individual coordinates of the Zhang and Li model}]
-__global__ void gsolution(double *deltam,
-					      double *sfrelax, double *sm, double *sdex, double *lapl)
-{
-    int i = blockIdx.x * blockDim.x + threadIdx.x + 2;
-    int j = blockIdx.y * blockDim.y + threadIdx.y;
- 
-    int index = j * NXCUDA_CONST + i;
 
-    if (i > 1 && i < NX + 2 && j >= 0 && j < NY)
-    {
-        deltam[index] = sfrelax[index] + sdex[index] + lapl[index] - sm[index];
-    }
+if (i >= 0 && i < NX && j >= 0 && j < NY){
+    __shared__ double lapS[ THREADS_SHARED ][ THREADS_SHARED];
+    lapS[cacheIdx] = deltam[Index];
+     __syncthreads();
+
+    if (i < blockDim.x - 4){
+       lapy[idx] = - deltam[idx + 2] / 12.0 + 4.0 * deltam[idx + 1] / 3.0
+			  	   - 5.0 * deltam[idx] / 2.0
+			  - deltam[idx - 2] / 12.0 + 4.0 * deltam[idx - 1] / 3.0;
+		else{
+	lapy[idx] = - deltam[idx + 2] / 12.0 + 4.0 * deltam[idx + 1] / 3.0
+			  - 5.0 * deltam[idx] / 2.0
+			  - deltam[idx - 2] / 12.0 + 4.0 * deltam[idx - 1] / 3.0;
+			  }
 }
 \end{lstlisting}
 
 This technique look very promising and reducing global memory. However, great amount of time is spent on loading data onto the shared memory array,
 
 \subsection{Structure of Arrays, SAO}
-
 
 AoS and SoA refer to "Array of Structures" and "Structure of Arrays" respectively. These two terms refer to two different ways of laying out your data in memory. This is illustrated in figure \ref{fig:aos} and \ref{fig:sao} respectively. AOS, grouping properties of an object together and making an array of those objects in memory, whereas a structure of arrays would be a single structure in which you make an array for each property. The structure of arrays can allow for better cache utilization, easier to access continues data, making better use of each read you make from memory, providing a more effective route to memory. 
 
@@ -432,7 +428,6 @@ deltam_z = (double **)calloc(NXCUDA, sizeof(double *));
 To solve this issue a custom class named GPUMatrix was programmed. Moreover, the classes allocated the data for each Matrix and free the memory automatically when the simulation is over. The was allocated in a form that easier for the device to access common elements, for example when doing operations only on the x coordinate, the kernel physically access matrices that are near by.
 
 \begin{lstlisting}[language=C++, caption={SOA implementation}]
-
     GPUMatrix<T> *dev_deltam;
     GPUMatrix<T> *dev_sdex; //Exchange term
     GPUMatrix<T> *dev_sfrelax;
@@ -441,7 +436,6 @@ To solve this issue a custom class named GPUMatrix was programmed. Moreover, the
 
 
 \section{Optimization Results}
-
 
 This section is the overview of the optimization results compared with each version of the code. The figure \ref{tab:time} and \ref{speed} illustrates the the time execution and the speedup respectively. The Final modified version of the code is the Occupancy, where the greatest performance occurred on the GeForce GTX 580 Card.
 
@@ -515,13 +509,10 @@ The initial Profiler test \ref{fig:iniresults} illustrated us that the laplacian
 	\caption[Optimization results with the Profiler]{Final optimization results using NVIDIA's profiler, on the Tesla K20m}
 	\label{fig:final}
 \end{figure}
-
-
     
 The Tesla K20m was the only card which implementation did not lose performance over the course of each optimization. The stream optimization, where each kernel was divided into 3 separated kernels to calculate x, y, z independently. The K20m is the only GPU card with CC of 3.5. This is important to mention, because the card has access to Hyper-Q. moreover this improvement can synchronize automatically the kernels for them to run in a concurrent manner. 
 
 The SOA optimization overall improved dramatically the performance of the application, obtaining a 1.2x - 2.0x speed up in all GPU cards \ref{fig:speedup}.
-
 
 \begin{figure}[htbp]
 	\centering
@@ -533,7 +524,6 @@ The SOA optimization overall improved dramatically the performance of the applic
 
 
 We could expected the newest card Tesla k20m would obtain the most speedup and lest time overall,  certainly because it has more CUDA cores, the highest compute capabilities. Furthermore, if falls behind the GeForce 580 with about 2.5x speedup difference. However, the Tesla K20 only had a difference of 0.3x speedup compared with the Teslas Cards. The GeForce \ref{tab:gpus} compared with the others GPUs specifications has most Processor clock (GHz), which can make more mathematical calculations per cycle.
-
 
   \vspace{3.5em}
 
