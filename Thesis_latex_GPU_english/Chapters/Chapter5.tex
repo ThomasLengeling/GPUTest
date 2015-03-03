@@ -246,30 +246,33 @@ Increase the used of constant memory in the device with values that only change 
 \end{lstlisting}
  
 
-However, the table \ref{tab:threads} illustrate the GeForce 580 threads per block configuration on the initial implementation. The different numbers of threads can change dramatically the performance of the application. Furthermore the optimal configuration for the Fermin cards was 16x16 threads per block and as well the shared memory and for the Kepler cards was 32x32 threads per block.
+However, the table \ref{tab:threads} illustrate the GeForce 580 threads per block configuration on the initial implementation. The different numbers of threads can change dramatically the performance of the application. Furthermore the optimal configuration for the Fermin cards was 16x16 threads per block and as well for the shared memory and for the Kepler cards was 32x32 threads per block 
 
 \begin{table}[h]
 \centering
   \begin{tabular} { | l | l | l | l | }
     \hline
-    Threads per Block & shared Memory & speed up & time \\
+    Threads per Block & Shared Memory & speedup & time \\
     \hline
-     8x8 & shared Memory & speed up & time \\
+     8x8 &  8x8 & 7.217x & 52318.3  \\
     \hline
-     8x8 & shared Memory & speed up & time \\
+     16x16 & 8x8 & 7.625x & 49517.3 \\
+    \hline
+    16x16 & 16x16 & 7.978x & 47329.2 \\
+    \hline
+    32x32 & 16x16 & 7.356x & 51333.4 \\
+    \hline
+    32x32 & 32x32 & \multicolumn{2}{|c|}{Failed}\\
     \hline
   \end{tabular}
   \caption{GPU Architecture Specifications}
   \label{tab:threads}
   \end{table}
 
- 
- 
- inlude table of ocpuaccy comparing initial and final implementation 
 
 \subsection{Concurrent Kernels}
 
-Initially each kernel was launched in the default steam 0, the figure \ref{fig:streams} illustrates such result in the Visual Profiler. Each kernel that is being launched cannot run simultaneously because the next kernel launches needs to compute data, in other words the kernels are not independent from each other.
+Initially each kernel was launched in the default steam 0, the figure \ref{fig:streams} illustrates such result using the NVIDIA's Visual Profiler. Each kernel that is being launched cannot run simultaneously because the next kernel launches needs to compute data, in other words the kernels are not independent from each other.
 
 \begin{figure}[htbp]
 	\centering
@@ -284,7 +287,7 @@ Initially each kernel was launched in the default steam 0, the figure \ref{fig:s
 
 For example, the $gsolution$ \ref{lst:concurrent} kernel computes the Zhang an Li model for x, y, z coordinates, which uses extensively the global memory of the device. To achieve concurrent kernels the streams need to access memory blocks that are pinned to a stream. So each memory block corresponding x, y, z are mapped to 3 streams. Furthermore, all the matrices corresponding to the coordinate x are mapped to the stream 1, y to stream 2 and z to stream 3.
 
-\begin{lstlisting}[language=C++, label={lst:concurrent}, caption={Evaluation of x, y, z coordinates of the Zhang and Li model in a single kernel}]
+\begin{lstlisting}[language=C++, label={lst:concurrent}, caption={Evaluation of x, y, z coordinates of the Zhang and Li model in a single kernel.}]
 deltamX[index] = sfrelaxX[index] + sdexX[index] + laplX[index] - smX[index];
 deltamY[index] = sfrelaxY[index] + sdexY[index] + laplY[index] - smY[index];
 deltamZ[index] = sfrelaxZ[index] + sdexZ[index] + laplZ[index] - smZ[index];
@@ -293,19 +296,16 @@ deltamZ[index] = sfrelaxZ[index] + sdexZ[index] + laplZ[index] - smZ[index];
 The CUDA code \ref{lst:concurrent} is divided into a single kernel \ref{lst:consingle}. In addition this new generic kernel can be launch in parallel. Instead of running one big kernel, three individual kernels are launched simultaneous. Dividing each kernel is possible to implement shared memory though each kernel which otherwise wasn't possible. 
 
 \begin{lstlisting}[language=C++, label={lst:consingle}, caption={Evaluation of individual coordinates of the Zhang and Li model}]
-    int i = blockIdx.x * blockDim.x + threadIdx.x + 2;
-    int j = blockIdx.y * blockDim.y + threadIdx.y;
-    int index = j * NXCUDA_CONST + i;
+int i = blockIdx.x * blockDim.x + threadIdx.x + 2;
+int j = blockIdx.y * blockDim.y + threadIdx.y;
+int index = j * NXCUDA_CONST + i;
 
-    if (i > 1 && i < NX + 2 && j >= 0 && j < NY)
-    {
-        deltam[index] = sfrelax[index] + sdex[index] + lapl[index] - sm[index];
-    }
-}
+if (i > 1 && i < NX + 2 && j >= 0 && j < NY)
+	deltam[index] = sfrelax[index] + sdex[index] + lapl[index] - sm[index];
 \end{lstlisting}
 
 This same method is applied to every kernel that can be separated into three kernels calls. Some kernels cannot be separate such as the cross product, because the product uses pinned memory block from the other streams.  The figure \ref{fig:concurrent} shows the results of concurrent kernels in the Tesla K20.
-\begin{lstlisting}[language=C++, caption={Evaluate Zhang and Li model}]
+\begin{lstlisting}[language=C++, caption={Evaluate Zhang and Li model.}]
 for (int i  = 0; i < 3; i++)
 	gsolution<<<blocks, threads, 0, stream[i]>>>(spinAccXYZ[i]->getDev_deltam(),
 												 spinAccXYZ[i]->getDev_sfrelax(), 
@@ -318,8 +318,7 @@ for (int i  = 0; i < 3; i++)
 	\centering
 		\includegraphics[width=0.65\textwidth]{Figures/concurent.png}
 		\rule{35em}{0.2pt}
-	\caption[Streams kernels Tesla K20]{Concurrent kernels in the Tesla K20
-}
+	\caption[Streams kernels Tesla K20]{Concurrent kernels in the Tesla K20 using NVIDIA's Visual Profiler.}
 	\label{fig:concurrent}
 \end{figure}
 
@@ -339,7 +338,7 @@ Concurrent kernels  looks very promising in achieving a huge performance in the 
 
 As we know shared memory is faster than global memory, however shared memory is very limited. To be able to implement shared memory onto the kernels, we needed to separate the kernels in their x, y and z coordinate as mentioned in the previous section. This allows us to implement shared memory across each kernel, otherwise wouldn't be possible.
 
-The idea behind shared memory is to reduce the amount of global memory calls. This is done by allocating the data from the thread block into a temporary array, which is the shared memory.In addition the kernel can make calculation on this temporary array and write the values onto the global memory.
+The idea behind shared memory is to reduce the amount of global memory calls. This is done by allocating the data from the thread block into a temporary array, which is the shared memory.In addition the kernel can make calculation on this temporary array and write the values onto the global memory. The code of such implementation is illustrated in \ref{lst:shared}. As we know there is no guaranty that threads will execute at the same order. Using $\_\_syncthreads()$ will wait until all threads have completed there task, in this case loading global memory into shared memory. Then we performed operations on the shared memory, and finally save the values in the global memory. Shared memory was used in all the occasions were kernels used extensively global memory.
 
 \begin{lstlisting}[language=C++, label={lst:shared}, caption={Shared memory}]
 int i = blockIdx.x * blockDim.x + threadIdx.x;
@@ -359,7 +358,7 @@ if (i > 1 && i < NX + 2 && j >= 0 && j < NY){
 }
 \end{lstlisting}
 
-To calculate the laplacian we need to access a great amount of global memory which is located near the value of interest. See chapter 3 \ref{fig:shared}.
+To calculate the laplacian we need to access a great amount of global memory which is located near the value of interest. In this case in region of 4x4. As the figure \ref{fig:shared} illustrates we use share memory for values which are not in the boundary of the thread block, and for values in the boundary we use global memory.
 
 \begin{figure}[htbp]
 	\centering
@@ -369,19 +368,15 @@ To calculate the laplacian we need to access a great amount of global memory whi
 	\label{fig:shared}
 \end{figure}
 
+The code \ref{lst:lapsh} demonstrate how calculate the laplacian with the equation \ref{eq:nn} with the usage of shared memory. As we can see first we load all the global memory onto a a temporary array, the shared memory. The we performed the calculation on the shared memory as mentioned before.
 
-As we know there is no guaranty that threads will execute at the same order. To accomplish such task thread synchronization is needed.
-
-
-
-\begin{lstlisting}[language=C++, label={lst:consingle}, caption={Evaluation of individual coordinates of the Zhang and Li model}]
-
+\begin{lstlisting}[language=C++, label={lst:lapsh}, caption={Laplacian evaluating using shared memory with boundaries condition}]
 if (i >= 0 && i < NX && j >= 0 && j < NY){
-    __shared__ double lapS[ THREADS_SHARED ][ THREADS_SHARED];
+    __shared__ double lapS[ THREADS_SHARED * THREADS_SHARED];
     lapS[sIdx] = deltam[Index];
      __syncthreads();
 
-    if (i < blockDim.x - 4){ \\shared
+    if (threadIdx.x >= 2 && i < threadIdx.x - blockDim.x -2){ \\shared
        lapy[idx] = - lapS[sIdx + 2] / 12.0 + 4.0 * lapS[sIdx + 1] / 3.0
 			  	   - 5.0 * lapS[sIdx] / 2.0
 			  	   - lapS[sIdx - 2] / 12.0 + 4.0 * lapS[sIdx - 1] / 3.0;
@@ -393,7 +388,7 @@ if (i >= 0 && i < NX && j >= 0 && j < NY){
 }
 \end{lstlisting}
 
-This technique look very promising and reducing global memory. However, great amount of time is spent on loading data onto the shared memory array,
+This technique look very promising and reducing global memory. However, great amount of time is spent on loading data onto the shared memory array, The results of such implementation is in the following section, optimization results.
 
 \subsection{Structure of Arrays, SAO}
 
@@ -420,7 +415,7 @@ AoS and SoA refer to "Array of Structures" and "Structure of Arrays" respectivel
 The initial implementation the  x, y, z data was allocated in separated blocks. Furthermore when accessing blocks of the the same coordinates, the register access the data as the figure\ref{fig:aos}.
 
 \begin{lstlisting}[language=C++, caption={AOS implementation}]
-deltam_x = (double **)calloc(NYCUDA, sizeof(double));
+deltam_x = (double **)calloc(NYCUDA, sizeof(double *));
 deltam_y = (double **)calloc(NXCUDA, sizeof(double *));
 deltam_z = (double **)calloc(NXCUDA, sizeof(double *));
 \end{lstlisting}

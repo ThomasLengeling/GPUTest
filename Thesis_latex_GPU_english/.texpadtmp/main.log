@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013) (format=pdflatex 2013.5.30)  2 MAR 2015 20:41
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013) (format=pdflatex 2013.5.30)  2 MAR 2015 21:44
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -473,9 +473,6 @@ LaTeX Warning: Label `tab:threads' multiply defined.
 LaTeX Warning: Label `fig:streams' multiply defined.
 
 
-LaTeX Warning: Label `lst:consingle' multiply defined.
-
-
 LaTeX Warning: Label `fig:sao' multiply defined.
 
 )
@@ -841,74 +838,63 @@ LaTeX Warning: `h' float specifier changed to `ht'.
 [50] <Figures/ini_steams.png, id=1158, 679.03688pt x 48.18pt>
 File: Figures/ini_steams.png Graphic file (type png)
  <use Figures/ini_steams.png>
-Package pdftex.def Info: Figures/ini_steams.png used on input line 276.
+Package pdftex.def Info: Figures/ini_steams.png used on input line 279.
 (pdftex.def)             Requested size: 271.35493pt x 19.25327pt.
- [51 <./Figures/ini_steams.png>]
-Overfull \hbox (0.73619pt too wide) in paragraph at lines 314--315
-[][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
- []
-
-<Figures/concurent.png, id=1183, 1277.77374pt x 107.40125pt>
+ [51 <./Figures/ini_steams.png>] <Figures/concurent.png, id=1173, 1277.77374pt x 107.40125pt>
 File: Figures/concurent.png Graphic file (type png)
  <use Figures/concurent.png>
-Package pdftex.def Info: Figures/concurent.png used on input line 342.
+Package pdftex.def Info: Figures/concurent.png used on input line 319.
 (pdftex.def)             Requested size: 271.35493pt x 22.8073pt.
 
 
-LaTeX Warning: Reference `ref:waittime' on page 52 undefined on input line 349.
+LaTeX Warning: Reference `ref:waittime' on page 52 undefined on input line 325.
 
-[52] <Figures/waittime.png, id=1218, 764.1348pt x 149.1171pt>
+<Figures/waittime.png, id=1174, 764.1348pt x 149.1171pt>
 File: Figures/waittime.png Graphic file (type png)
  <use Figures/waittime.png>
-Package pdftex.def Info: Figures/waittime.png used on input line 353.
+Package pdftex.def Info: Figures/waittime.png used on input line 329.
 (pdftex.def)             Requested size: 229.61145pt x 44.806pt.
-
-
-LaTeX Warning: Reference `Implementation of DW Dynamics under Nonlocal Spin-Transfer Torque' on page 53 undefined on input line 367.
-
-<Figures/shared.png, id=1220, 678.535pt x 653.44125pt>
+ [52 <./Figures/concurent.png> <./Figures/waittime.png>] <Figures/shared.png, id=1196, 678.535pt x 653.44125pt>
 File: Figures/shared.png Graphic file (type png)
  <use Figures/shared.png>
-Package pdftex.def Info: Figures/shared.png used on input line 371.
+Package pdftex.def Info: Figures/shared.png used on input line 365.
 (pdftex.def)             Requested size: 125.24318pt x 120.60556pt.
- [53 <./Figures/concurent.png> <./Figures/waittime.png> <./Figures/shared.png>]
-Overfull \hbox (0.73619pt too wide) in paragraph at lines 385--386
-[][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
- []
-
-<Figures/aos.png, id=1231, 483.8075pt x 129.48375pt>
+ [53] <Figures/aos.png, id=1223, 483.8075pt x 129.48375pt>
 File: Figures/aos.png Graphic file (type png)
  <use Figures/aos.png>
-Package pdftex.def Info: Figures/aos.png used on input line 408.
+Package pdftex.def Info: Figures/aos.png used on input line 399.
 (pdftex.def)             Requested size: 271.35493pt x 72.62695pt.
- <Figures/soa.png, id=1232, 482.80376pt x 128.48pt>
+ <Figures/soa.png, id=1224, 482.80376pt x 128.48pt>
 File: Figures/soa.png Graphic file (type png)
  <use Figures/soa.png>
-Package pdftex.def Info: Figures/soa.png used on input line 417.
+Package pdftex.def Info: Figures/soa.png used on input line 408.
 (pdftex.def)             Requested size: 271.35493pt x 72.21295pt.
- [54 <./Figures/aos.png>]
+ [54 <./Figures/shared.png>]
 
-LaTeX Warning: Reference `speed' on page 55 undefined on input line 446.
+LaTeX Warning: Reference `speed' on page 55 undefined on input line 435.
 
 
-Overfull \hbox (10.32703pt too wide) in paragraph at lines 450--465
+Overfull \hbox (10.32703pt too wide) in paragraph at lines 439--454
  [][] 
  []
 
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-<Figures/gpuOptimization.png, id=1253, 931.5603pt x 801.4743pt>
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+<Figures/gpuOptimization.png, id=1247, 931.5603pt x 801.4743pt>
 File: Figures/gpuOptimization.png Graphic file (type png)
  <use Figures/gpuOptimization.png>
-Package pdftex.def Info: Figures/gpuOptimization.png used on input line 492.
+Package pdftex.def Info: Figures/gpuOptimization.png used on input line 481.
 (pdftex.def)             Requested size: 200.38528pt x 172.39922pt.
- [55 <./Figures/soa.png>] <Figures/speed.png, id=1274, 768.9528pt x 403.62794pt>
+ [55 <./Figures/aos.png> <./Figures/soa.png>] [56 <./Figures/gpuOptimization.png>] <Figures/speed.png, id=1274, 768.9528pt x 403.62794pt>
 File: Figures/speed.png Graphic file (type png)
  <use Figures/speed.png>
-Package pdftex.def Info: Figures/speed.png used on input line 528.
+Package pdftex.def Info: Figures/speed.png used on input line 514.
 (pdftex.def)             Requested size: 208.73653pt x 109.56609pt.
- [56 <./Figures/gpuOptimization.png>]) (./Chapters/Chapter6.tex [57 <./Figures/speed.png>]
+) (./Chapters/Chapter6.tex [57 <./Figures/speed.png>]
 Chapter 6.
 ------------------------------------------------------------------------------
  6 Conclusions and future work
@@ -963,18 +949,18 @@ LaTeX Warning: There were multiply-defined labels.
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 238.
  ) 
 Here is how much of TeX's memory you used:
- 15739 strings out of 493315
- 222642 string characters out of 6137904
- 350726 words of memory out of 5000000
- 18419 multiletter control sequences out of 15000+600000
+ 15757 strings out of 493315
+ 222832 string characters out of 6137904
+ 349867 words of memory out of 5000000
+ 18446 multiletter control sequences out of 15000+600000
  13944 words of font info for 51 fonts, out of 8000000 for 9000
  957 hyphenation exceptions out of 8191
  49i,19n,60p,1187b,1859s stack positions out of 5000i,500n,10000p,200000b,80000s
 </usr/local/texlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/local/texlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/local/texlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmcsc10.pfb></usr/local/texlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/local/texlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/texlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/local/texlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/local/texlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/local/texlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/local/texlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/texlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/local/texlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/texlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/local/texlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb></usr/local/texlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb></usr/local/texlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt8.pfb>
-Output written on /Users/tom/Documents/GitHub/GPUTest/Thesis_latex_GPU_english/.texpadtmp/main.pdf (71 pages, 4681071 bytes).
+Output written on /Users/tom/Documents/GitHub/GPUTest/Thesis_latex_GPU_english/.texpadtmp/main.pdf (71 pages, 4681904 bytes).
 PDF statistics:
- 1502 PDF objects out of 1728 (max. 8388607)
- 1337 compressed objects within 14 object streams
- 537 named destinations out of 1000 (max. 500000)
+ 1494 PDF objects out of 1728 (max. 8388607)
+ 1329 compressed objects within 14 object streams
+ 528 named destinations out of 1000 (max. 500000)
  698 words of extra memory for PDF output out of 10000 (max. 10000000)
 
