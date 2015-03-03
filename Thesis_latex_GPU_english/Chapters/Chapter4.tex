@@ -265,12 +265,11 @@ The Zhang - Li Model \ref{eq:zhang} is solved using code \ref{lst:rkcuda}. Furth
         solveZhangLi[idx] = sfrelax[idx] + sdex[idx] + lapl[idx] - sm[idx];
 \end{lstlisting}
 
-
 The output  \textit{solveZhangLi} of the Zhang - Li Model evaluation \ref{lst:zhangcuda}  (last term), past to the calculation of the i term of the Runge Kutta Integration.
 
 \subsubsection{Runge and Kutta}
  
-  Intuitively the equation \ref{eq:rk4} is implemented by using four CUDA kernels, each kernel calculates the step of the integration. The first part of \ref{lst:rkcuda} computes the Runge and Kutta's 1st, 2nd, and 3rd  term \ref{eq:rksplit}. The final fourth term, is the sum of the previous 3 terms, the last two lines of code in \ref{lst:rkcuda} show the calculation.
+Intuitively the equation \ref{eq:rk4} is implemented by using four CUDA kernels, each kernel calculates the step of the integration. The first part of \ref{lst:rkcuda} computes the Runge and Kutta's 1st, 2nd, and 3rd  term \ref{eq:rksplit}. The final fourth term, is the sum of the previous 3 terms, the last two lines of code in \ref{lst:rkcuda} show the calculation.
 
 \begin{lstlisting}[language=C++, label={lst:rkcuda}, caption={Runge and Kutta 4th Terms}]
      rk1[idx] = dt * deltam[idx];  // Terms k1, k2, k3
@@ -302,7 +301,7 @@ for(int term = 0; term < 4; term++)
 
 \subsection{Calculate effective beta}
 
-The final calculation of the simulation, which calculates the effective beta. The following kernels are launched only when the RK4 integration is done, for this implementations is 50,000 iterations of RK4. \ref{fig:flow}
+The final procedure of the simulation calculates the effective beta. ... The following kernels are launched only when the RK4 integration is done, for this implementations is 50,000 iterations of RK4. \ref{fig:flow}
 
 \begin{lstlisting}[language=C++, label={lst:beta}, caption={Calculate effective beta}]
     gm_x_sm << <blocks, threads >> >(...); //Calculate
@@ -328,7 +327,7 @@ According to our results, new code shouldn't produce errors in the spin.dat data
 greater than $7.0e^{-17}$, in other words valid code don't lead to differences greater than
 the precision expected from computations with double precision $1.0^{-16}$ in the case of eff data the errors are in the order of $1.0^{e-11}$ and no greater than $6^{-11}$. For the diffuse beta variation the precision expected to be within the double precision range of $1^{-16}$. 
 
-For example the validation test are done with the following output values.
+The results \ref{tab:results} are examples of the simulation output.
 
 \begin{table}[h]
 \centering
@@ -348,7 +347,7 @@ ATWpm magnetization & 377409.2ms & 4.054674178687585e-02 \\
 
 \vspace{3.5em}
 
-To conclude, the simulating at its core uses the RK4 for integration which uses as function the eZhang-li model equation\ref{eq:zhang}. In addition, to solve such differential equations the FDTD method is used. As we can expected the simulation is computational expensive, the RK4 \ref{eq:rk4} evaluates fourth times the Zhang-Li equation. Moreover, each term the numerical laplacian \ref{eq:nn} \ref{eq:matrix3} \ref{eq:matrix4} is evaluated. We showed the processing and procedure of numerically solving such equations of chapter 3.
+To conclude, the simulating at its core uses the RK4 for integration which uses as function the Zhang-li model equation \ref{eq:zhang}. In addition, to solve such differential equations the FDTD method is used. As we can expected the simulation is computational expensive, the RK4 \ref{eq:rk4} evaluates fourth times the Zhang-Li equation. Moreover, each term evaluates numerically the  laplacian \ref{eq:nn} and boundaries conditions \ref{eq:matrix3} \ref{eq:matrix4}. We showed procedure of numerically solving the equations of chapter 3.
 
 
 

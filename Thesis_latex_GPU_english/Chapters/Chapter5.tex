@@ -332,7 +332,7 @@ Concurrent kernels demonstrates a very promising technique to achieve a huge per
 
 \subsection{Shared Memory}
 
-As we know shared memory is faster than global memory, however shared memory is very limited. To be able to implement shared memory onto the kernels, we needed to separate the kernels in their x, y and z coordinate as mentioned in the previous section. This allows us to implement shared memory across each kernel, otherwise wouldn't be possible.
+As we know shared memory is faster than global memory, However, shared memory is very limited. To be able to implement shared memory in the kernels, we needed the kernels separated in their x, y and z coordinate as mentioned in the previous section. In addition this allows us to implement shared memory across each kernel, otherwise wouldn't be possible.
 
 The idea behind shared memory is to reduce the amount of global memory calls. This is done by allocating the data from the thread block into a temporary array, which is the shared memory.In addition the kernel can make calculation on this temporary array and write the values onto the global memory. The code of such implementation is illustrated in \ref{lst:shared}. As we know there is no guaranty that threads will execute at the same order. Using $\_\_syncthreads()$ will wait until all threads have completed there task, in this case loading global memory into shared memory. Then we performed operations on the shared memory, and finally save the values in the global memory. Shared memory was used in all the occasions were kernels used extensively global memory.
 
@@ -428,7 +428,7 @@ To solve this issue a custom class  GPUMatrix was programmed, which contained al
 
 \section{Optimization Results}
 
-This section is the overview of the optimization results compared with each version of the code. The figure \ref{tab:time} and \ref{tab:speed} illustrates the the time execution and the speedup respectively. The Final modified version of the code is the Occupancy, where the greatest performance occurred on the GeForce GTX 580 Card.
+This section is the overview of the optimization results compared with each version of the code. The figure \ref{tab:time} and \ref{tab:speed} illustrates the the time execution and the speedup respectively. The Final version of the code is the Occupancy. Moreover the greatest performance occurred on the GeForce GTX 580 Card with a 8.0x speedup.
 
 \begin{table}[h]
 \centering
@@ -501,7 +501,7 @@ The initial Visual Profiler test \ref{fig:iniresults} illustrated us that the la
 	\label{fig:final}
 \end{figure}
     
-The Tesla K20m was the only GPU which in every code modification it did not lose performance over the course of the optimization process. However,  the other GPUs drop performance in the stream optimization stage. This is where each kernel was divided into three separated kernels. Doing this we were able to calculate the x, y, z  coordinates independently. In addition this enable room to implement shared memory across the kernels. As the figure \ref{tab:gpus} illustrates the Tesla K20m is the only GPU card with CC of 3.5. This is important to mention, because the card has access to Hyper-Q. moreover this improvement can synchronize automatically the kernels for them to run in a concurrent manner. 
+The Tesla K20m was the only GPU which in every code modification it did not lose performance over the course of the optimization process. However,  the other GPUs drop performance in the stream optimization stage. This is where each kernel was divided into three separated kernels. Doing this we were able to calculate the x, y, z coordinates independently. In addition this enable room to implement shared memory across the kernels. As the figure \ref{tab:gpus} illustrates the Tesla K20m is the only GPU card with CC of 3.5. This is important to mention, because the card has access to Hyper-Q. moreover this improvement can synchronize automatically the kernels for them to run in a concurrent manner. 
 
 The SOA optimization overall improved dramatically the performance of the application, obtaining a 1.2x - 2.0x speed up in all GPU cards \ref{fig:speedup}.
 
