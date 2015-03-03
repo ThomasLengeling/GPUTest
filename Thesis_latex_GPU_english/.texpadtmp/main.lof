@@ -31,13 +31,13 @@
 \addvspace {10\p@ }
 \contentsline {figure}{\numberline {5.1}{\ignorespaces Initial GPU results}}{48}{figure.caption.283}
 \contentsline {figure}{\numberline {5.2}{\ignorespaces he execution flow}}{49}{figure.caption.295}
-\contentsline {figure}{\numberline {5.3}{\ignorespaces Initial Streams}}{51}{figure.caption.348}
-\contentsline {figure}{\numberline {5.4}{\ignorespaces Streams kernels Tesla K20}}{52}{figure.caption.367}
-\contentsline {figure}{\numberline {5.5}{\ignorespaces Waiting time concurrent kernels}}{52}{figure.caption.368}
-\contentsline {figure}{\numberline {5.6}{\ignorespaces Shared Memory Strategy}}{54}{figure.caption.386}
-\contentsline {figure}{\numberline {5.7}{\ignorespaces Array of structures (AOS)}}{55}{figure.caption.404}
-\contentsline {figure}{\numberline {5.8}{\ignorespaces Structure of Arrays (SAO)}}{55}{figure.caption.405}
-\contentsline {figure}{\numberline {5.9}{\ignorespaces Structure of Arrays (SAO)}}{56}{figure.caption.418}
-\contentsline {figure}{\numberline {5.10}{\ignorespaces Optimization results with the Profiler}}{57}{figure.caption.419}
-\contentsline {figure}{\numberline {5.11}{\ignorespaces Structure of Arrays (SAO)}}{57}{figure.caption.420}
+\contentsline {figure}{\numberline {5.3}{\ignorespaces Initial Streams}}{51}{figure.caption.340}
+\contentsline {figure}{\numberline {5.4}{\ignorespaces Streams kernels Tesla K20}}{52}{figure.caption.359}
+\contentsline {figure}{\numberline {5.5}{\ignorespaces Waiting time concurrent kernels}}{52}{figure.caption.360}
+\contentsline {figure}{\numberline {5.6}{\ignorespaces Shared Memory Strategy}}{54}{figure.caption.378}
+\contentsline {figure}{\numberline {5.7}{\ignorespaces Array of structures (AOS)}}{55}{figure.caption.396}
+\contentsline {figure}{\numberline {5.8}{\ignorespaces Structure of Arrays (SAO)}}{55}{figure.caption.397}
+\contentsline {figure}{\numberline {5.9}{\ignorespaces Structure of Arrays (SAO)}}{56}{figure.caption.410}
+\contentsline {figure}{\numberline {5.10}{\ignorespaces Optimization results with the Profiler}}{57}{figure.caption.411}
+\contentsline {figure}{\numberline {5.11}{\ignorespaces Structure of Arrays (SAO)}}{57}{figure.caption.412}
 \addvspace {10\p@ }

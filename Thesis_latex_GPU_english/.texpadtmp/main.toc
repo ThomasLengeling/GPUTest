@@ -58,9 +58,9 @@
 \contentsline {subsection}{\numberline {5.1.1}Architecture Differences}{46}{subsection.279}
 \contentsline {section}{\numberline {5.2}Optimization}{47}{section.281}
 \contentsline {subsection}{\numberline {5.2.1}Branching}{48}{subsection.284}
-\contentsline {subsection}{\numberline {5.2.2}Occupancy}{50}{subsection.339}
-\contentsline {subsection}{\numberline {5.2.3}Concurrent Kernels}{51}{subsection.347}
-\contentsline {subsection}{\numberline {5.2.4}Shared Memory}{53}{subsection.369}
-\contentsline {subsection}{\numberline {5.2.5}Structure of Arrays, SAO}{54}{subsection.403}
-\contentsline {section}{\numberline {5.3}Optimization Results}{55}{section.415}
-\contentsline {chapter}{\numberline {6}Conclusions and future work}{58}{chapter.421}
+\contentsline {subsection}{\numberline {5.2.2}Occupancy}{50}{subsection.331}
+\contentsline {subsection}{\numberline {5.2.3}Concurrent Kernels}{51}{subsection.339}
+\contentsline {subsection}{\numberline {5.2.4}Shared Memory}{53}{subsection.361}
+\contentsline {subsection}{\numberline {5.2.5}Structure of Arrays, SAO}{54}{subsection.395}
+\contentsline {section}{\numberline {5.3}Optimization Results}{55}{section.407}
+\contentsline {chapter}{\numberline {6}Conclusions and future work}{58}{chapter.413}
