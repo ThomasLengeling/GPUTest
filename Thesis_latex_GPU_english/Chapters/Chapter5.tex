@@ -378,18 +378,18 @@ As we know there is no guaranty that threads will execute at the same order. To 
 
 if (i >= 0 && i < NX && j >= 0 && j < NY){
     __shared__ double lapS[ THREADS_SHARED ][ THREADS_SHARED];
-    lapS[cacheIdx] = deltam[Index];
+    lapS[sIdx] = deltam[Index];
      __syncthreads();
 
-    if (i < blockDim.x - 4){
-       lapy[idx] = - deltam[idx + 2] / 12.0 + 4.0 * deltam[idx + 1] / 3.0
-			  	   - 5.0 * deltam[idx] / 2.0
-			  - deltam[idx - 2] / 12.0 + 4.0 * deltam[idx - 1] / 3.0;
-		else{
-	lapy[idx] = - deltam[idx + 2] / 12.0 + 4.0 * deltam[idx + 1] / 3.0
-			  - 5.0 * deltam[idx] / 2.0
-			  - deltam[idx - 2] / 12.0 + 4.0 * deltam[idx - 1] / 3.0;
-			  }
+    if (i < blockDim.x - 4){ \\shared
+       lapy[idx] = - lapS[sIdx + 2] / 12.0 + 4.0 * lapS[sIdx + 1] / 3.0
+			  	   - 5.0 * lapS[sIdx] / 2.0
+			  	   - lapS[sIdx - 2] / 12.0 + 4.0 * lapS[sIdx - 1] / 3.0;
+	else{ \\global memory
+		lapy[idx] = - deltam[idx + 2] / 12.0 + 4.0 * deltam[idx + 1] / 3.0
+			  		- 5.0 * deltam[idx] / 2.0
+			  		- deltam[idx - 2] / 12.0 + 4.0 * deltam[idx - 1] / 3.0;
+	}
 }
 \end{lstlisting}
 
