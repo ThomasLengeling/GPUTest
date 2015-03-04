@@ -113,13 +113,13 @@ The structure of CUDA reflects the coexistence of CPU and GPUs. The CUDA code is
 
 kernels are launched or executed on a large amount of threads in the SMI. They can be configured by threads per block and by block per grid. The thread and block configuration is illustrated in the figure \ref{fig:grid}. A thread is the simplest executing process. It consists of the code of the program, the particular point where the code is being executed \cite{hwu}. In addition all the threads in a kernel can access the global memory (RAM), figure  \ref{fig:arch} illustrates the physical position. Moreover, many threads form a block, and many blocks form a grid. CUDA handles the execution of the random-access threads, which take up-to very few clock cycles in comparison to CPU threads.
 
-Each of the threads can be access by implicit variable that identifies its position within the thread block and its grid. In a case of 1D block \ref{lst:1d}, which is widely used for shared memory (see chapter 4) \cite{example}.
+Each of the threads can be access by a implicit variable that identifies its position within the thread block and its grid. The thread access for the x coordinate is showed in the code \ref{lst:1d}. This is only the case for 1D block, which is widely used for shared memory access (see chapter 4) \cite{example}.
 
 \begin{lstlisting}[language=C++, label={lst:1d}, caption={1D block}]	
 	int index = blockIdx.x * blockDim.x + threadId.x;
 \end{lstlisting}
 
-In case of a 2D block which is the most cummon thread configuration \ref{lst:2d}.
+For the case of a 2D thread block, the code \ref{lst:2d} describe such configuration. In addition, the 2d thread block is the most common thread block configuration. Is also possible to configure a 3D thread block just by adding the z coordinate to the threadIdx index. However, is very limited.
 
 \begin{lstlisting}[language=C++, label={lst:2d}, caption={2D block}]	
     int i = blockIdx.x * blockDim.x + threadIdx.x;
@@ -154,7 +154,7 @@ The current CPUs are typically multicore systems, which are capable of paralleli
 
 \begin{figure}[htbp]
 	\centering
-		\includegraphics[width=0.65\textwidth]{Figures/cpu.png}
+		\includegraphics[width=0.68\textwidth]{Figures/cpu.png}
 		\rule{35em}{0.5pt}
 	\caption[CPU Thread execution]{CPU thread execution}
 	\label{fig:cpu}
