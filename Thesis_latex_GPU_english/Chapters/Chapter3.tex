@@ -23,8 +23,7 @@ Spintronics is a new type of electronics that exploits the spin degree of freedo
 
 \subsection{Spin Transfer Torque}
 
-
-Spin transfer torque or SST occurs when spins flowing from one layer to another can reorient the magnetization in the layers \ref{fig:DWspin}.
+A torque is simply a time rate of change of angular momentum \cite{spintransfer}. Hence, Spin transfer torque or SST occurs when spins flowing from one layer to another can reorient the magnetization in the layers \ref{fig:DWspin}. The magnetization of the ferromagnet changes the flow of spin angular momentum by exerting a torque on the flowing spins to reorient them, and therefore the flowing electrons must exert an equal and opposite torque on the ferromagnet. This torque that is applied by non-equilibrium conduction electrons onto a ferromagnet is what we will call the spin transfer torque \cite{spintransfer}.
 
 Spin current which is a flow of spin angular momentum, is generated in addition to the charge current. The spin current normally appears in ferromagnets. However, it can also be generated also in non-magnets. The simplest method of generating a spin-polarized current in a metal is to pass the current throughout a ferromagnetic material. A common application is the GMR as mentioned before \cite{handbookspin}.
 
@@ -37,8 +36,6 @@ Spin current which is a flow of spin angular momentum, is generated in addition 
 \end{figure}
 
 
-\cite{spintransfer}
- 
 Spin polarized transport occurs naturally in any materials which have a spin imbalance between spin-up and spin-down at the fermi Level. It occurs and spin-down electrons is often nearly identical, but the states are shifted in energy with respect to each other. Fermi level is the term used to describe the top of the collection of electron energy levels at absolute zero temperature \cite{handbookspin}.
 
 Amongst the rapidly growing variety of proposed and developed spin structures, nonlocal spin detection devices, where measurement and current excitation paths are spatially separated, have recently gained a prominent position \cite{spinz}.
@@ -75,17 +72,9 @@ Domain walls are the basis for various spintronics devices that uses magnetic mo
 	\label{fig:DWspin}
 \end{figure}
 
-The spin-depended, spatially varying potential inherent on a domain wall has interesting consequence for the transport of carries. The energy of the incoming  carrier is no the only factor that determines whether or not it passes to the other side of domain wall - the spin also must be taken into account. Sin each spin orientation experiences a different potential.
+The energy of the incoming  carrier is no the only factor that determines whether or not it passes to the other side of domain wall, the spin also must be taken into account. Since each spin orientation experiences a different potential. Simulation of such properties is necessary.
 
-This has simulated research into domain wall (DW) dynamics, particularly those resulting from interactions with current passing through the DW via the phenomenon of spin momentum transfer (SMT) \cite{handbookspin}.
- 
- The success of spintronics untimely depends on out ability to precisely  control the polarization of electrons transported within the actual thin film structure \cite{ferro}.
-
-
-It deals with the spin-transfer torque in the case of a continuously varying magnetization. In this case the spin-transfer torque acts on inhomogeneous magnetization patterns, such as domain walls or magnetic vortices. Thus, also the magnetic processes in a racetrack memory and gyrating magnetic vortices driven by spin-transfer torque  can be described.
-
-Spin Torque induced domain wall motion opens up a host of possibilities for applications. Advances in spintronics recognized by 2007 Nobel Prize in Physics have enable over the last decade advances in computer memory, in hard drives, this is a metal based structures which utilize magnetoresistive effects to save and read data from a magnetic disk \cite{handbookspin}. An interesting application using this idea is new design for a different type memory disk drive called racetrack memory by Parkin in 2008\cite{racetrack}. The racetrack memory stores bits along a single ferromagnetic wire. To write and read information, a current is applied along the wire that moves the bits to writing or reading unit.
- 
+Spin Torque induced domain wall motion opens up a host of possibilities for applications. The success of spintronics untimely depends on out ability to precisely  control the polarization of electrons transported within the actual thin film structure \cite{ferro}. Advances in spintronics recognized by 2007 Nobel Prize in Physics have enable over the last decade advances in computer memory, in hard drives, this is a metal based structures which utilize magnetoresistive effects to save and read data from a magnetic disk \cite{handbookspin}. An interesting application using this idea is new design for a different type memory disk drive called racetrack memory by Parkin in 2008\cite{racetrack}. The racetrack memory stores bits along a single ferromagnetic wire. To write and read information, a current is applied along the wire that moves the bits to writing or reading unit.
  
 \section{Domain Wall Dynamics under Nonlocal STT}
 
@@ -98,25 +87,29 @@ The inclusion of STT into micromagnetics has up to now been performed with local
 	\frac{\partial \vec{m}}{\partial t} = \gamma_0\vec{H}_{eff} \times \vec{m} + \alpha \vec{m} \times \frac{\partial \vec{m}}{\partial t} - \vec{T}
 \end{equation}
 
-This novel idea of incorporating spin torque into the LLG equation has itself been incorporated into a model proposed by Zhang - Li in 2004 \cite{zhang2004}. The LLG equation \ref{eq:llg} is incorporated effects of a spin-polarized current in a magnetic system, and the resulting spin transfer. They develop a form for the spin torque based on the spatial variation of the magnetization, as especially appropriate approach for domain walls. Then in 2005 the same authors Zhang - Li extended this idea  working out the difference between the adiabatic and non-adiabatic torque contributions. Which lead to an even longer magnetization dynamics equation\cite{zhang} \cite{spindomain}.
+This novel idea of incorporating spin torque into the LLG equation has itself been incorporated into a model proposed by Zhang - Li in 2004 \cite{zhang2004}. The LLG equation \ref{eq:llg} is incorporated effects of a spin-polarized current in a magnetic system, and the resulting spin transfer. They develop a form for the spin torque based on the spatial variation of the magnetization, as especially appropriate approach for domain walls. Then in 2005 the same authors Zhang - Li extended this idea working out the difference between the adiabatic and non-adiabatic torque contributions. Which lead to an even longer magnetization dynamics equation \cite{zhang} \cite{spindomain}.
 
 \begin{equation} \label{eq:zhang}
  \frac{\partial \delta \vec{m} }{\partial t} =  D_{0}\bigtriangledown^{2} \delta \vec{m} - \frac{1}{\tau_{sd}} \delta \vec{m} \times \vec{M} - \frac{1}{\tau_{sf}}\delta \vec{m} +(\vec{\mu} \cdot\vec{\bigtriangledown} )\vec{M}
 \end{equation}
 
-The equation \ref{eq:zhang} is referred to Zhang - Li model. Represents the non-adiabatic spin torque.
+The equation \ref{eq:zhang} is referred to Zhang - Li model  represents a the non-adiabatic spin torque. Therefore, a simultaneous solution of the diffusive Zhang and Li model together with the magnetization dynamics equation has uncovered a qualitatively new feature of the spin-transfer torque effect in the presence of spin diffusion. Spin diffusion is a process by which magnetization can be exchanged spontaneously between spin \cite{claudio}.
 
-Therefore, a simultaneous solution of the diffusive Zhang and Li model together with the magnetization dynamics equation has uncovered a qualitatively new feature of the spin-transfer torque effect in the presence of spin diffusion. Spin diffusion is a process by which magnetization can be exchanged spontaneously between spin.
 
-The sample that is considerate is a 300 nm wide and 5 nm tick NiFe soft nanostrip. This dimensions are widely used for experimental use.
+Experimentally measured spin-diffusion parameters are used. The non-equilibrium carriers spin density.
 
-Asymmetric Transverse Wall (ATW), maps of magnetization components of non equilibrium spin accumulation under a uniform current density with $D = 0, 1$ and $10 nm^2 / ps$. Figure \ref{fig:atw}.
+
+\subsection{Experiment}
+
+We Quantitatively test the effects of spin diffusion, on real Domain walls structures, this is done by numerically solve the Zhang-Li model into micro-magnetics, using the equation \ref{eq:zhang}. The initial paper of \cite{zhnag} initially solves analytically the diffusion equation\ref{eq:zhang}, However, ignoring the term of spin diffusion. In this numerically simulation we solve such equation using the spin diffusion term.
+
+The sample that is considerated is a 300 nm wide and 5 nm tick NiFe soft nanostrip. This dimensions are widely used for experimental use. Two Domain walls are used a Asymmetric Transverse Wall (ATW) and a Vortex Wall (VW). ATW maps of magnetization components of non equilibrium spin accumulation under a uniform current density with $D = 0, 1$ and $10 nm^2 / ps$, see figure \ref{fig:atw}.
 
 \begin{figure}[htbp]
 	\centering
 		\includegraphics[width=0.6\textwidth]{Figures/ATW.png}
 		\rule{35em}{0.5pt}
-	\caption[Domain Wall - Vortex]{Domain Wall - Vortex}
+	\caption[Asymmetric Transverse Wall results]{Asymmetric Transverse Wall (ATW) results}
 	\label{fig:atw}
 \end{figure}
 
@@ -126,15 +119,13 @@ Vortex Wall (VW) same as for ATW, we point out the noticeable effect of the diff
 	\centering
 		\includegraphics[width=0.6\textwidth]{Figures/VW.png}
 		\rule{35em}{0.5pt}
-	\caption[Domain Wall - Vortex]{Domain Wall - Vortex}
+	\caption[Vortex Wall results]{Vortex Wall results}
 	\label{fig:vw}
 \end{figure}
 
 \section{Numerical Solution}
 
-We Quantitatively test the effects of spin diffusion, on real Domain walls structures, this is done by numerically solve the Zhang-Li model into micro-magnetics, using the equation \ref{eq:zhang}. The equation is physically realistic however computationally expensive.
-
-The numerical method used for the solution is a the method known as Finite Differences in the Time Domain (FDTD) whose integration is done using a 4th order Runge-Kutta integration.
+The equation is physically realistic, However, computationally expensive \ref{Xhang}. Therefore we numerical methods to solve such equation. The numerical methods used for the solution is a the method known as Finite Differences in the Time Domain (FDTD) whose integration is done using a 4th order Runge - Kutta integration.
 
 \subsection{Finite differences in the time domain}
 
@@ -181,7 +172,7 @@ f^{(2)}_i &= \dfrac{f_{i-2}+16f_{i-1} -30f_{i} + 16f_{i+1} - f_{i+1}}{12a^2}
 
 The equation \ref{eq:nn} for the second derivate based on second nearest neighbors expansion solves for the laplacian operator in the Zhang -Li Model equation \ref{eq:zhang}. However, points close to the edges need to be evaluated for great precession. 
 
-\subsubsection{Boundary conditions implementation}
+\subsubsection{Boundary conditions}
 
 Expressions such as \ref{eq:nn} are valid when the grid point becomes closet or next-to-closet to the boundary of the magnetic box. Specific accuracy preserving, expansion need to be worked out. The general principal in the present approach is to replace equations that are missing because of the lack of grid points outside the magnetic volume by equations including explicit reference to boundary conditions. \cite{methods}
 
@@ -290,7 +281,7 @@ We show that and effective non-adiabatic parameter $\beta_{diff}$ dependent on t
 \end{equation}
 
 
---fill final calculation.
+-----fill final calculation.
 
 
 The procedure is (i) compute the non-equilibrium spin density $\delta \vec{m}$ with the DW at rest, solve equation \ref{eq:zhang} to convergence or directly its time-independent version. (ii) compute the $\beta_{diff}$ distribution from equation \ref{eq:beta} and finally compute $\beta_{diff}$ by averaging with the $| \partial_x \vec{m}|^2$ weight function.

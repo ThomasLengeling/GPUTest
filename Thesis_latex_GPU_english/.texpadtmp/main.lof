@@ -16,30 +16,30 @@
 \contentsline {figure}{\numberline {2.7}{\ignorespaces Visual Profiler metrics graphs and plots}}{20}{figure.caption.64}
 \contentsline {figure}{\numberline {2.8}{\ignorespaces Visual Profiler example}}{21}{figure.caption.65}
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {3.1}{\ignorespaces Electron carries spin, charge and magnetic}}{23}{figure.caption.75}
-\contentsline {figure}{\numberline {3.2}{\ignorespaces Domain Wall VW, ATW}}{25}{figure.caption.78}
-\contentsline {figure}{\numberline {3.3}{\ignorespaces Domain Wall nanowire}}{25}{figure.caption.80}
-\contentsline {figure}{\numberline {3.4}{\ignorespaces Domain Wall - Vortex}}{27}{figure.caption.85}
-\contentsline {figure}{\numberline {3.5}{\ignorespaces Domain Wall - Vortex}}{27}{figure.caption.86}
-\contentsline {figure}{\numberline {3.6}{\ignorespaces FDTD grid}}{28}{figure.caption.89}
-\contentsline {figure}{\numberline {3.7}{\ignorespaces Sampled at regular intervals a, Taylor expansion}}{29}{figure.caption.90}
-\contentsline {figure}{\numberline {3.8}{\ignorespaces Euler Method}}{31}{figure.caption.98}
-\contentsline {figure}{\numberline {3.9}{\ignorespaces Fourth-order Runge and Kutta Method}}{32}{figure.caption.101}
+\contentsline {figure}{\numberline {3.1}{\ignorespaces Electron carries spin, charge and magnetic}}{24}{figure.caption.77}
+\contentsline {figure}{\numberline {3.2}{\ignorespaces Domain Wall VW, ATW}}{25}{figure.caption.79}
+\contentsline {figure}{\numberline {3.3}{\ignorespaces Domain Wall nanowire}}{26}{figure.caption.81}
+\contentsline {figure}{\numberline {3.4}{\ignorespaces Asymmetric Transverse Wall results}}{27}{figure.caption.87}
+\contentsline {figure}{\numberline {3.5}{\ignorespaces Vortex Wall results}}{27}{figure.caption.88}
+\contentsline {figure}{\numberline {3.6}{\ignorespaces FDTD grid}}{28}{figure.caption.91}
+\contentsline {figure}{\numberline {3.7}{\ignorespaces Sampled at regular intervals a, Taylor expansion}}{29}{figure.caption.92}
+\contentsline {figure}{\numberline {3.8}{\ignorespaces Euler Method}}{32}{figure.caption.100}
+\contentsline {figure}{\numberline {3.9}{\ignorespaces Fourth-order Runge and Kutta Method}}{32}{figure.caption.103}
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {4.1}{\ignorespaces Control flow}}{36}{figure.caption.108}
-\contentsline {figure}{\numberline {4.2}{\ignorespaces 2D Flatten array}}{36}{figure.caption.110}
-\contentsline {figure}{\numberline {4.3}{\ignorespaces Grid layout}}{37}{figure.caption.117}
-\contentsline {figure}{\numberline {4.4}{\ignorespaces Laplacian block calculation}}{40}{figure.caption.145}
+\contentsline {figure}{\numberline {4.1}{\ignorespaces Control flow}}{36}{figure.caption.110}
+\contentsline {figure}{\numberline {4.2}{\ignorespaces 2D Flatten array}}{36}{figure.caption.112}
+\contentsline {figure}{\numberline {4.3}{\ignorespaces Grid layout}}{37}{figure.caption.119}
+\contentsline {figure}{\numberline {4.4}{\ignorespaces Laplacian block calculation}}{40}{figure.caption.147}
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {5.1}{\ignorespaces Initial GPU results}}{47}{figure.caption.217}
-\contentsline {figure}{\numberline {5.2}{\ignorespaces he execution flow}}{48}{figure.caption.229}
-\contentsline {figure}{\numberline {5.3}{\ignorespaces Initial Streams}}{49}{figure.caption.266}
-\contentsline {figure}{\numberline {5.4}{\ignorespaces Streams kernels Tesla K20}}{51}{figure.caption.285}
-\contentsline {figure}{\numberline {5.5}{\ignorespaces Waiting time concurrent kernels}}{51}{figure.caption.286}
-\contentsline {figure}{\numberline {5.6}{\ignorespaces Shared Memory Strategy}}{52}{figure.caption.304}
-\contentsline {figure}{\numberline {5.7}{\ignorespaces Array of structures (AOS)}}{53}{figure.caption.322}
-\contentsline {figure}{\numberline {5.8}{\ignorespaces Structure of Arrays (SAO)}}{53}{figure.caption.323}
-\contentsline {figure}{\numberline {5.9}{\ignorespaces Structure of Arrays (SAO)}}{56}{figure.caption.344}
-\contentsline {figure}{\numberline {5.10}{\ignorespaces Optimization results with the Profiler}}{56}{figure.caption.345}
-\contentsline {figure}{\numberline {5.11}{\ignorespaces Structure of Arrays (SAO)}}{56}{figure.caption.346}
+\contentsline {figure}{\numberline {5.1}{\ignorespaces Initial GPU results}}{47}{figure.caption.219}
+\contentsline {figure}{\numberline {5.2}{\ignorespaces he execution flow}}{48}{figure.caption.231}
+\contentsline {figure}{\numberline {5.3}{\ignorespaces Initial Streams}}{49}{figure.caption.268}
+\contentsline {figure}{\numberline {5.4}{\ignorespaces Streams kernels Tesla K20}}{51}{figure.caption.287}
+\contentsline {figure}{\numberline {5.5}{\ignorespaces Waiting time concurrent kernels}}{51}{figure.caption.288}
+\contentsline {figure}{\numberline {5.6}{\ignorespaces Shared Memory Strategy}}{52}{figure.caption.306}
+\contentsline {figure}{\numberline {5.7}{\ignorespaces Array of structures (AOS)}}{53}{figure.caption.324}
+\contentsline {figure}{\numberline {5.8}{\ignorespaces Structure of Arrays (SAO)}}{53}{figure.caption.325}
+\contentsline {figure}{\numberline {5.9}{\ignorespaces Structure of Arrays (SAO)}}{56}{figure.caption.346}
+\contentsline {figure}{\numberline {5.10}{\ignorespaces Optimization results with the Profiler}}{56}{figure.caption.347}
+\contentsline {figure}{\numberline {5.11}{\ignorespaces Structure of Arrays (SAO)}}{56}{figure.caption.348}
 \addvspace {10\p@ }

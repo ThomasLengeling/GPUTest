@@ -1,5 +1,9 @@
 \begin{thebibliography}{10}
 
+\bibitem{spintransfer}
+D.~C.~R. A and M.~D.~S. B.
+\newblock Spin transfer torques, 711.
+
 \bibitem{Anderson}
 J.~A. Anderson, C.~D. Lorenz, and A.~Travesset.
 \newblock General purpose molecular dynamics simulations fully implemented on

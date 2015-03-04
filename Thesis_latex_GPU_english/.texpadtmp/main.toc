@@ -30,35 +30,37 @@
 \contentsline {subsection}{\numberline {2.7.2}Collect Data On Remote System}{22}{subsection.72}
 \contentsline {chapter}{\numberline {3}Introduction to Domain Wall Dynamics under Nonlocal STT}{23}{chapter.73}
 \contentsline {section}{\numberline {3.1}Theory}{23}{section.74}
-\contentsline {subsection}{\numberline {3.1.1}Spintronics}{24}{subsection.76}
-\contentsline {subsection}{\numberline {3.1.2}Domain Wall}{24}{subsection.77}
-\contentsline {subsection}{\numberline {3.1.3}Spin Torque in Domain Walls}{25}{subsection.79}
-\contentsline {section}{\numberline {3.2}Domain Wall Dynamics under Nonlocal STT}{26}{section.81}
-\contentsline {subsection}{\numberline {3.2.1}Theoretical Approaches}{26}{subsection.82}
-\contentsline {section}{\numberline {3.3}Numerical Solution}{27}{section.87}
-\contentsline {subsection}{\numberline {3.3.1}Finite differences in the time domain}{28}{subsection.88}
-\contentsline {subsubsection}{\numberline {3.3.1.1}Boundary conditions implementation}{30}{subsubsection.93}
-\contentsline {subsection}{\numberline {3.3.2}Fourth order Runge and Kutta method}{31}{subsection.97}
-\contentsline {subsection}{\numberline {3.3.3}Effective Beta}{32}{subsection.102}
-\contentsline {chapter}{\numberline {4}Implementation of Domain Wall Dynamics under Nonlocal STT}{34}{chapter.104}
-\contentsline {section}{\numberline {4.1}Simulation}{34}{section.105}
-\contentsline {subsection}{\numberline {4.1.1}Data allocation and threads}{35}{subsection.109}
-\contentsline {subsection}{\numberline {4.1.2}Initial Calculations}{37}{subsection.126}
-\contentsline {subsection}{\numberline {4.1.3}Numerical Methods}{38}{subsection.141}
-\contentsline {subsubsection}{\numberline {4.1.3.1}Finite differences in the time domain}{39}{subsubsection.144}
-\contentsline {subsubsection}{\numberline {4.1.3.2}Zhang and Li Model}{41}{subsubsection.173}
-\contentsline {subsubsection}{\numberline {4.1.3.3}Runge and Kutta}{41}{subsubsection.180}
-\contentsline {subsubsection}{\numberline {4.1.3.4}Final evaluation}{42}{subsubsection.188}
-\contentsline {subsection}{\numberline {4.1.4}Calculate effective beta}{42}{subsection.200}
-\contentsline {section}{\numberline {4.2}Validation}{43}{section.207}
-\contentsline {chapter}{\numberline {5}Optimization Results}{44}{chapter.209}
-\contentsline {section}{\numberline {5.1}Supercomputer ``Piritakua''}{44}{section.210}
-\contentsline {subsection}{\numberline {5.1.1}Architecture Differences}{45}{subsection.213}
-\contentsline {section}{\numberline {5.2}Optimization}{46}{section.215}
-\contentsline {subsection}{\numberline {5.2.1}Branching}{48}{subsection.218}
-\contentsline {subsection}{\numberline {5.2.2}Concurrent Kernels}{49}{subsection.265}
-\contentsline {subsection}{\numberline {5.2.3}Shared Memory}{51}{subsection.287}
-\contentsline {subsection}{\numberline {5.2.4}Structure of Arrays, SAO}{53}{subsection.321}
-\contentsline {subsection}{\numberline {5.2.5}Occupancy}{54}{subsection.333}
-\contentsline {section}{\numberline {5.3}Optimization Results}{55}{section.341}
-\contentsline {chapter}{\numberline {6}Conclusions and future work}{58}{chapter.347}
+\contentsline {subsection}{\numberline {3.1.1}Spintronics}{23}{subsection.75}
+\contentsline {subsection}{\numberline {3.1.2}Spin Transfer Torque}{24}{subsection.76}
+\contentsline {subsection}{\numberline {3.1.3}Domain Wall}{25}{subsection.78}
+\contentsline {subsection}{\numberline {3.1.4}Spin Torque in Domain Walls}{25}{subsection.80}
+\contentsline {section}{\numberline {3.2}Domain Wall Dynamics under Nonlocal STT}{26}{section.82}
+\contentsline {subsection}{\numberline {3.2.1}Theoretical Approaches}{26}{subsection.83}
+\contentsline {subsection}{\numberline {3.2.2}Experiment}{27}{subsection.86}
+\contentsline {section}{\numberline {3.3}Numerical Solution}{28}{section.89}
+\contentsline {subsection}{\numberline {3.3.1}Finite differences in the time domain}{28}{subsection.90}
+\contentsline {subsubsection}{\numberline {3.3.1.1}Boundary conditions implementation}{30}{subsubsection.95}
+\contentsline {subsection}{\numberline {3.3.2}Fourth order Runge and Kutta method}{31}{subsection.99}
+\contentsline {subsection}{\numberline {3.3.3}Effective Beta}{32}{subsection.104}
+\contentsline {chapter}{\numberline {4}Implementation of Domain Wall Dynamics under Nonlocal STT}{34}{chapter.106}
+\contentsline {section}{\numberline {4.1}Simulation}{34}{section.107}
+\contentsline {subsection}{\numberline {4.1.1}Data allocation and threads}{35}{subsection.111}
+\contentsline {subsection}{\numberline {4.1.2}Initial Calculations}{37}{subsection.128}
+\contentsline {subsection}{\numberline {4.1.3}Numerical Methods}{38}{subsection.143}
+\contentsline {subsubsection}{\numberline {4.1.3.1}Finite differences in the time domain}{39}{subsubsection.146}
+\contentsline {subsubsection}{\numberline {4.1.3.2}Zhang and Li Model}{41}{subsubsection.175}
+\contentsline {subsubsection}{\numberline {4.1.3.3}Runge and Kutta}{41}{subsubsection.182}
+\contentsline {subsubsection}{\numberline {4.1.3.4}Final evaluation}{42}{subsubsection.190}
+\contentsline {subsection}{\numberline {4.1.4}Calculate effective beta}{42}{subsection.202}
+\contentsline {section}{\numberline {4.2}Validation}{43}{section.209}
+\contentsline {chapter}{\numberline {5}Optimization Results}{44}{chapter.211}
+\contentsline {section}{\numberline {5.1}Supercomputer ``Piritakua''}{44}{section.212}
+\contentsline {subsection}{\numberline {5.1.1}Architecture Differences}{45}{subsection.215}
+\contentsline {section}{\numberline {5.2}Optimization}{46}{section.217}
+\contentsline {subsection}{\numberline {5.2.1}Branching}{48}{subsection.220}
+\contentsline {subsection}{\numberline {5.2.2}Concurrent Kernels}{49}{subsection.267}
+\contentsline {subsection}{\numberline {5.2.3}Shared Memory}{51}{subsection.289}
+\contentsline {subsection}{\numberline {5.2.4}Structure of Arrays, SAO}{53}{subsection.323}
+\contentsline {subsection}{\numberline {5.2.5}Occupancy}{54}{subsection.335}
+\contentsline {section}{\numberline {5.3}Optimization Results}{55}{section.343}
+\contentsline {chapter}{\numberline {6}Conclusions and future work}{58}{chapter.349}
