@@ -54,7 +54,7 @@ In any case, for a given simulation a compromise between speed and accuracy is a
 
 The current paradigm of using CPUs for computing is growth unsustainable. In 2012, Japan among the countries with elite supercomputers, builded the machine "K Computer", with 705,024 multi-core CPUs, it can achieve 11.3 petaflops ($10^5$ flops). Furthermore the computer is one of the most power efficient supercomputer in the world with a total of 12.66 megawatts (MW), in other words 830 Mflops/watt. This is this is enough to power a small town of 10,000 homes. If the current thread of power use continues, the next supercomputer would require 200 MW of power, this would require a nuclear power reactor to run it \cite{whatexascale}. However, in 2013 Oak Ridge Nacional Laboratory (U.S) built a supercomputer that combines CPUs and GPUs, the Titan. It can archive an astonishing 24 petaflops theoretical peak performance. Moreover, with a power consumption of 8.2 MW. They demonstrated that is possible to built a supercomputers that combines CPUs and GPUs, which enables a  higher performance and lower power consumption compared to a CPU based supercomputer \cite{titan}.
 
-As said the GPU exceeds the CPU in calculations per second FLOPS with a low energy consumption. However the GPU is designed to launch small amounts of data in parallel with only several instructions, in other words the GPU swap, switch threads very fast and they are extremely lightweight. In a typical system, thousands of threads are waiting to work. While the CPU only run up-to 24 threads on a hex-core processor. They can execute a single operation on comparatively large set of data with only one instruction. Although this can be extremely cost-wise operation on the GPU.
+As said the GPU exceeds the CPU in calculations per second FLOPS with a low energy consumption. However, the GPU is designed to launch small amounts of data in parallel with only several instructions, in other words the GPU swap, switch threads very fast and they are extremely lightweight. In a typical system, thousands of threads are waiting to work. While the CPU only run up-to 24 threads on a hex-core processor. They can execute a single operation on comparatively large set of data with only one instruction. Although this can be extremely cost-wise operation on the GPU.
 
 \section{GPUs as computing units}
 
@@ -86,15 +86,13 @@ Being able to efficiently use a GPU for an application requires to expose the in
 	\label{fig:arch}
 \end{figure}
 
-
 On the GPU precision and optimization are very important but there is a penalty for choosing performance or precession. All the GPUs are optimized for single precision floating operations, 24 bit size, Also provides double precision point, size of  53 bits. This is using the standard notation IEEE 754. Normally the GPU uses single precession(SP) by default, if chosen double precision (DP), normally there is a penalty of  2x - 4x seed-up\cite{precision}. Libraries such as CUBLAS and CUFFT provides useful information how NVIDIA handles floating point operations under the hood.
-
 
 \section{Programming on GPUs}
 
 There exist, among many, two main computing platforms, NVIDIA's Compute Unified Device Architecture (CUDA), and Khronos's Open Computing Language (OpenCL). NVIDIA's CUDA provides the necessary tools, frameworks and library to programs parallel computing, but for there GPUs. While OpenCL is a open standard framework meaning that is possible to do parallel computing on other GPUs, like on AMD cards. Programmers can easily port their code to others graphics cards.  However, CUDA has more robust debugging and profiling for GPGPU computing. The two frameworks are developed to be close to the hardware layer, using the C programming language as primarily programming language. Furthermore, CUDA provides both a low level API and a higher level API. Those who are familiar to OpenCL and CUDa, can easily modify their code to work on either platform \cite{hwu}.
 
-CUDA programming model views the GPU as an accelerator processor which calls parallel programs throughout all the SMI \cite{handbook}. In addition, this programs are only launched on the device (GPU) and are named as kernels. The kernels are executed across a large amount of threads, which contains the CUDA code. The basic idea of programming on a GPU is simple. We can observer this in the figure \ref{fig:cycle}.
+CUDA programming model views the GPU as an accelerator processor which calls parallel programs throughout all the SMI \cite{handbook}. In addition, the CUDA parallel programs are only launched on the device (GPU) and are named as kernels. The kernels are executed across a large amount of threads, which contains the CUDA code. The basic idea of programming on a GPU is simple, the following steps explains the procedure \ref{fig:cycle}.
 
 \begin{figure}[htbp]
 	\centering
@@ -103,7 +101,6 @@ CUDA programming model views the GPU as an accelerator processor which calls par
 	\caption[Programming Cycle]{Programming Cycle between the CPU and GPU}
 	\label{fig:cycle}
 \end{figure}
-
 
 \begin{itemize}
 \item Create memory(data) for the host (CPU) and devices (GPUs)
@@ -114,9 +111,22 @@ CUDA programming model views the GPU as an accelerator processor which calls par
 
 The structure of CUDA reflects the coexistence of CPU and GPUs. The CUDA code is a mixture of both host code and device code. Moreover, the device code is an extension of the C compiler with additional namaspaces/CUDA keywords for parallel code, the CUDA compiler is called NVCC. The host code is the standard low level ANSI C language. However, is possible to program applications in C++, python and Fortran. While the standard c code has extension marked as .c for source and .h for headers files, the CUDA code has extensions of .cu for source files and .cuh.
 
-When a kernel is launched or executed by a large amount of threads, where they are organized as a one, two or three dimensional grid of thread blocks. A thread is the simplest executing process. It consists of the code of the program, the particular point where the code is being executed \cite{hwu}. Many threads form a block, and many blocks form a grid. CUDA handles the execution of the random-access threads, which take up-to very few clock cycles in comparison to CPU threads. The threads per block can be observer in figure \ref{fig:grid}. All the threads in a kernel can access the global memory, figure \ref{fig:arch}.
+kernels are launched or executed on a large amount of threads in the SMI. They can be configured by threads per block and by block per grid. The thread and block configuration is illustrated in the figure \ref{fig:grid}. A thread is the simplest executing process. It consists of the code of the program, the particular point where the code is being executed \cite{hwu}. In addition all the threads in a kernel can access the global memory (RAM), figure  \ref{fig:arch} illustrates the physical position. Moreover, many threads form a block, and many blocks form a grid. CUDA handles the execution of the random-access threads, which take up-to very few clock cycles in comparison to CPU threads.
 
-Each of the threads can be access by implicit variable that identifies its position within the thread block and its grid. In a case of 1-D block. \cite{example}
+Each of the threads can be access by implicit variable that identifies its position within the thread block and its grid. In a case of 1D block \ref{lst:1d}, which is widely used for shared memory (see chapter 4) \cite{example}.
+
+\begin{lstlisting}[language=C++, label={lst:1d}, caption={1D block}]	
+	int index = blockIdx.x * blockDim.x + threadId.x;
+\end{lstlisting}
+
+In case of a 2D block which is the most cummon thread configuration \ref{lst:2d}.
+
+\begin{lstlisting}[language=C++, label={lst:2d}, caption={2D block}]	
+    int i = blockIdx.x * blockDim.x + threadIdx.x;
+    int j = blockIdx.y * blockDim.y + threadIdx.y;
+    
+    int index = j * YSIZE + i;
+\end{lstlisting}
 
 $$blockIdx.x \times blockDim.x + threadId.x$$
 
