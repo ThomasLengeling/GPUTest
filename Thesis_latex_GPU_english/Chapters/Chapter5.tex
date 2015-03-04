@@ -405,11 +405,11 @@ The different numbers of threads per block and as well the number of blocks per 
 
 \begin{table}[h]
 \centering
-  \begin{tabular} { | l | l | l | l | }
+  \begin{tabular} { | l | l | l | l | l | l | }
     \hline
-    Threads per Block & Shared Memory & speedup & time \\
+    Threads & Shared Memory & speedup & time & Occupancy & Occupancy \\
     \hline
-     8x8 &  8x8 & 7.217x & 52318.3  \\
+     8x8 &  8x8 & 7.217x & 52318.3  & \\
     \hline
      16x16 & 8x8 & 7.625x & 49517.3 \\
     \hline
@@ -420,14 +420,14 @@ The different numbers of threads per block and as well the number of blocks per 
     32x32 & 32x32 & \multicolumn{2}{|c|}{Failed}\\
     \hline
   \end{tabular}
-  \caption{Threads per block configuration on the Fermin architecture}
+  \caption{Threads per block configuration and Occupancy on the Fermin architecture}
   \label{tab:threads}
   \end{table}
 
 
 \section{Optimization Results}
 
-This section is the overview of the optimization results compared with each version of the code. The figure \ref{tab:time} and \ref{tab:speed} illustrates the the time execution and the speedup respectively. The Final version of the code is the Occupancy. Moreover the greatest performance occurred on the GeForce GTX 580 Card with a 8.0x speedup.
+This section is the overview of the optimization results compared with each version of the code. The figure \ref{tab:time} and \ref{tab:speed} illustrates the the time execution and the speedup respectively. The final version of the code is the Occupancy. Moreover the greatest performance occurred on the GeForce GTX 580 Card with a 8.0x speedup.
 
 \begin{table}[h]
 \centering

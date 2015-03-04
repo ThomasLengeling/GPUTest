@@ -27,17 +27,17 @@
 \contentsline {figure}{\numberline {4.1}{\ignorespaces Control flow}}{35}{figure.caption.106}
 \contentsline {figure}{\numberline {4.2}{\ignorespaces 2D Flatten array}}{35}{figure.caption.108}
 \contentsline {figure}{\numberline {4.3}{\ignorespaces Grid layout}}{36}{figure.caption.115}
-\contentsline {figure}{\numberline {4.4}{\ignorespaces Laplacian block calculation}}{39}{figure.caption.144}
+\contentsline {figure}{\numberline {4.4}{\ignorespaces Laplacian block calculation}}{39}{figure.caption.143}
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {5.1}{\ignorespaces Initial GPU results}}{46}{figure.caption.216}
-\contentsline {figure}{\numberline {5.2}{\ignorespaces he execution flow}}{47}{figure.caption.228}
-\contentsline {figure}{\numberline {5.3}{\ignorespaces Initial Streams}}{48}{figure.caption.265}
-\contentsline {figure}{\numberline {5.4}{\ignorespaces Streams kernels Tesla K20}}{50}{figure.caption.284}
-\contentsline {figure}{\numberline {5.5}{\ignorespaces Waiting time concurrent kernels}}{50}{figure.caption.285}
-\contentsline {figure}{\numberline {5.6}{\ignorespaces Shared Memory Strategy}}{51}{figure.caption.303}
-\contentsline {figure}{\numberline {5.7}{\ignorespaces Array of structures (AOS)}}{52}{figure.caption.321}
-\contentsline {figure}{\numberline {5.8}{\ignorespaces Structure of Arrays (SAO)}}{52}{figure.caption.322}
-\contentsline {figure}{\numberline {5.9}{\ignorespaces Structure of Arrays (SAO)}}{55}{figure.caption.343}
-\contentsline {figure}{\numberline {5.10}{\ignorespaces Optimization results with the Profiler}}{55}{figure.caption.344}
-\contentsline {figure}{\numberline {5.11}{\ignorespaces Structure of Arrays (SAO)}}{55}{figure.caption.345}
+\contentsline {figure}{\numberline {5.1}{\ignorespaces Initial GPU results}}{46}{figure.caption.215}
+\contentsline {figure}{\numberline {5.2}{\ignorespaces he execution flow}}{47}{figure.caption.227}
+\contentsline {figure}{\numberline {5.3}{\ignorespaces Initial Streams}}{48}{figure.caption.264}
+\contentsline {figure}{\numberline {5.4}{\ignorespaces Streams kernels Tesla K20}}{50}{figure.caption.283}
+\contentsline {figure}{\numberline {5.5}{\ignorespaces Waiting time concurrent kernels}}{50}{figure.caption.284}
+\contentsline {figure}{\numberline {5.6}{\ignorespaces Shared Memory Strategy}}{51}{figure.caption.302}
+\contentsline {figure}{\numberline {5.7}{\ignorespaces Array of structures (AOS)}}{52}{figure.caption.320}
+\contentsline {figure}{\numberline {5.8}{\ignorespaces Structure of Arrays (SAO)}}{52}{figure.caption.321}
+\contentsline {figure}{\numberline {5.9}{\ignorespaces Structure of Arrays (SAO)}}{55}{figure.caption.342}
+\contentsline {figure}{\numberline {5.10}{\ignorespaces Optimization results with the Profiler}}{55}{figure.caption.343}
+\contentsline {figure}{\numberline {5.11}{\ignorespaces Structure of Arrays (SAO)}}{55}{figure.caption.344}
 \addvspace {10\p@ }
