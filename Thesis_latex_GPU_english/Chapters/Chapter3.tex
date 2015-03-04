@@ -93,21 +93,17 @@ This novel idea of incorporating spin torque into the LLG equation has itself be
  \frac{\partial \delta \vec{m} }{\partial t} =  D_{0}\bigtriangledown^{2} \delta \vec{m} - \frac{1}{\tau_{sd}} \delta \vec{m} \times \vec{M} - \frac{1}{\tau_{sf}}\delta \vec{m} +(\vec{\mu} \cdot\vec{\bigtriangledown} )\vec{M}
 \end{equation}
 
-The equation \ref{eq:zhang} is referred to Zhang - Li model  represents a the non-adiabatic spin torque. Therefore, a simultaneous solution of the diffusive Zhang and Li model together with the magnetization dynamics equation has uncovered a qualitatively new feature of the spin-transfer torque effect in the presence of spin diffusion. Spin diffusion is a process by which magnetization can be exchanged spontaneously between spin \cite{claudio}.
-
-
-Experimentally measured spin-diffusion parameters are used. The non-equilibrium carriers spin density.
-
+The equation \ref{eq:zhang} is referred to Zhang - Li model, represents a non-adiabatic spin torque, with the presence of spin diffusion. Spin diffusion is a process by which magnetization can be exchanged spontaneously between spin. The diffusion term of the equation \ref{eq:zhang} which carriers’  drift-diffusion equation implies that the spin density does not depend solely on the local magnetization, which gives rise of nonlocal magnetics effects \cite{claudio}.
 
 \subsection{Experiment}
 
-We Quantitatively test the effects of spin diffusion, on real Domain walls structures, this is done by numerically solve the Zhang-Li model into micro-magnetics, using the equation \ref{eq:zhang}. The initial paper of \cite{zhnag} initially solves analytically the diffusion equation\ref{eq:zhang}, However, ignoring the term of spin diffusion. In this numerically simulation we solve such equation using the spin diffusion term.
+We Quantitatively test the effects of spin diffusion, on real Domain walls structures, this is done by numerically solve the Zhang-Li model into micro-magnetics, using the equation \ref{eq:zhang}. The paper of \cite{zhang} initially solves analytically the diffusion equation\ref{eq:zhang}, However, ignoring the term of spin diffusion. In this numerically simulation we solve such equation using the spin diffusion term.
 
 The sample that is considerated is a 300 nm wide and 5 nm tick NiFe soft nanostrip. This dimensions are widely used for experimental use. Two Domain walls are used a Asymmetric Transverse Wall (ATW) and a Vortex Wall (VW). ATW maps of magnetization components of non equilibrium spin accumulation under a uniform current density with $D = 0, 1$ and $10 nm^2 / ps$, see figure \ref{fig:atw}.
 
 \begin{figure}[htbp]
 	\centering
-		\includegraphics[width=0.6\textwidth]{Figures/ATW.png}
+		\includegraphics[width=0.5\textwidth]{Figures/ATW.png}
 		\rule{35em}{0.5pt}
 	\caption[Asymmetric Transverse Wall results]{Asymmetric Transverse Wall (ATW) results}
 	\label{fig:atw}
@@ -117,7 +113,7 @@ Vortex Wall (VW) same as for ATW, we point out the noticeable effect of the diff
 
 \begin{figure}[htbp]
 	\centering
-		\includegraphics[width=0.6\textwidth]{Figures/VW.png}
+		\includegraphics[width=0.5\textwidth]{Figures/VW.png}
 		\rule{35em}{0.5pt}
 	\caption[Vortex Wall results]{Vortex Wall results}
 	\label{fig:vw}
@@ -290,7 +286,7 @@ The procedure is (i) compute the non-equilibrium spin density $\delta \vec{m}$ w
 
 \vspace{3.5em}
 
-Therefore, a simultaneous solution of the diffusive Zhang and Li model together with the magnetization dynamics equation has uncovered a qualitatively new feature of the spin-transfer torque effect in the presence of spin diffusion, namely the dependence of the steady-state DW velocity on DW structure. In summarize, we quantitatively test the effects of spin diffusion, on real Domain walls structures, this is done by numerically solve the Zhang-Li model into micro-magnetics. The numerical methods used to solve such model as mentioned is the FDTD on a 3D cell grid with whose integration is done using RK4.
+In conclusion, a simultaneous solution of the diffusive Zhang and Li model \ref{eq:zhang} has uncovered a qualitatively new feature of the spin-transfer torque effect in the presence of spin diffusion. Namely the dependence of the steady-state DW velocity on DW structure \cite{claudio}. In summarize, we quantitatively test the effects of spin diffusion, on real Domain walls structures for ATW and VW. This is done by numerically solve the Zhang-Li model into micro-magnetics. The numerical methods used to solve such model as mentioned is the FDTD on a 3D cell grid with whose integration is done using RK4.
 
 
 

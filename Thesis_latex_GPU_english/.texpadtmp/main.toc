@@ -39,7 +39,7 @@
 \contentsline {subsection}{\numberline {3.2.2}Experiment}{27}{subsection.86}
 \contentsline {section}{\numberline {3.3}Numerical Solution}{28}{section.89}
 \contentsline {subsection}{\numberline {3.3.1}Finite differences in the time domain}{28}{subsection.90}
-\contentsline {subsubsection}{\numberline {3.3.1.1}Boundary conditions implementation}{30}{subsubsection.95}
+\contentsline {subsubsection}{\numberline {3.3.1.1}Boundary conditions}{30}{subsubsection.95}
 \contentsline {subsection}{\numberline {3.3.2}Fourth order Runge and Kutta method}{31}{subsection.99}
 \contentsline {subsection}{\numberline {3.3.3}Effective Beta}{32}{subsection.104}
 \contentsline {chapter}{\numberline {4}Implementation of Domain Wall Dynamics under Nonlocal STT}{34}{chapter.106}
