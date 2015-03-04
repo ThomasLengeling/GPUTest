@@ -9,9 +9,7 @@
 %----------------------------------------------------------------------------------------
 %	SECTION 1
 %----------------------------------------------------------------------------------------
-
-When working with GPUs hardware challenges emerges. How can we make the best usage of the GPU hardware. In the conventional CPU model we have what is called linear or flat memory model. This appears to the programmer as a single contiguous address space. The CPU can directly address all the available memory, in other words there is almost no efficiency penalty in creating global data, local data, or even access data that is located on a opposite memory location, all of this can be access as a contiguous block. \cite{cook} Meanwhile on the GPU there are expectations, their exists different memory hierarchies which dramatically change the performance output. By allocation the optimal memory types, seed-up and increase throughput can be accomplished, but also analyzing. To ensure optimization, some analysis should be done, like comparing latency, memory hierarchies and data bandwidth between CUDA kernels, The study of the performance of the CUDA code can be done by using NVIDIA's Visual Profiler.
-
+When working with GPUs hardware new challenges emerges. How can we make the best usage of the GPU hardware. In the conventional CPU model, we have what is called linear or flat memory model. In addition this appears to the programmer as a single contiguous address space. Furthermore, the CPU can directly address all the available memory, in other words there is almost no efficiency penalty in creating global data, local data, or even access data that is located on a opposite memory location, all of this can be access as a contiguous block \cite{cook}. Meanwhile, on the GPU there are exceptions, their exists different memory hierarchies which dramatically change the performance output. By allocation the optimal memory types, speedup and increase throughput can be accomplished. To ensure optimization, some analysis should be done, like comparing latency, memory hierarchies and data bandwidth between CUDA kernels. The debug of parallel CUDA code can be accomplish using the NVIDIA's Visual Profiler. This chapter demonstrated techniques, practices and methods to debug and analyzed parallel process.
 
 % techniques, programming models and hierarchies.
 \section{Practices}
@@ -24,10 +22,7 @@ There are three rules for developing high performance GPGPU (General-purpose on 
   \item Focus on data reuse within the GPU context, to avoid memory bandwidth limitations
 \end{enumerate}
 
-As we know the GPUs are plugged into the PCI Express bus of the host computer, in other words the CPU. The PCIe bus has extremely slow bandwidth compared with the GPU. This is why is important to store the data on the GPU and keep it busy. In addition minimize the data transfer from the host and back to the device. We can see this in the following table \ref{fig:PCI}.  Because CUDA-enable GPUs can carry out petaFLOP performance, they are fast enough to compute large amount of data. So each Kernel launch needs to use all the available resources of the GPU and avoid wasting compute cycles. If a single Kernel doesn't use all of the available bandwidth, multiple kernels can be launched at the same time on a single GPU.
-For example a DP vector require 8 bytes of storage per vector element this will double the bandwidth requirement. So is important to take advantage of the memory usage, take advantage of the memory types, use less memory copies between the GPU. \cite{design} 
-
-check paragraph,
+As we know the GPUs are plugged into the PCI Express bus of the host computer, in other words the CPU. The PCIe bus has extremely slow bandwidth compared with the GPU. This is why is important to store the data on the GPU and keep it busy. In addition minimize the data transfer from the host and back to the device. We can see this in the table \ref{fig:PCI}. CUDA enables the GPU to carry out petaFLOP performance in a single device \cite{cook}. In addition they are fast enough to compute a large amount of data. To accomplish such high performance, each CUDA Kernel needs to use all the available resources of the GPU. Furthermore, avoid wasting compute cycles. Finally if a single Kernel doesn't use all of the available bandwidth, multiple kernels can be launched at the same time on a single GPU, which are streams \cite{design} 
 
 \begin{figure}[htbp]
 	\centering
@@ -41,7 +36,7 @@ The practices should be taken in consideration to identify the portions of code 
 
 \begin{figure}[htbp]
 	\centering
-		\includegraphics[width=0.5\textwidth]{Figures/apod.png}
+		\includegraphics[width=0.45\textwidth]{Figures/apod.png}
 		\rule{35em}{0.5pt}
 	\caption[Different memory types]{Different memory type and penalties usage}
 	\label{fig:apod}
@@ -61,15 +56,15 @@ The developer can optimize the implementation performance through a number of co
 
 \section{Performance Metrics}
 
-Before trying to make your simulation run faster, you should understand how it currently performs and where the bottlenecks are. There are many possible approaches to profiling the code, but in all cases the objective is the same: to identify the function or functions in which the application is spending most of its execution time and increase the throughput by a giving kernel. Throughput is how many operations completed per cycle.
+There are many possible approaches to profiling the code, but in all cases the objective is the same:  identify the kernel or kernels in which the application is spending most of its execution time and increase the throughput by a giving kernel. Throughput is how many operations completed per cycle.
 
 \subsection{Timing}
 
-Timing a launched kernel can be done on either the GPU or the CPU. Is important to remember that the CPU and GPU are not synchronized. So its necessary to synchronize the CPU thread with the GPU kernels launches. CUDA provides the required  functions to synchronize the CPU with the GPU calling immediately before starting the timer.\cite{practices}.  CUDA also can handle timers within the GPU, and record times in a floating-point value in milliseconds. This is done with $cudaEventRecord()$, just by including $start$ and $stop$ in the function inputs. Note that the timing are measured on the GPU clock, so the timing is independent from the OS. \cite{cook}.
+Timing a launched kernel can be done on either the GPU or the CPU. Is important to remember that the CPU and GPU are not synchronized. So its necessary to synchronize the CPU thread with the GPU kernels launches. CUDA provides the required  functions to synchronize the CPU with the GPU calling immediately before starting the timer \cite{practices}. CUDA is able to handle timers within the GPU, which records times in a floating-point value in milliseconds. This is done with $cudaEventRecord()$, just by including $start$ and $stop$ in the function inputs. Note that the timing are measured on the GPU clock, so the timing is independent from the OS \cite{cook}.
 
 \subsection{Bandwidth}
 
-The bandwidth refers to the rate at which data can be transferred between host and device and vi-versa. The bandwidth is one of the most important factors for testing performance o the GPUs. Choosing the right type of memory could dramatically increase performance and bandwidth. There are two main memory to indicate performance, theoretical bandwidth and effective bandwidth. The theoretical bandwidth is base on the hardware specifications that is available by NVIDIA. This is calculated using the following formula:
+The bandwidth refers to the rate at which data can be transferred between host and device and vi-versa. The bandwidth is one of the most important factors for testing performance o the GPUs. Choosing the right type of memory could dramatically increase performance and bandwidth. There are two main bandwidth types to indicate performance, theoretical bandwidth and effective bandwidth. The theoretical bandwidth is base on the hardware specifications that is available by NVIDIA. This is calculated using the following formula:
 
 $$ theoretical bandwidth = (clock rate * (bit-wide-memory-interface / 8 )*2) / 10^9 $$
 
@@ -78,32 +73,32 @@ For example the NVIDIA GeForce GTX 280 uses DDR RAM with a memory clock rate of 
 $$ (1107 * 10^6 * (512/8.0) *2 )/10^9 = 141.6 Gb /sec$$
 
 The GTX 280 has a theoretical bandwidth of $141.6Gb/sec$.
-The effective bandwidth is calculated by timing specific program activities and by knowing how data is accessed by the application. \cite{practices}
+The effective bandwidth is calculated by timing specific program activities and by knowing how data is accessed by the application \cite{practices}.
 
 $$effective-bandwidth = ((Br - Bw) / 109 )/time$$
 
-Where Br is the number of bytes read per kernel, Bw is the number of bytes written per kernel and  t is the elapsed time given in seconds.  \cite{fortran}
+Where Br is the number of bytes read per kernel, Bw is the number of bytes written per kernel and  t is the elapsed time given in seconds\cite{fortran}.
 
 In practice the difference between theoretical bandwidth and effective bandwidth indicated how much bandwidth is wasted on accessing memory and calculations. If the effective bandwidth is low compared to the theoretical bandwidth is one indication that there is not enough work being done in the GPUs. There a several solutions, analyze the code to make more parallelize instructions, execute more computational instructions on the GPUs, finally analyze the number of threads per block that are executing on execute kernels .
 
 %----------------------------------------------------------------------------------------
 %	SECTION 2
 %----------------------------------------------------------------------------------------
-
 \section{Memory Handling with CUDA}
 
-In this section four types of memory handling are going to be explained, shared memory, global memory (device memory) and finally host memory. As the figure \ref{fig:cores} illustrates the position of the different types of memory inside the device chip. The global memory is faraway the registers and CUDA core locations, however is very large in comparison to the shared memory. \cite{cook}.
+In this section four types of memory handling are going to be explained,  global memory (device memory), shared memory, texture memory and constant memory. The figure \ref{fig:cores} illustrates physically the position of the different memory types inside the device chip.
 
 \begin{figure}[htbp]
 	\centering
-		\includegraphics[width=0.85\textwidth]{Figures/cores.png}
+		\includegraphics[width=0.75\textwidth]{Figures/cores.png}
 		\rule{35em}{0.4pt}
 	\caption[schematic cache hierarchy of a CUDA GPU]{The schematic cache hierarchy of a CUDA GPU with 4 Streaming Multiprocessors and 8 CUDA Cores each.}
 	\label{fig:cores}
 \end{figure}
 
+Global memory is very large in comparison to the shared memory, which is on he L1 cache. However, the global memory is far away from the registers and from the CUDA core locations. Moreover, the memory access is very slow in comparison to the shared memory \cite{cook}.
 
- In figure \ref{fig:memory} each memory type has it's bandwidth penalty of used and latency in cycles. Each one can be used in different applications to maximize the memory used. The shared Memory is very limited so it cannot be handler for all the kernels, when performed wrong on the device there is a huge latency and bandwidth penalty, instead having a gain in performance
+The figure \ref{fig:memory} illustrates each memory type has it's bandwidth penalty of used as well as the latency in computer cycles. Different memory types can be used in different applications to maximize the memory used. The Shared Memory is very limited so it cannot be handler across all situations. Furthermore, when implementation wrong memory type on the device there can be latency penalty and bandwidth drop, instead of having a gain in performance.
  
 \begin{figure}[htbp]
 	\centering
@@ -115,8 +110,7 @@ In this section four types of memory handling are going to be explained, shared 
 
 \subsection{Global Memory}
 
-Understanding how to efficiently use global memory is essential in CUDA memory management.
-Focusing on data reuse within the SM and caches avoids memory bandwidth limitations. Global memory on the GPU is designed to quickly stream memory blocks of data into the SM.
+Understanding how to efficiently use global memory is essential in CUDA memory management. Focusing on data reuse within the SM and caches avoids memory bandwidth limitations. Global memory on the GPU is designed to quickly stream memory blocks of data into the SM.
 
 \begin{itemize}
 \item Get the data on to the Device, keep it there.
@@ -125,7 +119,6 @@ Focusing on data reuse within the SM and caches avoids memory bandwidth limitati
 \end{itemize}
 
 In other words the global memory resides on the device, and it can be anything from 1 byte to 8GB, depending on the GPU. Also the memory is visible to all the threads of the grid. Any thread can read and write to any location of the global memory, The memory is always allocated with \textit{cadaMalloc}. And only global memory can be passed to the kernels and are called with \twoline global \twoline. \cite{design}
-
 
 %\ref{fig:smi}
 
@@ -139,19 +132,18 @@ In other words the global memory resides on the device, and it can be anything f
 
 \subsection{Shared Memory}
 
-CUDA C compiler treats variables differently than a typical variable, it creates a copy of the variable for each block that is launched on the GPU, now every thread in that block can access the memory, this is why is called shared memory. This memory reside physically on the GPU, because the memory is very close the cache, the latency is typical very low.\cite{example}. One thing comes to mind, if the threads can communicate with others threads, so there should be way to synchronize all the threads. A simple case should be if thread A writes a value into the shared memory, and Thread B wants to access we need to synchronize, when thread A finish writing then Thread B can access it. This is typical case when shared memory with synchronize thread is needed. \cite{cook}
-Shared memory is magnitudes faster to access than global memory, essentially is like a local cache for each threads of a block. While  the shared memory is limited to 48K a block, the global memory is the amount of DRAM on the device. The duration of the shared memory on the device is the lifetime of the thread block. Using \twoline shared \twoline in-front of the kernel call will invocate shared memory.
+CUDA C compiler treats variables differently than a typical variable, it creates a copy of the variable for each block that is launched on the GPU, now every thread in that block can access the memory, this is why is called shared memory. This memory reside physically on the GPU, because the memory is very close the cache, the latency is typical very low \cite{example}. One thing comes to mind, if the threads can communicate with others threads, so there should be way to synchronize all the threads. A simple case should be if thread A writes a value into the shared memory, and Thread B wants to access we need to synchronize, when thread A finish writing then Thread B can access it. This is typical case when shared memory with synchronize thread is needed \cite{cook}.
+Shared memory is magnitudes faster to access than global memory, essentially is like a local cache for each threads of a block. While  the shared memory is limited to 48K a block, the global memory is the amount of DRAM on the device. The duration of the shared memory on the device is the lifetime of the thread block. Using \twoline shared \twoline in-front of the data type will innovate shared memory.
 
    %There is also one other very useful case with shared memory and that is where every thread in a warp reads the same bank address
-
+   
 \subsection{Constant Memory}
 
-Is an excellent way to store and broadcast read-only data to all the threads on the GPU. One thing to keep in mind is that the constant memory is limited to 64KB. \cite{design}. A simple analogue is the  \textit{\#define} or \textit{const} attribute in the c++ programming language, the variable performed like a variable that cannot be modified. On CUDA is  excitability the same, the value can only be read and not written, the value will not change over the course of a kernel execution and only the host can write the constant memory.\cite{example}
+Is an excellent way to store and broadcast read-only data to all the threads on the GPU. One thing to keep in mind is that the constant memory is limited to 64KB \cite{design}. A simple analogue is the \textit{\#define} or \textit{const} attribute in the C++ programming language, the variable performs like a variable that cannot be modified. On CUDA this is exactly the same, the value can only be read and not written. Furthermore, the value will not change over the course of a kernel execution and only the host can write the constant memory\cite{example}.
 
 \subsection{Texture Memory}
 
 Like constant memory, texture memory is another variety of read-only memory that can improve performance and reduce memory traffic when reads have certain access patterns. . Traditionally Texture memory id used for computer graphics applications, but it can also be use for HPC. The main idea of this read-only memory is that threads are likely to read from address ''near' the address they nearby threads.\cite{example}
-
 
 \begin{figure}[htbp]
 	\centering
@@ -173,14 +165,16 @@ The texture Memory in a form works like the GPU graphics Texture, when you want 
 
 \subsection{Thread Synchronization}
 
-This refers to synchronizing threads operations. For efficiency, a pipeline can be created by queuing a number of kernels to keep the GPGPU busy for as long as possible. Further, some form of synchronization is required so that the host can determine when the kernel or pipeline has completed. \cite{design} Commonly used synchronization mechanisms are:
+This refers to synchronizing threads operations. For efficiency, a pipeline can be created by queuing a number of kernels to keep the GPGPU busy for as long as possible. Further, some form of synchronization is required so that the host can determine when the kernel or pipeline has completed \cite{design}. Commonly used synchronization mechanisms are:
 
 \begin{itemize}
-  \item Explicitly calling cudaThreadSynchronize(), which acts as a barrier causing the host to stop and wait for all queued kernels to complete.
-  \item Performing a blocking data transfer with cudaMemcpy() as cudaThreadSynchronize() is called inside cudaMemcpy().
+  \item Explicitly calling $cudaThreadSynchronize()$, which acts as a barrier causing the host to stop and wait for all queued kernels to complete.
+  \item Performing a blocking data transfer with $cudaMemcpy()$ as $cudaThreadSynchronize()$ is called inside $cudaMemcpy()$.
 \end{itemize}
 
-The basic unit of work on the GPU is a thread. It is important to understand from a software point of view that each thread is separate from every other thread. Every thread acts as if it has its own processor with separate registers and identity. Will wait for all threads to finish there job. \cite{design}
+The basic unit of work on the GPU is a thread. It is important to understand from a software point of view that each thread is separate from every other thread. Every thread acts as if it has its own processor with separate registers and identity. Will wait for all threads to finish there job \cite{design}.
+
+Threads synchronization can also be accomplish inside of the kernels calls. The idea is the same, the kernel will wait until all the threads have completed there task. Threads synchronization is general used when loading data into shared memory. 
 
 \section{Concurrent Kernels}
 
@@ -297,6 +291,6 @@ As mention before, is possible to collect data from a remote system where a GUI 
 
 \vspace{3.2em}
 
-Finally, this chapter gives a overview of practices and performance studies for GPGPU. Also a better understanding of the hardware and memory management, as well as hardware limitation, which determinate the best usage of the GPUs. As we can see NVIDIA's profiling tools is useful to analyze different stages of our application, moreover to determined which parts of the CUDA code is better to optimize from others to gain more performance.
+Finally, this chapter gives a overview of practices and performance studies for GPGPU. In addition a better understanding of the hardware and memory management, as well as hardware limitation, which determinate the best usage of the GPUs. As we can see NVIDIA's profiling tools is useful to analyze different stages of our application, moreover to determined which parts of the CUDA code is better to optimize from others to gain more performance.
 
 

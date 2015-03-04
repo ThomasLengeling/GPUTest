@@ -131,7 +131,7 @@
 \abstract{\addtocontents{toc}{\vspace{1em}} % Add a gap in the Contents, for aesthetics
 
 This work is an exploration of the role that Graphical Processing Units, also known as GPUs, can play in the acceleration of physical simulations. In particular, in the research of spintronic effects such as the dynamics of domain walls under nonlocal spin-transfer torque. 
-Our study is relevant because it allows researchers to quantitatively test some of the effects of a phenomenon known as spin-diffusion on magnetic configurations at the nanoscale. Some of such configurations are known as domain walls. These magnetic configurations can be observed experimentally in NiFe soft nanostripes but they are really complicated to produce and image experimentally. Due to this, we use the massively parallel capabilities of a single GPU to numerically solve a mathematical equation, known as the Zhang-Li model. As a consequence of our implementation, we have observed a 7.5x speed-up in the solution of the Zhang-Li equation. This speed-up is obtained when we compare the time needed to obtain the result of a simulation in a GPU with that of a simulation with the same input parameters in a conventional processor e.g. Intel Xeon. The numerical method used for the solution is a the method known as Finite Differences in the Time Domain (FDTD) whose integration is done using a 4th order Runge - Kutta integration
+Our study is relevant because it allows researchers to quantitatively test some of the effects of a phenomenon known as spin-diffusion on magnetic configurations at the nanoscale. Some of such configurations are known as domain walls. These magnetic configurations can be observed experimentally in NiFe soft nanostripes but they are really complicated to produce and image experimentally. Due to this, we use the massively parallel capabilities of a single GPU to numerically solve a mathematical equation, known as the Zhang-Li model. As a consequence of our implementation, we have observed a 8.0x speed-up in the solution of the Zhang - Li equation. This speed-up is obtained when we compare the time needed to obtain the result of a simulation in a GPU with that of a simulation with the same input parameters in a conventional processor e.g. Intel Xeon. The numerical method used for the solution is a the method known as Finite Differences in the Time Domain (FDTD) whose integration is done using a 4th order Runge - Kutta integration.
 }
 
 \clearpage % Start a new page
@@ -174,7 +174,17 @@ The acknowledgements \ldots
 
 Commodity graphics processing units (GPUs) are becoming increasingly popular to accelerate scientific applications due to their low cost and potential for high performance when compared with central processing units (CPUs). A large number of contemporary problems and scientific research are being benefit from this new technology .There has been considerable progress in implementing the hardware and the supporting infrastructure for GPUs programming and streaming architectures. This thesis is a exploration and study of the role of accelerator hardware like the use of the GPUs on physical computing, more specific in the area of spin-diffusion effects within a continuously variable magnetization distribution.
 
-The work begins with a overview of the current trends in computing, focusing our attention specifically on GPUs, on how they differ from the CPUs and common programming practices that uses heterogeneous computing. The second chapter focus on the use of techniques of heterogeneous computing to gain more performance out the GPUs when applying to a specific task. Also the necessary means how to test the speed-up against the CPU.  The next chapter is overview of the CUDA code implementation of Dr. Claudio's work "Domain Wall Dynamics under Non-local Spin-Transfer Torque". The forth chapter are the results collected by applying optimization techniques to the initial CUDA code implementation. The outcome is compared by launching the code in-to several GPUs nodes. Finally the last chapter of the thesis is a conclusion of the work and future research.
+The work begins with a overview of the current trends in computing, focusing our attention specifically on GPUs, on how they differ from the CPUs and common programming practices that uses heterogeneous computing. 
+
+
+The next chapter is overview of the CUDA code implementation of Dr. Claudio's work "Domain Wall Dynamics under Non-local Spin-Transfer Torque". 
+
+
+The second chapter focus on optimization techniques and practices, which the GPU is able .
+
+ Also the necessary means how to test the speed-up against the CPU. 
+ 
+ The forth chapter are the results collected by applying optimization techniques to the initial CUDA code implementation. The outcome is compared by launching the code in-to several GPUs nodes. Finally the last chapter of the thesis is a conclusion of the work and future research.
 
 
 \clearpage

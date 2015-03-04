@@ -24,10 +24,10 @@
 \contentsline {subsection}{\numberline {2.3.4}Texture Memory}{16}{subsection.121}
 \contentsline {subsection}{\numberline {2.3.5}Thread Synchronization}{17}{subsection.123}
 \contentsline {section}{\numberline {2.4}Concurrent Kernels}{18}{section.124}
-\contentsline {section}{\numberline {2.5}Kernel Analysis}{18}{section.126}
-\contentsline {section}{\numberline {2.6}Hardware constraints}{19}{section.127}
+\contentsline {section}{\numberline {2.5}Kernel Analysis}{19}{section.126}
+\contentsline {section}{\numberline {2.6}Hardware constraints}{20}{section.127}
 \contentsline {subsection}{\numberline {2.6.1}Thread Division}{20}{subsection.128}
-\contentsline {section}{\numberline {2.7}Visual Profiler}{20}{section.129}
+\contentsline {section}{\numberline {2.7}Visual Profiler}{21}{section.129}
 \contentsline {subsection}{\numberline {2.7.1}Profiler Kernel Report}{22}{subsection.132}
 \contentsline {subsection}{\numberline {2.7.2}Collect Data On Remote System}{23}{subsection.138}
 \contentsline {chapter}{\numberline {3}Introduction to Domain Wall Dynamics under Nonlocal STT}{24}{chapter.139}

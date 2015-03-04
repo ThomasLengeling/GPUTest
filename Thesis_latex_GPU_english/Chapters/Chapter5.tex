@@ -10,13 +10,13 @@
 %	SECTION 1
 %----------------------------------------------------------------------------------------
 
-This chapter is the results of the CUDA code implementation launched on a single GPU device. The test were performed on various GPUs architectures, which, has different hardware characteristics. The application is analyzed by the NVIDIA's Visual Profiler. In addition the CUDA kernels were evaluated in performance, execution time, occupancy and concurrent kernels. Furthermore the results, are analyzed and optimized using the schemes from chapter 3. Lastly the code is executed remotely on the supercomputer ``Piritakua'' at the Department of Multidisciplinary Studies Yuriria, University of Guanajuato
+This chapter is the results of the CUDA code implementation launched on a single GPU device. The test were performed on various GPUs architectures, which, has different hardware characteristics. The application is analyzed by the NVIDIA's Visual Profiler. In addition the CUDA kernels were evaluated in performance, execution time, occupancy and concurrent kernels. Furthermore, the results, are analyzed and optimized using the schemes from chapter 3. Lastly the code is executed remotely on the supercomputer ``Piritakua'' at the Department of Multidisciplinary Studies Yuriria, University of Guanajuato.
 
 \section{Supercomputer ``Piritakua''}
 
-The experiments are carried out using the supercomputer “Piritakua”. The massive GPU cluster was design and built by Dr. Claudio from the University of Guanajuato Multidisciplinary Studies Yuriria. The GPU cluster is located at a small town of Mexico, Yuriria. The supercomputer at the Front-end has a eight core Intel Xeon at 2.4 Ghz, at the back-end several GPU are connected, one NVIDIA Tesla K20, two Tesla M2070 and a GTX 580.
+The experiments are carried out using the supercomputer “Piritakua”. The massive GPU cluster was design and built by Dr. Claudio from the University of Guanajuato Multidisciplinary Studies Yuriria. The GPU cluster is located at a small town of Mexico, Yuriria. The supercomputer at the Front-end has a eight core Intel Xeon at 2.4 Ghz, at the back-end several GPU are connected, one NVIDIA Tesla K20, two Tesla M2070 and a GeForce GTX 580.
 
-The cluster has a GNU$ \ $LINUX distribution installed, the CentOS 64 bits version 6.4. CentOS stands for Community Enterprise Operating System which is free operating system and one of the most popular GNU$ \ $Linux distribution for web servers and as well is supported by RHEL (Red Hat Enterprise Linux) \cite{centos}.  The specifications of the front-end cluster are \ref{tab:cpus}.
+The cluster has a GNU$ \ $LINUX distribution installed, the CentOS 64 bits version 6.4. CentOS stands for Community Enterprise Operating System which is free operating system and one of the most popular GNU$ \ $Linux distribution for web servers and as well is supported by RHEL (Red Hat Enterprise Linux) \cite{centos}. The specifications of the front-end cluster are \ref{tab:cpus}.
 
 \begin{table}[h]
 \centering
@@ -28,7 +28,7 @@ The cluster has a GNU$ \ $LINUX distribution installed, the CentOS 64 bits versi
   \hline
   Server HP Proliant SL 350s Gen3 Intel Xeon X5650 2.67 GHz & 2 & 24 & 32 GB \\
   \hline
-   Server HP Proliant SL 250s Gen8 Intel Xeon E5-2670 2.60 GHz & 3 & 48 &104 GB \\
+   Server HP Proliant SL 250s Gen8 Intel Xeon E5-2670 2.60 GHz & 3 & 48 & 104 GB \\
    \hline
    CPU Xeon Phi  5110p & 1 & 8 & 8 GB\\
    \hline
@@ -156,7 +156,7 @@ Using the NVIDIA's Visual Profiler we obtain kernel metrics of the Tesla K20m. T
 As we can see in figure \ref{fig:iniresults} the GeForce GTX 580 is the card with the least amount of time execution, and the Tesla K20m the fastest amongst the Tesla Cards. 
 
 
-include some initial performance metrics with the profiler
+--------include some initial performance metrics with the profiler
 
 The following sections are the optimization techniques or methods applied to the application. In addition demonstrating the comparison between the initial implementation and the modified version. Five versions of the code are describe; Branching, Occupancy, Concurrent Kernels, Shared Memory and Structure of Arrays. Branching refers how the threads are executing and their executing flow in the application. Occupancy number of threads per devices being used. Concurrent Kernels execution several kernels at once. Shared Memory, using as much shared memory as possible. Finally Structure of Arrays modifying the memory allocation in the device.
 
@@ -241,9 +241,9 @@ Firstly, we increase the use of constant memory in the device, this helps redund
 \end{lstlisting}
 
 
-include occupancy results using Visual Profiler.
+-----include occupancy results using The Visual Profiler.
  
-However, the table \ref{tab:threads} illustrate the GeForce 580 threads per block configuration on the initial implementation. The different numbers of threads can change dramatically the performance of the application. Furthermore the optimal configuration for the Fermin cards was 16x16 threads per block and as well for the shared memory and for the Kepler cards was 32x32 threads per block 
+The different numbers of threads per block and as well the number of blocks per grid can dramatically increase or decrease the performance of the application. The table \ref{tab:threads} illustrate the different threads per block configuration on the GeForce GTX 580. The initial configuration for the Fermin and the Kepler was 32x32 threads per block for global memory and 16x16 threads per block for the shared memory. We found, that the optimal configuration for the Fermin cards was 16x16 threads per block and as well for the shared memory and for the Kepler cards was 32x32 threads per block for both memory types.
 
 \begin{table}[h]
 \centering
@@ -262,7 +262,7 @@ However, the table \ref{tab:threads} illustrate the GeForce 580 threads per bloc
     32x32 & 32x32 & \multicolumn{2}{|c|}{Failed}\\
     \hline
   \end{tabular}
-  \caption{GPU Architecture Specifications}
+  \caption{Threads per block configuration on the Fermin architecture}
   \label{tab:threads}
   \end{table}
 
@@ -313,19 +313,18 @@ for (int i  = 0; i < 3; i++)
 \begin{figure}[htbp]
 	\centering
 		\includegraphics[width=0.65\textwidth]{Figures/concurent.png}
-		\rule{35em}{0.2pt}
+		\rule{35em}{0.2pt}s
 	\caption[Streams kernels Tesla K20]{Concurrent kernels in the Tesla K20 using NVIDIA's Visual Profiler.}
 	\label{fig:concurrent}
 \end{figure}
 
-Concurrent kernels demonstrates a very promising technique to achieve a huge performance in the application. However, there are some downsides to this implementation. The figure \ref{ref:waittime} shows how between each kernel execution there is small waiting time between kernels execution. The waiting time is very small time step between 0.5ms to 2ms. Though the time step occurs for each step of RK4 iteration. Furthermore, currently branching the kernel execution process can eliminate this issue.
+Concurrent kernels demonstrates a very promising technique to achieve a huge performance increment in application. However, there are some downsides to this implementation; correctly synchronize kernels, waiting time and hardware resources \cite{practices}. The timeline of the application \ref{ref:waittime} illustrates the waiting time between kernels execution. However, the waiting time are very small time steps between 0.01ms and 0.01ms, but waiting time occurs for each step of the RK4, appears approximate 45,00 times. Furthermore, currently branching the kernel execution process can eliminate this issue.
 
 \begin{figure}[htbp]
 	\centering
 		\includegraphics[width=0.55\textwidth]{Figures/waittime.png}
 		\rule{35em}{0.2pt}
-	\caption[Waiting time concurrent kernels]{Red lines waiting time between each kernel execution
-}
+	\caption[Waiting time concurrent kernels]{Waiting time between each concurrent kernel execution}
 	\label{fig:waittime}
 \end{figure}
 
@@ -334,7 +333,7 @@ Concurrent kernels demonstrates a very promising technique to achieve a huge per
 
 As we know shared memory is faster than global memory, However, shared memory is very limited. To be able to implement shared memory in the kernels, we needed the kernels separated in their x, y and z coordinate as mentioned in the previous section. In addition this allows us to implement shared memory across each kernel, otherwise wouldn't be possible.
 
-The idea behind shared memory is to reduce the amount of global memory calls. This is done by allocating the data from the thread block into a temporary array, which is the shared memory.In addition the kernel can make calculation on this temporary array and write the values onto the global memory. The code of such implementation is illustrated in \ref{lst:shared}. As we know there is no guaranty that threads will execute at the same order. Using $\_\_syncthreads()$ will wait until all threads have completed there task, in this case loading global memory into shared memory. Then we performed operations on the shared memory, and finally save the values in the global memory. Shared memory was used in all the occasions were kernels used extensively global memory.
+The idea behind shared memory is to reduce the amount of global memory calls, which has about 400-600 clock cycles, while the shared memory only 1-32 cycles \ref{fig:memory}. The share memory implementation is accomplish by allocating the data from the thread block into a temporary array, which is the shared memory.In addition the kernel can make calculation on this temporary array and write the values onto the global memory. The code of such implementation is illustrated in \ref{lst:shared}. As we know there is no guaranty that threads will execute at the same order. Using $\_\_syncthreads()$ will wait until all threads have completed there task, in this case loading global memory into shared memory. Then we performed operations on the shared memory, and finally save the values in the global memory. Shared memory was used in all the occasions were kernels used extensively global memory.
 
 \begin{lstlisting}[language=C++, label={lst:shared}, caption={Shared memory}]
 int i = blockIdx.x * blockDim.x + threadIdx.x;
@@ -360,23 +359,23 @@ To calculate the laplacian we need to access a great amount of global memory whi
 	\centering
 		\includegraphics[width=0.3\textwidth]{Figures/shared.png}
 		\rule{35em}{0.2pt}
-	\caption[Shared Memory Strategy]{Shared Memory Strategy }
+	\caption[Shared Memory Strategy]{Shared Memory Strategy for Laplacian evaluation }
 	\label{fig:shared}
 \end{figure}
 
-The code \ref{lst:lapsh} demonstrate how calculate the laplacian with the equation \ref{eq:nn} with the usage of shared memory. As we can see first we load all the global memory onto a a temporary array, the shared memory. The we performed the calculation on the shared memory as mentioned before.
+The code \ref{lst:lapsh} demonstrate how calculate the Laplacian with the equation \ref{eq:nn} with the usage of shared memory. As we can see first we load all the global memory onto a a temporary array, the shared memory. The we performed the calculation on the shared memory as mentioned before.
 
 \begin{lstlisting}[language=C++, label={lst:lapsh}, caption={Laplacian evaluating using shared memory with boundaries condition}]
 if (i >= 0 && i < NX && j >= 0 && j < NY){
     __shared__ double lapS[ THREADS_SHARED * THREADS_SHARED];
     lapS[sIdx] = deltam[Index];
-     __syncthreads();
+    __syncthreads();
 
-    if (threadIdx.x >= 2 && i < threadIdx.x - blockDim.x -2){ \\shared
+    if (threadIdx.x >= 2 && i < threadIdx.x - blockDim.x -2){ //shared
        lapy[idx] = - lapS[sIdx + 2] / 12.0 + 4.0 * lapS[sIdx + 1] / 3.0
 			  	   - 5.0 * lapS[sIdx] / 2.0
 			  	   - lapS[sIdx - 2] / 12.0 + 4.0 * lapS[sIdx - 1] / 3.0;
-	else{ \\global memory
+	else{ //global memory
 		lapy[idx] = - deltam[idx + 2] / 12.0 + 4.0 * deltam[idx + 1] / 3.0
 			  		- 5.0 * deltam[idx] / 2.0
 			  		- deltam[idx - 2] / 12.0 + 4.0 * deltam[idx - 1] / 3.0;
@@ -481,6 +480,8 @@ This section is the overview of the optimization results compared with each vers
 \end{figure}
 
 The initial Visual Profiler test \ref{fig:iniresults} illustrated us that the laplacian evaluating obtain about half of the overall simulation time. However, in the final optimization \ref{fig:final} the laplacian was reduced from 44.37$\%$ to 26.24 $\%$ execution time. The same occur for the Runge and Kutta term evaluation. Furthermore, the $gsdExchangeFull$ incremented from 13.37$\%$. 23.35$\%$, which is not necessary good. The increment is due to shift in stream operators, the  $gsdExchangeFull$ is being process in the default stream cero, while the others on stream one through three. 
+
+---include final thread occupancy in the table.
 
 \begin{figure}[htbp]
 	\centering
