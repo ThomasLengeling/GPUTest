@@ -18,16 +18,15 @@ Frequently GPUs are know for 3D graphics rendering, video games and video editin
 
 \section{Motivation}
 
-
 The GPU has been essential part of personal computer since the early use. Over the course of 30 years the graphics architecture has evolve form drawing a simple 3D scene to be able to program each part of the GPU graphics pipeline. Their role became more important in the 90s with the first-person shooting video game DOOM by id Software. The demanding video game industry has brought year by year more realistic 3D graphics. Consequently new innovated hardware capabilities has been developed to increase the graphics pipeline and the render output. This lead to a more sophisticated programming environment with a massive parallel capabilities.
 
-The fixed graphics pipeline (fixed functions on the GPU) was introduced in the early 90s, allowed various customization of the rendering process. However only allowed some modifications of the GPU output. Specific adjustment were extremely complicated did not allow custom algorithms. In 2001 NVIDIA and ATI (AMD) introduced the first programmability to the graphics pipeline. Which could control millions pixels and vertex output in a single frame, moreover it out-performed the CPU in rending video. In addition graphics shift from the CPU to the GPU. This was the beginning of GPU parallel capabilities.
+The fixed graphics pipeline (fixed functions on the GPU) was introduced in the early 90s, allowed various customization of the rendering process. However only allowed some modifications of the GPU output. Specific adjustment were extremely complicated did not allow custom algorithms. In 2001 NVIDIA and ATI (AMD) introduced the first programmability to the graphics pipeline. Which could control millions pixels and vertex output in a single frame, moreover it out-performed the CPU in rending video. In addition graphics shift from the CPU to the GPU. This was the beginning of GPU parallel capabilities \cite{Nickolls}.
 
-At first the GPUs where only used for general-purpose computing like computer graphics, but in-till resent years the GPU has been used to accelerate scientific research, analytics, engineering, robotics and consumer applications.(GPGPU)\cite{physicsgpu}.
+At first the GPUs where only used for general-purpose computing (GPGPU) like computer graphics, but in-till resent years the GPU has been used to accelerate scientific research, analytics, engineering, robotics and consumer applications \cite{physicsgpu}.
 
 GPUs are attractive for certain type of scientific computation as they offer potential seed-up of multi-processors devices with the added advantages of being low cost, low maintenance, energy efficient, and relative simple to program. Many algorithms in applied physics are using GPUs to improve their performance over the CPU. Some area of scientific research that obtain the benefit of heterogenous computing are: Molecular Dynamics, Quantum Chemistry, Computational Structural Mechanics and Computational Physics \cite{applications}.
 
-In any case, for a given simulation a compromise between speed and accuracy is always made. The current tendency of the CPU relies on increases the clock seeped, decreasing the size of transistor and finally adding more cores per unit and be able to work and a parallel manner, because of the there are some limitations\cite{quantitative}
+In any case, for a given simulation a compromise between speed and accuracy is always made. The current tendency of the CPU relies on increasing the clock speed, decreasing the size of transistor and finally adding more cores per unit and be able to work and a parallel manner. Because of this there are limitations \cite{quantitative}.
 
 \begin{description}
   \item[Power Wall] \hfill \\
@@ -43,17 +42,17 @@ In any case, for a given simulation a compromise between speed and accuracy is a
 
 
   \item[Memory Wall] \hfill \\
-  This refers to the growing disparity of speed between CPU  and the memory outside the CPU chip. Some applications have become memory bound, that is to say computing time is bounded by the transfer memory between the CPU and all the hardware devices connected to the CPU, commonly to the Peripheral Component Interconnect (PCI) chip. In conclusion the computing time is bounded by the memory not by the time calculations done on the CPU.
+  This refers to the growing disparity of speed between CPU  and the memory outside the CPU chip. Some applications have become memory bound, that is to say computing time is bounded by the transfer memory between the CPU and all the hardware devices connected to the CPU, commonly to the Peripheral Component Interconnect (PCI) chip. In conclusion, the computing time is bounded by the memory and not by the time calculations performed on the CPU.
 
   \item[Parallelism Wall] \hfill \\
-  This indicates a law that indicates the number of parallel processes. The number N parallel processes is never ideal and always depends on the problem.  The seed-up can be described by Amdahl's Law in terms of the fraction of parallelized work (f). \cite{quantitative}.
+  This indicates a law that indicates the number of parallel processes. The number N parallel processes is never ideal and always depends on the problem.  The seed-up can be described by Amdahl's Law in terms of the fraction of parallelized work (f) \cite{quantitative}.
 
   $$speedup \leq \frac{N}{f + N(1-f)}$$
 
 
 \end{description}
 
-The current paradigm of using CPUs for computing is growth unsustainable. In 2012, Japan among the countries with elite supercomputers, builded the machine "K Computer", with 705,024 multi-core CPUs, it can achieve 11.3 petaflops ($10^5$ flops). Furthermore the computer is one of the most power efficient supercomputer in the world with a total of 12.66 megawatts (MW), in other words 830 Mflops/watt. This is this is enough to power a small town of 10,000 homes. If the current thread of power use continues, the next supercomputer would require 200 MW of power, this would require a nuclear power reactor to run it.\cite{whatexascale}. However in 2013 Oak Ridge Nacional Laboratory (U.S) built a supercomputer that combines CPUs and GPUs, the Titan. It can archive an astonish 24 petaflops theoretical peak. Moreover with a power consumption of 8.2 MW. As showed is possible to built a supercomputers that combines CPUs and GPUs, which has a higher performance and lower power consumption compared to a CPU based supercomputer. \cite{titan}
+The current paradigm of using CPUs for computing is growth unsustainable. In 2012, Japan among the countries with elite supercomputers, builded the machine "K Computer", with 705,024 multi-core CPUs, it can achieve 11.3 petaflops ($10^5$ flops). Furthermore the computer is one of the most power efficient supercomputer in the world with a total of 12.66 megawatts (MW), in other words 830 Mflops/watt. This is this is enough to power a small town of 10,000 homes. If the current thread of power use continues, the next supercomputer would require 200 MW of power, this would require a nuclear power reactor to run it \cite{whatexascale}. However, in 2013 Oak Ridge Nacional Laboratory (U.S) built a supercomputer that combines CPUs and GPUs, the Titan. It can archive an astonishing 24 petaflops theoretical peak performance. Moreover, with a power consumption of 8.2 MW. They demonstrated that is possible to built a supercomputers that combines CPUs and GPUs, which enables a  higher performance and lower power consumption compared to a CPU based supercomputer \cite{titan}.
 
 As said the GPU exceeds the CPU in calculations per second FLOPS with a low energy consumption. However the GPU is designed to launch small amounts of data in parallel with only several instructions, in other words the GPU swap, switch threads very fast and they are extremely lightweight. In a typical system, thousands of threads are waiting to work. While the CPU only run up-to 24 threads on a hex-core processor. They can execute a single operation on comparatively large set of data with only one instruction. Although this can be extremely cost-wise operation on the GPU.
 
@@ -62,7 +61,7 @@ As said the GPU exceeds the CPU in calculations per second FLOPS with a low ener
 A insight of the architecture of GPU can give a idea of  why it outperforms the CPU on various benchmarking.
 
 The GPU, unlike its CPU cousin, has thousands for registers per SM (streaming multiprocessor), this are arithmetic processing units. An SM can thought of like a multi-thread CPU core. On a typical CPU has two, four, six or eight cores. On a GPU as many as N SM core. We can see this in the figure \ref{fig:gpu_cpu}. For a particular calculation, all the stream
-processors within a group execute exactly the same instruction on a particular data stream, then the data is sent to the upper level, the host (CPU). \cite{cook}
+processors within a group execute exactly the same instruction on a particular data stream, then the data is sent to the upper level, the host (CPU) \cite{cook}.
 
 As commonly named CUDA cores are the number of processors in a single NVIDIA GPU chip. For example one of the first GPU capable of running CUDA code was the NVIDIA 9800 GT, which had 112 cores, while the latest high-end GPU GTX 980 has 2048 cores.
 
@@ -88,16 +87,14 @@ Being able to efficiently use a GPU for an application requires to expose the in
 \end{figure}
 
 
-On the GPU precision and optimization are very important but there is a penalty for choosing performance or precession. All the GPUs are optimized for single precision floating operations, 24 bit size, Also provides double precision point, size of  53 bits. This is using the standard notation IEEE 754. Normally the GPU uses single precession(SP) by default, if chosen double precision (DP), normally there is a penalty of  2x - 4x seed-up. \cite{precision}
-Libraries such as CUBLAS and CUFFT provides useful information how NVIDIA handles floating point operations under the hood.
+On the GPU precision and optimization are very important but there is a penalty for choosing performance or precession. All the GPUs are optimized for single precision floating operations, 24 bit size, Also provides double precision point, size of  53 bits. This is using the standard notation IEEE 754. Normally the GPU uses single precession(SP) by default, if chosen double precision (DP), normally there is a penalty of  2x - 4x seed-up\cite{precision}. Libraries such as CUBLAS and CUFFT provides useful information how NVIDIA handles floating point operations under the hood.
 
 
 \section{Programming on GPUs}
 
-There exist, among many, two main computing platforms, NVIDIA's Compute Unified Device Architecture (CUDA), and Khronos's Open Computing Language (OpenCL). NVIDIA's CUDA provides the necessary tools, frameworks and library to programs parallel computing, but for there GPUs. While OpenCL is a open standard framework meaning that is possible to do parallel computing on other GPUs, like on AMD cards. Programmers can easily port their code to others graphics cars.  However CUDA has more robust debugging and profiling for GPGPU computing. This two frameworks are developed to be close to the hardware layer, using C programming language. CUDA provides both a low level API and a higher level API. Those who are familiar to OpenCL and CUDa, can easily modify their code to work on either platform.\cite{hwu}
+There exist, among many, two main computing platforms, NVIDIA's Compute Unified Device Architecture (CUDA), and Khronos's Open Computing Language (OpenCL). NVIDIA's CUDA provides the necessary tools, frameworks and library to programs parallel computing, but for there GPUs. While OpenCL is a open standard framework meaning that is possible to do parallel computing on other GPUs, like on AMD cards. Programmers can easily port their code to others graphics cards.  However, CUDA has more robust debugging and profiling for GPGPU computing. The two frameworks are developed to be close to the hardware layer, using the C programming language as primarily programming language. Furthermore, CUDA provides both a low level API and a higher level API. Those who are familiar to OpenCL and CUDa, can easily modify their code to work on either platform \cite{hwu}.
 
-
-The CUDA programming model views the GPU as an accelerator processor which calls parallel programs  throughout all the SMI. This programs are only called on the device and are called kernels, which launch a large amounts of threads to execute CUDA code. The basic idea of programming on a GPU is simple. We can observer this in the figure \ref{fig:cycle}
+CUDA programming model views the GPU as an accelerator processor which calls parallel programs throughout all the SMI \cite{handbook}. In addition, this programs are only launched on the device (GPU) and are named as kernels. The kernels are executed across a large amount of threads, which contains the CUDA code. The basic idea of programming on a GPU is simple. We can observer this in the figure \ref{fig:cycle}.
 
 \begin{figure}[htbp]
 	\centering
@@ -115,9 +112,9 @@ The CUDA programming model views the GPU as an accelerator processor which calls
 \item Return the data from the device to the host.
 \end{itemize}
 
-The structure of CUDA reflects the coexistence of CPU and GPUs. The CUDA code is a mixture of both host code and device code. The CUDA C compiler is called NVCC. The host code is the standard low level ANSI C language. The device code is marked is CUDA keywords for identifying data-parallel functions and has a extension file .cu.
+The structure of CUDA reflects the coexistence of CPU and GPUs. The CUDA code is a mixture of both host code and device code. Moreover, the device code is an extension of the C compiler with additional namaspaces/CUDA keywords for parallel code, the CUDA compiler is called NVCC. The host code is the standard low level ANSI C language. However, is possible to program applications in C++, python and Fortran. While the standard c code has extension marked as .c for source and .h for headers files, the CUDA code has extensions of .cu for source files and .cuh.
 
-When a kernel is launched, executed by a large amount of threads, where they are organized as a one, two or three dimensional grid of thread blocks. A thread is the simplest executing process. It consists of the code of the program, the particular point where the code is being executed. \cite{hwu}. Many threads form a block, and many blocks form a grid. CUDA handles the execution of the random-access threads, which take up-to very few clock cycles in comparison to CPU threads. The threads per block can be observer in figure \ref{fig:grid}. All the threads in a kernel can access the global memory, figure \ref{fig:arch}.
+When a kernel is launched or executed by a large amount of threads, where they are organized as a one, two or three dimensional grid of thread blocks. A thread is the simplest executing process. It consists of the code of the program, the particular point where the code is being executed \cite{hwu}. Many threads form a block, and many blocks form a grid. CUDA handles the execution of the random-access threads, which take up-to very few clock cycles in comparison to CPU threads. The threads per block can be observer in figure \ref{fig:grid}. All the threads in a kernel can access the global memory, figure \ref{fig:arch}.
 
 Each of the threads can be access by implicit variable that identifies its position within the thread block and its grid. In a case of 1-D block. \cite{example}
 
@@ -131,7 +128,7 @@ $$blockIdx.x \times blockDim.x + threadId.x$$
 	\label{fig:grid}
 \end{figure}
 
-In CUDA. host and device have separate memory spaces. This can bee seen on the host and device with the DRAM(Dynamic random-access memory) data. For example a NVIDIA GTX 660m comes with 2GB of memory, which is the global memory for the device. As told the host and device allocates data. The programmer needs to send data from the host memory to the device's global memory. We can see this in the figure  \ref{memorySpace:arch}.  Once the memory is transfer back to the host, is completely necessary to free the memory from the device and host. This is typically done with free or delete on C/C++. The CUDA's Application Programming Interface (API) functions performs this activities on behalf of the programmer.   \cite{hwu}
+In CUDA, host memory and device memory (all types) have separate memory spaces. Both of them have physically a separated location, for example, the RAM for either the CPU o the GPU. Furthermore, the programmer requires to send data from the host memory to the device's global memory (RAM) and vi-versa. The process is illustrated in figure \ref{memorySpace:arch}. Memory which is allocated in the device needs to be freed on the device, the same occurs for the host memory. Moreover, the process is accomplish with similar devices operations, free or delete in C/C++. Some of this operations are performed by CUDA's Application Programming Interface (API) on behalf of the programmer \cite{hwu}.
 
 \begin{figure}[htbp]
 	\centering
@@ -143,7 +140,7 @@ In CUDA. host and device have separate memory spaces. This can bee seen on the h
 
 \subsection{CPU and GPU multithread comparison}
 
-The current CPUs are typically multicore systems, which are capable of parallelizing code fairly easy. Suggest a parallel system. However we would require a large infrastructure  \cite{example}. For example, if we want to implement a simple vector addition using the CPU cores, we would requiere to compute a portion of the code on each code, one core the evens and the other core the odds, see figure \ref{fig:cpu}. Furthermore, this makes the implementation difficult to scale and require many cores, which are not so easily available after a 8 core system. 
+The current CPUs are typically multicore systems, which are capable of parallelizing code fairly easy. Suggest a parallel system. However we would require a large infrastructure  \cite{example}. For example, if we want to implement a simple vector addition using the CPU cores, we would require to compute a portion of the code on each code, one core the evens and the other core the odds, see figure \ref{fig:cpu}. Furthermore, this makes the implementation difficult to scale and require many cores, which are not so easily available after a 8 core system. 
 
 \begin{figure}[htbp]
 	\centering
@@ -154,21 +151,28 @@ The current CPUs are typically multicore systems, which are capable of paralleli
 \end{figure}
 
 
-
+On the GPU we are able to accomplish the same result of the CPU with lest amount of code. The code \ref{lst:gpu} demonstrate how to evaluate a addition of two matrices. $a$ and $b$, then return the result in the matrix $c$. The difference between the codes, is that the GPU executes the kernel across all threads configured by the kernel call. Moreover, enables a highly parallel process with just a couple lines of code. 
 
 \begin{lstlisting}[language=C++, label={lst:gpu}, caption={GPU parallel capabilities}]
 __global__ void add( int *a, int *b, int *c ) {
 	int tid = blockIdx.x;
- 	if (tid < N)
- 		c[tid] = a[tid] + b[tid];}
+	if (tid < N)
+		c[tid] = a[tid] + b[tid];}
+\end{lstlisting}
+
+For example, to execute a kernel with 32 x 32 threads per block and 15 x 4 blocks per grid, we just include the block and the threads dimensions when calling the kernel in the main loop \ref{lst:kernel}. Finally, the kernel will spam the CUDA code across all the configured threads.
+
+\begin{lstlisting}[language=C++, label={lst:kernel}, caption={kernel call}]
+dim3 blocks(15, 4);
+dim3 threads(32, 32);
+add<<< blocks2, threads, 0 >>>(A, B, C);
 \end{lstlisting}
 
 
+\vspace{3.2em}
 
 
-
-
-Finally, this chapter provided a overview of heterogeneous programming in a modern context. CUDA  enhance the C language with parallel computing support. Which is possible to launch  enormous amounts of parallel threads, oppose of few threads on the CPU. The number of GPU cores will continue to increase in proportion to increase in available transistors as silicon process improve. In addition, GPUs will continue to go through vigorous architectural evolution. Despite their demonstration high performance on data-parallel applications \cite{hwu}.
+To conclude, this chapter provided a overview of heterogeneous programming in a modern context. CUDA  enhance the C language with parallel computing support. Which is possible to launch  enormous amounts of parallel threads, oppose of few threads on the CPU. The number of GPU cores will continue to increase in proportion to increase in available transistors as silicon process improve. In addition, GPUs will continue to go through vigorous architectural evolution. Despite their demonstration high performance on data-parallel applications \cite{hwu}.
 
 
 
