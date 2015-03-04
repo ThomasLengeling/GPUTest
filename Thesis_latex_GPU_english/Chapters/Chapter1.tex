@@ -141,13 +141,13 @@ In CUDA. host and device have separate memory spaces. This can bee seen on the h
 	\label{fig:memorySpace}
 \end{figure}
 
-\subsectiont{CPU and GPU multithread comparison}
+\subsection{CPU and GPU multithread comparison}
 
-The current CPUs are typically multicore systems, which are capable of parallelizing code fairly easy. Suggest 
+The current CPUs are typically multicore systems, which are capable of parallelizing code fairly easy. Suggest a parallel system. However we would require a large infrastructure  \cite{example}. For example, if we want to implement a simple vector addition using the CPU cores, we would requiere to compute a portion of the code on each code, one core the evens and the other core the odds, see figure \ref{fig:cpu}. Furthermore, this makes the implementation difficult to scale and require many cores, which are not so easily available after a 8 core system. 
 
 \begin{figure}[htbp]
 	\centering
-		\includegraphics[width=0.6\textwidth]{Figures/cpu.png}
+		\includegraphics[width=0.65\textwidth]{Figures/cpu.png}
 		\rule{35em}{0.5pt}
 	\caption[CPU Thread execution]{CPU thread execution}
 	\label{fig:cpu}
@@ -165,7 +165,7 @@ __global__ void add( int *a, int *b, int *c ) {
 
 
 
- \cite{example}}
+
 
 
 Finally, this chapter provided a overview of heterogeneous programming in a modern context. CUDA  enhance the C language with parallel computing support. Which is possible to launch  enormous amounts of parallel threads, oppose of few threads on the CPU. The number of GPU cores will continue to increase in proportion to increase in available transistors as silicon process improve. In addition, GPUs will continue to go through vigorous architectural evolution. Despite their demonstration high performance on data-parallel applications \cite{hwu}.
