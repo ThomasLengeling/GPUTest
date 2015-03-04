@@ -13,22 +13,22 @@ This chapter is a brief overview of the theory of spintronics and the study of D
 
 Now as we know, each electron not only carries an elementary
 unit of charge $e$, but also carries an elementary unit of angular momentum. Whenever we produce an electrical current by inducing
-motions of electrons, it could indeed be viewed as a collection of little magnets that are moving around. In other words, any electron charge transport is simultaneously accompanied by a transport of spin, or magnetic moment carried (passing electron) by these electrons\cite{cornell}.
+motions of electrons, it could indeed be viewed as a collection of little magnets that are moving around. In other words, any electron charge transport is simultaneously accompanied by a transport of spin, or magnetic moment carried (passing electron) by these electrons \cite{cornell}.
 
 \subsection{Spintronics}
 
-Spintronics is a new type of electronics that exploits the spin degree of freedom of an electron in addition to its charge. \cite{spinz}. The interest is motivated by the quest to understand basic physical principles underlying the electron and nuclear spin interactions in materials and by possible technological applications. The field of spintronics has attracted massive interest since the discovery of giant magnectroresistence (GMR) effect in 1988 by Albert Fert and Peter Gr\"{u}nberg who were awarded the 2007 Nobel Prize in physics. The GMR effect has been widely used in hard disk drives (HDD) which have brought a huge impact on industries and consumer electronics. Spintronics is a promising technology which will complement the present electronics with addition "spin" quantum freedom to charge freedom that is currently used in devices \cite{nonlocalspin}.
+Spintronics is a new type of electronics that exploits the spin degree of freedom of an electron in addition to its charge \cite{spinz}. The interest is motivated by the quest to understand basic physical principles underlying the electron and nuclear spin interactions in materials and by possible technological applications. The field of spintronics has attracted massive interest since the discovery of giant magnectroresistence (GMR) effect in 1988 by Albert Fert and Peter Gr\"{u}nberg who were awarded the 2007 Nobel Prize in physics. The GMR effect has been widely used in hard disk drives (HDD) which have brought a huge impact on industries and consumer electronics. Spintronics is a promising technology which will complement the present electronics with addition "spin" quantum freedom to charge freedom that is currently used in devices \cite{nonlocalspin}.
 
  Spin current which is a flow of spin angular momentum, is generated in addition to the charge current. The spin current normally appears in ferromagnets. However, it can also be generated also in non-magnets. The simplest method of generating a spin-polarized current in a metal is to pass the current throughout a ferromagnetic material. A common application is the GMR as mentioned before \cite{handbookspin}.
  
 Spin polarized transport occurs naturally in any materials which have a spin imbalance between spin-up and spin-down at the fermi Level. It occurs and spin-down electrons is often nearly identical, but the states are shifted in energy with respect to each other. Fermi level is the term used to describe the top of the collection of electron energy levels at absolute zero temperature \cite{handbookspin}.
 
 
-Amongst the rapidly growing variety of proposed and developed spin structures, nonlocal spin detection devices, where measurement and current excitation paths are spatially separated, have recently gained a prominent position. \cite{nonlocalspin}.
+Amongst the rapidly growing variety of proposed and developed spin structures, nonlocal spin detection devices, where measurement and current excitation paths are spatially separated, have recently gained a prominent position\cite{spinz}.
 
 \subsection{Domain Wall}
 
-An abrupt in magnetization at the boundary of two anti-aligned domains is not a favorable condition. Domain walls form between such domains as means of minimizing the energy of the two anti-aligned domains. Domains walls are transitions layers in which the magnetization changes gradually from on magnetization to another. In other words the boundaries between regions of uniform magnetization.  The gradual change prevents the large increase in exchange energy that would accompany an abrupt change in the magnetization angle. Common domain wall geometric include Bloch walls, N$\acute{e}$el walls and vortex walls\cite{spindomain}. In this study only two DW are analyzed Vortex Wall and Asymmetric Transverse Wall.
+An abrupt in magnetization at the boundary of two anti-aligned domains is not a favorable condition. Domain walls form between such domains as means of minimizing the energy of the two anti-aligned domains. Domains walls are transitions layers in which the magnetization changes gradually from on magnetization to another. In other words the boundaries between regions of uniform magnetization. The gradual change prevents the large increase in exchange energy that would accompany an abrupt change in the magnetization angle. Common domain wall geometric include Bloch walls, N$\acute{e}$el walls and vortex walls\cite{spindomain}. In this study only two DW are analyzed Vortex Wall and Asymmetric Transverse Wall.
 
 \begin{description}
   \item[Vortex Wall (VW)] \hfill \\
@@ -36,7 +36,6 @@ An abrupt in magnetization at the boundary of two anti-aligned domains is not a 
    
  \item[Asymmetric Transverse Wall (ATW)] \hfill \\
  The transverse wall has a reflection symmetry about a line perpendicular to the strip axis, and a lack of symmetry about the center line of the strip. However, asymmetric transverse wall, is the absence of such symmetry, figure \ref{fig:dw}.
- 
 \end{description}
 
 \begin{figure}[htbp]
@@ -60,6 +59,8 @@ The spin-depended, spatially varying potential inherent on a domain wall has int
 This has simulated research into domain wall (DW) dynamics, particularly those resulting from interactions with current passing through the DW via the phenomenon of spin momentum transfer (SMT) \cite{handbookspin}.
  
  The success of spintronics untimely depends on out ability to precisely  control the polarization of electrons transported within the actual thin film structure \cite{ferro}.
+ 
+ 
 \section{Domain Wall Dynamics under Nonlocal STT}
 
 
@@ -71,45 +72,17 @@ The inclusion of STT into micromagnetics has up to now been performed with local
 	\frac{\partial \vec{m}}{\partial t} = \gamma_0\vec{H}_{eff} \times \vec{m} + \alpha \vec{m} \times \frac{\partial \vec{m}}{\partial t} - \vec{T}
 \end{equation}
 
-This novel idea of incorporating spin torque into the LLG equation has itself been incorporated into a model proposed by Zhang - Li in 2004 \cite{zhang2004}. The LLG equation \ref{eq:llg} is incorporated effects of a spin-polarized current in a magnetic system, and the resulting spin transfer. They develop a form for the spin torque based on the spatial variation the magnetization, as especially appropriate approach for domain walls. Then in 2005 the same authors Zhang - Li extended this idea  working out the diference between the adiabatic and non-adiabatic torque contributions. This leads to an even longer magnetization dynamics equation. \cite{zhang}. \cite{spindomain}.
+This novel idea of incorporating spin torque into the LLG equation has itself been incorporated into a model proposed by Zhang - Li in 2004 \cite{zhang2004}. The LLG equation \ref{eq:llg} is incorporated effects of a spin-polarized current in a magnetic system, and the resulting spin transfer. They develop a form for the spin torque based on the spatial variation of the magnetization, as especially appropriate approach for domain walls. Then in 2005 the same authors Zhang - Li extended this idea  working out the difference between the adiabatic and non-adiabatic torque contributions. Which lead to an even longer magnetization dynamics equation\cite{zhang} \cite{spindomain}.
 
 \begin{equation} \label{eq:zhang}
  \frac{\partial \delta \vec{m} }{\partial t} =  D_{0}\bigtriangledown^{2} \delta \vec{m} - \frac{1}{\tau_{sd}} \delta \vec{m} \times \vec{M} - \frac{1}{\tau_{sf}}\delta \vec{m} +(\vec{\mu} \cdot\vec{\bigtriangledown} )\vec{M}
 \end{equation}
-represents the non-adiabatic spin torque.
 
+The equation \ref{eq:zhang} is referred to Zhang - Li model. Represents the non-adiabatic spin torque.
 
+Therefore, a simultaneous solution of the diffusive Zhang and Li model together with the magnetization dynamics equation has uncovered a qualitatively new feature of the spin-transfer torque effect in the presence of spin diffusion. Spin diffusion is a process by which magnetization can be exchanged spontaneously between spin.
 
-with $\vec{m} = \vec{M}/M_s$
-
-
- Within a nano-strip, on the other hand, a moving (DW), because it concentrates all of the magnetization non-uniformity, acts as a built-in detector of spin torques. application racetrack, ,
-  All in all, however, micromagnetics and spin-polarized transport need to be suitably admixed for a meaningful comparison between theoretical expectations and experiments.
- 
-
-the SST as a function of the local magnetization only. 
-
-
-We Quantitatively test the effects of spin diffusion, on real Domain walls structures, this is done by numerically solve the Zhang-Li model \cite{zhang} into micro-magnetics.
-
-Zhang and Li, in their 2004 paper [110]
-spin torque based on the spatial variation the magnetization, as especially appropriate approach for domain walls.
-
-\section{Numerical Solution}
-
- These works all refer to samples consisting in piecewise uniform layers or blocks, magnetic or not. Of special significance to the present work in the non-collinear geometry where a spin current with polarization transverse to the magnetization exists, whose absorption in the vicinity of the surface of a magnetic layer creates a torque on the magnetization, known as spin transfer torque (SFF).  \cite{claudio}. This phenomenon is usually understood as a consequence of angular momentum conservation. the direction of the current polarization is therefore changed, or rotated by the free layer, which exerts a torque on the spin of the current.\cite{nonlocalspin}. Spin-transfer torque is a torque that exerts on a magnetization by conduction electron spins, in other words the angular momentum transferred from spins to magnetic  moment. \cite{zhang}.
-
-\begin{equation}
-D_{0}\bigtriangledown^{2} \delta \vec{m}  \frac{1}{\tau_{sd}} \delta \vec{m} \times \vec{M} + \frac{1}{\tau_{sf}}\delta \vec{m} = -\frac{\mu_{B}P}{e}(j_{e} \cdot \bigtriangledown) \vec{M}
-\end{equation}
-
-
-The equation is physically realistic however computationally expensive.
-
-
-The numerical method used for the solution is a the method known as Finite Differences in the Time Domain (FDTD) whose integration is done using a 4th order Runge-Kutta integration.
-
-
+The sample that is considerate is a 300 nm wide and 5 nm tick NiFe soft nanostrip. This dimensions are widely used for experimental use.
 
 Asymmetric Transverse Wall (ATW), maps of magnetization components of non equilibrium spin accumulation under a uniform current density with $D = 0, 1$ and $10 nm^2 / ps$. Figure \ref{fig:atw}.
 
@@ -131,18 +104,11 @@ Vortex Wall (VW) same as for ATW, we point out the noticeable effect of the diff
 	\label{fig:vw}
 \end{figure}
 
-The sample that is considerate is a 300 nm wide and 5 nm tick NiFe soft nanostrip. This dimensions are widely used for experimental use.
+\section{Numerical Solution}
 
-Therefore, a simultaneous solution of the diffusive Zhang and Li model together with the magnetization dynamics equation has uncovered a qualitatively new feature of the spin-transfer torque effect in the presence of spin diffusion.
+We Quantitatively test the effects of spin diffusion, on real Domain walls structures, this is done by numerically solve the Zhang-Li model into micro-magnetics, using the equation \ref{eq:zhang}. The equation is physically realistic however computationally expensive.
 
-
-Spin diffusion is a process by which magnetization can be exchanged spontaneously between spin
-
-
-
-%The implementation of the GPU of Dr. Claudio is based on launching several kernels into a single GPU node.
-
-
+The numerical method used for the solution is a the method known as Finite Differences in the Time Domain (FDTD) whose integration is done using a 4th order Runge-Kutta integration.
 
 \subsection{Finite differences in the time domain}
 
@@ -246,7 +212,7 @@ Similarly, for a point closet to boundary, reference \ref{fig:bound}-c, grid poi
 
 In both cases, and second derivatives and fully determined provided $f^{(1)}(x_R)$ be known along the boundary. For further reference \cite{methods}. The implementation to solve the laplacian with boundaries conditions check chapter 4.
 
-The main advantages of the finite difference approach are ease of implementation, simplicity of meshing, efficient evaluation of the magnetization energy, and the accessibility of higher order methods. the main disadvantage of this approach is the sampling curved boundaries with a rectangular mesh, resulting in some what discrete  approximation, which ca produce significant error in the computation .
+The main advantages of the finite difference approach are ease of implementation, simplicity of meshing, efficient evaluation of the magnetization energy, and the accessibility of higher order methods. the main disadvantage of this approach is the sampling curved boundaries with a rectangular mesh, resulting in some what discrete  approximation, which ca produce significant error in the computation.
 
 \subsection{Fourth order Runge and Kutta method}
 
@@ -296,6 +262,9 @@ We show that and effective non-adiabatic parameter $\beta_{diff}$ dependent on t
 \begin{equation} \label{eq:beta}
 (\beta \upsilon)^{*} = \frac{\delta\vec{m} \cdot \partial_x \vec{m}}{\tau_{sd} \| \partial_x \vec{M} \|^2}
 \end{equation}
+
+
+--fill final calculation.
 
 
 The procedure is (i) compute the non-equilibrium spin density $\delta \vec{m}$ with the DW at rest, solve equation \ref{eq:zhang} to convergence or directly its time-independent version. (ii) compute the $\beta_{diff}$ distribution from equation \ref{eq:beta} and finally compute $\beta_{diff}$ by averaging with the $| \partial_x \vec{m}|^2$ weight function.

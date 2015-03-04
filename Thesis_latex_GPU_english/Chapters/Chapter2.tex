@@ -1,11 +1,9 @@
 % Chapter Template
-
 \chapter{Heterogeneous Performance Analysis and Practices} % Main chapter title
 
 \label{Heterogeneous Performance Analysis and Practices} % Change X to a consecutive number; for referencing this chapter elsewhere, use \ref{ChapterX}
 
 \lhead{Chapter 2. \emph{Heterogeneous Performance Analysis and Practices}} % Change X to a consecutive number; this is for the header on each page - perhaps a shortened title
-
 %----------------------------------------------------------------------------------------
 %	SECTION 1
 %----------------------------------------------------------------------------------------
@@ -79,7 +77,7 @@ $$effective-bandwidth = ((Br - Bw) / 109 )/time$$
 
 Where Br is the number of bytes read per kernel, Bw is the number of bytes written per kernel and  t is the elapsed time given in seconds\cite{fortran}.
 
-In practice the difference between theoretical bandwidth and effective bandwidth indicated how much bandwidth is wasted on accessing memory and calculations. If the effective bandwidth is low compared to the theoretical bandwidth is one indication that there is not enough work being done in the GPUs. There a several solutions, analyze the code to make more parallelize instructions, execute more computational instructions on the GPUs, finally analyze the number of threads per block that are executing on execute kernels .
+In practice the difference between theoretical bandwidth and effective bandwidth indicated how much bandwidth is wasted on accessing memory and calculations. If the effective bandwidth is low compared to the theoretical bandwidth is one indication that there is not enough work being done in the GPUs. In addition there a several solutions; analyze the code to make more parallelize instructions, execute more computational instructions on the GPUs, finally analyze the number of threads per block that are executing on execute kernels.
 
 %----------------------------------------------------------------------------------------
 %	SECTION 2
@@ -96,7 +94,7 @@ In this section four types of memory handling are going to be explained,  global
 	\label{fig:cores}
 \end{figure}
 
-Global memory is very large in comparison to the shared memory, which is on he L1 cache. However, the global memory is far away from the registers and from the CUDA core locations. Moreover, the memory access is very slow in comparison to the shared memory \cite{cook}.
+Global memory is very large in comparison to the shared memory, which is on the L1 cache. However, the global memory is far away from the registers and from the CUDA core locations. Moreover, the memory access is very slow in comparison to the shared memory \cite{cook}.
 
 The figure \ref{fig:memory} illustrates each memory type has it's bandwidth penalty of used as well as the latency in computer cycles. Different memory types can be used in different applications to maximize the memory used. The Shared Memory is very limited so it cannot be handler across all situations. Furthermore, when implementation wrong memory type on the device there can be latency penalty and bandwidth drop, instead of having a gain in performance.
  
@@ -178,21 +176,19 @@ Threads synchronization can also be accomplish inside of the kernels calls. The 
 
 \section{Concurrent Kernels}
 
-As we seen kernels are executed in a sequential form with parallel instructions. With CUDA's streams is possible to launch several kernels in parallel, overlap kernel in the same launch sequence. As illustrated in Figure \ref{fig:streams}.
+Kernels are executed in a sequential form with parallel instructions. In addition, with CUDA's streams is possible to launch several kernels in parallel, in other words, overlap kernel in the same launch sequence. As the figure \ref{fig:streams} illustrates.
 
 \begin{figure}[htbp]
 	\centering
 		\includegraphics[width=0.55\textwidth]{Figures/streams.png}
 		\rule{35em}{0.5pt}
-	\caption[Concurent Kernels]{Overlaping kernel execution using CUDA streams}
+	\caption[Concurrent Kernels]{Overlapping kernel execution using CUDA streams}
 	\label{fig:streams}
 \end{figure}
 
-To overlap kernel execution and data transfers, in addition to pinned host memory, the data transfer and kernel must use different, non-default streams. Non-default streams are required for this overlap because memory copy, memory set functions, and kernel calls that use the default stream begin only after all preceding calls on the device (in any stream) have completed, and no operation on the device (in any stream) commences until they are finished. The following is an example of overlapping kernel
-execution and data transfer. As the \ref{fig:streams} shows. \cite{hwu}
+A stream in CUDA is a sequence of operations that execute on the device in the order in which they are issued by the host code. Every kernel is launch on the default stream zero. Hence, to overlap kernel execution, non-default streams should be used for every kernel launch. To accomplish concurrent kernels, streams should be pinned to a non-default stream (non zero)\cite{hwu}. 
 
-
-By using two or more CUDA streams, we can allow the GPU to simultaneously execute a kernel while performing a copy between the host and the GPU. We need to careful about two things. First, the host memory involved needs to be allocated, since we will queue our memory copies, we need to asyncronize those copies. Second. we need to be aware that the order in which we add operations to our streams will affect out capacity to achieve overlapping of copies and kernel execution. The general guideline involves a breadth-first, or round robin, to assign work and queue work to the kernels. \cite{example}
+By using two or more CUDA streams, we can allow the GPU to simultaneously execute a kernel while performing a copy between the host and the GPU. We need to careful about two things. First, the host memory involved needs to be allocated, since we will queue our memory copies, we need to synchronize those copies. Second. we need to be aware that the order in which we add operations to our streams will affect out capacity to achieve overlapping of copies and kernel execution. The general guideline involves a breadth-first, or round robin, to assign work and queue work to the kernels \cite{example}.
 
 \section{Kernel Analysis}
 
@@ -229,7 +225,7 @@ Another inefficiency that can cause low performance to the applications is the n
 
 \subsection{Thread Division}
 
-The hardware has its limits, how much thread per block a kernel can handle. Launching a kernel with the hardware constrains for above can only ensure us that the kernel will actually be executed in the device, nonetheless not 100$\%$ optimal. Furthermore is necessary to launch kernels with the amount of threads per block base on the hardware contains and the problem. The block size that is chosen will determine how faster the code will run. By Benchmarking, is possible to find what configuration is the best for the problem. One thing to notice is that thread blocks should be a multiple number of SMs, with this idea is possible to obtain optimal thread block configuration.
+There a hardware limitations in how much threads per block a kernel can handle. Launching a kernel with the hardware constrains of the device will only ensure us that the kernel will actually be executed in the device, Nonetheless, not 100$\%$ optimal and the results can be incorrect. Furthermore, is necessary to launch kernels with the amount of threads per block base on the hardware settings. The block size will determine how faster the code will run. However, not the biggest block will run faster, depends con the problem and the data set. By Benchmarking the application, is possible to find the optimal configuration that best fits the problem. One thing to keep in mind, thread blocks should be a multiple number of SMs, with this idea is possible to obtain optimal thread block configuration.
 
 \section{Visual Profiler}
 
@@ -243,9 +239,9 @@ Is a hard task to keep track of each individual thread. This becomes difficult f
 	\label{fig:visualgraph}
 \end{figure}
 
-NVIDIA's profiling tools comes in various flavors; a standalone profiler through the visual profiler compiler nvvp, integrated in a GUI Nsight Eclipse Edition as NSight command (Visual Profiler), and as a command-line profiler though nvprof command. Each one has its disadvantages and advantages. The command-line profiler is useful for remotely access, where a GUI is not available, while the NSight can show graphs, plots and timeline of the application. The Profiler support CUDA applications as well as openCL applications, however both have some exceptions. 
+NVIDIA's profiling tools comes in various flavors; a standalone profiler through the visual profiler compiler nvvp, integrated in a GUI NSight Eclipse Edition as NSight command (Visual Profiler), and as a command-line profiler though nvprof command. Each one has its disadvantages and advantages. The command-line profiler is useful for remotely access, where a GUI is not available, while the NSight can show graphs, plots and timeline of the application. The Profiler support CUDA applications as well as openCL applications. However, there are exceptions. 
 
-The Visual Profiler, by default, will execute the entire application, nonetheless typically only some parts of application only need performance optimization. This enables to determine kernels, code where critical performances is needed. The common situations where profiling a region of the application is helpful.\cite{tool}
+The Visual Profiler, by default, will execute the entire application, nonetheless typically only some parts of application only need performance optimization. This enables to determine kernels, code where critical performances is needed. The common situations where profiling a region of the application is helpful \cite{tool}.
 
 \begin{itemize}
   \item Analyze data initialization and movement in the CPU and GPU, as well as evaluating CUDA calls.
@@ -253,7 +249,7 @@ The Visual Profiler, by default, will execute the entire application, nonetheles
   \item The application contains algorithms that operate though a large number of iterations. In this case is possible to collect data from a portion of the iterations.
 \end{itemize}
 
-The Visual Profiler provides a step-by-step optimization guidance, where is possible to evaluate the GPU usage, examine individual kernels and analyze timeline of the application which the profiler shows memory movements and usage, CUDA calls, number of threads and performance. The figure \ref{fig:visual01} shows, each Kernel has its own percentage of execution time of the overall application.\cite{practices}
+The Visual Profiler provides a step-by-step optimization guidance, where is possible to evaluate the GPU usage, examine individual kernels and analyze timeline of the application which the profiler shows memory movements and usage, CUDA calls, number of threads and performance. The figure \ref{fig:visual01} shows, each Kernel has its own percentage of execution time of the overall application \cite{practices}.
 
 \begin{figure}[htbp]
 	\centering
@@ -287,7 +283,7 @@ GPU compute resources limit the performance of a kernel when those resources are
 
 \subsection{Collect Data On Remote System}
 
-As mention before, is possible to collect data from a remote system where a GUI is not available, using the command-line nvprof. Remote profiling is the process of collecting profile data from a remote system that is different than the host system at which that profile data will be viewed and analyzed. Once the data is collected is possible to access the data using the Visual profiler, which enables a GUI and more compressive information about the application. There are two ways to perform remote profiling. To use nvvp remote profiling you must install the same version of the CUDA Toolkit on both the host and remote systems. It is not necessary for the host system to have an NVIDIA GPU. \cite{tool}
+As mention before, is possible to collect data from a remote system where a GUI is not available, using the command-line nvprof. Remote profiling is the process of collecting profile data from a remote system that is different than the host system at which that profile data will be viewed and analyzed. Once the data is collected is possible to access the data using the Visual profiler, which enables a GUI and more compressive information about the application. There are two ways to perform remote profiling. To use nvvp remote profiling you must install the same version of the CUDA Toolkit on both the host and remote systems. It is not necessary for the host system to have an NVIDIA GPU \cite{tool}.
 
 \vspace{3.2em}
 

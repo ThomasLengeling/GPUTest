@@ -228,47 +228,9 @@ __global__ void glaplacianyboundaries(...){
 
 This technique was applied to all parts of the code, eliminated inactive threads that were not performing computational operations to active ones. The results of the modified version consult the Optimization Results section. 
 
-\subsection{Occupancy}
- 
-Firstly, we increase the use of constant memory in the device, this helps redundant evaluations of variables which speedups the operations per clock cycle in the device. In addition  constant memory changes can be appreciate in the code \ref{lst:constant}. Also  matrix calculation for the boundary conditions \ref{eq:matrix3} and \ref{eq:matrix3} were implemented using constant Memory.
- 
- \begin{lstlisting}[language=C++,  label={lst:constant}, caption={Constant Memory changes}]
- gsource << <blocks, threads >> >(u_val, dev_sm_z, dev_mz, NXCUDA);
- 
- sfrelax_y[index] = -deltam_y[index] / tau_sf;
-     
- DELTAX = (double)TX / (double)NX;
-\end{lstlisting}
-
-
------include occupancy results using The Visual Profiler.
- 
-The different numbers of threads per block and as well the number of blocks per grid can dramatically increase or decrease the performance of the application. The table \ref{tab:threads} illustrate the different threads per block configuration on the GeForce GTX 580. The initial configuration for the Fermin and the Kepler was 32x32 threads per block for global memory and 16x16 threads per block for the shared memory. We found, that the optimal configuration for the Fermin cards was 16x16 threads per block and as well for the shared memory and for the Kepler cards was 32x32 threads per block for both memory types.
-
-\begin{table}[h]
-\centering
-  \begin{tabular} { | l | l | l | l | }
-    \hline
-    Threads per Block & Shared Memory & speedup & time \\
-    \hline
-     8x8 &  8x8 & 7.217x & 52318.3  \\
-    \hline
-     16x16 & 8x8 & 7.625x & 49517.3 \\
-    \hline
-    16x16 & 16x16 & 7.978x & 47329.2 \\
-    \hline
-    32x32 & 16x16 & 7.356x & 51333.4 \\
-    \hline
-    32x32 & 32x32 & \multicolumn{2}{|c|}{Failed}\\
-    \hline
-  \end{tabular}
-  \caption{Threads per block configuration on the Fermin architecture}
-  \label{tab:threads}
-  \end{table}
-
 \subsection{Concurrent Kernels}
 
-Initially each kernel was launched in the default steam 0, the figure \ref{fig:streams} illustrates such result using the NVIDIA's Visual Profiler. Each kernel that is being launched cannot run simultaneously because the next kernel launches needs to compute data, in other words the kernels are not independent from each other.
+Initially each kernel was launched in the default steam zero. The figure \ref{fig:streams} illustrates such result using the NVIDIA's Visual Profiler. Each kernel that is being launched cannot run simultaneously because the next kernel launches needs to compute data, in other words the kernels are not independent from each other.
 
 \begin{figure}[htbp]
 	\centering
@@ -353,7 +315,7 @@ if (i > 1 && i < NX + 2 && j >= 0 && j < NY){
 }
 \end{lstlisting}
 
-To calculate the laplacian we need to access a great amount of global memory which is located near the value of interest. In this case in region of 4x4. As the figure \ref{fig:shared} illustrates we use share memory for values which are not in the boundary of the thread block, and for values in the boundary we use global memory.
+To calculate the laplacian we need to access a great amount of global memory which is located near the value of interest. In this case in region of 4x4.  The figure \ref{fig:shared} illustrates which part the block is for allocating shared memory and global memory. The global memory is used for the boundary conditions of the block, while the shared memory for all the values inside the block.
 
 \begin{figure}[htbp]
 	\centering
@@ -423,6 +385,44 @@ To solve this issue a custom class  GPUMatrix was programmed, which contained al
     GPUMatrix<T> *dev_sfrelax;
     GPUMatrix<T> *dev_m; 
 \end{lstlisting}
+
+\subsection{Occupancy}
+ 
+Firstly, we increase the use of constant memory in the device, this helps redundant evaluations of variables which speedups the operations per clock cycle in the device. In addition  constant memory changes can be appreciate in the code \ref{lst:constant}. Also  matrix calculation for the boundary conditions \ref{eq:matrix3} and \ref{eq:matrix3} were implemented using constant Memory.
+ 
+ \begin{lstlisting}[language=C++,  label={lst:constant}, caption={Constant Memory changes}]
+ gsource << <blocks, threads >> >(u_val, dev_sm_z, dev_mz, NXCUDA);
+ 
+ sfrelax_y[index] = -deltam_y[index] / tau_sf;
+     
+ DELTAX = (double)TX / (double)NX;
+\end{lstlisting}
+
+
+-----include occupancy results using The Visual Profiler.
+ 
+The different numbers of threads per block and as well the number of blocks per grid can dramatically increase or decrease the performance of the application. The table \ref{tab:threads} illustrate the different threads per block configuration on the GeForce GTX 580. The initial configuration for the Fermin and the Kepler was 32x32 threads per block for global memory and 16x16 threads per block for the shared memory. We found, that the optimal configuration for the Fermin cards was 16x16 threads per block and as well for the shared memory and for the Kepler cards was 32x32 threads per block for both memory types.
+
+\begin{table}[h]
+\centering
+  \begin{tabular} { | l | l | l | l | }
+    \hline
+    Threads per Block & Shared Memory & speedup & time \\
+    \hline
+     8x8 &  8x8 & 7.217x & 52318.3  \\
+    \hline
+     16x16 & 8x8 & 7.625x & 49517.3 \\
+    \hline
+    16x16 & 16x16 & 7.978x & 47329.2 \\
+    \hline
+    32x32 & 16x16 & 7.356x & 51333.4 \\
+    \hline
+    32x32 & 32x32 & \multicolumn{2}{|c|}{Failed}\\
+    \hline
+  \end{tabular}
+  \caption{Threads per block configuration on the Fermin architecture}
+  \label{tab:threads}
+  \end{table}
 
 
 \section{Optimization Results}
