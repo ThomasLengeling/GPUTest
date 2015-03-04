@@ -13,18 +13,35 @@ This chapter is a brief overview of the theory of spintronics and the study of D
 
 Now as we know, each electron not only carries an elementary
 unit of charge $e$, but also carries an elementary unit of angular momentum. Whenever we produce an electrical current by inducing
-motions of electrons, it could indeed be viewed as a collection of little magnets that are moving around. In other words, any electron charge transport is simultaneously accompanied by a transport of spin, or magnetic moment carried (passing electron) by these electrons \cite{cornell}.
+motions of electrons, it could indeed be viewed as a collection of little magnets that are moving around (see Figure \ref{fig:electron}. In other words, any electron charge transport is simultaneously accompanied by a transport of spin, or magnetic moment carried (passing electron) by these electrons \cite{cornell}.
+
 
 \subsection{Spintronics}
 
-Spintronics is a new type of electronics that exploits the spin degree of freedom of an electron in addition to its charge \cite{spinz}. The interest is motivated by the quest to understand basic physical principles underlying the electron and nuclear spin interactions in materials and by possible technological applications. The field of spintronics has attracted massive interest since the discovery of giant magnectroresistence (GMR) effect in 1988 by Albert Fert and Peter Gr\"{u}nberg who were awarded the 2007 Nobel Prize in physics. The GMR effect has been widely used in hard disk drives (HDD) which have brought a huge impact on industries and consumer electronics. Spintronics is a promising technology which will complement the present electronics with addition "spin" quantum freedom to charge freedom that is currently used in devices \cite{nonlocalspin}.
+Spintronics is a new type of electronics that exploits the spin degree of freedom of an electron in addition to its charge \cite{spinz} (see figure \ref{fig:electron}. The interest is motivated by the quest to understand basic physical principles underlying the electron and nuclear spin interactions in materials and by possible technological applications. The field of spintronics has attracted massive interest since the discovery of giant magnectroresistence (GMR) effect in 1988 by Albert Fert and Peter Gr\"{u}nberg who were awarded the 2007 Nobel Prize in physics. The GMR effect has been widely used in hard disk drives (HDD) which have brought a huge impact on industries and consumer electronics. Spintronics is a promising technology which will complement the present electronics with addition "spin" quantum freedom to charge freedom that is currently used in devices \cite{nonlocalspin}.
 
- Spin current which is a flow of spin angular momentum, is generated in addition to the charge current. The spin current normally appears in ferromagnets. However, it can also be generated also in non-magnets. The simplest method of generating a spin-polarized current in a metal is to pass the current throughout a ferromagnetic material. A common application is the GMR as mentioned before \cite{handbookspin}.
+
+\subsection{Spin Transfer Torque}
+
+
+Spin transfer torque or SST occurs when spins flowing from one layer to another can reorient the magnetization in the layers \ref{fig:DWspin}.
+
+Spin current which is a flow of spin angular momentum, is generated in addition to the charge current. The spin current normally appears in ferromagnets. However, it can also be generated also in non-magnets. The simplest method of generating a spin-polarized current in a metal is to pass the current throughout a ferromagnetic material. A common application is the GMR as mentioned before \cite{handbookspin}.
+
+\begin{figure}[htbp]
+	\centering
+		\includegraphics[width=0.35\textwidth]{Figures/electron.png}
+		\rule{35em}{0.5pt}
+	\caption[Electron carries spin, charge and magnetic]{Electrons not only carries charge, but also spin and magnetic properties }
+	\label{fig:electron}
+\end{figure}
+
+
+\cite{spintransfer}
  
 Spin polarized transport occurs naturally in any materials which have a spin imbalance between spin-up and spin-down at the fermi Level. It occurs and spin-down electrons is often nearly identical, but the states are shifted in energy with respect to each other. Fermi level is the term used to describe the top of the collection of electron energy levels at absolute zero temperature \cite{handbookspin}.
 
-
-Amongst the rapidly growing variety of proposed and developed spin structures, nonlocal spin detection devices, where measurement and current excitation paths are spatially separated, have recently gained a prominent position\cite{spinz}.
+Amongst the rapidly growing variety of proposed and developed spin structures, nonlocal spin detection devices, where measurement and current excitation paths are spatially separated, have recently gained a prominent position \cite{spinz}.
 
 \subsection{Domain Wall}
 
@@ -48,17 +65,26 @@ An abrupt in magnetization at the boundary of two anti-aligned domains is not a 
 
 \subsection{Spin Torque in Domain Walls}
 
-Domain walls are the basis for various spintronics devices that uses magnetic momentums, in other words spin of electronics, the used of the spin degree of freedom. 
+Domain walls are the basis for various spintronics devices that uses magnetic momentums, in other words spin of electronics, the used of the spin degree of freedom. The figure \ref{fig:DWspin} illustrates a micromagnetic model of the domain wall trapped in a nanowire. The domain wall can be pushed along the wire in a controllable manner by applying an external magnetic field or by passing an electrical current through the wire \cite{dwwire}.
 
-Spin Torque induced domain wall motion opens up a host of possibilities for applications. Advances in spintronics recognized by 2007 Nobel Prize in Physics have enable over the last decade advances in computer memory, in hard drives, this is a metal based structures which utilize magnetoresistive effects to save and read data from a magnetic disk \cite{handbookspin}.An interesting application using this idea is new design for a different type memory disk drive called racetrack memory by Parkin in 2008\cite{racetrack}. The racetrack memory stores bits along a single ferromagnetic wire. To write and read information, a current is applied along the wire that moves the bits to writing or reading unit.
-
-It deals with the spin-transfer torque in the case of a continuously varying magnetization. In this case the spin-transfer torque acts on inhomogeneous magnetization patterns, such as domain walls or magnetic vortices. Thus, also the magnetic processes in a racetrack memory and gyrating magnetic vortices driven by spin-transfer torque  can be described.
+\begin{figure}[htbp]
+	\centering
+		\includegraphics[width=0.5\textwidth]{Figures/DWspin.png}
+		\rule{35em}{0.5pt}
+	\caption[Domain Wall nanowire]{Domain Wall in a nanowire while passing a current}
+	\label{fig:DWspin}
+\end{figure}
 
 The spin-depended, spatially varying potential inherent on a domain wall has interesting consequence for the transport of carries. The energy of the incoming  carrier is no the only factor that determines whether or not it passes to the other side of domain wall - the spin also must be taken into account. Sin each spin orientation experiences a different potential.
 
 This has simulated research into domain wall (DW) dynamics, particularly those resulting from interactions with current passing through the DW via the phenomenon of spin momentum transfer (SMT) \cite{handbookspin}.
  
  The success of spintronics untimely depends on out ability to precisely  control the polarization of electrons transported within the actual thin film structure \cite{ferro}.
+
+
+It deals with the spin-transfer torque in the case of a continuously varying magnetization. In this case the spin-transfer torque acts on inhomogeneous magnetization patterns, such as domain walls or magnetic vortices. Thus, also the magnetic processes in a racetrack memory and gyrating magnetic vortices driven by spin-transfer torque  can be described.
+
+Spin Torque induced domain wall motion opens up a host of possibilities for applications. Advances in spintronics recognized by 2007 Nobel Prize in Physics have enable over the last decade advances in computer memory, in hard drives, this is a metal based structures which utilize magnetoresistive effects to save and read data from a magnetic disk \cite{handbookspin}. An interesting application using this idea is new design for a different type memory disk drive called racetrack memory by Parkin in 2008\cite{racetrack}. The racetrack memory stores bits along a single ferromagnetic wire. To write and read information, a current is applied along the wire that moves the bits to writing or reading unit.
  
  
 \section{Domain Wall Dynamics under Nonlocal STT}
@@ -225,7 +251,7 @@ The RK4 method differs widely from the Euler method and the Midpoint method. The
 
 \begin{figure}[htbp]
 	\centering
-		\includegraphics[width=0.7\textwidth]{Figures/euler.png}
+		\includegraphics[width=0.55\textwidth]{Figures/euler.png}
 		\rule{35em}{0.4pt}
 	\caption[Euler Method]{Euler Method, Is the simplest approximate to solver differential equation or numerically solve equations.}
 	\label{fig:euler}
@@ -250,7 +276,7 @@ As the equations shows, each step, the derivative is evaluated four times, once 
 
 \begin{figure}[htbp]
 	\centering
-		\includegraphics[width=0.5\textwidth]{Figures/rk4.png}
+		\includegraphics[width=0.45\textwidth]{Figures/rk4.png}
 		\rule{35em}{0.5pt}
 	\caption[Fourth-order Runge and Kutta Method]{Fourth-order Runge and Kutta method, Each step the derivative is evaluated four times. }
 	\label{fig:kutta}

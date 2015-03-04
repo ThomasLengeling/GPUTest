@@ -63,6 +63,11 @@ A.~Harju, T.~Siro, F.~Canova, S.~Hakala, and T.~Rantalaiho.
 \newblock Computational physics on graphics processing units.
 \newblock 7782:3--26, 2013.
 
+\bibitem{dwwire}
+G.~Karapetrov and V.~Novosad.
+\newblock Domain walls riding the wave.
+\newblock {\em Physics}, 3:96, Nov 2010.
+
 \bibitem{hwu}
 D.~B. Kirk and W.-m.~W. Hwu.
 \newblock {\em Programming Massively Parallel Processors: A Hands-on Approach}.
