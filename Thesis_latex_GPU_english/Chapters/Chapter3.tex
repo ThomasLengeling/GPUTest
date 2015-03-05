@@ -15,11 +15,9 @@ Now as we know, each electron not only carries an elementary
 unit of charge $e$, but also carries an elementary unit of angular momentum. Whenever we produce an electrical current by inducing
 motions of electrons, it could indeed be viewed as a collection of little magnets that are moving around (see Figure \ref{fig:electron}. In other words, any electron charge transport is simultaneously accompanied by a transport of spin, or magnetic moment carried (passing electron) by these electrons \cite{cornell}.
 
-
 \subsection{Spintronics}
 
 Spintronics is a new type of electronics that exploits the spin degree of freedom of an electron in addition to its charge \cite{spinz} (see figure \ref{fig:electron}. The interest is motivated by the quest to understand basic physical principles underlying the electron and nuclear spin interactions in materials and by possible technological applications. The field of spintronics has attracted massive interest since the discovery of giant magnectroresistence (GMR) effect in 1988 by Albert Fert and Peter Gr\"{u}nberg who were awarded the 2007 Nobel Prize in physics. The GMR effect has been widely used in hard disk drives (HDD) which have brought a huge impact on industries and consumer electronics. Spintronics is a promising technology which will complement the present electronics with addition "spin" quantum freedom to charge freedom that is currently used in devices \cite{nonlocalspin}.
-
 
 \subsection{Spin Transfer Torque}
 
@@ -37,8 +35,6 @@ Spin current which is a flow of spin angular momentum, is generated in addition 
 
 
 Spin polarized transport occurs naturally in any materials which have a spin imbalance between spin-up and spin-down at the fermi Level. It occurs and spin-down electrons is often nearly identical, but the states are shifted in energy with respect to each other. Fermi level is the term used to describe the top of the collection of electron energy levels at absolute zero temperature \cite{handbookspin}.
-
-Amongst the rapidly growing variety of proposed and developed spin structures, nonlocal spin detection devices, where measurement and current excitation paths are spatially separated, have recently gained a prominent position \cite{spinz}.
 
 \subsection{Domain Wall}
 
@@ -78,6 +74,7 @@ Spin Torque induced domain wall motion opens up a host of possibilities for appl
  
 \section{Domain Wall Dynamics under Nonlocal STT}
 
+----include introductory paragraph 
 
 \subsection{Theoretical Approaches}
 
@@ -95,11 +92,13 @@ This novel idea of incorporating spin torque into the LLG equation has itself be
 
 The equation \ref{eq:zhang} is referred to Zhang - Li model, represents a non-adiabatic spin torque, with the presence of spin diffusion. Spin diffusion is a process by which magnetization can be exchanged spontaneously between spin. The diffusion term of the equation \ref{eq:zhang} which carriers’  drift-diffusion equation implies that the spin density does not depend solely on the local magnetization, which gives rise of nonlocal magnetics effects \cite{claudio}.
 
+Amongst the rapidly growing variety of proposed and developed spin structures, nonlocal spin detection devices, where measurement and current excitation paths are spatially separated, have recently gained a prominent position \cite{spinz}.
+
 \subsection{Experiment}
 
 We Quantitatively test the effects of spin diffusion, on real Domain walls structures, this is done by numerically solve the Zhang-Li model into micro-magnetics, using the equation \ref{eq:zhang}. The paper of \cite{zhang} initially solves analytically the diffusion equation\ref{eq:zhang}, However, ignoring the term of spin diffusion. In this numerically simulation we solve such equation using the spin diffusion term.
 
-The sample that is considerated is a 300 nm wide and 5 nm tick NiFe soft nanostrip. This dimensions are widely used for experimental use. Two Domain walls are used a Asymmetric Transverse Wall (ATW) and a Vortex Wall (VW). ATW maps of magnetization components of non equilibrium spin accumulation under a uniform current density with $D = 0, 1$ and $10 nm^2 / ps$, see figure \ref{fig:atw}.
+The sample considered is a 300 nm wide and 5 nm tick NiFe soft nanostrip. This dimensions are widely used for experimental use. Two Domain walls are used a Asymmetric Transverse Wall (ATW) and a Vortex Wall (VW). ATW maps of magnetization components of non equilibrium spin accumulation under a uniform current density with $D = 0, 1$ and $10 nm^2 / ps$. See figure \ref{fig:atw}.
 
 \begin{figure}[htbp]
 	\centering
@@ -109,7 +108,7 @@ The sample that is considerated is a 300 nm wide and 5 nm tick NiFe soft nanostr
 	\label{fig:atw}
 \end{figure}
 
-Vortex Wall (VW) same as for ATW, we point out the noticeable effect of the diffusion constant around the vortex core, which is the smallest feature of the wall. Figure \ref{fig:vw}.
+Vortex Wall (VW) same as for ATW, we point out the noticeable effect of the diffusion constant around the vortex core, which is the smallest feature of the wall. See figure \ref{fig:vw}.
 
 \begin{figure}[htbp]
 	\centering
@@ -125,7 +124,7 @@ The equation is physically realistic, However, computationally expensive \ref{Xh
 
 \subsection{Finite differences in the time domain}
 
-The finite difference in the time domain (FDTD) method can solve complicated problems, but it is generally computationally expensive. Solutions may require a large amount of memory and computation time.  FDTD is a numerical analysis technique use for approximating solutions to the associates system of differential equations. The method belongs in the general class of grid-based differential numerical modeling methods \cite{methods}.
+The finite difference in the time domain (FDTD) method can solve complicated problems, but it is generally computationally expensive. Solutions may require a large amount of memory and computation time \cite{ufdtd}. FDTD is a numerical analysis technique use for approximating solutions to the associates system of differential equations. The method belongs in the general class of grid-based differential numerical modeling methods \cite{methods}.
 
 The FDTD method essentially uses a weighted summation of functions values at neighboring points to approximate the derivate at a particular point, in this case a point in a 3d grid. The result for each cell is based on the results from the cell and its neighbors at the previous time-frame, figure \ref{fig:fdtd}.  
 
@@ -229,8 +228,7 @@ The main advantages of the finite difference approach are ease of implementation
 
 \subsection{Fourth order Runge and Kutta method}
 
- Modern numerical algorithms for the solution of ordinary differential equations are based on the method of the Taylor series. Algorithm such as the Runge-Kutta method are constructed so they give an expression depending of the parameter $(h)$, in other works the step as an approximate solution of the first terms of the Taylor series. \cite{ufdtd}
-The method can accurately solve a wide range of problems, but it is generally computationally expensive. Solutions require large amount of memory and computational time.
+ Modern numerical algorithms for the solution of ordinary differential equations are based on the method of the Taylor series. Algorithm such as the Runge-Kutta method are constructed so they give an expression depending of the parameter $(h)$, in other works the step as an approximate solution of the first terms of the Taylor series. The method can accurately solve a wide range of problems, but it is generally computationally expensive. Solutions require large amount of memory and computational time. \cite{numerical}.
 
 There exist several other computational numeric methods to solver such equations, methods such as the Euler integrator, the Midpoint Method and the Runge-Kutta fourth order (RK4) integrator method can solve differential equations. However, they differ in the numerically approximation and computation time. The RK4 is used for this simulation because its numerically more accurate when compared to the others methods.
 
@@ -277,8 +275,11 @@ We show that and effective non-adiabatic parameter $\beta_{diff}$ dependent on t
 \end{equation}
 
 
------fill final calculation.
+-----include fill final calculation --------------
 
+\subsection{Procedure}
+
+---------final small procedure test solving
 
 The procedure is (i) compute the non-equilibrium spin density $\delta \vec{m}$ with the DW at rest, solve equation \ref{eq:zhang} to convergence or directly its time-independent version. (ii) compute the $\beta_{diff}$ distribution from equation \ref{eq:beta} and finally compute $\beta_{diff}$ by averaging with the $| \partial_x \vec{m}|^2$ weight function.
 

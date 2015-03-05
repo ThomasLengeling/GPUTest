@@ -29,7 +29,7 @@ Cell NZ &	1 & Box TZ  & 5.0   \\
 \label{tab:mesh}
 \end{table}
 
-The simulation is divided into two calculations parts, the host code and the device code. As the figure \ref{fig:flow} illustrates the data flow of the simulation. Each step of the simulation is going to explain in the following section with more detail. First the initial values are read from a data file, which are the initial magnetization data coordinates. Then the data set is used to calculate the initial magnetization matrices for the simulation, the initial matrices are only calculated once. Afterwards, the simulation begins with the RK4 integration, which numerically solves the  Zhang-Li model \ref{eq:zhang}. The simulation is configured to integrate 50,000 times the Zhang-Li Model before calculating the final effective Beta value. The simulation stops if the effective beta convergence to 1.0e-9. The figure \ref{fig:flow} shows the control flow of the simulation. But also illustrates the workload on the host and the device. As we can see the heavy computation operations are done on the GPU side. While on the CPU only minor intense computation are done such as I/O data, memory allocation and final beta variation.
+The simulation is divided into two calculations parts, the host code and the device code. As the figure \ref{fig:flow} illustrates the data flow of the simulation. Each step of the simulation is going to explain in the following section with more detail. First the initial values are read from a data file, which are the initial magnetization data coordinates. Then the data set is used to calculate the initial magnetization matrices for the simulation, the initial matrices are only calculated once. Afterwards, the simulation begins with the RK4 integration, which numerically solves the  Zhang-Li model \ref{eq:zhang}. The simulation is configured to integrate 50,000 times the Zhang-Li Model before calculating the final effective Beta value. The simulation stops if the effective beta or convergence to 1.0e-9. The figure \ref{fig:flow} shows the control flow of the simulation. But also illustrates the workload on the host and the device. As we can see the heavy computation operations are done on the GPU side. While on the CPU only minor intense computation are done such as I/O data, memory allocation and final beta variation.
 
 \begin{table}[h]
 \centering
@@ -165,8 +165,6 @@ As mention before the matrices for CUDA are square matrices 512 x 128, however t
 
 \subsection{Numerical Methods}
 
-micromagnetic simulation and demonstrate how to advance the configuration of the system through time. we do not know for how long we need to integrate the system until it stops in a local energy minimum configuration.
-
 This step is where all the computational intense operations are performed. The algorithm \ref{log:rk4} demonstrates the operations necessary for the RK4 integration process.
 
 \begin{algorithm}[H]
@@ -301,7 +299,9 @@ for(int term = 0; term < 4; term++)
 
 \subsection{Calculate effective beta}
 
-The final procedure of the simulation calculates the effective beta. ... The following kernels are launched only when the RK4 integration is done, for this implementations is 50,000 iterations of RK4 \ref{fig:flow}.
+The final procedure of the simulation calculates the effective beta, which tells use the energy configuration of the system. Furthermore, the DW velocity the diffusion
+
+The kernels \ref{lst:beta} are launched only when the RK4 integration is done, which is configured for 50,000 iterations (see Figure \ref{fig:flow}). The kernels evaluates a single value the effective beta.
 
 \begin{lstlisting}[language=C++, label={lst:beta}, caption={Calculate effective beta}]
     gm_x_sm << <blocks, threads >> >(...); //Calculate
@@ -312,9 +312,8 @@ The final procedure of the simulation calculates the effective beta. ... The fol
 \end{lstlisting}
 
 
-The final step of the simulation is calculating the beta variation value. This value tell us....
 
-Once the effective beta diverges to $1^{-9}$ the simulation stops and the magnetization data is written. Depending on the application configuration is possible to write either the magnetization results for the VW or for the ATW. The magnetization data is written into two separated data files, which contains the effective data .eff and the spin accumulation data .spin.
+We do not know for how long we need to integrate the system. However, it will stop until the local energy reaches the minimum configuration. Hence, the effective beta diverges to $1^{-9}$. The simulation will stop when the effective beta reaches the minimum. Then the magnetization data is written. Depending on the application configuration is possible to write either the magnetization results for the VW or for the ATW. The magnetization data is written into two separated data files, which contains the effective data .eff and the spin accumulation data .spin.
 
 \section{Validation}
 
