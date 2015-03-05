@@ -46,10 +46,10 @@
 \contentsline {subsection}{\numberline {4.3.4}Texture Memory}{36}{subsection.191}
 \contentsline {subsection}{\numberline {4.3.5}Thread Synchronization}{37}{subsection.193}
 \contentsline {section}{\numberline {4.4}Concurrent Kernels}{38}{section.194}
-\contentsline {section}{\numberline {4.5}Kernel Analysis}{38}{section.196}
+\contentsline {section}{\numberline {4.5}Kernel Analysis}{39}{section.196}
 \contentsline {section}{\numberline {4.6}Hardware constraints}{39}{section.197}
 \contentsline {subsection}{\numberline {4.6.1}Thread Division}{40}{subsection.198}
-\contentsline {section}{\numberline {4.7}Visual Profiler}{41}{section.199}
+\contentsline {section}{\numberline {4.7}Visual Profiler}{40}{section.199}
 \contentsline {subsection}{\numberline {4.7.1}Profiler Kernel Report}{42}{subsection.202}
 \contentsline {subsection}{\numberline {4.7.2}Collect Data On Remote System}{43}{subsection.208}
 \contentsline {chapter}{\numberline {5}Optimization Results}{44}{chapter.209}

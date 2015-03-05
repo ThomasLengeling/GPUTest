@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013) (format=pdflatex 2013.5.30)  5 MAR 2015 00:28
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013) (format=pdflatex 2013.5.30)  5 MAR 2015 01:22
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -800,22 +800,17 @@ File: Figures/streams.png Graphic file (type png)
  <use Figures/streams.png>
 Package pdftex.def Info: Figures/streams.png used on input line 183.
 (pdftex.def)             Requested size: 229.61145pt x 128.25146pt.
-
-Overfull \hbox (1.69827pt too wide) in paragraph at lines 195--196
-\OT1/cmr/m/n/10.95 As said be-fore, ker-nels are the es-sen-tial part of CUDA pro-gram-ming, threads are launched
- []
-
-[38 <./Figures/streams.png>] [39] [40] <Figures/visualgraph.png, id=978, 419.5675pt x 81.30376pt>
+ [38 <./Figures/streams.png>] [39] [40] <Figures/visualgraph.png, id=978, 419.5675pt x 81.30376pt>
 File: Figures/visualgraph.png Graphic file (type png)
  <use Figures/visualgraph.png>
-Package pdftex.def Info: Figures/visualgraph.png used on input line 236.
-(pdftex.def)             Requested size: 375.7232pt x 72.80795pt.
- [41 <./Figures/visualgraph.png>] <Figures/visual01.png, id=987, 463.7325pt x 513.92pt>
+Package pdftex.def Info: Figures/visualgraph.png used on input line 233.
+(pdftex.def)             Requested size: 333.97972pt x 64.71803pt.
+ <Figures/visual01.png, id=982, 463.7325pt x 513.92pt>
 File: Figures/visual01.png Graphic file (type png)
  <use Figures/visual01.png>
-Package pdftex.def Info: Figures/visual01.png used on input line 256.
-(pdftex.def)             Requested size: 146.11812pt x 161.9327pt.
- [42 <./Figures/visual01.png>]) (./Chapters/Chapter5.tex [43]
+Package pdftex.def Info: Figures/visual01.png used on input line 253.
+(pdftex.def)             Requested size: 137.76688pt x 152.6794pt.
+ [41 <./Figures/visualgraph.png>] [42 <./Figures/visual01.png>]) (./Chapters/Chapter5.tex [43]
 Chapter 5.
 ------------------------------------------------------------------------------
  5 Optimization Results
@@ -962,7 +957,7 @@ Here is how much of TeX's memory you used:
  957 hyphenation exceptions out of 8191
  49i,19n,60p,1341b,1751s stack positions out of 5000i,500n,10000p,200000b,80000s
 </usr/local/texlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/local/texlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/local/texlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmcsc10.pfb></usr/local/texlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/local/texlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/texlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/local/texlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/local/texlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/local/texlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/local/texlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/texlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/local/texlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/texlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/local/texlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb></usr/local/texlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb></usr/local/texlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt8.pfb>
-Output written on /Users/tom/Documents/GitHub/GPUTest/Thesis_latex_GPU_english/.texpadtmp/main.pdf (71 pages, 4781786 bytes).
+Output written on /Users/tom/Documents/GitHub/GPUTest/Thesis_latex_GPU_english/.texpadtmp/main.pdf (71 pages, 4781749 bytes).
 PDF statistics:
  1438 PDF objects out of 1440 (max. 8388607)
  1270 compressed objects within 13 object streams
