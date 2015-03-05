@@ -172,19 +172,9 @@ The acknowledgements \ldots
 
 \bigskip
 
-Commodity graphics processing units (GPUs) are becoming increasingly popular to accelerate scientific applications due to their low cost and potential for high performance when compared with central processing units (CPUs). A large number of contemporary problems and scientific research are being benefit from this new technology .There has been considerable progress in implementing the hardware and the supporting infrastructure for GPUs programming and streaming architectures. This thesis is a exploration and study of the role of accelerator hardware like the use of the GPUs on physical computing, more specific in the area of spin-diffusion effects within a continuously variable magnetization distribution.
+Commodity graphics processing units (GPUs) are becoming increasingly popular to accelerate scientific applications due to their low cost and potential for high performance when compared with central processing units (CPUs). A large number of contemporary problems and scientific research are being benefit from this new technology. There has been considerable progress in implementing the hardware and the supporting infrastructure for GPUs programming and streaming architectures. This thesis is a exploration and study of the role of accelerator hardware like the use of the GPUs on physical computing.
 
-The work begins with a overview of the current trends in computing, focusing our attention specifically on GPUs, on how they differ from the CPUs and common programming practices that uses heterogeneous computing. 
-
-
-The next chapter is overview of the CUDA code implementation of Dr. Claudio's work "Domain Wall Dynamics under Non-local Spin-Transfer Torque". 
-
-
-The second chapter focus on optimization techniques and practices, which the GPU is able .
-
- Also the necessary means how to test the speed-up against the CPU. 
- 
- The forth chapter are the results collected by applying optimization techniques to the initial CUDA code implementation. The outcome is compared by launching the code in-to several GPUs nodes. Finally the last chapter of the thesis is a conclusion of the work and future research.
+The first chapter provided a overview of heterogeneous programming in a modern context. The second chapter is the explanation of the phenomenon known as spin-diffusion on magnetic configurations at the nanoscale. Some of such configurations are known as domain walls. These magnetic configurations can be observed experimentally in NiFe soft nanostripes but they are really complicated to produce. Due to this, we use the massively parallel capabilities of a single NVIDIA GPU to numerically solve a mathematical equation, known as the Zhang-Li model. Furthermore, the numerical implementation in CUDA's code is explained in chapter 3. In addition, the numerical solution is a the method known as Finite Differences in the Time Domain (FDTD) whose integration is done using a 4th order Runge - Kutta integration. The fourth  chapter focus on optimization techniques and practices, to gain the most performance out of the hardware capabilities. The fifth chapter are the results collected by applying optimization techniques to the initial CUDA code. Optimizations such as concurrent kernels, shared memory, branching and occupancy. The outcome is compared by launching the code in-to several GPUs nodes using the supercomputer ``Piritakua''. Finally, the last chapter of the thesis is a conclusion of the work and future research.
 
 
 \clearpage

@@ -369,7 +369,6 @@ AoS and SoA refer to "Array of Structures" and "Structure of Arrays" respectivel
 	\label{fig:sao}
 \end{figure}
 
-
 The initial implementation the  x, y, z data was allocated in separated blocks. Furthermore when accessing blocks of the the same coordinates, the register access the data as the figure\ref{fig:aos}.
 
 \begin{lstlisting}[language=C++, caption={AOS implementation}]
@@ -378,7 +377,7 @@ deltam_y = (double **)calloc(NXCUDA, sizeof(double *));
 deltam_z = (double **)calloc(NXCUDA, sizeof(double *));
 \end{lstlisting}
 
-To solve this issue a custom class  GPUMatrix was programmed, which contained all the matrices for the device. Moreover, the classes allocated the data for each Matrix and free the memory automatically when the simulation is over. The was allocated in a form that easier for the device to access common elements, for example when doing operations only on the x coordinate, the kernel physically access matrices that are near by.
+To solve this issue a custom class GPUMatrix was programmed, which contained all the matrices for the device. Moreover, the classes allocated the data for each Matrix and free the memory automatically when the simulation is over. The was allocated in a form that easier for the device to access common elements, for example when doing operations only on the x coordinate, the kernel physically access matrices that are near by.
 
 \begin{lstlisting}[language=C++, caption={SOA implementation}]
     GPUMatrix<T> *dev_deltam;
@@ -386,6 +385,8 @@ To solve this issue a custom class  GPUMatrix was programmed, which contained al
     GPUMatrix<T> *dev_sfrelax;
     GPUMatrix<T> *dev_m; 
 \end{lstlisting}
+
+-- add a little more explanation
 
 \subsection{Occupancy}
  
@@ -476,11 +477,11 @@ This section is the overview of the optimization results compared with each vers
 	\centering
 		\includegraphics[width=0.48\textwidth]{Figures/gpuOptimization.png}
 		\rule{35em}{0.2pt}
-	\caption[Structure of Arrays (SAO)]{SAO memory layout}
+	\caption[Overall time simulation]{Overall time simulation}
 	\label{fig:sao}
 \end{figure}
 
-The initial Visual Profiler test \ref{fig:iniresults} illustrated us that the laplacian evaluating obtain about half of the overall simulation time. However, in the final optimization \ref{fig:final} the laplacian was reduced from 44.37$\%$ to 26.24 $\%$ execution time. The same occur for the Runge and Kutta term evaluation. Furthermore, the $gsdExchangeFull$ incremented from 13.37$\%$. 23.35$\%$, which is not necessary good. The increment is due to shift in stream operators, the  $gsdExchangeFull$ is being process in the default stream cero, while the others on stream one through three. 
+The initial Visual Profiler test \ref{fig:iniresults} illustrated us that the Laplacian evaluating obtain about half of the overall simulation time. However, in the final optimization \ref{fig:final} the Laplacian was reduced from 44.37$\%$ to 26.24 $\%$ execution time. The same occur for the Runge and Kutta term evaluation. Furthermore, the $gsdExchangeFull$ incremented from 13.37$\%$. 23.35$\%$, which is not necessary good. The increment is due to shift in stream operators, the  $gsdExchangeFull$ is being process in the default stream zero, while the others on stream one through three. 
 
 ---include final thread occupancy in the table.
 
@@ -503,7 +504,7 @@ The initial Visual Profiler test \ref{fig:iniresults} illustrated us that the la
 	\label{fig:final}
 \end{figure}
     
-The Tesla K20m was the only GPU which in every code modification it did not lose performance over the course of the optimization process. However,  the other GPUs drop performance in the stream optimization stage. This is where each kernel was divided into three separated kernels. Doing this we were able to calculate the x, y, z coordinates independently. In addition this enable room to implement shared memory across the kernels. As the figure \ref{tab:gpus} illustrates the Tesla K20m is the only GPU card with CC of 3.5. This is important to mention, because the card has access to Hyper-Q. moreover this improvement can synchronize automatically the kernels for them to run in a concurrent manner. 
+The Tesla K20m was the only GPU which in every code modification it did not lose performance over the course of the optimization process. However,  the other GPUs drop performance in the stream optimization stage. This is where each kernel was divided into three separated kernels. Doing this we were able to calculate the x, y, z coordinates independently. In addition, this enable room to implement shared memory across the kernels. As the figure \ref{tab:gpus} illustrates the Tesla K20m is the only GPU card with CC of 3.5. This is important to mention, because the card has access to Hyper-Q. Moreover, this improvement can synchronize automatically the kernels for them to launch in a concurrent manner. 
 
 The SOA optimization overall improved dramatically the performance of the application, obtaining a 1.2x - 2.0x speed up in all GPU cards \ref{fig:speedup}.
 
@@ -511,14 +512,14 @@ The SOA optimization overall improved dramatically the performance of the applic
 	\centering
 		\includegraphics[width=0.5\textwidth]{Figures/speed.png}
 		\rule{35em}{0.2pt}
-	\caption[Structure of Arrays (SAO)]{SAO memory layout}
+	\caption[Optimization speedup overview]{Optimization speedup}
 	\label{fig:speedup}
 \end{figure}
 
 
-We could expected the newest card Tesla k20m would obtain the most speedup and lest time overall,  certainly because it has more CUDA cores, the highest compute capabilities. Furthermore, if falls behind the GeForce 580 with about 2.5x speedup difference. However, the Tesla K20 only had a difference of 0.3x speedup compared with the Teslas Cards. The GeForce \ref{tab:gpus} compared with the others GPUs specifications has most Processor clock (GHz), which can make more mathematical calculations per cycle.
+We could expected the newest card Tesla k20m would obtain the most speedup and lest time overall, certainly because it has more CUDA cores, the highest compute capabilities. Furthermore, if falls behind the GeForce 580 with about 2.5x speedup difference. However, the Tesla K20 only had a difference of 0.3x speedup compared with the Teslas Cards. The GeForce \ref{tab:gpus} compared with the others GPUs specifications has most Processor clock (GHz), which can make more mathematical calculations per cycle.
 
   \vspace{3.5em}
 
-Finally, various techniques and practices from chapter \ref{Heterogeneous Performance Analysis and Practices} we used to archive speedup and an increase performance. We incremented the used of constant memory, shared memory, changed the memory allocating access, analyzed thread branching and finally analyzed kernel occupancy. The highest performance of all GPUS did not occur in the newest NVIDIA card, the K20m, which is the most expensive of all the GPUs. The actual improved occur in the GeForce 580 (the more GHz of all GPUs) with a 2.32x speed up difference.
+Finally, various techniques and practices from chapter \ref{Heterogeneous Performance Analysis and Practices} we used to archive speedup and an increase performance. We incremented the used of constant memory, shared memory, changed the memory allocating access, analyzed thread branching and finally analyzed kernel occupancy. The highest performance of all GPUS did not occur in the newest NVIDIA card, the K20m, which is the most expensive of all the GPUs. The actual improvement occurred on the GeForce 580 (the more GHz of all GPUs) with a 2.32x speed up difference from the Tesla K20m.
   

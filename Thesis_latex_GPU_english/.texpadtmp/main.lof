@@ -7,29 +7,29 @@
 \contentsline {figure}{\numberline {1.6}{\ignorespaces Memory Space GPU and CPU}}{8}{figure.caption.26}
 \contentsline {figure}{\numberline {1.7}{\ignorespaces CPU Thread execution}}{8}{figure.caption.28}
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {2.1}{\ignorespaces PCIe Bandwidth}}{11}{figure.caption.44}
-\contentsline {figure}{\numberline {2.2}{\ignorespaces Different memory types}}{11}{figure.caption.45}
-\contentsline {figure}{\numberline {2.3}{\ignorespaces schematic cache hierarchy of a CUDA GPU}}{14}{figure.caption.50}
-\contentsline {figure}{\numberline {2.4}{\ignorespaces Different memory types}}{14}{figure.caption.51}
-\contentsline {figure}{\numberline {2.5}{\ignorespaces Texture Memory}}{16}{figure.caption.56}
-\contentsline {figure}{\numberline {2.6}{\ignorespaces Concurrent Kernels}}{17}{figure.caption.59}
-\contentsline {figure}{\numberline {2.7}{\ignorespaces Visual Profiler metrics graphs and plots}}{20}{figure.caption.64}
-\contentsline {figure}{\numberline {2.8}{\ignorespaces Visual Profiler example}}{21}{figure.caption.65}
+\contentsline {figure}{\numberline {2.1}{\ignorespaces Electron carries spin, charge and magnetic}}{11}{figure.caption.43}
+\contentsline {figure}{\numberline {2.2}{\ignorespaces Domain Wall VW, ATW}}{12}{figure.caption.45}
+\contentsline {figure}{\numberline {2.3}{\ignorespaces Domain Wall nanowire}}{13}{figure.caption.47}
+\contentsline {figure}{\numberline {2.4}{\ignorespaces Asymmetric Transverse Wall results}}{15}{figure.caption.53}
+\contentsline {figure}{\numberline {2.5}{\ignorespaces Vortex Wall results}}{15}{figure.caption.54}
+\contentsline {figure}{\numberline {2.6}{\ignorespaces FDTD grid}}{16}{figure.caption.57}
+\contentsline {figure}{\numberline {2.7}{\ignorespaces Sampled at regular intervals a, Taylor expansion}}{16}{figure.caption.58}
+\contentsline {figure}{\numberline {2.8}{\ignorespaces Euler Method}}{19}{figure.caption.66}
+\contentsline {figure}{\numberline {2.9}{\ignorespaces Fourth-order Runge and Kutta Method}}{20}{figure.caption.69}
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {3.1}{\ignorespaces Electron carries spin, charge and magnetic}}{24}{figure.caption.77}
-\contentsline {figure}{\numberline {3.2}{\ignorespaces Domain Wall VW, ATW}}{25}{figure.caption.79}
-\contentsline {figure}{\numberline {3.3}{\ignorespaces Domain Wall nanowire}}{26}{figure.caption.81}
-\contentsline {figure}{\numberline {3.4}{\ignorespaces Asymmetric Transverse Wall results}}{28}{figure.caption.87}
-\contentsline {figure}{\numberline {3.5}{\ignorespaces Vortex Wall results}}{28}{figure.caption.88}
-\contentsline {figure}{\numberline {3.6}{\ignorespaces FDTD grid}}{29}{figure.caption.91}
-\contentsline {figure}{\numberline {3.7}{\ignorespaces Sampled at regular intervals a, Taylor expansion}}{29}{figure.caption.92}
-\contentsline {figure}{\numberline {3.8}{\ignorespaces Euler Method}}{32}{figure.caption.100}
-\contentsline {figure}{\numberline {3.9}{\ignorespaces Fourth-order Runge and Kutta Method}}{33}{figure.caption.103}
+\contentsline {figure}{\numberline {3.1}{\ignorespaces Control flow}}{23}{figure.caption.74}
+\contentsline {figure}{\numberline {3.2}{\ignorespaces 2D Flatten array}}{23}{figure.caption.76}
+\contentsline {figure}{\numberline {3.3}{\ignorespaces Grid layout}}{24}{figure.caption.83}
+\contentsline {figure}{\numberline {3.4}{\ignorespaces Laplacian block calculation}}{27}{figure.caption.111}
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {4.1}{\ignorespaces Control flow}}{36}{figure.caption.108}
-\contentsline {figure}{\numberline {4.2}{\ignorespaces 2D Flatten array}}{36}{figure.caption.110}
-\contentsline {figure}{\numberline {4.3}{\ignorespaces Grid layout}}{37}{figure.caption.117}
-\contentsline {figure}{\numberline {4.4}{\ignorespaces Laplacian block calculation}}{40}{figure.caption.145}
+\contentsline {figure}{\numberline {4.1}{\ignorespaces PCIe Bandwidth}}{32}{figure.caption.180}
+\contentsline {figure}{\numberline {4.2}{\ignorespaces Different memory types}}{32}{figure.caption.181}
+\contentsline {figure}{\numberline {4.3}{\ignorespaces schematic cache hierarchy of a CUDA GPU}}{35}{figure.caption.186}
+\contentsline {figure}{\numberline {4.4}{\ignorespaces Different memory types}}{35}{figure.caption.187}
+\contentsline {figure}{\numberline {4.5}{\ignorespaces Texture Memory}}{37}{figure.caption.192}
+\contentsline {figure}{\numberline {4.6}{\ignorespaces Concurrent Kernels}}{38}{figure.caption.195}
+\contentsline {figure}{\numberline {4.7}{\ignorespaces Visual Profiler metrics graphs and plots}}{41}{figure.caption.200}
+\contentsline {figure}{\numberline {4.8}{\ignorespaces Visual Profiler example}}{42}{figure.caption.201}
 \addvspace {10\p@ }
 \contentsline {figure}{\numberline {5.1}{\ignorespaces Initial GPU results}}{47}{figure.caption.217}
 \contentsline {figure}{\numberline {5.2}{\ignorespaces he execution flow}}{48}{figure.caption.229}
@@ -39,7 +39,7 @@
 \contentsline {figure}{\numberline {5.6}{\ignorespaces Shared Memory Strategy}}{52}{figure.caption.304}
 \contentsline {figure}{\numberline {5.7}{\ignorespaces Array of structures (AOS)}}{53}{figure.caption.322}
 \contentsline {figure}{\numberline {5.8}{\ignorespaces Structure of Arrays (SAO)}}{53}{figure.caption.323}
-\contentsline {figure}{\numberline {5.9}{\ignorespaces Structure of Arrays (SAO)}}{56}{figure.caption.344}
+\contentsline {figure}{\numberline {5.9}{\ignorespaces Overall time simulation}}{56}{figure.caption.344}
 \contentsline {figure}{\numberline {5.10}{\ignorespaces Optimization results with the Profiler}}{56}{figure.caption.345}
-\contentsline {figure}{\numberline {5.11}{\ignorespaces Structure of Arrays (SAO)}}{56}{figure.caption.346}
+\contentsline {figure}{\numberline {5.11}{\ignorespaces Optimization speedup overview}}{56}{figure.caption.346}
 \addvspace {10\p@ }

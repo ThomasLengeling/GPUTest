@@ -1,292 +1,283 @@
 % Chapter Template
-\chapter{Heterogeneous Performance Analysis and Practices} % Main chapter title
 
-\label{Heterogeneous Performance Analysis and Practices} % Change X to a consecutive number; for referencing this chapter elsewhere, use \ref{ChapterX}
+\chapter{Introduction to Domain Wall Dynamics under Nonlocal STT} % Main chapter title
 
-\lhead{Chapter 2. \emph{Heterogeneous Performance Analysis and Practices}} % Change X to a consecutive number; this is for the header on each page - perhaps a shortened title
-%----------------------------------------------------------------------------------------
-%	SECTION 1
-%----------------------------------------------------------------------------------------
-When working with GPUs hardware new challenges emerges. How can we make the best usage of the GPU hardware. In the conventional CPU model, we have what is called linear or flat memory model. In addition this appears to the programmer as a single contiguous address space. Furthermore, the CPU can directly address all the available memory, in other words there is almost no efficiency penalty in creating global data, local data, or even access data that is located on a opposite memory location, all of this can be access as a contiguous block \cite{cook}. Meanwhile, on the GPU there are exceptions, their exists different memory hierarchies which dramatically change the performance output. By allocation the optimal memory types, speedup and increase throughput can be accomplished. To ensure optimization, some analysis should be done, like comparing latency, memory hierarchies and data bandwidth between CUDA kernels. The debug of parallel CUDA code can be accomplish using the NVIDIA's Visual Profiler. This chapter demonstrated techniques, practices and methods to debug and analyzed parallel process.
+\label{Introduction to Domain Wall Dynamics under Nonlocal STT} % Change X to a consecutive number; for referencing this chapter elsewhere, use \ref{ChapterX}
 
-% techniques, programming models and hierarchies.
-\section{Practices}
+\lhead{Chapter 2. \emph{Introduction to Domain Wall Dynamics under Nonlocal STT}}% Change X to a consecutive number; this is for the header on each page - perhaps a shortened title
 
-There are three rules for developing high performance GPGPU (General-purpose on the GPU) program, which are based on NVIDIAs GPU standards. \cite{design}
 
-\begin{enumerate}
-  \item Get the data on the GPU device and keep it there
-  \item Process all the data en the GPU, give it enough work to do.
-  \item Focus on data reuse within the GPU context, to avoid memory bandwidth limitations
-\end{enumerate}
+This chapter is a brief overview of the theory of spintronics and the study of Domain Wall Dynamics under Nonlocal Spin-Transfer Torque. This is a quantitatively test the effects of spin-diffusion, on real Domain Wall (DW) structures, by numerically implementing the Zhang - Li model into a NiFe soft nanostrip. The numerical method used for the solution is a the method known as Finite Differences in the Time Domain (FDTD) on a 3D cell grid with whose integration is done using a 4th order Runge-Kutta integration (RK4).
 
-As we know the GPUs are plugged into the PCI Express bus of the host computer, in other words the CPU. The PCIe bus has extremely slow bandwidth compared with the GPU. This is why is important to store the data on the GPU and keep it busy. In addition minimize the data transfer from the host and back to the device. We can see this in the table \ref{fig:PCI}. CUDA enables the GPU to carry out petaFLOP performance in a single device \cite{cook}. In addition they are fast enough to compute a large amount of data. To accomplish such high performance, each CUDA Kernel needs to use all the available resources of the GPU. Furthermore, avoid wasting compute cycles. Finally if a single Kernel doesn't use all of the available bandwidth, multiple kernels can be launched at the same time on a single GPU, which are streams \cite{design} 
+\section{Theory}
 
-\begin{figure}[htbp]
-	\centering
-		\includegraphics[width=0.7\textwidth]{Figures/PCI.png}
-		\rule{35em}{0.5pt}
-	\caption[PCIe Bandwidth]{PCIe bus and GPU bandwidth comparison }
-	\label{fig:PCI}
-\end{figure}
+Now as we know, each electron not only carries an elementary
+unit of charge $e$, but also carries an elementary unit of angular momentum. Whenever we produce an electrical current by inducing
+motions of electrons, it could indeed be viewed as a collection of little magnets that are moving around (see Figure \ref{fig:electron}. In other words, any electron charge transport is simultaneously accompanied by a transport of spin, or magnetic moment carried (passing electron) by these electrons \cite{cornell}.
 
-The practices should be taken in consideration to identify the portions of code where it would be beneficial for improving GPU acceleration.\cite{practices}
+\subsection{Spintronics}
+
+Spintronics is a new type of electronics that exploits the spin degree of freedom of an electron in addition to its charge \cite{spinz} (see figure \ref{fig:electron}). The interest is motivated by the quest to understand basic physical principles underlying the electron and nuclear spin interactions in materials and by possible technological applications. The field of spintronics has attracted massive interest since the discovery of giant magnectroresistence (GMR) effect in 1988 by Albert Fert and Peter Gr\"{u}nberg who were awarded the 2007 Nobel Prize in physics. The GMR effect has been widely used in hard disk drives (HDD) which have brought a huge impact on industries and consumer electronics. Spintronics is a promising technology which will complement the present electronics with addition "spin" quantum freedom to charge freedom that is currently used in devices \cite{nonlocalspin}.
+
+\subsection{Spin Transfer Torque }
+
+A torque is simply a time rate of change of angular momentum \cite{spintransfer}. Hence, Spin transfer torque or SST occurs when spins flowing from one layer to another can reorient the magnetization in the layers \ref{fig:DWspin}. The magnetization of the ferromagnet changes the flow of spin angular momentum by exerting a torque on the flowing spins to reorient them, and therefore the flowing electrons must exert an equal and opposite torque on the ferromagnet. This torque that is applied by non-equilibrium conduction electrons onto a ferromagnet is what we will call the spin transfer torque \cite{spintransfer}.
+
+Spin current which is a flow of spin angular momentum, is generated in addition to the charge current. The spin current normally appears in ferromagnets. However, it can also be generated also in non-magnets. The simplest method of generating a spin-polarized current in a metal is to pass the current throughout a ferromagnetic material. A common application is the GMR as mentioned before \cite{handbookspin}.
 
 \begin{figure}[htbp]
 	\centering
-		\includegraphics[width=0.45\textwidth]{Figures/apod.png}
+		\includegraphics[width=0.38\textwidth]{Figures/electron.png}
 		\rule{35em}{0.5pt}
-	\caption[Different memory types]{Different memory type and penalties usage}
-	\label{fig:apod}
+	\caption[Electron carries spin, charge and magnetic]{Electrons not only carries charge, but also spin and magnetic properties }
+	\label{fig:electron}
 \end{figure}
+
+
+Spin polarized transport occurs naturally in any materials which have a spin imbalance between spin-up and spin-down at the fermi Level. It occurs and spin-down electrons is often nearly identical, but the states are shifted in energy with respect to each other. Fermi level is the term used to describe the top of the collection of electron energy levels at absolute zero temperature \cite{handbookspin}.
+
+\subsection{Domain Wall}
+
+An abrupt in magnetization at the boundary of two anti-aligned domains is not a favorable condition. Domain walls form between such domains as means of minimizing the energy of the two anti-aligned domains. Domains walls are transitions layers in which the magnetization changes gradually from on magnetization to another. In other words the boundaries between regions of uniform magnetization. The gradual change prevents the large increase in exchange energy that would accompany an abrupt change in the magnetization angle. Common domain wall geometric include Bloch walls, N$\acute{e}$el walls and vortex walls \cite{spindomain}. In this study only two DW are analyzed the Vortex Wall and the Asymmetric Transverse Wall.
 
 \begin{description}
-
- \item{Asses} \hfill \\
- The first step is to locate the part of the code where the majority of the execution time occurs. The programmer can evaluate memory bottlenecks for GPU parallelization.
- \item{Parallelize} \hfill \\
- Increase parallelization from the original code, could be either adding GPU-optimized libraries such as cuBLAS, cuFFT, or including more amount of parallelism exposure though the use of CUDA code.
- \item{Optimize} \hfill \\
-The developer can optimize the implementation performance through a number of considerations, overlapping kernel executing, kernel profiling, memory handling and fine-tuning floating-point operations.
- \item{Deploy} \hfill \\
- Compare the outcome with the original expectation. Determinate the potential speedup by accelerating a given section. First a partial parallelization should be implementation before carrying out a complete change.
- \end{description}
-
-\section{Performance Metrics}
-
-There are many possible approaches to profiling the code, but in all cases the objective is the same:  identify the kernel or kernels in which the application is spending most of its execution time and increase the throughput by a giving kernel. Throughput is how many operations completed per cycle.
-
-\subsection{Timing}
-
-Timing a launched kernel can be done on either the GPU or the CPU. Is important to remember that the CPU and GPU are not synchronized. So its necessary to synchronize the CPU thread with the GPU kernels launches. CUDA provides the required  functions to synchronize the CPU with the GPU calling immediately before starting the timer \cite{practices}. CUDA is able to handle timers within the GPU, which records times in a floating-point value in milliseconds. This is done with $cudaEventRecord()$, just by including $start$ and $stop$ in the function inputs. Note that the timing are measured on the GPU clock, so the timing is independent from the OS \cite{cook}.
-
-\subsection{Bandwidth}
-
-The bandwidth refers to the rate at which data can be transferred between host and device and vi-versa. The bandwidth is one of the most important factors for testing performance o the GPUs. Choosing the right type of memory could dramatically increase performance and bandwidth. There are two main bandwidth types to indicate performance, theoretical bandwidth and effective bandwidth. The theoretical bandwidth is base on the hardware specifications that is available by NVIDIA. This is calculated using the following formula:
-
-$$ theoretical bandwidth = (clock rate * (bit-wide-memory-interface / 8 )*2) / 10^9 $$
-
-For example the NVIDIA GeForce GTX 280 uses DDR RAM with a memory clock rate of 1,105 MhZ and a 512-bit-wide memory interface
-
-$$ (1107 * 10^6 * (512/8.0) *2 )/10^9 = 141.6 Gb /sec$$
-
-The GTX 280 has a theoretical bandwidth of $141.6Gb/sec$.
-The effective bandwidth is calculated by timing specific program activities and by knowing how data is accessed by the application \cite{practices}.
-
-$$effective-bandwidth = ((Br - Bw) / 109 )/time$$
-
-Where Br is the number of bytes read per kernel, Bw is the number of bytes written per kernel and  t is the elapsed time given in seconds\cite{fortran}.
-
-In practice the difference between theoretical bandwidth and effective bandwidth indicated how much bandwidth is wasted on accessing memory and calculations. If the effective bandwidth is low compared to the theoretical bandwidth is one indication that there is not enough work being done in the GPUs. In addition there a several solutions; analyze the code to make more parallelize instructions, execute more computational instructions on the GPUs, finally analyze the number of threads per block that are executing on execute kernels.
-
-%----------------------------------------------------------------------------------------
-%	SECTION 2
-%----------------------------------------------------------------------------------------
-\section{Memory Handling with CUDA}
-
-In this section four types of memory handling are going to be explained,  global memory (device memory), shared memory, texture memory and constant memory. The figure \ref{fig:cores} illustrates physically the position of the different memory types inside the device chip.
-
-\begin{figure}[htbp]
-	\centering
-		\includegraphics[width=0.75\textwidth]{Figures/cores.png}
-		\rule{35em}{0.4pt}
-	\caption[schematic cache hierarchy of a CUDA GPU]{The schematic cache hierarchy of a CUDA GPU with 4 Streaming Multiprocessors and 8 CUDA Cores each.}
-	\label{fig:cores}
-\end{figure}
-
-Global memory is very large in comparison to the shared memory, which is on the L1 cache. However, the global memory is far away from the registers and from the CUDA core locations. Moreover, the memory access is very slow in comparison to the shared memory \cite{cook}.
-
-The figure \ref{fig:memory} illustrates each memory type has it's bandwidth penalty of used as well as the latency in computer cycles. Different memory types can be used in different applications to maximize the memory used. The Shared Memory is very limited so it cannot be handler across all situations. Furthermore, when implementation wrong memory type on the device there can be latency penalty and bandwidth drop, instead of having a gain in performance.
- 
-\begin{figure}[htbp]
-	\centering
-		\includegraphics[width=0.85\textwidth]{Figures/memory.png}
-		\rule{35em}{0.45pt}
-	\caption[Different memory types]{Different memory type and penalties usage}
-	\label{fig:memory}
-\end{figure}
-
-\subsection{Global Memory}
-
-Understanding how to efficiently use global memory is essential in CUDA memory management. Focusing on data reuse within the SM and caches avoids memory bandwidth limitations. Global memory on the GPU is designed to quickly stream memory blocks of data into the SM.
-
-\begin{itemize}
-\item Get the data on to the Device, keep it there.
-\item Give the GPU enough workload, this using all the resources available from the GPU.
-\item Focus on data reuse within the GPGPU to avoid memory bandwidth limitations.
-\end{itemize}
-
-In other words the global memory resides on the device, and it can be anything from 1 byte to 8GB, depending on the GPU. Also the memory is visible to all the threads of the grid. Any thread can read and write to any location of the global memory, The memory is always allocated with \textit{cadaMalloc}. And only global memory can be passed to the kernels and are called with \twoline global \twoline. \cite{design}
-
-%\ref{fig:smi}
-
-%\begin{figure}[htbp]
-%	\centering
-%		\includegraphics[width=0.85\textwidth]{Figures/smi.png}
-%		\rule{35em}{0.5pt}
-%	\caption[GPU and CPU]{Different architecture between the GPU and CPU}
-%	\label{fig:smi}
-%\end{figure}
-
-\subsection{Shared Memory}
-
-CUDA C compiler treats variables differently than a typical variable, it creates a copy of the variable for each block that is launched on the GPU, now every thread in that block can access the memory, this is why is called shared memory. This memory reside physically on the GPU, because the memory is very close the cache, the latency is typical very low \cite{example}. One thing comes to mind, if the threads can communicate with others threads, so there should be way to synchronize all the threads. A simple case should be if thread A writes a value into the shared memory, and Thread B wants to access we need to synchronize, when thread A finish writing then Thread B can access it. This is typical case when shared memory with synchronize thread is needed \cite{cook}.
-Shared memory is magnitudes faster to access than global memory, essentially is like a local cache for each threads of a block. While  the shared memory is limited to 48K a block, the global memory is the amount of DRAM on the device. The duration of the shared memory on the device is the lifetime of the thread block. Using \twoline shared \twoline in-front of the data type will innovate shared memory.
-
-   %There is also one other very useful case with shared memory and that is where every thread in a warp reads the same bank address
+  \item[Vortex Wall (VW)] \hfill \\
+   In the case of Vortex wall the magnetization rotates in the place perpendicular to the domain wall, but the local magnetization is wrapped around a single vortex point. See figure \ref{fig:dw}.
    
-\subsection{Constant Memory}
-
-Is an excellent way to store and broadcast read-only data to all the threads on the GPU. One thing to keep in mind is that the constant memory is limited to 64KB \cite{design}. A simple analogue is the \textit{\#define} or \textit{const} attribute in the C++ programming language, the variable performs like a variable that cannot be modified. On CUDA this is exactly the same, the value can only be read and not written. Furthermore, the value will not change over the course of a kernel execution and only the host can write the constant memory\cite{example}.
-
-\subsection{Texture Memory}
-
-Like constant memory, texture memory is another variety of read-only memory that can improve performance and reduce memory traffic when reads have certain access patterns. . Traditionally Texture memory id used for computer graphics applications, but it can also be use for HPC. The main idea of this read-only memory is that threads are likely to read from address ''near' the address they nearby threads.\cite{example}
+ \item[Asymmetric Transverse Wall (ATW)] \hfill \\
+ The transverse wall has a reflection symmetry about a line perpendicular to the strip axis, and a lack of symmetry about the center line of the strip. However, asymmetric transverse wall, is the absence of such symmetry. See figure \ref{fig:dw}.
+ 
+\end{description}
 
 \begin{figure}[htbp]
 	\centering
-		\includegraphics[width=0.55\textwidth]{Figures/texture.png}
+		\includegraphics[width=0.5\textwidth]{Figures/dw.png}
 		\rule{35em}{0.5pt}
-	\caption[Texture Memory]{Mapping of threads into a two dimensional array of texture memory}
-	\label{fig:texture}
+	\caption[Domain Wall VW, ATW]{Vortex Wall (VW) and Asymmetric Transverse Wall (ATW)}
+	\label{fig:dw}
 \end{figure}
 
-The texture Memory in a form works like the GPU graphics Texture, when you want to use the texture bind with some sort of data is necessary and when you finish using it unbind the texture from the data. The usage can be summarized in the following table:
+\subsection{Spin Torque in Domain Walls}
 
-\begin{itemize}
-\item Allocate global memory in the Host.
-\item Create Texture reference and bind it to memory object.
-\item On the device obtain the reference from the texture.
-\item  Use Texture memory operations on the device
-\item  When the work is done on the Texture, unbind the texture reference on the host.
-\end{itemize}
-
-\subsection{Thread Synchronization}
-
-This refers to synchronizing threads operations. For efficiency, a pipeline can be created by queuing a number of kernels to keep the GPGPU busy for as long as possible. Further, some form of synchronization is required so that the host can determine when the kernel or pipeline has completed \cite{design}. Commonly used synchronization mechanisms are:
-
-\begin{itemize}
-  \item Explicitly calling $cudaThreadSynchronize()$, which acts as a barrier causing the host to stop and wait for all queued kernels to complete.
-  \item Performing a blocking data transfer with $cudaMemcpy()$ as $cudaThreadSynchronize()$ is called inside $cudaMemcpy()$.
-\end{itemize}
-
-The basic unit of work on the GPU is a thread. It is important to understand from a software point of view that each thread is separate from every other thread. Every thread acts as if it has its own processor with separate registers and identity. Will wait for all threads to finish there job \cite{design}.
-
-Threads synchronization can also be accomplish inside of the kernels calls. The idea is the same, the kernel will wait until all the threads have completed there task. Threads synchronization is general used when loading data into shared memory. 
-
-\section{Concurrent Kernels}
-
-Kernels are executed in a sequential form with parallel instructions. In addition, with CUDA's streams is possible to launch several kernels in parallel, in other words, overlap kernel in the same launch sequence. As the figure \ref{fig:streams} illustrates.
+Domain walls are the basis for various spintronics devices that uses magnetic momentums, in other words spin of electronics, the used of the spin degree of freedom. The figure \ref{fig:DWspin} illustrates a micromagnetic model of the domain wall trapped in a nanowire. The domain wall can be pushed along the wire in a controllable manner by applying an external magnetic field or by passing an electrical current through the wire \cite{dwwire}.
 
 \begin{figure}[htbp]
 	\centering
-		\includegraphics[width=0.55\textwidth]{Figures/streams.png}
-		\rule{35em}{0.5pt}
-	\caption[Concurrent Kernels]{Overlapping kernel execution using CUDA streams}
-	\label{fig:streams}
+		\includegraphics[width=0.5\textwidth]{Figures/DWspin.png}
+		\rule{35em}{0.52pt}
+	\caption[Domain Wall nanowire]{Domain Wall in a nanowire while passing a current}
+	\label{fig:DWspin}
 \end{figure}
 
-A stream in CUDA is a sequence of operations that execute on the device in the order in which they are issued by the host code. Every kernel is launch on the default stream zero. Hence, to overlap kernel execution, non-default streams should be used for every kernel launch. To accomplish concurrent kernels, streams should be pinned to a non-default stream (non zero)\cite{hwu}. 
+The energy of the incoming  carrier is no the only factor that determines whether or not it passes to the other side of domain wall, the spin also must be taken into account. Since each spin orientation experiences a different potential. Simulation of such properties is necessary.
 
-By using two or more CUDA streams, we can allow the GPU to simultaneously execute a kernel while performing a copy between the host and the GPU. We need to careful about two things. First, the host memory involved needs to be allocated, since we will queue our memory copies, we need to synchronize those copies. Second. we need to be aware that the order in which we add operations to our streams will affect out capacity to achieve overlapping of copies and kernel execution. The general guideline involves a breadth-first, or round robin, to assign work and queue work to the kernels \cite{example}.
+Spin Torque induced domain wall motion opens up a host of possibilities for applications. The success of spintronics untimely depends on out ability to precisely  control the polarization of electrons transported within the actual thin film structure \cite{ferro}. Advances in spintronics recognized by 2007 Nobel Prize in Physics have enable over the last decade advances in computer memory, in hard drives, this is a metal based structures which utilize magnetoresistive effects to save and read data from a magnetic disk \cite{handbookspin}. An interesting application using this idea is new design for a different type memory disk drive called racetrack memory by Parkin in 2008\cite{racetrack}. The racetrack memory stores bits along a single ferromagnetic wire. To write and read information, a current is applied along the wire that moves the bits to writing or reading unit.
+ 
+\section{Domain Wall Dynamics under Nonlocal STT}
 
-\section{Kernel Analysis}
+Spin Transfer Torque or SST, recent developemts
 
-As said before, kernels are the essential part of CUDA programming, threads are launched automatically throughout each thread blocks of the device. Furthermore it millions of threads execute the same code parallel, which is  When execution the 
+The motion of domain walls due to spin transfer torque (STT) of electrons has been studied theoretically and experimentally. Furthermore, moving magnetic domain walls using electric currents via spin-torque effects, is one the recent developing in spintronics. We analyze a moving domain wall on a soft nanostrip, because it concentrates all of the magnetization non-uniformity, which acts as a built-in detector for spin torques. The inclusion of STT into micromagnetics has up to now been performed with local terms that express the STT as a function of only the local magnetization \cite{claudio}.
+ 
+\subsection{Theoretical Approaches}
 
-\begin{description}
+The inclusion of STT into micromagnetics has up to now been performed with local terms that express the STT as a function of the local magnetization only. The magnetization dynamics is described by the classical Landau-Lifshitz-Gilbert (LLG) equation, expanded with a STT variable \ref{eq:llg}.
 
- \item{Memory Bandwidth Bound} \hfill \\
- This refers when the code/application is limited by memory access. Most GPUs card have 1GB- 6GB of memory, this is used to process the data on the GPU, while the CPU has massively amount of memory available for use. A solution to this is to reuse the data, change the type of memory used in the GPU. A multi-GPU approach, launching kernels in several GPUs at once. This will dramatically increase the amount of memory in the application.
+\begin{equation}  \label{eq:llg}
+	\frac{\partial \vec{m}}{\partial t} = \gamma_0\vec{H}_{eff} \times \vec{m} + \alpha \vec{m} \times \frac{\partial \vec{m}}{\partial t} - \vec{T}
+\end{equation}
 
-  \item{Compute Bound} \hfill \\
-Refers to the computation time execution, in other works calculations done in the device, under the assumption that  theres is enough memory for the calculations. what is actually the analysis time operations on the kernels. Theoretical bandwidth vs  effective Bandwidth can measure performance for a compute-bound Kernel. Therefore its possible to increase the FLOPS per device.
+This novel idea of incorporating spin torque into the LLG equation has itself been incorporated into a model proposed by Zhang - Li in 2004 \cite{zhang2004}. The LLG equation \ref{eq:llg} is incorporated effects of a spin-polarized current in a magnetic system, and the resulting spin transfer. They develop a form for the spin torque based on the spatial variation of the magnetization, as especially appropriate approach for domain walls. Then in 2005 the same authors Zhang - Li extended this idea working out the difference between the adiabatic and non-adiabatic torque contributions. Which lead to an even longer magnetization dynamics equation \cite{zhang} \cite{spindomain}.
 
- \item{Latency Bound} \hfill \\
- Is one whose predominate stall reason is due to memory fetches. This is actually the saturating the global memory, or any type, but still have to wait to get the data into the kernel. Physically can be the data being sent from one part of the Device to the other. Also depends the time required to perform an operation, and are counted in cycles of operations. A way to reduce the latency is to increase the number of parallel instructions (more  calls per thread), in other words more work per thread and fewer threads.
- \end{description}
+\begin{equation} \label{eq:zhang}
+ \frac{\partial \delta \vec{m} }{\partial t} =  D_{0}\bigtriangledown^{2} \delta \vec{m} - \frac{1}{\tau_{sd}} \delta \vec{m} \times \vec{M} - \frac{1}{\tau_{sf}}\delta \vec{m} +(\vec{\mu} \cdot\vec{\bigtriangledown} )\vec{M}
+\end{equation}
 
-The performance of relatively simple kernels, which perform computations across a large number of data elements, is more a function of the GPU's memory system performance than the processing performance. It can be beneficial for such memory-bound kernels to decrease the amount of memory access required by increasing the complexity of the computation. \cite{cook}
+The equation \ref{eq:zhang} is referred to Zhang - Li model, represents a non-adiabatic spin torque, with the presence of spin diffusion. Spin diffusion is a process by which magnetization can be exchanged spontaneously between spin. Spin can accumulate in metals. The associated diffusion current flows in all directions, giving rise to nonlocal effects. The diffusion term of the equation \ref{eq:zhang} which carriers’  drift-diffusion equation implies that the spin density does not depend solely on the local magnetization, which gives rise of nonlocal magnetics effects \cite{claudio}. 
 
-\section{Hardware constraints}
+Amongst the rapidly growing variety of proposed and developed spin structures, nonlocal spin detection devices, where measurement and current excitation paths are spatially separated, have recently gained a prominent position \cite{spinz}.
 
-This refers to the limit how many threads per block a kernel launch can have. If exceed this values they kernel will never run. The threads per block really depends of the hardware capabilities.  The compute capabilitiesThe compute capability of a device is represented by a version number, also sometimes called its "SM version". This version number identifies the features supported by the GPU hardware and is used by applications at runtime to determine which hardware features and/or instructions are available on the present GPU.\cite{tool} In a roughly summarized as:
+\subsection{Experiment}
 
-\begin{itemize}
-\item Each block cannot have more than 512/1024 threads in total. (Capability 1.x or 2.x-3.x)
-\item The Maximum dimensions of each block are limited to [512,512, 64]/[1024, 1024, 64](compute 1,1.2)
-\item Each block cannot consume more than to 8k, 16k, 32K registers total
-\item Each block cannot consume more than 16kb/48kb of shared memory
-\end{itemize}
+We Quantitatively test the effects of spin diffusion, on real Domain walls structures, this is done by numerically solve the Zhang-Li model into micro-magnetics, using the equation \ref{eq:zhang}. The paper of \cite{zhang} initially solves analytically the diffusion equation\ref{eq:zhang}, However, ignoring the term of spin diffusion. In this numerically simulation we solve such equation using the spin diffusion term.
 
-SM Resources, improve performance of an application by trading one resource usage for another.  \cite{practices}
-
-Another inefficiency that can cause low performance to the applications is the number transfers memory calls between the CPU and GPU. The GPU communicates with the CPU via a \textit{PCIe} bus, in addition all of the massive FLOPS per second that can be achieve cannot actually be sent to CPU. The GPU should be filled with the enough workload at the beginning of the application and at the end only return the memory to the CPU.
-
-\subsection{Thread Division}
-
-There a hardware limitations in how much threads per block a kernel can handle. Launching a kernel with the hardware constrains of the device will only ensure us that the kernel will actually be executed in the device, Nonetheless, not 100$\%$ optimal and the results can be incorrect. Furthermore, is necessary to launch kernels with the amount of threads per block base on the hardware settings. The block size will determine how faster the code will run. However, not the biggest block will run faster, depends con the problem and the data set. By Benchmarking the application, is possible to find the optimal configuration that best fits the problem. One thing to keep in mind, thread blocks should be a multiple number of SMs, with this idea is possible to obtain optimal thread block configuration.
-
-\section{Visual Profiler}
-
-Is a hard task to keep track of each individual thread. This becomes difficult for debugging highly parallel applications. The NVIDIA's Visual Profiler is a profiling tool that can be used to measure performance and find potential opportunities for optimization in order to archive maximum performance on the GPUs. The Profiler provides metrics in the form of plots and graphs, which describes opportunities to fully utilize the compute and data movements capabilities of the GPU, as well of each kernel launch in the application. See Figure \ref{fig:visualgraph}.
+The sample considered is a 300 nm wide and 5 nm tick NiFe soft nanostrip. This dimensions are widely used for experimental use. Two Domain walls are used a Asymmetric Transverse Wall (ATW) and a Vortex Wall (VW). ATW maps of magnetization components of non equilibrium spin accumulation under a uniform current density with $D = 0, 1$ and $10 nm^2 / ps$. See figure \ref{fig:atw}.
 
 \begin{figure}[htbp]
 	\centering
-		\includegraphics[width=0.9\textwidth]{Figures/visualgraph.png}
+		\includegraphics[width=0.52\textwidth]{Figures/ATW.png}
+		\rule{35em}{0.5pt}
+	\caption[Asymmetric Transverse Wall results]{Asymmetric Transverse Wall (ATW) results}
+	\label{fig:atw}
+\end{figure}
+
+Vortex Wall (VW) same as for ATW, we point out the noticeable effect of the diffusion constant around the vortex core, which is the smallest feature of the wall. See figure \ref{fig:vw}.
+
+\begin{figure}[htbp]
+	\centering
+		\includegraphics[width=0.52\textwidth]{Figures/VW.png}
+		\rule{35em}{0.5pt}
+	\caption[Vortex Wall results]{Vortex Wall results}
+	\label{fig:vw}
+\end{figure}
+
+\section{Numerical Solution}
+
+The equation is physically realistic, However, computationally expensive \ref{Xhang}. Therefore we numerical methods to solve such equation. The numerical methods used for the solution is a the method known as Finite Differences in the Time Domain (FDTD) whose integration is done using a 4th order Runge - Kutta integration.
+
+\subsection{Finite differences in the time domain}
+
+The finite difference in the time domain (FDTD) method can solve complicated problems, but it is generally computationally expensive. Solutions may require a large amount of memory and computation time \cite{ufdtd}. FDTD is a numerical analysis technique use for approximating solutions to the associates system of differential equations. The method belongs in the general class of grid-based differential numerical modeling methods \cite{methods}.
+
+The FDTD method essentially uses a weighted summation of functions values at neighboring points to approximate the derivate at a particular point, in this case a point in a 3d grid. The result for each cell is based on the results from the cell and its neighbors at the previous time-frame, figure \ref{fig:fdtd}.  
+
+\begin{figure}[htbp]
+	\centering
+		\includegraphics[width=0.6\textwidth]{Figures/fdtd.png}
 		\rule{35em}{0.2pt}
-	\caption[Visual Profiler metrics graphs and plots]{Profiler provides optimization metrics}
-	\label{fig:visualgraph}
+	\caption[FDTD grid]{The result for each cell is based on evaluating the derivate cell neighbors.}
+	\label{fig:fdtd}
 \end{figure}
 
-NVIDIA's profiling tools comes in various flavors; a standalone profiler through the visual profiler compiler nvvp, integrated in a GUI NSight Eclipse Edition as NSight command (Visual Profiler), and as a command-line profiler though nvprof command. Each one has its disadvantages and advantages. The command-line profiler is useful for remotely access, where a GUI is not available, while the NSight can show graphs, plots and timeline of the application. The Profiler support CUDA applications as well as openCL applications. However, there are exceptions. 
+The magnetization is sampled on a uniform rectangle mesh at points $(x_0 + i\bigtriangledown_x, y_0 + j\bigtriangledown_y, z_0 + k\bigtriangledown_z)$. The computational cell is centered about the sample point with dimensions. $\bigtriangledown_x \times \bigtriangledown_y \times \bigtriangledown_z$ \cite{methods}.
 
-The Visual Profiler, by default, will execute the entire application, nonetheless typically only some parts of application only need performance optimization. This enables to determine kernels, code where critical performances is needed. The common situations where profiling a region of the application is helpful \cite{tool}.
+Looking at the equation \ref{eq:zhang}, we need a method to calculate the first and second derivate. With the Taylor expansion we can perform such calculation. The Second order Taylor expansion readily yields expressions for the first and seconds central derivates. First and second-order derivates of the magnetization components in order to define the divergence  of the magnetization $(\nabla \cdot m)$, and the components of the exchange field $(\nabla^2m)$, respectively. The magnetization components along boundaries also need to be evaluated in order to define surface charges $(m \cdot n)$. Boundary conditions need to be incorporated in the evaluated of the effective field without loss of accuracy. 
 
-\begin{itemize}
-  \item Analyze data initialization and movement in the CPU and GPU, as well as evaluating CUDA calls.
-  \item The application operates in phases, where a algorithm operates throughout each region. The application can be optimized independently from other phases of the code.
-  \item The application contains algorithms that operate though a large number of iterations. In this case is possible to collect data from a portion of the iterations.
-\end{itemize}
-
-The Visual Profiler provides a step-by-step optimization guidance, where is possible to evaluate the GPU usage, examine individual kernels and analyze timeline of the application which the profiler shows memory movements and usage, CUDA calls, number of threads and performance. The figure \ref{fig:visual01} shows, each Kernel has its own percentage of execution time of the overall application \cite{practices}.
+Consider a regular, differentiable one-dimension  scalar function $f(x)$ sampled at regular intervals, a, see figure  \ref{fig:bound}. Second order Taylor expansion readily tiles expressions for the first and seconds central derivates that are widely used in numerics, namely $\frac{df}{dx} = \frac{f_{i+1} - f_{i-1}}{2a}$ and $\frac{d^2f}{dx^2} = \frac{f_{i+1} - 2f_i + f_{i-1}}{a^2}$.
 
 \begin{figure}[htbp]
 	\centering
-		\includegraphics[width=0.35\textwidth]{Figures/visual01.png}
-		\rule{35em}{0.5pt}
-	\caption[Visual Profiler example]{Visual Profiler kernel execution}
-	\label{fig:visual01}
+		\includegraphics[width=0.6\textwidth]{Figures/bound.png}
+		\rule{35em}{0.2pt}
+	\caption[Sampled at regular intervals a, Taylor expansion]{Sampled at regular intervals a, (a) Function of inside the grid. (b) Mesh points second to closest to boundary. (c) Mesh points closet to boundary}
+	\label{fig:bound}
 \end{figure}
 
-\subsection{Profiler Kernel Report}
+However, the numerical derivation of the structure of a simple Bloch wall using such expressions soon reveals that second order Taylor expansion ledes to restricted accuracy. Fourth order expansion as actually been found to prove much superior.  \cite{methods}
 
-The profiler will execute several times the application for it to collect data from each kernels. This enables to precisely optimize phases of the application\cite{example}. The profiling tools can verify how long the application spends executing each kernel as well the number of used blocks and threads. Through this is possible to obtain various memory throughput measures, like global load throughput and global store throughput, indicate the global memory throughput requested by the kernel and therefore corresponding to the effective bandwidth mentioned in the last section.
+Taylor expansion of the function $f(x)$ around $x=x_i$ yields where $f^{(k)}(x_i) = f(x)$ if $k=0$
 
-As we know the profiler executes the application several time to collect data about each kernel. The information obtained by each kernel can be sum-up in-to a report that can be exported in a pdf file, which has the following information.
+$$f(x) = \sum\limits_{k=0}^{\infty} \dfrac{(x-x_i)^k}{k!}f^{(k)}(x_i) = \sum\limits_{k=0}^{\infty} \dfrac{(x-x_i)^k}{k!}f^{(k)}$$
 
-\begin{enumerate}
-  \item \textbf{Compute, Bandwidth, or Latency Bound} \hfill \\
-      The performance determines if the kernel is bounded by computation, memory bandwidth, or instructions/memory latency. It shows how is limiting the performance respectively.
-  
-  \item \textbf{Instructions and Memory Latency} \hfill \\
-Instruction and memory latency limit the performance of a kernel when the GPU does not have enough work to keep busy. The performance of latency-limited kernels can often be improved by increasing occupancy. Occupancy is a measure of how many warps the kernel has active on the GPU, relative to the maximum number of warps supported by the GPU.
-  
-  \item \textbf{Compute Resources} \hfill \\
-GPU compute resources limit the performance of a kernel when those resources are insufficient or poorly utilized. Compute resources are used most efficiently when instructions do not overuse a function unit. 
-  \item \textbf{Floating-Point Operation Counts} \hfill \\
-  floating-point operations executed by the kernel, can be either single precision or double precision.
-  
-  \item \textbf{Memory Bandwidth} \hfill \\
-  Memory bandwidth limits the performance of a kernel when one or more memories in the GPU cannot provide data at the rate requested by the kernel.
-\end{enumerate}
+Applying the previous equation to nearest and next nearest neighbor to grid pint i and truncation the the 4th order yields a set of four equations
 
-\subsection{Collect Data On Remote System}
+The set of linear equations provide numerical estimates for the first, second, third and fourth derivatives of $f$ at any given point $i$. The general form of the first and second derivate based on second nearest neighbors expansion reads:
 
-As mention before, is possible to collect data from a remote system where a GUI is not available, using the command-line nvprof. Remote profiling is the process of collecting profile data from a remote system that is different than the host system at which that profile data will be viewed and analyzed. Once the data is collected is possible to access the data using the Visual profiler, which enables a GUI and more compressive information about the application. There are two ways to perform remote profiling. To use nvvp remote profiling you must install the same version of the CUDA Toolkit on both the host and remote systems. It is not necessary for the host system to have an NVIDIA GPU \cite{tool}.
+\begin{align} \label{eq:nn}
+f^{(1)}_i &= \dfrac{f_{i-2}-8f_{i-1} + 8f_{i+1} - f_{i+2}}{12a} \\
+f^{(2)}_i &= \dfrac{f_{i-2}+16f_{i-1} -30f_{i} + 16f_{i+1} - f_{i+1}}{12a^2}
+\end{align}
 
-\vspace{3.2em}
+The equation \ref{eq:nn} for the second derivate based on second nearest neighbors expansion solves for the laplacian operator in the Zhang -Li Model equation \ref{eq:zhang}. However, points close to the edges need to be evaluated for great precession. 
 
-Finally, this chapter gives a overview of practices and performance studies for GPGPU. In addition a better understanding of the hardware and memory management, as well as hardware limitation, which determinate the best usage of the GPUs. As we can see NVIDIA's profiling tools is useful to analyze different stages of our application, moreover to determined which parts of the CUDA code is better to optimize from others to gain more performance.
+\subsubsection{Boundary conditions}
+
+Expressions such as \ref{eq:nn} are valid when the grid point becomes closet or next-to-closet to the boundary of the magnetic box. Specific accuracy preserving, expansion need to be worked out. The general principal in the present approach is to replace equations that are missing because of the lack of grid points outside the magnetic volume by equations including explicit reference to boundary conditions. \cite{methods}
+
+Consider first a point second to closet to bound, \ref{fig:bound}-b. Grid point $i + 1$ is missing for this particular geometry. However, defining $x_R$ as the right boundary coordinate along the $x$ axis. The $f^{(1)}(x_R)$ to be know along the boundary to be replace by the derivate of Taylor's expansion
+
+\begin{equation} \label{eq:taylor}
+f^{(1)}(x) = \sum\limits_{k=0}^{\infty} \dfrac{(x-x_i)^{k-1}}{(k - 1)!}f^{(k)}(x_i)
+\end{equation}
+
+Using \ref{fig:bound}-b. $x_R - x_i = 3a/2$ becomes.
+
+\begin{align}
+\begin{bmatrix} \label{eq:matrix4}
+    -2a & \dfrac{(-2a)^2}{2!} & \dfrac{-(2a)^3}{3!} & \dfrac{(-2a)^4}{4!}\\
+    -a & \dfrac{(-a)^2}{2!} & \dfrac{(-a)^3}{3!} & \dfrac{(-a)^4}{4!}\\
+    a & \dfrac{(a)^2}{2!} & \dfrac{(a)^3}{3!} & \dfrac{(a)^4}{4!}\\
+    2a & \dfrac{(2a)^2}{2!} & \dfrac{(2a)^3}{3!} & \dfrac{(2a)^4}{4!}
+\end{bmatrix}
+\begin{bmatrix}
+    f_i^{(1)}  \vphantom{ \dfrac{d^4}{d} }\\
+    f_i^{(2)}  \vphantom{ \dfrac{d^4}{d} } \\
+    f_i^{(3)}  \vphantom{ \dfrac{d^4}{d} } \\
+    f_i^{(4)}  \vphantom{ \dfrac{d^4}{d} }
+\end{bmatrix}
+=
+\begin{bmatrix}
+    f_{i-2} - f_{i}    \vphantom{ \dfrac{d^4}{d}} \\
+    f_{i-1} - f_{i}    \vphantom{ \dfrac{d^4}{d}} \\
+    f_{i+1} - f_{i}    \vphantom{ \dfrac{d^4}{d}} \\
+    f^{(1)}(x_R)   \vphantom{ \dfrac{d^4}{d}}
+\end{bmatrix}
+\end{align}
+
+Similarly, for a point closet to boundary, reference \ref{fig:bound}-c, grid points i + 1 and i + 2 are missing. The two first equation of ... need now to be replaced by a single equation, whilst the two remaining equations need to be truncated to the third order. For the geometry illustrated in \ref{fig:bound}-c, the minimal set of equations now reads.
+
+\begin{align} \label{eq:matrix3}
+\begin{bmatrix}
+    -2a & \dfrac{(-2a)^2}{2!} & \dfrac{-(2a)^3}{3!}\\
+    -a & \dfrac{(-a)^2}{2!} & \dfrac{(-a)^3}{3!}\\
+    1 & \dfrac{(+a)}{2} & \dfrac{(+a/2)^3}{2!}
+\end{bmatrix}
+\begin{bmatrix}
+    f_i^{(1)}  \vphantom{ \dfrac{d^4}{d} }\\
+    f_i^{(2)}  \vphantom{ \dfrac{d^4}{d} } \\
+    f_i^{(3)}  \vphantom{ \dfrac{d^4}{d} }
+\end{bmatrix}
+=
+\begin{bmatrix}
+    f_{i-2} - f_{i}    \vphantom{ \dfrac{d^4}{d}} \\
+    f_{i-1} - f_{i}    \vphantom{ \dfrac{d^4}{d}} \\
+    f^{(1)}(x_R)   \vphantom{ \dfrac{d^4}{d}}
+\end{bmatrix}
+\end{align}
+
+In both cases, and second derivatives and fully determined provided $f^{(1)}(x_R)$ be known along the boundary. For further reference \cite{methods}. The implementation to solve the laplacian with boundaries conditions check chapter 4.
+
+The main advantages of the finite difference approach are ease of implementation, simplicity of meshing, efficient evaluation of the magnetization energy, and the accessibility of higher order methods. the main disadvantage of this approach is the sampling curved boundaries with a rectangular mesh, resulting in some what discrete  approximation, which ca produce significant error in the computation.
+
+\subsection{Fourth order Runge and Kutta method}
+
+ Modern numerical algorithms for the solution of ordinary differential equations are based on the method of the Taylor series. Algorithm such as the Runge-Kutta method are constructed so they give an expression depending of the parameter $(h)$, in other works the step as an approximate solution of the first terms of the Taylor series. The method can accurately solve a wide range of problems, but it is generally computationally expensive. Solutions require large amount of memory and computational time. \cite{numerical}.
+
+There exist several other computational numeric methods to solver such equations, methods such as the Euler integrator, the Midpoint Method and the Runge-Kutta fourth order (RK4) integrator method can solve differential equations. However, they differ in the numerically approximation and computation time. The RK4 is used for this simulation because its numerically more accurate when compared to the others methods.
+
+The RK4 method differs widely from the Euler method and the Midpoint method. The Euler method is the simplest, the derivative at the starting point of each interval is extrapolated to find the next function value, see figure \ref{fig:euler}. Euler method only has first order accuracy while the RK4 its fourth order integrator \cite{numerical}.
+
+\begin{figure}[htbp]
+	\centering
+		\includegraphics[width=0.58\textwidth]{Figures/euler.png}
+		\rule{35em}{0.4pt}
+	\caption[Euler Method]{Euler Method, Is the simplest approximate to solver differential equation or numerically solve equations.}
+	\label{fig:euler}
+\end{figure}
+
+RK4 goes as follows:
+
+\begin{equation} \label{eq:rk4}
+y_{n+1} = y_{n} + 1/6 K_{1} + 1/3 K_{2} +1/3 K_{3} + 1/6 K_{4}
+\end{equation}
+where
+\begin{equation}
+\begin{split} \label{eq:rksplit}
+K_{1} &= h \dot f(x_{n}, y_{n}) \\
+K_{2} &= h \dot f(x_{n} + h/2, y_{n} + k_{1}/2) \\
+K_{3} &= h \dot f(x_{n} + h/2, y_{n} + k_{2}/2) \\
+K_{4} &= h \dot f(x_{n} + h, y_{n} + k_{3})
+\end{split}
+\end{equation}
+
+As the equations shows, each step, the derivative is evaluated four times, once at the initial point, twice at trial midpoints, and once at a trial endpoint. From these four values, the final value is calculated, just like the equation \ref{eq:rk4}.
+
+\begin{figure}[htbp]
+	\centering
+		\includegraphics[width=0.45\textwidth]{Figures/rk4.png}
+		\rule{35em}{0.5pt}
+	\caption[Fourth-order Runge and Kutta Method]{Fourth-order Runge and Kutta method, Each step the derivative is evaluated four times. }
+	\label{fig:kutta}
+\end{figure}
+
+
+\vspace{3.5em}
+
+In conclusion, a simultaneous solution of the diffusive Zhang and Li model \ref{eq:zhang} has uncovered a qualitatively new feature of the spin-transfer torque effect in the presence of spin diffusion. Namely the dependence of the steady-state DW velocity on DW structure \cite{claudio}. In summarize, we quantitatively test the effects of spin diffusion, on real Domain walls structures for ATW and VW. This is done by numerically solve the Zhang-Li model into micro-magnetics. The numerical methods used to solve such model as mentioned is the FDTD on a 3D cell grid with whose integration is done using RK4.
+
+
+
+%Ind addition, these results offers a starting point to study multilayer structures like spin-value nano strips, where the understanding of the observed increased efficecnctiy of SST to drive DW's still remains elusive. 
+
 
 

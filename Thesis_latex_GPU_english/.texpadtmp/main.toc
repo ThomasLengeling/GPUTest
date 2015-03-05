@@ -10,48 +10,48 @@
 \contentsline {section}{\numberline {1.2}GPUs as computing units}{4}{section.13}
 \contentsline {section}{\numberline {1.3}Programming on GPUs}{5}{section.16}
 \contentsline {subsection}{\numberline {1.3.1}CPU and GPU multithread comparison}{8}{subsection.27}
-\contentsline {chapter}{\numberline {2}Heterogeneous Performance Analysis and Practices}{10}{chapter.39}
-\contentsline {section}{\numberline {2.1}Practices}{10}{section.40}
-\contentsline {section}{\numberline {2.2}Performance Metrics}{12}{section.46}
-\contentsline {subsection}{\numberline {2.2.1}Timing}{12}{subsection.47}
-\contentsline {subsection}{\numberline {2.2.2}Bandwidth}{12}{subsection.48}
-\contentsline {section}{\numberline {2.3}Memory Handling with CUDA}{13}{section.49}
-\contentsline {subsection}{\numberline {2.3.1}Global Memory}{14}{subsection.52}
-\contentsline {subsection}{\numberline {2.3.2}Shared Memory}{15}{subsection.53}
-\contentsline {subsection}{\numberline {2.3.3}Constant Memory}{15}{subsection.54}
-\contentsline {subsection}{\numberline {2.3.4}Texture Memory}{15}{subsection.55}
-\contentsline {subsection}{\numberline {2.3.5}Thread Synchronization}{16}{subsection.57}
-\contentsline {section}{\numberline {2.4}Concurrent Kernels}{17}{section.58}
-\contentsline {section}{\numberline {2.5}Kernel Analysis}{17}{section.60}
-\contentsline {section}{\numberline {2.6}Hardware constraints}{18}{section.61}
-\contentsline {subsection}{\numberline {2.6.1}Thread Division}{19}{subsection.62}
-\contentsline {section}{\numberline {2.7}Visual Profiler}{20}{section.63}
-\contentsline {subsection}{\numberline {2.7.1}Profiler Kernel Report}{21}{subsection.66}
-\contentsline {subsection}{\numberline {2.7.2}Collect Data On Remote System}{22}{subsection.72}
-\contentsline {chapter}{\numberline {3}Introduction to Domain Wall Dynamics under Nonlocal STT}{23}{chapter.73}
-\contentsline {section}{\numberline {3.1}Theory}{23}{section.74}
-\contentsline {subsection}{\numberline {3.1.1}Spintronics}{23}{subsection.75}
-\contentsline {subsection}{\numberline {3.1.2}Spin Transfer Torque }{24}{subsection.76}
-\contentsline {subsection}{\numberline {3.1.3}Domain Wall}{25}{subsection.78}
-\contentsline {subsection}{\numberline {3.1.4}Spin Torque in Domain Walls}{25}{subsection.80}
-\contentsline {section}{\numberline {3.2}Domain Wall Dynamics under Nonlocal STT}{26}{section.82}
-\contentsline {subsection}{\numberline {3.2.1}Theoretical Approaches}{26}{subsection.83}
-\contentsline {subsection}{\numberline {3.2.2}Experiment}{27}{subsection.86}
-\contentsline {section}{\numberline {3.3}Numerical Solution}{28}{section.89}
-\contentsline {subsection}{\numberline {3.3.1}Finite differences in the time domain}{28}{subsection.90}
-\contentsline {subsubsection}{\numberline {3.3.1.1}Boundary conditions}{30}{subsubsection.95}
-\contentsline {subsection}{\numberline {3.3.2}Fourth order Runge and Kutta method}{31}{subsection.99}
-\contentsline {chapter}{\numberline {4}Implementation of Domain Wall Dynamics under Nonlocal STT}{34}{chapter.104}
-\contentsline {section}{\numberline {4.1}Simulation}{34}{section.105}
-\contentsline {subsection}{\numberline {4.1.1}Data allocation and threads}{35}{subsection.109}
-\contentsline {subsection}{\numberline {4.1.2}Initial Calculations}{37}{subsection.126}
-\contentsline {subsection}{\numberline {4.1.3}Numerical Methods}{39}{subsection.141}
-\contentsline {subsubsection}{\numberline {4.1.3.1}Finite differences in the time domain}{39}{subsubsection.144}
-\contentsline {subsubsection}{\numberline {4.1.3.2}Zhang and Li Model}{41}{subsubsection.173}
-\contentsline {subsubsection}{\numberline {4.1.3.3}Runge and Kutta}{41}{subsubsection.180}
-\contentsline {subsubsection}{\numberline {4.1.3.4}Final evaluation}{42}{subsubsection.188}
-\contentsline {subsection}{\numberline {4.1.4}Calculate effective beta}{42}{subsection.200}
-\contentsline {section}{\numberline {4.2}Validation}{43}{section.207}
+\contentsline {chapter}{\numberline {2}Introduction to Domain Wall Dynamics under Nonlocal STT}{10}{chapter.39}
+\contentsline {section}{\numberline {2.1}Theory}{10}{section.40}
+\contentsline {subsection}{\numberline {2.1.1}Spintronics}{10}{subsection.41}
+\contentsline {subsection}{\numberline {2.1.2}Spin Transfer Torque }{11}{subsection.42}
+\contentsline {subsection}{\numberline {2.1.3}Domain Wall}{12}{subsection.44}
+\contentsline {subsection}{\numberline {2.1.4}Spin Torque in Domain Walls}{12}{subsection.46}
+\contentsline {section}{\numberline {2.2}Domain Wall Dynamics under Nonlocal STT}{13}{section.48}
+\contentsline {subsection}{\numberline {2.2.1}Theoretical Approaches}{13}{subsection.49}
+\contentsline {subsection}{\numberline {2.2.2}Experiment}{14}{subsection.52}
+\contentsline {section}{\numberline {2.3}Numerical Solution}{15}{section.55}
+\contentsline {subsection}{\numberline {2.3.1}Finite differences in the time domain}{15}{subsection.56}
+\contentsline {subsubsection}{\numberline {2.3.1.1}Boundary conditions}{17}{subsubsection.61}
+\contentsline {subsection}{\numberline {2.3.2}Fourth order Runge and Kutta method}{18}{subsection.65}
+\contentsline {chapter}{\numberline {3}Implementation of Domain Wall Dynamics under Nonlocal STT}{21}{chapter.70}
+\contentsline {section}{\numberline {3.1}Simulation}{21}{section.71}
+\contentsline {subsection}{\numberline {3.1.1}Data allocation and threads}{22}{subsection.75}
+\contentsline {subsection}{\numberline {3.1.2}Initial Calculations}{24}{subsection.92}
+\contentsline {subsection}{\numberline {3.1.3}Numerical Methods}{26}{subsection.107}
+\contentsline {subsubsection}{\numberline {3.1.3.1}Finite differences in the time domain}{26}{subsubsection.110}
+\contentsline {subsubsection}{\numberline {3.1.3.2}Zhang and Li Model}{28}{subsubsection.139}
+\contentsline {subsubsection}{\numberline {3.1.3.3}Runge and Kutta}{28}{subsubsection.146}
+\contentsline {subsubsection}{\numberline {3.1.3.4}Final evaluation}{29}{subsubsection.154}
+\contentsline {subsection}{\numberline {3.1.4}Calculate effective beta}{29}{subsection.166}
+\contentsline {section}{\numberline {3.2}Validation}{30}{section.173}
+\contentsline {chapter}{\numberline {4}Heterogeneous Performance Analysis and Practices}{31}{chapter.175}
+\contentsline {section}{\numberline {4.1}Practices}{31}{section.176}
+\contentsline {section}{\numberline {4.2}Performance Metrics}{33}{section.182}
+\contentsline {subsection}{\numberline {4.2.1}Timing}{33}{subsection.183}
+\contentsline {subsection}{\numberline {4.2.2}Bandwidth}{33}{subsection.184}
+\contentsline {section}{\numberline {4.3}Memory Handling with CUDA}{34}{section.185}
+\contentsline {subsection}{\numberline {4.3.1}Global Memory}{35}{subsection.188}
+\contentsline {subsection}{\numberline {4.3.2}Shared Memory}{36}{subsection.189}
+\contentsline {subsection}{\numberline {4.3.3}Constant Memory}{36}{subsection.190}
+\contentsline {subsection}{\numberline {4.3.4}Texture Memory}{36}{subsection.191}
+\contentsline {subsection}{\numberline {4.3.5}Thread Synchronization}{37}{subsection.193}
+\contentsline {section}{\numberline {4.4}Concurrent Kernels}{38}{section.194}
+\contentsline {section}{\numberline {4.5}Kernel Analysis}{38}{section.196}
+\contentsline {section}{\numberline {4.6}Hardware constraints}{39}{section.197}
+\contentsline {subsection}{\numberline {4.6.1}Thread Division}{40}{subsection.198}
+\contentsline {section}{\numberline {4.7}Visual Profiler}{41}{section.199}
+\contentsline {subsection}{\numberline {4.7.1}Profiler Kernel Report}{42}{subsection.202}
+\contentsline {subsection}{\numberline {4.7.2}Collect Data On Remote System}{43}{subsection.208}
 \contentsline {chapter}{\numberline {5}Optimization Results}{44}{chapter.209}
 \contentsline {section}{\numberline {5.1}Supercomputer ``Piritakua''}{44}{section.210}
 \contentsline {subsection}{\numberline {5.1.1}Architecture Differences}{45}{subsection.213}
