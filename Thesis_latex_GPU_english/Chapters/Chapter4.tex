@@ -253,7 +253,7 @@ The three CUDA kernels \textit{glaplaciany}, \textit{glaplacianx} and \textit{gl
 
 \subsubsection{Zhang and Li Model}
 
-The Zhang - Li Model \ref{eq:zhang} is solved using code \ref{lst:rkcuda}. Furthermore the equatin is used for function $f$ in the RK4 integration equation \ref{eq:rk4}. The first term of the equation \textit{sfrelax} is calculated in the relaxation process at the end of the RK4 integrator \ref{fig:sim}. Then the term \textit{sdex} is evaluated in the Cross Product process, which is done before the RK4 calculation. The matrix \textit{sm} is only calculated once at the initial calculations process, in the kernel \textit{gsource} \ref{lst:init}. Finally the \textit{lapl} matrix is evaluated in the Laplacian X, Y and boundary condition.
+The Zhang - Li Model \ref{eq:zhang} is solved using code \ref{lst:rkcuda}. Furthermore, the Zhang - Li equation is used as function $f$ for the RK4 integration process \ref{eq:rk4}. The first term of the equation \textit{sfrelax} is calculated in the relaxation process at the end of the RK4 integrator \ref{fig:sim}. Then the term \textit{sdex} is evaluated in the Cross Product process, which is done before the RK4 calculation. The matrix \textit{sm} is only calculated once at the initial calculations process, kernel \textit{gsource} in the code \ref{lst:init}. Finally, the \textit{lapl} matrix is evaluated in the Laplacian process, which calculates the Laplacian for x, y CUDA grid coordinate and evaluates the Laplacian boundary condition.
 
 \begin{lstlisting}[language=C++, label={lst:zhangcuda}, caption={Runge and Kutta 4th Terms}]
 		sfrelax[idx] = -deltam[idx] / tau_sf;
@@ -299,7 +299,7 @@ for(int term = 0; term < 4; term++)
 
 \subsection{Calculate effective beta}
 
-The final procedure of the simulation calculates the effective beta, which tells use the energy configuration of the system. Furthermore, the DW velocity the diffusion
+The final procedure of the simulation calculates the effective beta, which tells use the energy configuration of the system. Furthermore, the DW velocity the diffusion non-adiabatic term $\beta$.
 
 The kernels \ref{lst:beta} are launched only when the RK4 integration is done, which is configured for 50,000 iterations (see Figure \ref{fig:flow}). The kernels evaluates a single value the effective beta.
 
@@ -310,7 +310,6 @@ The kernels \ref{lst:beta} are launched only when the RK4 integration is done, w
     gbeta_eff << <blocks, threads >> >(..); 	//Calculate
     gbeta_diff << <blocks, threads >> >(...);  //Calculate             
 \end{lstlisting}
-
 
 
 We do not know for how long we need to integrate the system. However, it will stop until the local energy reaches the minimum configuration. Hence, the effective beta diverges to $1^{-9}$. The simulation will stop when the effective beta reaches the minimum. Then the magnetization data is written. Depending on the application configuration is possible to write either the magnetization results for the VW or for the ATW. The magnetization data is written into two separated data files, which contains the effective data .eff and the spin accumulation data .spin.

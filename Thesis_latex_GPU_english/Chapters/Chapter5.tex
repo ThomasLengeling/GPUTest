@@ -14,7 +14,7 @@ This chapter is the results of the CUDA code implementation launched on a single
 
 \section{Supercomputer ``Piritakua''}
 
-The experiments are carried out using the supercomputer “Piritakua”. The massive GPU cluster was design and built by Dr. Claudio from the University of Guanajuato Multidisciplinary Studies Yuriria. The GPU cluster is located at a small town of Mexico, Yuriria. The supercomputer at the Front-end has a eight core Intel Xeon at 2.4 Ghz, at the back-end several GPU are connected, one NVIDIA Tesla K20, two Tesla M2070 and a GeForce GTX 580.
+The experiments are carried out using the supercomputer “Piritakua”. The massive GPU cluster was design and built by Dr. Claudio from the University of Guanajuato Multidisciplinary Studies Yuriria. The GPU cluster is located at a small town of Mexico, Yuriria. The supercomputer at the Front-end has a eight core Intel Xeon at 2.4 Ghz, at the back-end several GPU are connected. All of GPUs CUDA version 5.0 was installed. Furthermore, the GPUs node are; one NVIDIA Tesla K20, two Tesla M2070 and a GeForce GTX 580 
 
 The cluster has a GNU$ \ $LINUX distribution installed, the CentOS 64 bits version 6.4. CentOS stands for Community Enterprise Operating System which is free operating system and one of the most popular GNU$ \ $Linux distribution for web servers and as well is supported by RHEL (Red Hat Enterprise Linux) \cite{centos}. The specifications of the front-end cluster are \ref{tab:cpus}.
 
@@ -263,6 +263,7 @@ if (i > 1 && i < NX + 2 && j >= 0 && j < NY)
 \end{lstlisting}
 
 This same method is applied to every kernel that can be separated into three kernels calls. Some kernels cannot be separate such as the cross product, because the product uses pinned memory block from the other streams.  The figure \ref{fig:concurrent} shows the results of concurrent kernels in the Tesla K20.
+
 \begin{lstlisting}[language=C++, caption={Evaluate Zhang and Li model.}]
 for (int i  = 0; i < 3; i++)
 	gsolution<<<blocks, threads, 0, stream[i]>>>(spinAccXYZ[i]->getDev_deltam(),
@@ -280,7 +281,7 @@ for (int i  = 0; i < 3; i++)
 	\label{fig:concurrent}
 \end{figure}
 
-Concurrent kernels demonstrates a very promising technique to achieve a huge performance increment in application. However, there are some downsides to this implementation; correctly synchronize kernels, waiting time and hardware resources \cite{practices}. The timeline of the application \ref{ref:waittime} illustrates the waiting time between kernels execution. However, the waiting time are very small time steps between 0.01ms and 0.01ms, but waiting time occurs for each step of the RK4, appears approximate 45,00 times. Furthermore, currently branching the kernel execution process can eliminate this issue.
+Concurrent kernels demonstrates a very promising technique to achieve a huge performance increment in the application. However, there are some downsides to this implementation; correctly synchronize kernels, waiting time and hardware resources \cite{practices}. The timeline of the application \ref{ref:waittime} illustrates the waiting time between kernels execution. However, the waiting time are very small time steps between 0.01ms and 0.01ms, but waiting time occurs for each step of the RK4, appears approximate 45,00 times. Furthermore, currently branching the kernel execution process can eliminate this issue.
 
 \begin{figure}[htbp]
 	\centering
@@ -293,7 +294,7 @@ Concurrent kernels demonstrates a very promising technique to achieve a huge per
 
 \subsection{Shared Memory}
 
-As we know shared memory is faster than global memory, However, shared memory is very limited. To be able to implement shared memory in the kernels, we needed the kernels separated in their x, y and z coordinate as mentioned in the previous section. In addition this allows us to implement shared memory across each kernel, otherwise wouldn't be possible.
+As we know shared memory is faster than global memory. However, shared memory is very limited. To be able to implement shared memory in the kernels, we needed the kernels separated in their x, y and z coordinate as mentioned in the previous section. In addition this allows us to implement shared memory across each kernel, otherwise wouldn't be possible.
 
 The idea behind shared memory is to reduce the amount of global memory calls, which has about 400-600 clock cycles, while the shared memory only 1-32 cycles \ref{fig:memory}. The share memory implementation is accomplish by allocating the data from the thread block into a temporary array, which is the shared memory.In addition the kernel can make calculation on this temporary array and write the values onto the global memory. The code of such implementation is illustrated in \ref{lst:shared}. As we know there is no guaranty that threads will execute at the same order. Using $\_\_syncthreads()$ will wait until all threads have completed there task, in this case loading global memory into shared memory. Then we performed operations on the shared memory, and finally save the values in the global memory. Shared memory was used in all the occasions were kernels used extensively global memory.
 
@@ -407,25 +408,25 @@ The different numbers of threads per block and as well the number of blocks per 
 \centering
   \begin{tabular} { | l | l | l | l | l | l | }
     \hline
-    Threads & Shared Memory & speedup & time & Occupancy & Occupancy \\
+    Threads & Shared & speedup & time & Occupancy & Occupancy Shared \\
     \hline
-     8x8 &  8x8 & 7.217x & 52318.3  & \\
+     8x8 &  8x8 & 7.217x & 52318.3  &  & \\
     \hline
-     16x16 & 8x8 & 7.625x & 49517.3 & \\
+     16x16 & 8x8 & 7.625x & 49517.3 &  & \\
     \hline
-    16x16 & 16x16 & 7.978x & 47329.2 & \\
+    16x16 & 16x16 & 7.978x & 47329.2 &  & \\
     \hline
-    32x32 & 16x16 & 7.356x & 51333.4 & \\
+    32x32 & 16x16 & 7.356x & 51333.4 &  & \\
     \hline
-    32x32 & 32x32 & \multicolumn{2}{|c|}{Failed}\\
+    32x32 & 32x32 & \multicolumn{4}{|c|}{Failed}\\
     \hline
   \end{tabular}
-  \caption{Threads per block configuration and Occupancy on the Fermin architecture}
+  \caption{Threads per block configuration and occupancy on the Fermin architecture}
   \label{tab:threads}
   \end{table}
 
 
-\section{Optimization Results}
+\section{Optimization results}
 
 This section is the overview of the optimization results compared with each version of the code. The figure \ref{tab:time} and \ref{tab:speed} illustrates the the time execution and the speedup respectively. The final version of the code is the Occupancy. Moreover the greatest performance occurred on the GeForce GTX 580 Card with a 8.0x speedup.
 

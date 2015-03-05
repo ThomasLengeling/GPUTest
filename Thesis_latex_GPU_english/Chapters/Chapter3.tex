@@ -17,9 +17,9 @@ motions of electrons, it could indeed be viewed as a collection of little magnet
 
 \subsection{Spintronics}
 
-Spintronics is a new type of electronics that exploits the spin degree of freedom of an electron in addition to its charge \cite{spinz} (see figure \ref{fig:electron}. The interest is motivated by the quest to understand basic physical principles underlying the electron and nuclear spin interactions in materials and by possible technological applications. The field of spintronics has attracted massive interest since the discovery of giant magnectroresistence (GMR) effect in 1988 by Albert Fert and Peter Gr\"{u}nberg who were awarded the 2007 Nobel Prize in physics. The GMR effect has been widely used in hard disk drives (HDD) which have brought a huge impact on industries and consumer electronics. Spintronics is a promising technology which will complement the present electronics with addition "spin" quantum freedom to charge freedom that is currently used in devices \cite{nonlocalspin}.
+Spintronics is a new type of electronics that exploits the spin degree of freedom of an electron in addition to its charge \cite{spinz} (see figure \ref{fig:electron}). The interest is motivated by the quest to understand basic physical principles underlying the electron and nuclear spin interactions in materials and by possible technological applications. The field of spintronics has attracted massive interest since the discovery of giant magnectroresistence (GMR) effect in 1988 by Albert Fert and Peter Gr\"{u}nberg who were awarded the 2007 Nobel Prize in physics. The GMR effect has been widely used in hard disk drives (HDD) which have brought a huge impact on industries and consumer electronics. Spintronics is a promising technology which will complement the present electronics with addition "spin" quantum freedom to charge freedom that is currently used in devices \cite{nonlocalspin}.
 
-\subsection{Spin Transfer Torque}
+\subsection{Spin Transfer Torque }
 
 A torque is simply a time rate of change of angular momentum \cite{spintransfer}. Hence, Spin transfer torque or SST occurs when spins flowing from one layer to another can reorient the magnetization in the layers \ref{fig:DWspin}. The magnetization of the ferromagnet changes the flow of spin angular momentum by exerting a torque on the flowing spins to reorient them, and therefore the flowing electrons must exert an equal and opposite torque on the ferromagnet. This torque that is applied by non-equilibrium conduction electrons onto a ferromagnet is what we will call the spin transfer torque \cite{spintransfer}.
 
@@ -27,7 +27,7 @@ Spin current which is a flow of spin angular momentum, is generated in addition 
 
 \begin{figure}[htbp]
 	\centering
-		\includegraphics[width=0.35\textwidth]{Figures/electron.png}
+		\includegraphics[width=0.38\textwidth]{Figures/electron.png}
 		\rule{35em}{0.5pt}
 	\caption[Electron carries spin, charge and magnetic]{Electrons not only carries charge, but also spin and magnetic properties }
 	\label{fig:electron}
@@ -38,14 +38,15 @@ Spin polarized transport occurs naturally in any materials which have a spin imb
 
 \subsection{Domain Wall}
 
-An abrupt in magnetization at the boundary of two anti-aligned domains is not a favorable condition. Domain walls form between such domains as means of minimizing the energy of the two anti-aligned domains. Domains walls are transitions layers in which the magnetization changes gradually from on magnetization to another. In other words the boundaries between regions of uniform magnetization. The gradual change prevents the large increase in exchange energy that would accompany an abrupt change in the magnetization angle. Common domain wall geometric include Bloch walls, N$\acute{e}$el walls and vortex walls\cite{spindomain}. In this study only two DW are analyzed Vortex Wall and Asymmetric Transverse Wall.
+An abrupt in magnetization at the boundary of two anti-aligned domains is not a favorable condition. Domain walls form between such domains as means of minimizing the energy of the two anti-aligned domains. Domains walls are transitions layers in which the magnetization changes gradually from on magnetization to another. In other words the boundaries between regions of uniform magnetization. The gradual change prevents the large increase in exchange energy that would accompany an abrupt change in the magnetization angle. Common domain wall geometric include Bloch walls, N$\acute{e}$el walls and vortex walls \cite{spindomain}. In this study only two DW are analyzed the Vortex Wall and the Asymmetric Transverse Wall.
 
 \begin{description}
   \item[Vortex Wall (VW)] \hfill \\
    In the case of Vortex wall the magnetization rotates in the place perpendicular to the domain wall, but the local magnetization is wrapped around a single vortex point. See figure \ref{fig:dw}.
    
  \item[Asymmetric Transverse Wall (ATW)] \hfill \\
- The transverse wall has a reflection symmetry about a line perpendicular to the strip axis, and a lack of symmetry about the center line of the strip. However, asymmetric transverse wall, is the absence of such symmetry, figure \ref{fig:dw}.
+ The transverse wall has a reflection symmetry about a line perpendicular to the strip axis, and a lack of symmetry about the center line of the strip. However, asymmetric transverse wall, is the absence of such symmetry. See figure \ref{fig:dw}.
+ 
 \end{description}
 
 \begin{figure}[htbp]
@@ -63,7 +64,7 @@ Domain walls are the basis for various spintronics devices that uses magnetic mo
 \begin{figure}[htbp]
 	\centering
 		\includegraphics[width=0.5\textwidth]{Figures/DWspin.png}
-		\rule{35em}{0.5pt}
+		\rule{35em}{0.52pt}
 	\caption[Domain Wall nanowire]{Domain Wall in a nanowire while passing a current}
 	\label{fig:DWspin}
 \end{figure}
@@ -74,8 +75,10 @@ Spin Torque induced domain wall motion opens up a host of possibilities for appl
  
 \section{Domain Wall Dynamics under Nonlocal STT}
 
-----include introductory paragraph 
+Spin Transfer Torque or SST, recent developemts
 
+The motion of domain walls due to spin transfer torque (STT) of electrons has been studied theoretically and experimentally. Furthermore, moving magnetic domain walls using electric currents via spin-torque effects, is one the recent developing in spintronics. We analyze a moving domain wall on a soft nanostrip, because it concentrates all of the magnetization non-uniformity, which acts as a built-in detector for spin torques. The inclusion of STT into micromagnetics has up to now been performed with local terms that express the STT as a function of only the local magnetization \cite{claudio}.
+ 
 \subsection{Theoretical Approaches}
 
 The inclusion of STT into micromagnetics has up to now been performed with local terms that express the STT as a function of the local magnetization only. The magnetization dynamics is described by the classical Landau-Lifshitz-Gilbert (LLG) equation, expanded with a STT variable \ref{eq:llg}.
@@ -90,7 +93,7 @@ This novel idea of incorporating spin torque into the LLG equation has itself be
  \frac{\partial \delta \vec{m} }{\partial t} =  D_{0}\bigtriangledown^{2} \delta \vec{m} - \frac{1}{\tau_{sd}} \delta \vec{m} \times \vec{M} - \frac{1}{\tau_{sf}}\delta \vec{m} +(\vec{\mu} \cdot\vec{\bigtriangledown} )\vec{M}
 \end{equation}
 
-The equation \ref{eq:zhang} is referred to Zhang - Li model, represents a non-adiabatic spin torque, with the presence of spin diffusion. Spin diffusion is a process by which magnetization can be exchanged spontaneously between spin. The diffusion term of the equation \ref{eq:zhang} which carriers’  drift-diffusion equation implies that the spin density does not depend solely on the local magnetization, which gives rise of nonlocal magnetics effects \cite{claudio}.
+The equation \ref{eq:zhang} is referred to Zhang - Li model, represents a non-adiabatic spin torque, with the presence of spin diffusion. Spin diffusion is a process by which magnetization can be exchanged spontaneously between spin. Spin can accumulate in metals. The associated diffusion current flows in all directions, giving rise to nonlocal effects. The diffusion term of the equation \ref{eq:zhang} which carriers’  drift-diffusion equation implies that the spin density does not depend solely on the local magnetization, which gives rise of nonlocal magnetics effects \cite{claudio}. 
 
 Amongst the rapidly growing variety of proposed and developed spin structures, nonlocal spin detection devices, where measurement and current excitation paths are spatially separated, have recently gained a prominent position \cite{spinz}.
 
@@ -102,7 +105,7 @@ The sample considered is a 300 nm wide and 5 nm tick NiFe soft nanostrip. This d
 
 \begin{figure}[htbp]
 	\centering
-		\includegraphics[width=0.5\textwidth]{Figures/ATW.png}
+		\includegraphics[width=0.52\textwidth]{Figures/ATW.png}
 		\rule{35em}{0.5pt}
 	\caption[Asymmetric Transverse Wall results]{Asymmetric Transverse Wall (ATW) results}
 	\label{fig:atw}
@@ -112,7 +115,7 @@ Vortex Wall (VW) same as for ATW, we point out the noticeable effect of the diff
 
 \begin{figure}[htbp]
 	\centering
-		\includegraphics[width=0.5\textwidth]{Figures/VW.png}
+		\includegraphics[width=0.52\textwidth]{Figures/VW.png}
 		\rule{35em}{0.5pt}
 	\caption[Vortex Wall results]{Vortex Wall results}
 	\label{fig:vw}
@@ -130,7 +133,7 @@ The FDTD method essentially uses a weighted summation of functions values at nei
 
 \begin{figure}[htbp]
 	\centering
-		\includegraphics[width=0.5\textwidth]{Figures/fdtd.png}
+		\includegraphics[width=0.6\textwidth]{Figures/fdtd.png}
 		\rule{35em}{0.2pt}
 	\caption[FDTD grid]{The result for each cell is based on evaluating the derivate cell neighbors.}
 	\label{fig:fdtd}
@@ -144,7 +147,7 @@ Consider a regular, differentiable one-dimension  scalar function $f(x)$ sampled
 
 \begin{figure}[htbp]
 	\centering
-		\includegraphics[width=0.5\textwidth]{Figures/bound.png}
+		\includegraphics[width=0.6\textwidth]{Figures/bound.png}
 		\rule{35em}{0.2pt}
 	\caption[Sampled at regular intervals a, Taylor expansion]{Sampled at regular intervals a, (a) Function of inside the grid. (b) Mesh points second to closest to boundary. (c) Mesh points closet to boundary}
 	\label{fig:bound}
@@ -236,7 +239,7 @@ The RK4 method differs widely from the Euler method and the Midpoint method. The
 
 \begin{figure}[htbp]
 	\centering
-		\includegraphics[width=0.55\textwidth]{Figures/euler.png}
+		\includegraphics[width=0.58\textwidth]{Figures/euler.png}
 		\rule{35em}{0.4pt}
 	\caption[Euler Method]{Euler Method, Is the simplest approximate to solver differential equation or numerically solve equations.}
 	\label{fig:euler}
@@ -257,7 +260,7 @@ K_{4} &= h \dot f(x_{n} + h, y_{n} + k_{3})
 \end{split}
 \end{equation}
 
-As the equations shows, each step, the derivative is evaluated four times, once at the initial point, twice at trial midpoints, and once at a trial endpoint. From these four values, the final value is calculated, just like the equation \ref{eq:kg4}.
+As the equations shows, each step, the derivative is evaluated four times, once at the initial point, twice at trial midpoints, and once at a trial endpoint. From these four values, the final value is calculated, just like the equation \ref{eq:rk4}.
 
 \begin{figure}[htbp]
 	\centering
@@ -267,23 +270,6 @@ As the equations shows, each step, the derivative is evaluated four times, once 
 	\label{fig:kutta}
 \end{figure}
 
-\subsection{Effective Beta}
-
-We show that and effective non-adiabatic parameter $\beta_{diff}$ dependent on the DW structure, provides 
-\begin{equation} \label{eq:beta}
-(\beta \upsilon)^{*} = \frac{\delta\vec{m} \cdot \partial_x \vec{m}}{\tau_{sd} \| \partial_x \vec{M} \|^2}
-\end{equation}
-
-
------include fill final calculation --------------
-
-\subsection{Procedure}
-
----------final small procedure test solving
-
-The procedure is (i) compute the non-equilibrium spin density $\delta \vec{m}$ with the DW at rest, solve equation \ref{eq:zhang} to convergence or directly its time-independent version. (ii) compute the $\beta_{diff}$ distribution from equation \ref{eq:beta} and finally compute $\beta_{diff}$ by averaging with the $| \partial_x \vec{m}|^2$ weight function.
-
-%The basic structure is computational solve rungge and kutta of for other.
 
 \vspace{3.5em}
 
