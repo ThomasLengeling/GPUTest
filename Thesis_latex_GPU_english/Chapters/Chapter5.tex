@@ -178,7 +178,7 @@ if(idx == 0){
 
 \begin{figure}[htbp]
 	\centering
-		\includegraphics[width=0.51\textwidth]{Figures/threads.png}
+		\includegraphics[width=0.55\textwidth]{Figures/threads.png}
 		\rule{35em}{0.2pt}
 	\caption[he execution flow]{The execution flow of a branching code, with warp size 8. Black arrows are active threads, and the grey ones are disabled.}
 	\label{fig:threads}
@@ -234,7 +234,7 @@ Initially each kernel was launched in the default steam zero. The figure \ref{fi
 
 \begin{figure}[htbp]
 	\centering
-		\includegraphics[width=0.72\textwidth]{Figures/ini_steams.png}
+		\includegraphics[width=0.73\textwidth]{Figures/ini_steams.png}
 		\rule{35em}{0.2pt}
 	\caption[Initial Streams]{Kernels running in the default 0 Stream.
 }
@@ -275,7 +275,7 @@ for (int i  = 0; i < 3; i++)
 
 \begin{figure}[htbp]
 	\centering
-		\includegraphics[width=0.75\textwidth]{Figures/concurent.png}
+		\includegraphics[width=0.8\textwidth]{Figures/concurent.png}
 		\rule{35em}{0.2pt}s
 	\caption[Streams kernels Tesla K20]{Concurrent kernels in the Tesla K20 using NVIDIA's Visual Profiler.}
 	\label{fig:concurrent}
@@ -320,7 +320,7 @@ To calculate the laplacian we need to access a great amount of global memory whi
 
 \begin{figure}[htbp]
 	\centering
-		\includegraphics[width=0.3\textwidth]{Figures/shared.png}
+		\includegraphics[width=0.4\textwidth]{Figures/shared.png}
 		\rule{35em}{0.2pt}
 	\caption[Shared Memory Strategy]{Shared Memory Strategy for Laplacian evaluation }
 	\label{fig:shared}
@@ -475,7 +475,7 @@ This section is the overview of the optimization results compared with each vers
 
 \begin{figure}[htbp]
 	\centering
-		\includegraphics[width=0.48\textwidth]{Figures/gpuOptimization.png}
+		\includegraphics[width=0.57\textwidth]{Figures/gpuOptimization.png}
 		\rule{35em}{0.2pt}
 	\caption[Overall time simulation]{Overall time simulation}
 	\label{fig:sao}
@@ -510,7 +510,7 @@ The SOA optimization overall improved dramatically the performance of the applic
 
 \begin{figure}[htbp]
 	\centering
-		\includegraphics[width=0.5\textwidth]{Figures/speed.png}
+		\includegraphics[width=0.62\textwidth]{Figures/speed.png}
 		\rule{35em}{0.2pt}
 	\caption[Optimization speedup overview]{Optimization speedup}
 	\label{fig:speedup}

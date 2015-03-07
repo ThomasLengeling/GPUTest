@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013) (format=pdflatex 2013.5.30)  5 MAR 2015 01:26
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013) (format=pdflatex 2013.5.30)  6 MAR 2015 19:15
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -840,17 +840,17 @@ Package pdftex.def Info: Figures/gpu_initial.png used on input line 150.
 File: Figures/threads.png Graphic file (type png)
  <use Figures/threads.png>
 Package pdftex.def Info: Figures/threads.png used on input line 181.
-(pdftex.def)             Requested size: 212.90897pt x 65.15459pt.
+(pdftex.def)             Requested size: 229.61145pt x 70.26749pt.
  [48 <./Figures/threads.png>] <Figures/ini_steams.png, id=1076, 679.03688pt x 48.18pt>
 File: Figures/ini_steams.png Graphic file (type png)
  <use Figures/ini_steams.png>
 Package pdftex.def Info: Figures/ini_steams.png used on input line 237.
-(pdftex.def)             Requested size: 271.35493pt x 19.25327pt.
+(pdftex.def)             Requested size: 304.75356pt x 21.6227pt.
  [49 <./Figures/ini_steams.png>] <Figures/concurent.png, id=1105, 1277.77374pt x 107.40125pt>
 File: Figures/concurent.png Graphic file (type png)
  <use Figures/concurent.png>
 Package pdftex.def Info: Figures/concurent.png used on input line 278.
-(pdftex.def)             Requested size: 271.35493pt x 22.8073pt.
+(pdftex.def)             Requested size: 333.97972pt x 28.07115pt.
 
 
 LaTeX Warning: Reference `ref:waittime' on page 50 undefined on input line 284.
@@ -859,18 +859,18 @@ LaTeX Warning: Reference `ref:waittime' on page 50 undefined on input line 284.
 File: Figures/waittime.png Graphic file (type png)
  <use Figures/waittime.png>
 Package pdftex.def Info: Figures/waittime.png used on input line 288.
-(pdftex.def)             Requested size: 229.61145pt x 44.806pt.
- [51 <./Figures/concurent.png> <./Figures/waittime.png>] <Figures/shared.png, id=1147, 678.535pt x 653.44125pt>
+(pdftex.def)             Requested size: 292.22987pt x 57.02686pt.
+ [51 <./Figures/concurent.png> <./Figures/waittime.png>] <Figures/shared.png, id=1146, 678.535pt x 653.44125pt>
 File: Figures/shared.png Graphic file (type png)
  <use Figures/shared.png>
 Package pdftex.def Info: Figures/shared.png used on input line 323.
-(pdftex.def)             Requested size: 125.24318pt x 120.60556pt.
- [52 <./Figures/shared.png>] <Figures/aos.png, id=1182, 483.8075pt x 129.48375pt>
+(pdftex.def)             Requested size: 166.98668pt x 160.8074pt.
+ [52 <./Figures/shared.png>] <Figures/aos.png, id=1179, 483.8075pt x 129.48375pt>
 File: Figures/aos.png Graphic file (type png)
  <use Figures/aos.png>
 Package pdftex.def Info: Figures/aos.png used on input line 357.
 (pdftex.def)             Requested size: 271.35493pt x 72.62695pt.
- <Figures/soa.png, id=1183, 482.80376pt x 128.48pt>
+ <Figures/soa.png, id=1180, 482.80376pt x 128.48pt>
 File: Figures/soa.png Graphic file (type png)
  <use Figures/soa.png>
 Package pdftex.def Info: Figures/soa.png used on input line 366.
@@ -888,13 +888,13 @@ Overfull \hbox (10.32703pt too wide) in paragraph at lines 436--451
 File: Figures/gpuOptimization.png Graphic file (type png)
  <use Figures/gpuOptimization.png>
 Package pdftex.def Info: Figures/gpuOptimization.png used on input line 478.
-(pdftex.def)             Requested size: 200.38528pt x 172.39922pt.
+(pdftex.def)             Requested size: 237.96269pt x 204.73401pt.
  [55] <Figures/speed.png, id=1228, 768.9528pt x 403.62794pt>
 File: Figures/speed.png Graphic file (type png)
  <use Figures/speed.png>
 Package pdftex.def Info: Figures/speed.png used on input line 513.
-(pdftex.def)             Requested size: 208.73653pt x 109.56609pt.
- [56 <./Figures/gpuOptimization.png> <./Figures/speed.png>]) (./Chapters/Chapter6.tex [57]
+(pdftex.def)             Requested size: 258.83125pt x 135.86441pt.
+ [56 <./Figures/gpuOptimization.png>]) (./Chapters/Chapter6.tex [57 <./Figures/speed.png>]
 Chapter 6.
 ------------------------------------------------------------------------------
  6 Conclusions and future work
@@ -957,7 +957,7 @@ Here is how much of TeX's memory you used:
  957 hyphenation exceptions out of 8191
  49i,19n,60p,1341b,1751s stack positions out of 5000i,500n,10000p,200000b,80000s
 </usr/local/texlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/local/texlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/local/texlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmcsc10.pfb></usr/local/texlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/local/texlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/texlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/local/texlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/local/texlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/local/texlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/local/texlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/texlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/local/texlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/texlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/local/texlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb></usr/local/texlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb></usr/local/texlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt8.pfb>
-Output written on /Users/tom/Documents/GitHub/GPUTest/Thesis_latex_GPU_english/.texpadtmp/main.pdf (71 pages, 4781749 bytes).
+Output written on /Users/tom/Documents/GitHub/GPUTest/Thesis_latex_GPU_english/.texpadtmp/main.pdf (71 pages, 4796930 bytes).
 PDF statistics:
  1438 PDF objects out of 1440 (max. 8388607)
  1270 compressed objects within 13 object streams
