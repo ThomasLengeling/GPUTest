@@ -213,7 +213,7 @@ The finite differences method requires the domain of interest to be broken down 
 	\label{fig:laplacian}
 \end{figure}
 
-As the Figure \ref{fig:laplacian} demonstrate the calculation the nearest neighbors expansion by evaluation a neighborhood of $[-2, 2]$ values in the x direction. In addition the index begins at $i = 2$ and finishes at $NX + 2$. The same occurs for the laplacian in the Y direction, however it begins at $j = 2$ and finish at $NY -2$.  The implementation \ref{lst:lpay} uses the equation from chapter 3 \ref{eq:nn} as previous mention. The calculation \ref{lst:lpay} is done for each three x, y and z coordinates. 
+As the figure \ref{fig:laplacian} demonstrates the calculation of the nearest neighbors expansion by evaluation a neighborhood of $[-2, 2]$ values in the x direction. In addition, the index begins at $i = 2$ and finishes at $NX + 2$. The same occurs for the laplacian in the Y direction, however it begins at $j = 2$ and finish at $NY -2$.  The implementation \ref{lst:lpay} uses the equation from chapter 3 \ref{eq:nn} as previous mention. The calculation \ref{lst:lpay} is done for each three x, y and z coordinates. 
 
 \begin{lstlisting}[language=C++, label={lst:lpay}, caption={Laplacian X using global memory}]
 int i = blockIdx.x * blockDim.x + threadIdx.x + 2;
@@ -227,7 +227,7 @@ lapy[idx] = - deltam[idx + 2] / 12.0 + 4.0 * deltam[idx + 1] / 3.0
 \end{lstlisting}
 
 
-However the calculation of the nearest neighbors only work for values points inside  inside a grid of [-2, 2] in x, y, and z. In addition we need to calculate the boundaries values for those values that are in the edge of the grid, such as the beginning points and the end points. To solve the boundaries issue we use two square matrices matrices from chapter three, The equation \ref{eq:matrix3} for boundaries at $j = 0$ and $j = NY - 1$ for all values in the i cell, and the equation \ref{eq:matrix4} for the condition $j = 1$ and $j = NY - 2$ for all i values. The code \ref{lst:lap} demonstrate how the implementation was done, to achieve the correct values first the laplacian in the y direction is calculated, then the boundary condition, and finally the in the x direction. 
+However, the calculation of the nearest neighbors only work for values of points inside a grid of [-2, 2] in x, y, and z. In addition we need to calculate the boundaries values for those values that are in the edge of the grid, such as the beginning points and the end points. In other words close to the magnetization boudaries. To solve the boundaries issue we use two square matrices matrices from chapter three, The equation \ref{eq:matrix3} for boundaries at $j = 0$ and $j = NY - 1$ for all values in the i cell, and the equation \ref{eq:matrix4} for the condition $j = 1$ and $j = NY - 2$ for all i values. The code \ref{lst:lap} demonstrate how the implementation was done, to achieve the correct values, first the laplacian in the y direction is calculated, then the boundary condition in the x direction. 
 
 \begin{lstlisting}[language=C++, label={lst:lap}, caption={Evaluation of Laplacian X, Y with boundary condition}]
 __global__ void glaplaciany(...){} //Compute laplacian in Y direction

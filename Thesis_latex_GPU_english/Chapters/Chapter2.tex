@@ -105,7 +105,7 @@ The sample considered is a 300 nm wide and 5 nm tick NiFe soft nanostrip. This d
 
 \begin{figure}[htbp]
 	\centering
-		\includegraphics[width=0.52\textwidth]{Figures/ATW.png}
+		\includegraphics[width=0.55\textwidth]{Figures/ATW.png}
 		\rule{35em}{0.5pt}
 	\caption[Asymmetric Transverse Wall results]{Asymmetric Transverse Wall (ATW) results}
 	\label{fig:atw}
@@ -115,7 +115,7 @@ Vortex Wall (VW) same as for ATW, we point out the noticeable effect of the diff
 
 \begin{figure}[htbp]
 	\centering
-		\includegraphics[width=0.52\textwidth]{Figures/VW.png}
+		\includegraphics[width=0.55\textwidth]{Figures/VW.png}
 		\rule{35em}{0.5pt}
 	\caption[Vortex Wall results]{Vortex Wall results}
 	\label{fig:vw}
@@ -133,7 +133,7 @@ The FDTD method essentially uses a weighted summation of functions values at nei
 
 \begin{figure}[htbp]
 	\centering
-		\includegraphics[width=0.6\textwidth]{Figures/fdtd.png}
+		\includegraphics[width=0.67\textwidth]{Figures/fdtd.png}
 		\rule{35em}{0.2pt}
 	\caption[FDTD grid]{The result for each cell is based on evaluating the derivate cell neighbors.}
 	\label{fig:fdtd}
@@ -225,9 +225,9 @@ Similarly, for a point closet to boundary, reference \ref{fig:bound}-c, grid poi
 \end{bmatrix}
 \end{align}
 
-In both cases, and second derivatives and fully determined provided $f^{(1)}(x_R)$ be known along the boundary. For further reference \cite{methods}. The implementation to solve the laplacian with boundaries conditions check chapter 4.
+In both cases, and second derivatives and fully determined provided $f^{(1)}(x_R)$ be known along the boundary. For further reference \cite{methods}. The implementation of the numerically solution in how to implement the laplacian boundaries conditions please check chapter 4.
 
-The main advantages of the finite difference approach are ease of implementation, simplicity of meshing, efficient evaluation of the magnetization energy, and the accessibility of higher order methods. the main disadvantage of this approach is the sampling curved boundaries with a rectangular mesh, resulting in some what discrete  approximation, which ca produce significant error in the computation.
+The main advantages of the finite difference approach is easy to implement, simplicity of meshing, efficient evaluation of the magnetization energy, and the accessibility of higher order methods. The main disadvantage of this approach is the sampling curved boundaries with a rectangular mesh, resulting in some what discrete approximation, which can produce significant error in the computation.
 
 \subsection{Fourth order Runge and Kutta method}
 

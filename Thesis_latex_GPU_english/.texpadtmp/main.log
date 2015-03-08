@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013) (format=pdflatex 2013.5.30)  8 MAR 2015 11:47
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013) (format=pdflatex 2013.5.30)  8 MAR 2015 11:57
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -686,12 +686,12 @@ Missing character: There is no ™ in font cmr10!
 File: Figures/ATW.png Graphic file (type png)
  <use Figures/ATW.png>
 Package pdftex.def Info: Figures/ATW.png used on input line 108.
-(pdftex.def)             Requested size: 217.08777pt x 95.78592pt.
+(pdftex.def)             Requested size: 229.61145pt x 101.31352pt.
  <Figures/VW.png, id=622, 512.91624pt x 221.82875pt>
 File: Figures/VW.png Graphic file (type png)
  <use Figures/VW.png>
 Package pdftex.def Info: Figures/VW.png used on input line 118.
-(pdftex.def)             Requested size: 217.08777pt x 93.8884pt.
+(pdftex.def)             Requested size: 229.61145pt x 99.30412pt.
  [14]
 
 LaTeX Warning: Reference `Xhang' on page 15 undefined on input line 126.
@@ -700,13 +700,13 @@ LaTeX Warning: Reference `Xhang' on page 15 undefined on input line 126.
 File: Figures/fdtd.png Graphic file (type png)
  <use Figures/fdtd.png>
 Package pdftex.def Info: Figures/fdtd.png used on input line 136.
-(pdftex.def)             Requested size: 250.48637pt x 66.62814pt.
+(pdftex.def)             Requested size: 279.70618pt x 74.40143pt.
  <Figures/bound.png, id=646, 649.42625pt x 433.62pt>
 File: Figures/bound.png Graphic file (type png)
  <use Figures/bound.png>
 Package pdftex.def Info: Figures/bound.png used on input line 150.
 (pdftex.def)             Requested size: 250.48637pt x 167.24527pt.
- [16 <./Figures/fdtd.png> <./Figures/bound.png>] [17] [18] <Figures/euler.png, id=685, 370.38374pt x 194.7275pt>
+ [16 <./Figures/fdtd.png>] [17 <./Figures/bound.png>] [18] <Figures/euler.png, id=685, 370.38374pt x 194.7275pt>
 File: Figures/euler.png Graphic file (type png)
  <use Figures/euler.png>
 Package pdftex.def Info: Figures/euler.png used on input line 242.
@@ -835,7 +835,7 @@ Overfull \hbox (5.05098pt too wide) in paragraph at lines 48--63
 File: Figures/gpu_initial.png Graphic file (type png)
  <use Figures/gpu_initial.png>
 Package pdftex.def Info: Figures/gpu_initial.png used on input line 150.
-(pdftex.def)             Requested size: 271.35493pt x 103.80334pt.
+(pdftex.def)             Requested size: 317.27724pt x 121.37477pt.
  [47 <./Figures/gpu_initial.png>] <Figures/threads.png, id=1040, 649.42625pt x 198.7425pt>
 File: Figures/threads.png Graphic file (type png)
  <use Figures/threads.png>
@@ -884,12 +884,12 @@ Overfull \hbox (10.32703pt too wide) in paragraph at lines 436--451
 File: Figures/gpuOptimization.png Graphic file (type png)
  <use Figures/gpuOptimization.png>
 Package pdftex.def Info: Figures/gpuOptimization.png used on input line 478.
-(pdftex.def)             Requested size: 250.48637pt x 215.5082pt.
+(pdftex.def)             Requested size: 258.83125pt x 222.6869pt.
  [55] <Figures/speed.png, id=1229, 768.9528pt x 403.62794pt>
 File: Figures/speed.png Graphic file (type png)
  <use Figures/speed.png>
 Package pdftex.def Info: Figures/speed.png used on input line 513.
-(pdftex.def)             Requested size: 271.35493pt x 142.43591pt.
+(pdftex.def)             Requested size: 279.70618pt x 146.82101pt.
  [56 <./Figures/gpuOptimization.png>]) (./Chapters/Chapter6.tex [57 <./Figures/speed.png>]
 Chapter 6.
 ------------------------------------------------------------------------------
@@ -953,7 +953,7 @@ Here is how much of TeX's memory you used:
  957 hyphenation exceptions out of 8191
  49i,19n,60p,1341b,1751s stack positions out of 5000i,500n,10000p,200000b,80000s
 </usr/local/texlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/local/texlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/local/texlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmcsc10.pfb></usr/local/texlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/local/texlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/texlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/local/texlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/local/texlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/local/texlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/local/texlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/texlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/local/texlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/texlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/local/texlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb></usr/local/texlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb></usr/local/texlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt8.pfb>
-Output written on /Users/tom/Documents/GitHub/GPUTest/Thesis_latex_GPU_english/.texpadtmp/main.pdf (71 pages, 4781898 bytes).
+Output written on /Users/tom/Documents/GitHub/GPUTest/Thesis_latex_GPU_english/.texpadtmp/main.pdf (71 pages, 4782092 bytes).
 PDF statistics:
  1439 PDF objects out of 1440 (max. 8388607)
  1271 compressed objects within 13 object streams
