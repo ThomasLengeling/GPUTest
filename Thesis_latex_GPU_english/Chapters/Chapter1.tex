@@ -137,7 +137,7 @@ $$blockIdx.x \times blockDim.x + threadId.x$$
 	\label{fig:grid}
 \end{figure}
 
-In CUDA, host memory and device memory (all types) have separate memory spaces. Both of them have physically a separated location, for example, the RAM for either the CPU o the GPU. Furthermore, the programmer requires to send data from the host memory to the device's global memory (RAM) and vi-versa. The process is illustrated in figure \ref{memorySpace:arch}. Memory which is allocated in the device needs to be freed on the device, the same occurs for the host memory. Moreover, the process is accomplish with similar devices operations, free or delete in C/C++. Some of the operations are performed by CUDA's Application Programming Interface (API) on behalf of the programmer \cite{hwu}.
+In CUDA, host memory and device memory (all types) have separate memory spaces. Both of them have physically a separated location, for example, the RAM for either the CPU o the GPU. Furthermore, the programmer requires to send data from the host memory to the device's global memory (RAM) and vi-versa. The process is illustrated in figure \ref{fig:arch}. Memory which is allocated in the device needs to be freed on the device, the same occurs for the host memory. Moreover, the process is accomplish with similar devices operations, free or delete in C/C++. Some of the operations are performed by CUDA's Application Programming Interface (API) on behalf of the programmer \cite{hwu}.
 
 \begin{figure}[htbp]
 	\centering
@@ -153,7 +153,7 @@ The current CPUs are typically multicore systems, which are capable of paralleli
 
 \begin{figure}[htbp]
 	\centering
-		\includegraphics[width=0.68\textwidth]{Figures/cpu.png}
+		\includegraphics[width=0.72\textwidth]{Figures/cpu.png}
 		\rule{35em}{0.5pt}
 	\caption[CPU Thread execution]{CPU thread execution}
 	\label{fig:cpu}

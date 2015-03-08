@@ -281,11 +281,11 @@ for (int i  = 0; i < 3; i++)
 	\label{fig:concurrent}
 \end{figure}
 
-Concurrent kernels demonstrates a very promising technique to achieve a huge performance increment in the application. However, there are some downsides to this implementation; correctly synchronize kernels, waiting time and hardware resources \cite{practices}. The timeline of the application \ref{fig:waittime} illustrates the waiting time between kernels execution. However, the waiting time are very small time steps between 0.01ms and 0.01ms, but waiting time occurs for each step of the RK4, appears approximate 45,00 times. Furthermore, currently branching the kernel execution process can eliminate this issue.
+Concurrent kernels demonstrates a very promising technique to achieve a huge performance increment in the application. However, there are some downsides to this implementation; correctly synchronize kernels, waiting time and hardware resources are amoung the  problems\cite{practices}. The timeline of the application \ref{fig:waittime} illustrates the waiting time between kernels execution. However, the waiting time are very small time steps between 0.01ms and 0.01ms, but waiting time occurs for each step of the RK4, appears approximate 45,00 times. Furthermore, currently branching the kernel execution process can eliminate this issue.
 
 \begin{figure}[htbp]
 	\centering
-		\includegraphics[width=0.72\textwidth]{Figures/waittime.png}
+		\includegraphics[width=0.74\textwidth]{Figures/waittime.png}
 		\rule{35em}{0.2pt}
 	\caption[Waiting time concurrent kernels]{Waiting time between each concurrent kernel execution}
 	\label{fig:waittime}
@@ -296,7 +296,7 @@ Concurrent kernels demonstrates a very promising technique to achieve a huge per
 
 As we know shared memory is faster than global memory. However, shared memory is very limited. To be able to implement shared memory in the kernels, we needed the kernels separated in their x, y and z coordinate as mentioned in the previous section. In addition this allows us to implement shared memory across each kernel, otherwise wouldn't be possible.
 
-The idea behind shared memory is to reduce the amount of global memory calls, which has about 400-600 clock cycles, while the shared memory only 1-32 cycles \ref{fig:memory}. The share memory implementation is accomplish by allocating the data from the thread block into a temporary array, which is the shared memory.In addition the kernel can make calculation on this temporary array and write the values onto the global memory. The code of such implementation is illustrated in \ref{lst:shared}. As we know there is no guaranty that threads will execute at the same order. Using $\_\_syncthreads()$ will wait until all threads have completed there task, in this case loading global memory into shared memory. Then we performed operations on the shared memory, and finally save the values in the global memory. Shared memory was used in all the occasions were kernels used extensively global memory.
+The idea behind shared memory is to reduce the amount of global memory calls, which has about 400-600 clock cycles, while the shared memory only 1-32 cycles \ref{fig:memory}. The share memory implementation is accomplish by allocating the data from the thread block into a temporary array, which is the shared memory.In addition the kernel can make calculation on this temporary array and write the values onto the global memory. The code of such implementation is illustrated in \ref{lst:shared}. As we know there is no guaranty that threads will execute at the same order. Using $\_\_syncthreads()$ will wait until all threads have completed their task, in this case loading global memory into the shared memory array. Then we performed all the operations on the shared memory array. Finally, we write the share memory values into the global memory. Shared memory was used in all the occasions were kernels used extensively global memory.
 
 \begin{lstlisting}[language=C++, label={lst:shared}, caption={Shared memory}]
 int i = blockIdx.x * blockDim.x + threadIdx.x;
