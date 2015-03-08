@@ -141,7 +141,7 @@ Using the NVIDIA's Visual Profiler we obtain kernel metrics of the Tesla K20m. T
     3.35 & 519.5ms & 6631 & 78.3us & 41.1us & 372.2us & $gTerm1RK4$ \\
    \hline
   \end{tabular}
-  \caption{Kernel executing and time int the Tesla K20}
+  \caption{Kernel time executing and on the Tesla K20}
   \label{tab:nvprof}
   \end{table}
  
@@ -149,7 +149,7 @@ Using the NVIDIA's Visual Profiler we obtain kernel metrics of the Tesla K20m. T
 	\centering
 		\includegraphics[width=0.65\textwidth]{Figures/gpu_initial.png}
 		\rule{35em}{0.2pt}
-	\caption[Initial GPU results]{Initial results of the implementation running on several different GPU nodes}
+	\caption[Initial GPU results]{Initial implementation benchmarking on several different GPU nodes}
 	\label{fig:iniresults}
 \end{figure}
 
@@ -275,17 +275,17 @@ for (int i  = 0; i < 3; i++)
 
 \begin{figure}[htbp]
 	\centering
-		\includegraphics[width=0.8\textwidth]{Figures/concurent.png}
+		\includegraphics[width=0.82\textwidth]{Figures/concurent.png}
 		\rule{35em}{0.2pt}s
 	\caption[Streams kernels Tesla K20]{Concurrent kernels in the Tesla K20 using NVIDIA's Visual Profiler.}
 	\label{fig:concurrent}
 \end{figure}
 
-Concurrent kernels demonstrates a very promising technique to achieve a huge performance increment in the application. However, there are some downsides to this implementation; correctly synchronize kernels, waiting time and hardware resources \cite{practices}. The timeline of the application \ref{ref:waittime} illustrates the waiting time between kernels execution. However, the waiting time are very small time steps between 0.01ms and 0.01ms, but waiting time occurs for each step of the RK4, appears approximate 45,00 times. Furthermore, currently branching the kernel execution process can eliminate this issue.
+Concurrent kernels demonstrates a very promising technique to achieve a huge performance increment in the application. However, there are some downsides to this implementation; correctly synchronize kernels, waiting time and hardware resources \cite{practices}. The timeline of the application \ref{fig:waittime} illustrates the waiting time between kernels execution. However, the waiting time are very small time steps between 0.01ms and 0.01ms, but waiting time occurs for each step of the RK4, appears approximate 45,00 times. Furthermore, currently branching the kernel execution process can eliminate this issue.
 
 \begin{figure}[htbp]
 	\centering
-		\includegraphics[width=0.7\textwidth]{Figures/waittime.png}
+		\includegraphics[width=0.72\textwidth]{Figures/waittime.png}
 		\rule{35em}{0.2pt}
 	\caption[Waiting time concurrent kernels]{Waiting time between each concurrent kernel execution}
 	\label{fig:waittime}
@@ -475,7 +475,7 @@ This section is the overview of the optimization results compared with each vers
 
 \begin{figure}[htbp]
 	\centering
-		\includegraphics[width=0.57\textwidth]{Figures/gpuOptimization.png}
+		\includegraphics[width=0.6\textwidth]{Figures/gpuOptimization.png}
 		\rule{35em}{0.2pt}
 	\caption[Overall time simulation]{Overall time simulation}
 	\label{fig:sao}
@@ -510,7 +510,7 @@ The SOA optimization overall improved dramatically the performance of the applic
 
 \begin{figure}[htbp]
 	\centering
-		\includegraphics[width=0.62\textwidth]{Figures/speed.png}
+		\includegraphics[width=0.65\textwidth]{Figures/speed.png}
 		\rule{35em}{0.2pt}
 	\caption[Optimization speedup overview]{Optimization speedup}
 	\label{fig:speedup}
