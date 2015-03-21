@@ -58,7 +58,7 @@ There are many possible approaches to profiling the code, but in all cases the o
 
 \subsection{Timing}
 
-Timing a launched kernel can be done on either the GPU or the CPU. Is important to remember that the CPU and GPU are not synchronized. So its necessary to synchronize the CPU thread with the GPU kernels launches. CUDA provides the required  functions to synchronize the CPU with the GPU calling immediately before starting the timer \cite{practices}. CUDA is able to handle timers within the GPU, which records times in a floating-point value in milliseconds. This is done with $cudaEventRecord()$, just by including $start$ and $stop$ in the function inputs. Note that the timing are measured on the GPU clock, so the timing is independent from the OS \cite{cook}.
+Timing a launched kernel can be done on either the GPU or the CPU. Is important to remember that the CPU and GPU are not synchronized. So its necessary to synchronize the CPU thread with the GPU kernels launches. CUDA provides the required  functions to synchronize the CPU with the GPU calling immediately before starting the timer \cite{practices}. CUDA is able to handle timers within the GPU, which records times in a floating-point value in milliseconds. This is done with $cudaEventRecord()$, just by including $start$ and $stop$ in the function inputs. Note that the timing are measured on the GPU clock, so the timing is independent from the OS \cite{cook}. The timing performed on the application is showed in Chapter \ref{Optimization Results}.
 
 \subsection{Bandwidth}
 
@@ -116,17 +116,7 @@ Understanding how efficiently use global memory is essential part of CUDA memory
 \item Focus on data reuse within the GPGPU to avoid memory bandwidth limitations.
 \end{itemize}
 
-In other words the global memory resides on the device, and it can be anything from 1 byte to 8GB, depends on the GPU RAM available. Furthermore, the memory is visible to all the threads of the grid. Any thread can read and write to any location of the global memory, The memory is always allocated with the keyword \textit{cadaMalloc}. In addition, the global memory can only be used by passing to the kernels call the keyword \twoline global \twoline \cite{design}.
-
-%\ref{fig:smi}
-
-%\begin{figure}[htbp]
-%	\centering
-%		\includegraphics[width=0.85\textwidth]{Figures/smi.png}
-%		\rule{35em}{0.5pt}
-%	\caption[GPU and CPU]{Different architecture between the GPU and CPU}
-%	\label{fig:smi}
-%\end{figure}
+In other words the global memory resides on the device, and it should be anything from 1 byte to 8GB, depends on the GPU RAM available. Furthermore, the memory is visible to all the threads of the grid. Every thread at a given location is possible to read and to write global memory, The memory is always allocated with the keyword \textit{cadaMalloc}. In addition, the global memory is only used by passing to the kernel call the keyword \twoline global \twoline \cite{design}. Global memory is widely used for the current implementation.
 
 \subsection{Shared Memory}
 
@@ -135,9 +125,6 @@ Shared memory is magnitudes faster to access than global memory, essentially is 
 
 Shared memory is widely used for applications were the kernels access a great amount of global memory. In addition, using shared memory eliminates the use of clock cycles per kernel which increases performance on a single kernel call. The optimizations results of increasing the use of shared memory are located in Chapter \ref{Optimization Results}.
 
-
-
-   %There is also one other very useful case with shared memory and that is where every thread in a warp reads the same bank address
    
 \subsection{Constant Memory}
 
@@ -165,6 +152,9 @@ The texture Memory in a form works like the GPU graphics Texture, when you want 
 \item  When the work is done on the Texture, unbind the texture reference on the host.
 \end{itemize}
 
+
+The texture memory is not used on the current implementation, for obvious reasons, it is a read only memory. For the application we need to constantly read an write blocks of memory.
+
 \subsection{Thread Synchronization}
 
 This refers to synchronizing threads operations. For efficiency, a pipeline can be created by queuing a number of kernels to keep the GPGPU busy for as long as possible. Further, some form of synchronization is required so that the host can determine when the kernel or pipeline has completed \cite{design}. Commonly used synchronization mechanisms are:
@@ -176,7 +166,7 @@ This refers to synchronizing threads operations. For efficiency, a pipeline can 
 
 The basic unit of work on the GPU is a thread. It is important to understand from a software point of view that each thread is separate from every other thread. Every thread acts as if it has its own processor with separate registers and identity. Will wait for all threads to finish there job \cite{design}.
 
-Threads synchronization can also be accomplish inside of the kernels calls. The idea is the same, the kernel will wait until all the threads have completed there task. Threads synchronization is general used when loading data into shared memory. 
+Threads synchronization can also be accomplish inside of the kernels calls. The idea is the same, the kernel will wait until all the threads have completed there task. Threads synchronization is general used when loading data into shared memory. The implementation of such process is in Chapter \ref{Optimization Results}, section optimizations.
 
 \section{Concurrent Kernels}
 
@@ -194,9 +184,11 @@ A stream in CUDA is a sequence of operations that execute on the device in the o
 
 Using two or more CUDA streams, we can allow the GPU to simultaneously execute a kernel while performing a copy between the host and the GPU. We need to careful about two things. First, the host memory involved needs to be allocated, since we will queue our memory copies, we need to synchronize those copies. Second. we need to be aware that the order in which we add operations to our streams will affect out capacity to achieve overlapping of copies and kernel execution. The general guideline involves a breadth-first, or round robin, to assign work and queue work to the kernels \cite{example}.
 
+Concurrent kernels is technique which is implemented in this application. In addition, the order of kernel execution effected the operations of the streams. Moreover,  Chapter \ref{Optimization Results} illustrates the path taken to accomplish such task. 
+
 \section{Kernel Analysis}
 
- Kernels are the essential part of CUDA programming, threads are launched automatically throughout each thread per blocks of the device. Furthermore, millions of threads execute the same code in parallel. However, the parallel code can be bound by three factors memory, compute and Latency  \cite{cook}.
+ Kernels are the essential part of CUDA programming, threads are launched automatically throughout each thread per blocks of the device. Furthermore, millions of threads execute the same code in parallel. However, the parallel code can be bound by three factors memory, compute and latency \cite{cook}.
 
 \begin{description}
 
@@ -209,11 +201,13 @@ Refers to the computation time execution, in other works calculations done in th
  \item{Latency Bound} \hfill \\
  Is one whose predominate stall reason is due to memory fetches. This is actually the saturating the global memory, or any type, but still have to wait to get the data into the kernel. Physically can be the data being sent from one part of the Device to the other. Also depends the time required to perform an operation, and are counted in cycles of operations. A way to reduce the latency is to increase the number of parallel instructions (more  calls per thread), in other words more work per thread and fewer threads.
  \end{description}
+ 
+Depending on the problem, the application can be bound by the previous three factors. The next chapter we are going to explain how and why the current implementation is bounded by memory, compute and latency.
 
 
 \section{Hardware constraints}
 
-Depending on the hardware capabilities limits how many threads per block a kernel launch can have. If exceed this values, the kernel will run incorrecly. The threads per block depends of the GPU hardware capabilities. The compute capabilities of a device is represented by a version number, also sometimes called its "SM version". This version number identifies the features supported by the GPU hardware and is used by applications at runtime to determine which hardware features and/or instructions are available on the present GPU \cite{tool}. In a roughly summarized as:
+Depending on the hardware capabilities limits how many threads per block a kernel launch can have. If exceed this values, the kernel will run incorrectly. The threads per block depends of the GPU hardware capabilities. The compute capabilities of a device is represented by a version number, also sometimes called its "SM version". This version number identifies the features supported by the GPU hardware and is used by applications at runtime to determine which hardware features and/or instructions are available on the present GPU \cite{tool}. In a roughly summarized as:
 
 \begin{itemize}
 \item Each block cannot have more than 512/1024 threads in total. (Capability 1.x or 2.x-3.x)
@@ -226,7 +220,7 @@ Another inefficiency that can cause low performance in the CUDA application, is 
 
 \subsection{Thread Division}
 
-There a hardware limitations in how much threads per block a kernel can handle. Launching a kernel with the hardware constrains of the device will only ensure us that the kernel will actually be executed in the device, Nonetheless, not 100$\%$ optimal and the results can be incorrect. Furthermore, is necessary to launch kernels with the amount of threads per block base on the hardware settings. The block size will determine how faster the code will run. However, not the biggest block will run faster, depends con the problem and the data set. By Benchmarking the application, is possible to find the optimal configuration that best fits the problem. One thing to keep in mind, thread blocks should be a multiple number of SMs, with this idea is possible to obtain optimal thread block configuration.
+There a hardware limitations in how much threads per block a kernel can handle. Launching a kernel with the hardware constrains of the device will only ensure us that the kernel will actually be executed in the device, Nonetheless, not 100$\%$ optimal and the results can be incorrect. Furthermore, is necessary to launch kernels with the amount of threads per block base on the hardware settings. The block size will determine how faster the code will run. However, not the biggest block will run faster, depends con the problem and the data set. By Benchmarking the application, is possible to find the optimal configuration that best fits the problem. One thing to keep in mind, thread blocks should be a multiple number of SMs, with this idea is possible to obtain optimal thread block configuration. See Chapter \ref{Optimization Results} for the optimal thread configuration for the application.
 
 \section{Visual Profiler}
 

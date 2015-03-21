@@ -113,13 +113,13 @@ Kernels are launched or executed on a large amount of threads in the SM. They ca
 
 Each of the threads can be access by a implicit variable that identifies its position within the thread block and its grid. The thread access for the x coordinate is showed in the code \ref{lst:1d}. This is only the case for 1D block, which is widely used for shared memory access (see chapter 4) \cite{example}.
 
-\begin{lstlisting}[language=C++, label={lst:1d}, caption={1D block}]	
+\begin{lstlisting}[language=C++, label={lst:1d}, caption={1D thread block operation on a CUDA kernel}]	
 	int index = blockIdx.x * blockDim.x + threadId.x;
 \end{lstlisting}
 
 For the case of a 2D thread block, the code \ref{lst:2d} describe such configuration. In addition, the 2d thread block is the most common thread block configuration. Is also possible to configure a 3D thread block just by adding the z coordinate to the threadIdx index. However, is very limited.
 
-\begin{lstlisting}[language=C++, label={lst:2d}, caption={2D block}]	
+\begin{lstlisting}[language=C++, label={lst:2d}, caption={2D thread block operation on a CUDA kernel}]	
     int i = blockIdx.x * blockDim.x + threadIdx.x;
     int j = blockIdx.y * blockDim.y + threadIdx.y;
     
