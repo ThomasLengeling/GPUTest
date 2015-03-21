@@ -14,7 +14,7 @@ This chapter is the results of the CUDA code implementation launched on a single
 
 \section{Supercomputer ``Piritakua''}
 
-The experiments are carried out using the supercomputer “Piritakua”. The massive GPU cluster was design and built by Dr. Claudio from the University of Guanajuato Multidisciplinary Studies Yuriria. The GPU cluster is located at a small town of Mexico, Yuriria. The supercomputer at the Front-end has a eight core Intel Xeon at 2.4 Ghz, at the back-end several GPU are connected. All of GPUs CUDA version 5.0 was installed. Furthermore, the GPUs node are; one NVIDIA Tesla K20, two Tesla M2070 and a GeForce GTX 580 
+The experiments are carried out using the supercomputer “Piritakua”. The massive GPU cluster was design and built by Dr. Claudio from the University of Guanajuato, Yuriria Multidisciplinary Studies. The GPU cluster is located at a small town of Mexico, Yuriria. The supercomputer at the Front-end has a eight core Intel Xeon at 2.4 Ghz, at the back-end several GPU are connected. All of GPUs CUDA version 5.0 was installed. Furthermore, the GPUs node are; one NVIDIA Tesla K20, two Tesla M2070 and a GeForce GTX 580 
 
 The cluster has a GNU$ \ $LINUX distribution installed, the CentOS 64 bits version 6.4. CentOS stands for Community Enterprise Operating System which is free operating system and one of the most popular GNU$ \ $Linux distribution for web servers and as well is supported by RHEL (Red Hat Enterprise Linux) \cite{centos}. The specifications of the front-end cluster are \ref{tab:cpus}.
 
@@ -158,11 +158,11 @@ As we can see in figure \ref{fig:iniresults} the GeForce GTX 580 is the card wit
 
 --------include some initial performance metrics with the profiler
 
-The following sections are the optimization techniques or methods applied to the application. In addition demonstrating the comparison between the initial implementation and the modified version. Five versions of the code are describe; Branching, Occupancy, Concurrent Kernels, Shared Memory and Structure of Arrays. Branching refers how the threads are executing and their executing flow in the application. Occupancy number of threads per devices being used. Concurrent Kernels execution several kernels at once. Shared Memory, using as much shared memory as possible. Finally Structure of Arrays modifying the memory allocation in the device.
+The following sections are the optimization techniques or methods applied to the application. In addition, demonstrating the performance comparison between the initial implementation and the modified versions. Five versions of the code are; Branching, Occupancy, Concurrent Kernels, Shared Memory and Structure of Arrays. Branching, refers how kernels and threads are executed in the application. Occupancy, number of threads per devices being used. Concurrent Kernels, execution several kernels at once. Shared Memory, using as much shared memory as possible. Finally, Structure of Arrays, modification of the memory allocation in the device.
 
  \subsection{Branching}
  
- CUDA follows the Single Instruction Multiple Thread architecture. This means that there are running several threads executing the same code. Each thread can operate on its own data and has its own address counter . They are free to use each data dependent path. But also each thread is executing the same operation at the same time. When a thread within a warp branches differently the other threads get deactivated\cite{hoermanngpu}. This can be described by the following code \ref{lst:branch} and the illustration \ref{fig:threads}.
+ CUDA follows the Single Instruction Multiple Thread architecture. This means, threads execute the same code. Each thread can operate on its own data and has its own address counter. Moreover, threads are free to use a different path. Each thread launches the same operation at the same time. However, they have to wait for all the threads in the kernel to finish there task. In other words, some threads can finish their job before a groups of threads are still executing their task. When a thread within a warp branches differently the other threads get deactivated \cite{hoermanngpu}. This can be described in the following code \ref{lst:branch} and  illustrated in the figure \ref{fig:threads}.
 
 \begin{lstlisting}[language=C++, label={lst:branch}, caption={Threads Branching}]
 __global__ void kernel(int* out){
@@ -226,11 +226,11 @@ __global__ void glaplacianyboundaries(...){
 }
 \end{lstlisting}
 
-This technique was applied to all parts of the code, eliminated inactive threads that were not performing computational operations to active ones. The results of the modified version consult the Optimization Results section. 
+The technique was applied to all parts of the code, eliminated inactive threads that were not performing computational operations to active ones. The results of the modified version consult the Optimization Results section. The technique increased the occupancy percentage of active threads within the kernels.
 
 \subsection{Concurrent Kernels}
 
-Initially each kernel was launched in the default steam zero. The figure \ref{fig:streams} illustrates such result using the NVIDIA's Visual Profiler. Each kernel that is being launched cannot run simultaneously because the next kernel launches needs to compute data, in other words the kernels are not independent from each other.
+Initially, each kernel was launched on the default steam zero. Which, process all the kernels in a serial manner, though their executing time in the code. The figure \ref{fig:streams} illustrates such result using the NVIDIA's Visual Profiler. Each kernel that is being launched cannot run simultaneously because the next kernel launches needs to compute data, in other words the kernels are not independent from each other.
 
 \begin{figure}[htbp]
 	\centering
@@ -241,9 +241,9 @@ Initially each kernel was launched in the default steam zero. The figure \ref{fi
 	\label{fig:streams}
 \end{figure}
 
- Kernels by default cannot run in parallel with others kernels. Furthermore, CUDA doesn't provide an automatic parallel kernel executing. In addition the programmer needs to tell the CUDA compiler that some portion of the code or kernel should be run in parallel. However, the compiler cannot always execute concurrent kernels, depends on the hardware capabilities and as well the number of threads per block and the number of SM available. If the compiler finds available space to run another kernel simultaneously it will do so. 
+ Kernels by default cannot run in parallel with others kernels. Furthermore, CUDA doesn't provide an automatic parallel kernel executing. In addition, the programmer needs to tell the CUDA compiler that some portion of the code or kernel should be run in parallel. However, the compiler cannot always execute concurrent kernels, depends on the hardware capabilities and as well the number of threads per block and the number of SM available. If the compiler finds available space to run another kernel simultaneously it will do so. 
 
-For example, the $gsolution$ \ref{lst:concurrent} kernel computes the Zhang an Li model for x, y, z coordinates, which uses extensively the global memory of the device. To achieve concurrent kernels the streams need to access memory blocks that are pinned to a stream. So each memory block corresponding x, y, z are mapped to 3 streams. Furthermore, all the matrices corresponding to the coordinate x are mapped to the stream 1, y to stream 2 and z to stream 3.
+For example, the $gsolution$ \ref{lst:concurrent} kernel computes the Zhang and Li model for x, y, z coordinates, which uses extensively the global memory of the device. To achieve concurrent kernels, the streams should be able to access memory blocks that are pinned to a stream. Therefore, each memory block corresponding to x, y, z coordinate are mapped to 3 independent streams. Furthermore, all the matrices corresponding to the coordinate x are mapped to the stream 1, coordinate y to stream 2 and coordinate z to stream 3.
 
 \begin{lstlisting}[language=C++, label={lst:concurrent}, caption={Evaluation of x, y, z coordinates of the Zhang and Li model in a single kernel.}]
 deltamX[index] = sfrelaxX[index] + sdexX[index] + laplX[index] - smX[index];
@@ -294,7 +294,7 @@ Concurrent kernels demonstrates a very promising technique to achieve a huge per
 
 \subsection{Shared Memory}
 
-As we know shared memory is faster than global memory. However, shared memory is very limited. To be able to implement shared memory in the kernels, we needed the kernels separated in their x, y and z coordinate as mentioned in the previous section. In addition this allows us to implement shared memory across each kernel, otherwise wouldn't be possible.
+As we know shared memory is faster than global memory, read Chapter \ref{Heterogeneous Performance Analysis and Practices} for more reference. However, shared memory is very limited. To be able to implement shared memory in the kernels, we needed the kernels to be separated in their x, y and z coordinate as mentioned in the previous section. In addition, this allows us to implement shared memory across each kernel, otherwise wouldn't be possible.
 
 The idea behind shared memory is to reduce the amount of global memory calls, which has about 400-600 clock cycles, while the shared memory only 1-32 cycles \ref{fig:memory}. The shared memory implementation is accomplish by allocating the data from the thread block in-to a temporary array, in other words the shared memory. In addition, the kernel is able to performed calculations on the temporary array and write the values onto the global memory. The implementation code is illustrated in the listing \ref{lst:shared}. As we know there is no guaranty that threads will execute at the same order. Using $\_\_syncthreads()$ will wait until all threads have completed their task, in this case loading global memory into the shared memory array. Chapter \ref{Heterogeneous Performance Analysis and Practices} section thread synchronization has more information about the process. After all the operations on the shared memory array are finish, the final part is to write the shared memory values back to the the global memory. Shared memory was used in all the kernels were global memory was used extensively. 
 
@@ -450,6 +450,8 @@ This section is the overview of the optimization results compared with each vers
   \label{tab:time}
   \end{table}
   
+  The table \ref{tab:time} displays the overall executing time for all the version of the code, original, constant, streams, shared memory, SAO and Occupany. We can see compared the initial time and the final there is a difference between 40s and 50s time decrease. The time reduction is relatively low. There is no big difference in waiting 100s or 66s to a simulation to complete. However, if we increase the data set to five decimal points, the simulation can take up-to a couple of hours or days. Finally, the speedup comparison in table \ref{speed} and figure \ref{fig:speedup} illustrates how much performance increase we could obtain in a new simulation using the current implementation.
+  
   \begin{table}[h]
 \centering
   \begin{tabular} { |  l  |  l | l  |  l  | l | l | l |}
@@ -467,13 +469,13 @@ This section is the overview of the optimization results compared with each vers
     GeForce 670MX & 1.544x & 1.598x & 1.662x & 1.349x & 2.084x & 2.163x\\
    \hline
   \end{tabular}
-    \caption{Speedup performance}
+    \caption{GPU Speedup performance}
   \label{tab:speed}
   \end{table}
 
 \begin{figure}[htbp]
 	\centering
-		\includegraphics[width=0.65\textwidth]{Figures/gpuOptimization.png}
+		\includegraphics[width=0.8\textwidth]{Figures/gpuOptimization.png}
 		\smallskip
 	\caption[Overall time simulation]{Overall time simulation}
 	\label{fig:gpuop}
@@ -484,7 +486,7 @@ The initial Visual Profiler test \ref{fig:iniresults} illustrated us that the La
 
 \begin{figure}[htbp]
 	\centering
-		\includegraphics[width=0.77 \textwidth]{Figures/speedup.png}
+		\includegraphics[width=0.88 \textwidth]{Figures/speedup.png}
 		\smallskip
 	\caption[Speedup performance output]{Speedup performance output.}
 	\label{fig:speedup}
@@ -509,22 +511,23 @@ The initial Visual Profiler test \ref{fig:iniresults} illustrated us that the La
 	\label{fig:final}
 \end{figure}
     
-The Tesla K20m was the only GPU which in every code modification it did not lose performance over the course of the optimization process. However, the other GPUs drop performance in the stream optimization stage. The stream process is where each kernel was divided into three separated kernels. Doing this we were able to calculate the x, y, z coordinates independently. In addition, this enable room to implement shared memory across possible kernels. As the figure \ref{tab:gpus} illustrates the Tesla K20m is the only GPU card with CC of 3.5. This is important to mention, because the CC 3.5 has access to Hyper-Q. Moreover, this improvement can synchronize automatically concurrent kernels for them to launch in a parallel manner. 
+The Tesla K20m was the only GPU which in every code modification it did not lose performance over the course of the optimization process. However, the other GPUs drop performance in the stream optimization stage. The stream process is where each kernel was divided into three separated kernels. Doing this we were able to calculate the x, y, z coordinates independently. In addition, this enable room to implement shared memory across possible kernels. The GPU table specifications \ref{tab:gpus} illustrates that the Tesla K20m is the only GPU card with CC of 3.5. This is important to mention, because the CC 3.5 has access to Hyper-Q technology. Moreover, Hyper-Q is able to synchronize automatically concurrent kernels, just by activated pinned memory to the threads.
 
-The SOA optimization overall improved dramatically the performance of the application, obtaining a 1.2x - 2.0x speed up in all GPU cards, figure \ref{fig:speedup} \ref{fig:speeduplast}.
+The SOA optimization, improved overall dramatically the performance of the application, obtaining a 1.2x - 2.0x speedup in all GPU cards, see figure \ref{fig:speedup} and \ref{fig:speeduplast}.
 
 \begin{figure}[htbp]
 	\centering
-		\includegraphics[width=0.7\textwidth]{Figures/speed.png}
+		\includegraphics[width=0.88\textwidth]{Figures/speed.png}
 		\smallskip
-	\caption[Optimization speedup overview]{Optimization speedup}
+	\caption[Optimization speedup overview]{Optimization speedup overview}
 	\label{fig:speeduplast}
 \end{figure}
 
 
-We could expected the newest card Tesla k20m would obtain the most speedup and lest time overall, certainly because it has more CUDA cores, the highest compute capabilities. Furthermore, if falls behind the GeForce 580 with about 2.5x speedup difference. However, the Tesla K20 only had a difference of 0.3x speedup compared with the Teslas Cards. The GeForce \ref{tab:gpus} compared with the others GPUs specifications has most Processor clock (GHz), which can make more mathematical calculations per cycle, se figure \ref{fig:speedup}.
+We expected that the newest card, the Tesla k20m, would obtain the highest speedup overall, certainly because it has more CUDA cores, the highest compute capabilities. However, if falls behind the GeForce 580 with about 2.5x speedup difference (table \ref{tab:speed}). In addition, the Tesla K20 only had a difference of 0.3x speedup compared with the Teslas Cards (see figure \ref{fig:speedup}). The GeForce compared with the others GPUs specifications has most Processor clock (GHz), which can make more mathematical calculations per cycle, se table \ref{tab:gpus} for GPU specifications comparison. 
+
 
   \vspace{3.5em}
 
-Finally, various techniques and practices from chapter \ref{Heterogeneous Performance Analysis and Practices} we used to archive speedup and an increase performance. We incremented the used of constant memory, shared memory, changed the memory allocating access, analyzed thread branching and finally analyzed kernel occupancy. The highest performance of all GPUS did not occur in the newest NVIDIA card, the K20m, which is the most expensive of all the GPUs. The actual improvement occurred on the GeForce 580 (the more GHz of all GPUs) with a 2.32x speed up difference from the Tesla K20m. If the problem data set is to be scale, 8 days, the speedup performance of 8.0x will drastically decrease the time execution in only one day.
+Finally, various techniques and practices from chapter \ref{Heterogeneous Performance Analysis and Practices} we used to archive speedup and an increase performance. We incremented the used of constant memory, shared memory, changed the memory allocating access, analyzed thread branching and finally analyzed kernel occupancy. The highest performance of all GPUS did not occur in the newest NVIDIA card, the K20m, which is the most expensive of all the GPUs. The actual improvement occurred on the GeForce 580 (the more GHz of all GPUs) with a 2.32x speed up difference from the Tesla K20m \ref{fig:speedup}. If the problem data set is to be scale, 8 days, the speedup performance of 8.0x will drastically decrease the time execution in only one day.
   
