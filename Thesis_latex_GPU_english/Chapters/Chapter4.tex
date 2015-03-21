@@ -24,9 +24,9 @@ As we know the GPUs are plugged into the PCI Express bus of the host computer, i
 
 \begin{figure}[htbp]
 	\centering
-		\includegraphics[width=0.7\textwidth]{Figures/PCI.png}
-		\rule{35em}{0.5pt}
-	\caption[PCIe Bandwidth]{PCIe bus and GPU bandwidth comparison }
+		\includegraphics[width=0.72\textwidth]{Figures/PCI.png}
+		\smallskip
+	\caption[PCIe Bandwidth]{PCIe bus and GPU bandwidth comparison \cite{cook}}
 	\label{fig:PCI}
 \end{figure}
 
@@ -35,8 +35,8 @@ The practices should be taken in consideration to identify the portions of code 
 \begin{figure}[htbp]
 	\centering
 		\includegraphics[width=0.45\textwidth]{Figures/apod.png}
-		\rule{35em}{0.5pt}
-	\caption[Different memory types]{Different memory type and penalties usage}
+		\smallskip
+	\caption[GPU application practices]{GPU application practices \cite{practices}.}
 	\label{fig:apod}
 \end{figure}
 
@@ -88,9 +88,9 @@ In this section four types of memory handling are going to be explained, global 
 
 \begin{figure}[htbp]
 	\centering
-		\includegraphics[width=0.75\textwidth]{Figures/cores.png}
-		\rule{35em}{0.4pt}
-	\caption[schematic cache hierarchy of a CUDA GPU]{The schematic cache hierarchy of a CUDA GPU with 4 Streaming Multiprocessors and 8 CUDA Cores each.}
+		\includegraphics[width=0.93\textwidth]{Figures/cores.png}
+		\smallskip
+	\caption[Schematic cache hierarchy of a CUDA GPU]{The schematic cache hierarchy of a CUDA GPU with 4 Streaming Multiprocessors and 8 CUDA Cores each \cite{cook}.}
 	\label{fig:cores}
 \end{figure}
 
@@ -100,9 +100,9 @@ The table \ref{fig:memory} illustrates the five different memory types that are 
  
 \begin{figure}[htbp]
 	\centering
-		\includegraphics[width=0.85\textwidth]{Figures/memory.png}
-		\rule{35em}{0.45pt}
-	\caption[Different memory types]{Different memory type and penalties usage}
+		\includegraphics[width=0.87\textwidth]{Figures/memory.png}
+		\smallskip
+	\caption[Different memory types]{Different memory type and penalties usage \cite{cook}}
 	\label{fig:memory}
 \end{figure}
 
@@ -133,6 +133,10 @@ In other words the global memory resides on the device, and it can be anything f
 CUDA C compiler treats variables differently than a typical c variable, it creates a copy of the variable for each block that is launched on the GPU, now every thread in that block can access the memory, this is why is called shared memory. This memory reside physically on the GPU, because the memory is very close the cache, the latency is typical very low \cite{example}. One thing comes to mind, if the threads can communicate with others threads, so there should be way to synchronize all the threads. A simple case should be if thread A writes a value into the shared memory, and Thread B wants to access we need to synchronize, when thread A finish writing then Thread B can access it. This is typical case when shared memory with synchronize thread is needed \cite{cook}.
 Shared memory is magnitudes faster to access than global memory, essentially is like a local cache for each threads of a block. While  the shared memory is limited to 48K a block, the global memory is the amount of DRAM on the device. The duration of the shared memory on the device is the lifetime of the thread block. Using \twoline shared \twoline in-front of the data type will innovate shared memory.
 
+Shared memory is widely used for applications were the kernels access a great amount of global memory. In addition, using shared memory eliminates the use of clock cycles per kernel which increases performance on a single kernel call. The optimizations results of increasing the use of shared memory are located in Chapter \ref{Optimization Results}.
+
+
+
    %There is also one other very useful case with shared memory and that is where every thread in a warp reads the same bank address
    
 \subsection{Constant Memory}
@@ -145,9 +149,9 @@ Like constant memory, texture memory is another variety of read-only memory that
 
 \begin{figure}[htbp]
 	\centering
-		\includegraphics[width=0.55\textwidth]{Figures/texture.png}
-		\rule{35em}{0.5pt}
-	\caption[Texture Memory]{Mapping of threads into a two dimensional array of texture memory}
+		\includegraphics[width=0.52\textwidth]{Figures/texture.png}
+		\smallskip
+	\caption[Texture Memory]{Mapping of threads into a two dimensional array of texture memory \cite{hwu}}
 	\label{fig:texture}
 \end{figure}
 
@@ -180,8 +184,8 @@ Kernels are executed in a sequential form with parallel instructions. In additio
 
 \begin{figure}[htbp]
 	\centering
-		\includegraphics[width=0.55\textwidth]{Figures/streams.png}
-		\rule{35em}{0.5pt}
+		\includegraphics[width=0.68\textwidth]{Figures/streams.png}
+		\smallskip
 	\caption[Concurrent Kernels]{Overlapping kernel execution using CUDA streams}
 	\label{fig:streams}
 \end{figure}
@@ -230,9 +234,9 @@ Is a hard task to keep track of each individual thread. This becomes difficult f
 
 \begin{figure}[htbp]
 	\centering
-		\includegraphics[width=0.8\textwidth]{Figures/visualgraph.png}
-		\rule{35em}{0.2pt}
-	\caption[Visual Profiler metrics graphs and plots]{Profiler provides optimization metrics}
+		\includegraphics[width=1.0\textwidth]{Figures/visualgraph.png}
+		\smallskip
+	\caption[Visual Profiler metrics]{Profiler provides optimization metrics necessary to improve the application.}
 	\label{fig:visualgraph}
 \end{figure}
 
@@ -250,9 +254,9 @@ The Visual Profiler provides a step-by-step optimization guidance, where is poss
 
 \begin{figure}[htbp]
 	\centering
-		\includegraphics[width=0.33\textwidth]{Figures/visual01.png}
-		\rule{35em}{0.5pt}
-	\caption[Visual Profiler example]{Visual Profiler kernel execution}
+		\includegraphics[width=0.9\textwidth]{Figures/pofiler.png}
+		\smallskip
+	\caption[Visual Profiler timeline and stream process]{Visual Profiler kernel execution, and timeline execution}
 	\label{fig:visual01}
 \end{figure}
 

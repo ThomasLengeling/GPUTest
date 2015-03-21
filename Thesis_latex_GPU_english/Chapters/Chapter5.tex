@@ -148,7 +148,7 @@ Using the NVIDIA's Visual Profiler we obtain kernel metrics of the Tesla K20m. T
   \begin{figure}[htbp]
 	\centering
 		\includegraphics[width=0.76\textwidth]{Figures/gpu_initial.png}
-		\rule{35em}{0.2pt}
+		\smallskip
 	\caption[Initial GPU results]{Initial implementation benchmarking on several different GPU nodes}
 	\label{fig:iniresults}
 \end{figure}
@@ -179,7 +179,7 @@ if(idx == 0){
 \begin{figure}[htbp]
 	\centering
 		\includegraphics[width=0.55\textwidth]{Figures/threads.png}
-		\rule{35em}{0.2pt}
+		\smallskip
 	\caption[he execution flow]{The execution flow of a branching code, with warp size 8. Black arrows are active threads, and the grey ones are disabled.}
 	\label{fig:threads}
 \end{figure}
@@ -235,13 +235,13 @@ Initially each kernel was launched in the default steam zero. The figure \ref{fi
 \begin{figure}[htbp]
 	\centering
 		\includegraphics[width=0.73\textwidth]{Figures/ini_steams.png}
-		\rule{35em}{0.2pt}
+		\smallskip
 	\caption[Initial Streams]{Kernels running in the default 0 Stream.
 }
 	\label{fig:streams}
 \end{figure}
 
- Kernels by default cannot run in parallel with others kernels. Furthermore CUDA doesn't provide an automatic parallel kernel executing. In addition the programmer needs to tell the CUDA compiler that some portion of the code or kernel can run in parallel. However, the compiler cannot always execute concurrent kernels, depends on the hardware capabilities and as well the number of threads per block and the number of SM available. If the compiler finds available space to run another kernel simultaneously it will do so. 
+ Kernels by default cannot run in parallel with others kernels. Furthermore, CUDA doesn't provide an automatic parallel kernel executing. In addition the programmer needs to tell the CUDA compiler that some portion of the code or kernel should be run in parallel. However, the compiler cannot always execute concurrent kernels, depends on the hardware capabilities and as well the number of threads per block and the number of SM available. If the compiler finds available space to run another kernel simultaneously it will do so. 
 
 For example, the $gsolution$ \ref{lst:concurrent} kernel computes the Zhang an Li model for x, y, z coordinates, which uses extensively the global memory of the device. To achieve concurrent kernels the streams need to access memory blocks that are pinned to a stream. So each memory block corresponding x, y, z are mapped to 3 streams. Furthermore, all the matrices corresponding to the coordinate x are mapped to the stream 1, y to stream 2 and z to stream 3.
 
@@ -251,7 +251,7 @@ deltamY[index] = sfrelaxY[index] + sdexY[index] + laplY[index] - smY[index];
 deltamZ[index] = sfrelaxZ[index] + sdexZ[index] + laplZ[index] - smZ[index];
 \end{lstlisting}
  
-The CUDA code \ref{lst:concurrent} is divided into a single kernel \ref{lst:consingle}. In addition this new generic kernel can be launch in parallel. Instead of running one big kernel, three individual kernels are launched simultaneous. Dividing each kernel is possible to implement shared memory though each kernel which otherwise wasn't possible. 
+The CUDA code \ref{lst:concurrent} is divided into a single kernel \ref{lst:consingle}. In addition this new generic kernel is launched parallel with the others kernels. Instead of running one big kernel, three individual kernels are launched simultaneous. Dividing each kernel is possible to implement shared memory though each kernel which otherwise wasn't possible. 
 
 \begin{lstlisting}[language=C++, label={lst:consingle}, caption={Evaluation of individual coordinates of the Zhang and Li model}]
 int i = blockIdx.x * blockDim.x + threadIdx.x + 2;
@@ -275,8 +275,8 @@ for (int i  = 0; i < 3; i++)
 
 \begin{figure}[htbp]
 	\centering
-		\includegraphics[width=0.82\textwidth]{Figures/concurent.png}
-		\rule{35em}{0.2pt}s
+		\includegraphics[width=1.0\textwidth]{Figures/concurent.png}
+		\smallskip
 	\caption[Streams kernels Tesla K20]{Concurrent kernels in the Tesla K20 using NVIDIA's Visual Profiler.}
 	\label{fig:concurrent}
 \end{figure}
@@ -285,8 +285,8 @@ Concurrent kernels demonstrates a very promising technique to achieve a huge per
 
 \begin{figure}[htbp]
 	\centering
-		\includegraphics[width=0.74\textwidth]{Figures/waittime.png}
-		\rule{35em}{0.2pt}
+		\includegraphics[width=1.0\textwidth]{Figures/waittime.png}
+		\smallskip
 	\caption[Waiting time concurrent kernels]{Waiting time between each concurrent kernel execution}
 	\label{fig:waittime}
 \end{figure}
@@ -321,7 +321,7 @@ To calculate the laplacian we need to access a great amount of global memory whi
 \begin{figure}[htbp]
 	\centering
 		\includegraphics[width=0.4\textwidth]{Figures/shared.png}
-		\rule{35em}{0.2pt}
+		\smallskip
 	\caption[Shared Memory Strategy]{Shared Memory Strategy for Laplacian evaluation }
 	\label{fig:shared}
 \end{figure}
@@ -355,7 +355,7 @@ AoS and SoA refer to "Array of Structures" and "Structure of Arrays" respectivel
 \begin{figure}[htbp]
 	\centering
 		\includegraphics[width=0.65\textwidth]{Figures/aos.png}
-		\rule{35em}{0.2pt}
+		\smallskip
 	\caption[Array of structures (AOS)]{AOS memory layout }
 	\label{fig:aos}
 \end{figure}
@@ -400,8 +400,6 @@ Firstly, we increase the use of constant memory in the device, this helps redund
  DELTAX = (double)TX / (double)NX;
 \end{lstlisting}
 
-
------include occupancy results using The Visual Profiler.
  
 The different numbers of threads per block and as well the number of blocks per grid can dramatically increase or decrease the performance of the application. The table \ref{tab:threads} illustrate the different threads per block configuration on the GeForce GTX 580. The initial configuration for the Fermin and the Kepler was 32x32 threads per block for global memory and 16x16 threads per block for the shared memory. We found, that the optimal configuration for the Fermin cards was 16x16 threads per block and as well for the shared memory and for the Kepler cards was 32x32 threads per block for both memory types.
 
@@ -429,7 +427,7 @@ The different numbers of threads per block and as well the number of blocks per 
 
 \section{Optimization results}
 
-This section is the overview of the optimization results compared with each version of the code. The figure \ref{tab:time} and \ref{tab:speed} illustrates the the time execution and the speedup respectively. The final version of the code is the Occupancy. Moreover the greatest performance occurred on the GeForce GTX 580 Card with a 8.0x speedup.
+This section is the overview of the optimization results compared with each version of the code. The figure \ref{tab:time} and \ref{tab:speed} illustrates the the time execution and the speedup respectively. The final version of the code is the Occupancy. Moreover, the greatest performance occurred on the GeForce GTX 580 Card with a 8.0x speedup \ref{fig:speedup}.
 
 \begin{table}[h]
 \centering
@@ -466,7 +464,7 @@ This section is the overview of the optimization results compared with each vers
    \hline
     GeForce GTX 580 & 5.391x & 5.521x & 4.937x & 5.551x & 7.317x & 8.0x\\
    \hline
-    GeForce 670MX & 1.544x & 1.598x & 1.662 & 1.349x & 2.084 & 2.163x\\
+    GeForce 670MX & 1.544x & 1.598x & 1.662x & 1.349x & 2.084x & 2.163x\\
    \hline
   \end{tabular}
     \caption{Speedup performance}
@@ -475,13 +473,24 @@ This section is the overview of the optimization results compared with each vers
 
 \begin{figure}[htbp]
 	\centering
-		\includegraphics[width=0.62\textwidth]{Figures/gpuOptimization.png}
-		\rule{35em}{0.2pt}
+		\includegraphics[width=0.65\textwidth]{Figures/gpuOptimization.png}
+		\smallskip
 	\caption[Overall time simulation]{Overall time simulation}
-	\label{fig:sao}
+	\label{fig:gpuop}
 \end{figure}
 
-The initial Visual Profiler test \ref{fig:iniresults} illustrated us that the Laplacian evaluating obtain about half of the overall simulation time. However, in the final optimization \ref{fig:final} the Laplacian was reduced from 44.37$\%$ to 26.24 $\%$ execution time. The same occur for the Runge and Kutta term evaluation. Furthermore, the $gsdExchangeFull$ incremented from 13.37$\%$. 23.35$\%$, which is not necessary good. The increment is due to shift in stream operators, the  $gsdExchangeFull$ is being process in the default stream zero, while the others on stream one through three. 
+The initial Visual Profiler test \ref{fig:iniresults} illustrated us that the Laplacian evaluating obtain about half of the overall simulation time. However, in the final optimization \ref{fig:final} the Laplacian was reduced from 44.37$\%$ to 26.24 $\%$ execution time. The same occur for the Runge and Kutta term evaluation. Furthermore, the $gsdExchangeFull$ incremented from 13.37$\%$. 23.35$\%$, which is not necessary good. The increment is due to shift in stream operators, the  $gsdExchangeFull$ is being process in the default stream zero, while the others on stream one through three.
+
+
+\begin{figure}[htbp]
+	\centering
+		\includegraphics[width=0.77 \textwidth]{Figures/speedup.png}
+		\smallskip
+	\caption[Speedup performance output]{Speedup performance output.}
+	\label{fig:speedup}
+\end{figure}
+
+speedup.png
 
 ---include final thread occupancy in the table.
 
@@ -506,18 +515,18 @@ The initial Visual Profiler test \ref{fig:iniresults} illustrated us that the La
     
 The Tesla K20m was the only GPU which in every code modification it did not lose performance over the course of the optimization process. However,  the other GPUs drop performance in the stream optimization stage. This is where each kernel was divided into three separated kernels. Doing this we were able to calculate the x, y, z coordinates independently. In addition, this enable room to implement shared memory across the kernels. As the figure \ref{tab:gpus} illustrates the Tesla K20m is the only GPU card with CC of 3.5. This is important to mention, because the card has access to Hyper-Q. Moreover, this improvement can synchronize automatically the kernels for them to launch in a concurrent manner. 
 
-The SOA optimization overall improved dramatically the performance of the application, obtaining a 1.2x - 2.0x speed up in all GPU cards \ref{fig:speedup}.
+The SOA optimization overall improved dramatically the performance of the application, obtaining a 1.2x - 2.0x speed up in all GPU cards, figure \ref{fig:speedup} \ref{fig:speeduplast}.
 
 \begin{figure}[htbp]
 	\centering
-		\includegraphics[width=0.67\textwidth]{Figures/speed.png}
-		\rule{35em}{0.2pt}
+		\includegraphics[width=0.7\textwidth]{Figures/speed.png}
+		\smallskip
 	\caption[Optimization speedup overview]{Optimization speedup}
-	\label{fig:speedup}
+	\label{fig:speeduplast}
 \end{figure}
 
 
-We could expected the newest card Tesla k20m would obtain the most speedup and lest time overall, certainly because it has more CUDA cores, the highest compute capabilities. Furthermore, if falls behind the GeForce 580 with about 2.5x speedup difference. However, the Tesla K20 only had a difference of 0.3x speedup compared with the Teslas Cards. The GeForce \ref{tab:gpus} compared with the others GPUs specifications has most Processor clock (GHz), which can make more mathematical calculations per cycle.
+We could expected the newest card Tesla k20m would obtain the most speedup and lest time overall, certainly because it has more CUDA cores, the highest compute capabilities. Furthermore, if falls behind the GeForce 580 with about 2.5x speedup difference However, the Tesla K20 only had a difference of 0.3x speedup compared with the Teslas Cards. The GeForce \ref{tab:gpus} compared with the others GPUs specifications has most Processor clock (GHz), which can make more mathematical calculations per cycle, se figure \ref{fig:speedup}.
 
   \vspace{3.5em}
 

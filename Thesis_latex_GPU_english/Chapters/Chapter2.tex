@@ -7,34 +7,34 @@
 \lhead{Chapter 2. \emph{Introduction to Domain Wall Dynamics under Nonlocal STT}}% Change X to a consecutive number; this is for the header on each page - perhaps a shortened title
 
 
-This chapter is a brief overview of the theory of spintronics and the study of Domain Wall Dynamics under Nonlocal Spin-Transfer Torque. This is a quantitatively test the effects of spin-diffusion, on real Domain Wall (DW) structures, by numerically implementing the Zhang - Li model into a NiFe soft nanostrip. The numerical method used for the solution is a the method known as Finite Differences in the Time Domain (FDTD) on a 3D cell grid with whose integration is done using a 4th order Runge-Kutta integration (RK4).
+This chapter is a brief overview of the theory of spintronics and the study of Domain Wall Dynamics under Nonlocal Spin-Transfer-Torque. Which quantitatively test the effects of spin-diffusion, on real Domain Wall (DW) structures, by numerically implementing the Zhang-Li model on a NiFe soft nanostrip. The numerical method used for the solution is a the method known as Finite Differences in the Time Domain (FDTD) on a 3d cell grid with whose integration is done using a 4th order Runge-Kutta integration (RK4).
 
 \section{Theory}
 
-Now as we know, each electron not only carries an elementary
+ The electrons not only carry an elementary
 unit of charge $e$, but also carries an elementary unit of angular momentum. Whenever we produce an electrical current by inducing
-motions of electrons, it could indeed be viewed as a collection of little magnets that are moving around (see Figure \ref{fig:electron}. In other words, any electron charge transport is simultaneously accompanied by a transport of spin, or magnetic moment carried (passing electron) by these electrons \cite{cornell}.
+motions of electrons, it could indeed be viewed as a collection of little magnets that are moving around (see Figure \ref{fig:electron}). In other words, any electron charge transport is simultaneously accompanied by a transport of spin, or magnetic moment carried by these electrons \cite{cornell}.
 
 \subsection{Spintronics}
 
-Spintronics is a new type of electronics that exploits the spin degree of freedom of an electron in addition to its charge \cite{spinz} (see figure \ref{fig:electron}). The interest is motivated by the quest to understand basic physical principles underlying the electron and nuclear spin interactions in materials and by possible technological applications. The field of spintronics has attracted massive interest since the discovery of giant magnectroresistence (GMR) effect in 1988 by Albert Fert and Peter Gr\"{u}nberg who were awarded the 2007 Nobel Prize in physics. The GMR effect has been widely used in hard disk drives (HDD) which have brought a huge impact on industries and consumer electronics. Spintronics is a promising technology which will complement the present electronics with addition "spin" quantum freedom to charge freedom that is currently used in devices \cite{nonlocalspin}.
+Spintronics is a new type of electronics that exploits the spin degree of freedom of an electron in addition to its charge \cite{spinz},  figure \ref{fig:electron}. The interest is motivated by the quest to understand basic physical principles underlying the electron and spin interactions in materials and possible technological applications. The field of spintronics has attracted massive interest since the discovery of giant magnectroresistence (GMR) effect in 1988 by Albert Fert and Peter Gr\"{u}nberg who were awarded the 2007 Nobel Prize in physics. The GMR effect has been widely used in hard disk drives (HDD), which have deliver a huge impact on industries and consumer electronics. Spintronics is a promising technology which will complement the present electronics with addition "spin" quantum freedom to charge freedom that is currently used in devices \cite{nonlocalspin}.
 
 \subsection{Spin Transfer Torque }
 
-A torque is simply a time rate of change of angular momentum \cite{spintransfer}. Hence, Spin transfer torque or SST occurs when spins flowing from one layer to another can reorient the magnetization in the layers \ref{fig:DWspin}. The magnetization of the ferromagnet changes the flow of spin angular momentum by exerting a torque on the flowing spins to reorient them, and therefore the flowing electrons must exert an equal and opposite torque on the ferromagnet. This torque that is applied by non-equilibrium conduction electrons onto a ferromagnet is what we will call the spin transfer torque \cite{spintransfer}.
+A torque is simply a time rate of change of angular momentum \cite{spintransfer}. Hence, spin transfer torque (SST) occurs when spins flowing from one layer to another can reorient the magnetization in the layers, see figure \ref{fig:DWspin}. The magnetization of the ferromagnet changes the flow of spin angular momentum by exerting a torque on the flowing spins to reorient them, and therefore the flowing electrons must exert an equal and opposite torque on the ferromagnet. This torque that is applied by non-equilibrium conduction electrons onto a ferromagnet is what we will call the spin transfer torque \cite{spintransfer}.
 
 Spin current which is a flow of spin angular momentum, is generated in addition to the charge current. The spin current normally appears in ferromagnets. However, it can also be generated also in non-magnets. The simplest method of generating a spin-polarized current in a metal is to pass the current throughout a ferromagnetic material. A common application is the GMR as mentioned before \cite{handbookspin}.
 
 \begin{figure}[htbp]
 	\centering
 		\includegraphics[width=0.42\textwidth]{Figures/electron.png}
-		\rule{35em}{0.5pt}
-	\caption[Electron carries spin, charge and magnetic]{Electrons not only carries charge, but also spin and magnetic properties }
+		\smallskip
+	\caption[Electron carries spin, charge and magnetic]{Electrons not only carries charge, but also spin and magnetic properties \cite{spinimg}. }
 	\label{fig:electron}
 \end{figure}
 
 
-Spin polarized transport occurs naturally in any materials which have a spin imbalance between spin-up and spin-down at the fermi Level. It occurs and spin-down electrons is often nearly identical, but the states are shifted in energy with respect to each other. Fermi level is the term used to describe the top of the collection of electron energy levels at absolute zero temperature \cite{handbookspin}.
+Spin polarized transport occurs naturally in any materials which have a spin imbalance between spin-up and spin-down at the Fermi Level. It occurs at spin-down electrons is nearly identical, but states are shifted in energy with respect to each other. The Fermi level is the highest energy level which an electron can occupy at the absolute zero temperature. Since at abosulte zeo temperature the electrons are all in the lowest energy state hence the Fermi level is in between the valence band and the conduction band \cite{handbookspin}.
 
 \subsection{Domain Wall}
 
@@ -42,18 +42,18 @@ An abrupt in magnetization at the boundary of two anti-aligned domains is not a 
 
 \begin{description}
   \item[Vortex Wall (VW)] \hfill \\
-   In the case of Vortex wall the magnetization rotates in the place perpendicular to the domain wall, but the local magnetization is wrapped around a single vortex point. See figure \ref{fig:dw}.
+   In the case of Vortex wall the magnetization rotates in the plane perpendicular to the domain wall, but the local magnetization is wrapped around a single vortex point, see figure \ref{fig:dw}.
    
  \item[Asymmetric Transverse Wall (ATW)] \hfill \\
- The transverse wall has a reflection symmetry about a line perpendicular to the strip axis, and a lack of symmetry about the center line of the strip. However, asymmetric transverse wall, is the absence of such symmetry. See figure \ref{fig:dw}.
+ The transverse wall has a reflection symmetry about a line perpendicular to the strip axis, and a lack of symmetry about the center line of the strip. However, asymmetric transverse wall, is the absence of that symmetry, see figure \ref{fig:dw}.
  
 \end{description}
 
 \begin{figure}[htbp]
 	\centering
 		\includegraphics[width=0.55\textwidth]{Figures/dw.png}
-		\rule{35em}{0.5pt}
-	\caption[Domain Wall VW, ATW]{Vortex Wall (VW) and Asymmetric Transverse Wall (ATW)}
+		\smallskip
+	\caption[Domain Wall VW, ATW]{Vortex Wall (VW) and Asymmetric Transverse Wall (ATW) \cite{claudio}.}
 	\label{fig:dw}
 \end{figure}
 
@@ -103,9 +103,9 @@ The sample considered is a 300 nm wide and 5 nm tick NiFe soft nanostrip. This d
 
 \begin{figure}[htbp]
 	\centering
-		\includegraphics[width=0.55\textwidth]{Figures/ATW.png}
-		\rule{35em}{0.5pt}
-	\caption[Asymmetric Transverse Wall results]{Asymmetric Transverse Wall (ATW) results}
+		\includegraphics[width=0.64\textwidth]{Figures/ATW.png}
+		\smallskip
+	\caption[Asymmetric Transverse Wall results]{Asymmetric Transverse Wall (ATW) results \cite{claudio}.}
 	\label{fig:atw}
 \end{figure}
 
@@ -113,9 +113,9 @@ Vortex Wall (VW) same as for ATW, we point out the noticeable effect of the diff
 
 \begin{figure}[htbp]
 	\centering
-		\includegraphics[width=0.55\textwidth]{Figures/VW.png}
-		\rule{35em}{0.5pt}
-	\caption[Vortex Wall results]{Vortex Wall results}
+		\includegraphics[width=0.64\textwidth]{Figures/VW.png}
+		\smallskip
+	\caption[Vortex Wall results]{Vortex Wall results \cite{claudio}. }
 	\label{fig:vw}
 \end{figure}
 
@@ -131,9 +131,9 @@ The FDTD method essentially uses a weighted summation of functions values at nei
 
 \begin{figure}[htbp]
 	\centering
-		\includegraphics[width=0.67\textwidth]{Figures/fdtd.png}
-		\rule{35em}{0.2pt}
-	\caption[FDTD grid]{The result for each cell is based on evaluating the derivate cell neighbors.}
+		\includegraphics[width=0.78\textwidth]{Figures/fdtd.png}
+		\smallskip
+	\caption[FDTD grid]{The result for each cell is based on evaluating the derivate cell neighbors \cite{methods}.}
 	\label{fig:fdtd}
 \end{figure}
 
@@ -145,8 +145,8 @@ Consider a regular, differentiable one-dimension  scalar function $f(x)$ sampled
 
 \begin{figure}[htbp]
 	\centering
-		\includegraphics[width=0.6\textwidth]{Figures/bound.png}
-		\rule{35em}{0.2pt}
+		\includegraphics[width=0.65\textwidth]{Figures/bound.png}
+		\smallskip
 	\caption[Sampled at regular intervals a, Taylor expansion]{Sampled at regular intervals a, (a) Function of inside the grid. (b) Mesh points second to closest to boundary. (c) Mesh points closet to boundary}
 	\label{fig:bound}
 \end{figure}
@@ -237,8 +237,8 @@ The RK4 method differs widely from the Euler method and the Midpoint method. The
 
 \begin{figure}[htbp]
 	\centering
-		\includegraphics[width=0.58\textwidth]{Figures/euler.png}
-		\rule{35em}{0.4pt}
+		\includegraphics[width=0.6\textwidth]{Figures/euler.png}
+		\smallskip
 	\caption[Euler Method]{Euler Method, Is the simplest approximate to solver differential equation or numerically solve equations.}
 	\label{fig:euler}
 \end{figure}
@@ -262,8 +262,8 @@ As the equations shows, each step, the derivative is evaluated four times, once 
 
 \begin{figure}[htbp]
 	\centering
-		\includegraphics[width=0.45\textwidth]{Figures/rk4.png}
-		\rule{35em}{0.5pt}
+		\includegraphics[width=0.5\textwidth]{Figures/rk4.png}
+		\smallskip
 	\caption[Fourth-order Runge and Kutta Method]{Fourth-order Runge and Kutta method, Each step the derivative is evaluated four times. }
 	\label{fig:kutta}
 \end{figure}

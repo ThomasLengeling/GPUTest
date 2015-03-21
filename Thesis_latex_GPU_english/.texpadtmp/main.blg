@@ -9,49 +9,53 @@ Warning--I'm ignoring practices's extra "month" field
 --line 212 of file ../Bibliography.bib
 Warning--entry type for "cornell" isn't style-file defined
 --line 378 of file ../Bibliography.bib
+Repeated entry---line 407 of file ../Bibliography.bib
+ : @misc{spintransfer
+ :                   ,
+I'm skipping whatever remains of this entry
 Warning--empty journal in 5306797
 Warning--can't use both author and editor fields in methods
 Warning--empty journal in physicsgpu
 Warning--empty journal in landaverde
-You've used 37 entries,
+You've used 38 entries,
             2118 wiz_defined-function locations,
-            699 strings with 8978 characters,
-and the built_in function-call counts, 10288 in all, are:
-= -- 965
-> -- 490
+            703 strings with 9089 characters,
+and the built_in function-call counts, 10498 in all, are:
+= -- 985
+> -- 497
 < -- 2
-+ -- 198
-- -- 158
-* -- 653
-:= -- 1771
-add.period$ -- 107
-call.type$ -- 37
-change.case$ -- 183
++ -- 202
+- -- 160
+* -- 659
+:= -- 1806
+add.period$ -- 110
+call.type$ -- 38
+change.case$ -- 187
 chr.to.int$ -- 0
-cite$ -- 41
-duplicate$ -- 387
-empty$ -- 852
-format.name$ -- 158
-if$ -- 2128
+cite$ -- 42
+duplicate$ -- 394
+empty$ -- 874
+format.name$ -- 160
+if$ -- 2174
 int.to.chr$ -- 0
-int.to.str$ -- 37
+int.to.str$ -- 38
 missing$ -- 39
-newline$ -- 184
-num.names$ -- 72
-pop$ -- 241
+newline$ -- 189
+num.names$ -- 74
+pop$ -- 249
 preamble$ -- 1
-purify$ -- 154
+purify$ -- 157
 quote$ -- 0
-skip$ -- 270
+skip$ -- 277
 stack$ -- 0
-substring$ -- 472
-swap$ -- 42
+substring$ -- 478
+swap$ -- 43
 text.length$ -- 2
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 124
+type$ -- 128
 warning$ -- 4
-while$ -- 92
-width$ -- 39
-write$ -- 385
-(There were 7 warnings)
+while$ -- 94
+width$ -- 40
+write$ -- 395
+(There was 1 error message)
