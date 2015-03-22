@@ -6,10 +6,6 @@
 
 \lhead{Chapter 1. \emph{Heterogeneous Computing}} % Change X to a consecutive number; this is for the header on each page - perhaps a shortened title
 
-%----------------------------------------------------------------------------------------
-%	SECTION 1
-%----------------------------------------------------------------------------------------
-
 Heterogeneous computing refers a system that combines several processor types to gain more performance. Typically using a single or multi-core computer processing units (CPUs) and a  graphics processing units (GPUs).
 Frequently GPUs are know for 3D graphics rendering, video games and video editing, but GPUs are becoming increasingly popular for accelerating computing applications and scientific research due to their low price, high performance and relatively low energy consumption per FLOPS (floating point operations per second) when compared with the CPUs. This chapter provides an overview of GPUs within the High Performance Computing (HPC) context, their advantages and disadvantages and how they can be integrated in to a scientific software and research.
 
@@ -20,7 +16,7 @@ Frequently GPUs are know for 3D graphics rendering, video games and video editin
 
 The GPU has been essential part of personal computer since the early use. Over the course of 30 years the graphics architecture has evolve form drawing a simple 3D scene to be able to program each part of the GPU graphics pipeline. Their role became more important in the 90s with the first-person shooting video game DOOM by id Software. The demanding video game industry has brought year by year more realistic 3D graphics. Consequently new innovated hardware capabilities has been developed to increase the graphics pipeline and the render output. This lead to a more sophisticated programming environment with a massive parallel capabilities.
 
-The fixed graphics pipeline (fixed functions on the GPU) was introduced in the early 90s, allowed various customization of the rendering process. However only allowed some modifications of the GPU output. Specific adjustment were extremely complicated did not allow custom algorithms. In 2001 NVIDIA and ATI (AMD) introduced the first programmability to the graphics pipeline. Which could control millions pixels and vertex output in a single frame, moreover it out-performed the CPU in rending video. In addition graphics shift from the CPU to the GPU. This was the beginning of GPU parallel capabilities \cite{Nickolls}.
+The fixed graphics pipeline (fixed functions on the GPU) was introduced in the early 90s, allowed various customization of the rendering process. However, only allowed some modifications of the GPU output. Specific adjustment were extremely complicated did not allow custom algorithms. In 2001 NVIDIA and ATI (AMD) introduced the first programmability to the graphics pipeline. Which could control millions pixels and vertex output in a single frame, moreover it out-performed the CPU in rending video. In addition graphics shift from the CPU to the GPU. This was the beginning of GPU parallel capabilities \cite{Nickolls}.
 
 At first the GPUs where only used for general-purpose computing (GPGPU) like computer graphics, but in resent years the GPU has been used to accelerate scientific research, analytics, engineering, robotics and consumer applications.
 
@@ -34,12 +30,11 @@ In any case, for a given simulation a compromise between speed and accuracy is a
 
 \begin{figure}[htbp]
 	\centering
-		\includegraphics[width=0.75\textwidth]{Figures/GPU_CPU_s.png}
+		\includegraphics[width=0.84\textwidth]{Figures/GPU_CPU_s.png}
 		\smallskip
-	\caption[GPU and CPU]{GPU and CPU peak performance in gigaflops}
+	\caption[GPU and CPU performance comparision]{GPU and CPU peak performance in gigaflops}
 	\label{fig:gpu_cpu_s}
 \end{figure}
-
 
   \item[Memory Wall] \hfill \\
   This refers to the growing disparity of speed between CPU  and the memory outside the CPU chip. Some applications have become memory bound, that is to say computing time is bounded by the transfer memory between the CPU and all the hardware devices connected to the CPU, commonly to the Peripheral Component Interconnect (PCI) chip. In conclusion, the computing time is bounded by the memory and not by the time calculations performed on the CPU.
@@ -67,7 +62,7 @@ CUDA cores, are the number of processors in a single NVIDIA GPU chip. For exampl
 	\centering
 		\includegraphics[width=0.5\textwidth]{Figures/GPU_CPU.png}
 		\smallskip
-	\caption[Architecture of a SM]{SM Architecture \cite{cook}.}
+	\caption[Architecture of NVIDIA's SM]{SM Architecture \cite{cook}.}
 	\label{fig:gpu_cpu}
 \end{figure}
 
@@ -80,7 +75,7 @@ Being able to efficiently use a GPU for an application requires to expose the in
 	\centering
 		\includegraphics[width=0.85\textwidth]{Figures/arch.png}
 		\smallskip
-	\caption[GPU archiqutecture]{Unified programmable processor array of the GeForce 8800 GT graphics pipeline \cite{hwu}.}
+	\caption[NVIDIA's GPU architecture]{Unified programmable processor array of the GeForce 8800 GT graphics pipeline \cite{hwu}.}
 	\label{fig:arch}
 \end{figure}
 
@@ -159,7 +154,7 @@ Current CPUs are typically multicore systems, which are capable of parallelizing
 \end{figure}
 
 
-On the GPU we are able to accomplish the same result of the CPU with lest amount of code. The code \ref{lst:gpu} demonstrate how to evaluate a addition of two matrices. $a$ and $b$, then return the result in the matrix $c$. The difference between the codes, is that the GPU executes the kernel across all threads configured by the kernel call. Moreover, enables a highly parallel process with just a couple lines of code. 
+On the GPU we are able to accomplish the same result of the CPU with lest amount of code. The code \ref{lst:gpu} demonstrate how to evaluate an addition of two matrices. $a$ and $b$, then return the result in the matrix $c$. The difference between the codes, is that the GPU executes the kernel across all threads configured by the kernel call. Moreover, enables a highly parallel process with just a couple lines of code. 
 
 \begin{lstlisting}[language=C++, label={lst:gpu}, caption={GPU Kernel threads launch}]
 __global__ void add( int *a, int *b, int *c ) {
@@ -168,9 +163,9 @@ __global__ void add( int *a, int *b, int *c ) {
 		c[tid] = a[tid] + b[tid];}
 \end{lstlisting}
 
-For example, to execute a kernel with 32 x 32 threads per block and 15 x 4 blocks per grid, we just include the block and the threads dimensions when calling the kernel in the main loop \ref{lst:kernel}. Finally, the kernel will spam the CUDA code across all the configured threads.
+For example, to execute a kernel with 32 x 32 threads per block and 15 x 4 blocks per grid, we just include the block and the threads dimensions when calling the kernel in the main loop \ref{lst:kernel}. Finally, the kernel will spam the CUDA code across all the configured threads in the device.
 
-\begin{lstlisting}[language=C++, label={lst:kernel}, caption={kernel call}]
+\begin{lstlisting}[language=C++, label={lst:kernel}, caption={Kernel call with configurable threads per block and block per grid}]
 dim3 blocks(15, 4);
 dim3 threads(32, 32);
 add<<< blocks2, threads, 0 >>>(A, B, C);

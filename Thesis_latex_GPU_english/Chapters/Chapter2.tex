@@ -23,7 +23,7 @@ Spintronics is a new type of electronics that exploits the spin degree of freedo
 
 A torque is simply a time rate of change of angular momentum \cite{spintransfer}. Hence, spin transfer torque (SST) occurs when spins flowing from one layer to another can reorient the magnetization in the layers, see figure \ref{fig:DWspin}. The magnetization of the ferromagnet changes the flow of spin angular momentum by exerting a torque on the flowing spins to reorient them, and therefore the flowing electrons must exert an equal and opposite torque on the ferromagnet. This torque that is applied by non-equilibrium conduction electrons onto a ferromagnet is what we will call the spin transfer torque \cite{spintransfer}.
 
-Spin current which is a flow of spin angular momentum, is generated in addition to the charge current. The spin current normally appears in ferromagnets. However, it can also be generated also in non-magnets. The simplest method of generating a spin-polarized current in a metal is to pass the current throughout a ferromagnetic material. A common application is the GMR as mentioned before \cite{handbookspin}.
+Spin current which is a flow of spin angular momentum, is generated in addition to the charge current. The spin current normally appears in ferromagnets. However, it should be able to be generated in non-magnets. The simplest method of generating a spin-polarized current in a metal is to pass the current throughout a ferromagnetic material. A common application is the GMR as mentioned before \cite{handbookspin}.
 
 \begin{figure}[htbp]
 	\centering
@@ -79,19 +79,19 @@ The motion of domain walls due to spin transfer torque (STT) of electrons has be
  
 \subsection{Theoretical Approaches}
 
-The inclusion of STT into micromagnetics has up to now been performed with local terms that express the STT as a function of the local magnetization only. The magnetization dynamics is described by the classical Landau-Lifshitz-Gilbert (LLG) equation, expanded with a STT variable \ref{eq:llg}.
+The inclusion of STT into micromagnetics has up to now been performed with local terms that express the STT as a function of the local magnetization only. The magnetization dynamics is described by the classical Landau-Lifshitz-Gilbert (LLG) equation \cite{claudio}, expanded with a STT variable \ref{eq:llg}. 
 
 \begin{equation}  \label{eq:llg}
 	\frac{\partial \vec{m}}{\partial t} = \gamma_0\vec{H}_{eff} \times \vec{m} + \alpha \vec{m} \times \frac{\partial \vec{m}}{\partial t} - \vec{T}
 \end{equation}
 
-This novel idea of incorporating spin torque into the LLG equation has itself been incorporated into a model proposed by Zhang - Li in 2004 \cite{zhang2004}. The LLG equation \ref{eq:llg} is incorporated effects of a spin-polarized current in a magnetic system, and the resulting spin transfer. They develop a form for the spin torque based on the spatial variation of the magnetization, as especially appropriate approach for domain walls. Then in 2005 the same authors Zhang - Li extended this idea working out the difference between the adiabatic and non-adiabatic torque contributions. Which lead to an even longer magnetization dynamics equation \cite{zhang} \cite{spindomain}.
+This novel idea of incorporating spin torque into the LLG equation has itself been incorporated into a model proposed by Zhang-Li in 2004 \cite{zhang2004}. The LLG equation \ref{eq:llg} is incorporated effects of a spin-polarized current in a magnetic system, and the resulting spin transfer. They develop a form for the spin torque based on the spatial variation of the magnetization, as especially appropriate approach for domain walls. Then in 2005 the same authors Zhang-Li extended this idea working out the difference between the adiabatic and non-adiabatic torque contributions. Which lead to an even longer magnetization dynamics equation \cite{zhang} \cite{spindomain}.
 
 \begin{equation} \label{eq:zhang}
  \frac{\partial \delta \vec{m} }{\partial t} =  D_{0}\bigtriangledown^{2} \delta \vec{m} - \frac{1}{\tau_{sd}} \delta \vec{m} \times \vec{M} - \frac{1}{\tau_{sf}}\delta \vec{m} +(\vec{\mu} \cdot\vec{\bigtriangledown} )\vec{M}
 \end{equation}
 
-The equation \ref{eq:zhang} is referred to Zhang - Li model, represents a non-adiabatic spin torque, with the presence of spin diffusion. Spin diffusion is a process by which magnetization can be exchanged spontaneously between spin. Spin can accumulate in metals. The associated diffusion current flows in all directions, giving rise to nonlocal effects. The diffusion term of the equation \ref{eq:zhang} which carriers’  drift-diffusion equation implies that the spin density does not depend solely on the local magnetization, which gives rise of nonlocal magnetics effects \cite{claudio}. 
+The equation \ref{eq:zhang} is referred to Zhang-Li model, represents a non-adiabatic spin torque, with the presence of spin diffusion. Spin diffusion is a process by which magnetization is exchanged spontaneously between spin, which spin is able to accumulate in metals. The associated diffusion current flows in all directions, giving rise to nonlocal effects. The diffusion term of the equation \ref{eq:zhang} which carriers’  drift-diffusion equation implies that the spin density does not depend solely on the local magnetization, which gives rise of nonlocal magnetics effects \cite{claudio}. 
 
 Amongst the rapidly growing variety of proposed and developed spin structures, nonlocal spin detection devices, where measurement and current excitation paths are spatially separated, have recently gained a prominent position \cite{spinz}.
 
@@ -125,7 +125,7 @@ The equation is physically realistic, However, computationally expensive \ref{Xh
 
 \subsection{Finite differences in the time domain}
 
-The finite difference in the time domain (FDTD) method can solve complicated problems, but it is generally computationally expensive. Solutions may require a large amount of memory and computation time \cite{ufdtd}. FDTD is a numerical analysis technique use for approximating solutions to the associates system of differential equations. The method belongs in the general class of grid-based differential numerical modeling methods \cite{methods}.
+The finite difference in the time domain (FDTD) method  is able to solve complicated problems. However, it is generally computationally expensive. Solutions may require a large amount of memory and computation time \cite{ufdtd}. FDTD is a numerical analysis technique use for approximating solutions to the associates system of differential equations. The method belongs in the general class of grid-based differential numerical modeling methods. Please check reference \cite{methods} for more information about the demonstration of such numerical methods.
 
 The FDTD method essentially uses a weighted summation of functions values at neighboring points to approximate the derivate at a particular point, in this case a point in a 3d grid. The result for each cell is based on the results from the cell and its neighbors at the previous time-frame, figure \ref{fig:fdtd}.  
 
@@ -139,9 +139,9 @@ The FDTD method essentially uses a weighted summation of functions values at nei
 
 The magnetization is sampled on a uniform rectangle mesh at points $(x_0 + i\bigtriangledown_x, y_0 + j\bigtriangledown_y, z_0 + k\bigtriangledown_z)$. The computational cell is centered about the sample point with dimensions. $\bigtriangledown_x \times \bigtriangledown_y \times \bigtriangledown_z$ \cite{methods}.
 
-Looking at the equation \ref{eq:zhang}, we need a method to calculate the first and second derivate. With the Taylor expansion we can perform such calculation. The Second order Taylor expansion readily yields expressions for the first and seconds central derivates. First and second-order derivates of the magnetization components in order to define the divergence  of the magnetization $(\nabla \cdot m)$, and the components of the exchange field $(\nabla^2m)$, respectively. The magnetization components along boundaries also need to be evaluated in order to define surface charges $(m \cdot n)$. Boundary conditions need to be incorporated in the evaluated of the effective field without loss of accuracy. 
+Looking at the equation \ref{eq:zhang}, we need a method to calculate the first and second derivate. With the Taylor expansion we are able to perform such calculation. The Second order Taylor expansion readily yields expressions for the first and seconds central derivates. First and second-order derivates of the magnetization components in order to define the divergence  of the magnetization $(\nabla \cdot m)$, and the components of the exchange field $(\nabla^2m)$, respectively. The magnetization components along boundaries also need to be evaluated in order to define surface charges $(m \cdot n)$. Boundary conditions need to be incorporated in the evaluated of the effective field without loss of accuracy. 
 
-Consider a regular, differentiable one-dimension  scalar function $f(x)$ sampled at regular intervals, a, see figure  \ref{fig:bound}. Second order Taylor expansion readily tiles expressions for the first and seconds central derivates that are widely used in numerics, namely $\frac{df}{dx} = \frac{f_{i+1} - f_{i-1}}{2a}$ and $\frac{d^2f}{dx^2} = \frac{f_{i+1} - 2f_i + f_{i-1}}{a^2}$.
+Consider a regular, differentiable one-dimension  scalar function $f(x)$ sampled at regular intervals, a, see figure  \ref{fig:bound}. Second order Taylor expansion readily tiles expressions for the first and seconds central derivates that are widely used in numerics, namely $\frac{df}{dx} = \frac{f_{i+1} - f_{i-1}}{2a}$ and $\frac{d^2f}{dx^2} = \frac{f_{i+1} - 2f_i + f_{i-1}}{a^2}$ \cite{methods}.
 
 \begin{figure}[htbp]
 	\centering
@@ -172,13 +172,13 @@ The equation \ref{eq:nn} for the second derivate based on second nearest neighbo
 
 Expressions such as \ref{eq:nn} are valid when the grid point becomes closet or next-to-closet to the boundary of the magnetic box. Specific accuracy preserving, expansion need to be worked out. The general principal in the present approach is to replace equations that are missing because of the lack of grid points outside the magnetic volume by equations including explicit reference to boundary conditions. \cite{methods}
 
-Consider first a point second to closet to bound, \ref{fig:bound}-b. Grid point $i + 1$ is missing for this particular geometry. However, defining $x_R$ as the right boundary coordinate along the $x$ axis. The $f^{(1)}(x_R)$ to be know along the boundary to be replace by the derivate of Taylor's expansion
+Consider first a point second to closet to bound, \ref{fig:bound}-b. Grid point $i + 1$ is missing for this particular geometry. However, defining $x_R$ as the right boundary coordinate along the $x$ axis. The $f^{(1)}(x_R)$ to be know along the boundary to be replace by the derivate of Taylor's expansion \cite{methods}.
 
 \begin{equation} \label{eq:taylor}
 f^{(1)}(x) = \sum\limits_{k=0}^{\infty} \dfrac{(x-x_i)^{k-1}}{(k - 1)!}f^{(k)}(x_i)
 \end{equation}
 
-Using \ref{fig:bound}-b. $x_R - x_i = 3a/2$ becomes.
+Using \ref{fig:bound}-b. $x_R - x_i = 3a/2$ becomes \cite{methods}.
 
 \begin{align}
 \begin{bmatrix} \label{eq:matrix4}
@@ -202,7 +202,7 @@ Using \ref{fig:bound}-b. $x_R - x_i = 3a/2$ becomes.
 \end{bmatrix}
 \end{align}
 
-Similarly, for a point closet to boundary, reference \ref{fig:bound}-c, grid points i + 1 and i + 2 are missing. The two first equation of ... need now to be replaced by a single equation, whilst the two remaining equations need to be truncated to the third order. For the geometry illustrated in \ref{fig:bound}-c, the minimal set of equations now reads.
+Similarly, for a point closet to boundary, reference \ref{fig:bound}-c, grid points i + 1 and i + 2 are missing. The two first equation of ... need now to be replaced by a single equation, whilst the two remaining equations need to be truncated to the third order. For the geometry illustrated in \ref{fig:bound}-c, the minimal set of equations now reads \cite{methods}.
 
 \begin{align} \label{eq:matrix3}
 \begin{bmatrix}
@@ -223,13 +223,13 @@ Similarly, for a point closet to boundary, reference \ref{fig:bound}-c, grid poi
 \end{bmatrix}
 \end{align}
 
-In both cases, and second derivatives and fully determined provided $f^{(1)}(x_R)$ be known along the boundary. For further reference \cite{methods}. The implementation of the numerically solution in how to implement the laplacian boundaries conditions please check chapter 4.
+In both cases, and second derivatives and fully determined provided $f^{(1)}(x_R)$ be known along the boundary. For further reference \cite{methods}. The implementation of the numerically solution in how to implement the laplacian boundaries conditions please check Chapter \ref{Implementation of Domain Wall Dynamics under Nonlocal STT}.
 
-The main advantages of the finite difference approach is easy to implement, simplicity of meshing, efficient evaluation of the magnetization energy, and the accessibility of higher order methods. The main disadvantage of this approach is the sampling curved boundaries with a rectangular mesh, resulting in some what discrete approximation, which can produce significant error in the computation.
+The main advantages of the finite difference approach is easy to implement, simplicity of meshing, efficient evaluation of the magnetization energy, and the accessibility of higher order methods. The main disadvantage of this approach is the sampling curved boundaries with a rectangular mesh, resulting in some what discrete approximation. In addition, it could produce a significant error in the evaluation. Please read reference \cite{methods} for more information about the demonstration of such equation and matrices proposed in this section, finite differences in the time domain.
 
 \subsection{Fourth order Runge and Kutta method}
 
- Modern numerical algorithms for the solution of ordinary differential equations are based on the method of the Taylor series. Algorithm such as the Runge-Kutta method are constructed so they give an expression depending of the parameter $(h)$, in other works the step as an approximate solution of the first terms of the Taylor series. The method can accurately solve a wide range of problems, but it is generally computationally expensive. Solutions require large amount of memory and computational time. \cite{numerical}.
+ Modern numerical algorithms for the solution of ordinary differential equations are based on the method of the Taylor series. Algorithm such as the Runge-Kutta method are constructed so they give an expression depending of the parameter $(h)$, in other works the step as an approximate solution of the first terms of the Taylor series. The method is able to accurately solve a wide range of problems, but it is generally computationally expensive. Solutions require large amount of memory and computational time \cite{numerical}.
 
 There exist several other computational numeric methods to solver such equations, methods such as the Euler integrator, the Midpoint Method and the Runge-Kutta fourth order (RK4) integrator method can solve differential equations. However, they differ in the numerically approximation and computation time. The RK4 is used for this simulation because its numerically more accurate when compared to the others methods.
 
@@ -264,7 +264,7 @@ As the equations shows, each step, the derivative is evaluated four times, once 
 	\centering
 		\includegraphics[width=0.5\textwidth]{Figures/rk4.png}
 		\smallskip
-	\caption[Fourth-order Runge and Kutta Method]{Fourth-order Runge and Kutta method, Each step the derivative is evaluated four times. }
+	\caption[Fourth order Runge and Kutta Method]{Fourth order Runge and Kutta method, Each step the derivative is evaluated four times. }
 	\label{fig:kutta}
 \end{figure}
 

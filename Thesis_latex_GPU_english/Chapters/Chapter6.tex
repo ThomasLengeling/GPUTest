@@ -6,9 +6,6 @@
 
 \lhead{Chapter 6. \emph{Conclusions and future work}} % Change X to a consecutive number; this is for the header on each page - perhaps a shortened title
 
-%----------------------------------------------------------------------------------------
-%	SECTION 1
-%----------------------------------------------------------------------------------------
 GPUs definitely have a place in the world of computational physics and other similar applications, their use allows to do the same work with less energy and more science with less resources. They make HPC computing clusters affordable for small research groups. The true limit test of this new technology will be if it is actually used to advance new science. In the field of computational physics studies that do push the barrier of what is computationally feasible, from speedups of 1.5x to 20x using GPUs\cite{applications}.
 
 Acceptance has been slow due to many factors, GPUs are sometimes seen as a fad or a niche, the specialized skill set and effort required for GPU programming along with the risk of spending money to setup a GPU cluster, does raise a concern for productivity and viability of this technology. Adopting this technology requires abandoning legacy codes and smart optimizations that have been developed over the years. A wrong choice may result in wasted time and effort.
@@ -20,7 +17,7 @@ Using computer simulation is possible to predict the outcome of the theoretical 
 
 Through the optimization we achieved a maximum speedup of 8.0x on not the newest device, the K20m. However, on the GPU with more clock cycles (GHz), the GeForce GTX 580. I believe that this result is very important. Because the newest device, the K20m is 10 times more expensive than the 580. The optimization was focused on giving more workload on the GPUs, this is more performance per SM and threads per block. Which did not work well on the Tesla card, but it did on the GeForce Cards. In addition the 580 is not the newest GeForce card available in the market. The GeForce 980 is expected to have a 40$\%$ increase in performance over the 500 series. 
 
-The simulation experiment was performed on a relative small data set. However, it is possible to increase the data set, in other word the magnetization data. To archived the same level of performance but with a longer overall computing time. Future test on the magnetization data can be performed on the newer GPU architecture, such as the Maxwell, for example on the new GeForce 980 or on the Tesla K80.
+The simulation experiment was performed on a relative small data set. However, it is possible to increase the data set, in other words, the magnetization data. Which overall will reduce the execution time by a factor of 8. Future test on the magnetization data can be performed on a newer GPU architecture, such as the Maxwell. For example, on the new GeForce 980 or on the Tesla K80.
 
 The current thread is to push the hardware capabilities and performance along with Mooers' Law, despite these issues there are some trends in the hardware industry that will make working with GPU easier and more widespread within a HPC context:
 
@@ -37,7 +34,7 @@ The current thread is to push the hardware capabilities and performance along wi
    \item[Mobile and embedded Devices] \hfill \\ 
    With the new Tegra K1 is possible to do supercomputing on the level of mobil devices, achieving upto 1 TFlops of performance. Embedded devices with CUDA capabilities is possible to integrate high performance algorithms to such small platforms. 
    \item[Cloud Computing] \hfill \\ 
-   NVIDIA is pushing the limits of bring computer graphics to the cloud, with the idea of everybody can access high quality graphics though the network with any kind of device. We can expect a beta test for developers mid 2015.
+   NVIDIA is pushing the limits of bring computer graphics to the cloud, with the idea of everybody can access high quality graphics though the network with any kind of device.
  
   \end{description}
 To conclude, I offer my personal perspective on GPU computing. I think the importance of using accelerator hardware is an economic and environmental issue. The environmental aspect of doing computing is often overlooked, but an ever increasing important one. As heavy computer users we will have to take responsibility for our electricity use. The benefit of less energy use is clear with more computational power.
