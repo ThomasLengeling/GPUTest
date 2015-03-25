@@ -107,9 +107,10 @@ When accessing ``Piritakua'' remotely is possible to use all the GPUs nodes avai
 
 The CUDA code was launched on each one of "Piritakua"'s GPUs. As we know the supercomputer has different GPUs, as well as several different  architectures. Furthermore the initial results in time execution of the implementation can been seen in figure \ref{fig:iniresults}.
 
-Using the NVIDIA's Visual Profiler we obtain kernel metrics of the Tesla K20m. The output is organized by kernel performance throughout the  simulation.  As we can notice the laplacian evaluation; $glaplacinay$, $gLaplacianx$ and  $gLaplacianYBoundaries$ uses up-to 44.37$\%$ of the overall simulation. The $gsolution$ kernels which solves Zhang and Li model \ref{eq:zhang} uses 14.04$\%$. The terms calculation for the RK4 integration only uses a minor part of the overall simulation. However the $gSolution$, $gsdExchange$ and laplacian calculation are part of the RK4 integration, which overall is about 99$\%$.
+Using the NVIDIA's Visual Profiler we obtain kernel metrics of the Tesla K20m. The output is organized by kernel performance throughout the  simulation.  As we can notice the laplacian evaluation; $glaplacinay$, $gLaplacianx$ and  $gLaplacianYBoundaries$ uses up-to 44.37$\%$ of the overall simulation. The $gsolution$ kernels which solves Zhang and Li model \ref{eq:zhang} uses 14.04$\%$. The terms calculation for the RK4 integration only uses a minor part of the overall simulation. However, the $gSolution$, $gsdExchange$ and laplacian calculation are part of the RK4 integration, which overall is about 99$\%$.
 
  The optimization focus on giving the GPUs as much work as possible, using at the fullest the GPU hardware capabilities. In addition reducing the performance time of most time consuming kernels in the table \ref{tab:nvprof}.
+ 
 \begin{table}[h]
 \centering
   \begin{tabular} { | l | l | l | l | l | l | l |}
@@ -143,7 +144,7 @@ Using the NVIDIA's Visual Profiler we obtain kernel metrics of the Tesla K20m. T
  
   \begin{figure}[htbp]
 	\centering
-		\includegraphics[width=0.9\textwidth]{Figures/gpu_initial.png}
+		\includegraphics[width=1.0\textwidth]{Figures/gpu_initial.png}
 		\smallskip
 	\caption[Initial GPU results]{Initial implementation benchmarking on several different GPU nodes}
 	\label{fig:iniresults}
@@ -151,8 +152,7 @@ Using the NVIDIA's Visual Profiler we obtain kernel metrics of the Tesla K20m. T
 
 As we can see in figure \ref{fig:iniresults} the GeForce GTX 580 is the card with the least amount of time execution, and the Tesla K20m the fastest amongst the Tesla Cards. 
 
-
---------include some initial performance metrics with the profiler
+--------include some initial performance metrics with the profiler\\
 
 The following sections are the optimization techniques or methods applied to the application. In addition, demonstrating the performance comparison between the initial implementation and the modified versions. Five versions of the code are; Branching, Occupancy, Concurrent Kernels, Shared Memory and Structure of Arrays. Branching, refers how kernels and threads are executed in the application. Occupancy, number of threads per devices being used. Concurrent Kernels, execution several kernels at once. Shared Memory, using as much shared memory as possible. Finally, Structure of Arrays, modification of the memory allocation in the device.
 
@@ -174,7 +174,7 @@ if(idx == 0){
 
 \begin{figure}[htbp]
 	\centering
-		\includegraphics[width=0.55\textwidth]{Figures/threads.png}
+		\includegraphics[width=0.6\textwidth]{Figures/threads.png}
 		\smallskip
 	\caption[he execution flow]{The execution flow of a branching code, with warp size 8. Black arrows are active threads, and the grey ones are disabled.}
 	\label{fig:threads}
@@ -202,7 +202,8 @@ __global__ void glaplacianyboundaries(...){
 }
 \end{lstlisting}
 
-To solve the branching issue, include more work on the laplacian boundary evaluation \ref{lst:newcde}.
+To solve the branching issue, we include more work on the laplacian boundary condition kernel. The new kernel evaluates the boundary condition in a single kernel. Therefore, eliminating branching threads, more importantly, reducing global memory calls (code \ref{lst:newcde}).
+
 \begin{lstlisting}[language=C++, label={lst:newcde}, caption={More workload on a single kernel execution}]
 __global__ void glaplacianyboundaries(...){
     if (i > 1 && i < NX + 2 && j == 0){
@@ -226,11 +227,11 @@ The technique was applied to all parts of the code. Therefore, eliminated inacti
 
 \subsection{Concurrent Kernels}
 
-Initially, each kernel was launched on the default steam zero. Therefore, every kernel was consequently launched in a serial way. The figure \ref{fig:streams} illustrates such result using the NVIDIA's Visual Profiler. Each kernel that is being launched cannot run simultaneously. Because, each kernel needs previous data to compute the next data. In other words, the kernels are not independent from each other. Therefore we change the implementation to be able to launch parallel kernels.
+Initially, each kernel was launched on the default steam zero. Therefore, every kernel was consequently launched in a serial way. The figure \ref{fig:streams} illustrates such result using the NVIDIA's Visual Profiler. Each kernel that is being launched cannot run simultaneously. Because, each kernel needs previous data to compute the next data. In other words, the kernels are not independent from each other. Therefore, we change the implementation to be able to launch parallel kernels.
 
 \begin{figure}[htbp]
 	\centering
-		\includegraphics[width=0.85\textwidth]{Figures/ini_steams.png}
+		\includegraphics[width=0.89\textwidth]{Figures/ini_steams.png}
 		\smallskip
 	\caption[Initial Streams]{Kernels running on the default Stream zero.
 }
@@ -258,7 +259,7 @@ if (i > 1 && i < NX + 2 && j >= 0 && j < NY)
 	deltam[index] = sfrelax[index] + sdex[index] + lapl[index] - sm[index];
 \end{lstlisting}
 
-This same method is applied to every kernel that is possible to be separated into three kernels calls. Some kernels cannot be separate such as the cross product, because the product uses pinned memory block from the other streams.  The figure \ref{fig:concurrent} shows the results of concurrent kernels in the Tesla K20.
+This same method is applied to every kernel that is possible to be separated into three kernels calls. Some kernels cannot be separate such as the cross product, because the product uses pinned memory block from the other streams. The figure \ref{fig:concurrent} shows the results of concurrent kernels in the Tesla K20.
 
 \begin{lstlisting}[language=C++, caption={Evaluate Zhang and Li model.}]
 for (int i  = 0; i < 3; i++)
@@ -312,7 +313,7 @@ if (i > 1 && i < NX + 2 && j >= 0 && j < NY){
 }
 \end{lstlisting}
 
-To calculate the laplacian we need to access a great amount of global memory which is located near the value of interest. In this case in region of 4x4.  The figure \ref{fig:shared} illustrates what part of the block is for allocating shared memory and global memory. The global memory is used for the boundary conditions of the block, while the shared memory for all the values inside the block.
+To calculate the laplacian we need to access a great amount of global memory which is located near the value of interest. In this case a region of 4x4 grid.  The figure \ref{fig:shared} illustrates what part of the block is used for allocating shared memory and global memory. The global memory is used for the boundary conditions of the block, while the shared memory for all the values inside the block.
 
 \begin{figure}[htbp]
 	\centering
@@ -350,7 +351,7 @@ AoS and SoA refer to "Array of Structures" and "Structure of Arrays" respectivel
 
 \begin{figure}[htbp]
 	\centering
-		\includegraphics[width=0.65\textwidth]{Figures/aos.png}
+		\includegraphics[width=0.68\textwidth]{Figures/aos.png}
 		\smallskip
 	\caption[Array of structures (AOS)]{AOS memory layout }
 	\label{fig:aos}
@@ -359,7 +360,7 @@ AoS and SoA refer to "Array of Structures" and "Structure of Arrays" respectivel
 
 \begin{figure}[htbp]
 	\centering
-		\includegraphics[width=0.65\textwidth]{Figures/soa.png}
+		\includegraphics[width=0.68\textwidth]{Figures/soa.png}
 		\rule{35em}{0.2pt}
 	\caption[Structure of Arrays (SAO)]{SAO memory layout}
 	\label{fig:sao}
@@ -382,11 +383,11 @@ To solve this issue, a custom class GPUMatrix was programmed, which contained al
     GPUMatrix<T> *dev_m; 
 \end{lstlisting}
 
--- add a little more explanation
+-- add a little more explanation \\
 
 \subsection{Occupancy}
  
-Firstly, we increase the use of constant memory in the device, this helps redundant evaluations of variables which speedups the operations per clock cycle in the device. In addition  constant memory changes can be appreciate in the code \ref{lst:constant}. Also  matrix calculation for the boundary conditions \ref{eq:matrix3} and \ref{eq:matrix3} were implemented using constant Memory.
+Firstly, we increase the use of constant memory in the device, this helps redundant evaluations of variables which speedups the operations per clock cycle in the device. In addition, constant memory changes can be appreciate in the code \ref{lst:constant}. Matrix calculation for the boundary conditions \ref{eq:matrix3} and \ref{eq:matrix3} were implemented using constant Memory.
  
  \begin{lstlisting}[language=C++,  label={lst:constant}, caption={Constant Memory changes}]
  gsource << <blocks, threads >> >(u_val, dev_sm_z, dev_mz, NXCUDA);
@@ -423,7 +424,7 @@ The different numbers of threads per block and as well the number of blocks per 
 
 \section{Optimization results}
 
-This section is the overview of the optimization results compared with each version of the code. The figure \ref{fig:time} and \ref{fig:speed} illustrates the the time execution and the speedup respectively. The final version of the code is the Occupancy. Moreover, the greatest performance occurred on the GeForce GTX 580 Card with a 8.0x speedup \ref{fig:speedup}.
+This section is the overview of the optimization results compared with each version of the code. The figure \ref{fig:gpuop} and \ref{fig:speedup} illustrates the the time execution and the speedup respectively for the tables \ref{tab:time} and \ref{tab:speed}. The final version of the code is the Occupancy. Moreover, the greatest performance occurred on the GeForce GTX 580 Card with a 8.0x speedup \ref{fig:speedup}.
 
 \begin{table}[h]
 \centering
@@ -446,7 +447,7 @@ This section is the overview of the optimization results compared with each vers
   \label{tab:time}
   \end{table}
   
-  The table \ref{tab:time} displays the overall executing time for all the version of the code, original, constant, streams, shared memory, SAO and Occupany. We can see compared the initial time and the final there is a difference between 40s and 50s time decrease. The time reduction is relatively low. There is no big difference in waiting 100s or 66s to a simulation to complete. However, if we increase the data set to five decimal points, the simulation can take up-to a couple of hours or days. Finally, the speedup comparison in table \ref{speed} and figure \ref{fig:speedup} illustrates how much performance increase we could obtain in a new simulation using the current implementation.
+  The table \ref{tab:time} displays the overall executing time for all the version of the code, original, constant, streams, shared memory, SAO and Occupancy. We can see compared the initial time and the final there is a difference between 40s and 50s time decrease. The time reduction is relatively low. There is no big difference in waiting 100s or 66s to a simulation to complete. However, if we increase the data set to five decimal points, the simulation can take up-to a couple of hours or days. Finally, the speedup comparison in table \ref{tab:speed} and figure \ref{fig:speedup} illustrates how much performance increase we could obtain in a new simulation using the current implementation.
   
   \begin{table}[h]
 \centering
@@ -471,18 +472,20 @@ This section is the overview of the optimization results compared with each vers
 
 \begin{figure}[htbp]
 	\centering
-		\includegraphics[width=0.82\textwidth]{Figures/gpuOptimization.png}
+		\includegraphics[width=0.98\textwidth]{Figures/gpuOptimization.png}
 		\smallskip
-	\caption[Overall time simulation]{Overall time simulation}
+	\caption[Overall simulation time]{Overall simulation time}
 	\label{fig:gpuop}
 \end{figure}
 
-The initial Visual Profiler test \ref{fig:iniresults} illustrated us that the Laplacian evaluating obtain about half of the overall simulation time. However, in the final optimization \ref{fig:final} the Laplacian was reduced from 44.37$\%$ to 26.24 $\%$ execution time. The same occur for the Runge and Kutta term evaluation. Furthermore, the $gsdExchangeFull$ incremented from 13.37$\%$. 23.35$\%$, which is not necessary good. The increment is due to shift in stream operators, the  $gsdExchangeFull$ is being process in the default stream zero, while the others on stream one through three.
+The initial Visual Profiler test \ref{fig:iniresults} illustrated us that the Laplacian evaluating obtain about half of the overall simulation time. However, in the final optimization \ref{fig:final} the Laplacian was reduced from 44.37$\%$ to 26.24 $\%$ execution time. The same occurred for the Runge and Kutta term evaluation. The speed mainly occurred in the Occupancy version of the code, see table \ref{tab:speed}. Furthermore, the $gsdExchangeFull$ incremented from 13.37$\%$. 23.35$\%$, which is not necessary good. The increment in time is due to shift in streams operators, the  $gsdExchangeFull$ is processed in the default stream zero, while the others kernels launched concurrently in a different stream.
+
+----include optimization table with NVIDA's Visual profiler\\
 
 
 \begin{figure}[htbp]
 	\centering
-		\includegraphics[width=0.9 \textwidth]{Figures/speedup.png}
+		\includegraphics[width=1.0 \textwidth]{Figures/speedup.png}
 		\smallskip
 	\caption[Speedup performance output]{Speedup performance output.}
 	\label{fig:speedup}
@@ -509,7 +512,7 @@ The initial Visual Profiler test \ref{fig:iniresults} illustrated us that the La
     
 The Tesla K20m was the only GPU which in every code modification it did not lose performance over the course of the optimization process. However, the other GPUs drop performance in the stream optimization stage. The stream process is where each kernel was divided into three separated kernels. Doing this we were able to calculate the x, y, z coordinates independently. In addition, this enable room to implement shared memory across possible kernels. The GPU table specifications \ref{tab:gpus} illustrates that the Tesla K20m is the only GPU card with CC of 3.5. This is important to mention, because the CC 3.5 has access to Hyper-Q technology. Moreover, Hyper-Q is able to synchronize automatically concurrent kernels, just by activated a steam process to the kernel.
 
-The SOA optimization, improved overall dramatically the performance of the application, obtaining a 1.2x - 2.0x speedup in all GPU cards, see figure \ref{fig:speedup} and \ref{fig:speeduplast}.
+The SOA optimization, improved overall dramatically the performance of the application, obtaining a 1.2x - 2.0x speedup in all GPU cards, see table \ref{tab:speed} and figure \ref{fig:speedup}. The final version, Occupancy, improved up-to 0.7x speedup on the 580 GPU. However, for the Teslas cards only 0.2x-0.25x speedup. The speedup difference, 0.5x,  is due to the process cycle of the GeForce GPU.
 
 \begin{figure}[htbp]
 	\centering
@@ -520,10 +523,10 @@ The SOA optimization, improved overall dramatically the performance of the appli
 \end{figure}
 
 
-We expected that the newest card, the Tesla k20m, would obtain the highest speedup overall, certainly because it has more CUDA cores, the highest compute capabilities. However, if falls behind the GeForce 580 with about 2.5x speedup difference (table \ref{tab:speed}). In addition, the Tesla K20 only had a difference of 0.3x speedup compared with the Teslas Cards (see figure \ref{fig:speedup}). The GeForce compared with the others GPUs specifications has most Processor clock (GHz), which can make more mathematical calculations per cycle, se table \ref{tab:gpus} for GPU specifications comparison. 
+We expected that the newest card, the Tesla k20m, would obtain the highest speedup overall, certainly because it has more CUDA cores, the highest compute capabilities. However, if falls behind the GeForce 580 with about 2.5x speedup difference (table \ref{tab:speed}). In addition, the Tesla K20 only had a difference of 0.3x speedup compared with the Teslas Cards, see figure \ref{fig:speedup} and \ref{fig:speeduplast}. The GeForce compared with the others GPUs specifications has most Processor clock (GHz), which can make more mathematical calculations per cycle, se table \ref{tab:gpus} for GPU specifications comparison.
 
 
   \vspace{3.5em}
 
-Finally, various techniques and practices from chapter \ref{Heterogeneous Performance Analysis and Practices} we used to archive speedup and an increase performance. We incremented the used of constant memory, shared memory, changed the memory allocating access, analyzed thread branching and finally analyzed kernel occupancy. The highest performance of all GPUS did not occur in the newest NVIDIA card, the K20m, which is the most expensive of all the GPUs. The actual improvement occurred on the GeForce 580 (the more GHz of all GPUs) with a 2.32x speed up difference from the Tesla K20m \ref{fig:speedup}. If the problem data set is to be scale, 8 days, the speedup performance of 8.0x will drastically decrease the time execution in only one day.
+Finally, various techniques and practices from chapter \ref{Heterogeneous Performance Analysis and Practices} we used to archive speedup and increase performance. Moreover, techniques such as increase the use of constant memory, shared memory, changed the memory allocating access, analyzed thread branching and finally analyzed kernel occupancy. The highest performance of all GPUS did not occurred on the newest NVIDIA card, the K20m, which is the most expensive of all the GPUs. The actual improvement appeared on the GeForce 580 (the more GHz of all GPUs) with a 2.32x speedup difference in comparison with the Tesla K20m, table  \ref{fig:speedup}. If the problem data set is to be scale, 8 days, the speedup performance of 8.0x will drastically decrease the time execution in only one day.
   

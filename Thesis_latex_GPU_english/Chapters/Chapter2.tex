@@ -97,7 +97,7 @@ Amongst the rapidly growing variety of proposed and developed spin structures, n
 
 \subsection{Experiment}
 
-We Quantitatively test the effects of spin diffusion, on real Domain walls structures, this is done by numerically solve the Zhang-Li model into micro-magnetics, using the equation \ref{eq:zhang}. The paper of \cite{zhang} initially solves analytically the diffusion equation \ref{eq:zhang}, However, ignoring the term of spin diffusion. In this numerically simulation we solve such equation using the spin diffusion term.
+We Quantitatively test the effects of spin diffusion, on real Domain walls structures, this is done by numerically solve the Zhang-Li model into micro-magnetics, using the equation \ref{eq:zhang}. Zhang-Li research  \cite{zhang} initially solves analytically the diffusion equation \ref{eq:zhang}, However, ignoring the term of spin diffusion. In this numerically simulation we solve such equation using the spin diffusion term.
 
 The sample considered is a 300 nm wide and 5 nm tick NiFe soft nanostrip. This dimensions are widely used for experimental use. Two Domain walls are used a Asymmetric Transverse Wall (ATW) and a Vortex Wall (VW). ATW maps of magnetization components of non equilibrium spin accumulation under a uniform current density with $D = 0, 1$ and $10 nm^2 / ps$. See figure \ref{fig:atw}.
 
@@ -121,11 +121,11 @@ Vortex Wall (VW) same as for ATW, we point out the noticeable effect of the diff
 
 \section{Numerical Solution}
 
-The equation is physically realistic, However, computationally expensive \ref{Xhang}. Therefore we numerical methods to solve such equation. The numerical methods used for the solution is a the method known as Finite Differences in the Time Domain (FDTD) whose integration is done using a 4th order Runge - Kutta integration.
+The equation \ref{eq:zhang} is physically realistic, However, computationally expensive. Therefore we numerical methods to solve such equation. The numerical methods used for the solution is a the method known as Finite Differences in the Time Domain (FDTD) whose integration is done using a 4th order Runge-Kutta integration.
 
 \subsection{Finite differences in the time domain}
 
-The finite difference in the time domain (FDTD) method  is able to solve complicated problems. However, it is generally computationally expensive. Solutions may require a large amount of memory and computation time \cite{ufdtd}. FDTD is a numerical analysis technique use for approximating solutions to the associates system of differential equations. The method belongs in the general class of grid-based differential numerical modeling methods. Please check reference \cite{methods} for more information about the demonstration of such numerical methods.
+The finite difference in the time domain (FDTD) method  is able to solve complicated problems. However, it is generally computationally expensive. Solutions may require a large amount of memory and computation time \cite{ufdtd}. FDTD is a numerical analysis technique use for approximating solutions to the associates system of differential equations. The method belongs in the general class of grid-based differential numerical modeling methods. Please read reference \cite{methods} for more information about the demonstration of such numerical methods for this section.
 
 The FDTD method essentially uses a weighted summation of functions values at neighboring points to approximate the derivate at a particular point, in this case a point in a 3d grid. The result for each cell is based on the results from the cell and its neighbors at the previous time-frame, figure \ref{fig:fdtd}.  
 
@@ -151,7 +151,7 @@ Consider a regular, differentiable one-dimension  scalar function $f(x)$ sampled
 	\label{fig:bound}
 \end{figure}
 
-However, the numerical derivation of the structure of a simple Bloch wall using such expressions soon reveals that second order Taylor expansion ledes to restricted accuracy. Fourth order expansion as actually been found to prove much superior.  \cite{methods}
+However, the numerical derivation of the structure of a simple Bloch wall using such expressions soon reveals that second order Taylor expansion ledes to restricted accuracy. Fourth order expansion as actually been found to prove much superior \cite{methods}.
 
 Taylor expansion of the function $f(x)$ around $x=x_i$ yields where $f^{(k)}(x_i) = f(x)$ if $k=0$
 
@@ -170,7 +170,7 @@ The equation \ref{eq:nn} for the second derivate based on second nearest neighbo
 
 \subsubsection{Boundary conditions}
 
-Expressions such as \ref{eq:nn} are valid when the grid point becomes closet or next-to-closet to the boundary of the magnetic box. Specific accuracy preserving, expansion need to be worked out. The general principal in the present approach is to replace equations that are missing because of the lack of grid points outside the magnetic volume by equations including explicit reference to boundary conditions. \cite{methods}
+Expressions such as \ref{eq:nn} are valid when the grid point becomes closet or next-to-closet to the boundary of the magnetic box. Specific accuracy preserving, expansion need to be worked out. The general principal in the present approach is to replace equations that are missing because of the lack of grid points outside the magnetic volume by equations including explicit reference to boundary conditions \cite{methods}.
 
 Consider first a point second to closet to bound, \ref{fig:bound}-b. Grid point $i + 1$ is missing for this particular geometry. However, defining $x_R$ as the right boundary coordinate along the $x$ axis. The $f^{(1)}(x_R)$ to be know along the boundary to be replace by the derivate of Taylor's expansion \cite{methods}.
 
@@ -223,9 +223,9 @@ Similarly, for a point closet to boundary, reference \ref{fig:bound}-c, grid poi
 \end{bmatrix}
 \end{align}
 
-In both cases, and second derivatives and fully determined provided $f^{(1)}(x_R)$ be known along the boundary. For further reference \cite{methods}. The implementation of the numerically solution in how to implement the laplacian boundaries conditions please check Chapter \ref{Implementation of Domain Wall Dynamics under Nonlocal STT}.
+In both cases, and second derivatives and fully determined provided $f^{(1)}(x_R)$ be known along the boundary. For further reference please read\cite{methods}. For implementation of the laplacian boundaries conditions please read Chapter \ref{Implementation of Domain Wall Dynamics under Nonlocal STT}.
 
-The main advantages of the finite difference approach is easy to implement, simplicity of meshing, efficient evaluation of the magnetization energy, and the accessibility of higher order methods. The main disadvantage of this approach is the sampling curved boundaries with a rectangular mesh, resulting in some what discrete approximation. In addition, it could produce a significant error in the evaluation. Please read reference \cite{methods} for more information about the demonstration of such equation and matrices proposed in this section, finite differences in the time domain.
+The main advantages of the finite difference approach is easy to implement, simplicity of meshing, efficient evaluation of the magnetization energy, and the accessibility of higher order methods. The main disadvantage of this approach is the sampling curved boundaries with a rectangular mesh, resulting in some what discrete approximation. In addition, it could produce a significant error in the evaluation.
 
 \subsection{Fourth order Runge and Kutta method}
 
@@ -264,7 +264,7 @@ As the equations shows, each step, the derivative is evaluated four times, once 
 	\centering
 		\includegraphics[width=0.5\textwidth]{Figures/rk4.png}
 		\smallskip
-	\caption[Fourth order Runge and Kutta Method]{Fourth order Runge and Kutta method, Each step the derivative is evaluated four times. }
+	\caption[Fourth order Runge and Kutta Method]{Fourth order Runge and Kutta method, each step the derivative is evaluated four times. }
 	\label{fig:kutta}
 \end{figure}
 
