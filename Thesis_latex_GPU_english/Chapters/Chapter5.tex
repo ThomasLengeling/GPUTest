@@ -447,7 +447,7 @@ This section is a overview of the optimization results compared with the initial
   \label{tab:time}
   \end{table}
   
-  The table \ref{tab:time} displays the overall executing time for all the version of the code, original, constant, streams, shared memory, SAO and Occupancy. We can see compared the initial time and the final there is a difference between 40s and 50s time decrease. The time reduction is relatively low. There is no big difference in waiting 100s or 66s to a simulation to complete. However, if we increase the data set to five decimal points, the simulation can take up-to a couple of hours or days. Finally, the speedup comparison in table \ref{tab:speed} and figure \ref{fig:speedup} illustrates how much performance increase we could obtain in a new simulation using the current implementation.
+  The table \ref{tab:time} displays the overall executing time for all the version of the code, original, constant, streams, shared memory, SAO and Occupancy. We can see compared the initial time and the final there is a difference between 40s and 50s time decrease. The time reduction is relatively low. There is no big difference in waiting 100s or 66s to a simulation to complete. However, if we increase the data set to five decimal points, the simulation can take up-to a couple of hours or days. Finally, the speedup comparison in table \ref{tab:speed} and figure \ref{fig:speedup} illustrates how much performance increase we could obtain in a new simulation using the new implementation.
   
   \begin{table}[h]
 \centering
@@ -478,7 +478,7 @@ This section is a overview of the optimization results compared with the initial
 	\label{fig:gpuop}
 \end{figure}
 
-The initial Visual Profiler test \ref{fig:iniresults} illustrates the Laplacian evaluation obtained about half of the overall simulation time. However, on the final optimization results\ref{fig:final}, the Laplacian was reduced from 44.37$\%$ to 26.24 $\%$ on execution time. The same occurred for the Runge and Kutta term evaluation. The speedup mainly occurred in the Occupancy version of the code, see table \ref{tab:speed}. Furthermore, the $gsdExchangeFull$ incremented from 13.37$\%$. 23.35$\%$, which is not necessary good. The increment in time is due to shift in streams operators, the $gsdExchangeFull$ is processed in the default stream zero, while the others kernels launched concurrently in a different stream.
+The table \ref{fig:final} illustrates the final profiling results using NVIDIA's profiling tools. On the initial profiling \ref{fig:initial}, the Laplacian evaluation consumnend about half of the overall simulation time. However, on the final optimization results\ref{fig:final}, the Laplacian was reduced from 44.37$\%$ to 26.24 $\%$ on execution time. But more importantly the importance of the kernel was reduced, in other words more computational workload on the kernels. The same occurred for the Runge and Kutta term evaluation. The speedup mainly occurred in the Occupancy version of the code, see table \ref{tab:speed}. Furthermore, the $gsdExchangeFull$ incremented from 13.37$\%$. 23.35$\%$, which is not necessary good. The increment in time is due to shift in streams operators, the $gsdExchangeFull$ is processed in the default stream zero, while the others kernels launched concurrently in a different stream.
 \begin{figure}[htbp]
 	\centering
 		\includegraphics[width=1.0 \textwidth]{Figures/speedup.png}
@@ -512,7 +512,7 @@ The SOA optimization, improved overall dramatically the performance of the appli
 
 \begin{figure}[htbp]
 	\centering
-		\includegraphics[width=0.9\textwidth]{Figures/speed.png}
+		\includegraphics[width=1.0\textwidth]{Figures/speed.png}
 		\smallskip
 	\caption[Optimization speedup overview]{Optimization speedup overview}
 	\label{fig:speeduplast}
