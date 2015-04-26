@@ -157,6 +157,9 @@
    \let\\\space
 }
 \newcommand*{\supervisor}[1]{\def\supname{#1}}
+\newcommand*{\cosupervisor}[1]{\def\cpsupname{#1}}
+\newcommand*{\examineray}[1]{\def\examineray{#1}}
+\newcommand*{\examinerav}[1]{\def\examinerav{#1}}
 \newcommand*{\thesistitle}[1]{\def\ttitle{#1}}
 \newcommand*{\examiner}[1]{\def\examname{#1}}
 \newcommand*{\degree}[1]{\def\degreename{#1}}
@@ -183,9 +186,14 @@
 
 \thesistitle{Study of Domain Wall Dynamics under Nonlocal Spin-Transfer Torque using Heterogeneous Computing} % Your thesis title - this is used in the title and abstract
 %-------------------------------------------------  
-\supervisor{Dr. Claudio Gonz\'alez David } % You supervisor's name - this is used in the title page
+\supervisor{Dr. David Claudio Gonz\'alez} % You supervisor's name - this is used in the title page
+
+\cosupervisor{Dra. Maria Susana Avila Garcia}
+
 %-------------------------------------------------   
-\examiner{} % Your examiner's name - this is not currently used anywhere in the template, cite it with \examname if you want it
+\examineray{Dr. V\'ictor Ayala Ram\'irez } % Your examiner's name - this is not currently used anywhere in the template, cite it with \examname if you want it
+\examinerav{Dr. Juan Gabriel Avi\~na Cervantes}
+
 %-------------------------------------------------   
 \degree{Bachelor of Computacional Systems Engineering} % Your degree name - this is currently used in the title page and abstract
 %-------------------------------------------------   

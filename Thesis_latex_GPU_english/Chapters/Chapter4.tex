@@ -5,7 +5,7 @@
 
 \lhead{Chapter 4. \emph{Heterogeneous Performance Analysis and Practices}} % Change X to a consecutive number; this is for the header on each page - perhaps a shortened title
 
-When working with GPUs hardware new challenges emerges. How can we make the best usage of the GPU hardware. In the conventional CPU model, we have what is called linear or flat memory model. In addition this appears to the programmer as a single contiguous address space. Furthermore, the CPU can directly address all the available memory, in other words there is almost no efficiency penalty in creating global data, local data, or even access data that is located on a opposite memory location, all of this can be access as a contiguous block \cite{cook}. Meanwhile, on the GPU there are exceptions, their exists different memory hierarchies which dramatically change the performance output. By allocation the optimal memory types, speedup and increase throughput can be accomplished. To ensure optimization, some analysis should be done, like comparing latency, memory hierarchies and data bandwidth between CUDA kernels. Debugging of parallel code can be accomplish using the NVIDIA's Visual Profiler. This chapter demonstrated techniques, practices and methods to debug and analyzed parallel process on NVIDIA's GPUs.
+Working with GPUs new challenges emerges, how can we make the best usage of the GPU hardware. In the conventional CPU model, we have what is called linear or flat memory model. In addition this appears to the programmer as a single contiguous address space. Furthermore, the CPU can directly address all the available memory, in other words there is almost no efficiency penalty in creating global data, local data, or even access data that is located on a opposite memory location, all of this can be access as a contiguous block \cite{cook}. Meanwhile, on the GPU there are exceptions, their exists different memory hierarchies which dramatically change the performance output. By allocation the optimal memory types, speedup and increase throughput can be accomplished. To ensure optimization, some analysis should be done, such as comparing latency, memory hierarchies and data bandwidth between CUDA kernels. Debugging of parallel code can be accomplish using the NVIDIA's Visual Profiler. The current chapter demonstrated techniques, practices and methods to debug and analyzed parallel process on NVIDIA's GPUs.
 
 % techniques, programming models and hierarchies.
 \section{Practices}
@@ -77,6 +77,8 @@ Where Br is the number of bytes read per kernel, Bw is the number of bytes writt
 
 In practice the difference between theoretical bandwidth and effective bandwidth indicated how much bandwidth is wasted on accessing memory and calculations. If the effective bandwidth is low compared to the theoretical bandwidth is one indication that there is not enough work being done in the GPUs. In addition, there a several solutions; analyze the code to make more parallelize instructions, execute more computational instructions on the GPUs, finally analyze the number of threads per block that are executing on execute kernels.
 
+ The next chapter we analyze the bandwidth and timing for each NVIDIA GPU card used to optimize the application. However, the bandwidth information is only available for analysis when thransfering data from the CPU to the GPU or vise-verse.
+
 
 \section{Memory Handling with CUDA}
 
@@ -92,7 +94,7 @@ In this section four types of memory handling are going to be explained, global 
 
 Global memory is very large in comparison to the shared memory, which is on the L1 cache. However, the global memory is far away from the registers and from the CUDA core locations. Moreover, the memory access is very slow in comparison to the shared memory \cite{cook}.
 
-The table \ref{fig:memory} illustrates the five different memory types that are available in CUDA. But more interesting the bandwidth penalty and the latency in computer cycles for each on of them. Moreover, different memory types can be used in different applications to maximize performance, hence memory usage. The Shared Memory is very limited so it cannot be handler across all situations. Furthermore, when implementation wrong memory type on the device there can be latency penalty and bandwidth drop, instead of having a gain in performance.
+The table \ref{fig:memory} illustrates the five different memory types that are available in CUDA. But more interesting the bandwidth penalty and the latency in computer cycles for each on of them. Moreover, different memory types can be used in different applications to maximize performance, hence memory usage. The Shared Memory is very limited so it cannot be handler across all situations. Furthermore, implementing a wrong memory type on the device there are possibilities for latency penalties and bandwidth drop, instead of having a performance gain.
  
 \begin{figure}[htbp]
 	\centering
@@ -104,7 +106,7 @@ The table \ref{fig:memory} illustrates the five different memory types that are 
 
 \subsection{Global Memory}
 
-Understanding how efficiently use global memory is essential part of CUDA memory management. Focusing on data reuse within the SM and caches avoids memory bandwidth limitations. Global memory on the GPU is designed to quickly stream memory blocks of data into the SM.
+Understanding how efficiently use global memory is essential part of CUDA memory management. Focusing on data reuse within the SM and caches avoids memory bandwidth limitations. Global memory on the GPU is designed to quickly stream memory blocks of data into the SM \cite{design}.
 
 \begin{itemize}
 \item Get the data on to the Device, keep it there.
@@ -112,7 +114,7 @@ Understanding how efficiently use global memory is essential part of CUDA memory
 \item Focus on data reuse within the GPGPU to avoid memory bandwidth limitations.
 \end{itemize}
 
-In other words the global memory resides on the device, and it should be anything from 1 byte to 8GB, depends on the GPU RAM available. Furthermore, the memory is visible to all the threads of the grid. Every thread at a given location is possible to read and to write global memory, The memory is always allocated with the keyword \textit{cadaMalloc}. In addition, the global memory is only used by passing it to the kernel call the keyword \twoline global \twoline \cite{design}. Global memory is widely used for the current implementation.
+In other words the global memory resides on the device, and it should be anything from 1 byte to 8GB, depends on the GPU RAM available. Furthermore, the memory is visible to all the threads of the grid. Every thread at a given location is possible to read and to write global memory, The memory is always allocated with the keyword \textit{cadaMalloc}. In addition, the global memory is only used by passing it to the kernel call the keyword \twoline global \twoline. Global memory is widely used for the current implementation \cite{design}.
 
 \subsection{Shared Memory}
 
@@ -120,7 +122,7 @@ CUDA C compiler treats variables differently than a typical c variable, it creat
 
 Shared memory is magnitudes faster to access than global memory, essentially is like a local cache for each threads of a block. While  the shared memory is limited to 48K a block, the global memory is the amount of DRAM on the device. The duration of the shared memory on the device is the lifetime of the thread block. Using \twoline shared \twoline in-front of the data type will innovate shared memory.
 
-Shared memory is widely used for applications were the kernels access a great amount of global memory. In addition, using shared memory eliminates the use of clock cycles per kernel which increases performance on a single kernel call. The optimizations results of increasing the use of shared memory are located in Chapter \ref{Optimization Results}.
+Shared memory is widely used for applications were the kernels access a great amount of global memory. In addition, using shared memory eliminates the use of clock cycles per kernel which increases performance on a single kernel call. For the current application we used extensively shared memory, eliminating the use of global memory. More information about the process in Chapter \ref{Optimization Results}.
 
    
 \subsection{Constant Memory}
@@ -163,7 +165,7 @@ This refers to synchronizing threads operations. For efficiency, a pipeline can 
 
 The basic unit of work on the GPU is a thread. It is important to understand from a software point of view that each thread is separate from every other thread. Every thread acts as if it has its own processor with separate registers and identity. Will wait for all threads to finish there job \cite{design}.
 
-Threads synchronization can also be accomplish inside of the kernels calls. The idea is the same, the kernel will wait until all the threads have completed there task. Threads synchronization is general used when loading data into shared memory. The implementation of such process is in Chapter \ref{Optimization Results}, section optimizations.
+Threads synchronization can also be accomplish inside of the kernels calls. The idea is the same, the kernel will wait until all the threads have completed there task. When more threads are synchronize they schedule more work, hence, better performance and more workload. Threads synchronization is general used when loading data into shared memory. The implementation of such process is in Chapter \ref{Optimization Results}, section optimizations. 
 
 \section{Concurrent Kernels}
 
@@ -201,7 +203,6 @@ Refers to the computation time execution, in other works calculations done in th
  
 Depending on the problem, the application can be bound by the previous three factors. The next chapter we are going to explain how and why the current implementation is bounded by memory, compute and latency.
 
-
 \section{Hardware constraints}
 
 Depending on the hardware capabilities limits how many threads per block a kernel launch can have. If exceed this values, the kernel will run incorrectly. The threads per block depends of the GPU hardware capabilities. The compute capabilities of a device is represented by a version number, also sometimes called its "SM version". This version number identifies the features supported by the GPU hardware and is used by applications at runtime to determine which hardware features and/or instructions are available on the present GPU \cite{tool}. In a roughly summarized as:
@@ -217,7 +218,7 @@ Another inefficiency that can cause low performance in the CUDA application, is 
 
 \subsection{Thread Division}
 
-There a hardware limitations in how much threads per block a kernel can handle. Launching a kernel with the hardware constrains of the device will only ensure us that the kernel will actually be executed in the device, Nonetheless, not 100$\%$ optimal and the results can be incorrect. Furthermore, is necessary to launch kernels with the amount of threads per block base on the hardware settings. The block size will determine how faster the code will run. However, not the biggest block will run faster, depends con the problem and the data set. By Benchmarking the application, is possible to find the optimal configuration that best fits the problem. One thing to keep in mind, thread blocks should be a multiple number of SMs, with this idea is possible to obtain optimal thread block configuration. See Chapter \ref{Optimization Results} for the optimal thread configuration for the application.
+There a hardware limitations in how much threads per block a kernel can handle. Launching a kernel with the hardware constrains of the device will only ensure us that the kernel will actually be executed in the device, Nonetheless, not 100$\%$ optimal and the results can be incorrect. Furthermore, is necessary to launch kernels with the amount of threads per block base on the hardware settings. The block size will determine how faster the code will run. However, not the biggest block will run faster, depends con the problem and the data set. By Benchmarking the application, is possible to find the optimal configuration that best fits the problem. One thing to keep in mind, thread blocks should be a multiple number of SMs, with this idea is possible to obtain optimal thread block configuration. See Chapter \ref{Optimization Results} for the optimal thread configuration for the application. The optimal number of threads per block did not occur on the maximal available threads per block of the devices.
 
 \section{Visual Profiler}
 
@@ -279,7 +280,7 @@ The profiling report was used in the current implementation to optimize the CUDA
 
 As mention before, is possible to collect data from a remote system where a GUI is not available, using the command-line nvprof. Remote profiling is the process of collecting profile data from a remote system that is different than the host system at which that profile data will be viewed and analyzed. Once the data is collected is possible to access the data using the Visual profiler, which enables a GUI and more compressive information about the application. There are two ways to perform remote profiling. To use nvvp remote profiling you must install the same version of the CUDA Toolkit on both the host and remote systems. It is not necessary for the host system to have an NVIDIA GPU \cite{tool}. For the current application, remote profiler was used. However, the server did not have an external monitor or virtual. Therefore we could not obtain all the profiling analysis. Moreover we use a local laptop for profiling.
 
-\vspace{3.2em}
+\vspace{4.0em}
 
 Finally, this chapter gives a overview of practices and performance studies for GPGPU. In addition, a better understanding of the hardware and memory management on the GPU. As well as hardware limitation, which determinate the best usage of the GPUs. NVIDIA's profiling tools is a useful to analyze different stages of our application. Moreover, to determined which parts of the CUDA code is better to optimize from others, this is to gain a better performance in a small time frame.
 

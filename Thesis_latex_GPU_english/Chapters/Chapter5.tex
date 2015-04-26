@@ -6,7 +6,7 @@
 
 \lhead{Chapter 5. \emph{Optimization Results}} % Change X to a consecutive number; this is for the header on each page - perhaps a shortened title
 
-This chapter is the results of the CUDA code implementation launched on a single GPU device. The test were performed on various GPUs architectures, which, has different hardware characteristics. The application is analyzed by the NVIDIA's Visual Profiler. In addition the CUDA kernels were evaluated in performance, execution time, occupancy and concurrent kernels. Furthermore, the results, are analyzed and optimized using the schemes from Chapter \ref{Heterogeneous Performance Analysis and Practices}. Lastly, the code is executed remotely on the supercomputer ``Piritakua'' at the Department of Multidisciplinary Studies Yuriria, University of Guanajuato.
+This chapter are the results of the CUDA code implementation launched on a single GPU device. The test were performed on various GPUs architectures, which, has different hardware characteristics. The application is analyzed using NVIDIA's Visual Profiler. In addition, the CUDA kernels were evaluated in performance, execution time, occupancy and concurrent kernels. Furthermore, the results, are analyzed and optimized using the schemes from Chapter \ref{Heterogeneous Performance Analysis and Practices}. Lastly, the code is executed remotely on the supercomputer ``Piritakua'' at the Department of Multidisciplinary Studies Yuriria, University of Guanajuato.
 
 \section{Supercomputer ``Piritakua''}
 
@@ -66,7 +66,7 @@ When accessing ``Piritakua'' remotely is possible to use all the GPUs nodes avai
 
   Architecture dependent technical differences of NVIDIA GPUs. During the CUDA development a lot of internal features have been improved, but most paradigms for the programmer stayed the same. For example a streaming processor can now handle 2048 threads at a time, but the maximum block size stayed at 1024. This results in a 100$\%$ theoretical occupancy for block sizes of 1024 compared to 66$\%$ of Fermi. Another example is the use of Shared Memory. Maxwell has 64KB dedicated Shared Memory. The maximum amount of Shared Memory per Block is 48KB for all three architectures \cite{hoermanngpu}.
   
-  There are two GPU architectures that CUDA implementation was launched, the Fermi and the Kepler. The Tesla K20m and the GeForce 670mx are based on the ``Kepler'' GPU architecture. The Tesla M2070, M2050 and the GeForce GTX 580 on the Fermi architecture. The Kepler architecture newer than the Fermi. More information about the architectures in the table \ref{tab:arch}. The Maxwell architecture wasn't uses for benchmarking test. However, it is showed for future reference and analysis.
+  There are two GPU architectures where the implementation was launched, the Fermi and the Kepler. The Tesla K20m and the GeForce 670mx are based on the ``Kepler'' GPU architecture. The Tesla M2070, M2050 and the GeForce GTX 580 on the Fermi architecture. The Kepler architecture newer than the Fermi. More information about the architectures in the table \ref{tab:arch}. The Maxwell architecture wasn't uses for benchmarking test. However, it is showed for future reference and analysis.
   
 \begin{table}[h]
 \centering
@@ -107,9 +107,9 @@ When accessing ``Piritakua'' remotely is possible to use all the GPUs nodes avai
 
 The CUDA code was launched on each one of "Piritakua"'s GPUs. As we know the supercomputer has different GPUs, as well as several different  architectures. Furthermore the initial results in time execution of the implementation can been seen in figure \ref{fig:iniresults}.
 
-Using the NVIDIA's Visual Profiler we obtain kernel metrics of the Tesla K20m. The output is organized by kernel performance throughout the  simulation.  As we can notice the laplacian evaluation; $glaplacinay$, $gLaplacianx$ and  $gLaplacianYBoundaries$ uses up-to 44.37$\%$ of the overall simulation. The $gsolution$ kernels which solves Zhang and Li model \ref{eq:zhang} uses 14.04$\%$. The terms calculation for the RK4 integration only uses a minor part of the overall simulation. However, the $gSolution$, $gsdExchange$ and laplacian calculation are part of the RK4 integration, which overall is about 99$\%$.
+Using the NVIDIA's Visual Profiler we obtain kernel metrics of the Tesla K20m. The output is organized by kernel performance throughout the  simulation. For only the laplacian kernel evaluation; $glaplacinay$, $gLaplacianx$ and  $gLaplacianYBoundaries$ uses up-to 44.37$\%$ of the overall simulation. The $gsolution$ kernel, which solves Zhang-Li model \ref{eq:zhang} consumes up-to 14.04$\%$. The RK4 integration only exhaust a minor part of the overall simulation. However, the $gSolution$, $gsdExchange$ and laplacian calculation are part of the RK4 integration, which overall is about 99$\%$.
 
- The optimization focus on giving the GPUs as much work as possible, using at the fullest the GPU hardware capabilities. In addition reducing the performance time of most time consuming kernels in the table \ref{tab:nvprof}.
+ The optimization focus on giving the GPUs as much work as possible, using at the fullest the GPU hardware capabilities. In addition, we reduced the overall performance time by eliminating the computational process in the highest consumed kernel \ref{tab:nvprof}.
  
 \begin{table}[h]
 \centering
@@ -150,11 +150,26 @@ Using the NVIDIA's Visual Profiler we obtain kernel metrics of the Tesla K20m. T
 	\label{fig:iniresults}
 \end{figure}
 
-As we can see in figure \ref{fig:iniresults} the GeForce GTX 580 is the card with the least amount of time execution, and the Tesla K20m the fastest amongst the Tesla Cards. 
+The figure \ref{fig:iniresults} illustrate the GeForce GTX 580 is the card with the least amount of time execution, and the Tesla K20m the fastest amongst the Tesla Cards. 
+
+\begin{table}[h]
+\centering
+  \begin{tabular} { | l | l | l | l | l | l | l |}
+    \hline
+    Time$\%$& Time & Min & Max & Kernel \\
+    \hline
+    23.50 & 3.6s & 96.0us & 597.1us&$gLaplaciany$ \\
+    \hline
+    17.04 & 2.6s & 57.0us & 561.1us&$gSolution$ \\
+   \hline
+  \end{tabular}
+  \caption{Initial Metrics of the implementation using NVidia's Visual Profiler}
+  \label{tab:metrics}
+  \end{table}
 
 --------include some initial performance metrics with the profiler\\
 
-The following sections are the optimization techniques or methods applied to the application. In addition, demonstrating the performance comparison between the initial implementation and the modified versions. Five versions of the code are; Branching, Occupancy, Concurrent Kernels, Shared Memory and Structure of Arrays. Branching, refers how kernels and threads are executed in the application. Occupancy, number of threads per devices being used. Concurrent Kernels, execution several kernels at once. Shared Memory, using as much shared memory as possible. Finally, Structure of Arrays, modification of the memory allocation in the device.
+The following sections are the optimization techniques and methods applied to the application. In addition, comparing the performance between the initial implementation and the modified versions. The optimization is breakdown into five steps; Branching, Occupancy, Concurrent Kernels, Shared Memory and Structure of Arrays. Branching, refers how kernels and threads are executed in the application. Occupancy, number of threads per devices being used. Concurrent Kernels, execution several kernels at once. Shared Memory, using as much shared memory as possible. Finally, Structure of Arrays, modification of the memory allocation in the device.
 
  \subsection{Branching}
  
@@ -223,7 +238,7 @@ __global__ void glaplacianyboundaries(...){
 }
 \end{lstlisting}
 
-The technique was applied to all parts of the code. Therefore, eliminated inactive threads that were not performing computational operations to active ones. The results of the modified version consult the Optimization Results section. The technique increased the occupancy percentage of active threads within the kernels.
+The technique was applied to all parts of the code. Therefore, eliminated inactive threads, moreover, activating threads for computational process, the results of the modified version seek the Optimization Results section. The technique increased the occupancy percentage of active threads within the kernels.
 
 \subsection{Concurrent Kernels}
 
@@ -259,7 +274,7 @@ if (i > 1 && i < NX + 2 && j >= 0 && j < NY)
 	deltam[index] = sfrelax[index] + sdex[index] + lapl[index] - sm[index];
 \end{lstlisting}
 
-This same method is applied to every kernel that is possible to be separated into three kernels calls. Some kernels cannot be separate such as the cross product, because the product uses pinned memory block from the other streams. The figure \ref{fig:concurrent} shows the results of concurrent kernels in the Tesla K20.
+This same method was applied to every kernel that was possible to separate into three kernels calls. Some kernels cannot be separate, such as the cross product, because, the cross product uses pinned memory block from the other streams. The figure \ref{fig:concurrent} shows the results of concurrent kernels in the Tesla K20.
 
 \begin{lstlisting}[language=C++, caption={Evaluate Zhang and Li model.}]
 for (int i  = 0; i < 3; i++)
@@ -291,7 +306,7 @@ Concurrent kernels demonstrates a very promising technique to achieve a huge per
 
 \subsection{Shared Memory}
 
-As we know shared memory is faster than global memory, read Chapter \ref{Heterogeneous Performance Analysis and Practices} for more reference. However, shared memory is very limited. To be able to implement shared memory in the kernels, we needed the kernels to be separated in their x, y and z coordinate as mentioned in the previous section. In addition, this allows us to implement shared memory across each kernel, otherwise wouldn't be possible.
+Shared memory is faster than global memory(read Chapter \ref{Heterogeneous Performance Analysis and Practices} for more reference), however, shared memory is very limited. To be able to implement shared memory in the kernels, we needed the kernels to be separated in their x, y and z coordinate, as mentioned in the previous section. In addition, this allows us to implement shared memory across each kernel, otherwise wouldn't be possible.
 
 The idea behind shared memory is to reduce the amount of global memory calls, which has about 400-600 clock cycles, while the shared memory only 1-32 cycles \ref{fig:memory}. The shared memory implementation is accomplish by allocating the data from the thread block in-to a temporary array, in other words the shared memory. In addition, the kernel is able to performed calculations on the temporary array and write the values onto the global memory. The implementation code is illustrated in the listing \ref{lst:shared}. As we know there is no guaranty that threads will execute at the same order. Using $\_\_syncthreads()$ will wait until all threads have completed their task, in this case loading global memory into the shared memory array. Chapter \ref{Heterogeneous Performance Analysis and Practices} section thread synchronization, has more information about shared memory. Once all the operations on the shared memory array are finish, the final part is to write the shared memory values back to the the global memory. Shared memory was used in all the kernels were global memory was used extensively. 
 
@@ -313,7 +328,7 @@ if (i > 1 && i < NX + 2 && j >= 0 && j < NY){
 }
 \end{lstlisting}
 
-To calculate the laplacian we need to access a great amount of global memory which is located near the value of interest. In this case a region of 4x4 grid.  The figure \ref{fig:shared} illustrates what part of the block is used for allocating shared memory and global memory. The global memory is used for the boundary conditions of the block, while the shared memory for all the values inside the block.
+To calculate the laplacian we need to access a great amount of global memory, that is located near the value of interest. In this case a region of 4x4 grid. The figure \ref{fig:shared} illustrates what part of the block is used for allocating shared memory and global memory. The global memory is used for the boundary conditions of the block, while the shared memory for all the values inside the block.
 
 \begin{figure}[htbp]
 	\centering
@@ -343,7 +358,7 @@ if (i >= 0 && i < NX && j >= 0 && j < NY){
 }
 \end{lstlisting}
 
-This technique look very promising for reducing global memory. However, great amount of time is spent on loading data onto the shared memory array. The results of such implementation are in the following section, optimization results.
+The current approach seems very promising for reducing global memory. However, great amount of time is spent on loading data onto the shared memory array. The results of such implementation are in the following section, optimization results.
 
 \subsection{Structure of Arrays, SAO}
 
@@ -374,7 +389,7 @@ deltam_y = (double **)calloc(NXCUDA, sizeof(double *));
 deltam_z = (double **)calloc(NXCUDA, sizeof(double *));
 \end{lstlisting}
 
-To solve this issue, a custom class GPUMatrix was programmed, which contained all the matrices for the device. Moreover, the classes allocated the data for each Matrix and free the memory automatically when the simulation is over. The was allocated in a form that easier for the device to access common elements. For example, when doing operations only on the x coordinate, the kernel physically access matrices that are near by.
+To solve the issue, a custom class GPUMatrix was programmed, which contained all the matrices for the device. Moreover, the classes allocated the data for each Matrix and free the memory automatically when the simulation is over. The was allocated in a form that easier for the device to access common elements. For example, when doing operations only on the x coordinate, the kernel physically access matrices that are near by.
 
 \begin{lstlisting}[language=C++, caption={SOA implementation}]
     GPUMatrix<T> *dev_deltam;
@@ -387,7 +402,7 @@ To solve this issue, a custom class GPUMatrix was programmed, which contained al
 
 \subsection{Occupancy}
  
-Firstly, we increase the use of constant memory in the device, this helps redundant evaluations of variables which speedups the operations per clock cycle in the device. In addition, constant memory changes can be appreciate in the code \ref{lst:constant}. Matrix calculation for the boundary conditions \ref{eq:matrix3} and \ref{eq:matrix3} were implemented using constant Memory.
+Firstly, we increase the use of constant memory in the device, eliminated redundant evaluations of variables and operations. The results are speedups and increase of clock cycles in the device. In addition, constant memory modifications are illustrated in the code \ref{lst:constant}. Matrix calculation for the boundary conditions \ref{eq:matrix3} and \ref{eq:matrix3} were implemented using constant Memory, reducing unnecessary calls in the device.
  
  \begin{lstlisting}[language=C++,  label={lst:constant}, caption={Constant Memory changes}]
  gsource << <blocks, threads >> >(u_val, dev_sm_z, dev_mz, NXCUDA);
@@ -396,7 +411,6 @@ Firstly, we increase the use of constant memory in the device, this helps redund
      
  DELTAX = (double)TX / (double)NX;
 \end{lstlisting}
-
  
 The different numbers of threads per block and as well the number of blocks per grid can dramatically increase or decrease the performance of the application. The table \ref{tab:threads} illustrate the different threads per block configuration on the GeForce GTX 580. The initial configuration for the Fermin and the Kepler was 32x32 threads per block for global memory and 16x16 threads per block for the shared memory. We found, that the optimal configuration for the Fermin cards was 16x16 threads per block and as well for the shared memory and for the Kepler cards was 32x32 threads per block for both memory types.
 
@@ -404,17 +418,17 @@ The different numbers of threads per block and as well the number of blocks per 
 \centering
   \begin{tabular} { | l | l | l | l | l | l | }
     \hline
-    Threads & Shared & speedup & time & Occupancy & Occupancy Shared \\
+    Threads & Shared & speedup & time & Occupancy \\
     \hline
-     8x8 &  8x8 & 7.217x & 52318.3  &  & \\
+     8x8 &  8x8 & 7.217x & 52318.3  & 56.6\% \\
     \hline
-     16x16 & 8x8 & 7.625x & 49517.3 &  & \\
+     16x16 & 8x8 & 7.625x & 49517.3 & 86.6\% \\
     \hline
-    16x16 & 16x16 & 7.978x & 47329.2 &  & \\
+    16x16 & 16x16 & 7.978x & 47329.2 & 100.0\% \\
     \hline
-    32x32 & 16x16 & 7.356x & 51333.4 &  & \\
+    32x32 & 16x16 & 7.356x & 51333.4 & 66.6\% \\
     \hline
-    32x32 & 32x32 & \multicolumn{4}{|c|}{Failed}\\
+    32x32 & 32x32 & \multicolumn{3}{|c|}{Failed}\\
     \hline
   \end{tabular}
   \caption{Threads per block configuration and occupancy on the Fermin architecture}
@@ -424,7 +438,7 @@ The different numbers of threads per block and as well the number of blocks per 
 
 \section{Optimization results}
 
-This section is the overview of the optimization results compared with each version of the code. The figure \ref{fig:gpuop} and \ref{fig:speedup} illustrates the the time execution and the speedup respectively for the tables \ref{tab:time} and \ref{tab:speed}. The final version of the code is the Occupancy. Moreover, the greatest performance occurred on the GeForce GTX 580 Card with a 8.0x speedup \ref{fig:speedup}.
+This section is a overview of the optimization results compared with the initial CUDA implementation. Each version of the code is compared with the first test results. The figure \ref{fig:gpuop} and \ref{fig:speedup} illustrates the the time execution and the speedup respectively for the tables \ref{tab:time} and \ref{tab:speed}. The final version of the code is the Occupancy. Moreover, the greatest performance occurred on the GeForce GTX 580 Card with 8.0x speedup \ref{fig:speedup}.
 
 \begin{table}[h]
 \centering
@@ -480,7 +494,21 @@ This section is the overview of the optimization results compared with each vers
 
 The initial Visual Profiler test \ref{fig:iniresults} illustrated us that the Laplacian evaluating obtain about half of the overall simulation time. However, in the final optimization \ref{fig:final} the Laplacian was reduced from 44.37$\%$ to 26.24 $\%$ execution time. The same occurred for the Runge and Kutta term evaluation. The speed mainly occurred in the Occupancy version of the code, see table \ref{tab:speed}. Furthermore, the $gsdExchangeFull$ incremented from 13.37$\%$. 23.35$\%$, which is not necessary good. The increment in time is due to shift in streams operators, the  $gsdExchangeFull$ is processed in the default stream zero, while the others kernels launched concurrently in a different stream.
 
-----include optimization table with NVIDA's Visual profiler\\
+
+\begin{table}[h]
+\centering
+  \begin{tabular} { | l | l | l | l | l | l | l |}
+    \hline
+    Time$\%$& Time & Min & Max & Kernel \\
+    \hline
+    23.50 & 3.6s & 96.0us & 597.1us&$gLaplaciany$ \\
+    \hline
+    17.04 & 2.6s & 57.0us & 561.1us&$gSolution$ \\
+   \hline
+  \end{tabular}
+  \caption{Pptimization metrics table using the NVIDA's Visual profiler}
+  \label{tab:fmetrics}
+  \end{table}
 
 
 \begin{figure}[htbp]
@@ -523,10 +551,10 @@ The SOA optimization, improved overall dramatically the performance of the appli
 \end{figure}
 
 
-We expected that the newest card, the Tesla k20m, would obtain the highest speedup overall, certainly because it has more CUDA cores, the highest compute capabilities. However, if falls behind the GeForce 580 with about 2.5x speedup difference (table \ref{tab:speed}). In addition, the Tesla K20 only had a difference of 0.3x speedup compared with the Teslas Cards, see figure \ref{fig:speedup} and \ref{fig:speeduplast}. The GeForce compared with the others GPUs specifications has most Processor clock (GHz), which can make more mathematical calculations per cycle, se table \ref{tab:gpus} for GPU specifications comparison.
+We expected that the newest card, the Tesla k20m, would obtain the highest speedup overall, certainly because it has more CUDA cores, the highest compute capabilities. However, if falls behind the GeForce 580 with about 2.5x speedup difference (table \ref{tab:speed}). In addition, the Tesla K20 only had a difference of 0.3x speedup compared with the Teslas Cards, see figure \ref{fig:speedup} and \ref{fig:speeduplast}. The GeForce compared with the others GPUs specifications has most Processor clock (GHz), more mathematical calculations per cycle, se table \ref{tab:gpus} for GPU specifications comparison.
 
 
-  \vspace{3.5em}
+  \vspace{4.0em}
 
-Finally, various techniques and practices from chapter \ref{Heterogeneous Performance Analysis and Practices} we used to archive speedup and increase performance. Moreover, techniques such as increase the use of constant memory, shared memory, changed the memory allocating access, analyzed thread branching and finally analyzed kernel occupancy. The highest performance of all GPUS did not occurred on the newest NVIDIA card, the K20m, which is the most expensive of all the GPUs. The actual improvement appeared on the GeForce 580 (the more GHz of all GPUs) with a 2.32x speedup difference in comparison with the Tesla K20m, table  \ref{fig:speedup}. If the problem data set is to be scale, 8 days, the speedup performance of 8.0x will drastically decrease the time execution in only one day.
+Finally, various techniques and practices from chapter \ref{Heterogeneous Performance Analysis and Practices} were used to archive speedup and increase performance. Techniques such as increase the use of constant memory, shared memory, changed the memory allocating access, analyzed thread branching and finally analyzed kernel occupancy. The highest performance of all GPUS did not occurred on the newest NVIDIA card, the K20m, which is the most expensive of all the GPUs. The actual improvement appeared on the GeForce 580 (the more GHz of all GPUs) with a 2.32x speedup difference in comparison with the Tesla K20m, table  \ref{fig:speedup}. If the problem data set is to be scale, 8 days, the speedup performance of 8.0x will drastically decrease the time execution in only one day.
   
