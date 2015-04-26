@@ -375,7 +375,7 @@ deltam_y = (double **)calloc(NXCUDA, sizeof(double *));
 deltam_z = (double **)calloc(NXCUDA, sizeof(double *));
 \end{lstlisting}
 
-To solve the issue, a custom class GPUMatrix was programmed, which contained all the matrices for the device. Moreover, the classes allocated the data for each Matrix and free the memory automatically when the simulation is over. The was allocated in a structure that easier for the device to access common elements. For example, evaluating operations only on the x coordinate, the kernel physically access matrices that are near by. Eliminating unassary shift in registers, or hierarchy memory access.
+To solve the issue, a custom class GPUMatrix was programmed. The class contained all the matrices for the device. Moreover, the classes allocated the data for each Matrix and free the memory automatically when the simulation is over. The was allocated in a structure that easier for the device to access common elements. For example, evaluating operations only on the x coordinate, the kernel physically access matrices that are near by. Eliminating unassary shift in registers, or hierarchy memory access.
 
 \begin{lstlisting}[language=C++, caption={SOA implementation}]
     GPUMatrix<T> *dev_deltam;
@@ -388,7 +388,7 @@ The current approach eliminates unnecessary data shift in registers, and is able
 
 \subsection{Occupancy}
  
-Firstly, we increase the use of constant memory in the device, eliminated redundant evaluations of variables and operations. The results are speedups and increase of clock cycles in the device. In addition, constant memory modifications are illustrated in the code \ref{lst:constant}. Matrix calculation for the boundary conditions \ref{eq:matrix3} and \ref{eq:matrix3} were implemented using constant Memory, reducing unnecessary calls in the device.
+Firstly, we increased the use of constant memory in the device, eliminating redundant evaluations of variables and operations. The results are increase in performance and more computational workload on each thread. In addition, constant memory modifications are illustrated in the code \ref{lst:constant}. Matrix calculation for the boundary conditions \ref{eq:matrix3} and \ref{eq:matrix3} were implemented using constant Memory, reducing unnecessary calls in the device.
  
  \begin{lstlisting}[language=C++,  label={lst:constant}, caption={Constant Memory changes}]
  gsource << <blocks, threads >> >(u_val, dev_sm_z, dev_mz, NXCUDA);
@@ -508,7 +508,7 @@ The initial Visual Profiler test \ref{fig:iniresults} illustrates the Laplacian 
     
 The Tesla K20m was the only GPU which in every code modification it did not lose performance over the course of the optimization process. However, the other GPUs drop performance in the stream optimization stage. The stream process is where each kernel was divided into three separated kernels. Doing this we were able to calculate the x, y, z coordinates independently. In addition, this enable room to implement shared memory across possible kernels. The GPU table specifications \ref{tab:gpus} illustrates that the Tesla K20m is the only GPU card with CC of 3.5. This is important to mention, because the CC 3.5 has access to Hyper-Q technology. Moreover, Hyper-Q is able to synchronize automatically concurrent kernels, just by activated a steam process to the kernel.
 
-The SOA optimization, improved overall dramatically the performance of the application, obtaining a 1.2x - 2.0x speedup in all GPU cards, see table \ref{tab:speed} and figure \ref{fig:speedup}. The final version, Occupancy, improved up-to 0.7x speedup on the 580 GPU. However, for the Teslas cards only 0.2x-0.25x speedup. The speedup difference, 0.5x,  is due to the process cycle of the GeForce GPU.
+The SOA optimization, improved overall dramatically the performance of the application, obtaining a 1.2x - 2.0x speedup in all GPU cards, see table \ref{tab:speed} and figure \ref{fig:speedup}. The final version, Occupancy, improved up-to 0.7x speedup on the 580 GPU. However, for the Teslas cards only 0.2x-0.25x speedup. The speedup difference, 0.5x,  is due to the process cycle of the GeForce GPU. 
 
 \begin{figure}[htbp]
 	\centering
@@ -519,10 +519,10 @@ The SOA optimization, improved overall dramatically the performance of the appli
 \end{figure}
 
 
-We expected that the newest card, the Tesla k20m, would obtain the highest speedup overall, certainly because it has more CUDA cores, the highest compute capabilities. However, if falls behind the GeForce 580 with about 2.5x speedup difference (table \ref{tab:speed}). In addition, the Tesla K20 only had a difference of 0.3x speedup compared with the Teslas Cards, see figure \ref{fig:speedup} and \ref{fig:speeduplast}. The GeForce compared with the others GPUs specifications has most Processor clock (GHz), more mathematical calculations per cycle, se table \ref{tab:gpus} for GPU specifications comparison. The results demonstrate the increase of workload and occupancy on the device. Increasing the computational process per thread and per block. 
+We expected that the newest card, the Tesla k20m, would obtain the highest speedup overall, certainly because it has more CUDA cores, the highest compute capabilities. However, if falls behind the GeForce 580 with about 2.5x speedup difference (table \ref{tab:speed}). In addition, the Tesla K20 only had a difference of 0.3x speedup compared with the Teslas Cards, see figure \ref{fig:speedup} and \ref{fig:speeduplast}. The GeForce compared with the others GPUs specifications has most Processor clock (GHz), more mathematical calculations per cycle, se table \ref{tab:gpus} for GPU specifications comparison. The results demonstrate the increase of workload and occupancy on the device. Increasing the computational process per thread and per block.
 
 
   \vspace{4.0em}
 
-Finally, various techniques and practices from chapter \ref{Heterogeneous Performance Analysis and Practices} were used to archive speedup and increase performance. Techniques such as increase the use of constant memory, shared memory, changed the memory allocating access, analyzed thread branching and finally analyzed kernel occupancy. The highest performance of all GPUS did not occurred on the newest NVIDIA card, the K20m, which is the most expensive of all the GPUs. The actual improvement appeared on the GeForce 580 (the more GHz of all GPUs) with a 2.32x speedup difference in comparison with the Tesla K20m, table  \ref{fig:speedup}. If the problem data set is to be scale, 8 days, the speedup performance of 8.0x will drastically decrease the time execution in only one day.
+Finally, various techniques and practices from chapter \ref{Heterogeneous Performance Analysis and Practices} were used to archive speedup and increase performance. Techniques such as increase the use of constant memory, shared memory, changed the memory allocating access, analyzed thread branching and finally analyzed kernel occupancy. The highest performance of all GPUS did not occurred on the newest NVIDIA card, the K20m, which is the most expensive of all the GPUs. The actual improvement appeared on the GeForce 580 (the more GHz of all GPUs) with a 2.32x speedup difference in comparison with the Tesla K20m, table  \ref{fig:speedup}. If the problem data set is to be scaled, for example, to a simulation of 8 days, the speedup performance of 8.0x will drastically decrease the time execution in only one day. Moreover, is possible to execute more simulations on the initial time step.
   
