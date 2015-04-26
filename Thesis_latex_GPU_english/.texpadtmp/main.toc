@@ -56,10 +56,10 @@
 \contentsline {section}{\numberline {5.1}Supercomputer ``Piritakua''}{46}{section.210}
 \contentsline {subsection}{\numberline {5.1.1}Architecture Differences}{47}{subsection.213}
 \contentsline {section}{\numberline {5.2}Optimization}{48}{section.215}
-\contentsline {subsection}{\numberline {5.2.1}Branching}{50}{subsection.219}
-\contentsline {subsection}{\numberline {5.2.2}Concurrent Kernels}{52}{subsection.266}
-\contentsline {subsection}{\numberline {5.2.3}Shared Memory}{54}{subsection.288}
-\contentsline {subsection}{\numberline {5.2.4}Structure of Arrays, SAO}{55}{subsection.322}
-\contentsline {subsection}{\numberline {5.2.5}Occupancy}{57}{subsection.334}
-\contentsline {section}{\numberline {5.3}Optimization results}{57}{section.342}
-\contentsline {chapter}{\numberline {6}Conclusions and future work}{62}{chapter.350}
+\contentsline {subsection}{\numberline {5.2.1}Branching}{50}{subsection.218}
+\contentsline {subsection}{\numberline {5.2.2}Concurrent Kernels}{51}{subsection.265}
+\contentsline {subsection}{\numberline {5.2.3}Shared Memory}{53}{subsection.287}
+\contentsline {subsection}{\numberline {5.2.4}Structure of Arrays, SAO}{55}{subsection.321}
+\contentsline {subsection}{\numberline {5.2.5}Occupancy}{57}{subsection.333}
+\contentsline {section}{\numberline {5.3}Optimization results}{57}{section.341}
+\contentsline {chapter}{\numberline {6}Conclusions and future work}{62}{chapter.348}
