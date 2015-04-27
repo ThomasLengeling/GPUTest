@@ -252,11 +252,11 @@ __global__ void glaplacianBoundaries(...){
 __global__ void glaplacianx(...){} //Compute laplacian in X direction
 \end{lstlisting}
 
-The three CUDA kernels \textit{glaplaciany}, \textit{glaplacianx} and \textit{glaplaciany} are evaluated for each x, y and z coordinate. In addition the three coordinate sum up to 172,800 cell points to be calculated.
+The three CUDA kernels \textit{glaplaciany}, \textit{glaplacianx} and \textit{glaplaciany} are evaluated for each x, y and z coordinate. In addition, the three coordinate sum up to 172,800 cell points to be calculated.
 
 \subsubsection{Zhang and Li Model}
 
-The Zhang-Li Model \ref{eq:zhang} is solved using code \ref{lst:rkcuda}. Furthermore, the Zhang - Li equation is used as function $f$ for the RK4 integration process \ref{eq:rk4}. The first term of the equation \textit{sfrelax} is calculated in the relaxation process at the end of the RK4 integrator \ref{fig:sim}. Then the term \textit{sdex} is evaluated in the Cross Product process, which is done before the RK4 calculation. The matrix \textit{sm} is only calculated once at the initial calculations process, kernel \textit{gsource} in the code \ref{lst:init}. Finally, the \textit{lapl} matrix is evaluated in the Laplacian process, which calculates the Laplacian for x, y CUDA grid coordinate and evaluates the Laplacian boundary condition.
+The Zhang-Li Model \ref{eq:zhang} is solved using code \ref{lst:rkcuda}. Furthermore, the Zhang-Li equation is used as function $f$ for the RK4 integration process \ref{eq:rk4}. The first term of the equation \textit{sfrelax} is calculated in the relaxation process at the end of the RK4 integrator \ref{fig:sim}. Then the term \textit{sdex} is computed in the Cross Product process, which is done before the RK4 calculation. The matrix \textit{sm} is only calculated once at the initial calculations process, kernel \textit{gsource} in the code \ref{lst:init}. Finally, the \textit{lapl} matrix is evaluated in the Laplacian process. Moreover, computing the Laplacian for x, y coordinate of the CUDA memory grid. The same process evaluates the Laplacian boundary condition, using the FDTD method.
 
 \begin{lstlisting}[language=C++, label={lst:zhangcuda}, caption={Runge and Kutta 4th Terms}]
 		sfrelax[idx] = -deltam[idx] / tau_sf;
@@ -266,7 +266,7 @@ The Zhang-Li Model \ref{eq:zhang} is solved using code \ref{lst:rkcuda}. Further
         solveZhangLi[idx] = sfrelax[idx] + sdex[idx] + lapl[idx] - sm[idx];
 \end{lstlisting}
 
-The output  \textit{solveZhangLi} of the Zhang-Li Model evaluation \ref{lst:zhangcuda}  (last term), past to the calculation of the $i$ term of the Runge Kutta Integration.
+Once completed the evaluation of the Zhang-Li Model (listing \ref{lst:zhangcuda}), The matrix \textit{solveZhangLi} is assigned to each one of the RK4 terms evaluation.
 
 \subsubsection{Runge and Kutta}
  
@@ -281,10 +281,9 @@ Intuitively the equation \ref{eq:rk4} is implemented by using four CUDA kernels,
                                   + rk4[idx]) / 6.0;
 \end{lstlisting}
 
+On each RK4 step the Zhang-Li model is evaluated, Moreover, numerically solving the model with the FDTD method including the magnetization boundaries condition.
 
-\subsubsection{Final evaluation}
-
-The integration can be sum up as two \textit{for} cycles. The first \textit{for} calculating the RK4 and the second one each x, y, and z coordinate \ref{lst:rk4}.
+The integration is group up in two \textit{for} cycles (listing\ref{lst:rk4}). The inner \textit{for} cycle evaluates the RK4 for the x, y, z coordinate. The outer for cycle evaluates four times the Runge and Kutta integration.
 
 \begin{lstlisting}[language=C++, label={lst:rk4}, caption={Summarize of Runge and Kutta 4th Integration}]	
 
@@ -299,12 +298,13 @@ for(int term = 0; term < 4; term++)
 }
 \end{lstlisting}
 
-
+ Consequently the simulation is set to 50,000 iterations of the previous numerical methods ( simulation flow \ref{fig:flow}). However, is possible for the simulation diverge, and yield to inconsistent results.
+ 
 \subsection{Calculate effective beta}
 
-The final procedure of the simulation calculates the effective beta, which tells use the energy configuration of the system. Furthermore, the DW velocity the diffusion non-adiabatic term $\beta$.
+The RK4 algorithm \ref{log:rk4} will finish until the beta evaluation reaches the value of $1.0e^{-9}$. The final step of the simulation determinate the effective beta, which tells use the energy configuration of the system. But more importantly the spin diffusion. Furthermore, the DW velocity the diffusion non-adiabatic term $\beta$.
 
-The kernels \ref{lst:beta} are launched only when the RK4 integration is done, which is configured for 50,000 iterations (see Figure \ref{fig:flow}). The kernels evaluates a single value the effective beta.
+The kernels \ref{lst:beta} are launched only when the RK4 integration is done evaluating. The effective beta kernels computes a single value, the effective beta.
 
 \begin{lstlisting}[language=C++, label={lst:beta}, caption={Calculate effective beta}]
     gm_x_sm << <blocks, threads >> >(...); //Calculate
@@ -326,7 +326,7 @@ The validation is done by comparing the output of the simulation with a valid da
 According to our results, new code shouldn't produce errors in the spin.dat data greater than $7.0^{-17}$, in other words valid code don't lead to differences greater than the precision expected from computations with double precision $1.0^{-16}$ in the case of eff data the errors are in the order of $1.0^{e-11}$ and no greater than $6^{-11}$. For the diffuse beta variation the precision expected to be within the double precision range of $1^{-16}$. 
 
 
-The initial implementation results are using the GeForce GT 650M, which 384 CUDA core at 745 MHz and which 2GB GDDR5 of memory. The simulation outputs the following results \ref{tab:results}, which a initial 1.00x speedup for comparision.
+The initial implementation results were done using the GeForce GT 650M, with 384 CUDA core at 745 MHz and 2GB GDDR5 of memory. The final simulation with a correct validation data outputs the following results \ref{tab:results}. The 1.00x speedup is used for comparing optimization results in the final chapter \ref{Optimization Results}.
 
 \begin{table}[h]
 \centering
@@ -346,7 +346,7 @@ ATWpm magnetization & 377409.2ms & 1.00x & 4.054674178687585e-02 \\
 
 \vspace{4.0em}
 
-To conclude, the simulating at its core uses the RK4 for integration which uses as function the Zhang-li model equation \ref{eq:zhang}. In addition, to solve such differential equations the FDTD method is evaluated. For each iteration the RK4 \ref{eq:rk4} evaluates fourth times the Zhang-Li equation. Moreover, each term evaluates numerically the laplacian \ref{eq:nn} and boundaries conditions \ref{eq:matrix3} \ref{eq:matrix4}. We showed the procedure of numerically solving the equations from Chapter \ref{Implementation of Domain Wall Dynamics under Nonlocal STT}.
+To conclude, the simulating at its core uses the RK4 for integration which uses as integration function the Zhang-li model equation \ref{eq:zhang}. In addition, to solve such differential equations of the Zhang-Li model the FDTD method is evaluated. For each iteration the RK4 \ref{eq:rk4} evaluates fourth times the Zhang-Li equation. Moreover, each term evaluates numerically the laplacian \ref{eq:nn} and boundaries conditions \ref{eq:matrix3} \ref{eq:matrix4}. We showed the procedure of numerically solving the equations from Chapter \ref{Implementation of Domain Wall Dynamics under Nonlocal STT}.
 
 
 

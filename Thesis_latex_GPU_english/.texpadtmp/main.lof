@@ -22,25 +22,25 @@
 \contentsline {figure}{\numberline {3.3}{\ignorespaces 2D Flatten array}}{25}{figure.caption.91}
 \contentsline {figure}{\numberline {3.4}{\ignorespaces Laplacian block calculation}}{27}{figure.caption.111}
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {4.1}{\ignorespaces PCIe Bandwidth}}{33}{figure.caption.180}
-\contentsline {figure}{\numberline {4.2}{\ignorespaces GPU application practices}}{33}{figure.caption.181}
-\contentsline {figure}{\numberline {4.3}{\ignorespaces Schematic cache hierarchy of a CUDA GPU}}{36}{figure.caption.186}
-\contentsline {figure}{\numberline {4.4}{\ignorespaces Different memory types}}{36}{figure.caption.187}
-\contentsline {figure}{\numberline {4.5}{\ignorespaces Texture Memory}}{38}{figure.caption.192}
-\contentsline {figure}{\numberline {4.6}{\ignorespaces Concurrent Kernels}}{40}{figure.caption.195}
-\contentsline {figure}{\numberline {4.7}{\ignorespaces Visual Profiler metrics}}{43}{figure.caption.200}
-\contentsline {figure}{\numberline {4.8}{\ignorespaces Visual Profiler timeline and stream process}}{44}{figure.caption.201}
+\contentsline {figure}{\numberline {4.1}{\ignorespaces PCIe Bandwidth}}{33}{figure.caption.179}
+\contentsline {figure}{\numberline {4.2}{\ignorespaces GPU application practices}}{33}{figure.caption.180}
+\contentsline {figure}{\numberline {4.3}{\ignorespaces Schematic cache hierarchy of a CUDA GPU}}{36}{figure.caption.185}
+\contentsline {figure}{\numberline {4.4}{\ignorespaces Different memory types}}{36}{figure.caption.186}
+\contentsline {figure}{\numberline {4.5}{\ignorespaces Texture Memory}}{38}{figure.caption.191}
+\contentsline {figure}{\numberline {4.6}{\ignorespaces Concurrent Kernels}}{40}{figure.caption.194}
+\contentsline {figure}{\numberline {4.7}{\ignorespaces Visual Profiler metrics}}{43}{figure.caption.199}
+\contentsline {figure}{\numberline {4.8}{\ignorespaces Visual Profiler timeline and stream process}}{44}{figure.caption.200}
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {5.1}{\ignorespaces Initial GPU results}}{49}{figure.caption.217}
-\contentsline {figure}{\numberline {5.2}{\ignorespaces he execution flow}}{50}{figure.caption.229}
-\contentsline {figure}{\numberline {5.3}{\ignorespaces Initial Streams}}{52}{figure.caption.266}
-\contentsline {figure}{\numberline {5.4}{\ignorespaces Streams kernels Tesla K20}}{53}{figure.caption.285}
-\contentsline {figure}{\numberline {5.5}{\ignorespaces Waiting time in concurrent kernels}}{53}{figure.caption.286}
-\contentsline {figure}{\numberline {5.6}{\ignorespaces Shared Memory Strategy}}{55}{figure.caption.304}
-\contentsline {figure}{\numberline {5.7}{\ignorespaces Array of structures (AOS)}}{56}{figure.caption.322}
-\contentsline {figure}{\numberline {5.8}{\ignorespaces Structure of Arrays (SAO)}}{56}{figure.caption.323}
-\contentsline {figure}{\numberline {5.9}{\ignorespaces Overall simulation time}}{59}{figure.caption.344}
-\contentsline {figure}{\numberline {5.10}{\ignorespaces Speedup performance output}}{59}{figure.caption.345}
-\contentsline {figure}{\numberline {5.11}{\ignorespaces Optimization results with the Profiler}}{60}{figure.caption.346}
-\contentsline {figure}{\numberline {5.12}{\ignorespaces Optimization speedup overview}}{60}{figure.caption.347}
+\contentsline {figure}{\numberline {5.1}{\ignorespaces Initial GPU results}}{49}{figure.caption.216}
+\contentsline {figure}{\numberline {5.2}{\ignorespaces he execution flow}}{50}{figure.caption.228}
+\contentsline {figure}{\numberline {5.3}{\ignorespaces Initial Streams}}{52}{figure.caption.265}
+\contentsline {figure}{\numberline {5.4}{\ignorespaces Streams kernels Tesla K20}}{53}{figure.caption.284}
+\contentsline {figure}{\numberline {5.5}{\ignorespaces Waiting time in concurrent kernels}}{53}{figure.caption.285}
+\contentsline {figure}{\numberline {5.6}{\ignorespaces Shared Memory Strategy}}{55}{figure.caption.303}
+\contentsline {figure}{\numberline {5.7}{\ignorespaces Array of structures (AOS)}}{56}{figure.caption.321}
+\contentsline {figure}{\numberline {5.8}{\ignorespaces Structure of Arrays (SAO)}}{56}{figure.caption.322}
+\contentsline {figure}{\numberline {5.9}{\ignorespaces Overall simulation time}}{59}{figure.caption.343}
+\contentsline {figure}{\numberline {5.10}{\ignorespaces Speedup performance output}}{59}{figure.caption.344}
+\contentsline {figure}{\numberline {5.11}{\ignorespaces Optimization results with the Profiler}}{60}{figure.caption.345}
+\contentsline {figure}{\numberline {5.12}{\ignorespaces Optimization speedup overview}}{60}{figure.caption.346}
 \addvspace {10\p@ }

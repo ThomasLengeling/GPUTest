@@ -105,7 +105,7 @@ When accessing ``Piritakua'' remotely is possible to use all the GPUs nodes avai
  
 \section{Optimization}
 
-The CUDA code was launched on each one of "Piritakua"'s GPUs. The supercomputer has different GPUs, as well as several different  architectures. Furthermore, the initial results in time execution of the implementation are showed in figure\ref{fig:iniresults}, with a initial speedup of 1.00x as reference.
+The CUDA code was launched on each one of "Piritakua"'s GPUs. The supercomputer has different GPUs, as well as several different  architectures. Furthermore, the initial results in time execution of the implementation are showed in figure\ref{fig:iniresults}. A GeForce GT 650M, with 384 CUDA core at 745 MHz and 2GB GDDR5 of memory is used as initial 1.00x speedup reference. 
 
 Using the NVIDIA's Visual Profiler we obtain kernel metrics of the Tesla K20m. The output is organized by kernel performance throughout the  simulation. For only the laplacian kernel evaluation; $glaplacinay$, $gLaplacianx$ and  $gLaplacianYBoundaries$ uses up-to 44.37$\%$ of the overall simulation. The $gsolution$ kernel, which solves Zhang-Li model \ref{eq:zhang} consumes up-to 14.04$\%$. The RK4 integration only exhaust a minor part of the overall simulation. However, the $gSolution$, $gsdExchange$ and laplacian calculation are part of the RK4 integration, which overall is about 99$\%$.
 
