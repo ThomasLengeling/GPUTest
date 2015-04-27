@@ -279,7 +279,7 @@ for (int i  = 0; i < 3; i++)
 	\label{fig:concurrent}
 \end{figure}
 
-Concurrent kernels demonstrates a very promising technique to achieve a huge performance increment in the application. In theory is possible to have multiples kernels executing at the same. However, there are some downsides to this implementation; correctly synchronize kernels, waiting time and hardware resources are among the  problems \cite{practices}. The timeline of the application \ref{fig:waittime} illustrates the waiting time between kernels execution. However, the waiting time are very small time steps between 0.01ms and 0.01ms, but waiting time occurs for each step of the RK4, appears approximate 45,00 times. Furthermore, branching the kernel execution process should eliminate the issue.
+Concurrent kernels demonstrates a very promising technique to achieve a huge performance increment in the current simulation. In theory is possible to have multiples kernels executing at the same. However, there are some downsides to this implementation; correctly synchronize kernels, waiting time and hardware resources are among the  problems \cite{practices}. The timeline of the application \ref{fig:waittime} illustrates the waiting time between kernels execution. However, the waiting time are very small time steps between 0.01ms and 0.01ms, but waiting time occurs for each step of the RK4, appears approximate 45,00 times. Furthermore, branching the kernel execution process should eliminate the issue.
 
 \begin{figure}[htbp]
 	\centering
@@ -292,9 +292,9 @@ Concurrent kernels demonstrates a very promising technique to achieve a huge per
 
 \subsection{Shared Memory}
 
-Shared memory is faster than global memory(read Chapter \ref{Heterogeneous Performance Analysis and Practices} for more reference), however, shared memory is very limited. To be able to implement shared memory in the kernels, we needed the kernels to be separated in their x, y and z coordinate, as mentioned in the previous section. In addition, this allows us to implement shared memory across each kernel, otherwise wouldn't be possible.
+Shared memory is faster than global memory(read Chapter \ref{Heterogeneous Performance Analysis and Practices} for more reference), however, shared memory is very limited. To be able to implement shared memory in the kernels, we needed the kernels to be separated in their x, y and z coordinate, as mentioned in the previous section. In addition, this allows us to implement shared memory across each kernel, otherwise wouldn't be possible. Shared memory was applied in all the kernels were global memory was used extensively. Eliminating the number clock cycles per thread.
 
-The idea behind shared memory is to reduce the amount of global memory calls, which has about 400-600 clock cycles, while the shared memory only 1-32 cycles \ref{fig:memory}. The shared memory implementation is accomplish by allocating the data from the thread block in-to a temporary array, in other words the shared memory. In addition, the kernel is able to performed calculations on the temporary array and write the values onto the global memory. The implementation code is illustrated in the listing \ref{lst:shared}. As we know there is no guaranty that threads will execute at the same order. Using $\_\_syncthreads()$ will wait until all threads have completed their task, in this case loading global memory into the shared memory array. Chapter \ref{Heterogeneous Performance Analysis and Practices} section thread synchronization, has more information about shared memory. Once all the operations on the shared memory array are finish, the final part is to write the shared memory values back to the the global memory. Shared memory was used in all the kernels were global memory was used extensively. 
+The idea behind shared memory is to reduce the amount of global memory calls, which has about 400-600 clock cycles, while the shared memory only 1-32 clock cycles \ref{fig:memory}. The shared memory implementation is accomplish by allocating the data from the thread block into a temporary array, in other words the shared memory. In addition, the kernel is able to performed calculations on the temporary array and write the values onto the global memory. The implementation code is illustrated in the listing \ref{lst:shared}. There is no guaranty that threads will execute at the same order. Using $\_\_syncthreads()$ will wait until all threads have completed their task, in this case loading global memory into the shared memory array. Chapter \ref{Heterogeneous Performance Analysis and Practices} section thread synchronization, has more information about thread synchronization and shared memory. Once all the operations on the shared memory array are finish. The final part is to write the shared memory values back to the the global memory.
 
 \begin{lstlisting}[language=C++, label={lst:shared}, caption={Shared memory}]
 int i = blockIdx.x * blockDim.x + threadIdx.x;
@@ -324,7 +324,7 @@ To calculate the laplacian we need to access a great amount of global memory, th
 	\label{fig:shared}
 \end{figure}
 
-The code \ref{lst:lapsh} demonstrate how calculate the Laplacian with the equation \ref{eq:nn} with the usage of shared memory. As we can see first we load all the global memory onto a a temporary array, the shared memory. The we performed the calculation on the shared memory as mentioned before.
+The code \ref{lst:lapsh} demonstrates to how calculate the Laplacian from the equation \ref{eq:nn} with the implementation of shared memory. First we load all the global memory into a temporary array, the shared memory. Then we performed the calculation on the shared memory as mentioned before. Lastly return data to the global memory.
 
 \begin{lstlisting}[language=C++, label={lst:lapsh}, caption={Laplacian evaluating using shared memory with boundaries condition}]
 if (i >= 0 && i < NX && j >= 0 && j < NY){
@@ -344,7 +344,7 @@ if (i >= 0 && i < NX && j >= 0 && j < NY){
 }
 \end{lstlisting}
 
-The current approach seems very promising for reducing global memory. However, great amount of time is spent on loading data onto the shared memory array, In consequence delaying threads executing, resulting in increasing performance time. The results of such implementation are in the following section, optimization results.
+The current approach seems very promising for reducing global memory. However, great amount of time is spent on loading data onto the shared memory array, In consequence delaying threads executing, resulting a decrease in performance. Fast allocating shared memory data is the optimal solution to ensure the optimal use of this type of memory. The results of such implementation are in the following section, optimization results.
 
 \subsection{Structure of Arrays, SAO}
 
