@@ -6,7 +6,7 @@
 
 \lhead{Chapter 5. \emph{Optimization Results}} % Change X to a consecutive number; this is for the header on each page - perhaps a shortened title
 
-This chapter are the results of the CUDA code implementation launched on a single GPU device. The tests were performed on various GPUs architectures. The application is analyzed on various stages using NVIDIA's Visual Profiler. In addition, the CUDA kernels were evaluated in performance, execution time, occupancy and concurrent kernels. Furthermore, the results, are analyzed and optimized using the schemes from Chapter \ref{Heterogeneous Performance Analysis and Practices}. The code is executed remotely on the supercomputer ``Piritakua'' at the Department of Multidisciplinary Studies Yuriria, University of Guanajuato. The last section is the overview of all the optimizations results performed on the simulation.
+The following chapter are the results of the CUDA code implementation launched on a single GPU device. The tests were performed on various GPUs architectures. The application is analyzed on various stages using NVIDIA's Visual Profiler. In addition, the CUDA kernels were evaluated in performance, execution time, occupancy and concurrent kernels. Furthermore, the results, are analyzed and optimized using the schemes from Chapter \ref{Heterogeneous Performance Analysis and Practices}. The code is executed remotely on the supercomputer ``Piritakua'' at the Department of Multidisciplinary Studies Yuriria, University of Guanajuato. The last section is the overview of all the optimizations results performed on the simulation.
 
 \section{Supercomputer ``Piritakua''}
 
@@ -35,7 +35,7 @@ The cluster has a GNU$ \ $LINUX distribution installed, the CentOS 64 bits versi
   \label{tab:cpus}
   \end{table}
   
- The CUDA Code was launched on only two CPUs, a laptop with a eight core intel i7-3630QM and a high-end CPU Xeon Phi 7120p from the cluster. In addition the Xeon Phi was used for all the experiments for the Cluster's GPUs. The Xeon Phi 720p is capable of achieving f 1.2 teraflops of double precision floating point instructions with 352 GB/sec memory bandwidth at 300 W. The code was executed on laptop to show the performance comparison between a lightweight GPU and a server based GPU.
+ The CUDA Code was launched on only two CPUs, a laptop with a eight core intel i7-3630QM and a high-end CPU Xeon Phi 7120p from the cluster. In addition, the Xeon Phi was used for all the experiments for the Cluster's GPUs. The Xeon Phi 720p is capable of achieving f 1.2 teraflops of double precision floating point instructions with 352 GB/sec memory bandwidth at 300 W. The code was executed on laptop to show the performance comparison between a lightweight GPU and a server based GPU.
 
 When accessing ``Piritakua'' remotely is possible to use all the GPUs nodes available on the cluster. The specifications of the GPU connected to the back-end are as follow, CC stands for compute capability.
 
@@ -64,7 +64,7 @@ When accessing ``Piritakua'' remotely is possible to use all the GPUs nodes avai
      
 \subsection{Architecture Differences}
 
-  Architecture dependent technical differences of NVIDIA GPUs. During the CUDA development a lot of internal features have been improved, but most paradigms for the programmer stayed the same. For example a streaming processor can now handle 2048 threads at a time, but the maximum block size stayed at 1024. This results in a 100$\%$ theoretical occupancy for block sizes of 1024 compared to 66$\%$ of Fermi. Another example is the use of Shared Memory. Maxwell has 64KB dedicated Shared Memory. The maximum amount of Shared Memory per Block is 48KB for all three architectures \cite{hoermanngpu}.
+  Architecture dependent technical differences of NVIDIA GPUs. During the CUDA development a lot of internal features have been improved, but most paradigms for the programmer stayed the same. For example a streaming processor can now handle 2048 threads at a time, but the maximum block size stayed at 1024. This results in a 100$\%$ theoretical occupancy for block sizes of 1024 compared to 66$\%$ of Fermi type. Another example is the use of Shared Memory. Maxwell has 64KB dedicated Shared Memory. The maximum amount of Shared Memory per Block is 48KB for all three architectures \cite{hoermanngpu}.
   
   There are two GPU architectures where the implementation was launched, the Fermi and the Kepler. The Tesla K20m and the GeForce 670mx are based on the ``Kepler'' GPU architecture. The Tesla M2070, M2050 and the GeForce GTX 580 on the Fermi architecture. The Kepler architecture newer than the Fermi. More information about the architectures in the table \ref{tab:arch}. The Maxwell architecture wasn't uses for benchmarking test. However, it is showed for future reference and analysis.
   
@@ -159,7 +159,7 @@ The following sections are the optimization techniques and methods applied to th
 
  \subsection{Branching}
  
- CUDA follows the Single Instruction Multiple Thread architecture. This means, threads execute the same code. Each thread can operate on its own data and has its own address counter. Moreover, threads are free to use a different path. Each thread launches the same operation at the same time. However, they have to wait for all the threads in the kernel to finish there task. In other words, some threads can finish their job before a groups of threads are still executing their task. When a thread within a warp branches differently the other threads get deactivated \cite{hoermanngpu}. This can be described in the following code \ref{lst:branch} and  illustrated in the figure \ref{fig:threads}.
+ CUDA follows the Single Instruction Multiple Thread architecture. This means, threads execute the same code. Each thread is able to operate on its own data and has its individual address counter. Moreover, threads are free to use a different path. Each thread launches the same operation at the same time. However, they have to wait for all the threads in the kernel to finish there task. In other words, some threads can finish their job before a groups of threads are still executing their task. When a thread within a warp branches differently the other threads get deactivated \cite{hoermanngpu}. The method is described in the following code \ref{lst:branch} and  illustrated in the figure \ref{fig:threads}.
 
 \begin{lstlisting}[language=C++, label={lst:branch}, caption={Branching threads}]
 __global__ void kernel(int* out){
@@ -224,11 +224,11 @@ __global__ void glaplacianyboundaries(...){
 }
 \end{lstlisting}
 
-The technique was applied to all parts of the code. Therefore, eliminated inactive threads. moreover, activating threads for computational process, the results of the modified version seek the Optimization Results section. The technique increased the occupancy percentage of active threads within the kernels.
+The technique was applied to all parts of the code. Therefore, eliminated inactive threads. Moreover, activating threads for more computational process. The technique increased the occupancy percentage of active threads within the kernels. The results of the modified version please read the final section of the chapter.
 
 \subsection{Concurrent Kernels}
 
-Initially, each kernel was launched on the default steam zero. Therefore, every kernel was consequently launched in a serial way. The figure \ref{fig:streams} illustrates such result using the NVIDIA's Visual Profiler. Each kernel that is being launched cannot run simultaneously. Because, each kernel needs previous data to compute the next data. In other words, the kernels are not independent from each other. Therefore, we change the implementation to be able to launch parallel kernels.
+Initially, each kernel was launched on the default steam zero. Therefore, every kernel was consequently launched in a serial way. The figure \ref{fig:streams} illustrates such results using the NVIDIA's Visual Profiler. Each kernel that is being launched is not able to run simultaneously. Because, each kernel needs previous data to compute the next data. In other words, the kernels are not independent from each other. Therefore, we change the implementation to be able to launch parallel kernels.
 
 \begin{figure}[htbp]
 	\centering
@@ -239,9 +239,9 @@ Initially, each kernel was launched on the default steam zero. Therefore, every 
 	\label{fig:streams}
 \end{figure}
 
- Kernels by default cannot run in parallel with others kernels. Furthermore, CUDA doesn't provide an automatic parallel kernel executing. In addition, the programmer needs to tell the CUDA compiler that some portion of the code or kernel should be run in parallel. However, the compiler cannot always execute concurrent kernels, depends on the hardware capabilities and as well the number of threads per block and the number of SM available. If the compiler finds available space to run another kernel simultaneously it will do so. 
+ Kernels by default cannot run in parallel with others kernels. Furthermore, CUDA doesn't provide an automatic parallel kernel executing. In addition, the programmer needs to tell the CUDA compiler that some portion of the code or kernel should be run in parallel. However, the compiler does not always know when to use concurrent kernels, its depends on the hardware capabilities and as well the number of threads per block and the number of SM available. If the compiler finds available space to run another kernel simultaneously it will do so. 
 
-For example, the $gsolution$ \ref{lst:concurrent} kernel computes the Zhang and Li model for x, y, z coordinates, which extensively uses the global memory of the device. To achieve concurrent kernels, the streams should be able to access memory blocks that are pinned to specific a stream. Therefore, each memory block corresponding to x, y, z coordinate are mapped to 3 independent streams. Furthermore, all the matrices corresponding to the coordinate x are mapped to the stream 1, coordinate y to stream 2 and coordinate z to stream 3.
+For example, the $gsolution$ \ref{lst:concurrent} kernel computes the Zhang and Li model for x, y, z coordinates, which extensively uses the global memory of the device. To accomplish concurrent kernels, the streams should be able to access memory blocks that are pinned to specific a stream. Therefore, each memory block corresponding to x, y, z coordinate are mapped to 3 independent streams. Furthermore, all the matrices corresponding to the coordinate x are mapped to the stream 1, coordinate y to stream 2 and coordinate z to stream 3.
 
 \begin{lstlisting}[language=C++, label={lst:concurrent}, caption={Evaluation of x, y, z coordinates of the Zhang and Li model in a single kernel.}]
 deltamX[index] = sfrelaxX[index] + sdexX[index] + laplX[index] - smX[index];
@@ -249,7 +249,7 @@ deltamY[index] = sfrelaxY[index] + sdexY[index] + laplY[index] - smY[index];
 deltamZ[index] = sfrelaxZ[index] + sdexZ[index] + laplZ[index] - smZ[index];
 \end{lstlisting}
  
-The CUDA code \ref{lst:concurrent} is divided into a single kernel \ref{lst:consingle}. In addition this new generic kernel is launched parallel with the others kernels. Instead of running one big kernel, three individual kernels are launched simultaneous. Dividing each kernel is possible to implement shared memory though each kernel which otherwise wasn't possible. 
+The CUDA code \ref{lst:concurrent} is divided into a single kernel \ref{lst:consingle}. In addition, the new generic kernel is launched parallel with the others kernels. Instead of running one big kernel, three individual kernels are launched simultaneous. Dividing each kernel is now possible to implement shared memory through each kernel, otherwise wasn't possible. 
 
 \begin{lstlisting}[language=C++, label={lst:consingle}, caption={Evaluation of individual coordinates of the Zhang and Li model}]
 int i = blockIdx.x * blockDim.x + threadIdx.x + 2;
@@ -260,7 +260,7 @@ if (i > 1 && i < NX + 2 && j >= 0 && j < NY)
 	deltam[index] = sfrelax[index] + sdex[index] + lapl[index] - sm[index];
 \end{lstlisting}
 
-This same method was applied to every kernel that was possible to separate into three kernels calls. Some kernels cannot be separate, such as the cross product, because, the cross product uses pinned memory block from the other streams. The figure \ref{fig:concurrent} shows the results of concurrent kernels in the Tesla K20.
+This same method was applied to every kernel that was possible to separate into three kernels calls. Some kernels were not viable to be separated, such as the cross product, because, the cross product uses pinned memory block from the other streams. The figure \ref{fig:concurrent} illustrates the results of concurrent kernels in the Tesla K20.
 
 \begin{lstlisting}[language=C++, caption={Evaluate Zhang and Li model.}]
 for (int i  = 0; i < 3; i++)
@@ -278,6 +278,8 @@ for (int i  = 0; i < 3; i++)
 	\caption[Streams kernels Tesla K20]{Concurrent kernels in the Tesla K20 using NVIDIA's Visual Profiler.}
 	\label{fig:concurrent}
 \end{figure}
+
+In chapter \ref{Implementation of Domain Wall Dynamics under Nonlocal STT} we mentioned that the input data set 480 x 120 is mapped to a CUDA square grid of 512 x 128. Because the mapping of the extra threads, is possible to execute a portion of kernels concurrently.
 
 Concurrent kernels demonstrates a very promising technique to achieve a huge performance increment in the current simulation. In theory is possible to have multiples kernels executing at the same. However, there are some downsides to this implementation; correctly synchronize kernels, waiting time and hardware resources are among the  problems \cite{practices}. The timeline of the application \ref{fig:waittime} illustrates the waiting time between kernels execution. However, the waiting time are very small time steps between 0.01ms and 0.01ms, but waiting time occurs for each step of the RK4, appears approximate 45,00 times. Furthermore, branching the kernel execution process should eliminate the issue.
 

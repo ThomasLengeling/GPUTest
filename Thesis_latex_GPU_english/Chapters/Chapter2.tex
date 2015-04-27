@@ -91,7 +91,7 @@ This novel idea of incorporating spin torque into the LLG equation has itself be
  \frac{\partial \delta \vec{m} }{\partial t} =  D_{0}\bigtriangledown^{2} \delta \vec{m} - \frac{1}{\tau_{sd}} \delta \vec{m} \times \vec{M} - \frac{1}{\tau_{sf}}\delta \vec{m} +(\vec{\mu} \cdot\vec{\bigtriangledown} )\vec{M}
 \end{equation}
 
-The equation \ref{eq:zhang} is referred to Zhang-Li model, represents a non-adiabatic spin torque, with the presence of spin diffusion. Spin diffusion is a process by which magnetization is exchanged spontaneously between spin, which spin is able to accumulate in metals. The associated diffusion current flows in all directions, giving rise to nonlocal effects. The diffusion term of the equation \ref{eq:zhang} which carriers’  drift-diffusion equation implies that the spin density does not depend solely on the local magnetization, which gives rise of nonlocal magnetics effects \cite{claudio}. 
+The equation \ref{eq:zhang} is referred to Zhang-Li model, represents a non-adiabatic spin torque, with the presence of spin diffusion. Spin diffusion is a process by which magnetization is exchanged spontaneously between spin, which spin is able to accumulate in metals. The associated diffusion current flows in all directions, giving rise to nonlocal effects. The diffusion term of the equation \ref{eq:zhang} which carriers’ drift-diffusion equation implies that the spin density does not depend solely on the local magnetization, which gives rise of nonlocal magnetics effects \cite{claudio}. 
 
 Amongst the rapidly growing variety of proposed and developed spin structures, nonlocal spin detection devices, where measurement and current excitation paths are spatially separated, have recently gained a prominent position \cite{spinz}.
 
@@ -141,7 +141,7 @@ The magnetization is sampled on a uniform rectangle mesh at points $(x_0 + i\big
 
 Looking at the equation \ref{eq:zhang}, we need a method to calculate the first and second derivate. With the Taylor expansion we are able to perform such calculation. The Second order Taylor expansion readily yields expressions for the first and seconds central derivates. First and second-order derivates of the magnetization components in order to define the divergence  of the magnetization $(\nabla \cdot m)$, and the components of the exchange field $(\nabla^2m)$, respectively. The magnetization components along boundaries also need to be evaluated in order to define surface charges $(m \cdot n)$. Boundary conditions need to be incorporated in the evaluated of the effective field without loss of accuracy. 
 
-Consider a regular, differentiable one-dimension  scalar function $f(x)$ sampled at regular intervals, a, see figure  \ref{fig:bound}. Second order Taylor expansion readily tiles expressions for the first and seconds central derivates that are widely used in numerics, namely $\frac{df}{dx} = \frac{f_{i+1} - f_{i-1}}{2a}$ and $\frac{d^2f}{dx^2} = \frac{f_{i+1} - 2f_i + f_{i-1}}{a^2}$ \cite{methods}.
+Consider a regular, differentiable one-dimension  scalar function $f(x)$ sampled at regular intervals, a, see figure  \ref{fig:bound}. Second order Taylor expansion readily tiles expressions for the first and seconds central derivates that are widely used in numerics, namely $\frac{df}{dx} = \frac{f_{i+1} - f_{i-1}}{2a}$ and $\frac{d^2f}{dx^2} = \frac{f_{i+1} - 2f_i + f_{i-1}}{a^2}$. Demonstration of such equations reference \cite{methods}.
 
 \begin{figure}[htbp]
 	\centering
@@ -202,7 +202,7 @@ Using \ref{fig:bound}-b. $x_R - x_i = 3a/2$ becomes \cite{methods}.
 \end{bmatrix}
 \end{align}
 
-Similarly, for a point closet to boundary, reference \ref{fig:bound}-c, grid points i + 1 and i + 2 are missing. The two first equation of ... need now to be replaced by a single equation, whilst the two remaining equations need to be truncated to the third order. For the geometry illustrated in \ref{fig:bound}-c, the minimal set of equations now reads \cite{methods}.
+Similarly, for a point closet to boundary, reference \ref{fig:bound}-c, grid points i + 1 and i + 2 are missing. The two first equation of  \ref{eq:matrix4} need now to be replaced by a single equation, while the two remaining equations need to be truncated to the third order. For the geometry illustrated in \ref{fig:bound}-c, the minimal set of equations now reads \cite{methods}.
 
 \begin{align} \label{eq:matrix3}
 \begin{bmatrix}
@@ -223,9 +223,9 @@ Similarly, for a point closet to boundary, reference \ref{fig:bound}-c, grid poi
 \end{bmatrix}
 \end{align}
 
-In both cases, and second derivatives and fully determined provided $f^{(1)}(x_R)$ be known along the boundary. For further reference please read\cite{methods}. For implementation of the laplacian boundaries conditions please read Chapter \ref{Implementation of Domain Wall Dynamics under Nonlocal STT}.
+In both cases, and second derivatives and fully determined provided $f^{(1)}(x_R)$ be known along the boundary. For further reference and demonstration of such equations and matrices please read \cite{methods}. For the CUDA code implementation of the laplacian boundaries conditions please read Chapter \ref{Implementation of Domain Wall Dynamics under Nonlocal STT}.
 
-The main advantages of the finite difference approach is easy to implement, simplicity of meshing, efficient evaluation of the magnetization energy, and the accessibility of higher order methods. The main disadvantage of this approach is the sampling curved boundaries with a rectangular mesh, resulting in some what discrete approximation. In addition, it could produce a significant error in the evaluation.
+The main advantages of the finite difference approach is easy to implement, simplicity of meshing, efficient evaluation of the magnetization energy, and the accessibility of higher order methods. The main disadvantage of this approach is the sampling curved boundaries within a rectangular mesh, resulting in some what discrete approximation. In addition, it could produce a significant error in the evaluation.
 
 \subsection{Fourth order Runge and Kutta method}
 
@@ -264,7 +264,7 @@ As the equations shows, each step, the derivative is evaluated four times, once 
 	\centering
 		\includegraphics[width=0.5\textwidth]{Figures/rk4.png}
 		\smallskip
-	\caption[Fourth order Runge and Kutta Method]{Fourth order Runge and Kutta method, each step the derivative is evaluated four times. }
+	\caption[Fourth order Runge and Kutta Method]{Fourth order Runge and Kutta method, each iteration the derivative is evaluated four times.}
 	\label{fig:kutta}
 \end{figure}
 

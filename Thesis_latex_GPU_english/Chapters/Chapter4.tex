@@ -5,7 +5,7 @@
 
 \lhead{Chapter 4. \emph{Heterogeneous Performance Analysis and Practices}} % Change X to a consecutive number; this is for the header on each page - perhaps a shortened title
 
-Working with GPUs new challenges emerges, how can we make the best usage of the GPU hardware. In the conventional CPU model, we have what is called linear or flat memory model. In addition this appears to the programmer as a single contiguous address space. Furthermore, the CPU can directly address all the available memory, in other words there is almost no efficiency penalty in creating global data, local data, or even access data that is located on a opposite memory location, all of this can be access as a contiguous block \cite{cook}. Meanwhile, on the GPU there are exceptions, their exists different memory hierarchies which dramatically change the performance output. By allocation the optimal memory types, speedup and increase throughput can be accomplished. To ensure optimization, some analysis should be done, such as comparing latency, memory hierarchies and data bandwidth between CUDA kernels. Debugging of parallel code can be accomplish using the NVIDIA's Visual Profiler. The current chapter demonstrated techniques, practices and methods to debug and analyzed parallel process on NVIDIA's GPUs.
+Working with GPUs new challenges emerges, how can we make the best millions of threads using the GPU hardware. In the conventional CPU model, we have what is called linear or flat memory model. In addition this appears to the programmer as a single contiguous address space. Furthermore, the CPU can directly address all the available memory, in other words there is almost no efficiency penalty in creating global data, local data, or even access data that is located on a opposite memory location, all of this can be access as a contiguous block \cite{cook}. Meanwhile, on the GPU there are exceptions, their exists different memory hierarchies which dramatically change the performance output. By allocation the optimal memory types, speedup and increase throughput can be accomplished. To ensure optimization, some analysis should be done, such as comparing latency, memory hierarchies and data bandwidth between CUDA kernels. Debugging of parallel code can be accomplish using the NVIDIA's Visual Profiler. The current chapter demonstrated techniques, practices and methods to debug and analyzed parallel process on NVIDIA's GPUs.
 
 % techniques, programming models and hierarchies.
 \section{Practices}
@@ -77,8 +77,7 @@ Where Br is the number of bytes read per kernel, Bw is the number of bytes writt
 
 In practice the difference between theoretical bandwidth and effective bandwidth indicated how much bandwidth is wasted on accessing memory and calculations. If the effective bandwidth is low compared to the theoretical bandwidth is one indication that there is not enough work being done in the GPUs. In addition, there a several solutions; analyze the code to make more parallelize instructions, execute more computational instructions on the GPUs, finally analyze the number of threads per block that are executing on execute kernels.
 
- The next chapter we analyze the bandwidth and timing for each NVIDIA GPU card used to optimize the application. However, the bandwidth information is only available for analysis when thransfering data from the CPU to the GPU or vise-verse.
-
+ The next chapter we analyze the bandwidth and timing for each NVIDIA GPU card used to optimize the application. However, the bandwidth information is only available for analysis when transferring data from the CPU to the GPU or vise-verse.
 
 \section{Memory Handling with CUDA}
 
@@ -86,7 +85,7 @@ In this section four types of memory handling are going to be explained, global 
 
 \begin{figure}[htbp]
 	\centering
-		\includegraphics[width=0.93\textwidth]{Figures/cores.png}
+		\includegraphics[width=0.95\textwidth]{Figures/cores.png}
 		\smallskip
 	\caption[Schematic cache hierarchy of a CUDA GPU]{The schematic cache hierarchy of a CUDA GPU with 4 Streaming Multiprocessors and 8 CUDA Cores each \cite{cook}.}
 	\label{fig:cores}
@@ -98,7 +97,7 @@ The table \ref{fig:memory} illustrates the five different memory types that are 
  
 \begin{figure}[htbp]
 	\centering
-		\includegraphics[width=0.87\textwidth]{Figures/memory.png}
+		\includegraphics[width=0.9\textwidth]{Figures/memory.png}
 		\smallskip
 	\caption[Different memory types]{Different memory type and penalties usage \cite{cook}}
 	\label{fig:memory}
@@ -218,7 +217,7 @@ Another inefficiency that can cause low performance in the CUDA application, is 
 
 \subsection{Thread Division}
 
-There a hardware limitations in how much threads per block a kernel can handle. Launching a kernel with the hardware constrains of the device will only ensure us that the kernel will actually be executed in the device, Nonetheless, not 100$\%$ optimal and the results can be incorrect. Furthermore, is necessary to launch kernels with the amount of threads per block base on the hardware settings. The block size will determine how faster the code will run. However, not the biggest block will run faster, depends con the problem and the data set. By Benchmarking the application, is possible to find the optimal configuration that best fits the problem. One thing to keep in mind, thread blocks should be a multiple number of SMs, with this idea is possible to obtain optimal thread block configuration. See Chapter \ref{Optimization Results} for the optimal thread configuration for the application. The optimal number of threads per block did not occur on the maximal available threads per block of the devices.
+There a hardware limitations in how much threads per block a kernel can handle. Launching a kernel with the hardware constrains of the device will only ensure us that the kernel will actually be executed in the device, Nonetheless, not 100$\%$ optimal and the results can be incorrect. Furthermore, is necessary to launch kernels with the amount of threads per block base on the hardware settings. The block size will determine how faster the code will run. However, not the biggest block will run faster, depends con the problem and the data set. By Benchmarking the application, is possible to find the optimal configuration that best fits the problem. One thing to keep in mind, thread blocks should be a multiple number of SMs, with this idea is possible to obtain optimal thread block configuration. Read chapter \ref{Optimization Results} for the optimal thread configuration for the current simulation. The optimal number of threads per block did not occur on the maximal available threads per block of the devices.
 
 \section{Visual Profiler}
 
@@ -278,10 +277,9 @@ The profiling report was used in the current implementation to optimize the CUDA
 
 \subsection{Collect Data On Remote System}
 
-As mention before, is possible to collect data from a remote system where a GUI is not available, using the command-line nvprof. Remote profiling is the process of collecting profile data from a remote system that is different than the host system at which that profile data will be viewed and analyzed. Once the data is collected is possible to access the data using the Visual profiler, which enables a GUI and more compressive information about the application. There are two ways to perform remote profiling. To use nvvp remote profiling you must install the same version of the CUDA Toolkit on both the host and remote systems. It is not necessary for the host system to have an NVIDIA GPU \cite{tool}. For the current application, remote profiler was used. However, the server did not have an external monitor or virtual. Therefore we could not obtain all the profiling analysis. Moreover we use a local laptop for profiling.
+As mention before, is possible to collect data from a remote system where a GUI is not available, using the command-line nvprof. Remote profiling is the process of collecting profile data from a remote system that is different than the host system at which that profile data will be viewed and analyzed. Once the data is collected is possible to access the data using the Visual profiler, which enables a GUI and more compressive information about the application. There are two ways to perform remote profiling. To use nvvp remote profiling you must install the same version of the CUDA Toolkit on both the host and remote systems. It is not necessary for the host system to have an NVIDIA GPU \cite{tool}. For the current application, remote profiler was used. However, the server did not have an external monitor or virtual. Therefore we could not obtain all the profiling analysis. Moreover, we used a local laptop for profiling.
 
 \vspace{4.0em}
 
-Finally, this chapter gives a overview of practices and performance studies for GPGPU. In addition, a better understanding of the hardware and memory management on the GPU. As well as hardware limitation, which determinate the best usage of the GPUs. NVIDIA's profiling tools is a useful to analyze different stages of our application. Moreover, to determined which parts of the CUDA code is better to optimize from others, this is to gain a better performance in a small time frame.
-
+Finally, the chapter gives a overview of practices and performance studies for GPGPU. In addition, a better understanding of the hardware and memory management on the GPU. As well as hardware limitation, which determinate the best usage of the GPUs. NVIDIA's profiling tools is a useful to analyze different stages of our application. Moreover, to determined which parts of the CUDA code is better to optimize from others, this is to gain a better performance and reduce the time in any given simulation.
 
