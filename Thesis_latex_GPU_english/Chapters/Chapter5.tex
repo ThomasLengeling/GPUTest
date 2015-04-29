@@ -107,7 +107,7 @@ When accessing ``Piritakua'' remotely is possible to use all the GPUs nodes avai
 
 The CUDA code was launched on each one of "Piritakua"'s GPUs. The supercomputer has two  achitecture types Fermin and Kepler. Furthermore, the initial results of 1.00x speedup were tested on a Kepler architecture, the GeForce GT 650M. The graph \ref{fig:iniresults} illustrates the executing time for all the GPUs in the server.
 
-We used NVIDIA's Visual Profiler to obtain kernel metrics of the Tesla K20m, which is showed in The table \ref{tab:nvprof}. The output is organized by kernel importance and performance during the simulation. The Laplacian kernel evaluation; $glaplacinay$, $gLaplacianx$ and  $gLaplacianYBoundaries$ uses upto 44.37$\%$ of the overall simulation. The $gsolution$ kernel, which solves Zhang-Li model \ref{eq:zhang} consumes up-to 14.04$\%$. The RK4 integration only exhaust a minor part of the overall simulation. However, the $gSolution$, $gsdExchange$ and Laplacian calculation are part of the RK4 integration, which overall is about 99$\%$.
+We used NVIDIA's Visual Profiler to obtain kernel metrics of the Tesla K20m, which is showed in The table \ref{tab:nvprof}. The output is organized by kernel importance and performance during the simulation. The Laplacian kernel evaluation; {\listf glaplacinay}, {\listf gLaplacianx} and  {\listf gLaplacianYBoundaries} uses upto 44.37$\%$ of the overall simulation. The $gsolution$ kernel, which solves Zhang-Li model \ref{eq:zhang} consumes up-to 14.04$\%$. The RK4 integration only exhaust a minor part of the overall simulation. However, the {\listf gSolution}, {\listf gsdExchange} and Laplacian calculation are part of the RK4 integration, which overall is about 99$\%$.
 
 The throughput was not review on the current application. Since only two stages of the simulation transfer of the CPU data occurs, on the initial stage where CPU data is sent to the GPU, and the final stage where is sent back to CPU.
 
@@ -119,25 +119,25 @@ The throughput was not review on the current application. Since only two stages 
     \hline
     Time$\%$& Time & Calls & Avg & Min & Max & Kernel \\
     \hline
-    23.50 & 3.6s & 26521 & 137.5us & 96.0us & 597.1us&$gLaplaciany$ \\
+    23.50 & 3.6s & 26521 & 137.5us & 96.0us & 597.1us& {\listf gLaplaciany} \\
     \hline
-    17.04 & 2.6s & 26521 & 99.7us & 57.0us & 561.1us&$gSolution$ \\
+    17.04 & 2.6s & 26521 & 99.7us & 57.0us & 561.1us& {\listf gSolution} \\
     \hline
-    16.75 & 2.6s & 26522 & 98.0us & 62.8us & 400.6us&$gLaplacianx$ \\
+    16.75 & 2.6s & 26522 & 98.0us & 62.8us & 400.6us& {\listf  gLaplacianx} \\
      \hline
-      13.37 & 2.0s & 26522 & 78.2us & 40.8us & 453.8us&$gsdExchange$\\
+      13.37 & 2.0s & 26522 & 78.2us & 40.8us & 453.8us& {\listf gsdExchange} \\
       \hline
-    7.22 & 1.1s & 26522 & 42.2us & 23.4us & 326.0us &$gsfRelaxation$\\
+    7.22 & 1.1s & 26522 & 42.2us & 23.4us & 326.0us & {\listf gsfRelaxation} \\
        \hline
-    6.22 & 965.2ms & 6630 & 145.6us & 79.2us & 722.6us &$gTerm4RK4$\\
+    6.22 & 965.2ms & 6630 & 145.6us & 79.2us & 722.6us & {\listf gTerm4RK4}  \\
        \hline
-    4.12 & 640.3ms & 26522 & 24.1us & 21.8us  &138.7us &$gLaplacianYBoundaries$\\
+    4.12 & 640.3ms & 26522 & 24.1us & 21.8us  &138.7us & {\listf gLaplacianYBoundaries} \\
        \hline
-    3.41  & 529.2ms & 6630 & 79.8us & 41.6us  & 478.8us & $gTerm2RK4$\\
+    3.41  & 529.2ms & 6630 & 79.8us & 41.6us  & 478.8us & {\listf gTerm2RK4} \\
        \hline
-    3.36 & 520.8ms & 6630 & 78.5us & 41.5us & 372.2us & $gTerm3RK4$\\
+    3.36 & 520.8ms & 6630 & 78.5us & 41.5us & 372.2us & {\listf gTerm3RK4} \\
        \hline
-    3.35 & 519.5ms & 6631 & 78.3us & 41.1us & 372.2us & $gTerm1RK4$ \\
+    3.35 & 519.5ms & 6631 & 78.3us & 41.1us & 372.2us & {\listf gTerm1RK4} \\
    \hline
   \end{tabular}
   \caption{Kernel time executing and on the Tesla K20}
@@ -241,7 +241,7 @@ Initially, each kernel was launched on the default steam zero. Therefore, every 
 
  Kernels by default cannot run in parallel with others kernels. Furthermore, CUDA doesn't provide an automatic parallel kernel executing. In addition, the programmer needs to tell the CUDA compiler that some portion of the code or kernel should be run in parallel. However, the compiler does not always know when to use concurrent kernels, it depends on the hardware capabilities and as well the number of threads per block and the number of SM available. If the compiler finds available space to run another kernel simultaneously, it will do so. 
 
-For example, the $gsolution$ \ref{lst:concurrent} kernel computes the Zhang and Li model for x, y, z coordinates, which extensively uses the global memory of the device. To accomplish concurrent kernels, the streams should be able to access memory blocks that are pinned to a specific stream. Therefore, each memory block corresponding to x, y, z coordinate are mapped to three independent streams. Furthermore, all the matrices corresponding to the coordinate x are mapped to the stream 1, coordinate y to stream 2 and coordinate z to stream 3.
+For example, the {\listf gsolution} \ref{lst:concurrent} kernel computes the Zhang and Li model for x, y, z coordinates, which extensively uses the global memory of the device. To accomplish concurrent kernels, the streams should be able to access memory blocks that are pinned to a specific stream. Therefore, each memory block corresponding to x, y, z coordinate are mapped to three independent streams. Furthermore, all the matrices corresponding to the coordinate x are mapped to the stream 1, coordinate y to stream 2 and coordinate z to stream 3.
 
 \begin{lstlisting}[language=C++, label={lst:concurrent}, caption={Evaluation of x, y, z coordinates of the Zhang and Li model in a single kernel.}]
 deltamX[index] = sfrelaxX[index] + sdexX[index] + laplX[index] - smX[index];
@@ -296,7 +296,7 @@ Concurrent kernels demonstrate a very promising technique to achieve a huge perf
 
 Shared memory is faster than global memory(read Chapter \ref{Heterogeneous Performance Analysis and Practices} for more reference), however, shared memory is very limited. To be able to implement shared memory in the kernels, we needed the kernels to be separated in their x, y and z coordinate, as mentioned in the previous section. In addition, this allows us to implement shared memory across each kernel, otherwise wouldn't be possible. Shared memory was applied in all the kernels were global memory was used extensively. Eliminating the number clock cycles per thread.
 
-The idea behind shared memory is to reduce the amount of global memory calls, which has about 400-600 clock cycles, while the shared memory only 1-32 clock cycles \ref{fig:memory}. The shared memory implementation is accomplish by allocating the data from the thread block into a temporary array, in other words the shared memory. In addition, the kernel is able to performed calculations on the temporary array and write the values onto the global memory. The implementation code is illustrated in the listing \ref{lst:shared}. There is no guaranty that threads will execute at the same order. Using $\_\_syncthreads()$ will wait until all threads have completed their task, in this case loading global memory into the shared memory array. Chapter \ref{Heterogeneous Performance Analysis and Practices} section thread synchronization, has more information about thread synchronization and shared memory. Once all the operations on the shared memory array are finish. The final part is to write the shared memory values back to the the global memory.
+The idea behind shared memory is to reduce the amount of global memory calls, which has about 400-600 clock cycles, while the shared memory only 1-32 clock cycles \ref{fig:memory}. The shared memory implementation is accomplish by allocating the data from the thread block into a temporary array, in other words the shared memory. In addition, the kernel is able to performed calculations on the temporary array and write the values onto the global memory. The implementation code is illustrated in the listing \ref{lst:shared}. There is no guaranty that threads will execute at the same order. Using {\listf \_\_syncthreads()} will wait until all threads have completed their task, in this case loading global memory into the shared memory array. Chapter \ref{Heterogeneous Performance Analysis and Practices} section thread synchronization, has more information about thread synchronization and shared memory. Once all the operations on the shared memory array are finish. The final part is to write the shared memory values back to the the global memory.
 
 \begin{lstlisting}[language=C++, label={lst:shared}, caption={Shared memory}]
 int i = blockIdx.x * blockDim.x + threadIdx.x;
@@ -400,7 +400,7 @@ Firstly, we increased the use of constant memory in the device, eliminating redu
  DELTAX = (double)TX / (double)NX;
 \end{lstlisting}
  
-The different numbers of threads per block and as well the number of blocks per grid can dramatically increase or decrease the performance of the application. The table \ref{tab:ocu} illustrate the different threads per block configuration on the GeForce GTX 580. Using NVIDIA's Profiler is possible to obtain the occupancy percentage of threads the device. The initial configuration for the Fermin and the Kepler was 32x32 threads per block for global memory and 16x16 threads per block for the shared memory. We found, that the optimal configuration for the Fermin cards was 16x16 threads per block and as well for the shared memory and for the Kepler cards was 32x32 threads per block for both memory types. 
+The different numbers of threads per block and as well the number of blocks per grid can dramatically increase or decrease the performance of the application. The table \ref{tab:ocu} illustrate the different threads per block configuration on the GeForce GTX 580. Using NVIDIA's Profiler is possible to obtain the occupancy percentage of threads the device. The initial configuration for the Fermi and the Kepler was 32x32 threads per block for global memory and 16x16 threads per block for the shared memory. We found, that the optimal configuration for the Fermi cards was 16x16 threads per block and as well for the shared memory and for the Kepler cards was 32x32 threads per block for both memory types. 
 
 \begin{table}[h]
 \centering
@@ -480,7 +480,7 @@ This section is a overview of the optimization results compared with the initial
 	\label{fig:gpuop}
 \end{figure}
 
-The table \ref{fig:final} illustrates the final profiling results using NVIDIA's profiling tools. On the initial profiling \ref{fig:initial}, the Laplacian evaluation consummend about half of the overall simulation time. However, on the final optimization results\ref{fig:final}, the Laplacian was reduced from 44.37$\%$ to 26.24 $\%$ on execution time. But more importantly the importance of the kernel was reduced, in other words more computational workload on the kernels. The same occurred for the Runge and Kutta term evaluation. The speedup mainly occurred in the Occupancy version of the code, see table \ref{tab:speed}. Furthermore, the $gsdExchangeFull$ incremented from 13.37$\%$. 23.35$\%$, which is not necessary good. The increment in time is due to shift in streams operators, the $gsdExchangeFull$ is processed in the default stream zero, while the others kernels launched concurrently in a different stream.
+The table \ref{fig:final} illustrates the final profiling results using NVIDIA's profiling tools. On the initial profiling \ref{fig:initial}, the Laplacian evaluation consummend about half of the overall simulation time. However, on the final optimization results\ref{fig:final}, the Laplacian was reduced from 44.37$\%$ to 26.24 $\%$ on execution time. But more importantly the importance of the kernel was reduced, in other words more computational workload on the kernels. The same occurred for the Runge and Kutta term evaluation. The speedup mainly occurred in the Occupancy version of the code, see table \ref{tab:speed}. Furthermore, the {\listf gsdExchangeFull} incremented from 13.37$\%$. 23.35$\%$, which is not necessary good. The increment in time is due to shift in streams operators, the {\listf gsdExchangeFull} is processed in the default stream zero, while the others kernels launched concurrently in a different stream.
 \begin{figure}[htbp]
 	\centering
 		\includegraphics[width=1.0 \textwidth]{Figures/speedup.png}
@@ -495,13 +495,13 @@ The table \ref{fig:final} illustrates the final profiling results using NVIDIA's
 	      \hline
 	    Time $\%$& Time & Calls & Avg & Kernel \\
     \hline
-   35.24 & 21.33s & 216330 & 98.5us & $gSolTermRK4Relaxation$ \\
+   35.24 & 21.33s & 216330 & 98.5us & {\listf gSolTermRK4Relaxation } \\
    \hline
-   26.24 & 15.88s & 288441 & 55.0us & $glaplacianXYBroundaries$\\
+   26.24 & 15.88s & 288441 & 55.0us &  {\listf glaplacianXYBroundaries }\\
    \hline
-   23.35 & 14.13s & 160000 & 88.3us & $gsdExchangeFull$ \\
+   23.35 & 14.13s & 160000 & 88.3us & {\listf gsdExchangeFull} \\
    \hline
-   15.17 & 9.18s & 72108 & 127.2us & $gSolTerm4RK4Relaxation$\\ 
+   15.17 & 9.18s & 72108 & 127.2us & {\listf gSolTerm4RK4Relaxation }\\ 
    \hline
     \end{tabular}
 	\caption[Optimization results with the Profiler]{Final optimization results using NVIDIA's profiler, on the Tesla K20m}

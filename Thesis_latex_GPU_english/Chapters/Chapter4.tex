@@ -56,7 +56,7 @@ There are many possible approaches to profiling the code, but in all cases the o
 
 \subsection{Timing}
 
-Timing a launched kernel should be done on either the GPU or the CPU. however, the GPU and CPU are not synchronized, events are called at any given moment. Though it is necessary to synchronize the CPU thread with the GPU kernels launches. CUDA provides the required  functions to synchronize the CPU with the GPU calling immediately before starting the timer \cite{practices}. CUDA is able to handle timers within the GPU, which records times in a floating-point value in milliseconds. This is done with $cudaEventRecord()$, just by including $start$ and $stop$ in the function inputs. Note that the timing are measured on the GPU clock, so the timing is independent from the OS \cite{cook}. The timing performed on the application is showed in chapter \ref{Optimization Results}.
+Timing a launched kernel should be done on either the GPU or the CPU. however, the GPU and CPU are not synchronized, events are called at any given moment. Though it is necessary to synchronize the CPU thread with the GPU kernels launches. CUDA provides the required  functions to synchronize the CPU with the GPU calling immediately before starting the timer \cite{practices}. CUDA is able to handle timers within the GPU, which records times in a floating-point value in milliseconds. This is done with {\listf cudaEventRecord()}, just by including {\listf start} and {\listf stop } in the function inputs. Note that the timing are measured on the GPU clock, so the timing is independent from the OS \cite{cook}. The timing performed on the application is showed in chapter \ref{Optimization Results}.
 
 \subsection{Bandwidth}
 
@@ -126,7 +126,7 @@ Shared memory is widely used for applications were the kernels access a great am
    
 \subsection{Constant Memory}
 
-Is an excellent way to store and broadcast read-only data to all the threads on the GPU. One thing to keep in mind is that the constant memory is limited to 64KB \cite{design}. A simple analogy is the \textit{\#define} or \textit{const} attribute in the C++ programming language, the variable performs like a variable that cannot be modified. On CUDA this is exactly the same, the value can only be read and not written. Furthermore, the value will not change over the course of a kernel execution and only the host can write the constant memory \cite{example}. Please read Chapter \ref{Optimization Results} for speedup improvements by increasing the use of constant memory.
+Is an excellent way to store and broadcast read-only data to all the threads on the GPU. One thing to keep in mind is that the constant memory is limited to 64KB \cite{design}. A simple analogy is the {\listf \#define} or {\listf const} attribute in the C++ programming language, the variable performs like a variable that cannot be modified. On CUDA this is exactly the same, the value can only be read and not written. Furthermore, the value will not change over the course of a kernel execution and only the host can write the constant memory \cite{example}. Please read Chapter \ref{Optimization Results} for speedup improvements by increasing the use of constant memory.
 
 \subsection{Texture Memory}
 
@@ -158,8 +158,8 @@ The texture memory is not used on the current implementation, for obvious reason
 Thread Synchronization refers to orderly call thread operations. For efficiency, a pipeline can be created by queuing a number of kernels to keep the GPGPU busy for as long as possible. Furthermore, some form of synchronization is required so that the host is able to determine when the kernel or pipeline has completed \cite{design}. Commonly used synchronization mechanisms are:
 
 \begin{itemize}
-  \item Explicitly calling $cudaThreadSynchronize()$, which acts as a barrier causing the host to stop and wait for all queued kernels to complete.
-  \item Performing a blocking data transfer with $cudaMemcpy()$ as $cudaThreadSynchronize()$ is called inside $cudaMemcpy()$.
+  \item Explicitly calling {\listf cudaThreadSynchronize()}, which acts as a barrier causing the host to stop and wait for all queued kernels to complete.
+  \item Performing a blocking data transfer with {\listf cudaMemcpy()} as {\listf cudaThreadSynchronize()} is called inside {\listf cudaMemcpy()}.
 \end{itemize}
 
 The basic unit of work on the GPU is a thread. It is important to understand from a software point of view that each thread is separate from every other thread. Every thread acts as if it has its own processor with separate registers and identity. Will wait for all threads to finish there job \cite{design}.

@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013) (format=pdflatex 2013.5.30)  29 APR 2015 10:11
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013) (format=pdflatex 2013.5.30)  29 APR 2015 11:03
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -461,7 +461,7 @@ Package xcolor Info: Model `HSB' substituted by `hsb' on input line 1358.
 Package xcolor Info: Model `Gray' substituted by `gray' on input line 1359.
 Package xcolor Info: Model `wave' substituted by `hsb' on input line 1360.
 )
-Package hyperref Info: Option `colorlinks' set `true' on input line 49.
+Package hyperref Info: Option `colorlinks' set `true' on input line 52.
  (/Users/tom/Documents/GitHub/GPUTest/Thesis_latex_GPU_english/.texpadtmp/main.aux
 
 LaTeX Warning: Label `fig:laplacian' multiply defined.
@@ -472,22 +472,22 @@ LaTeX Warning: Label `fig:streams' multiply defined.
 )
 \openout1 = `main.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 55.
-LaTeX Font Info:    ... okay on input line 55.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 55.
-LaTeX Font Info:    ... okay on input line 55.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 55.
-LaTeX Font Info:    ... okay on input line 55.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 55.
-LaTeX Font Info:    ... okay on input line 55.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 55.
-LaTeX Font Info:    ... okay on input line 55.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 55.
-LaTeX Font Info:    ... okay on input line 55.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 55.
-LaTeX Font Info:    ... okay on input line 55.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 55.
-LaTeX Font Info:    ... okay on input line 55.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 60.
+LaTeX Font Info:    ... okay on input line 60.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 60.
+LaTeX Font Info:    ... okay on input line 60.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 60.
+LaTeX Font Info:    ... okay on input line 60.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 60.
+LaTeX Font Info:    ... okay on input line 60.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 60.
+LaTeX Font Info:    ... okay on input line 60.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 60.
+LaTeX Font Info:    ... okay on input line 60.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 60.
+LaTeX Font Info:    ... okay on input line 60.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 60.
+LaTeX Font Info:    ... okay on input line 60.
 Package caption Info: Begin \AtBeginDocument code.
 Package caption Info: hyperref package is loaded.
 Package caption Info: listings package is loaded.
@@ -513,7 +513,7 @@ Package caption Info: End \AtBeginDocument code.
 )
 \c@lstlisting=\count144
 \AtBeginShipoutBox=\box44
-Package hyperref Info: Link coloring ON on input line 55.
+Package hyperref Info: Link coloring ON on input line 60.
  (/usr/local/texlive/2013/texmf-dist/tex/latex/hyperref/nameref.sty
 Package: nameref 2012/10/27 v2.43 Cross-referencing by name of section
  (/usr/local/texlive/2013/texmf-dist/tex/generic/oberdiek/gettitlestring.sty
@@ -521,9 +521,9 @@ Package: gettitlestring 2010/12/03 v1.4 Cleanup title references (HO)
 )
 \c@section@level=\count145
 )
-LaTeX Info: Redefining \ref on input line 55.
-LaTeX Info: Redefining \pageref on input line 55.
-LaTeX Info: Redefining \nameref on input line 55.
+LaTeX Info: Redefining \ref on input line 60.
+LaTeX Info: Redefining \pageref on input line 60.
+LaTeX Info: Redefining \nameref on input line 60.
  (/Users/tom/Documents/GitHub/GPUTest/Thesis_latex_GPU_english/.texpadtmp/main.out) (/Users/tom/Documents/GitHub/GPUTest/Thesis_latex_GPU_english/.texpadtmp/main.out)
 \@outlinefile=\write3
 \openout3 = `main.out'.
@@ -532,15 +532,15 @@ LaTeX Info: Redefining \nameref on input line 55.
  <Figures/uni.jpg, id=253, 277.035pt x 329.73187pt>
 File: Figures/uni.jpg Graphic file (type jpg)
  <use Figures/uni.jpg>
-Package pdftex.def Info: Figures/uni.jpg used on input line 90.
+Package pdftex.def Info: Figures/uni.jpg used on input line 95.
 (pdftex.def)             Requested size: 125.24318pt x 149.06725pt.
 Missing character: There is no √ in font cmti12!
 Missing character: There is no ≠ in font cmti12!
-LaTeX Font Info:    Try loading font information for U+msa on input line 111.
+LaTeX Font Info:    Try loading font information for U+msa on input line 116.
  (/usr/local/texlive/2013/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 111.
+LaTeX Font Info:    Try loading font information for U+msb on input line 116.
  (/usr/local/texlive/2013/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 ) [1
@@ -584,7 +584,7 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
  Introduction
 ------------------------------------------------------------------------------
 
-Overfull \hbox (3.22032pt too wide) in paragraph at lines 198--199
+Overfull \hbox (3.22032pt too wide) in paragraph at lines 203--204
 []\OT1/cmr/m/n/10.95 The first chap-ter is a overview of het-ero-ge-neous ar-chi-tec-ture pro-gram-ming with NVIDIA's
  []
 
@@ -728,7 +728,11 @@ File: Figures/flaten.png Graphic file (type png)
  <use Figures/flaten.png>
 Package pdftex.def Info: Figures/flaten.png used on input line 135.
 (pdftex.def)             Requested size: 229.61145pt x 92.86787pt.
- [24 <./Figures/block.png (PNG copy)>] [25 <./Figures/flaten.png (PNG copy)>] [26] <Figures/laplacian.png, id=820, 723.6636pt x 313.17pt>
+ [24 <./Figures/block.png (PNG copy)>]
+LaTeX Font Info:    Try loading font information for OT1+lmtt on input line 158.
+ (/usr/local/texlive/2013/texmf-dist/tex/latex/lm/ot1lmtt.fd
+File: ot1lmtt.fd 2009/10/30 v1.6 Font defs for Latin Modern
+) [25 <./Figures/flaten.png (PNG copy)>] [26] <Figures/laplacian.png, id=820, 723.6636pt x 313.17pt>
 File: Figures/laplacian.png Graphic file (type png)
  <use Figures/laplacian.png>
 Package pdftex.def Info: Figures/laplacian.png used on input line 213.
@@ -737,212 +741,3701 @@ Package pdftex.def Info: Figures/laplacian.png used on input line 213.
 
 LaTeX Warning: Reference `fig:sim' on page 28 undefined on input line 261.
 
-[28]
-Overfull \hbox (14.24297pt too wide) in paragraph at lines 271--272
-[]\OT1/cmr/m/n/10.95 Once com-pleted the eval-u-a-tion of the Zhang-Li Model (list-ing [][]3.7[][]), The ma-trix \OT1/cmr/m/it/10.95 solveZhangLi
+./Chapters/Chapter3.tex:261: Too many }'s.
+l.261 ...ef{lst:init}. Finally, the \{\listf lapl}
+                                                   matrix is evaluated in th...
+You've closed more groups than you opened.
+Such booboos are generally harmless, so keep going.
+
+
+Overfull \hbox (2.18448pt too wide) in paragraph at lines 261--262
+\OT1/lmtt/m/n/10.95 Laplacian process. Moreover, computing the Laplacian for x, y coordinate
  []
 
-[29] [30]) (./Chapters/Chapter4.tex [31]
+
+Overfull \hbox (13.68195pt too wide) in paragraph at lines 261--262
+\OT1/lmtt/m/n/10.95 of the CUDA memory grid. The same process evaluates the Laplacian boundary
+ []
+
+[28]
+Overfull \hbox (25.17941pt too wide) in paragraph at lines 271--272
+[]\OT1/lmtt/m/n/10.95 Once completed the evaluation of the Zhang-Li Model (listing [][]3.7[][]), The matrix
+ []
+
+
+Overfull \hbox (19.43068pt too wide) in paragraph at lines 275--276
+\OT1/lmtt/m/n/10.95 Intuitively the equation [][]2.8[][] is implemented by using four CUDA kernels, each
+ []
+
+
+Overfull \hbox (30.92815pt too wide) in paragraph at lines 275--276
+\OT1/lmtt/m/n/10.95 kernel calculates the step of the integration. The first part of [][]3.8[][] computes
+ []
+
+
+Overfull \hbox (2.18448pt too wide) in paragraph at lines 275--276
+\OT1/lmtt/m/n/10.95 the Runge and Kutta's 1st, 2nd, and 3rd term [][]2.9[][]. The final fourth term,
+ []
+
+
+Overfull \hbox (7.93321pt too wide) in paragraph at lines 275--276
+\OT1/lmtt/m/n/10.95 is the sum of the previous 3 terms, the last two lines of code in [][]3.8[][] show
+ []
+
+
+Overfull \hbox (36.67688pt too wide) in paragraph at lines 286--287
+[]\OT1/lmtt/m/n/10.95 On each RK4 step the Zhang-Li model is evaluated, Moreover, numerically solving
+ []
+
+
+Overfull \hbox (42.42561pt too wide) in paragraph at lines 286--287
+\OT1/lmtt/m/n/10.95 the model with the FDTD method including the magnetization boundaries condition. 
+ []
+
+
+Overfull \hbox (7.93321pt too wide) in paragraph at lines 288--289
+[]\OT1/lmtt/m/n/10.95 The integration is group up in two for cycles (listing[][]3.9[][]). The inner \OT1/lmtt/m/it/10.95 for
+ []
+
+
+Overfull \hbox (53.92308pt too wide) in paragraph at lines 288--289
+\OT1/lmtt/m/n/10.95 cycle evaluates the RK4 for the x, y, z coordinate. The outer for cycle evaluates
+ []
+
+
+Overfull \hbox (30.92815pt too wide) in paragraph at lines 303--304
+[]\OT1/lmtt/m/n/10.95 Consequently the simulation is set to 50,000 iterations of the RK4 integretor,
+ []
+
+
+Overfull \hbox (7.93321pt too wide) in paragraph at lines 303--304
+\OT1/lmtt/m/n/10.95 as the data flow illustrates [][]3.1[][]. However, is possible for the simulation
+ []
+
+
+Overfull \hbox (13.68195pt too wide) in paragraph at lines 307--308
+\OT1/lmtt/m/n/10.95 The RK4 algorithm [][]1[][] will finish until the beta evaluation reaches the value
+ []
+
+
+Overfull \hbox (15.38983pt too wide) in paragraph at lines 307--308
+\OT1/lmtt/m/n/10.95 of $\OT1/cmr/m/n/10.95 1\OML/cmm/m/it/10.95 :\OT1/cmr/m/n/10.95 0\OML/cmm/m/it/10.95 e[]$\OT1/lmtt/m/n/10.95 . The final step of the simulation determinate the effective beta,
+ []
+
+
+Overfull \hbox (25.17941pt too wide) in paragraph at lines 307--308
+\OT1/lmtt/m/n/10.95 which tells use the energy configuration of the system. But more importantly
+ []
+
+
+Overfull \hbox (25.17941pt too wide) in paragraph at lines 307--308
+\OT1/lmtt/m/n/10.95 the spin diffusion. Furthermore, the DW velocity the diffusion non-adiabatic
+ []
+
+[29]
+Overfull \hbox (36.67688pt too wide) in paragraph at lines 309--310
+[]\OT1/lmtt/m/n/10.95 The kernels [][]3.10[][] are launched only when the RK4 integration is done evaluating.
+ []
+
+
+Overfull \hbox (2.18448pt too wide) in paragraph at lines 320--321
+[]\OT1/lmtt/m/n/10.95 We do not know for how long we need to integrate the system. However, it
+ []
+
+
+Overfull \hbox (13.68195pt too wide) in paragraph at lines 320--321
+\OT1/lmtt/m/n/10.95 will stop until the local energy reaches the minimum configuration. Hence,
+ []
+
+
+Overfull \hbox (42.01569pt too wide) in paragraph at lines 320--321
+\OT1/lmtt/m/n/10.95 the effective beta diverges to $\OT1/cmr/m/n/10.95 1[]$\OT1/lmtt/m/n/10.95 . The simulation will stop when the effective
+ []
+
+
+Overfull \hbox (25.17941pt too wide) in paragraph at lines 320--321
+\OT1/lmtt/m/n/10.95 beta reaches the minimum. Then the magnetization data is written. Depending
+ []
+
+
+Overfull \hbox (30.92815pt too wide) in paragraph at lines 320--321
+\OT1/lmtt/m/n/10.95 on the application configuration is possible to write either the magnetization
+ []
+
+
+Overfull \hbox (2.18448pt too wide) in paragraph at lines 320--321
+\OT1/lmtt/m/n/10.95 results for the VW or for the ATW. The magnetization data is written into
+ []
+
+
+Overfull \hbox (25.17941pt too wide) in paragraph at lines 320--321
+\OT1/lmtt/m/n/10.95 two separated data files, which contains the effective data .eff and the spin
+ []
+
+
+Overfull \hbox (13.68195pt too wide) in paragraph at lines 324--325
+\OT1/lmtt/m/n/10.95 Because CUDA framework is a highly parallel system is fairly easy to obtain
+ []
+
+
+Overfull \hbox (13.68195pt too wide) in paragraph at lines 324--325
+\OT1/lmtt/m/n/10.95 erroneous data from the calculations, even setting up the threads per block
+ []
+
+
+Overfull \hbox (30.92815pt too wide) in paragraph at lines 324--325
+\OT1/lmtt/m/n/10.95 incorrectly is possible to get a data set that is wrong, or results that don't
+ []
+
+
+Overfull \hbox (7.93321pt too wide) in paragraph at lines 324--325
+\OT1/lmtt/m/n/10.95 diverge. When making changes to the code, it is necessary to validate the
+ []
+
+
+Overfull \hbox (25.17941pt too wide) in paragraph at lines 326--327
+[]\OT1/lmtt/m/n/10.95 The validation is done by comparing the output of the simulation with a valid
+ []
+
+
+Overfull \hbox (25.17941pt too wide) in paragraph at lines 326--327
+\OT1/lmtt/m/n/10.95 data set. The output of the validation application tells us the error factor
+ []
+
+
+Overfull \hbox (53.92308pt too wide) in paragraph at lines 326--327
+\OT1/lmtt/m/n/10.95 of the current data with the valid set. So for each data set there is a threshold
+ []
+
+
+Overfull \hbox (19.43068pt too wide) in paragraph at lines 326--327
+\OT1/lmtt/m/n/10.95 value, that can tell if the that is close enough to the results. An example
+ []
+
+
+Overfull \hbox (13.68195pt too wide) in paragraph at lines 328--329
+[]\OT1/lmtt/m/n/10.95 According to our results, new code shouldn't produce errors in the spin.dat
+ []
+
+
+Overfull \hbox (20.29002pt too wide) in paragraph at lines 328--329
+\OT1/lmtt/m/n/10.95 data greater than $\OT1/cmr/m/n/10.95 7\OML/cmm/m/it/10.95 :\OT1/cmr/m/n/10.95 0[]$\OT1/lmtt/m/n/10.95 , in other words valid code don't lead to differences
+ []
+
+
+Overfull \hbox (13.68195pt too wide) in paragraph at lines 328--329
+\OT1/lmtt/m/n/10.95 greater than the precision expected from computations with double precision
+ []
+
+
+Overfull \hbox (7.84628pt too wide) in paragraph at lines 328--329
+\OT1/cmr/m/n/10.95 1\OML/cmm/m/it/10.95 :\OT1/cmr/m/n/10.95 0[]$ \OT1/lmtt/m/n/10.95 in the case of eff data the errors are in the order of $\OT1/cmr/m/n/10.95 1\OML/cmm/m/it/10.95 :\OT1/cmr/m/n/10.95 0[]$ \OT1/lmtt/m/n/10.95 and no
+ []
+
+
+Overfull \hbox (0.27588pt too wide) in paragraph at lines 328--329
+\OT1/lmtt/m/n/10.95 greater than $\OT1/cmr/m/n/10.95 6[]$\OT1/lmtt/m/n/10.95 . For the diffuse beta variation the precision expected
+ []
+
+[30]
+Overfull \hbox (19.43068pt too wide) in paragraph at lines 330--331
+[]\OT1/lmtt/m/n/10.95 The initial implementation results were done using the GeForce GT 650M, with
+ []
+
+
+Overfull \hbox (19.43068pt too wide) in paragraph at lines 330--331
+\OT1/lmtt/m/n/10.95 384 CUDA core at 745 MHz and 2GB GDDR5 of memory. The final simulation with
+ []
+
+
+Overfull \hbox (36.67688pt too wide) in paragraph at lines 330--331
+\OT1/lmtt/m/n/10.95 a correct validation data outputs the following results [][]3.5[][]. The 1.00x speedup
+ []
+
+
+Overfull \hbox (7.93321pt too wide) in paragraph at lines 352--353
+[]\OT1/lmtt/m/n/10.95 To conclude, the simulating at its core uses the RK4 for integration which
+ []
+
+
+Overfull \hbox (13.68195pt too wide) in paragraph at lines 352--353
+\OT1/lmtt/m/n/10.95 uses as integration function the Zhang-li model equation [][]2.2[][]. In addition,
+ []
+
+
+Overfull \hbox (7.93321pt too wide) in paragraph at lines 352--353
+\OT1/lmtt/m/n/10.95 to solve such differential equations of the Zhang-Li model the FDTD method
+ []
+
+
+Overfull \hbox (48.17435pt too wide) in paragraph at lines 352--353
+\OT1/lmtt/m/n/10.95 is evaluated. For each iteration the RK4 [][]2.8[][] evaluates fourth times the Zhang-Li
+ []
+
+
+Overfull \hbox (7.93321pt too wide) in paragraph at lines 352--353
+\OT1/lmtt/m/n/10.95 equation. Moreover, each RK4 term evaluates numerically the Laplacian [][]2.3[][]
+ []
+
+
+Overfull \hbox (2.18448pt too wide) in paragraph at lines 352--353
+\OT1/lmtt/m/n/10.95 with boundary conditions [][]2.7[][] [][]2.6[][]. We showed the procedure of numerically
+ []
+
+) (./Chapters/Chapter4.tex [31]
 Chapter 4.
 ------------------------------------------------------------------------------
  4 Heterogeneous Performance Analysis and Practices
 ------------------------------------------------------------------------------
+
+Overfull \hbox (19.43068pt too wide) in paragraph at lines 8--9
+\OT1/lmtt/m/n/10.95 Working with GPUs, new challenges emerges, how can we make the best millions
+ []
+
+
+Overfull \hbox (7.93321pt too wide) in paragraph at lines 8--9
+\OT1/lmtt/m/n/10.95 of threads using the GPU hardware. In the conventional CPU model, we have
+ []
+
+
+Overfull \hbox (13.68195pt too wide) in paragraph at lines 8--9
+\OT1/lmtt/m/n/10.95 what is called linear or flat memory model. In addition, it appears to the
+ []
+
+
+Overfull \hbox (7.93321pt too wide) in paragraph at lines 8--9
+\OT1/lmtt/m/n/10.95 programmer as a single contiguous address space. Furthermore, the CPU can
+ []
+
+
+Overfull \hbox (7.93321pt too wide) in paragraph at lines 8--9
+\OT1/lmtt/m/n/10.95 directly address all the available memory, in other words, there is almost
+ []
+
+
+Overfull \hbox (2.18448pt too wide) in paragraph at lines 8--9
+\OT1/lmtt/m/n/10.95 no efficiency penalty in creating global data, local data, or even access
+ []
+
+
+Overfull \hbox (42.42561pt too wide) in paragraph at lines 8--9
+\OT1/lmtt/m/n/10.95 data that is located on an opposite memory location, all of this can be accessed
+ []
+
+
+Overfull \hbox (25.17941pt too wide) in paragraph at lines 8--9
+\OT1/lmtt/m/n/10.95 as a contiguous block [[]]. Meanwhile, on the GPU there are exceptions, there
+ []
+
+
+Overfull \hbox (25.17941pt too wide) in paragraph at lines 8--9
+\OT1/lmtt/m/n/10.95 exists different memory hierarchies which dramatically change the performance
+ []
+
+
+Overfull \hbox (42.42561pt too wide) in paragraph at lines 8--9
+\OT1/lmtt/m/n/10.95 output. By allocating the optimal memory types, speedup and increase throughput
+ []
+
+
+Overfull \hbox (13.68195pt too wide) in paragraph at lines 8--9
+\OT1/lmtt/m/n/10.95 can be accomplished. To ensure optimization, some analysis should be made,
+ []
+
+
+Overfull \hbox (25.17941pt too wide) in paragraph at lines 8--9
+\OT1/lmtt/m/n/10.95 such as comparing latency, memory hierarchies and data bandwidth between CUDA
+ []
+
+
+Overfull \hbox (7.93321pt too wide) in paragraph at lines 8--9
+\OT1/lmtt/m/n/10.95 kernels. Debugging of parallel code is possible using the NVIDIA's Visual
+ []
+
+
+Overfull \hbox (25.17941pt too wide) in paragraph at lines 8--9
+\OT1/lmtt/m/n/10.95 Profiler. The current chapter demonstrated techniques, practices and methods
+ []
+
+
+Overfull \hbox (19.43068pt too wide) in paragraph at lines 13--14
+\OT1/lmtt/m/n/10.95 There are three rules for developing high performance GPGPU (General-purpose
+ []
+
+
+Overfull \hbox (6.5646pt too wide) in paragraph at lines 18--19
+[]\OT1/lmtt/m/n/10.95 Focus on data reuse within the GPU context, to avoid memory bandwidth
+ []
+
 [32
 
-] <Figures/PCI.png, id=944, 499.8675pt x 69.25874pt>
+]
+Overfull \hbox (30.92815pt too wide) in paragraph at lines 21--22
+[]\OT1/lmtt/m/n/10.95 As we know the GPUs are plugged into the PCI Express bus of the host computer,
+ []
+
+
+Overfull \hbox (7.93321pt too wide) in paragraph at lines 21--22
+\OT1/lmtt/m/n/10.95 in other words the CPU. The PCIe bus has extremely slow bandwidth compared
+ []
+
+
+Overfull \hbox (19.43068pt too wide) in paragraph at lines 21--22
+\OT1/lmtt/m/n/10.95 with the GPU. This is why is important to store the data on the GPU and keep
+ []
+
+
+Overfull \hbox (13.68195pt too wide) in paragraph at lines 21--22
+\OT1/lmtt/m/n/10.95 it busy. In addition, minimize the data transfer from the host and back to
+ []
+
+
+Overfull \hbox (13.68195pt too wide) in paragraph at lines 21--22
+\OT1/lmtt/m/n/10.95 the device. The process is illustrates in the table [][]4.1[][]. CUDA enables the
+ []
+
+
+Overfull \hbox (19.43068pt too wide) in paragraph at lines 21--22
+\OT1/lmtt/m/n/10.95 GPU to carry out petaFLOP performance in a single device [[]]. Moreover, the
+ []
+
+
+Overfull \hbox (13.68195pt too wide) in paragraph at lines 21--22
+\OT1/lmtt/m/n/10.95 GPUs are fast enough to compute a large amount of data. To accomplish such
+ []
+
+
+Overfull \hbox (13.68195pt too wide) in paragraph at lines 21--22
+\OT1/lmtt/m/n/10.95 high performance, each CUDA Kernel needs to use all the available resources
+ []
+
+
+Overfull \hbox (13.68195pt too wide) in paragraph at lines 21--22
+\OT1/lmtt/m/n/10.95 of the GPU. Furthermore, avoid wasting compute cycles. Finally if a single
+ []
+
+
+Overfull \hbox (7.93321pt too wide) in paragraph at lines 21--22
+\OT1/lmtt/m/n/10.95 Kernel doesn't use all of the available bandwidth, multiple kernels can be
+ []
+
+<Figures/PCI.png, id=944, 499.8675pt x 69.25874pt>
 File: Figures/PCI.png Graphic file (type png)
  <use Figures/PCI.png>
 Package pdftex.def Info: Figures/PCI.png used on input line 25.
 (pdftex.def)             Requested size: 300.58112pt x 41.64854pt.
- <Figures/apod.png, id=948, 677.53125pt x 550.055pt>
+
+Overfull \hbox (7.93321pt too wide) in paragraph at lines 31--32
+[]\OT1/lmtt/m/n/10.95 The practices should be taken in consideration to identify the portions of
+ []
+
+<Figures/apod.png, id=948, 677.53125pt x 550.055pt>
 File: Figures/apod.png Graphic file (type png)
  <use Figures/apod.png>
 Package pdftex.def Info: Figures/apod.png used on input line 35.
 (pdftex.def)             Requested size: 187.8616pt x 152.51196pt.
 
-Overfull \hbox (9.9577pt too wide) in paragraph at lines 45--47
-\OT1/cmr/m/n/10.95 Increase par-al-leliza-tion from the orig-i-nal code, could be ei-ther adding GPU-optimized
+Overfull \hbox (12.31334pt too wide) in paragraph at lines 43--45
+\OT1/lmtt/m/n/10.95 The first step is to locate the part of the code where the majority of
  []
 
-[33 <./Figures/PCI.png> <./Figures/apod.png>] [34] <Figures/cores.png, id=970, 680.5425pt x 178.6675pt>
+
+Overfull \hbox (35.30827pt too wide) in paragraph at lines 43--45
+\OT1/lmtt/m/n/10.95 the execution time occurs. The programmer can evaluate memory bottlenecks
+ []
+
+
+Overfull \hbox (18.06207pt too wide) in paragraph at lines 45--47
+\OT1/lmtt/m/n/10.95 Increase parallelization from the original code, could be either adding
+ []
+
+
+Overfull \hbox (18.06207pt too wide) in paragraph at lines 45--47
+\OT1/lmtt/m/n/10.95 GPU-optimized libraries such as cuBLAS, cuFFT, or including more amount
+ []
+
+[33 <./Figures/PCI.png> <./Figures/apod.png>]
+Overfull \hbox (35.30827pt too wide) in paragraph at lines 47--49
+\OT1/lmtt/m/n/10.95 The developer can optimize the implementation performance through a number
+ []
+
+
+Overfull \hbox (29.55954pt too wide) in paragraph at lines 47--49
+\OT1/lmtt/m/n/10.95 of considerations, overlapping kernel executing, kernel profiling, memory
+ []
+
+
+Overfull \hbox (52.55447pt too wide) in paragraph at lines 49--51
+\OT1/lmtt/m/n/10.95 Compare the outcome with the original expectation. Determinate the potential
+ []
+
+
+Overfull \hbox (29.55954pt too wide) in paragraph at lines 49--51
+\OT1/lmtt/m/n/10.95 speedup by accelerating a given section. First a partial parallelization
+ []
+
+
+Overfull \hbox (7.93321pt too wide) in paragraph at lines 55--56
+\OT1/lmtt/m/n/10.95 There are many possible approaches to profiling the code, but in all cases
+ []
+
+
+Overfull \hbox (59.67181pt too wide) in paragraph at lines 55--56
+\OT1/lmtt/m/n/10.95 the objective is the same: identify the kernel or kernels in which the application
+ []
+
+
+Overfull \hbox (30.92815pt too wide) in paragraph at lines 55--56
+\OT1/lmtt/m/n/10.95 is spending most of its execution time and increase the throughput by a giving
+ []
+
+
+Overfull \hbox (30.92815pt too wide) in paragraph at lines 59--60
+\OT1/lmtt/m/n/10.95 Timing a launched kernel should be done on either the GPU or the CPU. however,
+ []
+
+
+Overfull \hbox (19.43068pt too wide) in paragraph at lines 59--60
+\OT1/lmtt/m/n/10.95 the GPU and CPU are not synchronized, events are called at any given moment.
+ []
+
+
+Overfull \hbox (2.18448pt too wide) in paragraph at lines 59--60
+\OT1/lmtt/m/n/10.95 Though it is necessary to synchronize the CPU thread with the GPU kernels
+ []
+
+
+Overfull \hbox (13.68195pt too wide) in paragraph at lines 59--60
+\OT1/lmtt/m/n/10.95 launches. CUDA provides the required functions to synchronize the CPU with
+ []
+
+
+Overfull \hbox (2.18448pt too wide) in paragraph at lines 59--60
+\OT1/lmtt/m/n/10.95 the GPU calling immediately before starting the timer [[]]. CUDA is able
+ []
+
+
+Overfull \hbox (30.92815pt too wide) in paragraph at lines 59--60
+\OT1/lmtt/m/n/10.95 to handle timers within the GPU, which records times in a floating-point value
+ []
+
+
+Overfull \hbox (30.92815pt too wide) in paragraph at lines 59--60
+\OT1/lmtt/m/n/10.95 in milliseconds. This is done with cudaEventRecord(), just by including start
+ []
+
+
+Overfull \hbox (13.68195pt too wide) in paragraph at lines 59--60
+\OT1/lmtt/m/n/10.95 and stop  in the function inputs. Note that the timing are measured on the
+ []
+
+
+Overfull \hbox (30.92815pt too wide) in paragraph at lines 59--60
+\OT1/lmtt/m/n/10.95 GPU clock, so the timing is independent from the OS [[]]. The timing performed
+ []
+
+
+Overfull \hbox (2.18448pt too wide) in paragraph at lines 63--64
+\OT1/lmtt/m/n/10.95 The bandwidth refers to the rate at which data can be transferred between
+ []
+
+
+Overfull \hbox (13.68195pt too wide) in paragraph at lines 63--64
+\OT1/lmtt/m/n/10.95 host and device and vice-versa. The bandwidth is one of the most important
+ []
+
+
+Overfull \hbox (36.67688pt too wide) in paragraph at lines 63--64
+\OT1/lmtt/m/n/10.95 factors for testing performance on the GPUs. Choosing the right type of memory
+ []
+
+
+Overfull \hbox (7.93321pt too wide) in paragraph at lines 63--64
+\OT1/lmtt/m/n/10.95 could dramatically increase performance and bandwidth. There are two main
+ []
+
+
+Overfull \hbox (19.43068pt too wide) in paragraph at lines 63--64
+\OT1/lmtt/m/n/10.95 bandwidth types to indicate performance, theoretical bandwidth and effective
+ []
+
+
+Overfull \hbox (25.17941pt too wide) in paragraph at lines 63--64
+\OT1/lmtt/m/n/10.95 bandwidth. The theoretical bandwidth is based on the hardware specifications
+ []
+
+[34]
+Overfull \hbox (19.43068pt too wide) in paragraph at lines 67--68
+[]\OT1/lmtt/m/n/10.95 For example the NVIDIA GeForce GTX 280 uses DDR RAM with a memory clock rate
+ []
+
+
+Overfull \hbox (37.88512pt too wide) in paragraph at lines 71--73
+[]\OT1/lmtt/m/n/10.95 The GTX 280 has a theoretical bandwidth of $\OT1/cmr/m/n/10.95 141\OML/cmm/m/it/10.95 :\OT1/cmr/m/n/10.95 6\OML/cmm/m/it/10.95 Gb=sec$\OT1/lmtt/m/n/10.95 . The effective bandwidth
+ []
+
+
+Overfull \hbox (13.68195pt too wide) in paragraph at lines 71--73
+\OT1/lmtt/m/n/10.95 is calculated by timing specific program activities and by knowing how data
+ []
+
+
+Overfull \hbox (16.02666pt too wide) in paragraph at lines 76--77
+[]\OT1/lmtt/m/n/10.95 Where $\OML/cmm/m/it/10.95 Br$ \OT1/lmtt/m/n/10.95 is the number of bytes read per kernel, $\OML/cmm/m/it/10.95 Bw$ \OT1/lmtt/m/n/10.95 is the number of bytes
+ []
+
+
+Overfull \hbox (42.42561pt too wide) in paragraph at lines 78--79
+[]\OT1/lmtt/m/n/10.95 In practice the difference between theoretical bandwidth and effective bandwidth
+ []
+
+
+Overfull \hbox (19.43068pt too wide) in paragraph at lines 78--79
+\OT1/lmtt/m/n/10.95 indicated how much bandwidth is wasted on accessing memory and calculations.
+ []
+
+
+Overfull \hbox (7.93321pt too wide) in paragraph at lines 78--79
+\OT1/lmtt/m/n/10.95 If the effective bandwidth is low compared to the theoretical bandwidth is
+ []
+
+
+Overfull \hbox (53.92308pt too wide) in paragraph at lines 78--79
+\OT1/lmtt/m/n/10.95 one indication that there is not enough work being done in the GPUs. In addition,
+ []
+
+
+Overfull \hbox (53.92308pt too wide) in paragraph at lines 78--79
+\OT1/lmtt/m/n/10.95 there a several solutions; analyze the code to make more parallelize instructions,
+ []
+
+
+Overfull \hbox (2.18448pt too wide) in paragraph at lines 78--79
+\OT1/lmtt/m/n/10.95 execute more computational instructions on the GPUs, finally, bind memory
+ []
+
+
+Overfull \hbox (13.68195pt too wide) in paragraph at lines 78--79
+\OT1/lmtt/m/n/10.95 blocks, pin the initial memory block on the CPU with the final memory block
+ []
+
+
+Overfull \hbox (25.17941pt too wide) in paragraph at lines 80--81
+[]\OT1/lmtt/m/n/10.95 The next chapter we analyze the bandwidth and timing for each NVIDIA GPU card
+ []
+
+
+Overfull \hbox (25.17941pt too wide) in paragraph at lines 80--81
+\OT1/lmtt/m/n/10.95 used to optimize the application. However, the bandwidth information is only
+ []
+
+
+Overfull \hbox (65.42055pt too wide) in paragraph at lines 80--81
+\OT1/lmtt/m/n/10.95 available for analysis when transferring data from the CPU to the GPU or vise-verse. 
+ []
+
+
+Overfull \hbox (36.67688pt too wide) in paragraph at lines 84--85
+\OT1/lmtt/m/n/10.95 In this section four types of memory handling are going to be explained, global
+ []
+
+
+Overfull \hbox (7.93321pt too wide) in paragraph at lines 84--85
+\OT1/lmtt/m/n/10.95 memory (device memory), shared memory, texture memory and constant memory.
+ []
+
+
+Overfull \hbox (7.93321pt too wide) in paragraph at lines 84--85
+\OT1/lmtt/m/n/10.95 The figure [][]4.3[][] illustrates physically the position of the different memory
+ []
+
+[35] <Figures/cores.png, id=977, 680.5425pt x 178.6675pt>
 File: Figures/cores.png Graphic file (type png)
  <use Figures/cores.png>
 Package pdftex.def Info: Figures/cores.png used on input line 88.
 (pdftex.def)             Requested size: 396.59813pt x 104.12067pt.
- [35] <Figures/memory.png, id=981, 807.015pt x 107.40125pt>
+
+Overfull \hbox (13.68195pt too wide) in paragraph at lines 94--95
+[]\OT1/lmtt/m/n/10.95 Global memory is very large in comparison to the shared memory, which is on
+ []
+
+
+Overfull \hbox (19.43068pt too wide) in paragraph at lines 94--95
+\OT1/lmtt/m/n/10.95 the L1 cache. However, the global memory is far away from the registers and
+ []
+
+
+Overfull \hbox (7.93321pt too wide) in paragraph at lines 94--95
+\OT1/lmtt/m/n/10.95 from the CUDA core locations. Moreover, the memory access is very slow in
+ []
+
+
+Overfull \hbox (19.43068pt too wide) in paragraph at lines 96--97
+[]\OT1/lmtt/m/n/10.95 The table [][]4.4[][] illustrates the five different memory types that are available
+ []
+
+
+Overfull \hbox (36.67688pt too wide) in paragraph at lines 96--97
+\OT1/lmtt/m/n/10.95 in CUDA. But more interesting the bandwidth penalty and the latency in computer
+ []
+
+
+Overfull \hbox (7.93321pt too wide) in paragraph at lines 96--97
+\OT1/lmtt/m/n/10.95 cycles for each one of them. Moreover, different memory types can be used
+ []
+
+
+Overfull \hbox (13.68195pt too wide) in paragraph at lines 96--97
+\OT1/lmtt/m/n/10.95 in different applications to maximize performance, hence memory usage. The
+ []
+
+
+Overfull \hbox (19.43068pt too wide) in paragraph at lines 96--97
+\OT1/lmtt/m/n/10.95 Shared Memory is very limited so it cannot be handler across all situations.
+ []
+
+
+Overfull \hbox (59.67181pt too wide) in paragraph at lines 96--97
+\OT1/lmtt/m/n/10.95 Furthermore, implementing a wrong memory type on the device there are possibilities
+ []
+
+
+Overfull \hbox (2.18448pt too wide) in paragraph at lines 96--97
+\OT1/lmtt/m/n/10.95 for latency penalties and bandwidth drop, instead of having a performance
+ []
+
+<Figures/memory.png, id=982, 807.015pt x 107.40125pt>
 File: Figures/memory.png Graphic file (type png)
  <use Figures/memory.png>
 Package pdftex.def Info: Figures/memory.png used on input line 100.
 (pdftex.def)             Requested size: 375.7232pt x 50.00333pt.
- [36 <./Figures/cores.png> <./Figures/memory.png>] [37] <Figures/texture.png, id=1002, 460.72125pt x 182.6825pt>
+
+Overfull \hbox (2.18448pt too wide) in paragraph at lines 108--109
+\OT1/lmtt/m/n/10.95 Understanding how efficiently use global memory is essential part of CUDA
+ []
+
+
+Overfull \hbox (7.93321pt too wide) in paragraph at lines 108--109
+\OT1/lmtt/m/n/10.95 memory management. Focusing on data reuse within the SM and caches avoids
+ []
+
+
+Overfull \hbox (30.92815pt too wide) in paragraph at lines 108--109
+\OT1/lmtt/m/n/10.95 memory bandwidth limitations. Global memory on the GPU is designed to quickly
+ []
+
+[36 <./Figures/cores.png> <./Figures/memory.png>]
+LaTeX Font Info:    Try loading font information for OMS+lmtt on input line 111.
+LaTeX Font Info:    No file OMSlmtt.fd. on input line 111.
+
+
+LaTeX Font Warning: Font shape `OMS/lmtt/m/n' undefined
+(Font)              using `OMS/cmsy/m/n' instead
+(Font)              for symbol `textbullet' on input line 111.
+
+
+Overfull \hbox (0.81587pt too wide) in paragraph at lines 112--113
+[]\OT1/lmtt/m/n/10.95 Give the GPU enough workload, this using all the resources available
+ []
+
+
+Overfull \hbox (41.057pt too wide) in paragraph at lines 113--114
+[]\OT1/lmtt/m/n/10.95 Focus on data reuse within the GPGPU to avoid memory bandwidth limitations. 
+ []
+
+
+Overfull \hbox (48.17435pt too wide) in paragraph at lines 116--117
+[]\OT1/lmtt/m/n/10.95 In other words the global memory resides on the device, and it should be anything
+ []
+
+
+Overfull \hbox (30.92815pt too wide) in paragraph at lines 116--117
+\OT1/lmtt/m/n/10.95 from 1 byte to 8GB, depends on the GPU RAM available. Furthermore, the memory
+ []
+
+
+Overfull \hbox (19.43068pt too wide) in paragraph at lines 116--117
+\OT1/lmtt/m/n/10.95 is visible to all the threads of the grid. Every thread at a given location
+ []
+
+
+Overfull \hbox (30.92815pt too wide) in paragraph at lines 116--117
+\OT1/lmtt/m/n/10.95 is possible to read and to write global memory, The memory is always allocated
+ []
+
+
+Overfull \hbox (2.18448pt too wide) in paragraph at lines 116--117
+\OT1/lmtt/m/n/10.95 with the keyword \OT1/lmtt/m/it/10.95 cadaMalloc\OT1/lmtt/m/n/10.95 . In addition, the global memory is only used
+ []
+
+
+Overfull \hbox (6.45502pt too wide) in paragraph at lines 116--117
+\OT1/lmtt/m/n/10.95 by passing it to the kernel call the keyword []global []. Global memory is
+ []
+
+
+Overfull \hbox (42.42561pt too wide) in paragraph at lines 120--121
+\OT1/lmtt/m/n/10.95 CUDA C compiler treats variables differently than a typical c language variable.
+ []
+
+
+Overfull \hbox (13.68195pt too wide) in paragraph at lines 120--121
+\OT1/lmtt/m/n/10.95 The compiler creates a copy of the variable for each block that is launched
+ []
+
+
+Overfull \hbox (13.68195pt too wide) in paragraph at lines 120--121
+\OT1/lmtt/m/n/10.95 on the GPU, now every thread in that block has access to the memory, hence,
+ []
+
+
+Overfull \hbox (19.43068pt too wide) in paragraph at lines 120--121
+\OT1/lmtt/m/n/10.95 shared memory. This memory reside physically on the GPU, because the memory
+ []
+
+
+Overfull \hbox (2.18448pt too wide) in paragraph at lines 120--121
+\OT1/lmtt/m/n/10.95 is very close the cache, the latency is typical very low [[]]. One thing
+ []
+
+
+Overfull \hbox (13.68195pt too wide) in paragraph at lines 120--121
+\OT1/lmtt/m/n/10.95 comes to mind, if the threads can communicate with others threads, so there
+ []
+
+
+Overfull \hbox (2.18448pt too wide) in paragraph at lines 120--121
+\OT1/lmtt/m/n/10.95 should be way to synchronize all the threads. A simple case should be if
+ []
+
+
+Overfull \hbox (19.43068pt too wide) in paragraph at lines 120--121
+\OT1/lmtt/m/n/10.95 thread A writes a value into the shared memory, and Thread B wants to access
+ []
+
+
+Overfull \hbox (25.17941pt too wide) in paragraph at lines 120--121
+\OT1/lmtt/m/n/10.95 we need to synchronize, when thread A finish writing then thread B can access
+ []
+
+
+Overfull \hbox (30.92815pt too wide) in paragraph at lines 120--121
+\OT1/lmtt/m/n/10.95 it. This is typical case when shared memory with synchronize thread is needed
+ []
+
+
+Overfull \hbox (19.43068pt too wide) in paragraph at lines 122--123
+[]\OT1/lmtt/m/n/10.95 Shared memory is magnitudes faster to access than global memory, essentially
+ []
+
+
+Overfull \hbox (13.68195pt too wide) in paragraph at lines 122--123
+\OT1/lmtt/m/n/10.95 is like a local cache for each threads of a block. While the shared memory
+ []
+
+
+Overfull \hbox (2.18448pt too wide) in paragraph at lines 122--123
+\OT1/lmtt/m/n/10.95 is limited to 48K a block, the global memory is the amount of DRAM on the
+ []
+
+
+Overfull \hbox (13.68195pt too wide) in paragraph at lines 122--123
+\OT1/lmtt/m/n/10.95 device. The duration of the shared memory on the device is the lifetime of
+ []
+
+
+Overfull \hbox (6.45502pt too wide) in paragraph at lines 122--123
+\OT1/lmtt/m/n/10.95 the thread block. Using []shared []in-front of the data type will innovate
+ []
+
+
+Overfull \hbox (25.17941pt too wide) in paragraph at lines 124--125
+[]\OT1/lmtt/m/n/10.95 Shared memory is widely used for applications were the kernels access a great
+ []
+
+
+Overfull \hbox (2.18448pt too wide) in paragraph at lines 124--125
+\OT1/lmtt/m/n/10.95 amount of global memory. In addition, using shared memory eliminates the
+ []
+
+
+Overfull \hbox (25.17941pt too wide) in paragraph at lines 124--125
+\OT1/lmtt/m/n/10.95 use of clock cycles per kernel which increases performance on a single kernel
+ []
+
+
+Overfull \hbox (48.17435pt too wide) in paragraph at lines 124--125
+\OT1/lmtt/m/n/10.95 call. For the current application we used extensively shared memory, eliminating
+ []
+
+
+Overfull \hbox (13.68195pt too wide) in paragraph at lines 124--125
+\OT1/lmtt/m/n/10.95 the use of global memory. More information about the process in Chapter [][]5[][]. 
+ []
+
+[37]
+Overfull \hbox (19.43068pt too wide) in paragraph at lines 129--130
+\OT1/lmtt/m/n/10.95 Is an excellent way to store and broadcast read-only data to all the threads
+ []
+
+
+Overfull \hbox (19.43068pt too wide) in paragraph at lines 129--130
+\OT1/lmtt/m/n/10.95 on the GPU. One thing to keep in mind is that the constant memory is limited
+ []
+
+
+Overfull \hbox (13.68195pt too wide) in paragraph at lines 129--130
+\OT1/lmtt/m/n/10.95 to 64KB [[]]. A simple analogy is the #define or const attribute in the C++
+ []
+
+
+Overfull \hbox (7.93321pt too wide) in paragraph at lines 129--130
+\OT1/lmtt/m/n/10.95 programming language, the variable performs like a variable that cannot be
+ []
+
+
+Overfull \hbox (13.68195pt too wide) in paragraph at lines 129--130
+\OT1/lmtt/m/n/10.95 modified. On CUDA this is exactly the same, the value can only be read and
+ []
+
+
+Overfull \hbox (2.18448pt too wide) in paragraph at lines 129--130
+\OT1/lmtt/m/n/10.95 not written. Furthermore, the value will not change over the course of a
+ []
+
+
+Overfull \hbox (30.92815pt too wide) in paragraph at lines 129--130
+\OT1/lmtt/m/n/10.95 kernel execution and only the host can write the constant memory [[]]. Please
+ []
+
+
+Overfull \hbox (2.18448pt too wide) in paragraph at lines 129--130
+\OT1/lmtt/m/n/10.95 read Chapter [][]5[][] for speedup improvements by increasing the use of constant
+ []
+
+
+Overfull \hbox (7.93321pt too wide) in paragraph at lines 133--134
+\OT1/lmtt/m/n/10.95 Similar to constant memory, texture memory is another variety of read-only
+ []
+
+
+Overfull \hbox (25.17941pt too wide) in paragraph at lines 133--134
+\OT1/lmtt/m/n/10.95 memory that can improve performance and reduce memory traffic when reads have
+ []
+
+
+Overfull \hbox (13.68195pt too wide) in paragraph at lines 133--134
+\OT1/lmtt/m/n/10.95 certain access patterns. Traditionally texture memory is used for computer
+ []
+
+
+Overfull \hbox (25.17941pt too wide) in paragraph at lines 133--134
+\OT1/lmtt/m/n/10.95 graphics applications, but it can also be used for HPC. The main idea of this
+ []
+
+
+Overfull \hbox (19.43068pt too wide) in paragraph at lines 133--134
+\OT1/lmtt/m/n/10.95 read-only memory is that threads are likely to read from address ''near' the
+ []
+
+<Figures/texture.png, id=1003, 460.72125pt x 182.6825pt>
 File: Figures/texture.png Graphic file (type png)
  <use Figures/texture.png>
 Package pdftex.def Info: Figures/texture.png used on input line 137.
 (pdftex.def)             Requested size: 217.08777pt x 86.0782pt.
- [38 <./Figures/texture.png>]
-Overfull \hbox (20.04813pt too wide) in paragraph at lines 162--163
-[]\OT1/cmr/m/n/10.95 Performing a block-ing data trans-fer with $\OML/cmm/m/it/10.95 cudaMemcpy\OT1/cmr/m/n/10.95 ()$ as $\OML/cmm/m/it/10.95 cudaThreadSynchronize\OT1/cmr/m/n/10.95 ()$
+
+Overfull \hbox (7.93321pt too wide) in paragraph at lines 143--144
+[]\OT1/lmtt/m/n/10.95 The texture Memory in a form works like the GPU graphics Texture, when you
  []
 
-<Figures/streams.png, id=1013, 591.20876pt x 330.23375pt>
+
+Overfull \hbox (2.18448pt too wide) in paragraph at lines 143--144
+\OT1/lmtt/m/n/10.95 want to use the texture bind with some sort of data is necessary and when
+ []
+
+
+Overfull \hbox (53.92308pt too wide) in paragraph at lines 143--144
+\OT1/lmtt/m/n/10.95 you finish using it unbind the texture from the data. The usage can be summarized
+ []
+
+[38 <./Figures/texture.png>]
+Overfull \hbox (6.5646pt too wide) in paragraph at lines 150--151
+[]\OT1/lmtt/m/n/10.95 When the work is done on the Texture, unbind the texture reference on
+ []
+
+
+Overfull \hbox (2.18448pt too wide) in paragraph at lines 154--155
+[]\OT1/lmtt/m/n/10.95 The texture memory is not used on the current implementation, for obvious
+ []
+
+
+Overfull \hbox (7.93321pt too wide) in paragraph at lines 154--155
+\OT1/lmtt/m/n/10.95 reasons, it is a read only memory. For the current application we need to
+ []
+
+
+Overfull \hbox (48.17435pt too wide) in paragraph at lines 158--159
+\OT1/lmtt/m/n/10.95 Thread Synchronization refers to orderly call thread operations. For efficiency,
+ []
+
+
+Overfull \hbox (7.93321pt too wide) in paragraph at lines 158--159
+\OT1/lmtt/m/n/10.95 a pipeline can be created by queuing a number of kernels to keep the GPGPU
+ []
+
+
+Overfull \hbox (13.68195pt too wide) in paragraph at lines 158--159
+\OT1/lmtt/m/n/10.95 busy for as long as possible. Furthermore, some form of synchronization is
+ []
+
+
+Overfull \hbox (7.93321pt too wide) in paragraph at lines 158--159
+\OT1/lmtt/m/n/10.95 required so that the host is able to determine when the kernel or pipeline
+ []
+
+
+Overfull \hbox (41.057pt too wide) in paragraph at lines 161--162
+[]\OT1/lmtt/m/n/10.95 Explicitly calling cudaThreadSynchronize(), which acts as a barrier causing
+ []
+
+
+Overfull \hbox (69.80067pt too wide) in paragraph at lines 162--163
+[]\OT1/lmtt/m/n/10.95 Performing a blocking data transfer with cudaMemcpy() as cudaThreadSynchronize()
+ []
+
+
+Overfull \hbox (25.17941pt too wide) in paragraph at lines 165--166
+[]\OT1/lmtt/m/n/10.95 The basic unit of work on the GPU is a thread. It is important to understand
+ []
+
+
+Overfull \hbox (13.68195pt too wide) in paragraph at lines 165--166
+\OT1/lmtt/m/n/10.95 from a software point of view that each thread is separate from every other
+ []
+
+
+Overfull \hbox (48.17435pt too wide) in paragraph at lines 165--166
+\OT1/lmtt/m/n/10.95 thread. Every thread acts as if it has its own processor with separate registers
+ []
+
+
+Overfull \hbox (2.18448pt too wide) in paragraph at lines 167--168
+[]\OT1/lmtt/m/n/10.95 Thread synchronization is also possible inside kernel calls. The idea is
+ []
+
+
+Overfull \hbox (2.18448pt too wide) in paragraph at lines 167--168
+\OT1/lmtt/m/n/10.95 the same, the kernel will wait until all the threads have completed their
+ []
+
+
+Overfull \hbox (2.18448pt too wide) in paragraph at lines 167--168
+\OT1/lmtt/m/n/10.95 task. When more threads are synchronized they schedule more work, hence,
+ []
+
+
+Overfull \hbox (7.93321pt too wide) in paragraph at lines 167--168
+\OT1/lmtt/m/n/10.95 better performance and more workload. Thread synchronization is generally
+ []
+
+
+Overfull \hbox (30.92815pt too wide) in paragraph at lines 167--168
+\OT1/lmtt/m/n/10.95 used when loading data into shared memory. The implementation of such process
+ []
+
+
+Overfull \hbox (2.18448pt too wide) in paragraph at lines 171--172
+\OT1/lmtt/m/n/10.95 Kernels are executed in a sequential form with parallel instructions. In
+ []
+
+
+Overfull \hbox (42.42561pt too wide) in paragraph at lines 171--172
+\OT1/lmtt/m/n/10.95 addition, with CUDA's streams is possible to launch several kernels in parallel,
+ []
+
+
+Overfull \hbox (7.93321pt too wide) in paragraph at lines 171--172
+\OT1/lmtt/m/n/10.95 in other words, overlap kernel in the same launch sequence. As the figure
+ []
+
+[39] <Figures/streams.png, id=1018, 591.20876pt x 330.23375pt>
 File: Figures/streams.png Graphic file (type png)
  <use Figures/streams.png>
 Package pdftex.def Info: Figures/streams.png used on input line 175.
 (pdftex.def)             Requested size: 283.87862pt x 158.57085pt.
- [39]
+
+Overfull \hbox (7.93321pt too wide) in paragraph at lines 181--182
+[]\OT1/lmtt/m/n/10.95 A stream in CUDA is a sequence of operations that execute on the device in
+ []
+
+
+Overfull \hbox (30.92815pt too wide) in paragraph at lines 181--182
+\OT1/lmtt/m/n/10.95 the order in which they are issued by the host code. Every kernel is launched
+ []
+
+
+Overfull \hbox (19.43068pt too wide) in paragraph at lines 181--182
+\OT1/lmtt/m/n/10.95 on the default stream zero. Hence, to overlap kernel execution, non-default
+ []
+
+
+Overfull \hbox (2.18448pt too wide) in paragraph at lines 181--182
+\OT1/lmtt/m/n/10.95 streams should be used for every kernel launch. To accomplish concurrent
+ []
+
+
+Overfull \hbox (2.18448pt too wide) in paragraph at lines 181--182
+\OT1/lmtt/m/n/10.95 kernels, streams should be pinned to a non-default stream (non zero)[[]]. 
+ []
+
+
+Overfull \hbox (30.92815pt too wide) in paragraph at lines 183--184
+[]\OT1/lmtt/m/n/10.95 Using two or more CUDA streams, we can allow the GPU to simultaneously execute
+ []
+
+
+Overfull \hbox (7.93321pt too wide) in paragraph at lines 183--184
+\OT1/lmtt/m/n/10.95 a kernel while performing a copy between the host and the GPU. However, we
+ []
+
+
+Overfull \hbox (13.68195pt too wide) in paragraph at lines 183--184
+\OT1/lmtt/m/n/10.95 need to be careful about two issues. First, the host memory involved needs
+ []
+
+
+Overfull \hbox (30.92815pt too wide) in paragraph at lines 183--184
+\OT1/lmtt/m/n/10.95 to be allocated, since we will queue our memory copies, we need to synchronize
+ []
+
+
+Overfull \hbox (2.18448pt too wide) in paragraph at lines 183--184
+\OT1/lmtt/m/n/10.95 those copies. Second, we need to be aware that the order in which we add
+ []
+
+
+Overfull \hbox (2.18448pt too wide) in paragraph at lines 183--184
+\OT1/lmtt/m/n/10.95 operations to our streams will affect out capacity to achieve overlapping
+ []
+
+
+Overfull \hbox (42.42561pt too wide) in paragraph at lines 183--184
+\OT1/lmtt/m/n/10.95 of copies and kernel execution. The general guideline involves a breadth-first,
+ []
+
+
+Overfull \hbox (30.92815pt too wide) in paragraph at lines 185--186
+[]\OT1/lmtt/m/n/10.95 The order of kernel executing effects the operations of the streams, moreover,
+ []
+
+
+Overfull \hbox (36.67688pt too wide) in paragraph at lines 185--186
+\OT1/lmtt/m/n/10.95 the application performance. In the current application, we carefully examined
+ []
+
+
+Overfull \hbox (30.92815pt too wide) in paragraph at lines 185--186
+\OT1/lmtt/m/n/10.95 the order of kernel executing. More about how to implement concurrent kernels
+ []
+
+
+Overfull \hbox (76.91801pt too wide) in paragraph at lines 189--190
+\OT1/lmtt/m/n/10.95 Kernels are the essential part of CUDA programming, threads are launched automatically
+ []
+
+
+Overfull \hbox (7.93321pt too wide) in paragraph at lines 189--190
+\OT1/lmtt/m/n/10.95 throughout each thread per blocks of the device. Furthermore, millions of
+ []
+
+
+Overfull \hbox (7.93321pt too wide) in paragraph at lines 189--190
+\OT1/lmtt/m/n/10.95 threads execute the same code in parallel. However, the parallel code can
+ []
+
+[40 <./Figures/streams.png>]
 Underfull \hbox (badness 10000) in paragraph at lines 193--194
 
  []
 
-[40 <./Figures/streams.png>] [41] <Figures/visualgraph.png, id=1037, 718.685pt x 445.665pt>
+
+Overfull \hbox (23.8108pt too wide) in paragraph at lines 195--196
+[]\OT1/lmtt/m/n/10.95 Refers to code/application is limited by memory access. Most GPUs cards
+ []
+
+
+Overfull \hbox (6.5646pt too wide) in paragraph at lines 195--196
+\OT1/lmtt/m/n/10.95 have 1GB-6GB of memory, which is used to process the data on the GPU.
+ []
+
+
+Overfull \hbox (6.5646pt too wide) in paragraph at lines 195--196
+\OT1/lmtt/m/n/10.95 Different solutions are: reuse data, use different GPU memory types,
+ []
+
+
+Overfull \hbox (12.31334pt too wide) in paragraph at lines 197--199
+\OT1/lmtt/m/n/10.95 Refers to the computation time execution, in other words, calculations
+ []
+
+
+Overfull \hbox (18.06207pt too wide) in paragraph at lines 197--199
+\OT1/lmtt/m/n/10.95 done on the device, under the assumption there is enough memory for the
+ []
+
+
+Overfull \hbox (12.31334pt too wide) in paragraph at lines 197--199
+\OT1/lmtt/m/n/10.95 calculations. Therefore, is the number of operations per cycle in the
+ []
+
+
+Overfull \hbox (52.55447pt too wide) in paragraph at lines 197--199
+\OT1/lmtt/m/n/10.95 kernel. Theoretical bandwidth vs effective Bandwidth can measure performance
+ []
+
+
+Overfull \hbox (12.31334pt too wide) in paragraph at lines 197--199
+\OT1/lmtt/m/n/10.95 for a compute-bound Kernel. Therefore, it is possible to increase the
+ []
+
+
+Overfull \hbox (41.057pt too wide) in paragraph at lines 200--202
+\OT1/lmtt/m/n/10.95 Is one whose predominate stall, is due to memory fetches. This is actually
+ []
+
+
+Overfull \hbox (6.5646pt too wide) in paragraph at lines 200--202
+\OT1/lmtt/m/n/10.95 the saturating the global memory, or any type, but still have to wait
+ []
+
+
+Overfull \hbox (6.5646pt too wide) in paragraph at lines 200--202
+\OT1/lmtt/m/n/10.95 to get the data into the kernel. Physically, is data being sent from
+ []
+
+
+Overfull \hbox (46.80574pt too wide) in paragraph at lines 200--202
+\OT1/lmtt/m/n/10.95 one part of the device to the other. Moreover, depends on the time required
+ []
+
+
+Overfull \hbox (6.5646pt too wide) in paragraph at lines 200--202
+\OT1/lmtt/m/n/10.95 to perform an operation, they are counted in cycles of operations. A
+ []
+
+
+Overfull \hbox (46.80574pt too wide) in paragraph at lines 200--202
+\OT1/lmtt/m/n/10.95 way to reduce the latency is to increase the number of parallel instructions
+ []
+
+
+Overfull \hbox (12.31334pt too wide) in paragraph at lines 200--202
+\OT1/lmtt/m/n/10.95 (more calls per thread), in other words more work per thread and fewer
+ []
+
+
+Overfull \hbox (19.43068pt too wide) in paragraph at lines 204--205
+[]\OT1/lmtt/m/n/10.95 Depending on the problem, the application can be bound by the previous three
+ []
+
+
+Overfull \hbox (7.93321pt too wide) in paragraph at lines 204--205
+\OT1/lmtt/m/n/10.95 factors. The next chapter we are going to explain how and why the current
+ []
+
+
+Overfull \hbox (19.43068pt too wide) in paragraph at lines 209--210
+\OT1/lmtt/m/n/10.95 The hardware capabilities, limits how many threads per block a kernel launch
+ []
+
+
+Overfull \hbox (2.18448pt too wide) in paragraph at lines 209--210
+\OT1/lmtt/m/n/10.95 is able to have. But as well as the version of CUDA that the hardware is
+ []
+
+
+Overfull \hbox (30.92815pt too wide) in paragraph at lines 209--210
+\OT1/lmtt/m/n/10.95 able to execute. The compute capabilities of a device represents by a version
+ []
+
+
+Overfull \hbox (13.68195pt too wide) in paragraph at lines 209--210
+\OT1/lmtt/m/n/10.95 number, called "SM version" or CC for short. The version number identifies
+ []
+
+
+Overfull \hbox (7.93321pt too wide) in paragraph at lines 209--210
+\OT1/lmtt/m/n/10.95 the features supported by the GPU hardware and is used by the applications
+ []
+
+
+Overfull \hbox (48.17435pt too wide) in paragraph at lines 209--210
+\OT1/lmtt/m/n/10.95 at runtime to determine which hardware features and/or instructions are available
+ []
+
+[41]
+Overfull \hbox (19.43068pt too wide) in paragraph at lines 211--212
+[]\OT1/lmtt/m/n/10.95 Another inefficiency that can cause low performance in the CUDA application,
+ []
+
+
+Overfull \hbox (2.18448pt too wide) in paragraph at lines 211--212
+\OT1/lmtt/m/n/10.95 is the number transfers memory calls between the CPU and the GPU. The GPU
+ []
+
+
+Overfull \hbox (15.583pt too wide) in paragraph at lines 211--212
+\OT1/lmtt/m/n/10.95 communicates with the CPU via a \OT1/lmtt/m/it/10.95 PCIe \OT1/lmtt/m/n/10.95 bus as mentioned before. In addition,
+ []
+
+
+Overfull \hbox (25.17941pt too wide) in paragraph at lines 211--212
+\OT1/lmtt/m/n/10.95 all of the massive FLOPS per second that are computed on the GPU are not able
+ []
+
+
+Overfull \hbox (19.43068pt too wide) in paragraph at lines 211--212
+\OT1/lmtt/m/n/10.95 to send back to the CPU. Because, of the physical connection between the GPU
+ []
+
+
+Overfull \hbox (53.92308pt too wide) in paragraph at lines 211--212
+\OT1/lmtt/m/n/10.95 and CPU. Ideally, the GPU should have a much workload as possible before returning
+ []
+
+
+Overfull \hbox (7.93321pt too wide) in paragraph at lines 211--212
+\OT1/lmtt/m/n/10.95 data back to the CPU. However, this is not always possible, a technique to
+ []
+
+
+Overfull \hbox (36.67688pt too wide) in paragraph at lines 211--212
+\OT1/lmtt/m/n/10.95 increase more throughput is to pin/bind the memory in the host. Another method
+ []
+
+
+Overfull \hbox (19.43068pt too wide) in paragraph at lines 211--212
+\OT1/lmtt/m/n/10.95 is to send as much workload as possible in a single kernel call and by using
+ []
+
+
+Overfull \hbox (42.42561pt too wide) in paragraph at lines 211--212
+\OT1/lmtt/m/n/10.95 the maximum the GPU hardware capabilities [[]]. For the current implementation,
+ []
+
+
+Overfull \hbox (2.18448pt too wide) in paragraph at lines 211--212
+\OT1/lmtt/m/n/10.95 CPU and GPU are relatively low, only a few times communication is done by
+ []
+
+
+Overfull \hbox (25.17941pt too wide) in paragraph at lines 215--216
+\OT1/lmtt/m/n/10.95 There are several hardware limitations in how much threads per block a kernel
+ []
+
+
+Overfull \hbox (13.68195pt too wide) in paragraph at lines 215--216
+\OT1/lmtt/m/n/10.95 can handle. Launching a kernel with the hardware constraints of the device
+ []
+
+
+Overfull \hbox (19.43068pt too wide) in paragraph at lines 215--216
+\OT1/lmtt/m/n/10.95 will only ensure us that the kernel will actually be executed on the device,
+ []
+
+
+Overfull \hbox (28.5557pt too wide) in paragraph at lines 215--216
+\OT1/lmtt/m/n/10.95 Nonetheless, not 100$\OT1/cmr/m/n/10.95 %$ \OT1/lmtt/m/n/10.95 optimal and the results can be incorrect. Furthermore,
+ []
+
+
+Overfull \hbox (2.18448pt too wide) in paragraph at lines 215--216
+\OT1/lmtt/m/n/10.95 is necessary to launch kernels with the right amount of threads per block
+ []
+
+
+Overfull \hbox (13.68195pt too wide) in paragraph at lines 215--216
+\OT1/lmtt/m/n/10.95 based on the hardware settings. The block size will determine how fast the
+ []
+
+
+Overfull \hbox (19.43068pt too wide) in paragraph at lines 215--216
+\OT1/lmtt/m/n/10.95 kernel will execute. However, not the biggest block will run faster, relays
+ []
+
+
+Overfull \hbox (30.92815pt too wide) in paragraph at lines 215--216
+\OT1/lmtt/m/n/10.95 on the problem and the data set. By benchmarking the application, is possible
+ []
+
+
+Overfull \hbox (13.68195pt too wide) in paragraph at lines 215--216
+\OT1/lmtt/m/n/10.95 to find the optimal configuration that best fits the problem. One thing to
+ []
+
+
+Overfull \hbox (2.18448pt too wide) in paragraph at lines 215--216
+\OT1/lmtt/m/n/10.95 keep in mind, thread blocks should be a multiple number of SMs, with this
+ []
+
+
+Overfull \hbox (19.43068pt too wide) in paragraph at lines 215--216
+\OT1/lmtt/m/n/10.95 idea is possible to obtain optimal thread block configuration. Read chapter
+ []
+
+
+Overfull \hbox (36.67688pt too wide) in paragraph at lines 215--216
+[][]\OT1/lmtt/m/n/10.95 5[][] for the optimal thread configuration for the current simulation. The optimal
+ []
+
+
+Overfull \hbox (7.93321pt too wide) in paragraph at lines 215--216
+\OT1/lmtt/m/n/10.95 number of threads per block did not occur on the maximal available threads
+ []
+
+
+Overfull \hbox (7.93321pt too wide) in paragraph at lines 219--220
+\OT1/lmtt/m/n/10.95 Is a challenging task to keep track of each individual thread even more, a
+ []
+
+
+Overfull \hbox (7.93321pt too wide) in paragraph at lines 219--220
+\OT1/lmtt/m/n/10.95 million threads. Becomes difficult to debug highly parallel applications.
+ []
+
+
+Overfull \hbox (19.43068pt too wide) in paragraph at lines 219--220
+\OT1/lmtt/m/n/10.95 The NVIDIA's Visual Profiler is a profiling tool that can be used to measure
+ []
+
+
+Overfull \hbox (2.18448pt too wide) in paragraph at lines 219--220
+\OT1/lmtt/m/n/10.95 performance and find potential opportunities for optimization in order to
+ []
+
+
+Overfull \hbox (7.93321pt too wide) in paragraph at lines 219--220
+\OT1/lmtt/m/n/10.95 achieve maximum performance on the GPUs. The Profiler provides metrics in
+ []
+
+
+Overfull \hbox (7.93321pt too wide) in paragraph at lines 219--220
+\OT1/lmtt/m/n/10.95 the form of plots and graphs, which illustrates instances of the GPU, such
+ []
+
+
+Overfull \hbox (36.67688pt too wide) in paragraph at lines 219--220
+\OT1/lmtt/m/n/10.95 as kernel calls, data transfer, kernel executing time, memory dumps and others.
+ []
+
+[42] <Figures/visualgraph.png, id=1042, 718.685pt x 445.665pt>
 File: Figures/visualgraph.png Graphic file (type png)
  <use Figures/visualgraph.png>
 Package pdftex.def Info: Figures/visualgraph.png used on input line 223.
 (pdftex.def)             Requested size: 417.47307pt x 258.8871pt.
- [42] <Figures/pofiler.png, id=1045, 889.3225pt x 406.51875pt>
+
+Overfull \hbox (42.42561pt too wide) in paragraph at lines 229--230
+[]\OT1/lmtt/m/n/10.95 NVIDIA's profiling tools comes in various flavors; a standalone profiler through
+ []
+
+
+Overfull \hbox (25.17941pt too wide) in paragraph at lines 229--230
+\OT1/lmtt/m/n/10.95 the visual profiler compiler nvvp, integrated in a GUI NSight Eclipse Edition
+ []
+
+
+Overfull \hbox (7.93321pt too wide) in paragraph at lines 229--230
+\OT1/lmtt/m/n/10.95 as NSight command (Visual Profiler), and as a command-line profiler though
+ []
+
+
+Overfull \hbox (48.17435pt too wide) in paragraph at lines 229--230
+\OT1/lmtt/m/n/10.95 nvprof command. Each one has its disadvantages and advantages. The command-line
+ []
+
+
+Overfull \hbox (13.68195pt too wide) in paragraph at lines 229--230
+\OT1/lmtt/m/n/10.95 profiler is useful for remotely access, where a GUI is not available, while
+ []
+
+
+Overfull \hbox (42.42561pt too wide) in paragraph at lines 229--230
+\OT1/lmtt/m/n/10.95 the NSight can show graphs, plots and timeline of the application. The Profiler
+ []
+
+
+Overfull \hbox (2.18448pt too wide) in paragraph at lines 229--230
+\OT1/lmtt/m/n/10.95 support CUDA applications as well as openCL applications. However, there
+ []
+
+
+Overfull \hbox (48.17435pt too wide) in paragraph at lines 231--232
+[]\OT1/lmtt/m/n/10.95 The Visual Profiler, by default, will execute the entire application, nonetheless
+ []
+
+
+Overfull \hbox (19.43068pt too wide) in paragraph at lines 231--232
+\OT1/lmtt/m/n/10.95 typically only some parts of application only need performance optimization.
+ []
+
+
+Overfull \hbox (30.92815pt too wide) in paragraph at lines 231--232
+\OT1/lmtt/m/n/10.95 This enables to determine kernels, code where critical performances is needed.
+ []
+
+
+Overfull \hbox (19.43068pt too wide) in paragraph at lines 231--232
+\OT1/lmtt/m/n/10.95 The common situations where profiling a region of the application is helpful
+ []
+
+[43 <./Figures/visualgraph.png>]
+Overfull \hbox (0.81587pt too wide) in paragraph at lines 234--235
+[]\OT1/lmtt/m/n/10.95 Analyze data initialization and movement in the CPU and GPU, as well
+ []
+
+
+Overfull \hbox (29.55954pt too wide) in paragraph at lines 235--236
+[]\OT1/lmtt/m/n/10.95 The application operates in phases, where a algorithm operates throughout
+ []
+
+
+Overfull \hbox (18.06207pt too wide) in paragraph at lines 235--236
+\OT1/lmtt/m/n/10.95 each region. The application can be optimized independently from other
+ []
+
+
+Overfull \hbox (12.31334pt too wide) in paragraph at lines 236--237
+[]\OT1/lmtt/m/n/10.95 The application contains algorithms that operate though a large number
+ []
+
+
+Overfull \hbox (18.06207pt too wide) in paragraph at lines 236--237
+\OT1/lmtt/m/n/10.95 of iterations. In this case is possible to collect data from a portion
+ []
+
+
+Overfull \hbox (13.68195pt too wide) in paragraph at lines 239--240
+[]\OT1/lmtt/m/n/10.95 The Visual Profiler provides a step-by-step optimization guidance, where is
+ []
+
+
+Overfull \hbox (7.93321pt too wide) in paragraph at lines 239--240
+\OT1/lmtt/m/n/10.95 possible to evaluate the GPU usage, examine individual kernels and analyze
+ []
+
+
+Overfull \hbox (2.18448pt too wide) in paragraph at lines 239--240
+\OT1/lmtt/m/n/10.95 timeline of the application which the profiler shows memory movements and
+ []
+
+
+Overfull \hbox (19.43068pt too wide) in paragraph at lines 239--240
+\OT1/lmtt/m/n/10.95 usage, CUDA calls, number of threads and performance. The figure [][]4.8[][] shows,
+ []
+
+
+Overfull \hbox (36.67688pt too wide) in paragraph at lines 239--240
+\OT1/lmtt/m/n/10.95 each Kernel has its own percentage of execution time of the overall application
+ []
+
+<Figures/pofiler.png, id=1051, 889.3225pt x 406.51875pt>
 File: Figures/pofiler.png Graphic file (type png)
  <use Figures/pofiler.png>
 Package pdftex.def Info: Figures/pofiler.png used on input line 243.
 (pdftex.def)             Requested size: 375.7232pt x 171.74779pt.
- [43 <./Figures/visualgraph.png>] [44 <./Figures/pofiler.png>]
-Overfull \hbox (10.60149pt too wide) in paragraph at lines 279--280
-\OT1/cmr/m/n/10.95 GPU. In ad-di-tion, hard-ware lim-i-ta-tion, de-ter-mi-nate the best us-age of the GPUs. NVIDIA's
+
+Overfull \hbox (2.18448pt too wide) in paragraph at lines 251--252
+\OT1/lmtt/m/n/10.95 The profiler will execute several times the application for it to collect
  []
 
-) (./Chapters/Chapter5.tex [45]
+
+Overfull \hbox (2.18448pt too wide) in paragraph at lines 251--252
+\OT1/lmtt/m/n/10.95 data from each kernels. This enables to precisely optimize phases of the
+ []
+
+
+Overfull \hbox (2.18448pt too wide) in paragraph at lines 251--252
+\OT1/lmtt/m/n/10.95 application[[]]. The profiling tools can verify how long the application
+ []
+
+
+Overfull \hbox (13.68195pt too wide) in paragraph at lines 251--252
+\OT1/lmtt/m/n/10.95 spends executing each kernel as well the number of used blocks and threads.
+ []
+
+
+Overfull \hbox (13.68195pt too wide) in paragraph at lines 251--252
+\OT1/lmtt/m/n/10.95 Through this is possible to obtain various memory throughput measures, like
+ []
+
+
+Overfull \hbox (30.92815pt too wide) in paragraph at lines 251--252
+\OT1/lmtt/m/n/10.95 global load throughput and global store throughput, indicate the global memory
+ []
+
+
+Overfull \hbox (36.67688pt too wide) in paragraph at lines 251--252
+\OT1/lmtt/m/n/10.95 throughput requested by the kernel and therefore corresponding to the effective
+ []
+
+[44 <./Figures/pofiler.png>]
+Overfull \hbox (25.17941pt too wide) in paragraph at lines 253--254
+[]\OT1/lmtt/m/n/10.95 As we know the profiler executes the application several time to collect data
+ []
+
+
+Overfull \hbox (2.18448pt too wide) in paragraph at lines 253--254
+\OT1/lmtt/m/n/10.95 about each kernel. The information obtained by each kernel can be sum-up
+ []
+
+
+Overfull \hbox (7.93321pt too wide) in paragraph at lines 253--254
+\OT1/lmtt/m/n/10.95 in-to a report that can be exported in a pdf file, which has the following
+ []
+
+LaTeX Font Info:    Font shape `OT1/lmtt/bx/n' in size <10.95> not available
+(Font)              Font shape `OT1/lmtt/b/n' tried instead on input line 256.
+
+Overfull \hbox (35.30827pt too wide) in paragraph at lines 256--258
+\OT1/lmtt/m/n/10.95 The performance determines if the kernel is bounded by computation, memory
+ []
+
+
+Overfull \hbox (0.81587pt too wide) in paragraph at lines 256--258
+\OT1/lmtt/m/n/10.95 bandwidth, or instructions/memory latency. It shows how is limiting
+ []
+
+
+Overfull \hbox (6.5646pt too wide) in paragraph at lines 259--261
+\OT1/lmtt/m/n/10.95 Instruction and memory latency limit the performance of a kernel when
+ []
+
+
+Overfull \hbox (87.04688pt too wide) in paragraph at lines 259--261
+\OT1/lmtt/m/n/10.95 the GPU does not have enough work to keep busy. The performance of latency-limited
+ []
+
+
+Overfull \hbox (0.81587pt too wide) in paragraph at lines 259--261
+\OT1/lmtt/m/n/10.95 kernels can often be improved by increasing occupancy. Occupancy is
+ []
+
+
+Overfull \hbox (12.31334pt too wide) in paragraph at lines 259--261
+\OT1/lmtt/m/n/10.95 a measure of how many warps the kernel has active on the GPU, relative
+ []
+
+
+Overfull \hbox (46.80574pt too wide) in paragraph at lines 262--264
+\OT1/lmtt/m/n/10.95 GPU compute resources limit the performance of a kernel when those resources
+ []
+
+
+Overfull \hbox (6.5646pt too wide) in paragraph at lines 262--264
+\OT1/lmtt/m/n/10.95 are insufficient or poorly utilized. Compute resources are used most
+ []
+
+
+Overfull \hbox (12.31334pt too wide) in paragraph at lines 264--266
+\OT1/lmtt/m/n/10.95 floating-point operations executed by the kernel, can be either single
+ []
+
+
+Overfull \hbox (0.81587pt too wide) in paragraph at lines 267--269
+\OT1/lmtt/m/n/10.95 Memory bandwidth limits the performance of a kernel when one or more
+ []
+
+
+Overfull \hbox (0.81587pt too wide) in paragraph at lines 267--269
+\OT1/lmtt/m/n/10.95 memories in the GPU cannot provide data at the rate requested by the
+ []
+
+
+Overfull \hbox (13.68195pt too wide) in paragraph at lines 271--272
+[]\OT1/lmtt/m/n/10.95 The profiling report was used in the current implementation to optimize the
+ []
+
+
+Overfull \hbox (2.18448pt too wide) in paragraph at lines 275--276
+\OT1/lmtt/m/n/10.95 As mention before, is possible to collect data from a remote system where
+ []
+
+
+Overfull \hbox (13.68195pt too wide) in paragraph at lines 275--276
+\OT1/lmtt/m/n/10.95 a GUI is not available, using the command-line nvprof. Remote profiling is
+ []
+
+
+Overfull \hbox (25.17941pt too wide) in paragraph at lines 275--276
+\OT1/lmtt/m/n/10.95 the process of collecting profile data from a remote system that is different
+ []
+
+
+Overfull \hbox (19.43068pt too wide) in paragraph at lines 275--276
+\OT1/lmtt/m/n/10.95 than the host system at which that profile data will be viewed and analyzed.
+ []
+
+
+Overfull \hbox (53.92308pt too wide) in paragraph at lines 275--276
+\OT1/lmtt/m/n/10.95 Once all the profiling results are collected is possible to access the information
+ []
+
+
+Overfull \hbox (25.17941pt too wide) in paragraph at lines 275--276
+\OT1/lmtt/m/n/10.95 using a local Visual profiler, enables a GUI and more compressive information
+ []
+
+
+Overfull \hbox (2.18448pt too wide) in paragraph at lines 275--276
+\OT1/lmtt/m/n/10.95 about the application. There are two ways to perform a remote profiling.
+ []
+
+
+Overfull \hbox (7.93321pt too wide) in paragraph at lines 275--276
+\OT1/lmtt/m/n/10.95 To use nvvp remote profiling you must install the same version of the CUDA
+ []
+
+
+Overfull \hbox (2.18448pt too wide) in paragraph at lines 275--276
+\OT1/lmtt/m/n/10.95 Toolkit on both the host and remote systems. It is not necessary for the
+ []
+
+
+Overfull \hbox (19.43068pt too wide) in paragraph at lines 275--276
+\OT1/lmtt/m/n/10.95 host system to have an NVIDIA GPU [[]]. For the current application, remote
+ []
+
+
+Overfull \hbox (13.68195pt too wide) in paragraph at lines 275--276
+\OT1/lmtt/m/n/10.95 profiler was used. However, the server did not have an external monitor or
+ []
+
+
+Overfull \hbox (30.92815pt too wide) in paragraph at lines 275--276
+\OT1/lmtt/m/n/10.95 virtual. Therefore, it was not possible to obtain all the profiling analysis,
+ []
+
+[45]
+Overfull \hbox (13.68195pt too wide) in paragraph at lines 279--280
+[]\OT1/lmtt/m/n/10.95 Finally, the chapter gives an overview of practices and performance studies
+ []
+
+
+Overfull \hbox (48.17435pt too wide) in paragraph at lines 279--280
+\OT1/lmtt/m/n/10.95 for GPGPU. Moreover, a better understanding of the hardware and memory management
+ []
+
+
+Overfull \hbox (13.68195pt too wide) in paragraph at lines 279--280
+\OT1/lmtt/m/n/10.95 on the GPU. In addition, hardware limitation, determinate the best usage of
+ []
+
+
+Overfull \hbox (7.93321pt too wide) in paragraph at lines 279--280
+\OT1/lmtt/m/n/10.95 the GPUs. NVIDIA's profiling tools are useful to analyze different stages
+ []
+
+
+Overfull \hbox (13.68195pt too wide) in paragraph at lines 279--280
+\OT1/lmtt/m/n/10.95 of our application. Therefore, determinate elements of the CUDA code where
+ []
+
+
+Overfull \hbox (13.68195pt too wide) in paragraph at lines 279--280
+\OT1/lmtt/m/n/10.95 is better to optimize from others, thus, gain an improvement in performance
+ []
+
+) (./Chapters/Chapter5.tex [46]
 Chapter 5.
 ------------------------------------------------------------------------------
  5 Optimization Results
 ------------------------------------------------------------------------------
-Missing character: There is no ‚ in font cmr10!
-Missing character: There is no Ä in font cmr10!
-Missing character: There is no ú in font cmr10!
-Missing character: There is no ‚ in font cmr10!
-Missing character: There is no Ä in font cmr10!
-Missing character: There is no ù in font cmr10!
+
+Overfull \hbox (30.92815pt too wide) in paragraph at lines 9--10
+\OT1/lmtt/m/n/10.95 The following chapter are the results of the CUDA code implementation launched
+ []
+
+
+Overfull \hbox (42.42561pt too wide) in paragraph at lines 9--10
+\OT1/lmtt/m/n/10.95 on a single GPU device. The tests were performed on various GPUs architectures.
+ []
+
+
+Overfull \hbox (25.17941pt too wide) in paragraph at lines 9--10
+\OT1/lmtt/m/n/10.95 The application is analyzed on various stages using NVIDIA's Visual Profiler.
+ []
+
+
+Overfull \hbox (19.43068pt too wide) in paragraph at lines 9--10
+\OT1/lmtt/m/n/10.95 In addition, the CUDA kernels were evaluated in performance, execution time,
+ []
+
+
+Overfull \hbox (2.18448pt too wide) in paragraph at lines 9--10
+\OT1/lmtt/m/n/10.95 occupancy and concurrent kernels. Furthermore, the results, are analyzed
+ []
+
+
+Overfull \hbox (30.92815pt too wide) in paragraph at lines 9--10
+\OT1/lmtt/m/n/10.95 and optimized using the schemes from Chapter [][]4[][]. The code is executed remotely
+ []
+
+
+Overfull \hbox (2.18448pt too wide) in paragraph at lines 9--10
+\OT1/lmtt/m/n/10.95 on the supercomputer ``Piritakua'' at the Department of Multidisciplinary
+ []
+
+
+Overfull \hbox (19.43068pt too wide) in paragraph at lines 9--10
+\OT1/lmtt/m/n/10.95 Studies Yuriria, University of Guanajuato. The last section is the overview
+ []
+
+Missing character: There is no ú in font rm-lmtt10!
+
+Overfull \hbox (19.43068pt too wide) in paragraph at lines 13--14
+\OT1/lmtt/m/n/10.95 The experiments are carried out using the supercomputer ‚ÄPiritakua‚Äù. The
+ []
+
+
+Overfull \hbox (19.43068pt too wide) in paragraph at lines 13--14
+\OT1/lmtt/m/n/10.95 massive GPU cluster was design and built by Dr. Claudio from the University
+ []
+
+
+Overfull \hbox (2.18448pt too wide) in paragraph at lines 13--14
+\OT1/lmtt/m/n/10.95 of Guanajuato at Yuriria's Multidisciplinary Studies. The GPU cluster is
+ []
+
+
+Overfull \hbox (36.67688pt too wide) in paragraph at lines 13--14
+\OT1/lmtt/m/n/10.95 located at a small town of Mexico, Yuriria. The supercomputer at the front-end
+ []
+
+
+Overfull \hbox (59.67181pt too wide) in paragraph at lines 13--14
+\OT1/lmtt/m/n/10.95 has an eight core Intel Xeon at 2.4 Ghz, at the back-end several GPU are connected.
+ []
+
+
+Overfull \hbox (19.43068pt too wide) in paragraph at lines 13--14
+\OT1/lmtt/m/n/10.95 All of GPUs CUDA version 5.0 was installed. Furthermore, the GPUs node are;
+ []
+
+
+Overfull \hbox (30.92815pt too wide) in paragraph at lines 15--16
+[]\OT1/lmtt/m/n/10.95 The cluster has a GNU$ $LINUX distribution installed, the CentOS 64 bits version
+ []
+
+
+Overfull \hbox (19.43068pt too wide) in paragraph at lines 15--16
+\OT1/lmtt/m/n/10.95 6.4. CentOS stands for Community Enterprise Operating System, which is free
+ []
+
+
+Overfull \hbox (13.68195pt too wide) in paragraph at lines 15--16
+\OT1/lmtt/m/n/10.95 operating system and one of the most popular GNU$ $Linux distribution for web
+ []
+
+
+Overfull \hbox (25.17941pt too wide) in paragraph at lines 15--16
+\OT1/lmtt/m/n/10.95 servers and as well is supported by RHEL (Red Hat Enterprise Linux) [[]]. The
+ []
+
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-[46
+
+Overfull \hbox (30.92815pt too wide) in paragraph at lines 38--39
+[]\OT1/lmtt/m/n/10.95 The CUDA Code was launched on only two CPUs, a laptop with an eight core intel
+ []
+
+
+Overfull \hbox (13.68195pt too wide) in paragraph at lines 38--39
+\OT1/lmtt/m/n/10.95 i7-3630QM and a high-end CPU Xeon Phi 7120p from the cluster. In addition,
+ []
+
+
+Overfull \hbox (2.18448pt too wide) in paragraph at lines 38--39
+\OT1/lmtt/m/n/10.95 the Xeon Phi was used as based CPU for all the connected GPUs nodes. The
+ []
+
+
+Overfull \hbox (2.18448pt too wide) in paragraph at lines 38--39
+\OT1/lmtt/m/n/10.95 Xeon Phi 720p is capable of achieving f 1.2 teraflops of double precision
+ []
+
+
+Overfull \hbox (30.92815pt too wide) in paragraph at lines 38--39
+\OT1/lmtt/m/n/10.95 floating point instructions with 352 GB/sec memory bandwidth at 300 W. Lastly,
+ []
+
+
+Overfull \hbox (7.93321pt too wide) in paragraph at lines 38--39
+\OT1/lmtt/m/n/10.95 the code was executed on laptop to show the performance comparison between
+ []
+
+[47
 
 ]
+Overfull \hbox (13.68195pt too wide) in paragraph at lines 40--41
+[]\OT1/lmtt/m/n/10.95 When accessing ``Piritakua'' remotely is possible to use all the GPUs nodes
+ []
+
+
+Overfull \hbox (2.18448pt too wide) in paragraph at lines 40--41
+\OT1/lmtt/m/n/10.95 available on the cluster. The specifications of the GPU connected to the
+ []
+
+
 Overfull \hbox (5.05098pt too wide) in paragraph at lines 44--59
  [][] 
  []
 
-[47] [48] <Figures/gpu_initial.png, id=1097, 1113.6807pt x 426.03165pt>
+
+Overfull \hbox (19.43068pt too wide) in paragraph at lines 63--64
+[]\OT1/lmtt/m/n/10.95 The code was launched on all Piritakua's GPUs and on an external GeForce GTX
+ []
+
+
+Overfull \hbox (13.68195pt too wide) in paragraph at lines 63--64
+\OT1/lmtt/m/n/10.95 670m, located on a laptop. The "m" stands for the mobil graphic cards. In
+ []
+
+
+Overfull \hbox (25.17941pt too wide) in paragraph at lines 63--64
+\OT1/lmtt/m/n/10.95 addition the 670m card is design for less power usage, but with high graphics
+ []
+
+
+Overfull \hbox (2.18448pt too wide) in paragraph at lines 63--64
+\OT1/lmtt/m/n/10.95 power, it even has more cores than some Tesla models, However, this types
+ []
+
+
+Overfull \hbox (13.68195pt too wide) in paragraph at lines 63--64
+\OT1/lmtt/m/n/10.95 of cards has way more less Bandwidth than standard versions. The 670m card
+ []
+
+
+Overfull \hbox (25.17941pt too wide) in paragraph at lines 63--64
+\OT1/lmtt/m/n/10.95 was used as comparison between laptop GPUs and high-end desktop/servers GPUs. 
+ []
+
+
+Overfull \hbox (19.43068pt too wide) in paragraph at lines 67--68
+\OT1/lmtt/m/n/10.95 NVIDIA's GPU are constantly being improved over the years, nonetheless, most
+ []
+
+
+Overfull \hbox (53.92308pt too wide) in paragraph at lines 67--68
+\OT1/lmtt/m/n/10.95 programming paradigms stayed the same. The are currently three main architectures
+ []
+
+
+Overfull \hbox (13.68195pt too wide) in paragraph at lines 67--68
+\OT1/lmtt/m/n/10.95 processors; Fermi, Kepler and the newest Maxwell. For example, a streaming
+ []
+
+
+Overfull \hbox (13.68195pt too wide) in paragraph at lines 67--68
+\OT1/lmtt/m/n/10.95 processor can now handle 2048 threads at a time, but the maximum block size
+ []
+
+
+Overfull \hbox (22.80696pt too wide) in paragraph at lines 67--68
+\OT1/lmtt/m/n/10.95 stayed at 1024. The results in a 100$\OT1/cmr/m/n/10.95 %$ \OT1/lmtt/m/n/10.95 theoretical occupancy for block sizes
+ []
+
+
+Overfull \hbox (22.80696pt too wide) in paragraph at lines 67--68
+\OT1/lmtt/m/n/10.95 of 1024 compared to 66$\OT1/cmr/m/n/10.95 %$ \OT1/lmtt/m/n/10.95 of Fermi type. Another example is the use of Shared
+ []
+
+
+Overfull \hbox (2.18448pt too wide) in paragraph at lines 67--68
+\OT1/lmtt/m/n/10.95 Memory. Maxwell has 64KB dedicated Shared Memory. The maximum amount of
+ []
+
+[48]
+Overfull \hbox (7.93321pt too wide) in paragraph at lines 69--70
+[]\OT1/lmtt/m/n/10.95 There are two GPU architectures where the implementation was launched, the
+ []
+
+
+Overfull \hbox (19.43068pt too wide) in paragraph at lines 69--70
+\OT1/lmtt/m/n/10.95 Fermi and the Kepler. The Tesla K20m and the GeForce 670mx are based on the
+ []
+
+
+Overfull \hbox (19.43068pt too wide) in paragraph at lines 69--70
+\OT1/lmtt/m/n/10.95 ``Kepler'' GPU architecture. The Tesla M2070, M2050 and the GeForce GTX 580
+ []
+
+
+Overfull \hbox (2.18448pt too wide) in paragraph at lines 69--70
+\OT1/lmtt/m/n/10.95 on the Fermi architecture. The Kepler architecture newer than the Fermi.
+ []
+
+
+Overfull \hbox (65.42055pt too wide) in paragraph at lines 69--70
+\OT1/lmtt/m/n/10.95 More information about the architectures in the table [][]5.3[][]. The Maxwell architecture
+ []
+
+
+Overfull \hbox (48.17435pt too wide) in paragraph at lines 69--70
+\OT1/lmtt/m/n/10.95 was not used for the current simulation, however, is showed for future reference. 
+ []
+
+
+Overfull \hbox (42.42561pt too wide) in paragraph at lines 108--109
+\OT1/lmtt/m/n/10.95 The CUDA code was launched on each one of "Piritakua"'s GPUs. The supercomputer
+ []
+
+
+Overfull \hbox (30.92815pt too wide) in paragraph at lines 108--109
+\OT1/lmtt/m/n/10.95 has two achitecture types Fermin and Kepler. Furthermore, the initial results
+ []
+
+
+Overfull \hbox (13.68195pt too wide) in paragraph at lines 108--109
+\OT1/lmtt/m/n/10.95 of 1.00x speedup were tested on a Kepler architecture, the GeForce GT 650M.
+ []
+
+
+Overfull \hbox (19.43068pt too wide) in paragraph at lines 108--109
+\OT1/lmtt/m/n/10.95 The graph [][]5.1[][] illustrates the executing time for all the GPUs in the server. 
+ []
+
+
+Overfull \hbox (19.43068pt too wide) in paragraph at lines 110--111
+[]\OT1/lmtt/m/n/10.95 We used NVIDIA's Visual Profiler to obtain kernel metrics of the Tesla K20m,
+ []
+
+
+Overfull \hbox (36.67688pt too wide) in paragraph at lines 110--111
+\OT1/lmtt/m/n/10.95 which is showed in The table [][]5.4[][]. The output is organized by kernel importance
+ []
+
+
+Overfull \hbox (71.16928pt too wide) in paragraph at lines 110--111
+\OT1/lmtt/m/n/10.95 and performance during the simulation. The Laplacian kernel evaluation; glaplacinay,
+ []
+
+
+Overfull \hbox (51.55063pt too wide) in paragraph at lines 110--111
+\OT1/lmtt/m/n/10.95 gLaplacianx and gLaplacianYBoundaries uses upto 44.37$\OT1/cmr/m/n/10.95 %$ \OT1/lmtt/m/n/10.95 of the overall simulation.
+ []
+
+
+Overfull \hbox (16.48253pt too wide) in paragraph at lines 110--111
+\OT1/lmtt/m/n/10.95 The $\OML/cmm/m/it/10.95 gsolution$ \OT1/lmtt/m/n/10.95 kernel, which solves Zhang-Li model [][]2.2[][] consumes up-to 14.04$\OT1/cmr/m/n/10.95 %$\OT1/lmtt/m/n/10.95 .
+ []
+
+
+Overfull \hbox (53.92308pt too wide) in paragraph at lines 110--111
+\OT1/lmtt/m/n/10.95 The RK4 integration only exhaust a minor part of the overall simulation. However,
+ []
+
+
+Overfull \hbox (71.16928pt too wide) in paragraph at lines 110--111
+\OT1/lmtt/m/n/10.95 the gSolution, gsdExchange and Laplacian calculation are part of the RK4 integration,
+ []
+
+[49]
+Overfull \hbox (2.18448pt too wide) in paragraph at lines 112--113
+[]\OT1/lmtt/m/n/10.95 The throughput was not review on the current application. Since only two
+ []
+
+
+Overfull \hbox (30.92815pt too wide) in paragraph at lines 112--113
+\OT1/lmtt/m/n/10.95 stages of the simulation transfer of the CPU data occurs, on the initial stage
+ []
+
+
+Overfull \hbox (2.18448pt too wide) in paragraph at lines 112--113
+\OT1/lmtt/m/n/10.95 where CPU data is sent to the GPU, and the final stage where is sent back
+ []
+
+
+Overfull \hbox (7.93321pt too wide) in paragraph at lines 114--115
+[]\OT1/lmtt/m/n/10.95 The optimization focus is to give the GPUs as much work as possible, using
+ []
+
+
+Overfull \hbox (42.42561pt too wide) in paragraph at lines 114--115
+\OT1/lmtt/m/n/10.95 at the fullest the GPU hardware capabilities. In addition, reducing the overall
+ []
+
+
+Overfull \hbox (2.18448pt too wide) in paragraph at lines 114--115
+\OT1/lmtt/m/n/10.95 performance time of each kernel, eliminating the computational hover-head
+ []
+
+<Figures/gpu_initial.png, id=1103, 1113.6807pt x 426.03165pt>
 File: Figures/gpu_initial.png Graphic file (type png)
  <use Figures/gpu_initial.png>
 Package pdftex.def Info: Figures/gpu_initial.png used on input line 149.
 (pdftex.def)             Requested size: 417.47307pt x 159.70296pt.
- [49 <./Figures/gpu_initial.png>] <Figures/threads.png, id=1107, 649.42625pt x 198.7425pt>
+
+Overfull \hbox (2.18448pt too wide) in paragraph at lines 155--156
+[]\OT1/lmtt/m/n/10.95 The figure [][]5.1[][] illustrates the GeForce GTX 580 is the card with the least
+ []
+
+
+Overfull \hbox (7.93321pt too wide) in paragraph at lines 155--156
+\OT1/lmtt/m/n/10.95 amount of execution time, and the Tesla K20m the fastest amongst the Tesla
+ []
+
+
+Overfull \hbox (7.93321pt too wide) in paragraph at lines 158--159
+[]\OT1/lmtt/m/n/10.95 The following sections are the optimization techniques and methods applied
+ []
+
+
+Overfull \hbox (36.67688pt too wide) in paragraph at lines 158--159
+\OT1/lmtt/m/n/10.95 to the application. In addition, comparing the performance between the initial
+ []
+
+
+Overfull \hbox (25.17941pt too wide) in paragraph at lines 158--159
+\OT1/lmtt/m/n/10.95 implementation and the modified versions. The optimization is breakdown into
+ []
+
+
+Overfull \hbox (48.17435pt too wide) in paragraph at lines 158--159
+\OT1/lmtt/m/n/10.95 five steps; Branching, Occupancy, Concurrent Kernels, Shared Memory and Structure
+ []
+
+
+Overfull \hbox (2.18448pt too wide) in paragraph at lines 158--159
+\OT1/lmtt/m/n/10.95 of Arrays. Branching, refers how kernels and threads are executed in the
+ []
+
+
+Overfull \hbox (30.92815pt too wide) in paragraph at lines 158--159
+\OT1/lmtt/m/n/10.95 application. Occupancy, number of threads per devices being used. Concurrent
+ []
+
+
+Overfull \hbox (2.18448pt too wide) in paragraph at lines 158--159
+\OT1/lmtt/m/n/10.95 Kernels, execution several kernels at once. Shared Memory, using as much
+ []
+
+
+Overfull \hbox (2.18448pt too wide) in paragraph at lines 158--159
+\OT1/lmtt/m/n/10.95 shared memory as possible. Finally, Structure of Arrays, modification of
+ []
+
+[50 <./Figures/gpu_initial.png>]
+Overfull \hbox (7.93321pt too wide) in paragraph at lines 162--163
+\OT1/lmtt/m/n/10.95 CUDA follows the Single Instruction Multiple Thread architecture, meaning,
+ []
+
+
+Overfull \hbox (2.18448pt too wide) in paragraph at lines 162--163
+\OT1/lmtt/m/n/10.95 threads execute the same code. Each thread is able to operate on its own
+ []
+
+
+Overfull \hbox (13.68195pt too wide) in paragraph at lines 162--163
+\OT1/lmtt/m/n/10.95 data and has its individual address counter. Moreover, threads are free to
+ []
+
+
+Overfull \hbox (7.93321pt too wide) in paragraph at lines 162--163
+\OT1/lmtt/m/n/10.95 use a different path. Each thread launches the same operation at the same
+ []
+
+
+Overfull \hbox (25.17941pt too wide) in paragraph at lines 162--163
+\OT1/lmtt/m/n/10.95 time. However, they have to wait for all the threads in the kernel to finish
+ []
+
+
+Overfull \hbox (30.92815pt too wide) in paragraph at lines 162--163
+\OT1/lmtt/m/n/10.95 their task. In other words, some threads can finish their job before a groups
+ []
+
+
+Overfull \hbox (30.92815pt too wide) in paragraph at lines 162--163
+\OT1/lmtt/m/n/10.95 of threads are executing their tasks. Therefore, a thread within a warp/block
+ []
+
+
+Overfull \hbox (13.68195pt too wide) in paragraph at lines 162--163
+\OT1/lmtt/m/n/10.95 branches differently the other threads get deactivated [[]]. The method is
+ []
+
+<Figures/threads.png, id=1113, 649.42625pt x 198.7425pt>
 File: Figures/threads.png Graphic file (type png)
  <use Figures/threads.png>
 Package pdftex.def Info: Figures/threads.png used on input line 178.
 (pdftex.def)             Requested size: 250.48637pt x 76.65407pt.
- [50 <./Figures/threads.png>] [51] <Figures/ini_steams.png, id=1165, 679.03688pt x 48.18pt>
+
+Overfull \hbox (7.93321pt too wide) in paragraph at lines 184--185
+[]\OT1/lmtt/m/n/10.95 The branching problem occurred in the section where boundary condition for
+ []
+
+
+Overfull \hbox (2.18448pt too wide) in paragraph at lines 184--185
+\OT1/lmtt/m/n/10.95 Laplacian was being analyzed [][]5.2[][]. Only a single kernel was used to check
+ []
+
+
+Overfull \hbox (42.42561pt too wide) in paragraph at lines 184--185
+\OT1/lmtt/m/n/10.95 the boundary condition. In addition, a bottleneck occurred. The implementation
+ []
+
+
+Overfull \hbox (25.17941pt too wide) in paragraph at lines 184--185
+\OT1/lmtt/m/n/10.95 gets the job done with only one kernel. However, a minor part of the threads
+ []
+
+[51 <./Figures/threads.png>]
+Overfull \hbox (19.43068pt too wide) in paragraph at lines 206--207
+[]\OT1/lmtt/m/n/10.95 To solve the branching issue, we include more work on the laplacian boundary
+ []
+
+
+Overfull \hbox (30.92815pt too wide) in paragraph at lines 206--207
+\OT1/lmtt/m/n/10.95 condition kernel. The new kernel evaluates the boundary condition in a single
+ []
+
+
+Overfull \hbox (25.17941pt too wide) in paragraph at lines 206--207
+\OT1/lmtt/m/n/10.95 kernel. Therefore, eliminating branching threads, more importantly, reducing
+ []
+
+
+Overfull \hbox (7.93321pt too wide) in paragraph at lines 227--228
+[]\OT1/lmtt/m/n/10.95 The technique was applied to all parts of the code. Therefore, eliminated
+ []
+
+
+Overfull \hbox (36.67688pt too wide) in paragraph at lines 227--228
+\OT1/lmtt/m/n/10.95 inactive threads. Moreover, activating threads for more computational process.
+ []
+
+
+Overfull \hbox (2.18448pt too wide) in paragraph at lines 227--228
+\OT1/lmtt/m/n/10.95 The technique increased the occupancy percentage of active threads within
+ []
+
+
+Overfull \hbox (36.67688pt too wide) in paragraph at lines 227--228
+\OT1/lmtt/m/n/10.95 the kernels. The results of the modified version please read the final section
+ []
+
+[52]
+Overfull \hbox (7.93321pt too wide) in paragraph at lines 231--232
+\OT1/lmtt/m/n/10.95 Initially, each kernel was launched on the default steam zero. Therefore,
+ []
+
+
+Overfull \hbox (59.67181pt too wide) in paragraph at lines 231--232
+\OT1/lmtt/m/n/10.95 every kernel was consequently launched in a serial way. The figure [][]5.3[][] illustrates
+ []
+
+
+Overfull \hbox (13.68195pt too wide) in paragraph at lines 231--232
+\OT1/lmtt/m/n/10.95 such results using the NVIDIA's Visual Profiler. Each kernel that is being
+ []
+
+
+Overfull \hbox (42.42561pt too wide) in paragraph at lines 231--232
+\OT1/lmtt/m/n/10.95 launched is not able to run simultaneously. Because, each kernel needs previous
+ []
+
+
+Overfull \hbox (36.67688pt too wide) in paragraph at lines 231--232
+\OT1/lmtt/m/n/10.95 data to compute the next data. In other words, the kernels are not independent
+ []
+
+
+Overfull \hbox (30.92815pt too wide) in paragraph at lines 231--232
+\OT1/lmtt/m/n/10.95 from each other. Therefore, we change the implementation to be able to launch
+ []
+
+<Figures/ini_steams.png, id=1171, 679.03688pt x 48.18pt>
 File: Figures/ini_steams.png Graphic file (type png)
  <use Figures/ini_steams.png>
 Package pdftex.def Info: Figures/ini_steams.png used on input line 235.
 (pdftex.def)             Requested size: 417.47307pt x 29.62057pt.
- [52 <./Figures/ini_steams.png>] <Figures/concurent.png, id=1187, 1277.77374pt x 107.40125pt>
+
+Overfull \hbox (19.43068pt too wide) in paragraph at lines 242--243
+[]\OT1/lmtt/m/n/10.95 Kernels by default cannot run in parallel with others kernels. Furthermore,
+ []
+
+
+Overfull \hbox (7.93321pt too wide) in paragraph at lines 242--243
+\OT1/lmtt/m/n/10.95 CUDA doesn't provide an automatic parallel kernel executing. In addition,
+ []
+
+
+Overfull \hbox (19.43068pt too wide) in paragraph at lines 242--243
+\OT1/lmtt/m/n/10.95 the programmer needs to tell the CUDA compiler that some portion of the code
+ []
+
+
+Overfull \hbox (13.68195pt too wide) in paragraph at lines 242--243
+\OT1/lmtt/m/n/10.95 or kernel should be run in parallel. However, the compiler does not always
+ []
+
+
+Overfull \hbox (19.43068pt too wide) in paragraph at lines 242--243
+\OT1/lmtt/m/n/10.95 know when to use concurrent kernels, it depends on the hardware capabilities
+ []
+
+
+Overfull \hbox (13.68195pt too wide) in paragraph at lines 242--243
+\OT1/lmtt/m/n/10.95 and as well the number of threads per block and the number of SM available.
+ []
+
+
+Overfull \hbox (13.68195pt too wide) in paragraph at lines 242--243
+\OT1/lmtt/m/n/10.95 If the compiler finds available space to run another kernel simultaneously,
+ []
+
+
+Overfull \hbox (2.18448pt too wide) in paragraph at lines 244--245
+[]\OT1/lmtt/m/n/10.95 For example, the gsolution [][]5.4[][] kernel computes the Zhang and Li model for
+ []
+
+
+Overfull \hbox (19.43068pt too wide) in paragraph at lines 244--245
+\OT1/lmtt/m/n/10.95 x, y, z coordinates, which extensively uses the global memory of the device.
+ []
+
+
+Overfull \hbox (25.17941pt too wide) in paragraph at lines 244--245
+\OT1/lmtt/m/n/10.95 To accomplish concurrent kernels, the streams should be able to access memory
+ []
+
+
+Overfull \hbox (7.93321pt too wide) in paragraph at lines 244--245
+\OT1/lmtt/m/n/10.95 blocks that are pinned to a specific stream. Therefore, each memory block
+ []
+
+
+Overfull \hbox (19.43068pt too wide) in paragraph at lines 244--245
+\OT1/lmtt/m/n/10.95 corresponding to x, y, z coordinate are mapped to three independent streams.
+ []
+
+
+Overfull \hbox (7.93321pt too wide) in paragraph at lines 244--245
+\OT1/lmtt/m/n/10.95 Furthermore, all the matrices corresponding to the coordinate x are mapped
+ []
+
+
+Overfull \hbox (19.43068pt too wide) in paragraph at lines 252--253
+[]\OT1/lmtt/m/n/10.95 The CUDA code [][]5.4[][] is divided into a single kernel [][]5.5[][]. In addition, the new
+ []
+
+
+Overfull \hbox (42.42561pt too wide) in paragraph at lines 252--253
+\OT1/lmtt/m/n/10.95 generic kernel is launched parallel with the others kernels. Instead of running
+ []
+
+
+Overfull \hbox (36.67688pt too wide) in paragraph at lines 252--253
+\OT1/lmtt/m/n/10.95 one big kernel, three individual kernels are launched simultaneously. Dividing
+ []
+
+
+Overfull \hbox (13.68195pt too wide) in paragraph at lines 252--253
+\OT1/lmtt/m/n/10.95 each kernel is now possible to implement shared memory through each kernel,
+ []
+
+[53 <./Figures/ini_steams.png>]
+Overfull \hbox (7.93321pt too wide) in paragraph at lines 263--264
+[]\OT1/lmtt/m/n/10.95 This same method was applied to every kernel that was possible to separate
+ []
+
+
+Overfull \hbox (25.17941pt too wide) in paragraph at lines 263--264
+\OT1/lmtt/m/n/10.95 into three kernels calls. Some kernels were not viable to be separated, such
+ []
+
+
+Overfull \hbox (7.93321pt too wide) in paragraph at lines 263--264
+\OT1/lmtt/m/n/10.95 as the cross product. Because, the cross product uses pinned memory block
+ []
+
+
+Overfull \hbox (25.17941pt too wide) in paragraph at lines 263--264
+\OT1/lmtt/m/n/10.95 from the other streams. The figure [][]5.4[][] illustrates the results of concurrent
+ []
+
+<Figures/concurent.png, id=1187, 1277.77374pt x 107.40125pt>
 File: Figures/concurent.png Graphic file (type png)
  <use Figures/concurent.png>
 Package pdftex.def Info: Figures/concurent.png used on input line 276.
 (pdftex.def)             Requested size: 417.47307pt x 35.09016pt.
- <Figures/waittime.png, id=1191, 764.1348pt x 149.1171pt>
+
+Overfull \hbox (7.93321pt too wide) in paragraph at lines 282--283
+[]\OT1/lmtt/m/n/10.95 In chapter [][]3[][] we mentioned that the input data set 480 x 120 is mapped to a
+ []
+
+
+Overfull \hbox (2.18448pt too wide) in paragraph at lines 282--283
+\OT1/lmtt/m/n/10.95 CUDA square grid of 512 x 128. Because the mapping of the extra threads,
+ []
+
+
+Overfull \hbox (13.68195pt too wide) in paragraph at lines 284--285
+[]\OT1/lmtt/m/n/10.95 Concurrent kernels demonstrate a very promising technique to achieve a huge
+ []
+
+
+Overfull \hbox (7.93321pt too wide) in paragraph at lines 284--285
+\OT1/lmtt/m/n/10.95 performance increment in the current simulation. In theory is possible to
+ []
+
+
+Overfull \hbox (36.67688pt too wide) in paragraph at lines 284--285
+\OT1/lmtt/m/n/10.95 have multiple kernels executing at the same. However, there are some downsides
+ []
+
+
+Overfull \hbox (36.67688pt too wide) in paragraph at lines 284--285
+\OT1/lmtt/m/n/10.95 to the implementation; correctly synchronize kernels, waiting time and hardware
+ []
+
+
+Overfull \hbox (13.68195pt too wide) in paragraph at lines 284--285
+\OT1/lmtt/m/n/10.95 resources are among the problems [[]]. The timeline of the application [][]5.5[][]
+ []
+
+
+Overfull \hbox (25.17941pt too wide) in paragraph at lines 284--285
+\OT1/lmtt/m/n/10.95 illustrates the waiting time between kernels execution. However, the waiting
+ []
+
+
+Overfull \hbox (7.93321pt too wide) in paragraph at lines 284--285
+\OT1/lmtt/m/n/10.95 time are very small time steps between 0.01ms and 0.01ms, but waiting time
+ []
+
+
+Overfull \hbox (36.67688pt too wide) in paragraph at lines 284--285
+\OT1/lmtt/m/n/10.95 occurs for each step of the RK4, appears approximate 45,00 times. Furthermore,
+ []
+
+[54 <./Figures/concurent.png>] <Figures/waittime.png, id=1210, 764.1348pt x 149.1171pt>
 File: Figures/waittime.png Graphic file (type png)
  <use Figures/waittime.png>
 Package pdftex.def Info: Figures/waittime.png used on input line 288.
 (pdftex.def)             Requested size: 417.47307pt x 81.46857pt.
- [53 <./Figures/concurent.png> <./Figures/waittime.png>] <Figures/shared.png, id=1211, 678.535pt x 653.44125pt>
+
+Overfull \hbox (30.92815pt too wide) in paragraph at lines 297--298
+\OT1/lmtt/m/n/10.95 Shared memory is faster than global memory(read Chapter [][]4[][] for more reference),
+ []
+
+
+Overfull \hbox (30.92815pt too wide) in paragraph at lines 297--298
+\OT1/lmtt/m/n/10.95 however, shared memory is very limited. To be able to implement shared memory
+ []
+
+
+Overfull \hbox (2.18448pt too wide) in paragraph at lines 297--298
+\OT1/lmtt/m/n/10.95 in the kernels, we needed the kernels to be separated in their x, y and z
+ []
+
+
+Overfull \hbox (13.68195pt too wide) in paragraph at lines 297--298
+\OT1/lmtt/m/n/10.95 coordinate, as mentioned in the previous section. In addition, this allows
+ []
+
+
+Overfull \hbox (48.17435pt too wide) in paragraph at lines 297--298
+\OT1/lmtt/m/n/10.95 us to implement shared memory across each kernel, otherwise wouldn't be possible.
+ []
+
+
+Overfull \hbox (71.16928pt too wide) in paragraph at lines 297--298
+\OT1/lmtt/m/n/10.95 Shared memory was applied in all the kernels were global memory was used extensively.
+ []
+
+
+Overfull \hbox (25.17941pt too wide) in paragraph at lines 299--300
+[]\OT1/lmtt/m/n/10.95 The idea behind shared memory is to reduce the amount of global memory calls,
+ []
+
+
+Overfull \hbox (25.17941pt too wide) in paragraph at lines 299--300
+\OT1/lmtt/m/n/10.95 which has about 400-600 clock cycles, while the shared memory only 1-32 clock
+ []
+
+
+Overfull \hbox (2.18448pt too wide) in paragraph at lines 299--300
+\OT1/lmtt/m/n/10.95 cycles [][]4.4[][]. The shared memory implementation is accomplish by allocating
+ []
+
+
+Overfull \hbox (2.18448pt too wide) in paragraph at lines 299--300
+\OT1/lmtt/m/n/10.95 the data from the thread block into a temporary array, in other words the
+ []
+
+
+Overfull \hbox (2.18448pt too wide) in paragraph at lines 299--300
+\OT1/lmtt/m/n/10.95 shared memory. In addition, the kernel is able to performed calculations
+ []
+
+
+Overfull \hbox (82.66675pt too wide) in paragraph at lines 299--300
+\OT1/lmtt/m/n/10.95 on the temporary array and write the values onto the global memory. The implementation
+ []
+
+
+Overfull \hbox (7.93321pt too wide) in paragraph at lines 299--300
+\OT1/lmtt/m/n/10.95 code is illustrated in the listing [][]5.7[][]. There is no guaranty that threads
+ []
+
+
+Overfull \hbox (4.71394pt too wide) in paragraph at lines 299--300
+\OT1/lmtt/m/n/10.95 will execute at the same order. Using [][]syncthreads() will wait until all
+ []
+
+
+Overfull \hbox (7.93321pt too wide) in paragraph at lines 299--300
+\OT1/lmtt/m/n/10.95 threads have completed their task, in this case loading global memory into
+ []
+
+
+Overfull \hbox (19.43068pt too wide) in paragraph at lines 299--300
+\OT1/lmtt/m/n/10.95 the shared memory array. Chapter [][]4[][] section thread synchronization, has more
+ []
+
+
+Overfull \hbox (2.18448pt too wide) in paragraph at lines 299--300
+\OT1/lmtt/m/n/10.95 information about thread synchronization and shared memory. Once all the
+ []
+
+
+Overfull \hbox (25.17941pt too wide) in paragraph at lines 299--300
+\OT1/lmtt/m/n/10.95 operations on the shared memory array are finish. The final part is to write
+ []
+
+[55 <./Figures/waittime.png>]
+Overfull \hbox (30.92815pt too wide) in paragraph at lines 319--320
+[]\OT1/lmtt/m/n/10.95 To calculate the Laplacian, we need to access a great amount of global memory,
+ []
+
+
+Overfull \hbox (19.43068pt too wide) in paragraph at lines 319--320
+\OT1/lmtt/m/n/10.95 therefore, located near the value of interest. In this case a region of 4x4
+ []
+
+
+Overfull \hbox (36.67688pt too wide) in paragraph at lines 319--320
+\OT1/lmtt/m/n/10.95 grid. The figure [][]5.6[][] illustrates what part of the block is used for allocating
+ []
+
+
+Overfull \hbox (19.43068pt too wide) in paragraph at lines 319--320
+\OT1/lmtt/m/n/10.95 shared memory and global memory. The global memory is used for the boundary
+ []
+
+
+Overfull \hbox (7.93321pt too wide) in paragraph at lines 319--320
+\OT1/lmtt/m/n/10.95 conditions of the block, while the shared memory for all the values inside
+ []
+
+<Figures/shared.png, id=1229, 678.535pt x 653.44125pt>
 File: Figures/shared.png Graphic file (type png)
  <use Figures/shared.png>
 Package pdftex.def Info: Figures/shared.png used on input line 323.
 (pdftex.def)             Requested size: 166.98668pt x 160.8074pt.
- [54] [55 <./Figures/shared.png>] <Figures/aos.png, id=1257, 483.8075pt x 129.48375pt>
+
+Overfull \hbox (7.93321pt too wide) in paragraph at lines 329--330
+[]\OT1/lmtt/m/n/10.95 The code [][]5.8[][] demonstrates to how calculate the Laplacian from the equation
+ []
+
+
+Overfull \hbox (13.68195pt too wide) in paragraph at lines 329--330
+[][]\OT1/lmtt/m/n/10.95 2.3[][] with the implementation of shared memory. First we load all the global
+ []
+
+
+Overfull \hbox (65.42055pt too wide) in paragraph at lines 329--330
+\OT1/lmtt/m/n/10.95 memory into a temporary array, the shared memory. Then we performed the calculation
+ []
+
+
+Overfull \hbox (13.68195pt too wide) in paragraph at lines 329--330
+\OT1/lmtt/m/n/10.95 on the shared memory as mentioned before. Lastly return data to the global
+ []
+
+[56 <./Figures/shared.png>]
+Overfull \hbox (36.67688pt too wide) in paragraph at lines 349--350
+[]\OT1/lmtt/m/n/10.95 The current approach seems very promising for reducing global memory. However,
+ []
+
+
+Overfull \hbox (13.68195pt too wide) in paragraph at lines 349--350
+\OT1/lmtt/m/n/10.95 great amount of time is spent on loading data onto the shared memory array,
+ []
+
+
+Overfull \hbox (36.67688pt too wide) in paragraph at lines 349--350
+\OT1/lmtt/m/n/10.95 In consequence delaying threads executing, resulting a decrease in performance.
+ []
+
+
+Overfull \hbox (42.42561pt too wide) in paragraph at lines 349--350
+\OT1/lmtt/m/n/10.95 Fast allocating shared memory data is the optimal solution to ensure the optimal
+ []
+
+
+Overfull \hbox (7.93321pt too wide) in paragraph at lines 349--350
+\OT1/lmtt/m/n/10.95 use of this type of memory. The results of such implementation are in the
+ []
+
+
+Overfull \hbox (53.92308pt too wide) in paragraph at lines 353--354
+\OT1/lmtt/m/n/10.95 AoS and SoA refer to "Array of Structures" and "Structure of Arrays" respectively.
+ []
+
+
+Overfull \hbox (30.92815pt too wide) in paragraph at lines 353--354
+\OT1/lmtt/m/n/10.95 These two terms refer to two different ways of laying out your data in memory.
+ []
+
+
+Overfull \hbox (48.17435pt too wide) in paragraph at lines 353--354
+\OT1/lmtt/m/n/10.95 This is illustrated in figure [][]5.7[][] and [][]5.8[][] respectively. AOS, grouping properties
+ []
+
+
+Overfull \hbox (25.17941pt too wide) in paragraph at lines 353--354
+\OT1/lmtt/m/n/10.95 of an object together and making an array of those objects in memory, whereas
+ []
+
+
+Overfull \hbox (19.43068pt too wide) in paragraph at lines 353--354
+\OT1/lmtt/m/n/10.95 a structure of arrays would be a single structure in which you make an array
+ []
+
+
+Overfull \hbox (59.67181pt too wide) in paragraph at lines 353--354
+\OT1/lmtt/m/n/10.95 for each property. The structure of arrays can allow for better cache utilization,
+ []
+
+
+Overfull \hbox (25.17941pt too wide) in paragraph at lines 353--354
+\OT1/lmtt/m/n/10.95 easier to access continues data, making better use of each read you make from
+ []
+
+<Figures/aos.png, id=1259, 483.8075pt x 129.48375pt>
 File: Figures/aos.png Graphic file (type png)
  <use Figures/aos.png>
 Package pdftex.def Info: Figures/aos.png used on input line 357.
 (pdftex.def)             Requested size: 283.87862pt x 75.97784pt.
- <Figures/soa.png, id=1258, 482.80376pt x 128.48pt>
+ <Figures/soa.png, id=1260, 482.80376pt x 128.48pt>
 File: Figures/soa.png Graphic file (type png)
  <use Figures/soa.png>
 Package pdftex.def Info: Figures/soa.png used on input line 366.
 (pdftex.def)             Requested size: 283.87862pt x 75.54572pt.
- [56 <./Figures/aos.png> <./Figures/soa.png>]
 
-LaTeX Warning: `h' float specifier changed to `ht'.
+Overfull \hbox (30.92815pt too wide) in paragraph at lines 372--373
+[]\OT1/lmtt/m/n/10.95 The initial implementation the x, y, z data was allocated in separated blocks.
+ []
 
-[57]
+
+Overfull \hbox (13.68195pt too wide) in paragraph at lines 372--373
+\OT1/lmtt/m/n/10.95 Furthermore when accessing blocks of the the same coordinates, the register
+ []
+
+[57 <./Figures/aos.png> <./Figures/soa.png>]
+Overfull \hbox (48.17435pt too wide) in paragraph at lines 380--381
+[]\OT1/lmtt/m/n/10.95 To solve the issue, a custom class GPUMatrix was programmed. The class contained
+ []
+
+
+Overfull \hbox (7.93321pt too wide) in paragraph at lines 380--381
+\OT1/lmtt/m/n/10.95 all the matrices for the device. Moreover, the classes allocated the data
+ []
+
+
+Overfull \hbox (30.92815pt too wide) in paragraph at lines 380--381
+\OT1/lmtt/m/n/10.95 for each Matrix and free the memory automatically when the simulation is over.
+ []
+
+
+Overfull \hbox (19.43068pt too wide) in paragraph at lines 380--381
+\OT1/lmtt/m/n/10.95 The was allocated in a structure that easier for the device to access common
+ []
+
+
+Overfull \hbox (13.68195pt too wide) in paragraph at lines 380--381
+\OT1/lmtt/m/n/10.95 elements. For example, evaluating operations only on the x coordinate, the
+ []
+
+
+Overfull \hbox (2.18448pt too wide) in paragraph at lines 380--381
+\OT1/lmtt/m/n/10.95 kernel physically access matrices that are near by. Eliminating unassary
+ []
+
+
+Overfull \hbox (13.68195pt too wide) in paragraph at lines 389--390
+[]\OT1/lmtt/m/n/10.95 The current approach eliminates unnecessary data shift in registers, and is
+ []
+
+
+Overfull \hbox (13.68195pt too wide) in paragraph at lines 389--390
+\OT1/lmtt/m/n/10.95 able to stack more values per registers. In theory more computational time
+ []
+
+
+Overfull \hbox (7.93321pt too wide) in paragraph at lines 389--390
+\OT1/lmtt/m/n/10.95 per threads. The results of such implementation is illustrate on the last
+ []
+
+
+Overfull \hbox (2.18448pt too wide) in paragraph at lines 389--390
+\OT1/lmtt/m/n/10.95 section of the chapter. With the new implementation the code become more
+ []
+
+
+Overfull \hbox (13.68195pt too wide) in paragraph at lines 393--394
+\OT1/lmtt/m/n/10.95 Firstly, we increased the use of constant memory in the device, eliminating
+ []
+
+
+Overfull \hbox (19.43068pt too wide) in paragraph at lines 393--394
+\OT1/lmtt/m/n/10.95 redundant evaluations of variables and operations. The results are increase
+ []
+
+
+Overfull \hbox (19.43068pt too wide) in paragraph at lines 393--394
+\OT1/lmtt/m/n/10.95 in performance and more computational workload on each thread. In addition,
+ []
+
+
+Overfull \hbox (59.67181pt too wide) in paragraph at lines 393--394
+\OT1/lmtt/m/n/10.95 constant memory modifications are illustrated in the code [][]5.11[][]. Matrix calculation
+ []
+
+
+Overfull \hbox (36.67688pt too wide) in paragraph at lines 393--394
+\OT1/lmtt/m/n/10.95 for the boundary conditions [][]2.7[][] and [][]2.7[][] were implemented using constant Memory,
+ []
+
+[58]
+Overfull \hbox (13.68195pt too wide) in paragraph at lines 403--404
+[]\OT1/lmtt/m/n/10.95 The different numbers of threads per block and as well the number of blocks
+ []
+
+
+Overfull \hbox (53.92308pt too wide) in paragraph at lines 403--404
+\OT1/lmtt/m/n/10.95 per grid can dramatically increase or decrease the performance of the application.
+ []
+
+
+Overfull \hbox (2.18448pt too wide) in paragraph at lines 403--404
+\OT1/lmtt/m/n/10.95 The table [][]5.5[][] illustrate the different threads per block configuration on
+ []
+
+
+Overfull \hbox (48.17435pt too wide) in paragraph at lines 403--404
+\OT1/lmtt/m/n/10.95 the GeForce GTX 580. Using NVIDIA's Profiler is possible to obtain the occupancy
+ []
+
+
+Overfull \hbox (7.93321pt too wide) in paragraph at lines 403--404
+\OT1/lmtt/m/n/10.95 percentage of threads the device. The initial configuration for the Fermi
+ []
+
+
+Overfull \hbox (30.92815pt too wide) in paragraph at lines 403--404
+\OT1/lmtt/m/n/10.95 and the Kepler was 32x32 threads per block for global memory and 16x16 threads
+ []
+
+
+Overfull \hbox (7.93321pt too wide) in paragraph at lines 403--404
+\OT1/lmtt/m/n/10.95 per block for the shared memory. We found, that the optimal configuration
+ []
+
+
+Overfull \hbox (7.93321pt too wide) in paragraph at lines 403--404
+\OT1/lmtt/m/n/10.95 for the Fermi cards was 16x16 threads per block and as well for the shared
+ []
+
+
+Overfull \hbox (13.68195pt too wide) in paragraph at lines 403--404
+\OT1/lmtt/m/n/10.95 memory and for the Kepler cards was 32x32 threads per block for both memory
+ []
+
+
+Overfull \hbox (42.42561pt too wide) in paragraph at lines 429--430
+\OT1/lmtt/m/n/10.95 This section is a overview of the optimization results compared with the initial
+ []
+
+
+Overfull \hbox (2.18448pt too wide) in paragraph at lines 429--430
+\OT1/lmtt/m/n/10.95 CUDA implementation. Each version of the code is compared with the first
+ []
+
+
+Overfull \hbox (2.18448pt too wide) in paragraph at lines 429--430
+\OT1/lmtt/m/n/10.95 test results. The figure [][]5.9[][] and [][]5.10[][] illustrates the the time execution
+ []
+
+
+Overfull \hbox (13.68195pt too wide) in paragraph at lines 429--430
+\OT1/lmtt/m/n/10.95 and the speedup respectively for the tables [][]5.6[][] and [][]5.7[][]. The final version
+ []
+
+
+Overfull \hbox (7.93321pt too wide) in paragraph at lines 429--430
+\OT1/lmtt/m/n/10.95 of the code is the Occupancy. Moreover, the greatest performance occurred
+ []
+
+
 Overfull \hbox (10.32703pt too wide) in paragraph at lines 433--448
  [][] 
  []
 
-<Figures/gpuOptimization.png, id=1299, 931.5603pt x 801.4743pt>
+
+Overfull \hbox (19.43068pt too wide) in paragraph at lines 452--453
+[]\OT1/lmtt/m/n/10.95 The table [][]5.6[][] displays the overall executing time for all the version of the
+ []
+
+
+Overfull \hbox (19.43068pt too wide) in paragraph at lines 452--453
+\OT1/lmtt/m/n/10.95 code, original, constant, streams, shared memory, SAO and Occupancy. We can
+ []
+
+
+Overfull \hbox (2.18448pt too wide) in paragraph at lines 452--453
+\OT1/lmtt/m/n/10.95 see compared the initial time and the final there is a difference between
+ []
+
+
+Overfull \hbox (13.68195pt too wide) in paragraph at lines 452--453
+\OT1/lmtt/m/n/10.95 40s and 50s time decrease. The time reduction is relatively low. There is
+ []
+
+
+Overfull \hbox (36.67688pt too wide) in paragraph at lines 452--453
+\OT1/lmtt/m/n/10.95 no big difference in waiting 100s or 66s to a simulation to complete. However,
+ []
+
+
+Overfull \hbox (13.68195pt too wide) in paragraph at lines 452--453
+\OT1/lmtt/m/n/10.95 if we increase the data set to five decimal points, the simulation can take
+ []
+
+
+Overfull \hbox (7.93321pt too wide) in paragraph at lines 452--453
+\OT1/lmtt/m/n/10.95 up-to a couple of hours or days. Finally, the speedup comparison in table
+ []
+
+
+Overfull \hbox (25.17941pt too wide) in paragraph at lines 452--453
+[][]\OT1/lmtt/m/n/10.95 5.7[][] and figure [][]5.10[][] illustrates how much performance increase we could obtain
+ []
+
+[59] <Figures/gpuOptimization.png, id=1312, 931.5603pt x 801.4743pt>
 File: Figures/gpuOptimization.png Graphic file (type png)
  <use Figures/gpuOptimization.png>
 Package pdftex.def Info: Figures/gpuOptimization.png used on input line 477.
 (pdftex.def)             Requested size: 409.12181pt x 351.98938pt.
 
 
-LaTeX Warning: Reference `fig:initial' on page 58 undefined on input line 483.
+LaTeX Warning: Reference `fig:initial' on page 60 undefined on input line 483.
 
-<Figures/speedup.png, id=1303, 1064.5371pt x 542.38635pt>
+<Figures/speedup.png, id=1316, 1064.5371pt x 542.38635pt>
 File: Figures/speedup.png Graphic file (type png)
  <use Figures/speedup.png>
 Package pdftex.def Info: Figures/speedup.png used on input line 486.
 (pdftex.def)             Requested size: 417.47307pt x 212.69676pt.
- [58] [59 <./Figures/gpuOptimization.png>] <Figures/speed.png, id=1319, 768.9528pt x 403.62794pt>
+
+Overfull \hbox (36.67688pt too wide) in paragraph at lines 483--491
+[]\OT1/lmtt/m/n/10.95 The table [][]5.11[][] illustrates the final profiling results using NVIDIA's profiling
+ []
+
+
+Overfull \hbox (31.3235pt too wide) in paragraph at lines 483--491
+\OT1/lmtt/m/n/10.95 tools. On the initial profiling [], the Laplacian evaluation consummend about
+ []
+
+
+Overfull \hbox (71.16928pt too wide) in paragraph at lines 483--491
+\OT1/lmtt/m/n/10.95 half of the overall simulation time. However, on the final optimization results[][]5.11[][],
+ []
+
+
+Overfull \hbox (3.18831pt too wide) in paragraph at lines 483--491
+\OT1/lmtt/m/n/10.95 the Laplacian was reduced from 44.37$\OT1/cmr/m/n/10.95 %$ \OT1/lmtt/m/n/10.95 to 26.24 $\OT1/cmr/m/n/10.95 %$ \OT1/lmtt/m/n/10.95 on execution time. But
+ []
+
+
+Overfull \hbox (2.18448pt too wide) in paragraph at lines 483--491
+\OT1/lmtt/m/n/10.95 more importantly the importance of the kernel was reduced, in other words
+ []
+
+
+Overfull \hbox (19.43068pt too wide) in paragraph at lines 483--491
+\OT1/lmtt/m/n/10.95 more computational workload on the kernels. The same occurred for the Runge
+ []
+
+
+Overfull \hbox (42.42561pt too wide) in paragraph at lines 483--491
+\OT1/lmtt/m/n/10.95 and Kutta term evaluation. The speedup mainly occurred in the Occupancy version
+ []
+
+
+Overfull \hbox (2.18448pt too wide) in paragraph at lines 483--491
+\OT1/lmtt/m/n/10.95 of the code, see table [][]5.7[][]. Furthermore, the gsdExchangeFull incremented
+ []
+
+
+Overfull \hbox (8.93704pt too wide) in paragraph at lines 483--491
+\OT1/lmtt/m/n/10.95 from 13.37$\OT1/cmr/m/n/10.95 %$\OT1/lmtt/m/n/10.95 . 23.35$\OT1/cmr/m/n/10.95 %$\OT1/lmtt/m/n/10.95 , which is not necessary good. The increment in time
+ []
+
+
+Overfull \hbox (2.18448pt too wide) in paragraph at lines 483--491
+\OT1/lmtt/m/n/10.95 is due to shift in streams operators, the gsdExchangeFull is processed in
+ []
+
+
+Overfull \hbox (7.93321pt too wide) in paragraph at lines 483--491
+\OT1/lmtt/m/n/10.95 the default stream zero, while the others kernels launched concurrently in
+ []
+
+[60 <./Figures/gpuOptimization.png>]
+Overfull \hbox (13.68195pt too wide) in paragraph at lines 511--512
+[]\OT1/lmtt/m/n/10.95 The Tesla K20m was the only GPU which in every code modification it did not
+ []
+
+
+Overfull \hbox (13.68195pt too wide) in paragraph at lines 511--512
+\OT1/lmtt/m/n/10.95 lose performance over the course of the optimization process. However, the
+ []
+
+
+Overfull \hbox (2.18448pt too wide) in paragraph at lines 511--512
+\OT1/lmtt/m/n/10.95 other GPUs drop performance in the stream optimization stage. The stream
+ []
+
+
+Overfull \hbox (25.17941pt too wide) in paragraph at lines 511--512
+\OT1/lmtt/m/n/10.95 process is where each kernel was divided into three separated kernels. Doing
+ []
+
+
+Overfull \hbox (2.18448pt too wide) in paragraph at lines 511--512
+\OT1/lmtt/m/n/10.95 this we were able to calculate the x, y, z coordinates independently. In
+ []
+
+
+Overfull \hbox (30.92815pt too wide) in paragraph at lines 511--512
+\OT1/lmtt/m/n/10.95 addition, this enable room to implement shared memory across possible kernels.
+ []
+
+
+Overfull \hbox (19.43068pt too wide) in paragraph at lines 511--512
+\OT1/lmtt/m/n/10.95 The GPU table specifications [][]5.2[][] illustrates that the Tesla K20m is the only
+ []
+
+
+Overfull \hbox (25.17941pt too wide) in paragraph at lines 511--512
+\OT1/lmtt/m/n/10.95 GPU card with CC of 3.5. Therefore, has access to Hyper-Q technology. which
+ []
+
+
+Overfull \hbox (7.93321pt too wide) in paragraph at lines 511--512
+\OT1/lmtt/m/n/10.95 is able to synchronize automatically concurrent kernels, just by activated
+ []
+
+[61 <./Figures/speedup.png>]
+Overfull \hbox (7.93321pt too wide) in paragraph at lines 513--514
+[]\OT1/lmtt/m/n/10.95 The SOA optimization, improved overall dramatically the performance of the
+ []
+
+
+Overfull \hbox (19.43068pt too wide) in paragraph at lines 513--514
+\OT1/lmtt/m/n/10.95 application, obtaining a 1.2x - 2.0x speedup in all GPU cards, see table [][]5.7[][]
+ []
+
+
+Overfull \hbox (13.68195pt too wide) in paragraph at lines 513--514
+\OT1/lmtt/m/n/10.95 and figure [][]5.10[][]. The final version, Occupancy, improved up-to 0.7x speedup
+ []
+
+
+Overfull \hbox (13.68195pt too wide) in paragraph at lines 513--514
+\OT1/lmtt/m/n/10.95 on the 580 GPU. However, for the Teslas cards only 0.2x-0.25x speedup. The
+ []
+
+
+Overfull \hbox (2.18448pt too wide) in paragraph at lines 513--514
+\OT1/lmtt/m/n/10.95 speedup difference, 0.5x, is due to the process cycle of the GeForce GPU. 
+ []
+
+<Figures/speed.png, id=1330, 768.9528pt x 403.62794pt>
 File: Figures/speed.png Graphic file (type png)
  <use Figures/speed.png>
 Package pdftex.def Info: Figures/speed.png used on input line 517.
 (pdftex.def)             Requested size: 417.47307pt x 219.13217pt.
- [60 <./Figures/speedup.png>]) (./Chapters/Chapter6.tex [61 <./Figures/speed.png>]
+
+Overfull \hbox (7.93321pt too wide) in paragraph at lines 524--525
+[]\OT1/lmtt/m/n/10.95 We expected that the newest card, the Tesla k20m, would obtain the highest
+ []
+
+
+Overfull \hbox (30.92815pt too wide) in paragraph at lines 524--525
+\OT1/lmtt/m/n/10.95 speedup overall, certainly because it has more CUDA cores, the highest compute
+ []
+
+
+Overfull \hbox (36.67688pt too wide) in paragraph at lines 524--525
+\OT1/lmtt/m/n/10.95 capabilities. However, if falls behind the GeForce 580 with about 2.5x speedup
+ []
+
+
+Overfull \hbox (2.18448pt too wide) in paragraph at lines 524--525
+\OT1/lmtt/m/n/10.95 difference (table [][]5.7[][]). In addition, the Tesla K20 only had a difference
+ []
+
+
+Overfull \hbox (2.18448pt too wide) in paragraph at lines 524--525
+\OT1/lmtt/m/n/10.95 of 0.3x speedup compared with the Teslas Cards, see figure [][]5.10[][] and [][]5.12[][].
+ []
+
+
+Overfull \hbox (13.68195pt too wide) in paragraph at lines 524--525
+\OT1/lmtt/m/n/10.95 The GeForce compared with the others GPUs specifications has most Processor
+ []
+
+
+Overfull \hbox (13.68195pt too wide) in paragraph at lines 524--525
+\OT1/lmtt/m/n/10.95 clock (GHz), more mathematical calculations per cycle, se table [][]5.2[][] for GPU
+ []
+
+
+Overfull \hbox (19.43068pt too wide) in paragraph at lines 524--525
+\OT1/lmtt/m/n/10.95 specifications comparison. The results demonstrate the increase of workload
+ []
+
+
+Overfull \hbox (25.17941pt too wide) in paragraph at lines 524--525
+\OT1/lmtt/m/n/10.95 and occupancy on the device. Increasing the computational process per thread
+ []
+
+
+Overfull \hbox (25.17941pt too wide) in paragraph at lines 529--530
+[]\OT1/lmtt/m/n/10.95 Finally, various techniques and practices from chapter [][]4[][] were used to archive
+ []
+
+
+Overfull \hbox (2.18448pt too wide) in paragraph at lines 529--530
+\OT1/lmtt/m/n/10.95 speedup and increase performance. Techniques such as increase the use of
+ []
+
+
+Overfull \hbox (30.92815pt too wide) in paragraph at lines 529--530
+\OT1/lmtt/m/n/10.95 constant memory, shared memory, changed the memory allocating access, analyzed
+ []
+
+
+Overfull \hbox (42.42561pt too wide) in paragraph at lines 529--530
+\OT1/lmtt/m/n/10.95 thread branching and finally analyzed kernel occupancy. The highest performance
+ []
+
+
+Overfull \hbox (7.93321pt too wide) in paragraph at lines 529--530
+\OT1/lmtt/m/n/10.95 of all GPUS did not occurred on the newest NVIDIA card, the K20m, which is
+ []
+
+
+Overfull \hbox (13.68195pt too wide) in paragraph at lines 529--530
+\OT1/lmtt/m/n/10.95 the most expensive of all the GPUs. The actual improvement appeared on the
+ []
+
+
+Overfull \hbox (2.18448pt too wide) in paragraph at lines 529--530
+\OT1/lmtt/m/n/10.95 GeForce 580 (the more GHz of all GPUs) with a 2.32x speedup difference in
+ []
+
+
+Overfull \hbox (7.93321pt too wide) in paragraph at lines 529--530
+\OT1/lmtt/m/n/10.95 comparison with the Tesla K20m, table [][]5.10[][]. If the problem data set is to
+ []
+
+
+Overfull \hbox (7.93321pt too wide) in paragraph at lines 529--530
+\OT1/lmtt/m/n/10.95 be scaled, for example, to a simulation of 8 days, the speedup performance
+ []
+
+
+Overfull \hbox (42.42561pt too wide) in paragraph at lines 529--530
+\OT1/lmtt/m/n/10.95 of 8.0x will drastically decrease the time execution in only one day. Moreover,
+ []
+
+[62 <./Figures/speed.png>]) (./Chapters/Chapter6.tex [63]
 Chapter 6.
 ------------------------------------------------------------------------------
  6 Conclusions and future work
 ------------------------------------------------------------------------------
-[62
 
-]
-Missing character: There is no ‚ in font cmr10!
-Missing character: There is no Ä in font cmr10!
-Missing character: There is no ì in font cmr10!
-Missing character: There is no ‚ in font cmr10!
-Missing character: There is no Ä in font cmr10!
-Missing character: There is no ì in font cmr10!
- [63]
-Missing character: There is no ‚ in font cmr10!
-Missing character: There is no Ä in font cmr10!
-Missing character: There is no ô in font cmr10!
-Missing character: There is no ‚ in font cmr10!
-Missing character: There is no Ä in font cmr10!
-Missing character: There is no ô in font cmr10!
-) (/Users/tom/Documents/GitHub/GPUTest/Thesis_latex_GPU_english/.texpadtmp/main.bbl [64] [65
-
-]
-Underfull \hbox (badness 10000) in paragraph at lines 124--128
-[]\OT1/cmr/m/n/10.95 NVIDIA.  Cuda doc-u-men-ta-tion.  [][]$\OT1/cmtt/m/n/10.95 http : / / docs . nvidia . com / cuda /
+Overfull \hbox (19.43068pt too wide) in paragraph at lines 9--10
+\OT1/lmtt/m/n/10.95 GPUs definitely have a place in the world of computational physics and other
  []
 
-[66]
-Underfull \hbox (badness 1603) in paragraph at lines 168--171
-[]\OT1/cmr/m/n/10.95 J. B. Schnei-der.  Un-der-stand-ing the finite-difference time-domain method,
+
+Overfull \hbox (13.68195pt too wide) in paragraph at lines 9--10
+\OT1/lmtt/m/n/10.95 similar applications, their use allows to do the same work with less energy
  []
 
-Missing character: There is no ‚ in font cmr10!
-Missing character: There is no Ä in font cmr10!
-Missing character: There is no ô in font cmr10!
+
+Overfull \hbox (53.92308pt too wide) in paragraph at lines 9--10
+\OT1/lmtt/m/n/10.95 and more science with less resources. They make HPC computing clusters affordable
+ []
+
+
+Overfull \hbox (13.68195pt too wide) in paragraph at lines 9--10
+\OT1/lmtt/m/n/10.95 for small research groups. The true limit test of this new technology will
+ []
+
+
+Overfull \hbox (42.42561pt too wide) in paragraph at lines 9--10
+\OT1/lmtt/m/n/10.95 be if it is actually used to advance new science. In the field of computational
+ []
+
+
+Overfull \hbox (25.17941pt too wide) in paragraph at lines 9--10
+\OT1/lmtt/m/n/10.95 physics studies that do push the barrier of what is computationally feasible,
+ []
+
+
+Overfull \hbox (7.93321pt too wide) in paragraph at lines 11--12
+[]\OT1/lmtt/m/n/10.95 Acceptance has been slow due to many factors, GPUs are sometimes seen as a
+ []
+
+
+Overfull \hbox (48.17435pt too wide) in paragraph at lines 11--12
+\OT1/lmtt/m/n/10.95 fad or a niche, the specialized skill set and effort required for GPU programming
+ []
+
+
+Overfull \hbox (7.93321pt too wide) in paragraph at lines 11--12
+\OT1/lmtt/m/n/10.95 along with the risk of spending money to setup a GPU cluster, does raise a
+ []
+
+
+Overfull \hbox (2.18448pt too wide) in paragraph at lines 11--12
+\OT1/lmtt/m/n/10.95 concern for productivity and viability of this technology. Adopting this
+ []
+
+
+Overfull \hbox (25.17941pt too wide) in paragraph at lines 11--12
+\OT1/lmtt/m/n/10.95 technology requires abandoning legacy codes and smart optimizations that have
+ []
+
+
+Overfull \hbox (19.43068pt too wide) in paragraph at lines 11--12
+\OT1/lmtt/m/n/10.95 been developed over the years. A wrong choice may result in wasted time and
+ []
+
+
+Overfull \hbox (7.93321pt too wide) in paragraph at lines 13--14
+[]\OT1/lmtt/m/n/10.95 What is certain is at the moment, is the overall direction of the industry
+ []
+
+
+Overfull \hbox (30.92815pt too wide) in paragraph at lines 13--14
+\OT1/lmtt/m/n/10.95 towards higher parallelism, as single threaded performance has reached a local
+ []
+
+
+Overfull \hbox (36.67688pt too wide) in paragraph at lines 13--14
+\OT1/lmtt/m/n/10.95 limit, all types of processors are seeking more performance out of parallelism.
+ []
+
+
+Overfull \hbox (19.43068pt too wide) in paragraph at lines 13--14
+\OT1/lmtt/m/n/10.95 This means that a large portion of the work needed to parallelize a code for
+ []
+
+
+Overfull \hbox (13.68195pt too wide) in paragraph at lines 13--14
+\OT1/lmtt/m/n/10.95 a certain parallel architecture will most probably be applicable to another
+ []
+
+
+Overfull \hbox (13.68195pt too wide) in paragraph at lines 13--14
+\OT1/lmtt/m/n/10.95 parallel architecture as well. From the literature and my experiences, one
+ []
+
+
+Overfull \hbox (7.93321pt too wide) in paragraph at lines 13--14
+\OT1/lmtt/m/n/10.95 can observe that in order to achieve good results in programming with GPUs
+ []
+
+
+Overfull \hbox (25.17941pt too wide) in paragraph at lines 13--14
+\OT1/lmtt/m/n/10.95 it is necessary to take a Heterogeneous approach to coding. That is adopting
+ []
+
+
+Overfull \hbox (71.16928pt too wide) in paragraph at lines 15--16
+[]\OT1/lmtt/m/n/10.95 Spintronics, in particular involves designing new magnetic materials for spin-devices
+ []
+
+
+Overfull \hbox (36.67688pt too wide) in paragraph at lines 15--16
+\OT1/lmtt/m/n/10.95 and modeling and understanding of spin-transport at molecular and atomic scale.
+ []
+
+
+Overfull \hbox (53.92308pt too wide) in paragraph at lines 15--16
+\OT1/lmtt/m/n/10.95 Manipulating magnetic domain walls to store and transfer information is envisioned
+ []
+
+
+Overfull \hbox (13.68195pt too wide) in paragraph at lines 15--16
+\OT1/lmtt/m/n/10.95 to enable high-density, low-power, non-volatile, and non-mechanical memory.
+ []
+
+
+Overfull \hbox (7.93321pt too wide) in paragraph at lines 15--16
+\OT1/lmtt/m/n/10.95 Promising for future systems for example the racetrack memory by Parkin at
+ []
+
+
+Overfull \hbox (2.18448pt too wide) in paragraph at lines 15--16
+\OT1/lmtt/m/n/10.95 IBM, where DWs can be moved by applied magnetic fields and/or by currents
+ []
+
+
+Overfull \hbox (19.43068pt too wide) in paragraph at lines 15--16
+\OT1/lmtt/m/n/10.95 via the spin transfer torque effects such as the simulation proposed by this
+ []
+
+
+Overfull \hbox (2.18448pt too wide) in paragraph at lines 15--16
+\OT1/lmtt/m/n/10.95 research. However, most of the technologies and experiments are still in
+ []
+
+
+Overfull \hbox (30.92815pt too wide) in paragraph at lines 15--16
+\OT1/lmtt/m/n/10.95 developing. Furthermore, there are several obstacles to be overcome to enable
+ []
+
+[64
+
+]
+Overfull \hbox (36.67688pt too wide) in paragraph at lines 17--18
+[]\OT1/lmtt/m/n/10.95 Using computer simulation is possible to predict the outcome of the theoretical
+ []
+
+
+Overfull \hbox (30.92815pt too wide) in paragraph at lines 17--18
+\OT1/lmtt/m/n/10.95 approach. In this case reproduce the effects of spin diffusion by numerically
+ []
+
+
+Overfull \hbox (7.93321pt too wide) in paragraph at lines 17--18
+\OT1/lmtt/m/n/10.95 implementing the Zhang-Li model into micormagnetics, we apply a current to
+ []
+
+
+Overfull \hbox (53.92308pt too wide) in paragraph at lines 17--18
+\OT1/lmtt/m/n/10.95 a regime of DWs in a NiFe soft nanostrips. Furthermore, providing the theoretical
+ []
+
+
+Overfull \hbox (19.43068pt too wide) in paragraph at lines 17--18
+\OT1/lmtt/m/n/10.95 experiments with high precision on relative inexpensive computers. By using
+ []
+
+
+Overfull \hbox (13.68195pt too wide) in paragraph at lines 17--18
+\OT1/lmtt/m/n/10.95 the highly parallel capabilities of the GPU it was possible to dramatically
+ []
+
+
+Overfull \hbox (2.18448pt too wide) in paragraph at lines 17--18
+\OT1/lmtt/m/n/10.95 reduce the computation time of the simulation from around 400s on the CPU
+ []
+
+
+Overfull \hbox (2.18448pt too wide) in paragraph at lines 17--18
+\OT1/lmtt/m/n/10.95 to 41s on a GPU. In other words, upto a 8.0x speedup, therefore executing
+ []
+
+
+Overfull \hbox (13.68195pt too wide) in paragraph at lines 19--20
+[]\OT1/lmtt/m/n/10.95 Through the optimization we achieved a maximum speedup of 8.0x. The result
+ []
+
+
+Overfull \hbox (19.43068pt too wide) in paragraph at lines 19--20
+\OT1/lmtt/m/n/10.95 did not occur on the newest device, the K20m. But on the mid-range GPU, the
+ []
+
+
+Overfull \hbox (25.17941pt too wide) in paragraph at lines 19--20
+\OT1/lmtt/m/n/10.95 GeForce GTX 580, which has more clock cycles (GHz) than the others cars. The
+ []
+
+
+Overfull \hbox (7.93321pt too wide) in paragraph at lines 19--20
+\OT1/lmtt/m/n/10.95 newest device, the K20m is 10 times more expensive than the 580 card. The
+ []
+
+
+Overfull \hbox (7.93321pt too wide) in paragraph at lines 19--20
+\OT1/lmtt/m/n/10.95 Tesla cards are mainly designed for server used, multiple users, while the
+ []
+
+
+Overfull \hbox (13.68195pt too wide) in paragraph at lines 19--20
+\OT1/lmtt/m/n/10.95 GeForce for high performance graphics, high workload on a single user. The
+ []
+
+
+Overfull \hbox (13.68195pt too wide) in paragraph at lines 19--20
+\OT1/lmtt/m/n/10.95 optimization approach was focused on giving more workload on the GPUs, more
+ []
+
+
+Overfull \hbox (2.18448pt too wide) in paragraph at lines 19--20
+\OT1/lmtt/m/n/10.95 performance per SM and increasing the work of threads per block. Lastly,
+ []
+
+
+Overfull \hbox (13.68195pt too wide) in paragraph at lines 19--20
+\OT1/lmtt/m/n/10.95 the GTX 580 is not the newest GeForce card available in the market, the new
+ []
+
+
+Overfull \hbox (11.3095pt too wide) in paragraph at lines 19--20
+\OT1/lmtt/m/n/10.95 GeForce 980 is expected to have a 40$\OT1/cmr/m/n/10.95 %$ \OT1/lmtt/m/n/10.95 increase in performance over the 500
+ []
+
+
+Overfull \hbox (7.93321pt too wide) in paragraph at lines 21--22
+[]\OT1/lmtt/m/n/10.95 The simulations were performed on a relative small data set. Moreover, is
+ []
+
+
+Overfull \hbox (2.18448pt too wide) in paragraph at lines 21--22
+\OT1/lmtt/m/n/10.95 possible to increase the data set, in other words, a bigger magnetization
+ []
+
+
+Overfull \hbox (53.92308pt too wide) in paragraph at lines 21--22
+\OT1/lmtt/m/n/10.95 data. Which overall will reduce the execution time by a factor of 8.0, increasing
+ []
+
+
+Overfull \hbox (2.18448pt too wide) in paragraph at lines 21--22
+\OT1/lmtt/m/n/10.95 the number of simulations in the same time frame. Future test are likely
+ []
+
+
+Overfull \hbox (42.42561pt too wide) in paragraph at lines 21--22
+\OT1/lmtt/m/n/10.95 to be performed on a newer GPU architectures, such as the Maxwell. For example,
+ []
+
+
+Overfull \hbox (25.17941pt too wide) in paragraph at lines 23--24
+[]\OT1/lmtt/m/n/10.95 The current thread is to push the hardware capabilities and performance along
+ []
+
+
+Overfull \hbox (19.43068pt too wide) in paragraph at lines 23--24
+\OT1/lmtt/m/n/10.95 with Mooers' Law, despite these issues there are some trends in the hardware
+ []
+
+
+Overfull \hbox (7.93321pt too wide) in paragraph at lines 23--24
+\OT1/lmtt/m/n/10.95 industry that will make working with GPU easier and more widespread within
+ []
+
+[65]
+Overfull \hbox (6.5646pt too wide) in paragraph at lines 26--28
+\OT1/lmtt/m/n/10.95 Stacks DRAM chips into dense modules with wide interfaces, and brings
+ []
+
+
+Overfull \hbox (6.5646pt too wide) in paragraph at lines 26--28
+\OT1/lmtt/m/n/10.95 them inside the same package as the GPU. This lets GPUs get data from
+ []
+
+
+Overfull \hbox (18.06207pt too wide) in paragraph at lines 26--28
+\OT1/lmtt/m/n/10.95 memory more quickly ‚Äì boosting throughput and efficiency ‚Äì allowing
+ []
+
+
+Overfull \hbox (18.06207pt too wide) in paragraph at lines 26--28
+\OT1/lmtt/m/n/10.95 us to build more compact GPUs that put more power into smaller devices.
+ []
+
+
+Overfull \hbox (23.8108pt too wide) in paragraph at lines 26--28
+\OT1/lmtt/m/n/10.95 The result: several times greater bandwidth, more than twice the memory
+ []
+
+
+Overfull \hbox (18.06207pt too wide) in paragraph at lines 29--31
+\OT1/lmtt/m/n/10.95 Today‚Äôs computers are constrained by the speed at which data can move
+ []
+
+
+Overfull \hbox (12.31334pt too wide) in paragraph at lines 29--31
+\OT1/lmtt/m/n/10.95 between the CPU and GPU. NVLink puts a fatter pipe between the CPU and
+ []
+
+
+Overfull \hbox (0.81587pt too wide) in paragraph at lines 29--31
+\OT1/lmtt/m/n/10.95 GPU, allowing data to flow at more than 80GB per second, compared to
+ []
+
+
+Overfull \hbox (46.80574pt too wide) in paragraph at lines 32--34
+\OT1/lmtt/m/n/10.95 NVIDIA has designed a module to house Pascal GPUs with NVLink. At one-third
+ []
+
+
+Overfull \hbox (12.31334pt too wide) in paragraph at lines 32--34
+\OT1/lmtt/m/n/10.95 the size of the standard boards used today, they‚Äôll put the power of
+ []
+
+
+Overfull \hbox (12.31334pt too wide) in paragraph at lines 35--37
+\OT1/lmtt/m/n/10.95 With the new Tegra K1 is possible to do supercomputing on the level of
+ []
+
+
+Overfull \hbox (23.8108pt too wide) in paragraph at lines 35--37
+\OT1/lmtt/m/n/10.95 mobil devices, achieving upto 1 TFlops of performance. Embedded devices
+ []
+
+
+Overfull \hbox (41.057pt too wide) in paragraph at lines 35--37
+\OT1/lmtt/m/n/10.95 with CUDA capabilities is possible to integrate high performance algorithms
+ []
+
+
+Overfull \hbox (6.5646pt too wide) in paragraph at lines 37--39
+\OT1/lmtt/m/n/10.95 NVIDIA is pushing the limits of bring computer graphics to the cloud,
+ []
+
+
+Overfull \hbox (23.8108pt too wide) in paragraph at lines 37--39
+\OT1/lmtt/m/n/10.95 the idea is for everybody have access to high quality computer graphics. 
+ []
+
 )
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 259.
- [67]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 259.
+Overfull \hbox (36.67688pt too wide) in paragraph at lines 45--228
+[]\OT1/lmtt/m/n/10.95 Using heterogenous computing is possible to dramatically decrease computational
+ []
+
+
+Overfull \hbox (25.17941pt too wide) in paragraph at lines 45--228
+\OT1/lmtt/m/n/10.95 time on CPU applications that are not feasible with the current CPU paradigm.
+ []
+
+
+Overfull \hbox (36.67688pt too wide) in paragraph at lines 45--228
+\OT1/lmtt/m/n/10.95 Leaving room for new types computational simulations in a reasonable accomplish
+ []
+
+
+Overfull \hbox (13.68195pt too wide) in paragraph at lines 45--228
+\OT1/lmtt/m/n/10.95 time frame. To conclude, I offer my personal perspective on GPU computing.
+ []
+
+
+Overfull \hbox (71.16928pt too wide) in paragraph at lines 45--228
+\OT1/lmtt/m/n/10.95 I think the importance of using accelerator hardware is an economic and environmental
+ []
+
+
+Overfull \hbox (19.43068pt too wide) in paragraph at lines 45--228
+\OT1/lmtt/m/n/10.95 issue. The environmental aspect of doing computing is often overlooked, but
+ []
+
+
+Overfull \hbox (7.93321pt too wide) in paragraph at lines 45--228
+\OT1/lmtt/m/n/10.95 an ever increasing important one. As heavy computer users we will have to
+ []
+
+
+Overfull \hbox (19.43068pt too wide) in paragraph at lines 45--228
+\OT1/lmtt/m/n/10.95 take responsibility for our electricity use. The benefit of less energy use
+ []
+
+[66] (/Users/tom/Documents/GitHub/GPUTest/Thesis_latex_GPU_english/.texpadtmp/main.bbl [67]
+Underfull \hbox (badness 10000) in paragraph at lines 8--12
+[]\OT1/lmtt/m/n/10.95 J. A. Anderson, C. D. Lorenz, and A. Travesset.  General purpose
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 8--12
+\OT1/lmtt/m/n/10.95 molecular dynamics simulations fully implemented on graphics
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 19--22
+[]\OT1/lmtt/m/n/10.95 S. Che, M. Boyer, J. Meng, D. Tarjan, J. Sheaffer, S.-H. Lee,
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 19--22
+\OT1/lmtt/m/n/10.95 and K. Skadron.  Rodinia: A benchmark suite for heterogeneous
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 24--27
+[]\OT1/lmtt/m/n/10.95 D. Claudio-Gonzalez, A. Thiaville, and J. Miltat.  Domain wall
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 24--27
+\OT1/lmtt/m/n/10.95 dynamics under nonlocal spin-transfer torque.  \OT1/lmtt/m/it/10.95 Phys. Rev. Lett.\OT1/lmtt/m/n/10.95 ,
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 29--34
+[]\OT1/lmtt/m/n/10.95 S. Cook.  \OT1/lmtt/m/it/10.95 CUDA Programming: A Developer's Guide to Parallel
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 29--34
+\OT1/lmtt/m/it/10.95 Computing with GPUs\OT1/lmtt/m/n/10.95 .  Morgan Kaufmann Publishers Inc., San
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 36--40
+\OT1/lmtt/m/it/10.95 and advanced magnetic materials\OT1/lmtt/m/n/10.95 , volume 2.  Wiley-Interscience,
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 48--52
+[]\OT1/lmtt/m/n/10.95 E. Golovatski.  \OT1/lmtt/m/it/10.95 Spin Torque and Interactions in Ferromagnetic
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 54--58
+[]\OT1/lmtt/m/n/10.95 T. H []o rmann.  Gpu-optimised implementation of high-dimensional
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 54--58
+\OT1/lmtt/m/n/10.95 tensor applications.  Master's thesis, Institut f[]ur Informatik,
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 60--64
+[]\OT1/lmtt/m/n/10.95 P. Haney and T. U. of Texas at Austin. Physics.  \OT1/lmtt/m/it/10.95 Spintronics in
+ []
+
+[68
+
+]
+Underfull \hbox (badness 10000) in paragraph at lines 66--69
+[]\OT1/lmtt/m/n/10.95 A. Harju, T. Siro, F. Canova, S. Hakala, and T. Rantalaiho.
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 66--69
+\OT1/lmtt/m/n/10.95 Computational physics on graphics processing units.  7782:3--26,
+ []
+
+
+Underfull \hbox (badness 3078) in paragraph at lines 71--76
+[]\OT1/lmtt/m/n/10.95 IMB.  The application of spintronics.  [][]$\OT1/cmtt/m/n/10.95 http : / / www-[]03 . ibm . com / ibm /
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 78--81
+[]\OT1/lmtt/m/n/10.95 G. Karapetrov and V. Novosad.  Domain walls riding the wave.
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 83--87
+[]\OT1/lmtt/m/n/10.95 D. B. Kirk and W.-m. W. Hwu.  \OT1/lmtt/m/it/10.95 Programming Massively Parallel
+ []
+
+
+Underfull \hbox (badness 1052) in paragraph at lines 83--87
+\OT1/lmtt/m/it/10.95 Processors: A Hands-on Approach\OT1/lmtt/m/n/10.95 .  Morgan Kaufmann Publishers Inc.,
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 89--92
+[]\OT1/lmtt/m/n/10.95 R. Landaverde, T. Zhang, A. K. Coskun, and M. Herbordt.  An
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 94--100
+[]\OT1/lmtt/m/n/10.95 K.-J. Lee, M. Stiles, H.-W. Lee, J.-H. Moon, K.-W. Kim, and
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 94--100
+\OT1/lmtt/m/n/10.95 S.-W. Lee.  Self-consistent calculation of spin transport and
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 94--100
+\OT1/lmtt/m/n/10.95 magnetization dynamics.  \OT1/lmtt/m/it/10.95 Physics Reports\OT1/lmtt/m/n/10.95 , 531(2):89 -- 113, 2013.
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 94--100
+\OT1/lmtt/m/n/10.95 Self-consistent calculation of spin transport and magnetization
+ []
+
+
+Underfull \hbox (badness 1052) in paragraph at lines 102--106
+[]\OT1/lmtt/m/n/10.95 Z. Li and S. Zhang.  Domain-wall dynamics and spin-wave excitations
+ []
+
+
+Underfull \hbox (badness 3281) in paragraph at lines 108--111
+[]\OT1/lmtt/m/n/10.95 J. Nickolls and W. J. Dally.  The gpu computing era.  \OT1/lmtt/m/it/10.95 IEEE Micro\OT1/lmtt/m/n/10.95 ,
+ []
+
+
+Underfull \hbox (badness 1460) in paragraph at lines 113--118
+[]\OT1/lmtt/m/n/10.95 NVIDIA.  Popular gpu-accelerated applications.  [][]$\OT1/cmtt/m/n/10.95 http : / / www . nvidia .
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 113--118
+\OT1/cmtt/m/n/10.95 com / docs / IO / 64497 / NV _ GPU _ Accelerated _ Applications . pdf$[][]\OT1/lmtt/m/n/10.95 , 2012, Cited
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 124--128
+[]\OT1/lmtt/m/n/10.95 NVIDIA.  Cuda documentation.  [][]$\OT1/cmtt/m/n/10.95 http : / / docs . nvidia . com / cuda /
+ []
+
+
+Underfull \hbox (badness 3281) in paragraph at lines 130--133
+[]\OT1/lmtt/m/n/10.95 N. L. Oak Ridge.  Titan.  [][]$\OT1/cmtt/m/n/10.95 https : / / www . olcf . ornl . gov / titan/$[][]\OT1/lmtt/m/n/10.95 , 2013,
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 135--138
+[]\OT1/lmtt/m/n/10.95 S. S. Parkin, M. Hayashi, and L. Thomas.  Magnetic domain-wall
+ []
+
+[69]
+Underfull \hbox (badness 10000) in paragraph at lines 140--143
+[]\OT1/lmtt/m/n/10.95 D. A. Patterson and J. L. Hennessy.  \OT1/lmtt/m/it/10.95 Computer Architecture: A
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 140--143
+\OT1/lmtt/m/it/10.95 Quantitative Approach\OT1/lmtt/m/n/10.95 .  Morgan Kaufmann Publishers Inc., San
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 145--149
+[]\OT1/lmtt/m/n/10.95 W. H. Press, S. A. Teukolsky, W. T. Vetterling, and B. P. Flannery.
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 145--149
+\OT1/lmtt/m/it/10.95 Numerical Recipes in C (2Nd Ed.): The Art of Scientific Computing\OT1/lmtt/m/n/10.95 .
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 151--154
+[]\OT1/lmtt/m/n/10.95 C. Richard, M. Houzet, and J. Meyer.  Andreev current induced by
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 156--160
+[]\OT1/lmtt/m/n/10.95 G. Ruetsch and M. Fatica.  \OT1/lmtt/m/it/10.95 CUDA Fortran for Scientists and
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 156--160
+\OT1/lmtt/m/it/10.95 Engineers: Best Practices for Efficient CUDA Fortran Programming\OT1/lmtt/m/n/10.95 .
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 162--166
+[]\OT1/lmtt/m/n/10.95 J. Sanders and E. Kandrot.  \OT1/lmtt/m/it/10.95 CUDA by Example: An Introduction to
+ []
+
+
+Underfull \hbox (badness 5091) in paragraph at lines 162--166
+\OT1/lmtt/m/it/10.95 General-Purpose GPU Programming\OT1/lmtt/m/n/10.95 .  Addison-Wesley Professional, 1st
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 168--171
+[]\OT1/lmtt/m/n/10.95 J. B. Schneider.  Understanding the finite-difference time-domain
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 173--176
+[]\OT1/lmtt/m/n/10.95 R. F. Service.  What it‚Äôll take to go exascale.  \OT1/lmtt/m/it/10.95 Science\OT1/lmtt/m/n/10.95 ,
+ []
+
+
+Underfull \hbox (badness 1052) in paragraph at lines 178--181
+[]\OT1/lmtt/m/n/10.95 E. Tsymbal and I. Zutic.  \OT1/lmtt/m/it/10.95 Handbook of Spin Transport and Magnetism\OT1/lmtt/m/n/10.95 .
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 183--188
+[]\OT1/lmtt/m/n/10.95 S. O. Valenzuela.  Nonlocal electronic spin detection, spin
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 183--188
+\OT1/lmtt/m/n/10.95 accumulation and the spin hall effect.  \OT1/lmtt/m/it/10.95 International Journal of
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 195--198
+[]\OT1/lmtt/m/n/10.95 N. Whitehead and A. Fit-florea.  Precision and performance:
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 200--203
+[]\OT1/lmtt/m/n/10.95 N. Wilt.  \OT1/lmtt/m/it/10.95 The CUDA Handbook: A Comprehensive Guide to GPU
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 205--209
+[]\OT1/lmtt/m/n/10.95 V. Zayets.  Spin and charge transport in materials with
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 211--215
+[]\OT1/lmtt/m/n/10.95 S. Zhang and Z. Li.  Roles of nonequilibrium conduction electrons
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 211--215
+\OT1/lmtt/m/n/10.95 on the magnetization dynamics of ferromagnets.  \OT1/lmtt/m/it/10.95 Phys. Rev. Lett.\OT1/lmtt/m/n/10.95 ,
+ []
+
+[70])
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 264.
+ [71]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 264.
  (/Users/tom/Documents/GitHub/GPUTest/Thesis_latex_GPU_english/.texpadtmp/main.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 259.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 259.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 264.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 264.
 Package rerunfilecheck Info: File `main.out' has not changed.
 (rerunfilecheck)             Checksum: 57DC5C5EFBCA5A2EA3ED9DE2D9CA2396;8528.
+
+
+LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
 
 LaTeX Warning: There were undefined references.
@@ -950,21 +4443,21 @@ LaTeX Warning: There were undefined references.
 
 LaTeX Warning: There were multiply-defined labels.
 
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 259.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 264.
  ) 
 Here is how much of TeX's memory you used:
- 15706 strings out of 493315
- 222235 string characters out of 6137904
- 350163 words of memory out of 5000000
- 18456 multiletter control sequences out of 15000+600000
- 14845 words of font info for 55 fonts, out of 8000000 for 9000
+ 15765 strings out of 493315
+ 223153 string characters out of 6137904
+ 354173 words of memory out of 5000000
+ 18501 multiletter control sequences out of 15000+600000
+ 16090 words of font info for 59 fonts, out of 8000000 for 9000
  957 hyphenation exceptions out of 8191
  49i,19n,60p,1439b,1749s stack positions out of 5000i,500n,10000p,200000b,80000s
-</usr/local/texlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/local/texlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/local/texlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmcsc10.pfb></usr/local/texlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/local/texlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/texlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/local/texlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/local/texlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/local/texlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/local/texlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/texlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/local/texlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/texlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/local/texlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb></usr/local/texlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb></usr/local/texlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt8.pfb>
-Output written on /Users/tom/Documents/GitHub/GPUTest/Thesis_latex_GPU_english/.texpadtmp/main.pdf (75 pages, 4752094 bytes).
+{/usr/local/texlive/2013/texmf-dist/fonts/enc/dvips/lm/lm-rmtt.enc}</usr/local/texlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/local/texlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/local/texlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmcsc10.pfb></usr/local/texlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/local/texlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/texlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/local/texlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/local/texlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/local/texlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/local/texlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/texlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/local/texlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/texlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/local/texlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb></usr/local/texlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb></usr/local/texlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt8.pfb></usr/local/texlive/2013/texmf-dist/fonts/type1/public/lm/lmtk10.pfb></usr/local/texlive/2013/texmf-dist/fonts/type1/public/lm/lmtt10.pfb></usr/local/texlive/2013/texmf-dist/fonts/type1/public/lm/lmtti10.pfb>
+Output written on /Users/tom/Documents/GitHub/GPUTest/Thesis_latex_GPU_english/.texpadtmp/main.pdf (79 pages, 4811622 bytes).
 PDF statistics:
- 1537 PDF objects out of 1728 (max. 8388607)
- 1343 compressed objects within 14 object streams
- 462 named destinations out of 1000 (max. 500000)
+ 1567 PDF objects out of 1728 (max. 8388607)
+ 1366 compressed objects within 14 object streams
+ 466 named destinations out of 1000 (max. 500000)
  697 words of extra memory for PDF output out of 10000 (max. 10000000)
 
