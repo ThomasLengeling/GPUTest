@@ -188,14 +188,14 @@
 %-------------------------------------------------  
 \supervisor{Dr. David Claudio Gonz\'alez} % You supervisor's name - this is used in the title page
 
-\cosupervisor{Dra. Maria Susana Avila Garcia}
+\cosupervisor{Dra. Mar\'ia Susana \'Avila Garc\'ia}
 
 %-------------------------------------------------   
 \examineray{Dr. V\'ictor Ayala Ram\'irez } % Your examiner's name - this is not currently used anywhere in the template, cite it with \examname if you want it
 \examinerav{Dr. Juan Gabriel Avi\~na Cervantes}
 
 %-------------------------------------------------   
-\degree{Bachelor of Computacional Systems Engineering} % Your degree name - this is currently used in the title page and abstract
+\degree{Bachelor of Computational Systems Engineering} % Your degree name - this is currently used in the title page and abstract
 %-------------------------------------------------   
 \authors{Thomas Sanchez Lengeling} % Your name - this is used in the title page and abstract
 %-------------------------------------------------   
