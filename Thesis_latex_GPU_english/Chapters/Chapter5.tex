@@ -6,13 +6,14 @@
 
 \lhead{Chapter 5. \emph{Optimization Results}} % Change X to a consecutive number; this is for the header on each page - perhaps a shortened title
 
-The following chapter are the results of the CUDA code implementation launched on a single GPU device. The tests were performed on various GPUs architectures. The application is analyzed on various stages using NVIDIA's Visual Profiler. In addition, the CUDA kernels were evaluated in performance, execution time, occupancy and concurrent kernels. Furthermore, the results, are analyzed and optimized using the schemes from Chapter \ref{Heterogeneous Performance Analysis and Practices}. The code is executed remotely on the supercomputer ``Piritakua'' at the Department of Multidisciplinary Studies Yuriria, University of Guanajuato. The last section is the overview of all the optimizations results achieved on the simulation.
 
-\section{Supercomputer ``Piritakua''}
+In this chapter we obtain the results of the CUDA code implementation launched on a single GPU device. The tests were performed on various GPUs architectures. The application is analyzed on various stages using NVIDIA's Visual Profiler. In addition, the CUDA kernels were evaluated in performance, execution time, occupancy and concurrent kernels. Furthermore, the results, are analyzed and optimized using the schemes from Chapter \ref{Heterogeneous Performance Analysis and Practices}. The code is executed remotely on the supercomputer Piritakua at the Department of Multidisciplinary Studies Yuriria, University of Guanajuato. The last section is the overview of all the optimizations results achieved on the simulation.
 
-The experiments are carried out using the supercomputer “Piritakua”. The massive GPU cluster was design and built by Dr. Claudio from the University of Guanajuato at Yuriria's Multidisciplinary Studies. The GPU cluster is located at a small town of Mexico, Yuriria. The supercomputer at the front-end has an eight core Intel Xeon at 2.4 Ghz, at the back-end several GPU are connected. All of GPUs CUDA version 5.0 was installed. Furthermore, the GPUs node are; one NVIDIA Tesla K20, two Tesla M2070 and a GeForce GTX 580 
+\section{Supercomputer Piritakua}
 
-The cluster has a GNU$ \ $LINUX distribution installed, the CentOS 64 bits version 6.4. CentOS stands for Community Enterprise Operating System, which is free operating system and one of the most popular GNU$ \ $Linux distribution for web servers and as well is supported by RHEL (Red Hat Enterprise Linux) \cite{centos}. The specifications of the front-end cluster are \ref{tab:cpus}.
+The experiments are carried out using the supercomputer Piritakua. The massive GPU cluster was design and built by Dr. Claudio from the University of Guanajuato at Yuriria's Multidisciplinary Studies. The cluster is located at Yuriria, a small town in the center of Mexico. Piritakua at its front-end has an eight core Intel Xeon at 2.4 Ghz, at the back-end several GPU are connected. All of GPUs CUDA version 5.0 was installed. Furthermore, the GPUs node are; one NVIDIA Tesla K20, two Tesla M2070 and a GeForce GTX 580 
+
+The cluster has the CentOS ( Community Enterprise Operating System) 64 bits as operating system. The OS is a free operating system and one of the most popular GNU$ \ $Linux distribution for web servers and as well is supported by RHEL (Red Hat Enterprise Linux) \cite{centos}. The specifications of cluster are \ref{tab:cpus}.
 
 \begin{table}[h]
 \centering
@@ -20,24 +21,22 @@ The cluster has a GNU$ \ $LINUX distribution installed, the CentOS 64 bits versi
   \hline
   Processor & Number & Cores & RAM  \\
   \hline
-  Server Dell Intel Xeon E5620 2.4 GHz & 1 & 8 & 12 GB \\
+  Server Dell Intel(R) Xeon(R) E5620 2.4 GHz & 1 & 8 & 12 GB \\
   \hline
-  Server HP Proliant SL 350s Gen3 Intel Xeon X5650 2.67 GHz & 2 & 24 & 32 GB \\
+  Server HP Proliant SL 350s Gen3 Intel(R) Xeon(R) X5650 2.67 GHz & 2 & 24 & 32 GB \\
   \hline
    Server HP Proliant SL 250s Gen8 Intel Xeon E5-2670 2.60 GHz & 3 & 48 & 104 GB \\
    \hline
-   CPU Xeon Phi  5110p & 1 & 8 & 8 GB\\
-   \hline
-   CPU Xeon Phi 7120p  & 1 & 8 & 16 GB\\
-   \hline
   \end{tabular}
-      \caption{CPU specifications}
+      \caption{CPU technical specifications}
   \label{tab:cpus}
   \end{table}
-  
- The CUDA Code was launched on only two CPUs, a laptop with an eight core intel i7-3630QM and a high-end CPU Xeon Phi 7120p from the cluster. In addition, the Xeon Phi was used as based CPU for all the connected GPUs nodes. The Xeon Phi 720p is capable of achieving f 1.2 teraflops of double precision floating point instructions with 352 GB/sec memory bandwidth at 300 W. Lastly, the code was executed on laptop to show the performance comparison between a lightweight GPU and a server based GPU.
 
-When accessing ``Piritakua'' remotely is possible to use all the GPUs nodes available on the cluster. The specifications of the GPU connected to the back-end are as follow, CC stands for compute capability.
+The host code was executed on only two types of CPUs. On an eight core Intel i7-3630QM and on a high-end eight core Intel Xeon CPU E5620. In addition, the Xeon was used in all the simulation test, except when testing on the GeForce 670mx. Lastly, the code was executed on laptop to show the performance comparison between a lightweight GPU and a server based GPU.
+
+The device code was executed using the CUDA Toolkit 5.5 version. The main advantage of the 5.5 version are improvements in MPI(Message Passing Interface) and HyperQ. The MPI implementation was not used for the current simulation. However, we obtain benefits from using the HyperQ when applying concurrent kernels to the implementation. 
+
+When accessing Piritakua remotely is possible to use all the GPUs nodes available on the cluster. The specifications of the GPU connected to the back-end are as follow, CC stands for compute capability.
 
 \begin{table}[h]
 \centering
@@ -60,11 +59,11 @@ When accessing ``Piritakua'' remotely is possible to use all the GPUs nodes avai
   \label{tab:gpus}
   \end{table}
   
-  The code was launched on all Piritakua's GPUs and on an external GeForce GTX 670m, located on a laptop. The "m" stands for the mobil graphic cards. In addition the 670m card is design for less power usage, but with high graphics power, it even has more cores than some Tesla models, However, this types of cards has way more less Bandwidth than standard versions. The 670m card was used as comparison between laptop GPUs and high-end desktop/servers GPUs.
+  The code was launched on all Piritakua's GPUs and on the GeForce GTX 670m. The "m" stands for the mobil graphic cards. In addition the 670m card is design for less power usage, but high graphics power, it has more cores than some Tesla models, However, they have less Bandwidth than standard versions. The 670m card was used as comparison between laptop GPUs and high-end desktop/servers GPUs.
      
 \subsection{Architecture Differences}
 
-  NVIDIA's GPU are constantly being improved over the years, nonetheless, most programming paradigms stayed the same. The are currently three main architectures processors; Fermi, Kepler and the newest Maxwell. For example, a streaming processor can now handle 2048 threads at a time, but the maximum block size stayed at 1024. The results in a 100$\%$ theoretical occupancy for block sizes of 1024 compared to 66$\%$ of Fermi type. Another example is the use of Shared Memory. Maxwell has 64KB dedicated Shared Memory. The maximum amount of Shared Memory per Block is 48KB for all three architectures \cite{hoermanngpu}.
+  NVIDIA's GPU are constantly being improved over the years, nonetheless, most programming paradigms stayed the same. The are currently three main architectures; Fermi, Kepler and Maxwell. For example, a streaming processor can now handle 2048 threads at a time, but the maximum block size stayed at 1024. The results in a 100$\%$ theoretical occupancy for block sizes of 1024 compared to 66$\%$ of Fermi type. Another example is the use of Shared Memory. Maxwell has 64KB dedicated Shared Memory. The maximum amount of Shared Memory per Block is 48KB for all three architectures \cite{hoermanngpu}.
   
   There are two GPU architectures where the implementation was launched, the Fermi and the Kepler. The Tesla K20m and the GeForce 670mx are based on the ``Kepler'' GPU architecture. The Tesla M2070, M2050 and the GeForce GTX 580 on the Fermi architecture. The Kepler architecture newer than the Fermi. More information about the architectures in the table \ref{tab:arch}. The Maxwell architecture was not used for the current simulation, however, is showed for future reference.
   
@@ -105,9 +104,9 @@ When accessing ``Piritakua'' remotely is possible to use all the GPUs nodes avai
  
 \section{Optimization}
 
-The CUDA code was launched on each one of "Piritakua"'s GPUs. The supercomputer has two  achitecture types Fermin and Kepler. Furthermore, the initial results of 1.00x speedup were tested on a Kepler architecture, the GeForce GT 650M. The graph \ref{fig:iniresults} illustrates the executing time for all the GPUs in the server.
+The cluster has two  main architecture types Fermi and Kepler. Furthermore, the initial results of 1.00x speedup were tested on a Kepler architecture, the GeForce GT 650M. The graph \ref{fig:iniresults} illustrates the executing time for all the GPUs in the server.
 
-We used NVIDIA's Visual Profiler to obtain kernel metrics of the Tesla K20m, which is showed in The table \ref{tab:nvprof}. The output is organized by kernel importance and performance during the simulation. The Laplacian kernel evaluation; {\listf glaplacinay}, {\listf gLaplacianx} and  {\listf gLaplacianYBoundaries} uses upto 44.37$\%$ of the overall simulation. The $gsolution$ kernel, which solves Zhang-Li model \ref{eq:zhang} consumes up-to 14.04$\%$. The RK4 integration only exhaust a minor part of the overall simulation. However, the {\listf gSolution}, {\listf gsdExchange} and Laplacian calculation are part of the RK4 integration, which overall is about 99$\%$.
+We used NVIDIA's Visual Profiler to obtain kernel metrics of the Tesla K20m, table \ref{tab:nvprof}. The output is organized by kernel importance and performance during the simulation. The Laplacian kernel evaluation; {\listf glaplacinay}, {\listf gLaplacianx} and  {\listf gLaplacianYBoundaries} uses upto 44.37$\%$ of the overall simulation. The $gsolution$ kernel, which solves Zhang-Li model \ref{eq:zhang} consumes up-to 14.04$\%$. The RK4 integration only exhaust a minor part of the overall simulation. However, the {\listf gSolution}, {\listf gsdExchange} and Laplacian calculation are part of the RK4 integration, which overall is about 99$\%$.
 
 The throughput was not review on the current application. Since only two stages of the simulation transfer of the CPU data occurs, on the initial stage where CPU data is sent to the GPU, and the final stage where is sent back to CPU.
 
@@ -419,7 +418,7 @@ The different numbers of threads per block and as well the number of blocks per 
     32x32 & 32x32 & \multicolumn{3}{|c|}{Failed}\\
     \hline
   \end{tabular}
-  \caption{Threads per block configuration and occupancy on the Fermin architecture}
+  \caption{Threads per block configuration and occupancy on the Fermi architecture}
   \label{tab:ocu}
   \end{table}
 
@@ -526,5 +525,5 @@ We expected that the newest card, the Tesla k20m, would obtain the highest speed
 
   \vspace{4.0em}
 
-Finally, various techniques and practices from chapter \ref{Heterogeneous Performance Analysis and Practices} were used to archive speedup and increase performance. Techniques such as increase the use of constant memory, shared memory, changed the memory allocating access, analyzed thread branching and finally analyzed kernel occupancy. The highest performance of all GPUS did not occurred on the newest NVIDIA card, the K20m, which is the most expensive of all the GPUs. The actual improvement appeared on the GeForce 580 (the more GHz of all GPUs) with a 2.32x speedup difference in comparison with the Tesla K20m, table  \ref{fig:speedup}. If the problem data set is to be scaled, for example, to a simulation of 8 days, the speedup performance of 8.0x will drastically decrease the time execution in only one day. Moreover, is possible to execute more simulations on the initial time step.
+Finally, the techniques and practices from chapter \ref{Heterogeneous Performance Analysis and Practices} were used to archive speedup and increase performance on the initial CUDA implementation. Methods such as: increase the use of constant memory, shared memory, changed the memory allocating access, analyzed thread branching and finally analyzed kernel occupancy. The highest performance of all GPUS did not occurred on the newest NVIDIA card, the K20m, thus, the most expensive of all the GPUs available in the cluster. The actual improvement appeared on the GeForce 580 (the more GHz of all GPUs) with a 2.32x speedup difference in comparison with the Tesla K20m, table \ref{fig:speedup}. If the problem data set is to be scaled, for example, to a simulation of 8 days, the speedup performance of 8.0x will drastically decrease the time execution in only one day. Moreover, is possible to execute more simulations on the initial time step.
   

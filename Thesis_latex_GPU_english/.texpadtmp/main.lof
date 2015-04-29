@@ -27,7 +27,7 @@
 \contentsline {figure}{\numberline {4.3}{\ignorespaces Schematic cache hierarchy of a CUDA GPU}}{36}{figure.caption.195}
 \contentsline {figure}{\numberline {4.4}{\ignorespaces Different memory types}}{36}{figure.caption.196}
 \contentsline {figure}{\numberline {4.5}{\ignorespaces Texture Memory}}{38}{figure.caption.201}
-\contentsline {figure}{\numberline {4.6}{\ignorespaces Concurrent Kernels}}{40}{figure.caption.204}
+\contentsline {figure}{\numberline {4.6}{\ignorespaces Concurrent Kernels}}{39}{figure.caption.204}
 \contentsline {figure}{\numberline {4.7}{\ignorespaces Visual Profiler metrics}}{43}{figure.caption.209}
 \contentsline {figure}{\numberline {4.8}{\ignorespaces Visual Profiler timeline and stream process}}{44}{figure.caption.210}
 \addvspace {10\p@ }
