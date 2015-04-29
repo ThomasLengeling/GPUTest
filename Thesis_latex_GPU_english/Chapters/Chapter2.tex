@@ -7,7 +7,7 @@
 \lhead{Chapter 2. \emph{Introduction to Domain Wall Dynamics under Nonlocal STT}}% Change X to a consecutive number; this is for the header on each page - perhaps a shortened title
 
 
-This chapter is a brief overview of the theory of spintronics and the study of Domain Wall Dynamics under Nonlocal Spin-Transfer-Torque. Which quantitatively test the effects of spin-diffusion, on real Domain Wall (DW) structures, by numerically implementing the Zhang-Li model on a NiFe soft nanostrip. The numerical method used for the solution is a the method known as Finite Differences in the Time Domain (FDTD) on a 3d cell grid with whose integration is done using a 4th order Runge-Kutta integration (RK4).
+This chapter is a brief overview of the theory of spintronics and the study of Domain Wall Dynamics under Nonlocal Spin-Transfer-Torque. Which quantitatively test the effects of spin-diffusion, on real Domain Wall (DW) structures, by numerically implementing the Zhang-Li model on a NiFe soft nanostrip. The numerical method used for the solution is a the method known as Finite Differences in the Time Domain (FDTD) on a 3d cell grid with whose integration is done using a 4th order integration of Runge-Kutta (RK4).
 
 \section{Theory}
 
@@ -21,7 +21,7 @@ Spintronics is a new type of electronics that exploits the spin degree of freedo
 
 \subsection{Spin Transfer Torque }
 
-A torque is simply a time rate of change of angular momentum \cite{spintransfer}. Hence, spin transfer torque (SST) occurs when spins flowing from one layer to another can reorient the magnetization in the layers, see figure \ref{fig:DWspin}. The magnetization of the ferromagnet changes the flow of spin angular momentum by exerting a torque on the flowing spins to reorient them, and therefore the flowing electrons must exert an equal and opposite torque on the ferromagnet. This torque that is applied by non-equilibrium conduction electrons onto a ferromagnet is what we will call the spin transfer torque \cite{spintransfer}.
+A torque is simply a time rate of change of angular momentum \cite{spintransfer}. Hence, spin transfer torque occurs when spins flowing from one layer to another can reorient the magnetization in the layers, see figure \ref{fig:DWspin}. The magnetization of the ferromagnet changes the flow of spin angular momentum by exerting a torque on the flowing spins to reorient them, and therefore the flowing electrons must exert an equal and opposite torque on the ferromagnet. This torque that is applied by non-equilibrium conduction electrons onto a ferromagnet is what we will call the spin transfer torque \cite{spintransfer}.
 
 Spin current which is a flow of spin angular momentum, is generated in addition to the charge current. The spin current normally appears in ferromagnets. However, it should be able to be generated in non-magnets. The simplest method of generating a spin-polarized current in a metal is to pass the current throughout a ferromagnetic material. A common application is the GMR as mentioned before \cite{handbookspin}.
 
@@ -34,7 +34,7 @@ Spin current which is a flow of spin angular momentum, is generated in addition 
 \end{figure}
 
 
-Spin polarized transport occurs naturally in any materials which have a spin imbalance between spin-up and spin-down at the Fermi Level. It occurs at spin-down electrons is nearly identical, but states are shifted in energy with respect to each other. The Fermi level is the highest energy level which an electron can occupy at the absolute zero temperature. Since at abosulte zeo temperature the electrons are all in the lowest energy state hence the Fermi level is in between the valence band and the conduction band \cite{handbookspin}.
+Spin polarized transport occurs naturally in any materials which have a spin imbalance between spin-up and spin-down at the Fermi Level. It occurs at spin-down electrons is nearly identical, but states are shifted in energy with respect to each other. The Fermi level is the highest energy level which an electron can occupy at the absolute zero temperature. Since the electrons are in the lowest energy state hence the Fermi level is in between the valence band and the conduction band \cite{handbookspin}.
 
 \subsection{Domain Wall}
 
@@ -59,7 +59,7 @@ An abrupt in magnetization at the boundary of two anti-aligned domains is not a 
 
 \subsection{Spin Torque in Domain Walls}
 
-Domain walls are the basis for various spintronics devices that uses magnetic momentums, in other words spin of electronics, the used of the spin degree of freedom. The figure \ref{fig:DWspin} illustrates a micromagnetic model of the domain wall trapped in a nanowire. The domain wall can be pushed along the wire in a controllable manner by applying an external magnetic field or by passing an electrical current through the wire \cite{dwwire}.
+Domain walls are the foundation for various spintronics devices that uses magnetic momentums, in other words spin of electronics, the used of the spin degree of freedom. The figure \ref{fig:DWspin} illustrates a micromagnetic model of the domain wall trapped in a nanowire. The domain wall can be pushed along the wire in a controllable manner by applying an external magnetic field or by passing an electrical current through the wire \cite{dwwire}.
 
 \begin{figure}[htbp]
 	\centering
@@ -71,7 +71,9 @@ Domain walls are the basis for various spintronics devices that uses magnetic mo
 
 The energy of the incoming  carrier is no the only factor that determines whether or not it passes to the other side of domain wall, the spin also must be taken into account. Since each spin orientation experiences a different potential. Simulation of such properties is necessary.
 
-Spin Torque induced domain wall motion opens up a host of possibilities for applications. The success of spintronics untimely depends on out ability to precisely  control the polarization of electrons transported within the actual thin film structure \cite{ferro}. Advances in spintronics recognized by 2007 Nobel Prize in Physics have enable over the last decade advances in computer memory, in hard drives, this is a metal based structures which utilize magnetoresistive effects to save and read data from a magnetic disk \cite{handbookspin}. An interesting application using this idea is new design for a different type memory disk drive called racetrack memory by Parkin in 2008\cite{racetrack}. The racetrack memory stores bits along a single ferromagnetic wire. To write and read information, a current is applied along the wire that moves the bits to writing or reading unit.
+Spin Torque induced domain wall motion opens up a host of possibilities for applications. The success of spintronics untimely depends on out ability to precisely  control the polarization of electrons transported within the actual thin film structure \cite{ferro}. Advances in spintronics recognized by 2007 Nobel Prize in Physics have enable over the last decade advances in computer memory, in hard drives, this is a metal based structures which utilize magnetoresistive effects to save and read data from a magnetic disk \cite{handbookspin}.
+
+ In 2008 Parkin, designed a new type of memory storage, the racetrack memory, In addition it the new technology uses Spin Torque to store data. The racetrack memory stores bits along a single ferromagnetic wire. To write and read information, a current is applied along the wire that moves the bits to writing or reading unit \cite{racetrack}.
  
 \section{Domain Wall Dynamics under Nonlocal STT}
 
@@ -79,27 +81,27 @@ The motion of domain walls due to spin transfer torque (STT) of electrons has be
  
 \subsection{Theoretical Approaches}
 
-The inclusion of STT into micromagnetics has up to now been performed with local terms that express the STT as a function of the local magnetization only. The magnetization dynamics is described by the classical Landau-Lifshitz-Gilbert (LLG) equation \cite{claudio}, expanded with a STT variable \ref{eq:llg}. 
+The inclusion of STT into micromagnetics has up to now been performed with local terms that express the STT as a function of the local magnetization only. The magnetization dynamics is described by the classical Landau-Lifshitz-Gilbert (LLG) equation \cite{claudio}, expanded to a STT variable. 
 
 \begin{equation}  \label{eq:llg}
 	\frac{\partial \vec{m}}{\partial t} = \gamma_0\vec{H}_{eff} \times \vec{m} + \alpha \vec{m} \times \frac{\partial \vec{m}}{\partial t} - \vec{T}
 \end{equation}
 
-This novel idea of incorporating spin torque into the LLG equation has itself been incorporated into a model proposed by Zhang-Li in 2004 \cite{zhang2004}. The LLG equation \ref{eq:llg} is incorporated effects of a spin-polarized current in a magnetic system, and the resulting spin transfer. They develop a form for the spin torque based on the spatial variation of the magnetization, as especially appropriate approach for domain walls. Then in 2005 the same authors Zhang-Li extended this idea working out the difference between the adiabatic and non-adiabatic torque contributions. Which lead to an even longer magnetization dynamics equation \cite{zhang} \cite{spindomain}.
+The idea of incorporating spin torque into the LLG equation has been incorporated into a model proposed by Zhang-Li in 2004 \cite{zhang2004}. The LLG equation \ref{eq:llg} incorporated effects of a spin-polarized current in a magnetic system, and the resulting spin transfer. They develop a form for the spin torque based on the spatial variation of the magnetization, an appropriate approach for domain walls. Then in 2005 the same authors Zhang-Li extended this idea working out the difference between the adiabatic and non-adiabatic torque contributions. \cite{zhang}.
 
 \begin{equation} \label{eq:zhang}
  \frac{\partial \delta \vec{m} }{\partial t} =  D_{0}\bigtriangledown^{2} \delta \vec{m} - \frac{1}{\tau_{sd}} \delta \vec{m} \times \vec{M} - \frac{1}{\tau_{sf}}\delta \vec{m} +(\vec{\mu} \cdot\vec{\bigtriangledown} )\vec{M}
 \end{equation}
 
-The equation \ref{eq:zhang} is referred to Zhang-Li model, represents a non-adiabatic spin torque, with the presence of spin diffusion. Spin diffusion is a process by which magnetization is exchanged spontaneously between spin, which spin is able to accumulate in metals. The associated diffusion current flows in all directions, giving rise to nonlocal effects. The diffusion term of the equation \ref{eq:zhang} which carriers’ drift-diffusion equation implies that the spin density does not depend solely on the local magnetization, which gives rise of nonlocal magnetics effects \cite{claudio}. 
+The previous equation \ref{eq:zhang} is referred as the Zhang-Li model. It represents a non-adiabatic spin torque, along the presence of spin diffusion. Spin diffusion is a process by which magnetization is exchanged spontaneously between spin, which spin is able to accumulate in metals. The associated diffusion current flows in all directions, giving rise to nonlocal effects. The diffusion term of the equation \ref{eq:zhang} which carriers’ drift-diffusion equation implies that the spin density does not depend solely on the local magnetization, which gives rise of nonlocal magnetics effects \cite{claudio}. 
 
 Amongst the rapidly growing variety of proposed and developed spin structures, nonlocal spin detection devices, where measurement and current excitation paths are spatially separated, have recently gained a prominent position \cite{spinz}.
 
 \subsection{Experiment}
 
-We Quantitatively test the effects of spin diffusion, on real Domain walls structures, this is done by numerically solve the Zhang-Li model into micro-magnetics, using the equation \ref{eq:zhang}. Zhang-Li research  \cite{zhang} initially solves analytically the diffusion equation \ref{eq:zhang}, However, ignoring the term of spin diffusion. In this numerically simulation we solve such equation using the spin diffusion term.
+We quantitatively test the effects of spin diffusion, on domain walls structures. Therefore, by numerically solve the Zhang-Li model along a soft nanostrip of NiFe. using the equation \ref{eq:zhang}. Zhang-Li research initially solves analytically the diffusion equation \ref{eq:zhang}, However, it ignores the term of spin diffusion. Therefore we numerically solve the solution of the mode including the spin diffusion term \cite{zhang}.
 
-The sample considered is a 300 nm wide and 5 nm tick NiFe soft nanostrip. This dimensions are widely used for experimental use. Two Domain walls are used a Asymmetric Transverse Wall (ATW) and a Vortex Wall (VW). ATW maps of magnetization components of non equilibrium spin accumulation under a uniform current density with $D = 0, 1$ and $10 nm^2 / ps$. See figure \ref{fig:atw}.
+The sample considered is a 300 nm wide and 5 nm tick NiFe soft nanostrip. The dimensions are widely used for experimental practice. Two domain walls are used a Asymmetric Transverse Wall (ATW) and a Vortex Wall (VW). ATW maps of magnetization components of non equilibrium spin accumulation under a uniform current density with $D = 0, 1$ and $10 \quad nm^2 / ps$ ( figure \ref{fig:atw}).
 
 \begin{figure}[htbp]
 	\centering
@@ -109,7 +111,7 @@ The sample considered is a 300 nm wide and 5 nm tick NiFe soft nanostrip. This d
 	\label{fig:atw}
 \end{figure}
 
-Vortex Wall (VW) same as for ATW, we point out the noticeable effect of the diffusion constant around the vortex core, which is the smallest feature of the wall. See figure \ref{fig:vw}.
+Vortex Wall (VW) same as for Asymmetric Transverse Wall (ATW), has noticeable effects of the diffusion constant around the vortex core, which is the smallest feature of the wall, illustrated in figure \ref{fig:vw}.
 
 \begin{figure}[htbp]
 	\centering
@@ -121,11 +123,11 @@ Vortex Wall (VW) same as for ATW, we point out the noticeable effect of the diff
 
 \section{Numerical Solution}
 
-The equation \ref{eq:zhang} is physically realistic, However, computationally expensive. Therefore we numerical methods to solve such equation. The numerical methods used for the solution is a the method known as Finite Differences in the Time Domain (FDTD) whose integration is done using a 4th order Runge-Kutta integration.
+The Zhang-li model \ref{eq:zhang} is physically real, however, computationally expensive. Therefore we need to simulate the physical behavior. The numerical methods used for the solution is a the method known as Finite Differences in the Time Domain (FDTD) whose integration is done using a 4th order Runge-Kutta integration.
 
 \subsection{Finite differences in the time domain}
 
-The finite difference in the time domain (FDTD) method  is able to solve complicated problems. However, it is generally computationally expensive. Solutions may require a large amount of memory and computation time \cite{ufdtd}. FDTD is a numerical analysis technique use for approximating solutions to the associates system of differential equations. The method belongs in the general class of grid-based differential numerical modeling methods. Please read reference \cite{methods} for more information about the demonstration of such numerical methods for this section.
+The finite difference in the time domain (FDTD) method  is able to solve complicated problems. However, it is generally computationally expensive. Solutions may require a large amount of memory and computation time \cite{ufdtd}. FDTD, amongst other, is a numerical analysis technique use for approximating solutions for differential equations. The method belongs in the general class of grid-based differential numerical modeling methods. Demonstration of the numerical methods in this sections \cite{methods}.
 
 The FDTD method essentially uses a weighted summation of functions values at neighboring points to approximate the derivate at a particular point, in this case a point in a 3d grid. The result for each cell is based on the results from the cell and its neighbors at the previous time-frame, figure \ref{fig:fdtd}.  
 
@@ -141,7 +143,7 @@ The magnetization is sampled on a uniform rectangle mesh at points $(x_0 + i\big
 
 Looking at the equation \ref{eq:zhang}, we need a method to calculate the first and second derivate. With the Taylor expansion we are able to perform such calculation. The Second order Taylor expansion readily yields expressions for the first and seconds central derivates. First and second-order derivates of the magnetization components in order to define the divergence  of the magnetization $(\nabla \cdot m)$, and the components of the exchange field $(\nabla^2m)$, respectively. The magnetization components along boundaries also need to be evaluated in order to define surface charges $(m \cdot n)$. Boundary conditions need to be incorporated in the evaluated of the effective field without loss of accuracy. 
 
-Consider a regular, differentiable one-dimension  scalar function $f(x)$ sampled at regular intervals, a, see figure  \ref{fig:bound}. Second order Taylor expansion readily tiles expressions for the first and seconds central derivates that are widely used in numerics, namely $\frac{df}{dx} = \frac{f_{i+1} - f_{i-1}}{2a}$ and $\frac{d^2f}{dx^2} = \frac{f_{i+1} - 2f_i + f_{i-1}}{a^2}$. Demonstration of such equations reference \cite{methods}.
+Consider a regular, differentiable one-dimension scalar function $f(x)$ sampled at regular intervals of $a$, see figure  \ref{fig:bound}. Second order Taylor expansion readily tiles expressions for the first and seconds central derivates that are widely used in numerics, namely $\frac{df}{dx} = \frac{f_{i+1} - f_{i-1}}{2a}$ and $\frac{d^2f}{dx^2} = \frac{f_{i+1} - 2f_i + f_{i-1}}{a^2}$ \cite{methods}.
 
 \begin{figure}[htbp]
 	\centering
@@ -157,7 +159,7 @@ Taylor expansion of the function $f(x)$ around $x=x_i$ yields where $f^{(k)}(x_i
 
 $$f(x) = \sum\limits_{k=0}^{\infty} \dfrac{(x-x_i)^k}{k!}f^{(k)}(x_i) = \sum\limits_{k=0}^{\infty} \dfrac{(x-x_i)^k}{k!}f^{(k)}$$
 
-Applying the previous equation to nearest and next nearest neighbor to grid pint i and truncation the the 4th order yields a set of four equations
+Applying the previous equation to nearest and next nearest neighbor to grid point $i$ and truncation the the 4th order yields a set of four equations
 
 The set of linear equations provide numerical estimates for the first, second, third and fourth derivatives of $f$ at any given point $i$. The general form of the first and second derivate based on second nearest neighbors expansion reads:
 
@@ -166,13 +168,13 @@ f^{(1)}_i &= \dfrac{f_{i-2}-8f_{i-1} + 8f_{i+1} - f_{i+2}}{12a} \\
 f^{(2)}_i &= \dfrac{f_{i-2}+16f_{i-1} -30f_{i} + 16f_{i+1} - f_{i+1}}{12a^2}
 \end{align}
 
-The equation \ref{eq:nn} for the second derivate based on second nearest neighbors expansion solves for the laplacian operator in the Zhang -Li Model equation \ref{eq:zhang}. However, points close to the edges need to be evaluated for great precession. 
+The equation \ref{eq:nn} for the second derivate based on second nearest neighbors expansion solves for the Laplacian operator in the Zhang-Li Model equation \ref{eq:zhang}. However, points close to the edges need to be evaluated for better precision. 
 
 \subsubsection{Boundary conditions}
 
-Expressions such as \ref{eq:nn} are valid when the grid point becomes closet or next-to-closet to the boundary of the magnetic box. Specific accuracy preserving, expansion need to be worked out. The general principal in the present approach is to replace equations that are missing because of the lack of grid points outside the magnetic volume by equations including explicit reference to boundary conditions \cite{methods}.
+Expressions such as \ref{eq:nn} are valid when the grid point becomes closet or next-to-closet to the boundary of the magnetic box. Specific accuracy preserving, expansion need to be worked out. The general present approach is to replace equations that are missing because of the lack of grid points outside the magnetic volume by equations including explicit reference to boundary conditions \cite{methods}.
 
-Consider first a point second to closet to bound, \ref{fig:bound}-b. Grid point $i + 1$ is missing for this particular geometry. However, defining $x_R$ as the right boundary coordinate along the $x$ axis. The $f^{(1)}(x_R)$ to be know along the boundary to be replace by the derivate of Taylor's expansion \cite{methods}.
+Consider first a point second to closet to bound, \ref{fig:bound},b. Grid point $i + 1$ is missing for this particular geometry. However, defining $x_R$ as the right boundary coordinate along the $x$ axis. The $f^{(1)}(x_R)$ to be know along the boundary to be replace by the derivate of Taylor's expansion \cite{methods}.
 
 \begin{equation} \label{eq:taylor}
 f^{(1)}(x) = \sum\limits_{k=0}^{\infty} \dfrac{(x-x_i)^{k-1}}{(k - 1)!}f^{(k)}(x_i)
@@ -202,7 +204,7 @@ Using \ref{fig:bound}-b. $x_R - x_i = 3a/2$ becomes \cite{methods}.
 \end{bmatrix}
 \end{align}
 
-Similarly, for a point closet to boundary, reference \ref{fig:bound}-c, grid points i + 1 and i + 2 are missing. The two first equation of  \ref{eq:matrix4} need now to be replaced by a single equation, while the two remaining equations need to be truncated to the third order. For the geometry illustrated in \ref{fig:bound}-c, the minimal set of equations now reads \cite{methods}.
+Similarly, for a point closet to boundary ( graph b in \ref{fig:bound} ), the grid points i + 1 and i + 2 are missing. The two first equation of  \ref{eq:matrix4} need now to be replaced by a single equation, while the two remaining equations need to be truncated to the third order. Review graph c in \ref{fig:bound}, the minimal set of equations now reads \cite{methods}.
 
 \begin{align} \label{eq:matrix3}
 \begin{bmatrix}
@@ -223,15 +225,15 @@ Similarly, for a point closet to boundary, reference \ref{fig:bound}-c, grid poi
 \end{bmatrix}
 \end{align}
 
-In both cases, and second derivatives and fully determined provided $f^{(1)}(x_R)$ be known along the boundary. For further reference and demonstration of such equations and matrices please read \cite{methods}. For the CUDA code implementation of the laplacian boundaries conditions please read Chapter \ref{Implementation of Domain Wall Dynamics under Nonlocal STT}.
+In both cases, the second derivatives and the matrices of $f^{(1)}(x_R)$ are demonstrated in the reference \cite{methods}. CUDA code implementation of the laplacian boundary condition read chapter \ref{Implementation of Domain Wall Dynamics under Nonlocal STT}.
 
-The main advantages of the finite difference approach is easy to implement, simplicity of meshing, efficient evaluation of the magnetization energy, and the accessibility of higher order methods. The main disadvantage of this approach is the sampling curved boundaries within a rectangular mesh, resulting in some what discrete approximation. In addition, it could produce a significant error in the evaluation.
+The main advantages of the finite difference approach are: easy to implement, simplicity of meshing, efficient evaluation of the magnetization energy, and the accessibility of higher order methods. The main disadvantage of this approach is the sampling curved boundaries within a rectangular mesh, resulting in some what discrete approximation. In addition, it could produce a significant error in the evaluation.
 
 \subsection{Fourth order Runge and Kutta method}
 
  Modern numerical algorithms for the solution of ordinary differential equations are based on the method of the Taylor series. Algorithm such as the Runge-Kutta method are constructed so they give an expression depending of the parameter $(h)$, in other works the step as an approximate solution of the first terms of the Taylor series. The method is able to accurately solve a wide range of problems, but it is generally computationally expensive. Solutions require large amount of memory and computational time \cite{numerical}.
 
-There exist several other computational numeric methods to solver such equations, methods such as the Euler integrator, the Midpoint Method and the Runge-Kutta fourth order (RK4) integrator method can solve differential equations. However, they differ in the numerically approximation and computation time. The RK4 is used for this simulation because its numerically more accurate when compared to the others methods.
+There exist several other computational numeric methods to solve such equations, methods such as the Euler integrator, the Midpoint Method and the Runge-Kutta fourth order (RK4) integrator method can solve differential equations. However, they differ in the numerically approximation and computation time. The RK4 is used for this simulation because its numerically more accurate when compared to the others methods.
 
 The RK4 method differs widely from the Euler method and the Midpoint method. The Euler method is the simplest, the derivative at the starting point of each interval is extrapolated to find the next function value, see figure \ref{fig:euler}. Euler method only has first order accuracy while the RK4 its fourth order integrator \cite{numerical}.
 
@@ -271,7 +273,7 @@ As the equations shows, each step, the derivative is evaluated four times, once 
 
 \vspace{4.0em}
 
-In conclusion, the simultaneous solution of the diffusive Zhang and Li model \ref{eq:zhang} has uncovered a qualitatively new feature of the spin-transfer torque effect in the presence of spin diffusion. Namely the dependence of the steady-state DW velocity on DW structure \cite{claudio}. In summarize, we quantitatively test the effects of spin diffusion, on real Domain walls structures for ATW and VW. This is done by numerically solve the Zhang-Li model into micro-magnetics. The numerical methods used to solve such model as mentioned is the FDTD on a 3D cell grid with whose integration is done using RK4.
+To conclusion, the simultaneous solution of the diffusive Zhang and Li model \ref{eq:zhang} has uncovered a qualitatively new feature of the spin-transfer torque effect in the presence of spin diffusion. Namely the dependence of the steady-state DW velocity on DW structure \cite{claudio}. We quantitatively test the effects of spin diffusion, on real fomain walls structures for ATW and VW. This is done by numerically solve the Zhang-Li model along a soft nanostrip of NiFe. The numerical methods used to solve such model as mentioned is the FDTD on a 3D cell grid with whose integration is done using RK4.
 
 
 

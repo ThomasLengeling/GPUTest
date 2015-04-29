@@ -22,7 +22,7 @@
 \contentsline {section}{\numberline {2.3}Numerical Solution}{15}{section.55}
 \contentsline {subsection}{\numberline {2.3.1}Finite differences in the time domain}{15}{subsection.56}
 \contentsline {subsubsection}{\numberline {2.3.1.1}Boundary conditions}{17}{subsubsection.61}
-\contentsline {subsection}{\numberline {2.3.2}Fourth order Runge and Kutta method}{19}{subsection.65}
+\contentsline {subsection}{\numberline {2.3.2}Fourth order Runge and Kutta method}{18}{subsection.65}
 \contentsline {chapter}{\numberline {3}Implementation of Domain Wall Dynamics under Nonlocal STT}{21}{chapter.70}
 \contentsline {section}{\numberline {3.1}Simulation}{21}{section.71}
 \contentsline {subsection}{\numberline {3.1.1}Data allocation and threads}{22}{subsection.74}

@@ -6,7 +6,7 @@
 
 \lhead{Chapter 1. \emph{Heterogeneous Computing}} % Change X to a consecutive number; this is for the header on each page - perhaps a shortened title
 
-Heterogeneous computing refers a system that combines several processor types to gain more performance. Typically using a single or multi-core computer processing units (CPUs) and a  graphics processing units (GPUs).
+Heterogeneous computing refers to a system that combines several processor types to gain more performance. Typically using a single or multi-core computer processing units (CPUs) and a  graphics processing units (GPUs).
 Frequently GPUs are know for 3D graphics rendering, video games and video editing, but GPUs are becoming increasingly popular for accelerating computing applications and scientific research due to their low price, high performance and relatively low energy consumption per FLOPS (floating point operations per second) when compared with the CPUs. This chapter provides an overview of GPUs within the High Performance Computing (HPC) context, their advantages and disadvantages and how they can be integrated in to a scientific software and research.
 
 %per watt better than cpu's
@@ -14,13 +14,13 @@ Frequently GPUs are know for 3D graphics rendering, video games and video editin
 
 \section{Motivation}
 
-The GPU has been essential part of personal computer since the early use. Over the course of 30 years the graphics architecture has evolve form drawing a simple 3D scene to be able to program each part of the GPU graphics pipeline. Their role became more important in the 90s with the first-person shooting video game DOOM by id Software. The demanding video game industry has brought year by year more realistic 3D graphics. Consequently new innovated hardware capabilities has been developed to increase the graphics pipeline and the render output. This lead to a more sophisticated programming environment with a massive parallel capabilities.
+The GPU has been essential part of personal computer since early use. Over the course of 30 years the graphics architecture has evolve from drawing a simple 3D scene to be able to program each part of the GPU graphics pipeline. Their role became more important in the 90s with the first-person shooting video game DOOM by id Software. The demanding video game industry has brought year by year more realistic 3D graphics. Consequently new innovated hardware capabilities has been developed to increase the graphics pipeline and the render output. This lead to a more sophisticated programming environment with a massive parallel capabilities.
 
-The fixed graphics pipeline (fixed functions on the GPU) was introduced in the early 90s, allowed various customization of the rendering process. However, only allowed some modifications of the GPU output. Specific adjustment were extremely complicated did not allow custom algorithms. In 2001 NVIDIA and ATI (AMD) introduced the first programmability to the graphics pipeline. Which could control millions pixels and vertex output in a single frame, moreover it out-performed the CPU in rending video. In addition graphics shift from the CPU to the GPU. This was the beginning of GPU parallel capabilities \cite{Nickolls}.
+The fixed graphics pipeline (fixed functions on the GPU) was introduced in the early 90s, allowed various customization of the rendering process. However, only allowed some modifications of the GPU output. Specific adjustment were extremely complicated did not allow custom algorithms. In 2001 NVIDIA and ATI (AMD) introduced the first programmability to the graphics pipeline. Which could control millions pixels and vertex output in a single frame, moreover it out-performed the CPU for real-time rending. In addition, graphics shift from the CPU to the GPU. This was the beginning of GPU parallel capabilities \cite{Nickolls}.
 
 At first the GPUs where only used for general-purpose computing (GPGPU) like computer graphics, but in resent years the GPU has been used to accelerate scientific research, analytics, engineering, robotics and consumer applications.
 
-GPUs are attractive for certain type of scientific computation as they offer potential seed-up of multi-processors devices with the added advantages of being low cost, low maintenance, energy efficient, and relative simple to program. Many algorithms in applied physics are using GPUs to improve their performance over the CPU. Some area of scientific research that obtain the benefit of heterogenous computing are: Molecular Dynamics, Quantum Chemistry, Computational Structural Mechanics and Computational Physics \cite{applications}.
+GPUs are attractive for certain type of scientific computation as they offer potential seedup of multi-processors devices with the added advantages of being low cost, low maintenance, energy efficient, and relative simple to program. Many algorithms in applied physics are using GPUs to improve their performance over the CPU. Some area of scientific research that obtain the benefit of heterogenous computing are: Molecular Dynamics, Quantum Chemistry, Computational Structural Mechanics and Computational Physics \cite{applications}.
 
 In any case, for a given simulation a compromise between speed and accuracy is always made. The current tendency of the CPU relies on increasing the clock speed, decreasing the size of transistor and finally adding more cores per unit and be able to work and a parallel manner. Therefore there are limitations to this paradigm \cite{quantitative}.
 
@@ -79,7 +79,7 @@ Being able to efficiently use a GPU for an application requires to expose the in
 	\label{fig:arch}
 \end{figure}
 
-On the GPU, floating point precision and optimization are very important. However, there is a penalty for choosing either performance or precession. All the GPUs are optimized for single precision floating operations, a 24 bit size. NVIDIA, also provides a double precision point, size of  53 bits. Which is a standard based on  IEEE 754 notation. Normally the GPU uses the single precession(SP) by default, if chosen a double precision (DP), normally there is a penalty between 2x and 4x speedup\cite{precision}. Libraries such as CUBLAS and CUFFT provides useful information how NVIDIA handles floating point operations under the hood.
+On the GPU, floating point precision and optimization are very important. However, there is a penalty for choosing either performance or precession. All the GPUs are optimized for single precision floating operations, a 24 bit size. NVIDIA, also provides a double precision point, size of  53 bits. Which is a standard based on  IEEE 754 notation. Normally the GPU uses the single precision (SP) by default, if chosen a double precision (DP), normally there is a penalty between 2x and 4x speedup\cite{precision}. Libraries such as CUBLAS and CUFFT provides useful information how NVIDIA handles floating point operations under the hood.
 
 \section{Programming on GPUs}
 
@@ -102,11 +102,11 @@ CUDA programming model views the GPU as an accelerator processor which calls par
 \item Return the data from the device to the host.
 \end{itemize}
 
-The structure of CUDA reflects the coexistence of CPU and GPUs. The CUDA code is a mixture of both host code and device code. Moreover, the device code is an extension of the C compiler with additional namaspaces/CUDA keywords for parallel code, the CUDA compiler is called NVCC. The host code is the standard low level ANSI C language. However, is possible to program applications in C++, Python and Fortran. While the standard C code has extension marked as .c for source and .h for headers files, the CUDA code has extensions of .cu for source files and .cuh.
+The structure of CUDA reflects the coexistence of CPU and GPUs. The CUDA code is a mixture of both host code and device code. Moreover, the device code is an extension of the C compiler with additional namespaces/CUDA keywords for parallel code, the CUDA compiler is called NVCC. The host code is the standard low level ANSI C language. However, is possible to program applications in C++, Python and Fortran. While the standard C code has extension marked as .c for source and .h for headers files, the CUDA code has extensions of .cu for source files and .cuh.
 
 Kernels are launched or executed on a large amount of threads in the SM. They can be configured by threads per block and by block per grid. The thread and block configuration is illustrated in the figure \ref{fig:grid}. A thread is the simplest executing process. It consists of the code of the program, the particular point where the code is being executed \cite{hwu}. In addition all the threads in a kernel can access the global memory (RAM), figure  \ref{fig:arch} illustrates the physical position. Moreover, many threads form a block, and many blocks form a grid. CUDA handles the execution of the random-access threads, which take up-to very few clock cycles in comparison to CPU threads.
 
-Each of the threads can be access by a implicit variable that identifies its position within the thread block and its grid. The thread access for the x coordinate is showed in the code \ref{lst:1d}. This is only the case for 1D block, which is widely used for shared memory access (see chapter 4) \cite{example}.
+Each of the threads is able to obtain a implicit variable that identifies its position within the thread block and its grid. The thread access for the x coordinate is showed in the code \ref{lst:1d}. This is only the case for 1D block, which is widely used for shared memory access (see chapter 4) \cite{example}.
 
 \begin{lstlisting}[language=C++, label={lst:1d}, caption={1D thread block operation on a CUDA kernel}]	
 	int index = blockIdx.x * blockDim.x + threadId.x;
@@ -143,7 +143,7 @@ In CUDA, host memory and device memory have separate memory spaces. Both of them
 
 \subsection{CPU and GPU multithread comparison}
 
-Current CPUs are typically multicore systems, which are capable of parallelizing code fairly easy. In addition suggest a parallel system. However, we would require a large infrastructure  \cite{example}. For example, if we want to implement a simple vector addition using the CPU cores, we would require to compute a portion of the code on each code, one core the evens and the other core the odds, see figure \ref{fig:cpu}. Furthermore, this makes the implementation difficult to scale and require many cores, which are not so easily available after a 8 core system. 
+Current CPUs are typically multicore systems, which are capable of parallelizing code fairly easy. In addition suggest a parallel system. However, we would require a large infrastructure  \cite{example}. For example, if we want to implement a simple vector addition using the CPU cores, we would require to compute a portion of the code on each code, one core the even numbers and the other core the odd numbers, examine figure \ref{fig:cpu}. Furthermore, this makes the implementation difficult to scale and require many cores, which are not so easily available after a 8 core system. 
 
 \begin{figure}[htbp]
 	\centering
@@ -175,7 +175,7 @@ add<<< blocks2, threads, 0 >>>(A, B, C);
 \vspace{4.0em}
 
 
-To conclude, this chapter provided a overview of heterogeneous programming in a modern context. CUDA enhance the C language with parallel computing support. In addition, is possible to launch enormous amounts of parallel threads, oppose of few threads on the CPU. The number of GPU cores will continue to increase in proportion to increase in available transistors as silicon process improve. In addition, GPUs will continue to go through vigorous architectural evolution. Despite their demonstration high performance on data-parallel applications.
+To conclude, this chapter provided a overview of heterogeneous programming in a modern context. CUDA enhance the C language with parallel computing support. In addition, is possible to launch millions of parallel threads, oppose to, a few threads on the CPU. The number of GPU cores will continue to increase in proportion to increase in available transistors as silicon process improve. In addition, GPUs will continue to go through vigorous architectural evolution, despite their proof for high performance on data-parallel applications.
 
 
 
