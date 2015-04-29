@@ -241,7 +241,7 @@ Initially, each kernel was launched on the default steam zero. Therefore, every 
 
  Kernels by default cannot run in parallel with others kernels. Furthermore, CUDA doesn't provide an automatic parallel kernel executing. In addition, the programmer needs to tell the CUDA compiler that some portion of the code or kernel should be run in parallel. However, the compiler does not always know when to use concurrent kernels, its depends on the hardware capabilities and as well the number of threads per block and the number of SM available. If the compiler finds available space to run another kernel simultaneously it will do so. 
 
-For example, the $gsolution$ \ref{lst:concurrent} kernel computes the Zhang and Li model for x, y, z coordinates, which extensively uses the global memory of the device. To accomplish concurrent kernels, the streams should be able to access memory blocks that are pinned to specific a stream. Therefore, each memory block corresponding to x, y, z coordinate are mapped to 3 independent streams. Furthermore, all the matrices corresponding to the coordinate x are mapped to the stream 1, coordinate y to stream 2 and coordinate z to stream 3.
+For example, the $gsolution$ \ref{lst:concurrent} kernel computes the Zhang and Li model for x, y, z coordinates, which extensively uses the global memory of the device. To accomplish concurrent kernels, the streams should be able to access memory blocks that are pinned to specific a stream. Therefore, each memory block corresponding to x, y, z coordinate are mapped to three independent streams. Furthermore, all the matrices corresponding to the coordinate x are mapped to the stream 1, coordinate y to stream 2 and coordinate z to stream 3.
 
 \begin{lstlisting}[language=C++, label={lst:concurrent}, caption={Evaluation of x, y, z coordinates of the Zhang and Li model in a single kernel.}]
 deltamX[index] = sfrelaxX[index] + sdexX[index] + laplX[index] - smX[index];
@@ -260,7 +260,7 @@ if (i > 1 && i < NX + 2 && j >= 0 && j < NY)
 	deltam[index] = sfrelax[index] + sdex[index] + lapl[index] - sm[index];
 \end{lstlisting}
 
-This same method was applied to every kernel that was possible to separate into three kernels calls. Some kernels were not viable to be separated, such as the cross product, because, the cross product uses pinned memory block from the other streams. The figure \ref{fig:concurrent} illustrates the results of concurrent kernels in the Tesla K20.
+This same method was applied to every kernel that was possible to separate into three kernels calls. Some kernels were not viable to be separated, such as the cross product. Because, the cross product uses pinned memory block from the other streams. The figure \ref{fig:concurrent} illustrates the results of concurrent kernels in the Tesla K20.
 
 \begin{lstlisting}[language=C++, caption={Evaluate Zhang and Li model.}]
 for (int i  = 0; i < 3; i++)
@@ -281,7 +281,7 @@ for (int i  = 0; i < 3; i++)
 
 In chapter \ref{Implementation of Domain Wall Dynamics under Nonlocal STT} we mentioned that the input data set 480 x 120 is mapped to a CUDA square grid of 512 x 128. Because the mapping of the extra threads, is possible to execute a portion of kernels concurrently.
 
-Concurrent kernels demonstrates a very promising technique to achieve a huge performance increment in the current simulation. In theory is possible to have multiples kernels executing at the same. However, there are some downsides to this implementation; correctly synchronize kernels, waiting time and hardware resources are among the  problems \cite{practices}. The timeline of the application \ref{fig:waittime} illustrates the waiting time between kernels execution. However, the waiting time are very small time steps between 0.01ms and 0.01ms, but waiting time occurs for each step of the RK4, appears approximate 45,00 times. Furthermore, branching the kernel execution process should eliminate the issue.
+Concurrent kernels demonstrates a very promising technique to achieve a huge performance increment in the current simulation. In theory is possible to have multiples kernels executing at the same. However, there are some downsides to the implementation; correctly synchronize kernels, waiting time and hardware resources are among the  problems \cite{practices}. The timeline of the application \ref{fig:waittime} illustrates the waiting time between kernels execution. However, the waiting time are very small time steps between 0.01ms and 0.01ms, but waiting time occurs for each step of the RK4, appears approximate 45,00 times. Furthermore, branching the kernel execution process should eliminate the issue.
 
 \begin{figure}[htbp]
 	\centering

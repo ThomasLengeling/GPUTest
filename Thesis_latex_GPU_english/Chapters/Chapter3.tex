@@ -141,7 +141,7 @@ Shared memory & 16 * 16 & 32 * 32 \\
 
 \subsection{Initial Calculations}
 
-The initial step the $ \delta \vec{m}$ term is calculated from the equation \ref{eq:zhang} (chapter \ref{Implementation of Domain Wall Dynamics under Nonlocal STT}). this is the non-equilibrium spin density \cite{claudio} domain wall at rest. The Following equations evaluates the first steps of the magnetization data\ref{lst:init}.
+Before applying the RK4, we need to evaluate static matrices that will not change over the curse of the RK4 algorithm \ref{log:rk4}. The initial calculations are for the therm $ \delta \vec{m}$ of the equation \ref{eq:zhang} (chapter \ref{Implementation of Domain Wall Dynamics under Nonlocal STT}). The term is the non-equilibrium spin density domain wall at rest \cite{claudio}. The Following equations evaluates the first steps of the magnetization data\ref{lst:init}.
 
 \begin{lstlisting}[language=C++, label={lst:init}, caption={Initial calculations}]
 	//Compute x, y and z component of source term
@@ -155,9 +155,9 @@ The initial step the $ \delta \vec{m}$ term is calculated from the equation \ref
     gm_x_source << <blocks, threads >> >(...);
 \end{lstlisting}
 
-The kernel \textit{gsource} from \ref{lst:init} are evaluated only once,  resulting with the matrix \textit{sm}, which is used to compute the Zhang-Li model in the RK4 integration. 
+The kernel \textit{gsource} from \ref{lst:init} are evaluated only once,  resulting with the matrix \textit{sm}, which is used to compute the Zhang-Li model in the following RK4 integration. 
 
-As mention before the matrices for CUDA are square matrices 512 x 128. However, the data set is 480 x 120, because of the matrices size difference we need to limit the number of threads execution of the CUDA kernels. To limit the executing of the extra threads a simple $if$ within each kernel solves the issue \ref{lst:if}. Nonetheless, due to the boundaries condition of the FDTD method we need to add a small shift of 2 indices in the x direction.
+Mentioned before the matrices for CUDA are square matrices 512 x 128. However, the data set is 480 x 120, because of the matrices size difference we need to limit the number of threads execution of the CUDA kernels. To limit the executing of the extra threads a simple $if$ within each kernel solves the issue \ref{lst:if}. Nonetheless, due to the boundaries condition of the FDTD method we need to add a small shift of 2 indices in the x direction.
 
 \begin{lstlisting}[language=C++, label={lst:if}, caption={Laplacian X using global memory}]
     if (i > 1 && i < NX + 2 && j >= 0 && j < NY){
@@ -326,7 +326,6 @@ Because CUDA framework is highly parallel system is fairly easy to obtain errone
 The validation is done by comparing the output of the simulation with a valid data set, the output of the validation application tells us the error factor of the current data with the valid set. So for each data set there is a threshold value, that can tell if the that is close enough to the results. A example of the validation performed.
 
 According to our results, new code shouldn't produce errors in the spin.dat data greater than $7.0^{-17}$, in other words valid code don't lead to differences greater than the precision expected from computations with double precision $1.0^{-16}$ in the case of eff data the errors are in the order of $1.0^{e-11}$ and no greater than $6^{-11}$. For the diffuse beta variation the precision expected to be within the double precision range of $1^{-16}$. 
-
 
 The initial implementation results were done using the GeForce GT 650M, with 384 CUDA core at 745 MHz and 2GB GDDR5 of memory. The final simulation with a correct validation data outputs the following results \ref{tab:results}. The 1.00x speedup is used for comparing optimization results in the final chapter \ref{Optimization Results}.
 
