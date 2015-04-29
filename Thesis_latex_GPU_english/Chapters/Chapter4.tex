@@ -62,22 +62,33 @@ Timing a launched kernel should be done on either the GPU or the CPU. however, t
 
 The bandwidth refers to the rate at which data can be transferred between host and device and vice-versa. The bandwidth is one of the most important factors for testing performance on the GPUs. Choosing the right type of memory could dramatically increase performance and bandwidth. There are two main bandwidth types to indicate performance, theoretical bandwidth and effective bandwidth. The theoretical bandwidth is based on the hardware specifications available by NVIDIA. The bandwidth is calculated using the following:
 
-$$ theoretical bandwidth = (clock rate * (bit-wide-memory-interface / 8 )*2) / 10^9 $$
+\vspace{0.8em}
+\begin{center}
+ {\listf theoretical bandwidth} = $\dfrac{({\listf clock rate} * (512 / 8.0 ) * 2.0)} { 10^{9}}$
+\end{center}
+\vspace{0.8em}
 
-For example the NVIDIA GeForce GTX 280 uses DDR RAM with a memory clock rate of 1,105 MhZ and a 512-bit-wide memory interface
+For example the NVIDIA GeForce GTX 280 uses DDR RAM with a memory clock rate of 1,105 Mhz and a 512-bit-wide memory interface
 
-$$ (1107 * 10^6 * (512/8.0) *2 )/10^9 = 141.6 Gb /sec$$
+\vspace{0.8em}
+\begin{center}
+$\dfrac{(1107 * 10^6 * (512/8.0) * 2.0 )}{10^9}$ = $141.6$ Gb/sec
+\end{center}
+\vspace{0.8em}
 
-The GTX 280 has a theoretical bandwidth of $141.6Gb/sec$.
-The effective bandwidth is calculated by timing specific program activities and by knowing how data is accessed by the application \cite{practices}.
+The GTX 280 has a theoretical bandwidth of $141.6Gb/sec$. The effective bandwidth is calculated by timing specific program activities and by knowing how data is accessed by the application \cite{practices}.
 
-$$effective-bandwidth = ((Br - Bw) / 109 )/time$$
+\vspace{0.8em}
+\begin{center}
+{\listf effective-bandwidth} = $\dfrac{((Br - Bw) / 109.0 )}{time}$
+\end{center}
+\vspace{0.8em}
 
 Where $Br$ is the number of bytes read per kernel, $Bw$ is the number of bytes written per kernel and  $t$ is the elapsed time given in seconds \cite{fortran}.
 
-In practice the difference between theoretical bandwidth and effective bandwidth indicated how much bandwidth is wasted on accessing memory and calculations. If the effective bandwidth is low compared to the theoretical bandwidth is one indication that there is not enough work being done in the GPUs. In addition, there a several solutions; analyze the code to make more parallelize instructions, execute more computational instructions on the GPUs, finally, bind memory blocks, pin the initial memory block on the CPU with the final memory  block on the CPU.
+In practice the difference between theoretical bandwidth and effective bandwidth indicated how much bandwidth is wasted on accessing memory and calculations. If the effective bandwidth is low compared to the theoretical bandwidth is an indication that there is not enough work being done in the GPUs. In addition, there a several solutions; analyze the code to accomplish more parallelize instructions, execute more computational instructions on the GPUs, bind memory blocks, in other words pin the initial memory block on the CPU with the final memory  block on the CPU.
 
- The next chapter we analyze the bandwidth and timing for each NVIDIA GPU card used to optimize the application. However, the bandwidth information is only available for analysis when transferring data from the CPU to the GPU or vise-verse.
+ In the \ref{Optimization Results} chapter we analyze the bandwidth and timing for each NVIDIA GPU used to optimize the application. However, bandwidth information is only available when transferring data from the CPU to the GPU or from the GPU to the CPU.
 
 \section{Memory Handling with CUDA}
 
@@ -155,7 +166,7 @@ The texture memory is not used on the current implementation, for obvious reason
 
 \subsection{Thread Synchronization}
 
-Thread Synchronization refers to orderly call thread operations. For efficiency, a pipeline can be created by queuing a number of kernels to keep the GPGPU busy for as long as possible. Furthermore, some form of synchronization is required so that the host is able to determine when the kernel or pipeline has completed \cite{design}. Commonly used synchronization mechanisms are:
+Thread Synchronization refers to orderly execute thread operations. For efficiency, a pipeline can be created by queuing a number of kernels to keep the GPGPU busy for as long as possible. Furthermore, some form of synchronization is required so that the host is able to determine when the kernel or pipeline has completed \cite{design}. Commonly used synchronization mechanisms are:
 
 \begin{itemize}
   \item Explicitly calling {\listf cudaThreadSynchronize()}, which acts as a barrier causing the host to stop and wait for all queued kernels to complete.

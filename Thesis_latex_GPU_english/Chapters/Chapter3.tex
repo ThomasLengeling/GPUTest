@@ -155,14 +155,17 @@ Before the evaluation of the RK4 terms, we need to evaluate static matrices that
     gm_x_source << <blocks, threads >> >(...);
 \end{lstlisting}
 
-The kernel {\listf gsource} of the listing \ref{lst:init} is only launched at the beginning of the application. From the calculation we obtain the matrix \textit{sm}, which is used to compute the Zhang-Li model in the RK4 integration section.
+The kernel {\listf gsource} of the listing \ref{lst:init} is only launched at the beginning of the application. From the calculation we obtain the matrix {\listf sm}, which is used to compute the Zhang-Li model in the RK4 integration section.
 
-As previously mentioned the CUDA matrices are square sizes, 512 x 128. However, the input data set is 480 x 120. Therefore, we need to limit the number of threads inside every kernel. To limit the executing of the extra threads a simple $if$ within each kernel solves the issue \ref{lst:if}. Nonetheless, due to the boundary condition of the FDTD method we need to add a small shift of two indices in the x direction.
+As previously mentioned the CUDA matrices are square sizes, 512 x 128. However, the input data set is 480 x 120. Therefore, we need to limit the number of threads inside every kernel. To limit the executing of the extra threads a simple {\listf if} within each kernel solves the issue \ref{lst:if}. Nonetheless, due to the boundary condition of the FDTD method we need to add a small shift of two indices in the x direction.
 
-\begin{lstlisting}[language=C++, label={lst:if}, caption={Laplacian X using global memory}]
+\begin{lstlisting}[language=C++, label={lst:if}, caption={Limit threads executing inside a kernel}]
+__global__ void rungeKuttaTerms(...)
+{
     if (i > 1 && i < NX + 2 && j >= 0 && j < NY){
     	//calculations
     }
+}
 \end{lstlisting}
 
 \subsection{Numerical Methods}
@@ -258,7 +261,7 @@ The three CUDA kernels {\listf glaplaciany}, {\listf glaplacianx} and {\listf gl
 
 \subsubsection{Zhang and Li Model}
 
-The Zhang-Li Model \ref{eq:zhang} is solved using code \ref{lst:rkcuda}. Furthermore, the Zhang-Li equation is used as function $f$ for the RK4 integration process \ref{eq:rk4}. The first term of the equation {\listf sfrelax} is calculated in the relaxation process at the end of the RK4 integrator \ref{fig:sim}. Then the term {\listf sdex} is computed in the Cross Product process, which is done before the RK4 calculation. The matrix {\listf sm} is only calculated once at the initial calculations process, kernel {\listf gsource} in the code \ref{lst:init}. Finally, the \{\listf lapl} matrix is evaluated in the Laplacian process. Moreover, computing the Laplacian for x, y coordinate of the CUDA memory grid. The same process evaluates the Laplacian boundary condition, using the FDTD method.
+The Zhang-Li Model \ref{eq:zhang} is solved using code \ref{lst:rkcuda}. Furthermore, the Zhang-Li equation is used as function $f$ for the RK4 integration process \ref{eq:rk4}. The first term of the equation {\listf sfrelax} is calculated in the relaxation process at the end of the RK4 integrator \ref{fig:sim}. Then the term {\listf sdex} is computed in the Cross Product process, which is done before the RK4 calculation. The matrix {\listf sm} is only calculated once at the initial calculations process, kernel {\listf gsource} in the code \ref{lst:init}. Finally, the {\listf lapl} matrix is evaluated in the Laplacian process. Moreover, computing the Laplacian for x, y coordinate of the CUDA memory grid. The same process evaluates the Laplacian boundary condition, using the FDTD method.
 
 \begin{lstlisting}[language=C++, label={lst:zhangcuda}, caption={Runge and Kutta 4th Terms}]
 		sfrelax[idx] = -deltam[idx] / tau_sf;
@@ -275,12 +278,19 @@ Once completed the evaluation of the Zhang-Li Model (listing \ref{lst:zhangcuda}
 Intuitively the equation \ref{eq:rk4} is implemented by using four CUDA kernels, each kernel calculates the step of the integration. The first part of \ref{lst:rkcuda} computes the Runge and Kutta's 1st, 2nd, and 3rd  term \ref{eq:rksplit}. The final fourth term, is the sum of the previous 3 terms, the last two lines of code in \ref{lst:rkcuda} show the calculation.
 
 \begin{lstlisting}[language=C++, label={lst:rkcuda}, caption={Runge and Kutta 4th Terms}]
-     rk1[idx] = dt * deltam[idx];  // Terms k1, k2, k3
+     rk1[idx] = dt * deltam[idx];  //term 1
      deltam[idx] = temp[idx] + 0.5 * rk1[idx];
      
+     rk2[idx] = dt * deltam[idx]; //term 2
+     deltam[idx] = temp[idx] + 0.5 * rk2[idx];
+     
+     rk3[idx] = dt * deltam[idx]; //term 3
+     deltam[idx] = temp[idx] + 0.5 * rk3[idx];
+     
      rk4[idx] = dt * deltam[idx]; //final k4
-     deltam[idx] = temp[idx] + (rk1[idx] + 2.0 * (rk2[idx] + rk3[idx])
-                                  + rk4[idx]) / 6.0;
+     double diff = rk1[idx] + 2.0 * (rk2[idx] + rk3[idx]) + rk4[idx];
+     deltam[idx] = temp[idx] + diff / 6.0;
+     				
 \end{lstlisting}
 
 On each RK4 step the Zhang-Li model is evaluated, Moreover, numerically solving the model with the FDTD method including the magnetization boundaries condition.
