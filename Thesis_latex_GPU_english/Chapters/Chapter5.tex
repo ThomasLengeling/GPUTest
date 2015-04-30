@@ -7,11 +7,11 @@
 \lhead{Chapter 5. \emph{Optimization Results}} % Change X to a consecutive number; this is for the header on each page - perhaps a shortened title
 
 
-In this chapter we obtain the results of the CUDA code implementation launched on a single GPU device. The tests were performed on various GPUs architectures. The application is analyzed on various stages using NVIDIA's Visual Profiler. In addition, the CUDA kernels were evaluated in performance, execution time, occupancy and concurrent kernels. Furthermore, the results, are analyzed and optimized using the schemes from Chapter \ref{Heterogeneous Performance Analysis and Practices}. The code is executed remotely on the supercomputer Piritakua at the Department of Multidisciplinary Studies Yuriria, University of Guanajuato. The last section is an overview of all the optimizations results achieved in the physics simulation.
+In this chapter we obtain the results of the CUDA code implementation launched on a single GPU device. The tests were performed on various GPUs architectures. The application is analyzed on various stages using NVIDIA's Visual Profiler. In addition, the CUDA kernels were evaluated in performance, execution time, occupancy and concurrent kernels. Furthermore, the results, are analyzed and optimized using the schemes from Chapter \ref{Heterogeneous Performance Analysis and Practices}. The code is executed remotely on the supercomputer Piritakua at the Department of Multidisciplinary Studies Yuriria, University of Guanajuato. The last section is an overview of all the optimization results achieved in the physics simulation.
 
 \section{Supercomputer Piritakua}
 
-The experiments are carried out using the supercomputer Piritakua. The massive GPU cluster was design and built by Dr. Claudio from the University of Guanajuato at Yuriria's Multidisciplinary Studies. The cluster is located at Yuriria, a small town in the center of Mexico. Piritakua at its front-end has an eight core Intel Xeon at 2.4 Ghz, at the back-end several GPU are connected. All of GPUs CUDA version 5.0 was installed. Furthermore, the GPUs node are; one NVIDIA Tesla K20, two Tesla M2070 and a GeForce GTX 580 
+The experiments were carried out using the supercomputer Piritakua. Dr. Claudio from the University of Guanajuato is in charge of maintaining and administrating the GPU Cluster. The supercomputer is located at Yuriria, a small town in the center of Mexico. Nonetheless, is possible to access to cluster and make test from any part of the world.
 
 The cluster has the CentOS ( Community Enterprise Operating System) 64 bits as operating system. The OS is a free operating system and one of the most popular GNU$ \ $Linux distribution for web servers and supported by RHEL (Red Hat Enterprise Linux) \cite{centos}. The specifications of cluster are \ref{tab:cpus}.
 
@@ -59,13 +59,13 @@ When accessing Piritakua remotely is possible to use all the GPUs nodes availabl
   \label{tab:gpus}
   \end{table}
   
-  The code was launched on all Piritakua's GPUs and on the GeForce GTX 670m. The "m" stands for the mobil graphic cards. In addition the 670m card is design for less power usage, but high graphics power, it has more cores than some Tesla models, However, they have less Bandwidth than standard versions. The 670m card was used as comparison between laptop GPUs and high-end desktop/servers GPUs.
+The code was launched on all Piritakua's GPUs and on the GeForce GTX 670m. The "m" stands for the mobil graphic cards. In addition the 670m card is design for less power usage, but high graphics power, it has more cores than some Tesla models, However, they have less Bandwidth than standard versions. The 670m card was used as comparison between laptop GPUs and high-end desktop/servers GPUs.
      
 \subsection{Architecture Differences}
 
   NVIDIA's GPU are constantly being improved over the years, nonetheless, most programming paradigms stayed the same. The are currently three main architectures; Fermi, Kepler and Maxwell. For example, a streaming processor can now handle 2048 threads at a time, but the maximum block size stayed at 1024. The results in a 100$\%$ theoretical occupancy for block sizes of 1024 compared to 66$\%$ of Fermi type. Another example is the use of Shared Memory. Maxwell has 64KB dedicated Shared Memory. The maximum amount of Shared Memory per Block is 48KB for all three architectures \cite{hoermanngpu}.
   
-  There are two GPU architectures where the implementation was launched, the Fermi and the Kepler. The Tesla K20m and the GeForce 670mx are based on the ``Kepler'' GPU architecture. The Tesla M2070, M2050 and the GeForce GTX 580 on the Fermi architecture. The Kepler architecture newer than the Fermi. More information about the architectures in the Table \ref{tab:arch}. The Maxwell architecture was not used for the current simulation, however, is showed for future reference.
+  There are two GPU architectures where the implementation was launched, the Fermi and the Kepler. The Tesla K20m and the GeForce 670mx are based on the Kepler GPU architecture. The Tesla M2070, M2050 and the GeForce GTX 580 on the Fermi architecture. The Kepler architecture newer than the Fermi. More information about the architectures in the Table \ref{tab:arch}. The Maxwell architecture was not used for the current simulation, however, is showed for future reference.
   
 \begin{table}[h]
 \centering
@@ -321,7 +321,7 @@ if (i > 1 && i < NX + 2 && j >= 0 && j < NY){
 }
 \end{lstlisting}
 
-To calculate the Laplacian, we need to access a great amount of global memory, therefore, located near the value of interest. In this case a region of 4x4 grid. The Figure \ref{fig:shared} illustrates what part of the block is used for allocating shared memory and global memory. The global memory is used for the boundary conditions of the block, while the shared memory for all the values inside the block.
+To calculate the Laplacian, we need to access a great amount of global memory, located near the value of interest. In this case a region of 4x4x4 grid space. The Figure \ref{fig:shared} illustrates what part of the block is used for allocating shared memory and global memory. The global memory is used for the boundary conditions of the block, while the shared memory for all the values inside the block.
 
 \begin{figure}[htbp]
 	\centering
@@ -431,7 +431,7 @@ The different numbers of threads per block and as well the number of blocks per 
 
 \section{Optimization results}
 
-This section is an overview of the optimization results compared with the initial CUDA implementation. Each version of the code is compared with the first test results. The Figure \ref{fig:gpuop} and \ref{fig:speedup} illustrates the time execution and the speedup respectively, for the Tables \ref{tab:time} and \ref{tab:speed}. The final version of the code is the Occupancy. Moreover, the greatest performance occurred on the GeForce GTX 580 Card with 8.0x speedup \ref{fig:speedup}.
+This section is an overview of the optimization results compared with the initial CUDA implementation. Each version of the code is compared with the first test results, which were done using the GeForce GT 650M. The Figure \ref{fig:gpuop} and \ref{fig:speedup} illustrates the time execution and the speedup respectively, for the Tables \ref{tab:time} and \ref{tab:speed}. The final version of the code is the Occupancy. Moreover, the greatest performance occurred on the GeForce GTX 580 Card with 8.0x speedup \ref{fig:speedup}.
 
 \begin{table}[h]
 \centering
@@ -454,7 +454,7 @@ This section is an overview of the optimization results compared with the initia
   \label{tab:time}
   \end{table}
   
-  The table \ref{tab:time} displays the overall executing time for all the version of the code, original, constant, streams, shared memory, SAO and Occupancy. We can see compared the initial time and the final there is a difference between 40s and 50s time decrease. The time reduction is relatively low. There is no big difference in waiting 100s or 66s to a simulation to complete. However, if we increase the data set to five decimal points, the simulation could take upto a couple of hours or days to process. 
+  The Table \ref{tab:time} displays the overall executing time for all the version of the code, original, constant, streams, shared memory, SAO and Occupancy. We can see compared the initial time and the final there is a difference between 40s and 50s time decrease. The time reduction is relatively low. There is no big difference in waiting 100s or 66s to a simulation to complete. However, if we increase the data set to five decimal points, the simulation could take upto a couple of hours or days to process. 
   
   Finally, the speedup comparison in Table \ref{tab:speed} and Figure \ref{fig:speedup} illustrates how much performance increase we could obtain in a new simulation using the new implementation.
   

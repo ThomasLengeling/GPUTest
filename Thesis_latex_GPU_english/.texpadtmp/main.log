@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013) (format=pdflatex 2013.5.30)  30 APR 2015 12:42
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013) (format=pdflatex 2013.5.30)  30 APR 2015 15:21
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -756,8 +756,8 @@ File: Figures/apod.png Graphic file (type png)
 Package pdftex.def Info: Figures/apod.png used on input line 35.
 (pdftex.def)             Requested size: 187.8616pt x 152.51196pt.
 
-Overfull \hbox (9.9577pt too wide) in paragraph at lines 45--47
-\OT1/cmr/m/n/10.95 Increase par-al-leliza-tion from the orig-i-nal code, could be ei-ther adding GPU-optimized
+Overfull \hbox (3.11395pt too wide) in paragraph at lines 45--47
+\OT1/cmr/m/n/10.95 adding GPU-optimized li-braries such as cuBLAS, cuFFT, or in-clud-ing more amount
  []
 
 [33 <./Figures/PCI.png> <./Figures/apod.png>] [34] <Figures/cores.png, id=974, 680.5425pt x 178.6675pt>
@@ -776,36 +776,26 @@ File: Figures/texture.png Graphic file (type png)
 Package pdftex.def Info: Figures/texture.png used on input line 147.
 (pdftex.def)             Requested size: 217.08777pt x 86.0782pt.
  [38 <./Figures/texture.png>]
-Overfull \hbox (18.33667pt too wide) in paragraph at lines 172--173
+Overfull \hbox (18.33667pt too wide) in paragraph at lines 171--172
 []\OT1/cmr/m/n/10.95 Performing a block-ing data trans-fer with \OT1/lmtt/m/n/10.95 cudaMemcpy() \OT1/cmr/m/n/10.95 as \OT1/lmtt/m/n/10.95 cudaThreadSynchronize()
  []
 
 <Figures/streams.png, id=1017, 591.20876pt x 330.23375pt>
 File: Figures/streams.png Graphic file (type png)
  <use Figures/streams.png>
-Package pdftex.def Info: Figures/streams.png used on input line 185.
+Package pdftex.def Info: Figures/streams.png used on input line 184.
 (pdftex.def)             Requested size: 283.87862pt x 158.57085pt.
- [39]
-Underfull \hbox (badness 10000) in paragraph at lines 203--204
-
- []
-
-[40 <./Figures/streams.png>] [41] <Figures/visualgraph.png, id=1041, 718.685pt x 445.665pt>
+ [39] [40 <./Figures/streams.png>] [41] <Figures/visualgraph.png, id=1041, 718.685pt x 445.665pt>
 File: Figures/visualgraph.png Graphic file (type png)
  <use Figures/visualgraph.png>
-Package pdftex.def Info: Figures/visualgraph.png used on input line 233.
+Package pdftex.def Info: Figures/visualgraph.png used on input line 231.
 (pdftex.def)             Requested size: 417.47307pt x 258.8871pt.
  [42] <Figures/pofiler.png, id=1049, 889.3225pt x 406.51875pt>
 File: Figures/pofiler.png Graphic file (type png)
  <use Figures/pofiler.png>
-Package pdftex.def Info: Figures/pofiler.png used on input line 253.
+Package pdftex.def Info: Figures/pofiler.png used on input line 251.
 (pdftex.def)             Requested size: 375.7232pt x 171.74779pt.
- [43 <./Figures/visualgraph.png>] [44 <./Figures/pofiler.png>]
-Overfull \hbox (10.60149pt too wide) in paragraph at lines 289--290
-\OT1/cmr/m/n/10.95 GPU. In ad-di-tion, hard-ware lim-i-ta-tion, de-ter-mi-nate the best us-age of the GPUs. NVIDIA's
- []
-
-) (./Chapters/Chapter5.tex [45]
+ [43 <./Figures/visualgraph.png>] [44 <./Figures/pofiler.png>]) (./Chapters/Chapter5.tex [45]
 Chapter 5.
 ------------------------------------------------------------------------------
  5 Optimization Results
@@ -835,27 +825,27 @@ File: Figures/threads.png Graphic file (type png)
  <use Figures/threads.png>
 Package pdftex.def Info: Figures/threads.png used on input line 177.
 (pdftex.def)             Requested size: 250.48637pt x 76.65407pt.
- [50 <./Figures/threads.png>] [51] <Figures/ini_steams.png, id=1169, 679.03688pt x 48.18pt>
+ [50 <./Figures/threads.png>] <Figures/ini_steams.png, id=1142, 679.03688pt x 48.18pt>
 File: Figures/ini_steams.png Graphic file (type png)
  <use Figures/ini_steams.png>
 Package pdftex.def Info: Figures/ini_steams.png used on input line 234.
 (pdftex.def)             Requested size: 417.47307pt x 29.62057pt.
- [52 <./Figures/ini_steams.png>] <Figures/concurent.png, id=1190, 1277.77374pt x 107.40125pt>
+ [51] [52 <./Figures/ini_steams.png>] <Figures/concurent.png, id=1196, 1277.77374pt x 107.40125pt>
 File: Figures/concurent.png Graphic file (type png)
  <use Figures/concurent.png>
 Package pdftex.def Info: Figures/concurent.png used on input line 281.
 (pdftex.def)             Requested size: 417.47307pt x 35.09016pt.
- <Figures/waittime.png, id=1195, 764.1348pt x 149.1171pt>
+ <Figures/waittime.png, id=1201, 764.1348pt x 149.1171pt>
 File: Figures/waittime.png Graphic file (type png)
  <use Figures/waittime.png>
 Package pdftex.def Info: Figures/waittime.png used on input line 293.
 (pdftex.def)             Requested size: 417.47307pt x 81.46857pt.
- [53 <./Figures/concurent.png>] [54 <./Figures/waittime.png>] <Figures/shared.png, id=1241, 678.535pt x 653.44125pt>
+ [53 <./Figures/concurent.png> <./Figures/waittime.png>] <Figures/shared.png, id=1221, 678.535pt x 653.44125pt>
 File: Figures/shared.png Graphic file (type png)
  <use Figures/shared.png>
 Package pdftex.def Info: Figures/shared.png used on input line 328.
 (pdftex.def)             Requested size: 166.98668pt x 160.8074pt.
- [55 <./Figures/shared.png>] <Figures/aos.png, id=1267, 483.8075pt x 129.48375pt>
+ [54] [55 <./Figures/shared.png>] <Figures/aos.png, id=1267, 483.8075pt x 129.48375pt>
 File: Figures/aos.png Graphic file (type png)
  <use Figures/aos.png>
 Package pdftex.def Info: Figures/aos.png used on input line 362.
@@ -939,13 +929,13 @@ Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 264.
 Here is how much of TeX's memory you used:
  15783 strings out of 493315
  223433 string characters out of 6137904
- 351260 words of memory out of 5000000
+ 349260 words of memory out of 5000000
  18506 multiletter control sequences out of 15000+600000
  15156 words of font info for 56 fonts, out of 8000000 for 9000
  957 hyphenation exceptions out of 8191
  49i,19n,60p,1398b,1745s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/local/texlive/2013/texmf-dist/fonts/enc/dvips/lm/lm-rmtt.enc}</usr/local/texlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/local/texlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/local/texlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmcsc10.pfb></usr/local/texlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/local/texlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/texlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/local/texlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/local/texlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/local/texlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/local/texlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/texlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/local/texlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/texlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/local/texlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb></usr/local/texlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb></usr/local/texlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt8.pfb></usr/local/texlive/2013/texmf-dist/fonts/type1/public/lm/lmtt10.pfb>
-Output written on /Users/tom/Documents/GitHub/GPUTest/Thesis_latex_GPU_english/.texpadtmp/main.pdf (75 pages, 4776658 bytes).
+Output written on /Users/tom/Documents/GitHub/GPUTest/Thesis_latex_GPU_english/.texpadtmp/main.pdf (75 pages, 4776503 bytes).
 PDF statistics:
  1558 PDF objects out of 1728 (max. 8388607)
  1363 compressed objects within 14 object streams
