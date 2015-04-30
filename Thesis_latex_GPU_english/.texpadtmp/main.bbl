@@ -69,7 +69,7 @@ A.~Harju, T.~Siro, F.~Canova, S.~Hakala, and T.~Rantalaiho.
 
 \bibitem{hoermanngpu}
 T.~H{\"{o}}rmann.
-\newblock Gpu-optimised implementation of high-dimensional tensor applications.
+\newblock Gpu-optimized implementation of high-dimensional tensor applications.
 \newblock Master's thesis, Institut f{\"{u}}r Informatik, Technische
   Universit{\"{a}}t M{\"{u}}nchen, Dec. 2014.
 
@@ -169,8 +169,8 @@ J.~Sanders and E.~Kandrot.
 
 \bibitem{ufdtd}
 J.~B. Schneider.
-\newblock Understanding the finite-difference time-domain method,
-  www.eecs.wsu.edu/~schneidj/ufdtd, 2010.
+\newblock Understanding the finite-difference time-domain method howpublished=
+  {\url{ www.eecs.wsu.edu/~schneidj/ufdtd}}, year = {2010}.
 
 \bibitem{handbookspin}
 E.~Tsymbal and I.~Zutic.

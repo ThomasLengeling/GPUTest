@@ -10,8 +10,13 @@ I was expecting an "="---line 52 of file ../Bibliography.bib
 I'm skipping whatever remains of this entry
 Warning--string name "august" is undefined
 --line 210 of file ../Bibliography.bib
+I was expecting a `,' or a `}'---line 336 of file ../Bibliography.bib
+ : 
+ : @mastersthesis{hoermanngpu,
+(Error may have been on previous line)
+I'm skipping whatever remains of this entry
 Warning--entry type for "cornell" isn't style-file defined
---line 376 of file ../Bibliography.bib
+--line 377 of file ../Bibliography.bib
 Warning--to sort, need author or key in titan
 Warning--empty journal in 5306797
 Warning--can't use both author and editor fields in methods
@@ -21,15 +26,15 @@ Warning--empty journal in zhang2004
 Warning--empty year in zhang2004
 You've used 38 entries,
             2118 wiz_defined-function locations,
-            699 strings with 9061 characters,
-and the built_in function-call counts, 10418 in all, are:
-= -- 972
+            699 strings with 9098 characters,
+and the built_in function-call counts, 10414 in all, are:
+= -- 971
 > -- 497
 < -- 2
 + -- 202
 - -- 160
-* -- 650
-:= -- 1790
+* -- 649
+:= -- 1789
 add.period$ -- 108
 call.type$ -- 38
 change.case$ -- 186
@@ -38,17 +43,17 @@ cite$ -- 45
 duplicate$ -- 394
 empty$ -- 868
 format.name$ -- 160
-if$ -- 2155
+if$ -- 2154
 int.to.chr$ -- 0
 int.to.str$ -- 38
 missing$ -- 39
 newline$ -- 187
 num.names$ -- 74
-pop$ -- 257
+pop$ -- 256
 preamble$ -- 1
 purify$ -- 156
 quote$ -- 0
-skip$ -- 278
+skip$ -- 280
 stack$ -- 0
 substring$ -- 459
 swap$ -- 43
@@ -59,5 +64,5 @@ type$ -- 128
 warning$ -- 7
 while$ -- 93
 width$ -- 40
-write$ -- 389
-(There was 1 error message)
+write$ -- 388
+(There were 2 error messages)
