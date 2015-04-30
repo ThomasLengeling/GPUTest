@@ -61,4 +61,4 @@
 \contentsline {subsection}{\numberline {5.2.4}Structure of Arrays, SAO}{56}{subsection.342}
 \contentsline {subsection}{\numberline {5.2.5}Occupancy}{57}{subsection.354}
 \contentsline {section}{\numberline {5.3}Optimization results}{58}{section.362}
-\contentsline {chapter}{\numberline {6}Conclusions and future work}{62}{chapter.369}
+\contentsline {chapter}{\numberline {6}Conclusions and Future Work}{62}{chapter.369}

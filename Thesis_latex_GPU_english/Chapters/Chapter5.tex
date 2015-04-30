@@ -106,7 +106,7 @@ The code was launched on all Piritakua's GPUs and on the GeForce GTX 670m. The "
 
 The cluster has two  main architecture types Fermi and Kepler. Furthermore, the initial results of 1.00x speedup were tested on a Kepler architecture, the GeForce GT 650M. The graph \ref{fig:iniresults} illustrates the executing time for all the GPUs in the server.
 
-We used NVIDIA's Visual Profiler to obtain kernel metrics of the Tesla K20m, see Table \ref{tab:nvprof}. The output is organized by kernel importance and performance during the simulation. The Laplacian kernel evaluation; {\listf glaplacinay}, {\listf gLaplacianx} and  {\listf gLaplacianYBoundaries} uses up-to 44.37$\%$ of the overall simulation. The $gsolution$ kernel, which solves Zhang-Li Model \ref{eq:zhang} consumes up-to 14.04$\%$. The RK4 integration only exhaust a minor part of the overall simulation. However, the {\listf gSolution}, {\listf gsdExchange} and Laplacian calculation are part of the RK4 integration, which overall is about 99$\%$.
+We used NVIDIA's Visual Profiler to obtain kernel metrics of the Tesla K20m, see Table \ref{tab:nvprof}. The output is organized by kernel importance and performance during the simulation. The Laplacian kernel evaluation; {\listf glaplacinay}, {\listf gLaplacianx} and {\listf gLapBoundaries} uses up-to 44.37$\%$ of the overall simulation. The $gsolution$ kernel, which solves Zhang-Li Model \ref{eq:zhang} consumes up-to 14.04$\%$. The RK4 integration only exhaust a minor part of the overall simulation. However, the {\listf gSolution}, {\listf gsdExchange} and Laplacian calculation are part of the RK4 integration, which overall is about 99$\%$.
 
 The throughput was not review on the current application. Since only two stages of the simulation transfer of the CPU data occurs, on the initial stage where the CPU data is sent to the GPU, and the final stage where the data is retrieved from the GPU
 
@@ -130,7 +130,7 @@ The throughput was not review on the current application. Since only two stages 
        \hline
     6.22 & 965.2ms & 6630 & 145.6us & 79.2us & 722.6us & {\listf gTerm4RK4}  \\
        \hline
-    4.12 & 640.3ms & 26522 & 24.1us & 21.8us  &138.7us & {\listf gLaplacianYBoundaries} \\
+    4.12 & 640.3ms & 26522 & 24.1us & 21.8us  &138.7us & {\listf gLapBoundaries} \\
        \hline
     3.41  & 529.2ms & 6630 & 79.8us & 41.6us  & 478.8us & {\listf gTerm2RK4} \\
        \hline
@@ -432,7 +432,7 @@ The different numbers of threads per block and as well the number of blocks per 
   \end{table}
 
 
-Using NVIDIA's Profiler is possible to obtain the occupancy percentage of threads the device. The initial configuration for the Fermi and the Kepler was 32x32 threads per block for global memory and 16x16 threads per block for the shared memory. We found, that the optimal configuration for the Fermi cards was 16x16 threads per block and as well for the shared memory and for the Kepler cards was 32x32 threads per block for both memory types. 
+Using NVIDIA's Profiler it is possible to obtain the occupancy percentage of threads the device. The initial configuration for the Fermi and the Kepler was 32x32 threads per block for global memory and 16x16 threads per block for the shared memory. We found, that the optimal configuration for the Fermi cards was 16x16 threads per block and as well for the shared memory and for the Kepler cards was 32x32 threads per block for both memory types. 
 
 \section{Optimization results}
 
@@ -540,5 +540,5 @@ We expected that the newest card, the Tesla k20m, would obtain the highest speed
 
   \vspace{4.0em}
 
-Finally, the techniques and practices from chapter \ref{Heterogeneous Performance Analysis and Practices} were used to archive speedup and increase performance on the initial CUDA implementation. Methods such as: increase the use of constant memory, shared memory, changed the memory allocating access, analyzed thread branching and finally analyzed kernel occupancy. The highest performance of all GPUS did not occurred on the newest NVIDIA card, the K20m, thus, the most expensive of all the GPUs available in the cluster. The actual improvement appeared on the GeForce 580 (the more GHz of all GPUs) with a 2.32x speedup difference in comparison with the Tesla K20m, table \ref{fig:speedup}. If the problem data set is to be scaled, for example, to a simulation of 8 days, the speedup performance of 8.0x will drastically decrease the time execution in only one day. Moreover, is possible to execute more simulations on the initial time step.
+Finally, the techniques and practices from chapter \ref{Heterogeneous Performance Analysis and Practices} were used to archive speedup and increase performance on the initial CUDA implementation. Methods such as: increase the use of constant memory, shared memory, changed the memory allocating access, analyzed thread branching and finally analyzed kernel occupancy. The highest performance of all GPUS did not occurred on the newest NVIDIA card, the K20m, thus, the most expensive of all the GPUs available in the cluster. The actual improvement appeared on the GeForce 580 (the more GHz of all GPUs) with a 2.32x speedup difference in comparison with the Tesla K20m, table \ref{fig:speedup}. If the problem data set is to be scaled, for example, to a simulation of 8 days, the speedup performance of 8.0x will drastically decrease the time execution in only one day. Moreover, it is possible to execute more simulations on the initial time step.
   
