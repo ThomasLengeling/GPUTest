@@ -13,7 +13,7 @@ In this chapter we obtain the results of the CUDA code implementation launched o
 
 The experiments were carried out using the supercomputer Piritakua. Dr. Claudio from the University of Guanajuato is in charge of maintaining and administrating the GPU Cluster. The supercomputer is located at Yuriria, a small town in the center of Mexico. Nonetheless, is possible to access to cluster and make test from any part of the world.
 
-The cluster has the CentOS ( Community Enterprise Operating System) 64 bits as operating system. The OS is a free operating system and one of the most popular GNU$ \ $Linux distribution for web servers and supported by RHEL (Red Hat Enterprise Linux) \cite{centos}. The specifications of cluster are \ref{tab:cpus}.
+The cluster has the CentOS (Community Enterprise Operating System) 64 bits as operating system. The OS is a free operating system and one of the most popular GNU$ \ $Linux distribution for web servers and supported by RHEL (Red Hat Enterprise Linux) \cite{centos}. The specifications of cluster are \ref{tab:cpus}.
 
 \begin{table}[h]
 \centering
@@ -34,7 +34,7 @@ The cluster has the CentOS ( Community Enterprise Operating System) 64 bits as o
 
 The host code was executed on only two types of CPUs. On an eight core Intel i7-3630QM and on a high-end eight core Intel Xeon CPU E5620. In addition, the Xeon was used in all the simulation test, except when testing on the GeForce 670mx. Lastly, the code was executed on laptop to show the performance comparison between a lightweight GPU and a server based GPU.
 
-The device code was executed using the CUDA Toolkit 5.5 version. The main advantage of the 5.5 version are improvements in MPI(Message Passing Interface) and HyperQ. The MPI implementation was not used for the current simulation. However, we obtain benefits from using the HyperQ when applying concurrent kernels to the implementation. 
+The device code was executed using the CUDA Toolkit 5.5 version. The main advantage of the 5.5 version are the improvements in MPI(Message Passing Interface) and HyperQ. The MPI implementation was not used for the current simulation. However, we obtain benefits from using the HyperQ when applying concurrent kernels to the implementation. 
 
 When accessing Piritakua remotely is possible to use all the GPUs nodes available on the cluster. The specifications of the GPU connected to the back-end are as follow, CC stands for compute capability.
 
@@ -59,13 +59,13 @@ When accessing Piritakua remotely is possible to use all the GPUs nodes availabl
   \label{tab:gpus}
   \end{table}
   
-The code was launched on all Piritakua's GPUs and on the GeForce GTX 670m. The "m" stands for the mobil graphic cards. In addition the 670m card is design for less power usage, but high graphics power, it has more cores than some Tesla models, However, they have less Bandwidth than standard versions. The 670m card was used as comparison between laptop GPUs and high-end desktop/servers GPUs.
+The code was launched on all Piritakua's GPUs and on the GeForce GTX 670m. The "m" stands for the mobil graphic cards. In addition, the 670m card is design for less power usage, but high graphics power, it has more cores than some Tesla models. However, they have less Bandwidth than standard versions. The 670m card was used as comparison between the laptop GPUs and the high-end desktop/servers GPUs.
      
 \subsection{Architecture Differences}
 
-  NVIDIA's GPU are constantly being improved over the years, nonetheless, most programming paradigms stayed the same. The are currently three main architectures; Fermi, Kepler and Maxwell. For example, a streaming processor can now handle 2048 threads at a time, but the maximum block size stayed at 1024. The results in a 100$\%$ theoretical occupancy for block sizes of 1024 compared to 66$\%$ of Fermi type. Another example is the use of Shared Memory. Maxwell has 64KB dedicated Shared Memory. The maximum amount of Shared Memory per Block is 48KB for all three architectures \cite{hoermanngpu}.
-  
-  There are two GPU architectures where the implementation was launched, the Fermi and the Kepler. The Tesla K20m and the GeForce 670mx are based on the Kepler GPU architecture. The Tesla M2070, M2050 and the GeForce GTX 580 on the Fermi architecture. The Kepler architecture newer than the Fermi. More information about the architectures in the Table \ref{tab:arch}. The Maxwell architecture was not used for the current simulation, however, is showed for future reference.
+  NVIDIA's GPU are constantly being improved over the years. Nonetheless, most programming paradigms stayed the same. There are currently three main architectures: Fermi, Kepler and Maxwell. For example, a new GPU a streaming processor is able to handle up-to 2048 threads at a time, but the maximum block size stayed at 1024. Another example is the use of Shared Memory. Maxwell has 64KB dedicated Shared Memory. The maximum amount of Shared Memory per Block is 48KB for all three architectures  \cite{hoermanngpu}. Review Table \ref{tab:arch}.
+   
+  There are two GPU architectures where the implementation was launched: the Fermi and the Kepler. The Tesla K20m and the GeForce 670mx are based on the Kepler GPU architecture. The Tesla M2070, M2050 and the GeForce GTX 580 on the Fermi architecture. The Kepler architecture newer than the Fermi. More information about the architectures in the Table \ref{tab:arch}. The Maxwell architecture was not used for the simulation. However, it is showed for future reference.
   
 \begin{table}[h]
 \centering
@@ -106,7 +106,7 @@ The code was launched on all Piritakua's GPUs and on the GeForce GTX 670m. The "
 
 The cluster has two  main architecture types Fermi and Kepler. Furthermore, the initial results of 1.00x speedup were tested on a Kepler architecture, the GeForce GT 650M. The graph \ref{fig:iniresults} illustrates the executing time for all the GPUs in the server.
 
-We used NVIDIA's Visual Profiler to obtain kernel metrics of the Tesla K20m, see Table \ref{tab:nvprof}. The output is organized by kernel importance and performance during the simulation. The Laplacian kernel evaluation; {\listf glaplacinay}, {\listf gLaplacianx} and  {\listf gLaplacianYBoundaries} uses upto 44.37$\%$ of the overall simulation. The $gsolution$ kernel, which solves Zhang-Li model \ref{eq:zhang} consumes up-to 14.04$\%$. The RK4 integration only exhaust a minor part of the overall simulation. However, the {\listf gSolution}, {\listf gsdExchange} and Laplacian calculation are part of the RK4 integration, which overall is about 99$\%$.
+We used NVIDIA's Visual Profiler to obtain kernel metrics of the Tesla K20m, see Table \ref{tab:nvprof}. The output is organized by kernel importance and performance during the simulation. The Laplacian kernel evaluation; {\listf glaplacinay}, {\listf gLaplacianx} and  {\listf gLaplacianYBoundaries} uses up-to 44.37$\%$ of the overall simulation. The $gsolution$ kernel, which solves Zhang-Li model \ref{eq:zhang} consumes up-to 14.04$\%$. The RK4 integration only exhaust a minor part of the overall simulation. However, the {\listf gSolution}, {\listf gsdExchange} and Laplacian calculation are part of the RK4 integration, which overall is about 99$\%$.
 
 The throughput was not review on the current application. Since only two stages of the simulation transfer of the CPU data occurs, on the initial stage where the CPU data is sent to the GPU, and the final stage where the data is retrieved from the GPU
 
@@ -355,7 +355,7 @@ The current approach seems very promising for reducing global memory. However, g
 
 \subsection{Structure of Arrays, SAO}
 
-AoS and SoA refer to "Array of Structures" and "Structure of Arrays" respectively. These two terms refer to two different ways of laying out your data in memory. This is illustrated in Figure \ref{fig:aos} and \ref{fig:sao} respectively. AOS, grouping properties of an object together and making an array of those objects in memory, whereas a structure of arrays would be a single structure in which you make an array for each property. The structure of arrays can allow for better cache utilization, easier to access continues data, making better use of each read you make from memory, providing a more effective route to memory. 
+AoS and SoA refer to "Array of Structures" and "Structure of Arrays" respectively. These two terms refer to the two different ways of laying out data in the device or host. This is illustrated in Figure \ref{fig:aos} and \ref{fig:sao} respectively. The AOS approach, groups up properties of an object together and makes an array of those objects in the memory. Whereas the SOA would be a single structure in which you make an array for each property. The structure of arrays can allow for better cache utilization, easier to access continues data, make better use of each read you make from memory, providing a more effective route to memory. 
 
 \begin{figure}[htbp]
 	\centering
@@ -374,28 +374,30 @@ AoS and SoA refer to "Array of Structures" and "Structure of Arrays" respectivel
 	\label{fig:sao}
 \end{figure}
 
-The initial implementation the  x, y, z data was allocated in separated blocks. Furthermore when accessing blocks of the the same coordinates, the register access the data as the Figure\ref{fig:aos}.
+The initial implementation the  x, y, z data was allocated in separated blocks. Furthermore, when accessing blocks of the the same coordinates, the register access the data. Review Listings \ref{lst:aos} and \ref{lst:sao}.
 
-\begin{lstlisting}[language=C++, caption={AOS implementation}]
+\begin{lstlisting}[language=C++, label={lst:aos}, caption={AOS implementation}]
 deltam_x = (double **)calloc(NYCUDA, sizeof(double *));
 deltam_y = (double **)calloc(NXCUDA, sizeof(double *));
 deltam_z = (double **)calloc(NXCUDA, sizeof(double *));
 \end{lstlisting}
 
-To solve the issue, a custom class GPUMatrix was programmed. The class contained all the matrices for the device. Moreover, the classes allocated the data for each Matrix and free the memory automatically when the simulation is over. The was allocated in a structure that easier for the device to access common elements. For example, evaluating operations only on the x coordinate, the kernel physically access matrices that are near by. Eliminating unassary shift in registers, or hierarchy memory access.
+To solve the issue, a custom class GPUMatrix was programmed. The class contained all the matrices for the device. Moreover, the classes allocated the data for each Matrix and free the memory automatically when the simulation is over. The was allocated in a structure that easier for the device to access common elements. For example, evaluating operations only on the x coordinate, the kernel physically access matrices that are near by. Eliminating unnecessary shift in registers or hierarchy memory access.
 
-\begin{lstlisting}[language=C++, caption={SOA implementation}]
+\begin{lstlisting}[language=C++, label={lst:sao}, caption={SOA implementation}]
     GPUMatrix<T> *dev_deltam;
     GPUMatrix<T> *dev_sdex; //Exchange term
     GPUMatrix<T> *dev_sfrelax;
     GPUMatrix<T> *dev_m; 
 \end{lstlisting}
 
-The current approach eliminates unnecessary data shift in registers, and is able to stack more values per registers. In theory more computational time per threads. The results of such implementation is illustrate on the last section of the chapter. With the new implementation the code become more readable for future improvements. 
+The current approach eliminates unnecessary data shift in registers, and it is able to stack more values per registers. In theory, more computational time per threads. The results of such implementation it is illustrated in the last section of the Chapter. With the new implementation the code become more readable for future improvements. 
 
 \subsection{Occupancy}
  
-Firstly, we increased the use of constant memory in the device, eliminating redundant evaluations of variables and operations. The results are increase in performance and more computational workload on each thread. In addition, constant memory modifications are illustrated in the code \ref{lst:constant}. Matrix calculation for the boundary conditions \ref{eq:matrix3} and \ref{eq:matrix3} were implemented using constant Memory, reducing unnecessary calls in the device.
+Firstly, we increased the use of constant memory in the device. Thus, eliminating redundant evaluations of variables and operations. The results are increase in performance and more computational workload on each thread. In addition, constant memory modifications are illustrated in the Listing \ref{lst:constant}. 
+
+The matrices \ref{eq:matrix3} and \ref{eq:matrix3} evaluates the boundary conditions. which do not change over the course of the application, They are only calculated at the initial stage of the application. Therefore, it is possible to implement those matrices using constant memory. Thus, eliminating unnecessary calls in the device.
  
  \begin{lstlisting}[language=C++,  label={lst:constant}, caption={Constant Memory changes}]
  gsource << <blocks, threads >> >(u_val, dev_sm_z, dev_mz, NXCUDA);
@@ -405,7 +407,8 @@ Firstly, we increased the use of constant memory in the device, eliminating redu
  DELTAX = (double)TX / (double)NX;
 \end{lstlisting}
  
-The different numbers of threads per block and as well the number of blocks per grid can dramatically increase or decrease the performance of the application. The table \ref{tab:ocu} illustrate the different threads per block configuration on the GeForce GTX 580. Using NVIDIA's Profiler is possible to obtain the occupancy percentage of threads the device. The initial configuration for the Fermi and the Kepler was 32x32 threads per block for global memory and 16x16 threads per block for the shared memory. We found, that the optimal configuration for the Fermi cards was 16x16 threads per block and as well for the shared memory and for the Kepler cards was 32x32 threads per block for both memory types. 
+The different numbers of threads per block and as well the number of blocks per grid can dramatically increase or decrease the performance of the application. The table \ref{tab:ocu} illustrate the different threads per block configuration on the GeForce GTX 580. 
+
 
 \begin{table}[h]
 \centering
@@ -428,6 +431,8 @@ The different numbers of threads per block and as well the number of blocks per 
   \label{tab:ocu}
   \end{table}
 
+
+Using NVIDIA's Profiler is possible to obtain the occupancy percentage of threads the device. The initial configuration for the Fermi and the Kepler was 32x32 threads per block for global memory and 16x16 threads per block for the shared memory. We found, that the optimal configuration for the Fermi cards was 16x16 threads per block and as well for the shared memory and for the Kepler cards was 32x32 threads per block for both memory types. 
 
 \section{Optimization results}
 
@@ -454,7 +459,7 @@ This section is an overview of the optimization results compared with the initia
   \label{tab:time}
   \end{table}
   
-  The Table \ref{tab:time} displays the overall executing time for all the version of the code, original, constant, streams, shared memory, SAO and Occupancy. We can see compared the initial time and the final there is a difference between 40s and 50s time decrease. The time reduction is relatively low. There is no big difference in waiting 100s or 66s to a simulation to complete. However, if we increase the data set to five decimal points, the simulation could take upto a couple of hours or days to process. 
+  The Table \ref{tab:time} displays the overall executing time for all the version of the code, original, constant, streams, shared memory, SAO and Occupancy. We can see compared the initial time and the final there is a difference between 40s and 50s time decrease. The time reduction is relatively low. There is no big difference in waiting 100s or 66s to a simulation to be completed. However, if we increase the data set to five decimal points, the simulation could take up-to a couple of hours or days to process. 
   
   Finally, the speedup comparison in Table \ref{tab:speed} and Figure \ref{fig:speedup} illustrates how much performance increase we could obtain in a new simulation using the new implementation.
   
@@ -530,7 +535,7 @@ The SOA optimization, improved overall dramatically the performance of the appli
 \end{figure}
 
 
-We expected that the newest card, the Tesla k20m, would obtain the highest speedup overall, certainly because it has more CUDA cores and the highest compute capabilities. However, if falls behind the GeForce GTX 580 with about 2.5x speedup difference (table \ref{tab:speed}). In addition, the Tesla K20 performance results only has a difference of 0.3x speedup compared with the other Teslas Cards, see Figure \ref{fig:speedup} and \ref{fig:speeduplast}. If we compare the GTX 580 card with the others GPUs specifications, it has the most Processor clock (GHz) and more mathematical calculations per cycle, see Table \ref{tab:gpus}. The results demonstrate the increase workload and occupancy on the device. Moreover, the increment in computational process per thread and per kernel.
+We expected that the newest card, the Tesla k20m, would obtain the highest speedup overall, certainly because it has more CUDA cores and the highest compute capabilities. However, if falls behind the GeForce GTX 580 with about 2.5x speedup difference (table \ref{tab:speed}). In addition, the Tesla K20 performance results only has a difference of 0.3x speedup compared with the other Teslas cards, see Figure \ref{fig:speedup} and \ref{fig:speeduplast}. If we compare the GTX 580 card with the others GPUs specifications, it has the most Processor clock (GHz) and more mathematical calculations per cycle, see Table \ref{tab:gpus}. The results demonstrate the increase workload and occupancy on the device. Moreover, the increment in computational process per thread and per kernel.
 
 
   \vspace{4.0em}
