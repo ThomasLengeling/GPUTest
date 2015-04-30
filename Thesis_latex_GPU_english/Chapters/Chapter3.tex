@@ -29,7 +29,7 @@ Cell size & Value & Calculation box & Value \\
 \label{tab:mesh}
 \end{table}
 
-The implementation is divided into two sections, the host and the device (data flow figure \ref{fig:flow}). The host section is in charge of I/O data, allocating the CPU and GPU data and calculating the $\beta_{diff}$ value. The device is we solve numerically solve the Zhang-li model.
+The implementation is divided into two sections, the host and the device, see Figure \ref{fig:flow}. The host section is in charge of I/O data, allocating the CPU and GPU data and calculating the $\beta_{diff}$ value. The device is we solve numerically solve the Zhang-li model.
 
 The simulation begins by reading the magnetization values from a data file. Then, the data set allocates the initial magnetization matrices as well as the static values. Afterwards, the Runge-Kutta algorithms begins. The algorithm is finish only when the $\beta_{diff}$ value converges to $1.0e^-9$. The simulation is configured to integrate 50,000 times the Zhang-Li Model before calculating the $\beta_{diff}$. The complete RK4 algorithm with the FDTD is described in the algorithm \ref{log:rk4}. We are able to observe the heavy computation operations are done on the GPU side. While on the CPU such as I/O data, memory allocation and the diffusion beta.
 
@@ -54,7 +54,7 @@ $\tau_{sf}$ & $25.0e^{-3}$ ns  & Iterations & 50,000 \\
 
 \subsection{Data allocation and threads}
 
-The first section of the implementation begins with allocation data into several matrices for both host memory and device memory The input data is the 3D and 2D magnetization information of 57,600 cells. The data being read is stored on three temporary 2D matrices. each one for x, y, and the z coordinate. Next step, the 2D matrices are flattened into three continuous memory blocks, as shown in figure \ref{fig:flaten}. The device code \ref{lst:flatten} flattens the 2d index into a continues linear 1D index. All the matrices are flatten due that CUDA manage more efficiently continues blocks of memory.
+The first section of the implementation begins with allocation data into several matrices for both host memory and device memory The input data is the 3D and 2D magnetization information of 57,600 cells. The data being read is stored on three temporary 2D matrices. each one for x, y, and the z coordinate. Next step, the 2D matrices are flattened into three continuous memory blocks, as shown in Figure \ref{fig:flaten}. The device code \ref{lst:flatten} flattens the 2d index into a continues linear 1D index. All the matrices are flatten due that CUDA manage more efficiently continues blocks of memory.
 
 \begin{lstlisting}[language=C++, label={lst:flatten}, caption={Kernel flatten 2d - 1d}]	
     int i = blockIdx.x * blockDim.x + threadIdx.x + 2;
@@ -108,7 +108,7 @@ XBLOCKS_PERGRID = (int)ceil((float)NX/(float)XTHREADS_PERBLOCK);
 YBLOCKS_PERGRID = (int)ceil((float)NY/(float)YTHREADS_PERBLOCK);
 \end{lstlisting}
 
-Depending on the hardware properties, each GPU is able to allocate different number of threads per block and as well as different shared memory sizes. The Shared memory in this implementation relies on the number of threads per block. In addition, the number of blocks depends on the input matrix and the number of threads. Examine figure \ref{fig:block}. More information about the optimal number of threads per block read can be found in the final chapter \ref{Optimization Results}. 
+Depending on the hardware properties, each GPU is able to allocate different number of threads per block and as well as different shared memory sizes. The Shared memory in this implementation relies on the number of threads per block. In addition, the number of blocks depends on the input matrix and the number of threads, Examine Figure \ref{fig:block}. More information about the optimal number of threads per block read can be found in the final chapter \ref{Optimization Results}. 
 
 \begin{table}[h]
 \centering
@@ -272,9 +272,9 @@ The three CUDA kernels {\listf glaplaciany}, {\listf glaplacianx} and {\listf gl
 
 \subsubsection{Zhang and Li Model}
 
-The Zhang-Li Model \ref{eq:zhang} is solved using code \ref{lst:rkcuda}. Furthermore, the Zhang-Li equation is used as function $f$ for the RK4 integration process \ref{eq:rk4}. The first term of the equation {\listf sfrelax} is calculated in the relaxation process at the end of the RK4 integrator \ref{fig:sim}. Then the term {\listf sdex} is computed in the Cross Product process, which is done before the RK4 calculation. The matrix {\listf sm} is only calculated once at the initial calculations process, kernel {\listf gsource} in the code \ref{lst:init}. Finally, the {\listf lapl} matrix is evaluated in the Laplacian process.
+The Zhang-Li Model is solved by using the code in the Listing \ref{lst:rkcuda}. Furthermore, the Zhang-Li equation is used as input function for the RK4 integration process \ref{eq:rk4}. The first term of the Zhang-Li model, the {\listf sfrelax} matrix is calculated in the relaxation process at the end of the RK4 integrator. The next term {\listf sdex} is computed in the Cross Product process, which is done before the each RK4 calculation. The matrix {\listf sm} is only calculated once at the initial calculations process, see Listings \ref{lst:init}. The last term {\listf lapl} matrix is evaluated in the Laplacian process. See Algorithm RK4 \ref{log:rk4}.
 
-\begin{lstlisting}[language=C++, label={lst:zhangcuda}, caption={Zhang-Li Model equation}]
+\begin{lstlisting}[language=C++, label={lst:zhangcuda}, caption={Zhang-Li evaluation}]
 		sfrelax[idx] = -deltam[idx] / tau_sf;
 		sdex[idx] = -(deltam[idx] * m[index] - deltam[idx] * m[idx]) / tau_sd;
 		
@@ -282,12 +282,11 @@ The Zhang-Li Model \ref{eq:zhang} is solved using code \ref{lst:rkcuda}. Further
         solveZhangLi[idx] = sfrelax[idx] + sdex[idx] + lapl[idx] - sm[idx];
 \end{lstlisting}
 
-
-The matrix {\listf solveZhangLi} is used as integration input of the 4th order Runge and Kutta method.
+The output matrix {\listf solveZhangLi} is used as integration input for the 4th order Runge and Kutta method. The Zhang-Li evaluation is done four times, once per Runge and Kutte term.
 
 \subsubsection{Runge and Kutta}
  
-Intuitively the 4th order Runge and Kutta equation \ref{eq:rk4} should be able to implement by using four CUDA kernels, each kernel evaluating the derivative with a different time increment (equation \ref{eq:rksplit}). The first three RK4 term are slightly the same, they differ from using the previous evaluated term \ref{lst:rkcuda}. The final 4th term is the weighted average of the four RK increments \ref{lst:rk4cuda}. The four different increments the Runge and Kutta evaluates the derivative for Zhang-Li model using the FDTD method.
+The 4th order Runge and Kutta method is implemented by using four CUDA kernels, each kernel evaluates the derivative with a different time increment, Equation \ref{eq:rksplit}. The first three RK4 term are slightly the same, they differ from using the previous evaluated term \ref{lst:rkcuda}. The final 4th term is the weighted average of the previous increments \ref{lst:rk4cuda}.
 
 \begin{lstlisting}[language=C++, label={lst:rkcuda}, caption={Runge and Kutta 1st, 2nd and 3rd terms}]
      rk1[idx] = dt * deltam[idx];  //rk term 1
@@ -309,16 +308,16 @@ Intuitively the 4th order Runge and Kutta equation \ref{eq:rk4} should be able t
 
 The Runge and Kutta integration is group up in two {\listf for} cycles (listing \ref{lst:rk4}). The inner {\listf for} cycle evaluates the RK4 for the x, y, z coordinate. The outer {\listf for} cycle evaluates four times the Runge and Kutta integration.
 
-\begin{lstlisting}[language=C++, label={lst:rk4}, caption={Summarize of Runge and Kutta 4th Integration}]	
-
-for(int term = 0; term < 4; term++)
-	for(int coord = 0; coord < 3; coord++)
+\begin{lstlisting}[language=C++, label={lst:rk4}, caption={Summarize of Runge and Kutta 4th Integration}]
+for(int term = 0; term < 4; term++){
+	for(int coord = 0; coord < 3; coord++){
     	gsd_exchange<<<blocks, threads>>>(term, coord);
     	glaplacianx<<<blocks, threads>>>(term, coord);
     	glaplacianyboundaries<<<blocks, threads>>>(term, coord);
     	glaplaciany<<<blocks, threads>>>(term, coord);
     	gsolution<<<blocks, threads >>>(term, coord);
     	gterm_RK4<<<blocks, threads >>>(term, coord);
+    }
 }
 \end{lstlisting}
 

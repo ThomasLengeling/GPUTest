@@ -65,7 +65,7 @@ When accessing Piritakua remotely is possible to use all the GPUs nodes availabl
 
   NVIDIA's GPU are constantly being improved over the years, nonetheless, most programming paradigms stayed the same. The are currently three main architectures; Fermi, Kepler and Maxwell. For example, a streaming processor can now handle 2048 threads at a time, but the maximum block size stayed at 1024. The results in a 100$\%$ theoretical occupancy for block sizes of 1024 compared to 66$\%$ of Fermi type. Another example is the use of Shared Memory. Maxwell has 64KB dedicated Shared Memory. The maximum amount of Shared Memory per Block is 48KB for all three architectures \cite{hoermanngpu}.
   
-  There are two GPU architectures where the implementation was launched, the Fermi and the Kepler. The Tesla K20m and the GeForce 670mx are based on the ``Kepler'' GPU architecture. The Tesla M2070, M2050 and the GeForce GTX 580 on the Fermi architecture. The Kepler architecture newer than the Fermi. More information about the architectures in the table \ref{tab:arch}. The Maxwell architecture was not used for the current simulation, however, is showed for future reference.
+  There are two GPU architectures where the implementation was launched, the Fermi and the Kepler. The Tesla K20m and the GeForce 670mx are based on the ``Kepler'' GPU architecture. The Tesla M2070, M2050 and the GeForce GTX 580 on the Fermi architecture. The Kepler architecture newer than the Fermi. More information about the architectures in the Table \ref{tab:arch}. The Maxwell architecture was not used for the current simulation, however, is showed for future reference.
   
 \begin{table}[h]
 \centering
@@ -106,7 +106,7 @@ When accessing Piritakua remotely is possible to use all the GPUs nodes availabl
 
 The cluster has two  main architecture types Fermi and Kepler. Furthermore, the initial results of 1.00x speedup were tested on a Kepler architecture, the GeForce GT 650M. The graph \ref{fig:iniresults} illustrates the executing time for all the GPUs in the server.
 
-We used NVIDIA's Visual Profiler to obtain kernel metrics of the Tesla K20m, table \ref{tab:nvprof}. The output is organized by kernel importance and performance during the simulation. The Laplacian kernel evaluation; {\listf glaplacinay}, {\listf gLaplacianx} and  {\listf gLaplacianYBoundaries} uses upto 44.37$\%$ of the overall simulation. The $gsolution$ kernel, which solves Zhang-Li model \ref{eq:zhang} consumes up-to 14.04$\%$. The RK4 integration only exhaust a minor part of the overall simulation. However, the {\listf gSolution}, {\listf gsdExchange} and Laplacian calculation are part of the RK4 integration, which overall is about 99$\%$.
+We used NVIDIA's Visual Profiler to obtain kernel metrics of the Tesla K20m, see Table \ref{tab:nvprof}. The output is organized by kernel importance and performance during the simulation. The Laplacian kernel evaluation; {\listf glaplacinay}, {\listf gLaplacianx} and  {\listf gLaplacianYBoundaries} uses upto 44.37$\%$ of the overall simulation. The $gsolution$ kernel, which solves Zhang-Li model \ref{eq:zhang} consumes up-to 14.04$\%$. The RK4 integration only exhaust a minor part of the overall simulation. However, the {\listf gSolution}, {\listf gsdExchange} and Laplacian calculation are part of the RK4 integration, which overall is about 99$\%$.
 
 The throughput was not review on the current application. Since only two stages of the simulation transfer of the CPU data occurs, on the initial stage where CPU data is sent to the GPU, and the final stage where is sent back to CPU.
 
@@ -151,14 +151,14 @@ The throughput was not review on the current application. Since only two stages 
 	\label{fig:iniresults}
 \end{figure}
 
-The figure \ref{fig:iniresults} illustrates the GeForce GTX 580 is the card with the least amount of execution time, and the Tesla K20m the fastest amongst the Tesla Cards. 
+The Figure \ref{fig:iniresults} illustrates the GeForce GTX 580 is the card with the least amount of execution time, and the Tesla K20m the fastest amongst the Tesla Cards. 
 
 
 The following sections are the optimization techniques and methods applied to the application. In addition, comparing the performance between the initial implementation and the modified versions. The optimization is breakdown into five steps; Branching, Occupancy, Concurrent Kernels, Shared Memory and Structure of Arrays. Branching, refers how kernels and threads are executed in the application. Occupancy, number of threads per devices being used. Concurrent Kernels, execution several kernels at once. Shared Memory, using as much shared memory as possible. Finally, Structure of Arrays, modification of the memory allocation in the device.
 
  \subsection{Branching}
  
- CUDA follows the Single Instruction Multiple Thread architecture, meaning, threads execute the same code. Each thread is able to operate on its own data and has its individual address counter. Moreover, threads are free to use a different path. Each thread launches the same operation at the same time. However, they have to wait for all the threads in the kernel to finish their task. In other words, some threads can finish their job before a groups of threads are executing their tasks. Therefore, a thread within a warp/block branches differently the other threads get deactivated \cite{hoermanngpu}. The method is described in the following code \ref{lst:branch} and  illustrated in the figure \ref{fig:threads}.
+ CUDA follows the Single Instruction Multiple Thread architecture, meaning, threads execute the same code. Each thread is able to operate on its own data and has its individual address counter. Moreover, threads are free to use a different path. Each thread launches the same operation at the same time. However, they have to wait for all the threads in the kernel to finish their task. In other words, some threads can finish their job before a groups of threads are executing their tasks. Therefore, a thread within a warp/block branches differently the other threads get deactivated \cite{hoermanngpu}. The method is described in the following code \ref{lst:branch} and  illustrated in the Figure \ref{fig:threads}.
 
 \begin{lstlisting}[language=C++, label={lst:branch}, caption={Branching threads}]
 __global__ void kernel(int* out){
@@ -227,7 +227,7 @@ The technique was applied to all parts of the code. Therefore, eliminated inacti
 
 \subsection{Concurrent Kernels}
 
-Initially, each kernel was launched on the default steam zero. Therefore, every kernel was consequently launched in a serial way. The figure \ref{fig:streams} illustrates such results using the NVIDIA's Visual Profiler. Each kernel that is being launched is not able to run simultaneously. Because, each kernel needs previous data to compute the next data. In other words, the kernels are not independent from each other. Therefore, we change the implementation to be able to launch parallel kernels.
+Initially, each kernel was launched on the default steam zero. Therefore, every kernel was consequently launched in a serial way. The Figure \ref{fig:streams} illustrates such results using the NVIDIA's Visual Profiler. Each kernel that is being launched is not able to run simultaneously. Because, each kernel needs previous data to compute the next data. In other words, the kernels are not independent from each other. Therefore, we change the implementation to be able to launch parallel kernels.
 
 \begin{figure}[htbp]
 	\centering
@@ -259,7 +259,7 @@ if (i > 1 && i < NX + 2 && j >= 0 && j < NY)
 	deltam[index] = sfrelax[index] + sdex[index] + lapl[index] - sm[index];
 \end{lstlisting}
 
-This same method was applied to every kernel that was possible to separate into three kernels calls. Some kernels were not viable to be separated, such as the cross product. Because, the cross product uses pinned memory block from the other streams. The figure \ref{fig:concurrent} illustrates the results of concurrent kernels in the Tesla K20.
+This same method was applied to every kernel that was possible to separate into three kernels calls. Some kernels were not viable to be separated, such as the cross product. Because, the cross product uses pinned memory block from the other streams. The Figure \ref{fig:concurrent} illustrates the results of concurrent kernels in the Tesla K20.
 
 \begin{lstlisting}[language=C++, caption={Evaluate Zhang and Li model.}]
 for (int i  = 0; i < 3; i++)
@@ -315,7 +315,7 @@ if (i > 1 && i < NX + 2 && j >= 0 && j < NY){
 }
 \end{lstlisting}
 
-To calculate the Laplacian, we need to access a great amount of global memory, therefore, located near the value of interest. In this case a region of 4x4 grid. The figure \ref{fig:shared} illustrates what part of the block is used for allocating shared memory and global memory. The global memory is used for the boundary conditions of the block, while the shared memory for all the values inside the block.
+To calculate the Laplacian, we need to access a great amount of global memory, therefore, located near the value of interest. In this case a region of 4x4 grid. The Figure \ref{fig:shared} illustrates what part of the block is used for allocating shared memory and global memory. The global memory is used for the boundary conditions of the block, while the shared memory for all the values inside the block.
 
 \begin{figure}[htbp]
 	\centering
@@ -349,7 +349,7 @@ The current approach seems very promising for reducing global memory. However, g
 
 \subsection{Structure of Arrays, SAO}
 
-AoS and SoA refer to "Array of Structures" and "Structure of Arrays" respectively. These two terms refer to two different ways of laying out your data in memory. This is illustrated in figure \ref{fig:aos} and \ref{fig:sao} respectively. AOS, grouping properties of an object together and making an array of those objects in memory, whereas a structure of arrays would be a single structure in which you make an array for each property. The structure of arrays can allow for better cache utilization, easier to access continues data, making better use of each read you make from memory, providing a more effective route to memory. 
+AoS and SoA refer to "Array of Structures" and "Structure of Arrays" respectively. These two terms refer to two different ways of laying out your data in memory. This is illustrated in Figure \ref{fig:aos} and \ref{fig:sao} respectively. AOS, grouping properties of an object together and making an array of those objects in memory, whereas a structure of arrays would be a single structure in which you make an array for each property. The structure of arrays can allow for better cache utilization, easier to access continues data, making better use of each read you make from memory, providing a more effective route to memory. 
 
 \begin{figure}[htbp]
 	\centering
@@ -368,7 +368,7 @@ AoS and SoA refer to "Array of Structures" and "Structure of Arrays" respectivel
 	\label{fig:sao}
 \end{figure}
 
-The initial implementation the  x, y, z data was allocated in separated blocks. Furthermore when accessing blocks of the the same coordinates, the register access the data as the figure\ref{fig:aos}.
+The initial implementation the  x, y, z data was allocated in separated blocks. Furthermore when accessing blocks of the the same coordinates, the register access the data as the Figure\ref{fig:aos}.
 
 \begin{lstlisting}[language=C++, caption={AOS implementation}]
 deltam_x = (double **)calloc(NYCUDA, sizeof(double *));
@@ -425,7 +425,7 @@ The different numbers of threads per block and as well the number of blocks per 
 
 \section{Optimization results}
 
-This section is a overview of the optimization results compared with the initial CUDA implementation. Each version of the code is compared with the first test results. The figure \ref{fig:gpuop} and \ref{fig:speedup} illustrates the the time execution and the speedup respectively for the tables \ref{tab:time} and \ref{tab:speed}. The final version of the code is the Occupancy. Moreover, the greatest performance occurred on the GeForce GTX 580 Card with 8.0x speedup \ref{fig:speedup}.
+This section is a overview of the optimization results compared with the initial CUDA implementation. Each version of the code is compared with the first test results. The Figure \ref{fig:gpuop} and \ref{fig:speedup} illustrates the the time execution and the speedup respectively for the Tables \ref{tab:time} and \ref{tab:speed}. The final version of the code is the Occupancy. Moreover, the greatest performance occurred on the GeForce GTX 580 Card with 8.0x speedup \ref{fig:speedup}.
 
 \begin{table}[h]
 \centering
@@ -448,7 +448,7 @@ This section is a overview of the optimization results compared with the initial
   \label{tab:time}
   \end{table}
   
-  The table \ref{tab:time} displays the overall executing time for all the version of the code, original, constant, streams, shared memory, SAO and Occupancy. We can see compared the initial time and the final there is a difference between 40s and 50s time decrease. The time reduction is relatively low. There is no big difference in waiting 100s or 66s to a simulation to complete. However, if we increase the data set to five decimal points, the simulation can take up-to a couple of hours or days. Finally, the speedup comparison in table \ref{tab:speed} and figure \ref{fig:speedup} illustrates how much performance increase we could obtain in a new simulation using the new implementation.
+  The table \ref{tab:time} displays the overall executing time for all the version of the code, original, constant, streams, shared memory, SAO and Occupancy. We can see compared the initial time and the final there is a difference between 40s and 50s time decrease. The time reduction is relatively low. There is no big difference in waiting 100s or 66s to a simulation to complete. However, if we increase the data set to five decimal points, the simulation can take up-to a couple of hours or days. Finally, the speedup comparison in Table \ref{tab:speed} and Figure \ref{fig:speedup} illustrates how much performance increase we could obtain in a new simulation using the new implementation.
   
   \begin{table}[h]
 \centering
@@ -479,7 +479,9 @@ This section is a overview of the optimization results compared with the initial
 	\label{fig:gpuop}
 \end{figure}
 
-The table \ref{fig:final} illustrates the final profiling results using NVIDIA's profiling tools. On the initial profiling \ref{fig:initial}, the Laplacian evaluation consummend about half of the overall simulation time. However, on the final optimization results\ref{fig:final}, the Laplacian was reduced from 44.37$\%$ to 26.24 $\%$ on execution time. But more importantly the importance of the kernel was reduced, in other words more computational workload on the kernels. The same occurred for the Runge and Kutta term evaluation. The speedup mainly occurred in the Occupancy version of the code, see table \ref{tab:speed}. Furthermore, the {\listf gsdExchangeFull} incremented from 13.37$\%$. 23.35$\%$, which is not necessary good. The increment in time is due to shift in streams operators, the {\listf gsdExchangeFull} is processed in the default stream zero, while the others kernels launched concurrently in a different stream.
+
+The initial profiling \ref{fig:initial}, the Laplacian evaluation consumed about half of the overall simulation time. However, on the final optimization results\ref{fig:final}, the Laplacian was reduced from 44.37$\%$ to 26.24 $\%$ on execution time. But more importantly the importance of the kernel was reduced, in other words more computational workload on the kernels. The same occurred for the Runge and Kutta term evaluation. The speedup mainly occurred in the Occupancy version of the code, see table \ref{tab:speed}. Furthermore, the {\listf gsdExchangeFull} incremented from 13.37$\%$. 23.35$\%$, which is not necessary good. The increment in time is due to shift in streams operators, the {\listf gsdExchangeFull} is processed in the default stream zero, while the others kernels launched concurrently in a different stream. The Table \ref{fig:final} illustrates the final profiling results using NVIDIA's profiling tools.
+
 \begin{figure}[htbp]
 	\centering
 		\includegraphics[width=1.0 \textwidth]{Figures/speedup.png}
@@ -509,7 +511,7 @@ The table \ref{fig:final} illustrates the final profiling results using NVIDIA's
     
 The Tesla K20m was the only GPU which in every code modification it did not lose performance over the course of the optimization process. However, the other GPUs drop performance in the stream optimization stage. The stream process is where each kernel was divided into three separated kernels. Doing this we were able to calculate the x, y, z coordinates independently. In addition, this enable room to implement shared memory across possible kernels. The GPU table specifications \ref{tab:gpus} illustrates that the Tesla K20m is the only GPU card with CC of 3.5. Therefore, has access to Hyper-Q technology. which is able to synchronize automatically concurrent kernels, just by activated a steam process to the kernel.
 
-The SOA optimization, improved overall dramatically the performance of the application, obtaining a 1.2x - 2.0x speedup in all GPU cards, see table \ref{tab:speed} and figure \ref{fig:speedup}. The final version, Occupancy, improved up-to 0.7x speedup on the 580 GPU. However, for the Teslas cards only 0.2x-0.25x speedup. The speedup difference, 0.5x,  is due to the process cycle of the GeForce GPU. 
+The SOA optimization, improved overall dramatically the performance of the application, obtaining a 1.2x - 2.0x speedup in all GPU cards, see Table \ref{tab:speed} and Figure \ref{fig:speedup}. The final version, Occupancy, improved up-to 0.7x speedup on the 580 GPU. However, for the Teslas cards only 0.2x-0.25x speedup. The speedup difference, 0.5x,  is due to the process cycle of the GeForce GPU. 
 
 \begin{figure}[htbp]
 	\centering
@@ -520,7 +522,7 @@ The SOA optimization, improved overall dramatically the performance of the appli
 \end{figure}
 
 
-We expected that the newest card, the Tesla k20m, would obtain the highest speedup overall, certainly because it has more CUDA cores, the highest compute capabilities. However, if falls behind the GeForce 580 with about 2.5x speedup difference (table \ref{tab:speed}). In addition, the Tesla K20 only had a difference of 0.3x speedup compared with the Teslas Cards, see figure \ref{fig:speedup} and \ref{fig:speeduplast}. The GeForce compared with the others GPUs specifications has most Processor clock (GHz), more mathematical calculations per cycle, se table \ref{tab:gpus} for GPU specifications comparison. The results demonstrate the increase of workload and occupancy on the device. Increasing the computational process per thread and per block.
+We expected that the newest card, the Tesla k20m, would obtain the highest speedup overall, certainly because it has more CUDA cores, the highest compute capabilities. However, if falls behind the GeForce 580 with about 2.5x speedup difference (table \ref{tab:speed}). In addition, the Tesla K20 only had a difference of 0.3x speedup compared with the Teslas Cards, see Figure \ref{fig:speedup} and \ref{fig:speeduplast}. The GeForce compared with the others GPUs specifications has most Processor clock (GHz), more mathematical calculations per cycle, se table \ref{tab:gpus} for GPU specifications comparison. The results demonstrate the increase of workload and occupancy on the device. Increasing the computational process per thread and per block.
 
 
   \vspace{4.0em}

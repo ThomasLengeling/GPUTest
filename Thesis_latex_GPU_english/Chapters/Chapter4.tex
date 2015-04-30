@@ -18,7 +18,7 @@ There are three rules for developing high performance GPGPU (General-purpose on 
   \item Focus on data reuse within the GPU context, to avoid memory bandwidth limitations
 \end{enumerate}
 
-As we know the GPUs are plugged into the PCI Express bus of the host computer. The PCIe bus has extremely slow bandwidth compared with the GPU. This is why is important to store the data on the GPU and keep it busy. In addition, minimize the data transfer from the host and back to the device. The process is illustrated in the figure \ref{fig:PCI}. CUDA enables the GPU to carry out petaFLOP performance in a single device \cite{cook}. Moreover, the GPUs are fast enough to compute a large amount of data. To accomplish such high performance, each CUDA kernel needs to use all the available resources of the GPU, avoiding wasting compute cycles. Furthermore, if a single Kernel doesn't use all of the available bandwidth, multiple kernels can be launched at the same time on a single GPU \cite{design}.
+As we know the GPUs are plugged into the PCI Express bus of the host computer. The PCIe bus has extremely slow bandwidth compared with the GPU. This is why is important to store the data on the GPU and keep it busy. In addition, minimize the data transfer from the host and back to the device. The process is illustrated in the Figure \ref{fig:PCI}. CUDA enables the GPU to carry out petaFLOP performance in a single device \cite{cook}. Moreover, the GPUs are fast enough to compute a large amount of data. To accomplish such high performance, each CUDA kernel needs to use all the available resources of the GPU, avoiding wasting compute cycles. Furthermore, if a single Kernel doesn't use all of the available bandwidth, multiple kernels can be launched at the same time on a single GPU \cite{design}.
 
 \begin{figure}[htbp]
 	\centering
@@ -92,7 +92,7 @@ In practice the difference between theoretical bandwidth and effective bandwidth
 
 \section{Memory Handling with CUDA}
 
-In this section four types of memory handling are going to be explained, global memory (device memory), shared memory, texture memory and constant memory. The figure \ref{fig:cores} illustrates physically the position of the different memory types inside the device chip.
+In this section four types of memory handling are going to be explained, global memory (device memory), shared memory, texture memory and constant memory. The Figure \ref{fig:cores} illustrates physically the position of the different memory types inside the device chip.
 
 \begin{figure}[htbp]
 	\centering
@@ -179,7 +179,7 @@ Thread synchronization is also possible inside kernel calls. The idea is the sam
 
 \section{Concurrent Kernels}
 
-Kernels are executed in a sequential form with parallel instructions. In addition, with CUDA's streams is possible to launch several kernels in parallel, in other words, overlap kernel in the same launch sequence. As the figure \ref{fig:streams} illustrates.
+Kernels are executed in a sequential form with parallel instructions. In addition, with CUDA's streams is possible to launch several kernels in parallel, in other words, overlap kernel in the same launch sequence. As the Figure \ref{fig:streams} illustrates.
 
 \begin{figure}[htbp]
 	\centering
@@ -247,7 +247,7 @@ The Visual Profiler, by default, will execute the entire application, nonetheles
   \item The application contains algorithms that operate though a large number of iterations. In this case is possible to collect data from a portion of the iterations.
 \end{itemize}
 
-The Visual Profiler provides a step-by-step optimization guidance, where is possible to evaluate the GPU usage, examine individual kernels and analyze timeline of the application which the profiler shows memory movements and usage, CUDA calls, number of threads and performance. The figure \ref{fig:visual01} shows, each Kernel has its own percentage of execution time of the overall application \cite{practices}.
+The Visual Profiler provides a step-by-step optimization guidance, where is possible to evaluate the GPU usage, examine individual kernels and analyze timeline of the application which the profiler shows memory movements and usage, CUDA calls, number of threads and performance. The Figure \ref{fig:visual01} shows, each Kernel has its own percentage of execution time of the overall application \cite{practices}.
 
 \begin{figure}[htbp]
 	\centering
