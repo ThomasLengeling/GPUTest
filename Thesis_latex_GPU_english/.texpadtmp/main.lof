@@ -34,13 +34,13 @@
 \contentsline {figure}{\numberline {5.1}{\ignorespaces Initial GPU results}}{49}{figure.caption.232}
 \contentsline {figure}{\numberline {5.2}{\ignorespaces he execution flow}}{50}{figure.caption.244}
 \contentsline {figure}{\numberline {5.3}{\ignorespaces Initial Streams}}{52}{figure.caption.281}
-\contentsline {figure}{\numberline {5.4}{\ignorespaces Streams kernels Tesla K20}}{53}{figure.caption.300}
-\contentsline {figure}{\numberline {5.5}{\ignorespaces Waiting time in concurrent kernels}}{53}{figure.caption.301}
-\contentsline {figure}{\numberline {5.6}{\ignorespaces Shared Memory Strategy}}{55}{figure.caption.319}
-\contentsline {figure}{\numberline {5.7}{\ignorespaces Array of structures (AOS)}}{56}{figure.caption.337}
-\contentsline {figure}{\numberline {5.8}{\ignorespaces Structure of Arrays (SAO)}}{56}{figure.caption.338}
-\contentsline {figure}{\numberline {5.9}{\ignorespaces Overall simulation time}}{59}{figure.caption.359}
-\contentsline {figure}{\numberline {5.10}{\ignorespaces Speedup performance output}}{60}{figure.caption.360}
-\contentsline {figure}{\numberline {5.11}{\ignorespaces Optimization results with the Profiler}}{60}{figure.caption.361}
-\contentsline {figure}{\numberline {5.12}{\ignorespaces Optimization speedup overview}}{61}{figure.caption.362}
+\contentsline {figure}{\numberline {5.4}{\ignorespaces Streams kernels Tesla K20}}{53}{figure.caption.306}
+\contentsline {figure}{\numberline {5.5}{\ignorespaces Waiting time in concurrent kernels}}{54}{figure.caption.307}
+\contentsline {figure}{\numberline {5.6}{\ignorespaces Shared Memory Strategy}}{55}{figure.caption.325}
+\contentsline {figure}{\numberline {5.7}{\ignorespaces Array of structures (AOS)}}{56}{figure.caption.343}
+\contentsline {figure}{\numberline {5.8}{\ignorespaces Structure of Arrays (SAO)}}{56}{figure.caption.344}
+\contentsline {figure}{\numberline {5.9}{\ignorespaces Overall simulation time}}{59}{figure.caption.365}
+\contentsline {figure}{\numberline {5.10}{\ignorespaces Speedup performance output}}{60}{figure.caption.366}
+\contentsline {figure}{\numberline {5.11}{\ignorespaces Optimization results with the Profiler}}{60}{figure.caption.367}
+\contentsline {figure}{\numberline {5.12}{\ignorespaces Optimization speedup overview}}{61}{figure.caption.368}
 \addvspace {10\p@ }

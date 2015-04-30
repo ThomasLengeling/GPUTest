@@ -18,7 +18,7 @@ There are three rules for developing high performance GPGPU (General-purpose on 
   \item Focus on data reuse within the GPU context, to avoid memory bandwidth limitations
 \end{enumerate}
 
-The GPUs are plugged into the PCI Express bus of the host computer. The PCIe bus has extremely slow bandwidth compared with the GPU. This is why is important to store the data most of the GPU and keep it busy, but as well minimize the data transfer from the host and back to the device. The process is illustrated in the Figure \ref{fig:PCI}. CUDA enables the GPU to carry out petaFLOP performance in a single device \cite{cook}. Moreover, the GPUs are fast enough to compute a large amount of data in parallel. To accomplish such high performance; each CUDA kernel needs to use all the available resources of the GPU, avoid wasting compute cycles and minimize thread branching.
+The GPUs are plugged into the PCI Express bus of the host computer. The PCIe bus has extremely slow bandwidth compared with the GPU. This is why is important to store as much data as possible in the GPU and keep it busy, but as well minimize the data transfer from the host and back to the device. The process is illustrated in the Figure \ref{fig:PCI}. CUDA enables the GPU to carry out petaFLOP performance in a single device \cite{cook}. Moreover, the GPUs are fast enough to compute a large amount of data in parallel. To accomplish such high performance; each CUDA kernel needs to use all the available resources of the GPU, avoid wasting compute cycles and minimize thread branching.
 
 \begin{figure}[htbp]
 	\centering
@@ -56,7 +56,7 @@ There are many possible approaches for profiling CUDA code, but in all cases the
 
 \subsection{Timing}
 
-Timing a launched kernel should be done on either the GPU or the CPU. However, the GPU and CPU are not synchronized, events are not blocked by multiple threads. Though is necessary to synchronize the CPU thread with the GPU kernels launches. CUDA provides the required  functions to synchronize the CPU with the GPU calling immediately before starting the timer \cite{practices}. CUDA is able to handle timers within the GPU, which records times in a floating-point value in milliseconds. This is done with {\listf cudaEventRecord()}, just by including {\listf start} and {\listf stop } in the function inputs. Moreover, the timing is measure on the GPU clock, therefore, the timing is independent from the OS and CUDA \cite{cook}. Lastly, the timing results of the various stages of the simulation is in chapter \ref{Optimization Results}.
+Timing a launched kernel should be done on either the GPU or the CPU. However, the GPU and CPU are not synchronized, events are able to blocked multiple threads at any given moment. Though is necessary to synchronize the CPU thread with the GPU kernels launches. CUDA provides the required  functions to synchronize the CPU with the GPU calling immediately before starting the timer \cite{practices}. CUDA is able to handle timers within the GPU, which records times in a floating-point value in milliseconds. This is done with {\listf cudaEventRecord()}, just by including {\listf start} and {\listf stop } in the function inputs. Moreover, the timing is measure on the GPU clock, therefore, the timing is independent from the OS and CUDA \cite{cook}. Lastly, the timing results of the various stages of the simulation is in chapter \ref{Optimization Results}.
 
 \subsection{Bandwidth}
 
@@ -86,7 +86,7 @@ The GTX 280 has a theoretical bandwidth of $141.6Gb/sec$. The effective bandwidt
 
 Where $Br$ is the number of bytes read per kernel, $Bw$ is the number of bytes written per kernel and  $t$ is the elapsed time given in seconds \cite{fortran}.
 
-In practice the difference between theoretical bandwidth and effective bandwidth indicated how much bandwidth is wasted on accessing memory and calculations. If the effective bandwidth is low compared to the theoretical bandwidth is an indication that there is not enough work being done in the GPUs. In addition, there a several solutions; analyze the code to accomplish more parallelize instructions, execute more computational instructions on the GPUs, bind memory blocks, in other words pin the initial memory block on the CPU with the final memory  block on the CPU.
+In practice the difference between theoretical bandwidth and effective bandwidth indicates how much bandwidth is wasted on accessing memory and calculations. If the effective bandwidth is low compared to the theoretical bandwidth is an indication that there is not enough work being done in the GPUs. In addition, there a several solutions; analyze the code to accomplish more parallelize instructions, execute more computational instructions on the GPUs, bind memory blocks, in other words pin the initial memory block on the CPU with the final memory  block on the CPU.
 
  In the \ref{Optimization Results} chapter we analyze the bandwidth and timing for each NVIDIA GPU used to optimize the application. However, bandwidth information is only available when transferring data from the CPU to the GPU or from the GPU to the CPU.
 
@@ -116,7 +116,7 @@ The table \ref{fig:memory} illustrates the five different memory types that are 
 
 \subsection{Global Memory}
 
-Understanding how efficiently use global memory is essential part of CUDA memory management. Focusing on data reuse within the SM and caches avoids memory bandwidth limitations. Global memory on the GPU is designed to quickly stream memory blocks of data into the SM \cite{design}.
+Understanding how efficiently use global memory is essential part of CUDA memory management. Focus on data reuse within the SM and caches to avoid memory bandwidth limitations. Global memory on the GPU is designed to quickly stream memory blocks of data into the SM. However, global memory tends to be slow compared with there types of memory \cite{design}.
 
 \begin{itemize}
 \item Get the data on to the Device, keep it there.
@@ -130,15 +130,14 @@ In other words the global memory resides on the device, and it should be anythin
 
 CUDA C compiler treats variables differently than a typical c language variable. The compiler creates a copy of the variable for each block that is launched on the GPU, now every thread in that block has access to the memory, hence, shared memory. This memory reside physically on the GPU, because the memory is very close the cache, the latency is typical very low \cite{example}. One thing comes to mind, if the threads can communicate with others threads, so there should be way to synchronize all the threads. A simple case should be if thread A writes a value into the shared memory, and Thread B wants to access we need to synchronize, when thread A finish writing then thread B can access it. This is typical case when shared memory with synchronize thread is needed \cite{cook}.
 
-Shared memory is magnitudes faster to access than global memory, essentially is like a local cache for each threads of a block. While  the shared memory is limited to 48K a block, the global memory is the amount of DRAM on the device. The duration of the shared memory on the device is the lifetime of the thread block. Using \twoline shared \twoline in-front of the data type will innovate shared memory.
+Shared memory is much faster to access than global memory, essentially is like a local cache for each threads of a block. While  the shared memory is limited to 48K a block, the global memory is the amount of DRAM on the device. The duration of the shared memory on the device is the lifetime of the thread block. Using \twoline shared \twoline in-front of the data type will innovate shared memory.
 
 Shared memory is widely used for applications were the kernels access a great amount of global memory. In addition, using shared memory eliminates the use of clock cycles per kernel which increases performance on a single kernel call. For the current application we used extensively shared memory, eliminating the use of global memory. More information about the process in Chapter \ref{Optimization Results}.
 
    
 \subsection{Constant Memory}
 
-Is an excellent way to store and broadcast read-only data to all the threads on the GPU. One thing to keep in mind is that the constant memory is limited to 64KB \cite{design}. A simple analogy is the {\listf \#define} or {\listf const} attribute in the C++ programming language, the variable performs like a variable that cannot be modified. On CUDA this is exactly the same, the value can only be read and not written. Furthermore, the value will not change over the course of a kernel execution and only the host can write the constant memory \cite{example}. Please read Chapter \ref{Optimization Results} for speedup improvements by increasing the use of constant memory.
-
+Constant memory is an excellent way to store and broadcast read-only data to all the threads on the GPU. One thing to keep in mind is that the constant memory is limited to 64KB \cite{design}. A simple analogy is the {\listf \#define} or {\listf const} attribute in the C++ programming language, the variable performs like a variable that cannot be modified. On CUDA this is exactly the same, the value can only be read and not written. Furthermore, the value will not change over the course of a kernel execution and only the host can write the constant memory \cite{example}. Constant memory is able to reduce calls for static global memory, in chapter \ref{Optimization Results} we discuss improvements speedup improvements by using this type of memory.
 \subsection{Texture Memory}
 
 Similar to constant memory, texture memory is another variety of read-only memory that can improve performance and reduce memory traffic when reads have certain access patterns. Traditionally texture memory is used for computer graphics applications, but it can also be used for HPC. The main idea of this read-only memory is that threads are likely to read from address ''near' the address they nearby threads \cite{example}.
@@ -162,7 +161,7 @@ The texture Memory in a form works like the GPU graphics Texture, when you want 
 \end{itemize}
 
 
-The texture memory is not used on the current implementation, for obvious reasons, it is a read only memory. For the current application we need to constantly read an write blocks of memory.
+The texture memory is not used on the current implementation, for obvious reasons, it is a read only memory. For the numerically methods we need to constantly read an write blocks of memory.
 
 \subsection{Thread Synchronization}
 

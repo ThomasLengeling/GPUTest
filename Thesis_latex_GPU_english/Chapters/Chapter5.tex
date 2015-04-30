@@ -202,7 +202,7 @@ __global__ void glaplacianyboundaries(...){
 }
 \end{lstlisting}
 
-To solve the branching issue, we include more work on the laplacian boundary condition kernel. The new kernel evaluates the boundary condition in a single kernel. Therefore, eliminating branching threads, more importantly, reducing global memory calls (code \ref{lst:newcde}).
+To solve the branching issue, we include more work on the laplacian boundary condition kernel. The new kernel evaluates the boundary condition in a single kernel. Therefore, eliminating branching threads, more importantly, reducing global memory calls, see Listing \ref{lst:newcde}.
 
 \begin{lstlisting}[language=C++, label={lst:newcde}, caption={More workload on a single kernel execution}]
 __global__ void glaplacianyboundaries(...){
@@ -240,26 +240,32 @@ Initially, each kernel was launched on the default steam zero. Therefore, every 
 
  Kernels by default cannot run in parallel with others kernels. Furthermore, CUDA doesn't provide an automatic parallel kernel executing. In addition, the programmer needs to tell the CUDA compiler that some portion of the code or kernel should be run in parallel. However, the compiler does not always know when to use concurrent kernels, it depends on the hardware capabilities and as well the number of threads per block and the number of SM available. If the compiler finds available space to run another kernel simultaneously, it will do so. 
 
-For example, the {\listf gsolution} \ref{lst:concurrent} kernel computes the Zhang and Li model for x, y, z coordinates, which extensively uses the global memory of the device. To accomplish concurrent kernels, the streams should be able to access memory blocks that are pinned to a specific stream. Therefore, each memory block corresponding to x, y, z coordinate are mapped to three independent streams. Furthermore, all the matrices corresponding to the coordinate x are mapped to the stream 1, coordinate y to stream 2 and coordinate z to stream 3.
+For example, the kernel {\listf gsolution} from the Listing \ref{lst:concurrent} computes the Zhang-Li model for x, y, z coordinates, which extensively uses the global memory of the device. To accomplish concurrent kernels, the streams should be able to access memory blocks that are pinned to a specific stream. Therefore, each memory block corresponding to x, y, z coordinate are mapped to three independent streams. Furthermore, all the matrices corresponding to the coordinate x are mapped to the stream 1, coordinate y to stream 2 and coordinate z to stream 3.
 
 \begin{lstlisting}[language=C++, label={lst:concurrent}, caption={Evaluation of x, y, z coordinates of the Zhang and Li model in a single kernel.}]
-deltamX[index] = sfrelaxX[index] + sdexX[index] + laplX[index] - smX[index];
-deltamY[index] = sfrelaxY[index] + sdexY[index] + laplY[index] - smY[index];
-deltamZ[index] = sfrelaxZ[index] + sdexZ[index] + laplZ[index] - smZ[index];
+__global__ void zhangLiComplete(...)
+{
+	deltamX[index] = sfrelaxX[index] + sdexX[index] + laplX[index] - smX[index];
+	deltamY[index] = sfrelaxY[index] + sdexY[index] + laplY[index] - smY[index];
+	deltamZ[index] = sfrelaxZ[index] + sdexZ[index] + laplZ[index] - smZ[index];
+}
 \end{lstlisting}
  
-The CUDA code \ref{lst:concurrent} is divided into a single kernel \ref{lst:consingle}. In addition, the new generic kernel is launched parallel with the others kernels. Instead of running one big kernel, three individual kernels are launched simultaneously. Dividing each kernel is now possible to implement shared memory through each kernel, otherwise wasn't possible. 
+The single kernel {\listf zhangLi} from the Listing \ref{lst:concurrent} is divided into three separated kernels, Listing \ref{lst:consingle}. In addition, the new generic kernel is able to launch parallel kernels. Instead of running one big kernel, three individual kernels are able to launch simultaneously. With the new implementation, shared memory is no feasible. Perviously wasn't possible, due to the matrices were pinned to different locations of the GPU hardware. 
 
-\begin{lstlisting}[language=C++, label={lst:consingle}, caption={Evaluation of individual coordinates of the Zhang and Li model}]
-int i = blockIdx.x * blockDim.x + threadIdx.x + 2;
-int j = blockIdx.y * blockDim.y + threadIdx.y;
-int index = j * NXCUDA_CONST + i;
+\begin{lstlisting}[language=C++, label={lst:consingle}, caption={Evaluation of individual coordinates of the Zhang and Li model.}]
+__global__ void zhangLi(  MatrixCoordinate )
+{
+	int i = blockIdx.x * blockDim.x + threadIdx.x + 2;
+	int j = blockIdx.y * blockDim.y + threadIdx.y;
+	int index = j * NXCUDA_CONST + i;
 
-if (i > 1 && i < NX + 2 && j >= 0 && j < NY)
-	deltam[index] = sfrelax[index] + sdex[index] + lapl[index] - sm[index];
+	if (i > 1 && i < NX + 2 && j >= 0 && j < NY)
+		deltam[index] = sfrelax[index] + sdex[index] + lapl[index] - sm[index];
+}
 \end{lstlisting}
 
-This same method was applied to every kernel that was possible to separate into three kernels calls. Some kernels were not viable to be separated, such as the cross product. Because, the cross product uses pinned memory block from the other streams. The Figure \ref{fig:concurrent} illustrates the results of concurrent kernels in the Tesla K20.
+We applied the current method to all the kernel that was possible to separate into three kernels calls. Some kernels were not viable to be separated, such as the cross product, which uses memory allocations from different streams.
 
 \begin{lstlisting}[language=C++, caption={Evaluate Zhang and Li model.}]
 for (int i  = 0; i < 3; i++)
@@ -278,7 +284,7 @@ for (int i  = 0; i < 3; i++)
 	\label{fig:concurrent}
 \end{figure}
 
-In chapter \ref{Implementation of Domain Wall Dynamics under Nonlocal STT} we mentioned that the input data set 480 x 120 is mapped to a CUDA square grid of 512 x 128. Because the mapping of the extra threads, is possible to execute a portion of kernels concurrently.
+In chapter \ref{Implementation of Domain Wall Dynamics under Nonlocal STT} we mentioned that the input data set 480 x 120 and mapped to a CUDA square grid of 512 x 128. Because we limit the number executing threads within each kernel we are able to launch concurrently kernels, see Figure  \ref{fig:concurrent}.
 
 Concurrent kernels demonstrate a very promising technique to achieve a huge performance increment in the current simulation. In theory is possible to have multiple kernels executing at the same. However, there are some downsides to the implementation; correctly synchronize kernels, waiting time and hardware resources are among the  problems \cite{practices}. The timeline of the application \ref{fig:waittime} illustrates the waiting time between kernels execution. However, the waiting time are very small time steps between 0.01ms and 0.01ms, but waiting time occurs for each step of the RK4, appears approximate 45,00 times. Furthermore, branching the kernel execution process should eliminate the issue.
 

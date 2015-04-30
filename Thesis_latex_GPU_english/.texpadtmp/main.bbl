@@ -74,7 +74,7 @@ T.~H{\"{o}}rmann.
   Universit{\"{a}}t M{\"{u}}nchen, Dec. 2014.
 
 \bibitem{spinimg}
-IMB.
+IBM.
 \newblock The application of spintronics.
 \newblock
   \url{http://www-03.ibm.com/ibm/history/ibm100/us/en/icons/spintronics/},
@@ -108,7 +108,6 @@ K.-J. Lee, M.~Stiles, H.-W. Lee, J.-H. Moon, K.-W. Kim, and S.-W. Lee.
 Z.~Li and S.~Zhang.
 \newblock Domain-wall dynamics and spin-wave excitations with spin-transfer
   torques.
-\newblock {\em Phys. Rev. Lett.}, 92:207203, May 2004.
 
 \bibitem{Nickolls}
 J.~Nickolls and W.~J. Dally.
@@ -151,6 +150,11 @@ C.~Richard, M.~Houzet, and J.~Meyer.
 \newblock Andreev current induced by ferromagnetic resonance.
 \newblock {\em Phys. Rev. Lett.}, 109:057002, Jul 2012.
 
+\bibitem{whatexascale}
+F.~Robert.
+\newblock What it’ll take to go exascale.
+\newblock {\em Science}, 335(January):394--396, 2012.
+
 \bibitem{fortran}
 G.~Ruetsch and M.~Fatica.
 \newblock {\em CUDA Fortran for Scientists and Engineers: Best Practices for
@@ -167,11 +171,6 @@ J.~Sanders and E.~Kandrot.
 J.~B. Schneider.
 \newblock Understanding the finite-difference time-domain method,
   www.eecs.wsu.edu/~schneidj/ufdtd, 2010.
-
-\bibitem{whatexascale}
-R.~F. Service.
-\newblock What it’ll take to go exascale.
-\newblock {\em Science}, 335(January):394--396, 2012.
 
 \bibitem{handbookspin}
 E.~Tsymbal and I.~Zutic.
