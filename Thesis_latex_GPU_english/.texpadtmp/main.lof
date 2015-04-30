@@ -32,7 +32,7 @@
 \contentsline {figure}{\numberline {4.8}{\ignorespaces Visual Profiler timeline and stream process}}{44}{figure.caption.216}
 \addvspace {10\p@ }
 \contentsline {figure}{\numberline {5.1}{\ignorespaces Initial GPU results}}{49}{figure.caption.232}
-\contentsline {figure}{\numberline {5.2}{\ignorespaces he execution flow}}{50}{figure.caption.244}
+\contentsline {figure}{\numberline {5.2}{\ignorespaces Branching execution flow}}{50}{figure.caption.244}
 \contentsline {figure}{\numberline {5.3}{\ignorespaces Initial Streams}}{52}{figure.caption.281}
 \contentsline {figure}{\numberline {5.4}{\ignorespaces Streams kernels Tesla K20}}{53}{figure.caption.306}
 \contentsline {figure}{\numberline {5.5}{\ignorespaces Waiting time in concurrent kernels}}{54}{figure.caption.307}
