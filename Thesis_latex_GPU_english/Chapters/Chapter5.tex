@@ -325,7 +325,7 @@ To calculate the Laplacian, we need to access a great amount of global memory, t
 	\label{fig:shared}
 \end{figure}
 
-The code \ref{lst:lapsh} demonstrates to how calculate the Laplacian from the equation \ref{eq:nn} with the implementation of shared memory. First we load all the global memory into a temporary array, the shared memory. Then we performed the calculation on the shared memory as mentioned before. Lastly return data to the global memory.
+The Listing \ref{lst:lapsh} demonstrates to how calculate the Laplacian from the equation \ref{eq:nn} with shared memory. Firstly, we load all the global memory into a temporary array, the shared memory. Then we performed the calculation on the shared memory as mentioned before. The last step, return data to the global memory.
 
 \begin{lstlisting}[language=C++, label={lst:lapsh}, caption={Laplacian evaluating using shared memory with boundaries condition}]
 if (i >= 0 && i < NX && j >= 0 && j < NY){
@@ -345,7 +345,7 @@ if (i >= 0 && i < NX && j >= 0 && j < NY){
 }
 \end{lstlisting}
 
-The current approach seems very promising for reducing global memory. However, great amount of time is spent on loading data onto the shared memory array, In consequence delaying threads executing, resulting a decrease in performance. Fast allocating shared memory data is the optimal solution to ensure the optimal use of this type of memory. The results of such implementation are in the following section, optimization results.
+The current approach seems very promising for reducing global memory. However, great amount of time is spent on loading data onto the shared memory array, In consequence, this delays threads executing, resulting in a decrease in performance. Therefore, fast allocating shared memory data is the optimal solution to ensure the optimal use of this type of memory. The results of such implementation are in the following section, optimization results.
 
 \subsection{Structure of Arrays, SAO}
 
@@ -509,7 +509,7 @@ The initial profiling \ref{fig:initial}, the Laplacian evaluation consumed about
 	\label{fig:final}
 \end{figure}
     
-The Tesla K20m was the only GPU which in every code modification it did not lose performance over the course of the optimization process. However, the other GPUs drop performance in the stream optimization stage. The stream process is where each kernel was divided into three separated kernels. Doing this we were able to calculate the x, y, z coordinates independently. In addition, this enable room to implement shared memory across possible kernels. The GPU table specifications \ref{tab:gpus} illustrates that the Tesla K20m is the only GPU card with CC of 3.5. Therefore, has access to Hyper-Q technology. which is able to synchronize automatically concurrent kernels, just by activated a steam process to the kernel.
+The Tesla K20m was the only GPU which in all the code modifications did not lose performance over the course of the optimization process. However, the other GPUs drop performance in the stream optimization stage. The stream process is where each kernel was divided into three separated kernels. Doing this we were able to calculate the x, y, z coordinates independently. In addition, this enable room to implement shared memory across possible kernels. The GPU table specifications \ref{tab:gpus} illustrates that the Tesla K20m is the only GPU card with CC of 3.5. Therefore, has access to Hyper-Q technology. which is able to synchronize automatically concurrent kernels, just by activated a steam process to the kernel.
 
 The SOA optimization, improved overall dramatically the performance of the application, obtaining a 1.2x - 2.0x speedup in all GPU cards, see Table \ref{tab:speed} and Figure \ref{fig:speedup}. The final version, Occupancy, improved up-to 0.7x speedup on the 580 GPU. However, for the Teslas cards only 0.2x-0.25x speedup. The speedup difference, 0.5x,  is due to the process cycle of the GeForce GPU. 
 
@@ -522,7 +522,7 @@ The SOA optimization, improved overall dramatically the performance of the appli
 \end{figure}
 
 
-We expected that the newest card, the Tesla k20m, would obtain the highest speedup overall, certainly because it has more CUDA cores, the highest compute capabilities. However, if falls behind the GeForce 580 with about 2.5x speedup difference (table \ref{tab:speed}). In addition, the Tesla K20 only had a difference of 0.3x speedup compared with the Teslas Cards, see Figure \ref{fig:speedup} and \ref{fig:speeduplast}. The GeForce compared with the others GPUs specifications has most Processor clock (GHz), more mathematical calculations per cycle, se table \ref{tab:gpus} for GPU specifications comparison. The results demonstrate the increase of workload and occupancy on the device. Increasing the computational process per thread and per block.
+We expected that the newest card, the Tesla k20m, would obtain the highest speedup overall, certainly because it has more CUDA cores and the highest compute capabilities. However, if falls behind the GeForce GTX 580 with about 2.5x speedup difference (table \ref{tab:speed}). In addition, the Tesla K20 performance results only has a difference of 0.3x speedup compared with the other Teslas Cards, see Figure \ref{fig:speedup} and \ref{fig:speeduplast}. If we compare the 580 card with the others GPUs specifications, it has most Processor clock (GHz) and more mathematical calculations per cycle (see table \ref{tab:gpus}). The results demonstrates the increase workload and occupancy on the device. Moreover, the increment in computational process per thread and per kernel.
 
 
   \vspace{4.0em}

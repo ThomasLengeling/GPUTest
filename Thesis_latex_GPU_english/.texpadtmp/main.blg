@@ -4,58 +4,53 @@ The top-level auxiliary file: /Users/tom/Documents/GitHub/GPUTest/Thesis_latex_G
 The style file: abbrv.bst
 Database file #1: ../Bibliography.bib
 Warning--string name "august" is undefined
---line 211 of file ../Bibliography.bib
-Warning--I'm ignoring practices's extra "month" field
---line 212 of file ../Bibliography.bib
+--line 210 of file ../Bibliography.bib
 Warning--entry type for "cornell" isn't style-file defined
---line 378 of file ../Bibliography.bib
-Repeated entry---line 407 of file ../Bibliography.bib
- : @misc{spintransfer
- :                   ,
-I'm skipping whatever remains of this entry
+--line 376 of file ../Bibliography.bib
+Warning--to sort, need author or key in titan
 Warning--empty journal in 5306797
 Warning--can't use both author and editor fields in methods
 Warning--empty journal in physicsgpu
 Warning--empty journal in landaverde
 You've used 38 entries,
             2118 wiz_defined-function locations,
-            703 strings with 9089 characters,
-and the built_in function-call counts, 10498 in all, are:
-= -- 985
+            701 strings with 9077 characters,
+and the built_in function-call counts, 10491 in all, are:
+= -- 982
 > -- 497
 < -- 2
 + -- 202
 - -- 160
-* -- 659
-:= -- 1806
-add.period$ -- 110
+* -- 658
+:= -- 1801
+add.period$ -- 109
 call.type$ -- 38
-change.case$ -- 187
+change.case$ -- 186
 chr.to.int$ -- 0
-cite$ -- 42
-duplicate$ -- 394
-empty$ -- 874
+cite$ -- 43
+duplicate$ -- 395
+empty$ -- 876
 format.name$ -- 160
-if$ -- 2174
+if$ -- 2173
 int.to.chr$ -- 0
 int.to.str$ -- 38
 missing$ -- 39
-newline$ -- 189
+newline$ -- 188
 num.names$ -- 74
-pop$ -- 249
+pop$ -- 251
 preamble$ -- 1
-purify$ -- 157
+purify$ -- 156
 quote$ -- 0
-skip$ -- 277
+skip$ -- 279
 stack$ -- 0
-substring$ -- 478
-swap$ -- 43
+substring$ -- 477
+swap$ -- 44
 text.length$ -- 2
 text.prefix$ -- 0
 top$ -- 0
 type$ -- 128
-warning$ -- 4
+warning$ -- 5
 while$ -- 94
 width$ -- 40
-write$ -- 395
-(There was 1 error message)
+write$ -- 393
+(There were 7 warnings)

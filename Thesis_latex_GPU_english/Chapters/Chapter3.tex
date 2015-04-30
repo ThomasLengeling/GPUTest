@@ -97,7 +97,7 @@ Matrix size Y & 120 & Device allocation Y & 128 \\
 \label{tab:cuda}
 \end{table}
 
-The magnetization data is stored in three matrices x, y, and z, each one of them with a capacity of 56,700 values, in other words 480 times 120. Base on the information we want to calculate the optimal number of grids that will ensure a complete use of the hardware resources. The number of blocks per grid corresponds dividing the dimensions of the array by the number of threads. The last two operations in \ref{lst:blocks}.
+The magnetization data is stored in three matrices x, y, and z, each one of them with a capacity of 56,700 values, in other words 480 times 120. Base on this information we want to calculate the optimal number of grids that will ensure a complete use of the hardware resources. The number of blocks per grid corresponds dividing the dimensions of the array by the number of threads. The last two operations in the Listing \ref{lst:blocks}.
 
 \begin{lstlisting}[language=C++, label={lst:blocks}, caption={Device capacity calculation and number of block per grid}]	
 NXCUDA = (int)powf(2,ceilf(logf(NX)/logf(2)));
@@ -108,7 +108,7 @@ XBLOCKS_PERGRID = (int)ceil((float)NX/(float)XTHREADS_PERBLOCK);
 YBLOCKS_PERGRID = (int)ceil((float)NY/(float)YTHREADS_PERBLOCK);
 \end{lstlisting}
 
-Depending on the hardware properties, each GPU is able to allocate different number of threads per block and as well as different shared memory sizes. The Shared memory in this implementation relies on the number of threads per block. In addition, the number of blocks depends on the input matrix and the number of threads, Examine Figure \ref{fig:block}. More information about the optimal number of threads per block read can be found in the final chapter \ref{Optimization Results}. 
+Depending on the hardware properties, each GPU is able to allocate different number of threads per block and as well as different shared memory sizes. The Shared memory in this implementation relies on the number of threads per block. In addition, the number of blocks depends on the input matrix and the number of threads, Examine Figure \ref{fig:block}. More information about the optimal number of threads per block for the current simulation can be found in the final chapter \ref{Optimization Results}. 
 
 \begin{table}[h]
 \centering
@@ -136,14 +136,14 @@ Shared memory & 16 * 16 & 32 * 32 \\
 	\centering
 		\includegraphics[width=0.55\textwidth]{Figures/flaten.png}
 		\smallskip
-	\caption[2D Flatten array]{Converting 2D array to a single continuous block of memory}
+	\caption[2D Flatten array]{Conversion of a 2D array to a single continuous block of memory}
 	\label{fig:flaten}
 \end{figure}
 
 
 \subsection{Initial Calculations}
 
-Before the evaluation of the RK4 terms, we need to evaluate static matrices that will not change over the course of the simulation \ref{log:rk4}. The pre calculation stage only evaluates the terms $ \delta \vec{m}$ from the Zhang-Li model \ref{eq:zhang}. The  $ \delta \vec{m}$  term is the non-equilibrium spin density domain wall at rest \cite{claudio} (equations \ref{lst:init}).
+Before the evaluation of the RK4 terms, we need to evaluate static matrices that will not change over the course of the simulation \ref{log:rk4}. In The pre calculation stage only the term $ \delta \vec{m}$ is evaluated of the Zhang-Li model \ref{eq:zhang}. The $ \delta \vec{m}$ term is the non-equilibrium spin density domain wall at rest \cite{claudio}, see Listing \ref{lst:init}.
 
 \begin{lstlisting}[language=C++, label={lst:init}, caption={Initial calculations}]
 	//Compute x, y and z component of source term
@@ -157,7 +157,7 @@ Before the evaluation of the RK4 terms, we need to evaluate static matrices that
     gm_x_source << <blocks, threads >> >(...);
 \end{lstlisting}
 
-The kernel {\listf gsource} of the listing \ref{lst:init} is only launched at the beginning of the application. From the calculation we obtain the matrix {\listf sm}, which is used to compute the Zhang-Li model in the RK4 integration section.
+The kernel {\listf gsource} of the Listing \ref{lst:init} is only launched at the beginning of the application. From this calculation we obtain the matrix {\listf sm}, which is used to compute the Zhang-Li model in the RK4 integration section.
 
 As previously mention the CUDA matrices are square sizes, 512 x 128. However, the input data set is 480 x 120. Therefore, we need to limit the number of threads inside every kernel. The issue is solve by including a simple {\listf if} inside of every kernel call (Code listing\ref{lst:if}). Though, we also need to include a minor adjustment of two indices in the x direction. The adjustment is due to the mesh boundary condition in the FDTD method.
 
@@ -246,7 +246,7 @@ lapyZ[idx] = - deltamZ[idx + 2] / 12.0 + 4.0 * deltamZ[idx + 1] / 3.0
 
 However, the calculations of the nearest neighbors is only valid for values of points inside a grid of [-2, 2] $\times$ [-2, 2] $\times$ [-2, 2]. We need to calculate the boundary condition whose points are in the edge of the grid. In other words, close to the magnetization boundaries.
 
- The matrices \ref{eq:matrix4} and \ref{eq:matrix3} are used for evaluating the values near the matrix borders. The matrices boundaries at $j = 0$ and $j = NY - 1$ for all values in the $i$ cell, the matrix \ref{eq:matrix3} is evaluates. For the condition $j = 1$ and $j = NY - 2$ for all $i$ values, we used the matrix \ref{eq:matrix4}. The code \ref{lst:lap} demonstrate how boundary condition was implementation. To obtain the correct values, first the laplacian in the y direction is calculated, then the boundary condition in the x direction. 
+ The matrices \ref{eq:matrix4} and \ref{eq:matrix3} are used for evaluating the values near the matrix borders. The matrices boundaries at $j = 0$ and $j = NY - 1$ for all values in the $i$ cell, the matrix \ref{eq:matrix3} is evaluates. For the condition $j = 1$ and $j = NY - 2$ for all $i$ values, we used the matrix \ref{eq:matrix4}. The Listing \ref{lst:lap} demonstrate how boundary condition was implementation. To obtain the correct values, first the laplacian in the y direction is calculated, afterwards, the boundary condition in the x direction. 
 
 \begin{lstlisting}[language=C++, label={lst:lap}, caption={Evaluation of Laplacian X, Y with boundary condition}]
 __global__ void glaplaciany(...){} //Compute laplacian in Y direction
@@ -268,7 +268,7 @@ __global__ void glaplacianBoundaries(...){
 __global__ void glaplacianx(...){} //Compute laplacian in X direction
 \end{lstlisting}
 
-The three CUDA kernels {\listf glaplaciany}, {\listf glaplacianx} and {\listf glaplaciany} are evaluated for each x, y and z coordinate within a 2d CUDA grid. The three coordinate sum up to 172,800 cell points to be calculated.
+The three CUDA kernels {\listf glaplaciany}, {\listf glaplacianx} and {\listf glaplaciany} are evaluated for each x, y and z coordinate within a 2d CUDA grid space. The three coordinate sum up to 172,800 cell points to be calculated.
 
 \subsubsection{Zhang and Li Model}
 

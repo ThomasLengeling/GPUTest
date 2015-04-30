@@ -38,10 +38,10 @@
 \contentsline {section}{\numberline {4.2}Performance Metrics}{34}{section.197}
 \contentsline {subsection}{\numberline {4.2.1}Timing}{34}{subsection.198}
 \contentsline {subsection}{\numberline {4.2.2}Bandwidth}{34}{subsection.199}
-\contentsline {section}{\numberline {4.3}Memory Handling with CUDA}{36}{section.200}
+\contentsline {section}{\numberline {4.3}Memory Handling with CUDA}{35}{section.200}
 \contentsline {subsection}{\numberline {4.3.1}Global Memory}{36}{subsection.203}
 \contentsline {subsection}{\numberline {4.3.2}Shared Memory}{37}{subsection.204}
-\contentsline {subsection}{\numberline {4.3.3}Constant Memory}{38}{subsection.205}
+\contentsline {subsection}{\numberline {4.3.3}Constant Memory}{37}{subsection.205}
 \contentsline {subsection}{\numberline {4.3.4}Texture Memory}{38}{subsection.206}
 \contentsline {subsection}{\numberline {4.3.5}Thread Synchronization}{39}{subsection.208}
 \contentsline {section}{\numberline {4.4}Concurrent Kernels}{39}{section.209}
@@ -49,7 +49,7 @@
 \contentsline {section}{\numberline {4.6}Hardware constraints}{41}{section.212}
 \contentsline {subsection}{\numberline {4.6.1}Thread Division}{42}{subsection.213}
 \contentsline {section}{\numberline {4.7}Visual Profiler}{42}{section.214}
-\contentsline {subsection}{\numberline {4.7.1}Profiler Kernel Report}{44}{subsection.217}
+\contentsline {subsection}{\numberline {4.7.1}Profiler Kernel Report}{43}{subsection.217}
 \contentsline {subsection}{\numberline {4.7.2}Collect Data On Remote System}{45}{subsection.223}
 \contentsline {chapter}{\numberline {5}Optimization Results}{46}{chapter.224}
 \contentsline {section}{\numberline {5.1}Supercomputer Piritakua}{46}{section.225}

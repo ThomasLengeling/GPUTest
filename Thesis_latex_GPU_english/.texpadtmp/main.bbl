@@ -1,8 +1,8 @@
 \begin{thebibliography}{10}
 
-\bibitem{spintransfer}
-D.~C.~R. A and M.~D.~S. B.
-\newblock Spin transfer torques, 711.
+\bibitem{titan}
+Titan, oak ridge and nacional laboratory.
+\newblock \url{https://www.olcf.ornl.gov/titan/}, 2013, Cited January 2015.
 
 \bibitem{Anderson}
 J.~A. Anderson, C.~D. Lorenz, and A.~Travesset.
@@ -50,11 +50,11 @@ E.~Golovatski.
   Domain Walls}.
 \newblock BiblioBazaar, 2012.
 
-\bibitem{hoermanngpu}
-T.~H{ \"{o} }rmann.
-\newblock Gpu-optimised implementation of high-dimensional tensor applications.
-\newblock Master's thesis, Institut f{\"{u}}r Informatik, Technische
-  Universit{\"{a}}t M{\"{u}}nchen, Dec. 2014.
+\bibitem{numerical}
+W.~H., S.~A. Teukolsky, W.~T. Vetterling, and B.~P. Flannery.
+\newblock {\em Numerical Recipes in C (2Nd Ed.): The Art of Scientific
+  Computing}.
+\newblock Cambridge University Press, New York, NY, USA, 1992.
 
 \bibitem{nonlocalspin}
 P.~Haney and T.~U. of~Texas~at Austin.~Physics.
@@ -66,6 +66,12 @@ P.~Haney and T.~U. of~Texas~at Austin.~Physics.
 A.~Harju, T.~Siro, F.~Canova, S.~Hakala, and T.~Rantalaiho.
 \newblock Computational physics on graphics processing units.
 \newblock 7782:3--26, 2013.
+
+\bibitem{hoermanngpu}
+T.~H{\"{o}}rmann.
+\newblock Gpu-optimised implementation of high-dimensional tensor applications.
+\newblock Master's thesis, Institut f{\"{u}}r Informatik, Technische
+  Universit{\"{a}}t M{\"{u}}nchen, Dec. 2014.
 
 \bibitem{spinimg}
 IMB.
@@ -117,19 +123,14 @@ NVIDIA.
   2012, Cited January 2015.
 
 \bibitem{practices}
-nVidia.
-\newblock {\em {CUDA C Best Practices Guide}}, Oct. 2014.
+NVIDIA.
+\newblock {\em {CUDA C Best Practices Guide}}, 2014.
 
 \bibitem{tool}
 NVIDIA.
 \newblock Cuda documentation.
 \newblock \url{http://docs.nvidia.com/cuda/#axzz3ORV92FoV}, 2014, Cited January
   2015.
-
-\bibitem{titan}
-N.~L. Oak~Ridge.
-\newblock Titan.
-\newblock \url{https://www.olcf.ornl.gov/titan/}, 2013, Cited January 2015.
 
 \bibitem{racetrack}
 S.~S. Parkin, M.~Hayashi, and L.~Thomas.
@@ -141,11 +142,9 @@ D.~A. Patterson and J.~L. Hennessy.
 \newblock {\em Computer Architecture: A Quantitative Approach}.
 \newblock Morgan Kaufmann Publishers Inc., San Francisco, CA, USA, 1990.
 
-\bibitem{numerical}
-W.~H. Press, S.~A. Teukolsky, W.~T. Vetterling, and B.~P. Flannery.
-\newblock {\em Numerical Recipes in C (2Nd Ed.): The Art of Scientific
-  Computing}.
-\newblock Cambridge University Press, New York, NY, USA, 1992.
+\bibitem{spintransfer}
+D.~C.~A. Ralph and M.~D. Stiles.
+\newblock Spin transfer torques, 711.
 
 \bibitem{ferro}
 C.~Richard, M.~Houzet, and J.~Meyer.

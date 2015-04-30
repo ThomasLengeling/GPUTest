@@ -18,7 +18,7 @@ There are three rules for developing high performance GPGPU (General-purpose on 
   \item Focus on data reuse within the GPU context, to avoid memory bandwidth limitations
 \end{enumerate}
 
-As we know the GPUs are plugged into the PCI Express bus of the host computer. The PCIe bus has extremely slow bandwidth compared with the GPU. This is why is important to store the data on the GPU and keep it busy. In addition, minimize the data transfer from the host and back to the device. The process is illustrated in the Figure \ref{fig:PCI}. CUDA enables the GPU to carry out petaFLOP performance in a single device \cite{cook}. Moreover, the GPUs are fast enough to compute a large amount of data. To accomplish such high performance, each CUDA kernel needs to use all the available resources of the GPU, avoiding wasting compute cycles. Furthermore, if a single Kernel doesn't use all of the available bandwidth, multiple kernels can be launched at the same time on a single GPU \cite{design}.
+The GPUs are plugged into the PCI Express bus of the host computer. The PCIe bus has extremely slow bandwidth compared with the GPU. This is why is important to store the data most of the GPU and keep it busy, but as well minimize the data transfer from the host and back to the device. The process is illustrated in the Figure \ref{fig:PCI}. CUDA enables the GPU to carry out petaFLOP performance in a single device \cite{cook}. Moreover, the GPUs are fast enough to compute a large amount of data in parallel. To accomplish such high performance; each CUDA kernel needs to use all the available resources of the GPU, avoid wasting compute cycles and minimize thread branching.
 
 \begin{figure}[htbp]
 	\centering
@@ -28,7 +28,7 @@ As we know the GPUs are plugged into the PCI Express bus of the host computer. T
 	\label{fig:PCI}
 \end{figure}
 
-The practices should be taken in consideration to identify the portions of code where it would be beneficial for improving GPU acceleration \cite{practices}.
+The practices should be taken in consideration to identify the parts of code where it would be beneficial for improving GPU acceleration \cite{practices}.
 
 \begin{figure}[htbp]
 	\centering
