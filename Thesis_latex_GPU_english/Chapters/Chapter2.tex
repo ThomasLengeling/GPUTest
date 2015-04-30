@@ -7,7 +7,7 @@
 \lhead{Chapter 2. \emph{Introduction to Domain Wall Dynamics under Nonlocal STT}}% Change X to a consecutive number; this is for the header on each page - perhaps a shortened title
 
 
-This chapter is a brief overview of the theory of spintronics and the study of Domain Wall Dynamics under Nonlocal Spin-Transfer-Torque, which quantitatively test the effects of spin-diffusion, on real Domain Wall (DW) structures, by numerically implementing the Zhang-Li model on a NiFe soft nanostrip. The numerical method used for the solution is a the method known as Finite Differences in the Time Domain (FDTD) on a 3d cell grid with whose integration is done using a 4th order integration of Runge-Kutta (RK4).
+This chapter is a brief overview of the theory of spintronics and the study of Domain Wall Dynamics under Nonlocal Spin-Transfer-Torque, which quantitatively test the effects of spin-diffusion, on real Domain Wall (DW) structures, by numerically implementing the Zhang-Li Model on a NiFe soft nanostrip. The numerical method used for the solution is a the method known as Finite Differences in the Time Domain (FDTD) on a 3d cell grid with whose integration is done using a 4th order integration of Runge-Kutta (RK4).
 
 \section{Theory}
 
@@ -91,7 +91,7 @@ The idea of incorporating spin torque into the LLG equation has been incorporate
  \frac{\partial \delta \vec{m} }{\partial t} =  D_{0}\bigtriangledown^{2} \delta \vec{m} - \frac{1}{\tau_{sd}} \delta \vec{m} \times \vec{M} - \frac{1}{\tau_{sf}}\delta \vec{m} +(\vec{\mu} \cdot\vec{\bigtriangledown} )\vec{M}
 \end{equation}
 
-The previous Equation \ref{eq:zhang} is referred as the Zhang-Li model. It represents a non-adiabatic spin torque, along the presence of spin diffusion. Spin diffusion is a process by which magnetization is exchanged spontaneously between spin, which spin is able to accumulate in metals. The associated diffusion current flows in all directions, giving rise to nonlocal effects. The diffusion term of the Equation \ref{eq:zhang} which carriers’ drift-diffusion equation implies that the spin density does not depend solely on the local magnetization, which gives rise of nonlocal magnetics effects \cite{claudio}. 
+The previous Equation \ref{eq:zhang} is referred as the Zhang-Li Model. It represents a non-adiabatic spin torque, along the presence of spin diffusion. Spin diffusion is a process by which magnetization is exchanged spontaneously between spin, which spin is able to accumulate in metals. The associated diffusion current flows in all directions, giving rise to nonlocal effects. The diffusion term of the Equation \ref{eq:zhang} which carriers’ drift-diffusion equation implies that the spin density does not depend solely on the local magnetization, which gives rise of nonlocal magnetics effects \cite{claudio}. 
 
 Amongst the rapidly growing variety of proposed and developed spin structures, nonlocal spin detection devices, where measurement and current excitation paths are spatially separated, have recently gained a prominent position \cite{spinz}.
 
@@ -121,7 +121,7 @@ Vortex Wall (VW) same as for Asymmetric Transverse Wall (ATW), has noticeable ef
 
 \section{Numerical Solution}
 
-The Zhang-Li model \ref{eq:zhang} is physically real, however, computationally expensive. Therefore we need to simulate the physical behavior. The numerical methods used for the solution is a the method known as Finite Differences in the Time Domain (FDTD) whose integration is done using a 4th order Runge-Kutta integration.
+The Zhang-Li Model \ref{eq:zhang} is physically real, however, computationally expensive. Therefore we need to simulate the physical behavior. The numerical methods used for the solution is a the method known as Finite Differences in the Time Domain (FDTD) whose integration is done using a 4th order Runge-Kutta integration.
 
 \subsection{Finite differences in the time domain}
 
@@ -269,7 +269,7 @@ As the equations shows, in each step, the derivative is evaluated four times, on
 
 \vspace{4.0em}
 
-In conclusion, the simultaneous solution of the diffusive Zhang and Li model \ref{eq:zhang} has uncovered a qualitatively new feature of the spin-transfer torque effect in the presence of spin diffusion. Namely the dependence of the steady-state DW velocity on DW structure \cite{claudio}. We quantitatively test the effects of spin diffusion, on real domain walls structures for ATW and VW. This is done by numerically solve the Zhang-Li model along a soft nanostrip of NiFe. The numerical methods used to solve such model as mentioned is the FDTD on a 3D cell grid with whose integration is done using RK4.
+In conclusion, the simultaneous solution of the diffusive Zhang-Li Model \ref{eq:zhang} has uncovered a qualitatively new feature of the spin-transfer torque effect in the presence of spin diffusion. Namely the dependence of the steady-state DW velocity on DW structure \cite{claudio}. We quantitatively test the effects of spin diffusion, on real domain walls structures for ATW and VW. This is done by numerically solve the Zhang-Li model along a soft nanostrip of NiFe. The numerical methods used to solve such model as mentioned is the FDTD on a 3D cell grid with whose integration is done using RK4.
 
 
 

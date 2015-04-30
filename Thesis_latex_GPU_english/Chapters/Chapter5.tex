@@ -106,7 +106,7 @@ The code was launched on all Piritakua's GPUs and on the GeForce GTX 670m. The "
 
 The cluster has two  main architecture types Fermi and Kepler. Furthermore, the initial results of 1.00x speedup were tested on a Kepler architecture, the GeForce GT 650M. The graph \ref{fig:iniresults} illustrates the executing time for all the GPUs in the server.
 
-We used NVIDIA's Visual Profiler to obtain kernel metrics of the Tesla K20m, see Table \ref{tab:nvprof}. The output is organized by kernel importance and performance during the simulation. The Laplacian kernel evaluation; {\listf glaplacinay}, {\listf gLaplacianx} and  {\listf gLaplacianYBoundaries} uses up-to 44.37$\%$ of the overall simulation. The $gsolution$ kernel, which solves Zhang-Li model \ref{eq:zhang} consumes up-to 14.04$\%$. The RK4 integration only exhaust a minor part of the overall simulation. However, the {\listf gSolution}, {\listf gsdExchange} and Laplacian calculation are part of the RK4 integration, which overall is about 99$\%$.
+We used NVIDIA's Visual Profiler to obtain kernel metrics of the Tesla K20m, see Table \ref{tab:nvprof}. The output is organized by kernel importance and performance during the simulation. The Laplacian kernel evaluation; {\listf glaplacinay}, {\listf gLaplacianx} and  {\listf gLaplacianYBoundaries} uses up-to 44.37$\%$ of the overall simulation. The $gsolution$ kernel, which solves Zhang-Li Model \ref{eq:zhang} consumes up-to 14.04$\%$. The RK4 integration only exhaust a minor part of the overall simulation. However, the {\listf gSolution}, {\listf gsdExchange} and Laplacian calculation are part of the RK4 integration, which overall is about 99$\%$.
 
 The throughput was not review on the current application. Since only two stages of the simulation transfer of the CPU data occurs, on the initial stage where the CPU data is sent to the GPU, and the final stage where the data is retrieved from the GPU
 
@@ -240,9 +240,9 @@ Initially, each kernel was launched on the default steam zero. Therefore, every 
 
  Kernels by default cannot run in parallel with others kernels. Furthermore, CUDA doesn't provide an automatic parallel kernel executing. In addition, the programmer needs to tell the CUDA compiler that some portion of the code or kernel should be run in parallel. However, the compiler does not always know when to use concurrent kernels, it depends on the hardware capabilities and as well the number of threads per block and the number of SM available. If the compiler finds available space to run another kernel simultaneously, it will do so. 
 
-For example, the kernel {\listf gsolution} from the Listing \ref{lst:concurrent} computes the Zhang-Li model for x, y, z coordinates, which extensively uses the global memory of the device. To accomplish concurrent kernels, the streams should be able to access memory blocks that are pinned to a specific stream. Therefore, each memory block corresponding to x, y, z coordinate are mapped to three independent streams. Furthermore, all the matrices corresponding to the coordinate x are mapped to the stream 1, coordinate y to stream 2 and coordinate z to stream 3.
+For example, the kernel {\listf gsolution} from the Listing \ref{lst:concurrent} computes the Zhang-Li Model for x, y, z coordinates, which extensively uses the global memory of the device. To accomplish concurrent kernels, the streams should be able to access memory blocks that are pinned to a specific stream. Therefore, each memory block corresponding to x, y, z coordinate are mapped to three independent streams. Furthermore, all the matrices corresponding to the coordinate x are mapped to the stream 1, coordinate y to stream 2 and coordinate z to stream 3.
 
-\begin{lstlisting}[language=C++, label={lst:concurrent}, caption={Evaluation of x, y, z coordinates of the Zhang and Li model in a single kernel.}]
+\begin{lstlisting}[language=C++, label={lst:concurrent}, caption={Evaluation of x, y, z coordinates of the Zhang-Li Model in a single kernel.}]
 __global__ void zhangLiComplete(...)
 {
 	deltamX[index] = sfrelaxX[index] + sdexX[index] + laplX[index] - smX[index];
@@ -253,7 +253,7 @@ __global__ void zhangLiComplete(...)
  
 The single kernel {\listf zhangLi} from the Listing \ref{lst:concurrent} is divided into three separated kernels. In addition, the new generic kernel is able to launch parallel kernels, see Listing \ref{lst:consingle}. Instead of running one big kernel, three individual kernels are able to launch simultaneously. With the new implementation, shared memory is no feasible. Perviously wasn't possible, due to the matrices were pinned to different locations of the GPU hardware. 
 
-\begin{lstlisting}[language=C++, label={lst:consingle}, caption={Evaluation of individual coordinates of the Zhang and Li model.}]
+\begin{lstlisting}[language=C++, label={lst:consingle}, caption={Evaluation of individual coordinates of the Zhang-Li Model.}]
 __global__ void zhangLi(  MatrixCoordinate )
 {
 	int i = blockIdx.x * blockDim.x + threadIdx.x + 2;
@@ -267,7 +267,7 @@ __global__ void zhangLi(  MatrixCoordinate )
 
 We applied the current method to all the kernel that was possible to separate into three kernels calls. Some kernels were not viable to be separated, such as the cross product, which uses memory allocations from different streams.
 
-\begin{lstlisting}[language=C++, caption={Evaluate Zhang and Li model.}]
+\begin{lstlisting}[language=C++, caption={Evaluate Zhang-Li Model.}]
 for (int i  = 0; i < 3; i++)
 	gsolution<<<blocks, threads, 0, stream[i]>>>(spinAccXYZ[i]->getDev_deltam(),
 												 spinAccXYZ[i]->getDev_sfrelax(), 
