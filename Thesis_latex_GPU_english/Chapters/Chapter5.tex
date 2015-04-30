@@ -64,9 +64,9 @@ When accessing ``Piritakua'' remotely is possible to use all the GPUs nodes avai
      
 \subsection{Architecture Differences}
 
-  Architecture dependent technical differences of NVIDIA GPUs. During the CUDA development a lot of internal features have been improved, but most paradigms for the programmer stayed the same. For example, a streaming processor can now handle 2048 threads at a time, but the maximum block size stayed at 1024. The results in a 100$\%$ theoretical occupancy for block sizes of 1024 compared to 66$\%$ of Fermi type. Another example is the use of Shared Memory. Maxwell has 64KB dedicated Shared Memory. The maximum amount of Shared Memory per Block is 48KB for all three architectures \cite{hoermanngpu}.
+  NVIDIA's GPU are constantly being improved over the years, nonetheless, most programming paradigms stayed the same. The are currently three main architectures processors; Fermi, Kepler and the newest Maxwell. For example, a streaming processor can now handle 2048 threads at a time, but the maximum block size stayed at 1024. The results in a 100$\%$ theoretical occupancy for block sizes of 1024 compared to 66$\%$ of Fermi type. Another example is the use of Shared Memory. Maxwell has 64KB dedicated Shared Memory. The maximum amount of Shared Memory per Block is 48KB for all three architectures \cite{hoermanngpu}.
   
-  There are two GPU architectures where the implementation was launched, the Fermi and the Kepler. The Tesla K20m and the GeForce 670mx are based on the ``Kepler'' GPU architecture. The Tesla M2070, M2050 and the GeForce GTX 580 on the Fermi architecture. The Kepler architecture newer than the Fermi. More information about the architectures in the table \ref{tab:arch}. The Maxwell architecture wasn't uses for benchmarking test. However, it is showed for future reference and analysis.
+  There are two GPU architectures where the implementation was launched, the Fermi and the Kepler. The Tesla K20m and the GeForce 670mx are based on the ``Kepler'' GPU architecture. The Tesla M2070, M2050 and the GeForce GTX 580 on the Fermi architecture. The Kepler architecture newer than the Fermi. More information about the architectures in the table \ref{tab:arch}. The Maxwell architecture was not used for the current simulation, however, is showed for future reference.
   
 \begin{table}[h]
 \centering
@@ -105,13 +105,13 @@ When accessing ``Piritakua'' remotely is possible to use all the GPUs nodes avai
  
 \section{Optimization}
 
-The CUDA code was launched on each one of "Piritakua"'s GPUs. The supercomputer has different GPUs, as well as several different  architectures. Furthermore, the initial results in time execution of the implementation are showed in figure\ref{fig:iniresults}. A GeForce GT 650M, with 384 CUDA core at 745 MHz and 2GB GDDR5 of memory is used as initial 1.00x speedup reference. 
+The CUDA code was launched on each one of "Piritakua"'s GPUs. The supercomputer has two  achitecture types Fermin and Kepler. Furthermore, the initial results of 1.00x speedup were tested on a Kepler architecture, the GeForce GT 650M. The graph \ref{fig:iniresults} illustrates the executing time for all the GPUs in the server.
 
-Using the NVIDIA's Visual Profiler we obtain kernel metrics of the Tesla K20m. The output is organized by kernel performance throughout the  simulation. For only the laplacian kernel evaluation; $glaplacinay$, $gLaplacianx$ and  $gLaplacianYBoundaries$ uses up-to 44.37$\%$ of the overall simulation. The $gsolution$ kernel, which solves Zhang-Li model \ref{eq:zhang} consumes up-to 14.04$\%$. The RK4 integration only exhaust a minor part of the overall simulation. However, the $gSolution$, $gsdExchange$ and laplacian calculation are part of the RK4 integration, which overall is about 99$\%$.
+We used NVIDIA's Visual Profiler to obtain kernel metrics of the Tesla K20m, which is showed in The table \ref{tab:nvprof}. The output is organized by kernel importance and performance during the simulation. The Laplacian kernel evaluation; $glaplacinay$, $gLaplacianx$ and  $gLaplacianYBoundaries$ uses upto 44.37$\%$ of the overall simulation. The $gsolution$ kernel, which solves Zhang-Li model \ref{eq:zhang} consumes up-to 14.04$\%$. The RK4 integration only exhaust a minor part of the overall simulation. However, the $gSolution$, $gsdExchange$ and Laplacian calculation are part of the RK4 integration, which overall is about 99$\%$.
 
 The throughput was not review on the current application. Since only two stages of the simulation transfer of the CPU data occurs, on the initial stage where CPU data is sent to the GPU, and the final stage where is sent back to CPU.
 
- The optimization focus is to give the GPUs as much work as possible, using at the fullest the GPU hardware capabilities. In addition,  reducing the overall performance time of each kernel, eliminating the computational hover-head process on the highest consumed kernel \ref{tab:nvprof}.
+ The optimization focus is to give the GPUs as much work as possible, using at the fullest the GPU hardware capabilities. In addition, reducing the overall performance time of each kernel, eliminating the computational hover-head process on the highest consumed kernel \ref{tab:nvprof}.
  
 \begin{table}[h]
 \centering
@@ -148,18 +148,18 @@ The throughput was not review on the current application. Since only two stages 
 	\centering
 		\includegraphics[width=1.0\textwidth]{Figures/gpu_initial.png}
 		\smallskip
-	\caption[Initial GPU results]{Initial implementation benchmarking on several different GPU nodes, speedup 1.0x}
+	\caption[Initial GPU results]{Initial implementation benchmarking on several different GPUs nodes, with a initial speedup of 1.0x}
 	\label{fig:iniresults}
 \end{figure}
 
-The figure \ref{fig:iniresults} illustrate the GeForce GTX 580 is the card with the least amount of execution time, and the Tesla K20m the fastest amongst the Tesla Cards.
+The figure \ref{fig:iniresults} illustrates the GeForce GTX 580 is the card with the least amount of execution time, and the Tesla K20m the fastest amongst the Tesla Cards. 
 
 
 The following sections are the optimization techniques and methods applied to the application. In addition, comparing the performance between the initial implementation and the modified versions. The optimization is breakdown into five steps; Branching, Occupancy, Concurrent Kernels, Shared Memory and Structure of Arrays. Branching, refers how kernels and threads are executed in the application. Occupancy, number of threads per devices being used. Concurrent Kernels, execution several kernels at once. Shared Memory, using as much shared memory as possible. Finally, Structure of Arrays, modification of the memory allocation in the device.
 
  \subsection{Branching}
  
- CUDA follows the Single Instruction Multiple Thread architecture. This means, threads execute the same code. Each thread is able to operate on its own data and has its individual address counter. Moreover, threads are free to use a different path. Each thread launches the same operation at the same time. However, they have to wait for all the threads in the kernel to finish there task. In other words, some threads can finish their job before a groups of threads are still executing their task. When a thread within a warp branches differently the other threads get deactivated \cite{hoermanngpu}. The method is described in the following code \ref{lst:branch} and  illustrated in the figure \ref{fig:threads}.
+ CUDA follows the Single Instruction Multiple Thread architecture, meaning, threads execute the same code. Each thread is able to operate on its own data and has its individual address counter. Moreover, threads are free to use a different path. Each thread launches the same operation at the same time. However, they have to wait for all the threads in the kernel to finish their task. In other words, some threads can finish their job before a groups of threads are executing their tasks. Therefore, a thread within a warp/block branches differently the other threads get deactivated \cite{hoermanngpu}. The method is described in the following code \ref{lst:branch} and  illustrated in the figure \ref{fig:threads}.
 
 \begin{lstlisting}[language=C++, label={lst:branch}, caption={Branching threads}]
 __global__ void kernel(int* out){
@@ -181,11 +181,11 @@ if(idx == 0){
 	\label{fig:threads}
 \end{figure}
 
-The branching problem occurred in the section where boundary condition for laplacian was being analyzed \ref{lst:branchlap}. Only a single kernel was used to check the boundary condition. In addition, a bottleneck occurred. The implementation gets the job done with only one kernel. However, a minor part of the threads are only working, which is a waste of computation resources and energy.
+The branching problem occurred in the section where boundary condition for Laplacian was being analyzed \ref{lst:branchlap}. Only a single kernel was used to check the boundary condition. In addition, a bottleneck occurred. The implementation gets the job done with only one kernel. However, a minor part of the threads are only working, which is a waste of computation resources and energy.
 
-\begin{lstlisting}[language=C++, label={lst:branchlap}, caption={Branching problem in the laplacian boundary condition evaluation}]
-__global__ void glaplaciany(...); //Compute laplacian in Y direction
-__global__ void glaplacianx(...); //Compute laplacian in X direction
+\begin{lstlisting}[language=C++, label={lst:branchlap}, caption={Branching problem in the Laplacian boundary condition evaluation}]
+__global__ void glaplaciany(...); //Compute Laplacian in Y direction
+__global__ void glaplacianx(...); //Compute Laplacian in X direction
 
 __global__ void glaplacianyboundaries(...){
     if (i > 1 && i < NX + 2 && j == 0){
@@ -219,8 +219,8 @@ __global__ void glaplacianyboundaries(...){
     else if (i > 1 && i < NX + 2 && j == NY - 1){
         // Update Laplacian Boundaries
     }
-    glaplaciany(...); //Compute laplacian in Y direction
-	glaplacianx(...);  //Compute laplacian in X direction
+    glaplaciany(...); //Compute Laplacian in Y direction
+	glaplacianx(...);  //Compute Laplacian in X direction
 }
 \end{lstlisting}
 
@@ -239,9 +239,9 @@ Initially, each kernel was launched on the default steam zero. Therefore, every 
 	\label{fig:streams}
 \end{figure}
 
- Kernels by default cannot run in parallel with others kernels. Furthermore, CUDA doesn't provide an automatic parallel kernel executing. In addition, the programmer needs to tell the CUDA compiler that some portion of the code or kernel should be run in parallel. However, the compiler does not always know when to use concurrent kernels, its depends on the hardware capabilities and as well the number of threads per block and the number of SM available. If the compiler finds available space to run another kernel simultaneously it will do so. 
+ Kernels by default cannot run in parallel with others kernels. Furthermore, CUDA doesn't provide an automatic parallel kernel executing. In addition, the programmer needs to tell the CUDA compiler that some portion of the code or kernel should be run in parallel. However, the compiler does not always know when to use concurrent kernels, it depends on the hardware capabilities and as well the number of threads per block and the number of SM available. If the compiler finds available space to run another kernel simultaneously, it will do so. 
 
-For example, the $gsolution$ \ref{lst:concurrent} kernel computes the Zhang and Li model for x, y, z coordinates, which extensively uses the global memory of the device. To accomplish concurrent kernels, the streams should be able to access memory blocks that are pinned to specific a stream. Therefore, each memory block corresponding to x, y, z coordinate are mapped to three independent streams. Furthermore, all the matrices corresponding to the coordinate x are mapped to the stream 1, coordinate y to stream 2 and coordinate z to stream 3.
+For example, the $gsolution$ \ref{lst:concurrent} kernel computes the Zhang and Li model for x, y, z coordinates, which extensively uses the global memory of the device. To accomplish concurrent kernels, the streams should be able to access memory blocks that are pinned to a specific stream. Therefore, each memory block corresponding to x, y, z coordinate are mapped to three independent streams. Furthermore, all the matrices corresponding to the coordinate x are mapped to the stream 1, coordinate y to stream 2 and coordinate z to stream 3.
 
 \begin{lstlisting}[language=C++, label={lst:concurrent}, caption={Evaluation of x, y, z coordinates of the Zhang and Li model in a single kernel.}]
 deltamX[index] = sfrelaxX[index] + sdexX[index] + laplX[index] - smX[index];
@@ -249,7 +249,7 @@ deltamY[index] = sfrelaxY[index] + sdexY[index] + laplY[index] - smY[index];
 deltamZ[index] = sfrelaxZ[index] + sdexZ[index] + laplZ[index] - smZ[index];
 \end{lstlisting}
  
-The CUDA code \ref{lst:concurrent} is divided into a single kernel \ref{lst:consingle}. In addition, the new generic kernel is launched parallel with the others kernels. Instead of running one big kernel, three individual kernels are launched simultaneous. Dividing each kernel is now possible to implement shared memory through each kernel, otherwise wasn't possible. 
+The CUDA code \ref{lst:concurrent} is divided into a single kernel \ref{lst:consingle}. In addition, the new generic kernel is launched parallel with the others kernels. Instead of running one big kernel, three individual kernels are launched simultaneously. Dividing each kernel is now possible to implement shared memory through each kernel, otherwise wasn't possible. 
 
 \begin{lstlisting}[language=C++, label={lst:consingle}, caption={Evaluation of individual coordinates of the Zhang and Li model}]
 int i = blockIdx.x * blockDim.x + threadIdx.x + 2;
@@ -281,7 +281,7 @@ for (int i  = 0; i < 3; i++)
 
 In chapter \ref{Implementation of Domain Wall Dynamics under Nonlocal STT} we mentioned that the input data set 480 x 120 is mapped to a CUDA square grid of 512 x 128. Because the mapping of the extra threads, is possible to execute a portion of kernels concurrently.
 
-Concurrent kernels demonstrates a very promising technique to achieve a huge performance increment in the current simulation. In theory is possible to have multiples kernels executing at the same. However, there are some downsides to the implementation; correctly synchronize kernels, waiting time and hardware resources are among the  problems \cite{practices}. The timeline of the application \ref{fig:waittime} illustrates the waiting time between kernels execution. However, the waiting time are very small time steps between 0.01ms and 0.01ms, but waiting time occurs for each step of the RK4, appears approximate 45,00 times. Furthermore, branching the kernel execution process should eliminate the issue.
+Concurrent kernels demonstrate a very promising technique to achieve a huge performance increment in the current simulation. In theory is possible to have multiple kernels executing at the same. However, there are some downsides to the implementation; correctly synchronize kernels, waiting time and hardware resources are among the  problems \cite{practices}. The timeline of the application \ref{fig:waittime} illustrates the waiting time between kernels execution. However, the waiting time are very small time steps between 0.01ms and 0.01ms, but waiting time occurs for each step of the RK4, appears approximate 45,00 times. Furthermore, branching the kernel execution process should eliminate the issue.
 
 \begin{figure}[htbp]
 	\centering
@@ -316,7 +316,7 @@ if (i > 1 && i < NX + 2 && j >= 0 && j < NY){
 }
 \end{lstlisting}
 
-To calculate the laplacian we need to access a great amount of global memory, that is located near the value of interest. In this case a region of 4x4 grid. The figure \ref{fig:shared} illustrates what part of the block is used for allocating shared memory and global memory. The global memory is used for the boundary conditions of the block, while the shared memory for all the values inside the block.
+To calculate the Laplacian, we need to access a great amount of global memory, therefore, located near the value of interest. In this case a region of 4x4 grid. The figure \ref{fig:shared} illustrates what part of the block is used for allocating shared memory and global memory. The global memory is used for the boundary conditions of the block, while the shared memory for all the values inside the block.
 
 \begin{figure}[htbp]
 	\centering
