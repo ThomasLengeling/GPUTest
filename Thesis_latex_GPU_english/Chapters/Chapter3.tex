@@ -10,38 +10,40 @@ The following chapter is the study of the heterogeneous computing implementation
 
 \section{Simulation}
 
-The simulation consists in integrating the Zhang-Li model \ref{eq:zhang} using the 4th order integrator Runge-Kutta, which is done for a 3D grid space of 57,600 cells. The sample considered is a 300nm wide in y direction and 5nm thick in z direction. Furthermore, the sample is a soft nanostrip composed of NiFe, a material and size widely used in experiments. Using this size the asymmetric transverse wall \ref{fig:atw}, and the vortex wall have nearly equal energies. The numerical mesh size is 3 x 3 x 5 $nm^3$, and the calculation box has a length (x direction) of 1,200 or 3,172 nm. The table \ref{tab:mesh} illustrates mesh information and calculation box for the simulation \cite{claudio}. In addition, the table \ref{tab:drk} shows the constant values for the numerical solution of the equation \ref{eq:zhang} such as $\mu$, $D_{0}$, $\tau_{sd}$ and $\tau_{sf}$.
+We numerically solve the mathematical equation Zhang-Li model \ref{eq:zhang}. The numerical solution is done by applying the FDTD whose integration is done using a 4th order Runge-Kutta. The integration is done by using a 3D grid space of 57,600 cells. The sample considered is a 300nm wide in y direction and 5nm thick in z direction. Furthermore, the sample is a soft nanostrip composed of NiFe, a material and size widely used in experiments. Using this size the asymmetric transverse wall \ref{fig:atw}, and the vortex wall have nearly equal energies. The numerical mesh size is 3 x 3 x 5 $nm^3$, and the calculation box has a length (x direction) of 1,200 or 3,172 nm. The table \ref{tab:mesh} illustrates mesh information and calculation box for the simulation \cite{claudio}. In addition, the table \ref{tab:drk} shows the constant values for the numerical solution of the equation \ref{eq:zhang} such as $\mu$, $D_{0}$, $\tau_{sd}$ and $\tau_{sf}$ and the stop condition value, $\beta_{diff}$.
 
 \begin{table}[h]
 \centering
 \begin{tabular}{| l | l | l | l |}
 \hline
-Mesh size & value & calculation box & value \\
+Cell size & Value & Calculation box & Value \\
 \hline
-Cell NX & 480 & Box TX  & 1200.0   \\
+ NX & 480 &  TX  & 1200.0   \\
 \hline
-Cell NY & 120 & Box TY  & 300.0  \\
+ NY & 120 &  TY  & 300.0  \\
 \hline
-Cell NZ &	1 & Box TZ  & 5.0   \\
+ NZ &	1 &  TZ  & 5.0   \\
 \hline
 \end{tabular}
 \caption{Mesh size and calculation box}
 \label{tab:mesh}
 \end{table}
 
-The implementation is divided into main two calculations elements, the host part and the device part. The figure \ref{fig:flow} illustrates the data flow between the host and the device, but as well as a general description of the simulation. Based on the data flow figure, the simulation starts by reading the magnetization values from a data file. Then, the data set is used to calculate the initial magnetization matrices for the simulation. Afterwards, the simulation begins with the RK4 integration, hence, numerically solves the Zhang-Li model \ref{eq:zhang}. The simulation is configured to integrate 50,000 times the Zhang-Li Model before calculating the final effective Beta value. The simulation stops if the effective beta or convergence to 1.0e-9. The figure \ref{fig:flow} shows the control flow of the simulation. But also illustrates the workload on the host and on the device. We are able to observe the heavy computation operations are done on the GPU side. While on the CPU only minor intense computation are done such as I/O data, memory allocation and final beta variation. Finally, \ref{log:rk4} is the pseudo-code of the RK4 integration.
+The implementation is divided into two sections, the host and the device (data flow figure \ref{fig:flow}). The host section is in charge of I/O data, allocating the CPU and GPU data and calculating the $\beta_{diff}$ value. The device is we solve numerically solve the Zhang-li model.
+
+The simulation begins by reading the magnetization values from a data file. Then, the data set allocates the initial magnetization matrices as well as the static values. Afterwards, the Runge-Kutta algorithms begins. The algorithm is finish only when the $\beta_{diff}$ value converges to $1.0e^-9$. The simulation is configured to integrate 50,000 times the Zhang-Li Model before calculating the $\beta_{diff}$. The complete RK4 algorithm with the FDTD is described in the algorithm \ref{log:rk4}. We are able to observe the heavy computation operations are done on the GPU side. While on the CPU such as I/O data, memory allocation and the diffusion beta.
 
 \begin{table}[h]
 \centering
 \begin{tabular}{| l | l | l | l |}
 \hline
-Diffusion parameters& Value & Runge - Kutta 4th & Value \\
+Diffusion parameters& Value & Runge-Kutta 4th & Value \\
 \hline 
 $\mu$ & 1 &  time step (dt) &   $25.0e^{-6}$   \\
 \hline
-$D_{0}$ & $1.0e^{3}$ nm mm$^2$/ns  & tmax  & 1.0  \\
+$D_{0}$ & $1.0e^{3}$ nm mm$^2$/ns  & Max time  & 1.0  \\
 \hline
-$\tau_{sd}$ & $1.0e^{-3}$ ns  & beta difference & $1.0e^{-9}$ \\
+$\tau_{sd}$ & $1.0e^{-3}$ ns  & $\beta_{diff}$ & $1.0e^{-9}$ \\
 \hline
 $\tau_{sf}$ & $25.0e^{-3}$ ns  & Iterations & 50,000 \\
 \hline
@@ -52,9 +54,9 @@ $\tau_{sf}$ & $25.0e^{-3}$ ns  & Iterations & 50,000 \\
 
 \subsection{Data allocation and threads}
 
-The first section of the implementation begins with allocation data into several matrices for both host memory and device memory. The initial magnetization data can be either self generated by the application or by reading a file which contains information related to the magnetization. In both cases the data are divided into two blocks of information. Blocks have 57600 (480 x 120) rows of information The first 57600 rows contains initial magnetization x, y coordinates. The next block of 57600 rows is the initial magnetization in x, y, and z. The data being read is stored on three temporary 2D matrices. thus, corresponding to the x, y, and the z coordinate. Next step, the three matrices are flattened into three continuous memory blocks, as shown in figure \ref{fig:flaten}. The device code \ref{lst:flatten} flattens the 2d index into a single linear 1D index.
+The first section of the implementation begins with allocation data into several matrices for both host memory and device memory The input data is the 3D and 2D magnetization information of 57,600 cells. The data being read is stored on three temporary 2D matrices. each one for x, y, and the z coordinate. Next step, the 2D matrices are flattened into three continuous memory blocks, as shown in figure \ref{fig:flaten}. The device code \ref{lst:flatten} flattens the 2d index into a continues linear 1D index. All the matrices are flatten due that CUDA manage more efficiently continues blocks of memory.
 
-\begin{lstlisting}[language=C++, label={lst:flatten}, caption={Kernel Flatten from a 2 value index to a single value index.}]	
+\begin{lstlisting}[language=C++, label={lst:flatten}, caption={Kernel flatten 2d - 1d}]	
     int i = blockIdx.x * blockDim.x + threadIdx.x + 2;
     int j = blockIdx.y * blockDim.y + threadIdx.y;
      // map the two 2D indices to a single linear, 1D index
@@ -62,8 +64,8 @@ The first section of the implementation begins with allocation data into several
 \end{lstlisting}
 
 
-To ensure optimal memory allocation on the GPU side is best to assign square matrices to the device. By using square memory sizes the GPU is able to allocate efficiently the memory onto the devices (Listing \ref{lst:blocks}).
-
+NVIDIA's GPUs handles more efficiently square matrices. Therefore, we need to map the input data set to square matrices. However, for a given architecture, there is an optimal matrix dimension and number of threads per matrix which balances occupancy and instruction level parallelism.  The matrix size used for the implementation is 512 x 128 which is the nearest square values of 480 x 120 (listing  \ref{lst:blocks}). The number of threads per square matrix depends on the number of threads available for each hardware configuration. The current implementation used 16 x 16 threads per block.
+ 
 \begin{figure}[htbp]
 	\centering
 		\includegraphics[width=0.55\textwidth]{Figures/flow.png}
@@ -141,7 +143,7 @@ Shared memory & 16 * 16 & 32 * 32 \\
 
 \subsection{Initial Calculations}
 
-Before the evaluation of the RK4 terms, we need to evaluate static matrices that will not change over the course of the simulation \ref{log:rk4}. The pre calculation stage only evaluates the terms $ \delta \vec{m}$ from the Zhang-Li model \ref{eq:zhang}. The  $ \delta \vec{m}$  term is the non-equilibrium spin density domain wall at rest \cite{claudio}. The Following equations evaluates the first steps of the magnetization data \ref{lst:init}.
+Before the evaluation of the RK4 terms, we need to evaluate static matrices that will not change over the course of the simulation \ref{log:rk4}. The pre calculation stage only evaluates the terms $ \delta \vec{m}$ from the Zhang-Li model \ref{eq:zhang}. The  $ \delta \vec{m}$  term is the non-equilibrium spin density domain wall at rest \cite{claudio} (equations \ref{lst:init}).
 
 \begin{lstlisting}[language=C++, label={lst:init}, caption={Initial calculations}]
 	//Compute x, y and z component of source term
@@ -157,7 +159,7 @@ Before the evaluation of the RK4 terms, we need to evaluate static matrices that
 
 The kernel {\listf gsource} of the listing \ref{lst:init} is only launched at the beginning of the application. From the calculation we obtain the matrix {\listf sm}, which is used to compute the Zhang-Li model in the RK4 integration section.
 
-As previously mentioned the CUDA matrices are square sizes, 512 x 128. However, the input data set is 480 x 120. Therefore, we need to limit the number of threads inside every kernel. To limit the executing of the extra threads a simple {\listf if} within each kernel solves the issue \ref{lst:if}. Nonetheless, due to the boundary condition of the FDTD method we need to add a small shift of two indices in the x direction.
+As previously mention the CUDA matrices are square sizes, 512 x 128. However, the input data set is 480 x 120. Therefore, we need to limit the number of threads inside every kernel. The issue is solve by including a simple {\listf if} inside of every kernel call (Code listing\ref{lst:if}). Though, we also need to include a minor adjustment of two indices in the x direction. The adjustment is due to the mesh boundary condition in the FDTD method.
 
 \begin{lstlisting}[language=C++, label={lst:if}, caption={Limit threads executing inside a kernel}]
 __global__ void rungeKuttaTerms(...)
@@ -170,13 +172,13 @@ __global__ void rungeKuttaTerms(...)
 
 \subsection{Numerical Methods}
 
-The following steps are where all the computational intense operations are performed. The algorithm \ref{log:rk4} demonstrates the operations necessary for RK4 integration process. In addition, the operations are evaluated once per iteration, composed by four time steps of the RK4, In addition, the numerical solution is a the method known as Finite Differences in the Time Domain (FDTD) whose integration is done using a 4th order Runge-Kutta integration. The algorithm exists when $b_{eff}$ reaches an numeric error of $1.0e^{-9}$.
+The following algorithm illustrates the necessary operations for the RK4 integration process ( \ref{log:rk4} ). The algorithm exists when $b_{eff}$ reaches an numeric error of $1.0e^{-9}$.
 
 \begin{algorithm}[H]
  \KwData{deltam, sfrelax, sdex, sm, laplacian}
  \KwResult{deltam}
  data initialization\;
- \While{$b_{eff} < 1.0e^{-9}$}{
+ \While{$\beta_{diff} < 1.0e^{-9}$}{
   Runge and Kutta 4th\;
   \For{$i = 1; i <= 4; i+=1$ }{  
   sdex $\gets$ crossProduct(deltam, mag); calculate cross product \\
@@ -201,7 +203,7 @@ The following steps are where all the computational intense operations are perfo
     tmp $\gets$ copy(rkterm(4));\\
    }
   }
-  $b_{eff}$ = calculate(temp, beta);
+  $\beta_{diff}$ = calculate(temp, beta);
  }
  \label{log:rk4}
  \caption{Runge and Kutta 4th integration implementation}
@@ -209,7 +211,8 @@ The following steps are where all the computational intense operations are perfo
 
 \subsubsection{Finite differences in the time domain}
 
-The finite differences method requires the domain of interest to be broken down into small regions. Such subdivision of space is known as mesh, grid or cell division. The cell division is illustrated in the table \ref{tab:mesh} from the previous section. In addition, the number of threads per block of the CUDA code implementation is based on the FDTD cell division. The separation is illustrated in table \ref{tab:cuda} and \ref{tab:threads}, which are based on the equation \ref{eq:nn} from chapter \ref{Introduction to Domain Wall Dynamics under Nonlocal STT}. To numerically solve the Zhang-Li model \ref{eq:zhang} we need to determinate and evaluate the first and second derivate. Therefore accomplish using the FDTD method. The proposed solution is based on the seconds nearest neighbors. The basic idea is shown on the figure \label{fig:laplacian}. Moreover, the equation \ref{eq:nn} is evaluated for the x, y and z coordinates.
+The finite differences method requires the domain of interest to be broken down into small regions. Such subdivision of space is known as mesh, grid or cell division. The grid is divided into a 512 x 128 space, which is mapped to the GPU hardware \ref{tab:mesh}. Furthermore, the number of threads per block are synchronized to the cell division, but as well to the number of SM available in the device, see Tables \ref{tab:cuda} and  \ref{tab:threads}.
+To numerically solve the Zhang-Li model we need to determinate and evaluate the first and second derivate. The proposed solution is based on the seconds nearest neighbors \ref{eq:nn}. Moreover, the nearest neighbors method evaluates the derivative of the input data, see Figure \label{fig:laplacian}.
 
 \begin{figure}[htbp]
 	\centering
@@ -219,21 +222,29 @@ The finite differences method requires the domain of interest to be broken down 
 	\label{fig:laplacian}
 \end{figure}
 
-The figure \ref{fig:laplacian} demonstrates the calculation of the nearest neighbors expansion by evaluation a neighborhood of $[-2, 2]$ values in the x direction. In addition, the index begins at $i = 2$ and finishes at $NX + 2$. The same occurs for the Laplacian in the Y direction, however, begins at $j = 2$ and finish at $NY -2$. The implementation \ref{lst:lpay} uses the equation from chapter 3 \ref{eq:nn} as previous mention. The calculation \ref{lst:lpay} is done for each three x, y and z coordinates. 
+The calculation of the nearest neighbors expansion is done by evaluation a neighborhood of $[-2, 2]$ values in the x direction. The index begins at $i = 2$ and finishes at $NX + 2$. The same occurs for the Laplacian in the Y direction, however, begins at $j = 2$ and finish at $NY -2$.  The implementation \ref{lst:lpay} is based on the nearest neighbors equation\ref{eq:nn}.
 
-\begin{lstlisting}[language=C++, label={lst:lpay}, caption={Laplacian X using global memory}]
+\begin{lstlisting}[language=C++, label={lst:lpay}, caption={Laplacian evaluation for x, y and z coordinate}]
 int i = blockIdx.x * blockDim.x + threadIdx.x + 2;
 int j = blockIdx.y * blockDim.y + threadIdx.y;
 // map the two 2D indices to a single linear, 1D index
 int idx = j * grid_width + i;
 
-lapy[idx] = - deltam[idx + 2] / 12.0 + 4.0 * deltam[idx + 1] / 3.0
-			- 5.0 * deltam[idx] / 2.0
-			- deltam[idx - 2] / 12.0 + 4.0 * deltam[idx - 1] / 3.0;	
+lapyX[idx] = - deltamX[idx + 2] / 12.0 + 4.0 * deltamX[idx + 1] / 3.0
+			- 5.0 * deltamX[idx] / 2.0
+			- deltamX[idx - 2] / 12.0 + 4.0 * deltamX[idx - 1] / 3.0;	
+			
+lapyY[idx] = - deltamY[idx + 2] / 12.0 + 4.0 * deltamY[idx + 1] / 3.0
+			- 5.0 * deltamY[idx] / 2.0
+			- deltamY[idx - 2] / 12.0 + 4.0 * deltamY[idx - 1] / 3.0;	
+			
+lapyZ[idx] = - deltamZ[idx + 2] / 12.0 + 4.0 * deltamZ[idx + 1] / 3.0
+			- 5.0 * deltamZ[idx] / 2.0
+			- deltamZ[idx - 2] / 12.0 + 4.0 * deltamZ[idx - 1] / 3.0;	
 \end{lstlisting}
 
 
-However, the calculation of the nearest neighbors only works for values of points inside a grid of [-2, 2] for x, y, and z coordinates. In addition, we need to calculate the boundaries values for those points that are in the edge of the grid, such as the beginning points and the end points. In other words, close to the magnetization boundaries. To solve the boundaries issue we use two square matrices matrices from chapter \ref{Introduction to Domain Wall Dynamics under Nonlocal STT}.
+However, the calculations of the nearest neighbors is only valid for values of points inside a grid of [-2, 2] $\times$ [-2, 2] $\times$ [-2, 2]. We need to calculate the boundary condition whose points are in the edge of the grid. In other words, close to the magnetization boundaries.
 
  The matrices \ref{eq:matrix4} and \ref{eq:matrix3} are used for evaluating the values near the matrix borders. The matrices boundaries at $j = 0$ and $j = NY - 1$ for all values in the $i$ cell, the matrix \ref{eq:matrix3} is evaluates. For the condition $j = 1$ and $j = NY - 2$ for all $i$ values, we used the matrix \ref{eq:matrix4}. The code \ref{lst:lap} demonstrate how boundary condition was implementation. To obtain the correct values, first the laplacian in the y direction is calculated, then the boundary condition in the x direction. 
 
@@ -257,13 +268,13 @@ __global__ void glaplacianBoundaries(...){
 __global__ void glaplacianx(...){} //Compute laplacian in X direction
 \end{lstlisting}
 
-The three CUDA kernels {\listf glaplaciany}, {\listf glaplacianx} and {\listf glaplaciany} are evaluated for each x, y and z coordinate. In addition, the three coordinate sum up to 172,800 cell points to be calculated.
+The three CUDA kernels {\listf glaplaciany}, {\listf glaplacianx} and {\listf glaplaciany} are evaluated for each x, y and z coordinate within a 2d CUDA grid. The three coordinate sum up to 172,800 cell points to be calculated.
 
 \subsubsection{Zhang and Li Model}
 
-The Zhang-Li Model \ref{eq:zhang} is solved using code \ref{lst:rkcuda}. Furthermore, the Zhang-Li equation is used as function $f$ for the RK4 integration process \ref{eq:rk4}. The first term of the equation {\listf sfrelax} is calculated in the relaxation process at the end of the RK4 integrator \ref{fig:sim}. Then the term {\listf sdex} is computed in the Cross Product process, which is done before the RK4 calculation. The matrix {\listf sm} is only calculated once at the initial calculations process, kernel {\listf gsource} in the code \ref{lst:init}. Finally, the {\listf lapl} matrix is evaluated in the Laplacian process. Moreover, computing the Laplacian for x, y coordinate of the CUDA memory grid. The same process evaluates the Laplacian boundary condition, using the FDTD method.
+The Zhang-Li Model \ref{eq:zhang} is solved using code \ref{lst:rkcuda}. Furthermore, the Zhang-Li equation is used as function $f$ for the RK4 integration process \ref{eq:rk4}. The first term of the equation {\listf sfrelax} is calculated in the relaxation process at the end of the RK4 integrator \ref{fig:sim}. Then the term {\listf sdex} is computed in the Cross Product process, which is done before the RK4 calculation. The matrix {\listf sm} is only calculated once at the initial calculations process, kernel {\listf gsource} in the code \ref{lst:init}. Finally, the {\listf lapl} matrix is evaluated in the Laplacian process.
 
-\begin{lstlisting}[language=C++, label={lst:zhangcuda}, caption={Runge and Kutta 4th Terms}]
+\begin{lstlisting}[language=C++, label={lst:zhangcuda}, caption={Zhang-Li Model equation}]
 		sfrelax[idx] = -deltam[idx] / tau_sf;
 		sdex[idx] = -(deltam[idx] * m[index] - deltam[idx] * m[idx]) / tau_sd;
 		
@@ -271,14 +282,15 @@ The Zhang-Li Model \ref{eq:zhang} is solved using code \ref{lst:rkcuda}. Further
         solveZhangLi[idx] = sfrelax[idx] + sdex[idx] + lapl[idx] - sm[idx];
 \end{lstlisting}
 
-Once completed the evaluation of the Zhang-Li Model (listing \ref{lst:zhangcuda}), The matrix \textit{solveZhangLi} is assigned to each one of the RK4 terms evaluation.
+
+The matrix {\listf solveZhangLi} is used as integration input of the 4th order Runge and Kutta method.
 
 \subsubsection{Runge and Kutta}
  
-Intuitively the equation \ref{eq:rk4} is implemented by using four CUDA kernels, each kernel calculates the step of the integration. The first part of \ref{lst:rkcuda} computes the Runge and Kutta's 1st, 2nd, and 3rd  term \ref{eq:rksplit}. The final fourth term, is the sum of the previous 3 terms, the last two lines of code in \ref{lst:rkcuda} show the calculation.
+Intuitively the 4th order Runge and Kutta equation \ref{eq:rk4} should be able to implement by using four CUDA kernels, each kernel evaluating the derivative with a different time increment (equation \ref{eq:rksplit}). The first three RK4 term are slightly the same, they differ from using the previous evaluated term \ref{lst:rkcuda}. The final 4th term is the weighted average of the four RK increments \ref{lst:rk4cuda}. The four different increments the Runge and Kutta evaluates the derivative for Zhang-Li model using the FDTD method.
 
-\begin{lstlisting}[language=C++, label={lst:rkcuda}, caption={Runge and Kutta 4th Terms}]
-     rk1[idx] = dt * deltam[idx];  //term 1
+\begin{lstlisting}[language=C++, label={lst:rkcuda}, caption={Runge and Kutta 1st, 2nd and 3rd terms}]
+     rk1[idx] = dt * deltam[idx];  //rk term 1
      deltam[idx] = temp[idx] + 0.5 * rk1[idx];
      
      rk2[idx] = dt * deltam[idx]; //term 2
@@ -286,16 +298,16 @@ Intuitively the equation \ref{eq:rk4} is implemented by using four CUDA kernels,
      
      rk3[idx] = dt * deltam[idx]; //term 3
      deltam[idx] = temp[idx] + 0.5 * rk3[idx];
-     
-     rk4[idx] = dt * deltam[idx]; //final k4
+\end{lstlisting}
+    
+\begin{lstlisting}[language=C++, label={lst:rk4cuda}, caption={4th term of the Runge and Kutta integration}] 
+     rk4[idx] = dt * deltam[idx]; //final term rk4
      double diff = rk1[idx] + 2.0 * (rk2[idx] + rk3[idx]) + rk4[idx];
-     deltam[idx] = temp[idx] + diff / 6.0;
-     				
+     deltam[idx] = temp[idx] + diff / 6.0;	
 \end{lstlisting}
 
-On each RK4 step the Zhang-Li model is evaluated, Moreover, numerically solving the model with the FDTD method including the magnetization boundaries condition.
 
-The integration is group up in two {\listf for} cycles (listing\ref{lst:rk4}). The inner \textit{for} cycle evaluates the RK4 for the x, y, z coordinate. The outer for cycle evaluates four times the Runge and Kutta integration.
+The Runge and Kutta integration is group up in two {\listf for} cycles (listing \ref{lst:rk4}). The inner {\listf for} cycle evaluates the RK4 for the x, y, z coordinate. The outer {\listf for} cycle evaluates four times the Runge and Kutta integration.
 
 \begin{lstlisting}[language=C++, label={lst:rk4}, caption={Summarize of Runge and Kutta 4th Integration}]	
 
@@ -310,34 +322,30 @@ for(int term = 0; term < 4; term++)
 }
 \end{lstlisting}
 
- Consequently the simulation is set to 50,000 iterations of the RK4 integretor, as the data flow illustrates  \ref{fig:flow}. However, is possible for the simulation diverge, and yield to inconsistent results.
+ The simulation is set to 50,000 iterations of the RK4 integrator, In each iteration the algorithm evaluates if the current values will diverge or converge to a valid result (data flow illustrates \ref{fig:flow}). Is highly possible for the simulation to converge to a result and finish the simulation. However, is feasible to yield to inconsist data.
  
-\subsection{Calculate effective beta}
+\subsection{Calculate beta diffusion}
 
-The RK4 algorithm \ref{log:rk4} will finish until the beta evaluation reaches the value of $1.0e^{-9}$. The final step of the simulation determinate the effective beta, which tells use the energy configuration of the system. But more importantly the spin diffusion. Furthermore, the DW velocity the diffusion non-adiabatic term $\beta$.
+Kernels \ref{lst:beta} are only launched at the end the RK4 integration. Which outputs the $\beta_{diff}$. After each RK4 step, the beta diffusion add ups all accumulated values from previous steps. Moreover, the $\beta_{diff}$ values is output of the numerically solution of the effects of spin diffusion, on domain wall structures. Therefore, by numerically solving the Zhang-Li model including the spin diffusion term.
 
-The kernels \ref{lst:beta} are launched only when the RK4 integration is done evaluating. The effective beta kernels computes a single value, the effective beta.
-
-\begin{lstlisting}[language=C++, label={lst:beta}, caption={Calculate effective beta}]
-    gm_x_sm << <blocks, threads >> >(...); //Calculate
-    gu_eff << <blocks, threads >> >(...);  //Calculate 
-    gu_eff_beta_eff << <blocks, threads >> >(...); 	//Calculate
-    gbeta_eff << <blocks, threads >> >(..); 	//Calculate
-    gbeta_diff << <blocks, threads >> >(...);  //Calculate             
+\begin{lstlisting}[language=C++, label={lst:beta}, caption={Calculate beta diffusion }]
+    gm_x_sm << <blocks, threads >> >(...); 
+    gu_eff << <blocks, threads >> >(...); 
+    gu_eff_beta_eff << <blocks, threads >> >(...); 	
+    gbeta_diff << <blocks, threads >> >(...);               
 \end{lstlisting}
 
-
-We do not know for how long we need to integrate the system. However, it will stop until the local energy reaches the minimum configuration. Hence, the effective beta diverges to $1^{-9}$. The simulation will stop when the effective beta reaches the minimum. Then the magnetization data is written. Depending on the application configuration is possible to write either the magnetization results for the VW or for the ATW. The magnetization data is written into two separated data files, which contains the effective data .eff and the spin accumulation data .spin.
+Although, we do not know when the RK4 algorithm will end, the simulation will stop when $\beta_{diff}$ reaches the minimum of $10^{-9}$. Afterwards then the magnetization data will be written. Moreover, the application is able to write the magnetization results for the VW or for the ATW. Furthermore, the magnetization data is written into two separated data files, which contains the spin effective data and the spin accumulation data.
 
 \section{Validation}
 
-Because CUDA framework is a highly parallel system is fairly easy to obtain erroneous data from the calculations, even setting up the threads per block incorrectly is possible to get a data set that is wrong, or results that don't diverge. When making changes to the code, it is necessary to validate the new code.
+Because CUDA framework is a highly parallel system is fairly easy to obtain erroneous data from the calculations, even setting up the threads per block incorrectly is possible to get a data set that is wrong, or results that converge. When making changes to the code, it is necessary to validate the new code.
 
 The validation is done by comparing the output of the simulation with a valid data set. The output of the validation application tells us the error factor of the current data with the valid set. So for each data set there is a threshold value, that can tell if the that is close enough to the results. An example of the validation performed.
 
-According to our results, new code shouldn't produce errors in the spin.dat data greater than $7.0^{-17}$, in other words valid code don't lead to differences greater than the precision expected from computations with double precision $1.0^{-16}$ in the case of eff data the errors are in the order of $1.0^{e-11}$ and no greater than $6^{-11}$. For the diffuse beta variation the precision expected to be within the double precision range of $1^{-16}$. 
+According to the results, new code shouldn't produce errors in the spin.dat greater than $7.0^{-17}$, in other words valid code don't lead to differences greater than the precision expected from computations with double precision $1.0^{-16}$ in the case of eff data the errors are in the order of $1.0^{-11}$ and no greater than $6^{-11}$. For the variation the precision expected to be within the double precision range of $1^{-16}$. 
 
-The initial implementation results were done using the GeForce GT 650M, with 384 CUDA core at 745 MHz and 2GB GDDR5 of memory. The final simulation with a correct validation data outputs the following results \ref{tab:results}. The 1.00x speedup is used for comparing optimization results in the final chapter \ref{Optimization Results}.
+For the initial results we used the GeForce GT 650M, with 384 CUDA core at 745 MHz and 2GB GDDR5 of memory (Reference \ref{tab:results}). The values obtain for GPU were used as stander values for  future validation test. 1.00x speedup is used for comparing optimization performances in chapter \ref{Optimization Results}.
 
 \begin{table}[h]
 \centering
@@ -347,9 +355,9 @@ The initial implementation results were done using the GeForce GT 650M, with 384
 \hline
 Data set & Simulation time & Speedup & Diffuse beta  \\
 \hline
-upVW magnetization & 377590.3ms & 1.00x & 4.848728452719814e-02 \\
+upVW magnetization & 377590.3 ms & 1.00x & 4.848728452719814e-02 \\
 \hline
-ATWpm magnetization & 377409.2ms & 1.00x & 4.054674178687585e-02 \\
+ATWpm magnetization & 377409.2 ms & 1.00x & 4.054674178687585e-02 \\
 \hline
 \end{tabular}
 \caption{Calculation results}
@@ -359,7 +367,7 @@ ATWpm magnetization & 377409.2ms & 1.00x & 4.054674178687585e-02 \\
 
 \vspace{4.0em}
 
-To conclude, the simulating at its core uses the RK4 for integration which uses as integration function the Zhang-li model equation \ref{eq:zhang}. In addition, to solve such differential equations of the Zhang-Li model the FDTD method is evaluated. For each iteration the RK4 \ref{eq:rk4} evaluates fourth times the Zhang-Li equation. Moreover, each RK4 term evaluates numerically the Laplacian \ref{eq:nn} with boundary conditions \ref{eq:matrix3} \ref{eq:matrix4}. We showed the procedure of numerically solving the equations from Chapter \ref{Implementation of Domain Wall Dynamics under Nonlocal STT}.
+In conclusion, the numerical solution of the Zhang-Li model using the FDTD methods is done in the device. While the host only executes I/O results. In addition, the simulation numerically solves the differential equations of the Zhang-Li model using the 4th order Runger-Kutta integration. Moreover, each RK4 term evaluates the Laplacian \ref{eq:nn} with boundary conditions \ref{eq:matrix3} \ref{eq:matrix4}. Finally, the results of the simulation are validated within the double precision range.
 
 
 
