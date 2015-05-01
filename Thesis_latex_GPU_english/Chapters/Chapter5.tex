@@ -28,7 +28,7 @@ The cluster has the CentOS (Community Enterprise Operating System) 64 bits as op
    Server HP Proliant SL 250s Gen8 Intel Xeon E5-2670 2.60 GHz & 3 & 48 & 104 GB \\
    \hline
   \end{tabular}
-      \caption{CPU technical specifications}
+      \caption{CPU technical specifications.}
   \label{tab:cpus}
   \end{table}
 
@@ -55,7 +55,7 @@ When accessing Piritakua remotely, it is possible to use all the GPUs nodes avai
    GeForce 670mx & 960 & 3GB & 520 & 1,154 & 67.2GB/s & 0.6 & 3.0 &  - \\
    \hline
   \end{tabular}
-    \caption{GPU technical specifications}
+    \caption{GPU technical specifications.}
   \label{tab:gpus}
   \end{table}
   
@@ -98,7 +98,7 @@ The code was launched on all Piritakua's GPUs and on the GeForce GTX 670m. The "
    Warp Size & \multicolumn{6}{c|}{32}  \\
    \hline
   \end{tabular}
-  \caption{GPU Architecture Specifications}
+  \caption{GPU Architecture Specifications.}
   \label{tab:arch}
   \end{table}
  
@@ -147,7 +147,7 @@ The throughput was not reviewed on the current application. Only two stages of t
 	\centering
 		\includegraphics[width=1.0\textwidth]{Figures/gpu_initial.png}
 		\smallskip
-	\caption[Initial GPU results]{Initial implementation benchmarking on several different GPUs nodes, with a initial speedup of 1.0x}
+	\caption[Initial GPU results]{Initial implementation benchmarking on several different GPUs nodes, with a initial speedup of 1.0x.}
 	\label{fig:iniresults}
 \end{figure}
 
@@ -159,7 +159,7 @@ The following sections are the optimization techniques and methods applied to th
  
  CUDA follows the Single Instruction Multiple Thread architecture, which means, all threads on the device execute the same code. Each thread is able to operate on its own data and has its individual address counter. Moreover, threads are free to use a different path. Each thread launches the same operation at the same time. However, they have to wait for all the threads in the kernel to finish their task. In other words, some threads can finish their job before  groups of threads are executing their tasks. Therefore, a thread within a warp/block branches differently the other threads get deactivated \cite{hoermanngpu}. The method is described in the following code \ref{lst:branch} and illustrated in Figure \ref{fig:threads}.
 
-\begin{lstlisting}[language=C++, label={lst:branch}, caption={Branching threads}]
+\begin{lstlisting}[language=C++, label={lst:branch}, caption={Branching threads.}]
 __global__ void kernel(int* out){
 idx = threadIdx.x;
 int result;
@@ -181,7 +181,7 @@ if(idx == 0){
 
 The branching problem occurred in the section where boundary condition for Laplacian was being analyzed \ref{lst:branchlap}. Only a single kernel was used to check the boundary condition. In addition, a bottleneck occurred. The implementation gets the job done with only one kernel. However, a minor part of the threads are only working, which is a waste of computation resources and energy.
 
-\begin{lstlisting}[language=C++, label={lst:branchlap}, caption={Branching problem in the Laplacian boundary condition evaluation}]
+\begin{lstlisting}[language=C++, label={lst:branchlap}, caption={Branching problem in the Laplacian boundary condition evaluation.}]
 __global__ void glaplaciany(...); //Compute Laplacian in Y direction
 __global__ void glaplacianx(...); //Compute Laplacian in X direction
 
@@ -203,7 +203,7 @@ __global__ void glaplacianyboundaries(...){
 
 To solve the branching issue, we included more work on the laplacian boundary condition kernel. The new kernel evaluates the boundary condition in a single kernel. Therefore, this refers to eliminating branching threads, more importantly, reducing global memory calls, see Listing \ref{lst:newcde}.
 
-\begin{lstlisting}[language=C++, label={lst:newcde}, caption={More workload on a single kernel execution}]
+\begin{lstlisting}[language=C++, label={lst:newcde}, caption={More workload on a single kernel execution.}]
 __global__ void glaplacianyboundaries(...){
     if (i > 1 && i < NX + 2 && j == 0){
      	// Update Laplacian Boundaries
@@ -232,7 +232,7 @@ Initially, each kernel was launched on the default steam zero. Therefore, every 
 	\centering
 		\includegraphics[width=1.0\textwidth]{Figures/ini_steams.png}
 		\smallskip
-	\caption[Initial Streams]{Kernels running on the default Stream zero.
+	\caption[Initial streams]{Kernels running on the default Stream zero.
 }
 	\label{fig:streams}
 \end{figure}
@@ -291,7 +291,7 @@ Concurrent kernels demonstrate a very promising technique to achieve a huge perf
 	\centering
 		\includegraphics[width=1.0\textwidth]{Figures/waittime.png}
 		\smallskip
-	\caption[Waiting time in concurrent kernels]{Waiting time between each concurrent kernel execution}
+	\caption[Waiting time in concurrent kernels]{Waiting time between each concurrent kernel execution.}
 	\label{fig:waittime}
 \end{figure}
 
@@ -302,7 +302,7 @@ Shared memory is faster than global memory but it is very limited, see Chapter \
 
 The idea behind shared memory is to reduce the amount of global memory calls, which has about 400-600 latency clock cycles, while the shared memory only has 1-32 latency clock cycles \ref{fig:memory}. The shared memory implementation is accomplished by allocating the data from the thread block into a temporary array, in other words the shared memory. In addition, the kernel is able to perform calculations on the temporary array and write the values onto the global memory. The implementation code is illustrated in the Listing \ref{lst:shared}. There is no guarantee that threads will execute at the same order. Using {\listf \_\_syncthreads()} will wait until all threads have completed their task which is in this case loading global memory into the shared memory array. Chapter \ref{Heterogeneous Performance Analysis and Practices} section thread synchronization, has more information about thread synchronization and shared memory. Once all the operations on the shared memory array are finished, the final part is to write the shared memory values back to the global memory.
 
-\begin{lstlisting}[language=C++, label={lst:shared}, caption={Shared memory}]
+\begin{lstlisting}[language=C++, label={lst:shared}, caption={Shared memory.}]
 int i = blockIdx.x * blockDim.x + threadIdx.x;
 int j = blockIdx.y * blockDim.y + threadIdx.y;
 int index = j * NXCUDA_CONST + i;
@@ -326,13 +326,13 @@ To calculate the Laplacian, we need to access a great amount of global memory, l
 	\centering
 		\includegraphics[width=0.4\textwidth]{Figures/shared.png}
 		\smallskip
-	\caption[Shared Memory Strategy]{Shared Memory Strategy for the Laplacian evaluation }
+	\caption[Shared memory strategy]{Shared Memory Strategy for the Laplacian evaluation.}
 	\label{fig:shared}
 \end{figure}
 
 Listing \ref{lst:lapsh} demonstrates how  to calculate the Laplacian from Equation \ref{eq:nn} with shared memory. Firstly, we load all the global memory into a temporary array, the shared memory. Then we performed the calculation on the shared memory as mentioned before. The last step is to return data to the global memory.
 
-\begin{lstlisting}[language=C++, label={lst:lapsh}, caption={Laplacian evaluating using shared memory with boundaries condition}]
+\begin{lstlisting}[language=C++, label={lst:lapsh}, caption={Laplacian evaluating using shared memory with boundaries condition.}]
 if (i >= 0 && i < NX && j >= 0 && j < NY){
     __shared__ double lapS[ THREADS_SHARED * THREADS_SHARED];
     lapS[sIdx] = deltam[Index];
@@ -360,7 +360,7 @@ AoS and SoA refer to Array of Structures and Structure of Arrays respectively. T
 	\centering
 		\includegraphics[width=0.68\textwidth]{Figures/aos.png}
 		\smallskip
-	\caption[Array of structures (AOS)]{AOS memory layout }
+	\caption[Array of structures (AOS)]{AOS memory layout.}
 	\label{fig:aos}
 \end{figure}
 
@@ -369,13 +369,13 @@ AoS and SoA refer to Array of Structures and Structure of Arrays respectively. T
 	\centering
 		\includegraphics[width=0.68\textwidth]{Figures/soa.png}
 		\rule{35em}{0.2pt}
-	\caption[Structure of Arrays (SAO)]{SAO memory layout}
+	\caption[Structure of arrays (SAO)]{SAO memory layout.}
 	\label{fig:sao}
 \end{figure}
 
 The initial implementation of the  x, y, z data was allocated in separated blocks. Furthermore, when accessing blocks of the same coordinates, the register access the data. Review Listings \ref{lst:aos} and \ref{lst:sao}.
 
-\begin{lstlisting}[language=C++, label={lst:aos}, caption={AOS implementation}]
+\begin{lstlisting}[language=C++, label={lst:aos}, caption={AOS implementation.}]
 deltam_x = (double **)calloc(NYCUDA, sizeof(double *));
 deltam_y = (double **)calloc(NXCUDA, sizeof(double *));
 deltam_z = (double **)calloc(NXCUDA, sizeof(double *));
@@ -383,7 +383,7 @@ deltam_z = (double **)calloc(NXCUDA, sizeof(double *));
 
 To solve the issue, a custom class GPUMatrix was programmed. The class contained all the matrices for the device. Moreover, the classes allocated the data for each Matrix and freed the memory automatically when the simulation was over. This was allocated in a structure that was easier for the device to access common elements. For example, when evaluating operations only on the x coordinate, the kernel physically accesses matrices that are near by and eliminate unnecessary shift in registers or hierarchy memory access.
 
-\begin{lstlisting}[language=C++, label={lst:sao}, caption={SOA implementation}]
+\begin{lstlisting}[language=C++, label={lst:sao}, caption={SOA implementation.}]
     GPUMatrix<T> *dev_deltam;
     GPUMatrix<T> *dev_sdex; //Exchange term
     GPUMatrix<T> *dev_sfrelax;
@@ -398,7 +398,7 @@ Firstly, we increased the use of constant memory in the device. thus, eliminatin
 
 The matrices \ref{eq:matrix3} and \ref{eq:matrix3} evaluates the boundary conditions, which do not change over the course of the application, They are only calculated at the initial stage of the application. Therefore, it is possible to implement those matrices using constant memory and  thus, eliminating unnecessary calls in the device.
  
- \begin{lstlisting}[language=C++,  label={lst:constant}, caption={Constant Memory changes}]
+ \begin{lstlisting}[language=C++,  label={lst:constant}, caption={Constant Memory changes.}]
  gsource << <blocks, threads >> >(u_val, dev_sm_z, dev_mz, NXCUDA);
  
  sfrelax_y[index] = -deltam_y[index] / tau_sf;
@@ -454,7 +454,7 @@ This section is an overview of the optimization results compared with the initia
     GeForce 650m & 244372.9 & 237371.9 & 227237.8 & 279804 & 181217.4 & 174419\\
    \hline
   \end{tabular}
-    \caption{GPU Optimization time}
+    \caption{GPU Optimization time.}
   \label{tab:time}
   \end{table}
   
@@ -479,7 +479,7 @@ This section is an overview of the optimization results compared with the initia
     GeForce 670MX & 1.544x & 1.598x & 1.662x & 1.349x & 2.084x & 2.163x\\
    \hline
   \end{tabular}
-    \caption{GPU Speedup performance}
+    \caption{GPU Speedup performance.}
   \label{tab:speed}
   \end{table}
 
@@ -487,7 +487,7 @@ This section is an overview of the optimization results compared with the initia
 	\centering
 		\includegraphics[width=0.98\textwidth]{Figures/gpuOptimization.png}
 		\smallskip
-	\caption[Overall simulation time]{Overall simulation time}
+	\caption[Overall simulation time]{Overall simulation time.}
 	\label{fig:gpuop}
 \end{figure}
 
@@ -498,7 +498,7 @@ Based on the initial profiling in Table \ref{tab:nvprof}, the Laplacian evaluati
 	\centering
 		\includegraphics[width=1.0 \textwidth]{Figures/speedup.png}
 		\smallskip
-	\caption[Speedup performance output]{Speedup performance output.}
+	\caption[GPU speedup comparison]{Speedup performance output.}
 	\label{fig:speedup}
 \end{figure}
 
@@ -517,7 +517,7 @@ Based on the initial profiling in Table \ref{tab:nvprof}, the Laplacian evaluati
    15.17 & 9.18s & 72108 & 127.2us & {\listf gSolTerm4RK4Relaxation }\\ 
    \hline
     \end{tabular}
-	\caption[Optimization results with the Profiler]{Final optimization results using NVIDIA's profiler, on the Tesla K20m}
+	\caption[Optimization results using NVIDIA's Profiling tool]{Final optimization results using NVIDIA's profiler, on the Tesla K20m.}
 	\label{fig:final}
 \end{figure}
     
@@ -529,7 +529,7 @@ The SOA optimization, improved overall dramatically the performance of the appli
 	\centering
 		\includegraphics[width=1.0\textwidth]{Figures/speed.png}
 		\smallskip
-	\caption[Optimization speedup overview]{Optimization speedup overview}
+	\caption[Final optimization speedup overview]{Optimization speedup overview.}
 	\label{fig:speeduplast}
 \end{figure}
 

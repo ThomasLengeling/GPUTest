@@ -51,7 +51,7 @@ An abrupt in magnetization at the boundary of two anti-aligned domains is not a 
 	\centering
 		\includegraphics[width=0.55\textwidth]{Figures/dw.png}
 		\smallskip
-	\caption[Domain Wall VW, ATW]{Vortex Wall (VW) and Asymmetric Transverse Wall (ATW) \cite{claudio}.}
+	\caption[Domain wall VW and ATW]{Vortex Wall (VW) and Asymmetric Transverse Wall (ATW) \cite{claudio}.}
 	\label{fig:dw}
 \end{figure}
 
@@ -63,7 +63,7 @@ Domain walls are the foundation for various spintronics devices that use magneti
 	\centering
 		\includegraphics[width=0.6\textwidth]{Figures/DWspin.png}
 		\rule{35em}{0.52pt}
-	\caption[Domain Wall nanowire]{Domain Wall in a nanowire while passing a current}
+	\caption[Domain wall nanowire]{Domain Wall in a nanowire while passing a current.}
 	\label{fig:DWspin}
 \end{figure}
 
@@ -105,7 +105,7 @@ The sample considered is a 300 nm wide and 5 nm tick NiFe soft nanostrip. The di
 	\centering
 		\includegraphics[width=0.64\textwidth]{Figures/ATW.png}
 		\smallskip
-	\caption[Asymmetric Transverse Wall results]{Asymmetric Transverse Wall (ATW) results \cite{claudio}.}
+	\caption[Asymmetric transverse wall results]{Asymmetric Transverse Wall (ATW) results \cite{claudio}.}
 	\label{fig:atw}
 \end{figure}
 
@@ -115,7 +115,7 @@ Vortex Wall (VW) same as for Asymmetric Transverse Wall (ATW), has noticeable ef
 	\centering
 		\includegraphics[width=0.64\textwidth]{Figures/VW.png}
 		\smallskip
-	\caption[Vortex Wall results]{Vortex Wall results \cite{claudio}. }
+	\caption[Vortex wall results]{Vortex Wall results \cite{claudio}. }
 	\label{fig:vw}
 \end{figure}
 
@@ -123,7 +123,7 @@ Vortex Wall (VW) same as for Asymmetric Transverse Wall (ATW), has noticeable ef
 
 The Zhang-Li Model \ref{eq:zhang} is physically real, however, computationally expensive. Therefore we need to simulate the physical behavior. The numerical methods used for the solution is a the method known as Finite Differences in the Time Domain (FDTD) whose integration is done using a 4th order Runge-Kutta integration.
 
-\subsection{Finite differences in the time domain}
+\subsection{Finite Differences in the Time Domain}
 
 The finite difference in the time domain (FDTD) method  is able to solve complicated problems. However, it is generally computationally expensive. Solutions may require a large amount of memory and computation time \cite{ufdtd}. FDTD, amongst otherd, is a numerical analysis technique use for approximating solutions for differential equations. The method belongs in the general class of grid-based differential numerical modeling methods. Demonstration of the numerical methods id in this section\cite{methods}.
 
@@ -147,7 +147,7 @@ Consider a regular, differentiable one-dimension scalar function $f(x)$ sampled 
 	\centering
 		\includegraphics[width=0.65\textwidth]{Figures/bound.png}
 		\smallskip
-	\caption[Sampled at regular intervals a, Taylor expansion]{Sampled at regular intervals a, (a) Function of inside the grid. (b) Mesh points second to closest to boundary. (c) Mesh points closet to boundary}
+	\caption[Sampled at regular intervals, Taylor expansion]{Sampled at regular intervals a, (a) Function of inside the grid. (b) Mesh points second to closest to boundary. (c) Mesh points closet to boundary}
 	\label{fig:bound}
 \end{figure}
 
@@ -166,7 +166,7 @@ f^{(2)}_i &= \dfrac{f_{i-2}+16f_{i-1} -30f_{i} + 16f_{i+1} - f_{i+1}}{12a^2}
 
 The equation \ref{eq:nn} for the second derivate based on second nearest neighbors expansion solves for the Laplacian operator in the Zhang-Li Model equation \ref{eq:zhang}. However, points close to the edges need to be evaluated for better precision. 
 
-\subsubsection{Boundary conditions}
+\subsubsection{Boundary Conditions}
 
 Expressions \ref{eq:nn} are valid when the grid point becomes closet or next-to-closet to the boundary of the magnetic box. However, specific accuracy preserving close to the boundary needs to be worked out. The general present approach is to replace equations that are missing because of the lack of grid points outside the magnetic volume by equations including explicit reference to boundary conditions \cite{methods}.
 
@@ -225,7 +225,7 @@ In both cases, the second derivatives and the matrices of $f^{(1)}(x_R)$ are dem
 
 The main advantages of the finite difference approach are: easy to implement, simplicity of meshing, efficient evaluation of the magnetization energy, and the accessibility of higher order methods. The main disadvantage of this approach is the sampling curved boundaries within a rectangular mesh, resulting in some what discrete approximation. In addition, it could produce a significant error in the evaluation.
 
-\subsection{Fourth order Runge and Kutta method}
+\subsection{Fourth Order Runge and Kutta Method}
 
  Modern numerical algorithms for the solution of ordinary differential equations are based on the method of the Taylor series. Algorithm such as the Runge-Kutta method are constructed so they give an expression depending of the parameter $(h)$, in other works, each step is used as an approximate solution, which uses the first terms of the Taylor series. The method is able to accurately solve a wide range of problems, but it is generally computationally expensive. Solutions require large amount of memory and computational time \cite{numerical}.
 

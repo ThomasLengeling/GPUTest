@@ -32,7 +32,7 @@ In any case, for a given simulation a compromise between speed and accuracy is a
 	\centering
 		\includegraphics[width=0.84\textwidth]{Figures/GPU_CPU_s.png}
 		\smallskip
-	\caption[GPU and CPU performance comparision]{GPU and CPU peak performance in gigaflops}
+	\caption[GPU and CPU performance comparison]{GPU and CPU peak performance in gigaflops.}
 	\label{fig:gpu_cpu_s}
 \end{figure}
 
@@ -51,7 +51,7 @@ The current paradigm of using CPUs for computing is growth unsustainable. In 201
 
 As mentioned, the GPU exceeds the CPU in calculations per second FLOPS with a low energy consumption. However, the GPU is designed to launch small amounts of data in parallel with only several instructions, and in other words the GPU swap, switch threads very fast and they are extremely lightweight. In a typical GPU system, thousands of threads are waiting for call request to start working. While on the CPU, it runs up-to 24 threads on a hex-core processor. They can execute a single operation on comparatively large set of data with only one instruction, and this can be extremely cost-wise operation on the GPU.
 
-\section{GPUs as computing units}
+\section{GPUs as Computing Units}
 
 
 The GPU, unlike its CPU cousin, has thousands for registers per SM (Streaming Multiprocessor), which are arithmetic processing units. A SM, in other words, is similar to a multi-thread CPU core.  A typical CPU has two, four, six or eight cores. GPU there are as many as $n$ SM core. The SMs are configured in such a way that they are able to access memory location close by. We can see this in the Figure \ref{fig:gpu_cpu}. For a particular calculation, all the stream processors within a group execute exactly the same instruction on a particular data stream, then the data is sent to the upper level, the host (CPU) \cite{cook}.
@@ -91,7 +91,7 @@ CUDA programming model views the GPU as an accelerator processor which calls par
 	\centering
 		\includegraphics[width=0.3\textwidth]{Figures/cycle.png}
 		\smallskip
-	\caption[Programming Cycle]{Programming Cycle between the CPU and GPU \cite{example}}
+	\caption[Programming cycle]{Programming Cycle between the CPU and GPU \cite{example}.}
 	\label{fig:cycle}
 \end{figure}
 
@@ -137,11 +137,11 @@ In CUDA, host memory and device memory have separate memory spaces. Both of them
 	\centering
 		\includegraphics[width=0.62\textwidth]{Figures/memorySpace.png}
 		\smallskip
-	\caption[Memory transfer between CPU and GPU]{Memory transfer between CPU and GPU \cite{hwu}}
+	\caption[Memory transfer between CPU and GPU]{Memory transfer between CPU and GPU \cite{hwu}.}
 	\label{fig:memorySpace}
 \end{figure}
 
-\subsection{CPU and GPU multithread comparison}
+\subsection{CPU and GPU Multithread Comparison}
 
 Current CPUs are typically multicore systems, which are capable of parallelizing code fairly easy. In addition, this suggests a parallel system. However, we would require a large infrastructure \cite{example}. For example, if we want to implement a simple vector addition using the CPU cores, we would require to compute a portion of the code on each code, one core the even numbers and the other core the odd numbers, see Figure \ref{fig:cpu}. Furthermore, this makes the implementation difficult to scale and require many cores, which are not so easily available after a 8 core system. 
 
@@ -149,7 +149,7 @@ Current CPUs are typically multicore systems, which are capable of parallelizing
 	\centering
 		\includegraphics[width=0.72\textwidth]{Figures/cpu.png}
 		\smallskip
-	\caption[CPU Core process]{CPU Core process \cite{hwu}.}
+	\caption[CPU core process]{CPU core process \cite{hwu}.}
 	\label{fig:cpu}
 \end{figure}
 

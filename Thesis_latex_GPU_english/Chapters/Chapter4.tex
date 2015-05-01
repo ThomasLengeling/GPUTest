@@ -110,7 +110,7 @@ The Figure \ref{fig:memory} illustrates the five different memory types that are
 	\centering
 		\includegraphics[width=0.9\textwidth]{Figures/memory.png}
 		\smallskip
-	\caption[Different memory types]{Different memory type and penalties usage \cite{cook}}
+	\caption[Different memory types]{Different memory type and penalties usage \cite{cook}.}
 	\label{fig:memory}
 \end{figure}
 
@@ -146,7 +146,7 @@ Similar to constant memory, texture memory is another variety of read-only memor
 	\centering
 		\includegraphics[width=0.52\textwidth]{Figures/texture.png}
 		\smallskip
-	\caption[Texture Memory]{Mapping of threads into a two dimensional array of texture memory \cite{hwu}}
+	\caption[Texture memory]{Mapping of threads into a two dimensional array of texture memory \cite{hwu}.}
 	\label{fig:texture}
 \end{figure}
 
@@ -183,7 +183,7 @@ Kernels are executed in a sequential form with parallel instructions. In additio
 	\centering
 		\includegraphics[width=0.68\textwidth]{Figures/streams.png}
 		\smallskip
-	\caption[Concurrent Kernels]{Overlapping kernel execution using CUDA streams}
+	\caption[Concurrent kernels]{Overlapping kernel execution using CUDA streams.}
 	\label{fig:streams}
 \end{figure}
 
@@ -250,7 +250,7 @@ The Visual Profiler provides a step-by-step optimization guidance, where it is p
 	\centering
 		\includegraphics[width=0.9\textwidth]{Figures/pofiler.png}
 		\smallskip
-	\caption[Visual Profiler timeline and stream process]{Visual Profiler kernel execution, and timeline execution}
+	\caption[Visual Profiler timeline and stream process]{Visual Profiler kernel execution, and timeline execution.}
 	\label{fig:visual01}
 \end{figure}
 
@@ -278,7 +278,7 @@ GPU compute resources limit the performance of a kernel when those resources are
 
 The profiling report was used in the current implementation to optimize the CUDA code. More about the results can be found in Chapter \ref{Optimization Results}.
 
-\subsection{Collect Data On Remote System}
+\subsection{Collect Data on Remote System}
 
 As mention before, it is possible to collect data from a remote system where a GUI is not available, using the command-line nvprof. Remote profiling is the process of collecting profile data from a remote system that is different than the host system at which that profile data will be viewed and analyzed. Once all the profiling results are collected it is possible to access the information using a local Visual profiler. It enables a GUI and more compressive information about the application. There are two ways to perform a remote profiling. To use nvvp remote profiling you must install the same version of the CUDA Toolkit on both the host and remote systems. It is not necessary for the host system to have an NVIDIA GPU \cite{tool}. For the current application, remote profiler was used. However, the server did not have an external monitor or virtual. Therefore, it was not possible to obtain all the profiling analysis, thus we used a local laptop for profiling.
 

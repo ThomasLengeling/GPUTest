@@ -1,46 +1,46 @@
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {1.1}{\ignorespaces GPU and CPU performance comparision}}{2}{figure.caption.12}
+\contentsline {figure}{\numberline {1.1}{\ignorespaces GPU and CPU performance comparison}}{2}{figure.caption.12}
 \contentsline {figure}{\numberline {1.2}{\ignorespaces Architecture of NVIDIA's SM}}{4}{figure.caption.14}
 \contentsline {figure}{\numberline {1.3}{\ignorespaces NVIDIA's GPU architecture}}{5}{figure.caption.15}
-\contentsline {figure}{\numberline {1.4}{\ignorespaces Programming Cycle}}{6}{figure.caption.17}
+\contentsline {figure}{\numberline {1.4}{\ignorespaces Programming cycle}}{6}{figure.caption.17}
 \contentsline {figure}{\numberline {1.5}{\ignorespaces CUDA's 2D thread grid}}{8}{figure.caption.25}
 \contentsline {figure}{\numberline {1.6}{\ignorespaces Memory transfer between CPU and GPU}}{8}{figure.caption.26}
-\contentsline {figure}{\numberline {1.7}{\ignorespaces CPU Core process}}{8}{figure.caption.28}
+\contentsline {figure}{\numberline {1.7}{\ignorespaces CPU core process}}{8}{figure.caption.28}
 \addvspace {10\p@ }
 \contentsline {figure}{\numberline {2.1}{\ignorespaces Electron carries spin, charge and magnetic}}{11}{figure.caption.43}
-\contentsline {figure}{\numberline {2.2}{\ignorespaces Domain Wall VW, ATW}}{12}{figure.caption.45}
-\contentsline {figure}{\numberline {2.3}{\ignorespaces Domain Wall nanowire}}{13}{figure.caption.47}
-\contentsline {figure}{\numberline {2.4}{\ignorespaces Asymmetric Transverse Wall results}}{15}{figure.caption.53}
-\contentsline {figure}{\numberline {2.5}{\ignorespaces Vortex Wall results}}{15}{figure.caption.54}
+\contentsline {figure}{\numberline {2.2}{\ignorespaces Domain wall VW and ATW}}{12}{figure.caption.45}
+\contentsline {figure}{\numberline {2.3}{\ignorespaces Domain wall nanowire}}{13}{figure.caption.47}
+\contentsline {figure}{\numberline {2.4}{\ignorespaces Asymmetric transverse wall results}}{15}{figure.caption.53}
+\contentsline {figure}{\numberline {2.5}{\ignorespaces Vortex wall results}}{15}{figure.caption.54}
 \contentsline {figure}{\numberline {2.6}{\ignorespaces FDTD grid}}{16}{figure.caption.57}
-\contentsline {figure}{\numberline {2.7}{\ignorespaces Sampled at regular intervals a, Taylor expansion}}{16}{figure.caption.58}
+\contentsline {figure}{\numberline {2.7}{\ignorespaces Sampled at regular intervals, Taylor expansion}}{16}{figure.caption.58}
 \contentsline {figure}{\numberline {2.8}{\ignorespaces Euler Method}}{19}{figure.caption.66}
 \contentsline {figure}{\numberline {2.9}{\ignorespaces Fourth order Runge and Kutta Method}}{20}{figure.caption.69}
 \addvspace {10\p@ }
 \contentsline {figure}{\numberline {3.1}{\ignorespaces Control flow}}{23}{figure.caption.80}
 \contentsline {figure}{\numberline {3.2}{\ignorespaces Grid layout}}{23}{figure.caption.81}
-\contentsline {figure}{\numberline {3.3}{\ignorespaces 2D Flatten array}}{24}{figure.caption.91}
+\contentsline {figure}{\numberline {3.3}{\ignorespaces 2D flatten array}}{24}{figure.caption.91}
 \contentsline {figure}{\numberline {3.4}{\ignorespaces Laplacian block calculation}}{27}{figure.caption.114}
 \addvspace {10\p@ }
 \contentsline {figure}{\numberline {4.1}{\ignorespaces PCIe Bandwidth}}{33}{figure.caption.195}
 \contentsline {figure}{\numberline {4.2}{\ignorespaces GPU application practices}}{33}{figure.caption.196}
 \contentsline {figure}{\numberline {4.3}{\ignorespaces Schematic cache hierarchy of a CUDA GPU}}{36}{figure.caption.201}
 \contentsline {figure}{\numberline {4.4}{\ignorespaces Different memory types}}{36}{figure.caption.202}
-\contentsline {figure}{\numberline {4.5}{\ignorespaces Texture Memory}}{38}{figure.caption.207}
-\contentsline {figure}{\numberline {4.6}{\ignorespaces Concurrent Kernels}}{40}{figure.caption.210}
+\contentsline {figure}{\numberline {4.5}{\ignorespaces Texture memory}}{38}{figure.caption.207}
+\contentsline {figure}{\numberline {4.6}{\ignorespaces Concurrent kernels}}{40}{figure.caption.210}
 \contentsline {figure}{\numberline {4.7}{\ignorespaces Visual Profiler metrics}}{43}{figure.caption.215}
 \contentsline {figure}{\numberline {4.8}{\ignorespaces Visual Profiler timeline and stream process}}{44}{figure.caption.216}
 \addvspace {10\p@ }
 \contentsline {figure}{\numberline {5.1}{\ignorespaces Initial GPU results}}{49}{figure.caption.232}
 \contentsline {figure}{\numberline {5.2}{\ignorespaces Branching execution flow}}{50}{figure.caption.244}
-\contentsline {figure}{\numberline {5.3}{\ignorespaces Initial Streams}}{52}{figure.caption.281}
+\contentsline {figure}{\numberline {5.3}{\ignorespaces Initial streams}}{52}{figure.caption.281}
 \contentsline {figure}{\numberline {5.4}{\ignorespaces Streams kernels Tesla K20}}{53}{figure.caption.306}
 \contentsline {figure}{\numberline {5.5}{\ignorespaces Waiting time in concurrent kernels}}{54}{figure.caption.307}
-\contentsline {figure}{\numberline {5.6}{\ignorespaces Shared Memory Strategy}}{55}{figure.caption.325}
+\contentsline {figure}{\numberline {5.6}{\ignorespaces Shared memory strategy}}{55}{figure.caption.325}
 \contentsline {figure}{\numberline {5.7}{\ignorespaces Array of structures (AOS)}}{56}{figure.caption.343}
-\contentsline {figure}{\numberline {5.8}{\ignorespaces Structure of Arrays (SAO)}}{56}{figure.caption.344}
+\contentsline {figure}{\numberline {5.8}{\ignorespaces Structure of arrays (SAO)}}{56}{figure.caption.344}
 \contentsline {figure}{\numberline {5.9}{\ignorespaces Overall simulation time}}{59}{figure.caption.365}
-\contentsline {figure}{\numberline {5.10}{\ignorespaces Speedup performance output}}{60}{figure.caption.366}
-\contentsline {figure}{\numberline {5.11}{\ignorespaces Optimization results with the Profiler}}{60}{figure.caption.367}
-\contentsline {figure}{\numberline {5.12}{\ignorespaces Optimization speedup overview}}{61}{figure.caption.368}
+\contentsline {figure}{\numberline {5.10}{\ignorespaces GPU speedup comparison}}{60}{figure.caption.366}
+\contentsline {figure}{\numberline {5.11}{\ignorespaces Optimization results using NVIDIA's Profiling tool}}{60}{figure.caption.367}
+\contentsline {figure}{\numberline {5.12}{\ignorespaces Final optimization speedup overview}}{61}{figure.caption.368}
 \addvspace {10\p@ }

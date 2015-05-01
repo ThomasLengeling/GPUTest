@@ -25,7 +25,7 @@ Cell size & Value & Calculation box & Value \\
  NZ &	1 &  TZ  & 5.0   \\
 \hline
 \end{tabular}
-\caption{Mesh size and calculation box}
+\caption{Mesh size and calculation box.}
 \label{tab:mesh}
 \end{table}
 
@@ -48,7 +48,7 @@ $\tau_{sd}$ & $1.0e^{-3}$ ns  & $\beta_{diff}$ & $1.0e^{-9}$ \\
 $\tau_{sf}$ & $25.0e^{-3}$ ns  & Iterations & 50,000 \\
 \hline
 \end{tabular}
-\caption{Diffusion parameters and Runge-Kutta 4th}
+\caption{Diffusion parameters and Runge-Kutta 4th.}
 \label{tab:drk}
 \end{table}
 
@@ -92,13 +92,13 @@ Matrix size X & 480 & Device allocation X & 512\\
 Matrix size Y & 120 & Device allocation Y & 128 \\
 \hline
 \end{tabular}
-\caption{Matrix allocation size}
+\caption{Matrix allocation size.}
 \label{tab:cuda}
 \end{table}
 
 The magnetization data is stored in three matrices x, y, and z, each one of them with a capacity of 56,700 values, in other words, 480 times 120. Base on that information we want to calculate the optimal number of grids that will ensure a complete use of the hardware resources. The number of blocks per grid corresponds to dividing the dimensions of the array by the number of threads, see the last two operations in the Listing \ref{lst:blocks}.
 
-\begin{lstlisting}[language=C++, label={lst:blocks}, caption={Device capacity calculation and number of block per grid}]	
+\begin{lstlisting}[language=C++, label={lst:blocks}, caption={Device capacity calculation and number of block per grid.}]	
 NXCUDA = (int)powf(2,ceilf(logf(NX)/logf(2)));
 NYCUDA = (int)powf(2,ceilf(logf(NY)/logf(2)));
 
@@ -135,7 +135,7 @@ Shared memory & 16 * 16 & 32 * 32 \\
 	\centering
 		\includegraphics[width=0.55\textwidth]{Figures/flaten.png}
 		\smallskip
-	\caption[2D Flatten array]{Conversion of a 2D array to a single continuous block of memory}
+	\caption[2D flatten array]{Conversion of a 2D array to a single continuous block of memory.}
 	\label{fig:flaten}
 \end{figure}
 
@@ -144,7 +144,7 @@ Shared memory & 16 * 16 & 32 * 32 \\
 
 Before the evaluation of the RK4 terms, we need to evaluate static matrices that will not change over the course of the simulation \ref{log:rk4}. In The pre calculation stage only the term $ \delta \vec{m}$ of the Zhang-Li model is evaluated\ref{eq:zhang}. The $ \delta \vec{m}$ term is the non-equilibrium spin density domain wall at rest \cite{claudio}, see Listing \ref{lst:init}.
 
-\begin{lstlisting}[language=C++, label={lst:init}, caption={Initial calculations}]
+\begin{lstlisting}[language=C++, label={lst:init}, caption={Initial calculations.}]
 	//Compute x, y and z component of source term
     gsource << <blocks, threads >> >(...);
     gsource << <blocks, threads >> >(...);
@@ -160,7 +160,7 @@ The kernel {\listf gsource} of the Listing \ref{lst:init} is only launches at th
 
 As previously mentioned, the CUDA matrices are square sizes, 512 x 128. However, the input data set is 480 x 120. Therefore, we need to limit the number of threads inside every kernel. The issue is solve by including a simple {\listf if} inside of every kernel call, see Listing\ref{lst:if}. Yet, we also need to include a minor adjustment of two indices in the x direction. The adjustment is due to the mesh boundary condition in the FDTD method, see Figure \ref{fig:laplacian}.
 
-\begin{lstlisting}[language=C++, label={lst:if}, caption={Limits the threads executing inside a kernel}]
+\begin{lstlisting}[language=C++, label={lst:if}, caption={Limits the threads executing inside a kernel.}]
 __global__ void rungeKuttaTerms(...)
 {
     if (i > 1 && i < NX + 2 && j >= 0 && j < NY){
@@ -205,10 +205,10 @@ The following algorithm illustrates the necessary operations for the RK4 integra
   $\beta_{diff}$ = calculate(temp, beta);
  }
  \label{log:rk4}
- \caption{Runge and Kutta 4th integration implementation}
+ \caption{Runge and Kutta 4th integration implementation.}
 \end{algorithm}
 
-\subsubsection{Finite differences in the time domain}
+\subsubsection{Finite Differences in the Time Domain}
 
 The finite differences method requires the domain of interest to be broken down into small regions. Such subdivision of space is known as mesh, grid or cell division. The grid is divided into a 512 x 128 space, which is mapped to the GPU hardware \ref{tab:mesh}. Furthermore, the number of threads per is block is synchronized to the cell division, but as well to the number of SM available in the device, see Tables \ref{tab:cuda} and \ref{tab:threads}.
 To numerically solve the Zhang-Li Model, we need to determinate and evaluate the first and second derivate. The proposed solution is based on the second nearest neighbors \ref{eq:nn}. Moreover, the nearest neighbors method evaluates the derivative of the input data, see Figure \ref{fig:laplacian}.
@@ -217,13 +217,13 @@ To numerically solve the Zhang-Li Model, we need to determinate and evaluate the
 	\centering
 		\includegraphics[width=1.0\textwidth]{Figures/laplacian.png}
 		\smallskip
-	\caption[Laplacian block calculation]{Laplacian XY block calculation and boundaries condition}
+	\caption[Laplacian block calculation]{Laplacian XY block calculation and boundaries condition.}
 	\label{fig:laplacian}
 \end{figure}
 
 The calculation of the nearest neighbors expansion is done by evaluation a neighborhood of $[-2, 2]$ values in the x direction. The index begins at $i = 2$ and finishes at $NX + 2$. The same occurs for the Laplacian in the Y direction, however, begins at $j = 2$ and finish at $NY -2$.  The implementation \ref{lst:lpay} is based on the nearest neighbors Equation \ref{eq:nn}.
 
-\begin{lstlisting}[language=C++, label={lst:lpay}, caption={Laplacian evaluation for x, y and z coordinate}]
+\begin{lstlisting}[language=C++, label={lst:lpay}, caption={Laplacian evaluation for x, y and z coordinate.}]
 int i = blockIdx.x * blockDim.x + threadIdx.x + 2;
 int j = blockIdx.y * blockDim.y + threadIdx.y;
 // map the two 2D indices to a single linear, 1D index
@@ -247,7 +247,7 @@ However, the calculations of the nearest neighbors is only valid for values of p
 
  The Matrices \ref{eq:matrix4} and \ref{eq:matrix3} are used for evaluating the values near the matrix borders. The matrices have boundaries at $j = 0$ and $j = NY - 1$ for all values in the $i$ cell. The matrix \ref{eq:matrix3} is evaluated. For the condition $j = 1$ and $j = NY - 2$ for all $i$ values, we used the matrix \ref{eq:matrix4}. Listing \ref{lst:lap} demonstrates how boundary condition was implemented. To obtain the correct values, first the Laplacian in the y direction is calculated; afterwards, the boundary condition in the x direction is evaluated.
 
-\begin{lstlisting}[language=C++, label={lst:lap}, caption={Evaluation of Laplacian X, Y with boundary condition}]
+\begin{lstlisting}[language=C++, label={lst:lap}, caption={Evaluation of Laplacian X, Y with boundary condition.}]
 __global__ void glaplaciany(...){} //Compute laplacian in Y direction
 
 __global__ void glaplacianBoundaries(...){
@@ -273,7 +273,7 @@ The three CUDA kernels {\listf glaplaciany}, {\listf glaplacianx} and {\listf gl
 
 The Zhang-Li Model is solved by using the code in the Listing \ref{lst:rkcuda}. Furthermore, the Zhang-Li equation is used as input function for the RK4 integration process \ref{eq:rk4}. For the first term of the Zhang-Li Model, the {\listf sfrelax} matrix is calculated in the relaxation process at the end of the RK4 integrator. The next term {\listf sdex} is computed in the Cross Product process, which is done before the each RK4 calculation. The matrix {\listf sm} is only calculated once at the initial calculation process, see Listings \ref{lst:init}. The last term {\listf lapl} matrix is evaluated in the Laplacian process, see Algorithm RK4 \ref{log:rk4}.
 
-\begin{lstlisting}[language=C++, label={lst:zhangcuda}, caption={Zhang-Li evaluation}]
+\begin{lstlisting}[language=C++, label={lst:zhangcuda}, caption={Zhang-Li evaluation.}]
 		sfrelax[idx] = -deltam[idx] / tau_sf;
 		sdex[idx] = -(deltam[idx] * m[index] - deltam[idx] * m[idx]) / tau_sd;
 		
@@ -287,7 +287,7 @@ The output matrix {\listf solveZhangLi} is used as integration input for the 4th
  
 The 4th order Runge and Kutta method is implemented by using four CUDA kernels, each kernel evaluates the derivative with a different time increment, Equation \ref{eq:rksplit}. The first three RK4 terms are slightly same; they differ from using the previous evaluated term \ref{lst:rkcuda}. The final 4th term is the weighted average of the previous increments \ref{lst:rk4cuda}.
 
-\begin{lstlisting}[language=C++, label={lst:rkcuda}, caption={Runge and Kutta 1st, 2nd and 3rd terms}]
+\begin{lstlisting}[language=C++, label={lst:rkcuda}, caption={Runge and Kutta 1st, 2nd and 3rd terms.}]
      rk1[idx] = dt * deltam[idx];  //rk term 1
      deltam[idx] = temp[idx] + 0.5 * rk1[idx];
      
@@ -298,7 +298,7 @@ The 4th order Runge and Kutta method is implemented by using four CUDA kernels, 
      deltam[idx] = temp[idx] + 0.5 * rk3[idx];
 \end{lstlisting}
     
-\begin{lstlisting}[language=C++, label={lst:rk4cuda}, caption={4th term of the Runge and Kutta integration}] 
+\begin{lstlisting}[language=C++, label={lst:rk4cuda}, caption={4th term of the Runge and Kutta integration.}] 
      rk4[idx] = dt * deltam[idx]; //final term rk4
      double diff = rk1[idx] + 2.0 * (rk2[idx] + rk3[idx]) + rk4[idx];
      deltam[idx] = temp[idx] + diff / 6.0;	
@@ -307,7 +307,7 @@ The 4th order Runge and Kutta method is implemented by using four CUDA kernels, 
 
 The Runge and Kutta integration is grouped up in two {\listf for} cycles, described in Listing \ref{lst:rk4}. The inner {\listf for} cycle evaluates the RK4 for the x, y, z coordinate. The outer {\listf for} cycle evaluates four times the Runge and Kutta integration.
 
-\begin{lstlisting}[language=C++, label={lst:rk4}, caption={Summarize of Runge and Kutta 4th Integration}]
+\begin{lstlisting}[language=C++, label={lst:rk4}, caption={Summarize of Runge and Kutta 4th Integration.}]
 for(int term = 0; term < 4; term++){
 	for(int coord = 0; coord < 3; coord++){
     	gsd_exchange<<<blocks, threads>>>(term, coord);
@@ -326,7 +326,7 @@ for(int term = 0; term < 4; term++){
 
 Kernels \ref{lst:beta} are only launched at the end the RK4 integration, which outputs the $\beta_{diff}$. After each RK4 step, the beta diffusion adds ups all accumulated values from previous steps. Moreover, the $\beta_{diff}$ values is output of the numerically solution of the effects of spin diffusion, on domain wall structures. Therefore, by numerically solving the Zhang-Li Model including the spin diffusion term.
 
-\begin{lstlisting}[language=C++, label={lst:beta}, caption={Calculate beta diffusion }]
+\begin{lstlisting}[language=C++, label={lst:beta}, caption={Calculate beta diffusion.}]
     gm_x_sm << <blocks, threads >> >(...); 
     gu_eff << <blocks, threads >> >(...); 
     gu_eff_beta_eff << <blocks, threads >> >(...); 	
@@ -349,7 +349,7 @@ For the initial results we used the GeForce GT 650M, with 384 CUDA core at 745 M
 \centering
 \begin{tabular}{| l | l | l | l |}
 \hline
-\multicolumn{4}{|c|}{GeForce GT 650M  384 CUDA} \\
+\multicolumn{4}{|c|}{GeForce GT 650M  384 CUDA.} \\
 \hline
 Data set & Simulation time & Speedup & Diffuse beta  \\
 \hline
