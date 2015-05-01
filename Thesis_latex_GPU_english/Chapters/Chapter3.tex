@@ -31,7 +31,7 @@ Cell size & Value & Calculation box & Value \\
 
 The implementation is divided into two sections, the host and the device, see Figure \ref{fig:flow}. The host section is in charge of I/O data, allocating the CPU and GPU data and calculating the $\beta_{diff}$ value. The device is numerically solved in the Zhang-li model.
 
-The simulation begins by reading the magnetization values from a data file. Then, the data set allocates the initial magnetization matrices as well as the static values. Afterwards, the Runge-Kutta algorithms begins. see Algorithm \ref{log:rk4}. The algorithm loop only breaks when the $\beta_{diff}$ value converges to $1.0e^-9$. The simulation is configured to integrate 50,000 times the Zhang-Li Model before calculating the $\beta_{diff}$.
+The simulation begins by reading the magnetization values from a data file. Then, the data set allocates the initial magnetization matrices as well as the static values. Afterwards, the Runge-Kutta algorithms begins. see Algorithm \ref{log:rk4}. The algorithm loop only breaks when the $\beta_{diff}$ value converges to $1.0^{-9}$. The simulation is configured to integrate 50,000 times the Zhang-Li Model before calculating the $\beta_{diff}$.
 
 \begin{table}[h]
 \centering
@@ -39,13 +39,13 @@ The simulation begins by reading the magnetization values from a data file. Then
 \hline
 Diffusion parameters& Value & Runge-Kutta 4th & Value \\
 \hline 
-$\mu$ & 1 &  time step (dt) &   $25.0e^{-6}$   \\
+$\mu$ & 1 &  time step (dt) &   $25.0^{-6}$   \\
 \hline
-$D_{0}$ & $1.0e^{3}$ nm mm$^2$/ns  & Max time  & 1.0  \\
+$D_{0}$ & $1.0^{3}$ nm mm$^2$/ns  & Max time  & 1.0  \\
 \hline
-$\tau_{sd}$ & $1.0e^{-3}$ ns  & $\beta_{diff}$ & $1.0e^{-9}$ \\
+$\tau_{sd}$ & $1.0^{-3}$ ns  & $\beta_{diff}$ & $1.0^{-9}$ \\
 \hline
-$\tau_{sf}$ & $25.0e^{-3}$ ns  & Iterations & 50,000 \\
+$\tau_{sf}$ & $25.0^{-3}$ ns  & Iterations & 50,000 \\
 \hline
 \end{tabular}
 \caption{Diffusion parameters and Runge-Kutta 4th.}

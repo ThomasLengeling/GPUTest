@@ -1,214 +1,213 @@
-\begin{thebibliography}{10}
+\begin{thebibliography}{32}
+\providecommand{\natexlab}[1]{#1}
+\providecommand{\url}[1]{\texttt{#1}}
+\expandafter\ifx\csname urlstyle\endcsname\relax
+  \providecommand{\doi}[1]{doi: #1}\else
+  \providecommand{\doi}{doi: \begingroup \urlstyle{rm}\Url}\fi
 
-\bibitem{titan}
-Titan, oak ridge and nacional laboratory.
-\newblock \url{https://www.olcf.ornl.gov/titan/}, 2013, Cited January 2015.
+\bibitem[Nickolls and Dally(2010)]{Nickolls}
+John Nickolls and William~J. Dally.
+\newblock The gpu computing era.
+\newblock \emph{IEEE Micro}, 30\penalty0 (2):\penalty0 56--69, mar 2010.
+\newblock ISSN 0272-1732.
+\newblock \doi{10.1109/MM.2010.41}.
+\newblock URL \url{http://dx.doi.org/10.1109/MM.2010.41}.
 
-\bibitem{Anderson}
-J.~A. Anderson, C.~D. Lorenz, and A.~Travesset.
-\newblock General purpose molecular dynamics simulations fully implemented on
-  graphics processing units.
-\newblock {\em J. Comput. Phys.}, 227(10):5342--5359, May 2008.
+\bibitem[NVIDIA(2012, Cited January 2015)]{applications}
+NVIDIA.
+\newblock Popular gpu-accelerated applications, 2012, Cited January 2015.
+\newblock URL
+  \url{http://www.nvidia.com/docs/IO/64497/NV_GPU_Accelerated_Applications.pdf}.
 
-\bibitem{centos}
-CentOS.
-\newblock Centos project.
-\newblock \url{http://www.centos.org/}, 2015, Cited January 2015.
+\bibitem[Patterson and Hennessy(1990)]{quantitative}
+David~A. Patterson and John~L. Hennessy.
+\newblock \emph{Computer Architecture: A Quantitative Approach}.
+\newblock Morgan Kaufmann Publishers Inc., San Francisco, CA, USA, 1990.
+\newblock ISBN 1-55880-069-8.
 
-\bibitem{5306797}
-S.~Che, M.~Boyer, J.~Meng, D.~Tarjan, J.~Sheaffer, S.-H. Lee, and K.~Skadron.
-\newblock Rodinia: A benchmark suite for heterogeneous computing.
-\newblock pages 44--54, 2009.
+\bibitem[Robert(2012)]{whatexascale}
+F.~Robert.
+\newblock What it’ll take to go exascale.
+\newblock \emph{Science}, 335\penalty0 (January):\penalty0 394--396, 2012.
+\newblock URL
+  \url{http://211.144.68.84:9998/91keshi/Public/File/41/335-6067/pdf/394.full.pdf}.
 
-\bibitem{claudio}
-D.~Claudio-Gonzalez, A.~Thiaville, and J.~Miltat.
-\newblock Domain wall dynamics under nonlocal spin-transfer torque.
-\newblock {\em Phys. Rev. Lett.}, 108:227208, Jun 2012.
+\bibitem[tit(2013, Cited January 2015)]{titan}
+Titan, oak ridge and nacional laboratory, 2013, Cited January 2015.
+\newblock URL \url{https://www.olcf.ornl.gov/titan/}.
 
-\bibitem{cook}
-S.~Cook.
-\newblock {\em CUDA Programming: A Developer's Guide to Parallel Computing with
-  GPUs}.
+\bibitem[Cook(2012)]{cook}
+Shane Cook.
+\newblock \emph{CUDA Programming: A Developer's Guide to Parallel Computing
+  with GPUs}.
 \newblock Morgan Kaufmann Publishers Inc., San Francisco, CA, USA, 1st edition,
   2012.
+\newblock ISBN 0124159338, 9780124159334.
 
-\bibitem{methods}
-J.~Fagerberg, D.~C. Mowery, and R.~R. Nelson.
-\newblock {\em Handbook of magnetism and advanced magnetic materials},
-  volume~2.
-\newblock Wiley-Interscience, Chichester, Sep 2007.
-
-\bibitem{design}
-R.~Farber.
-\newblock {\em CUDA Application Design and Development}.
-\newblock Morgan Kaufmann Publishers Inc., San Francisco, CA, USA, 1st edition,
-  2011.
-
-\bibitem{spindomain}
-E.~Golovatski.
-\newblock {\em Spin Torque and Interactions in Ferromagnetic Semiconductor
-  Domain Walls}.
-\newblock BiblioBazaar, 2012.
-
-\bibitem{numerical}
-W.~H., S.~A. Teukolsky, W.~T. Vetterling, and B.~P. Flannery.
-\newblock {\em Numerical Recipes in C (2Nd Ed.): The Art of Scientific
-  Computing}.
-\newblock Cambridge University Press, New York, NY, USA, 1992.
-
-\bibitem{nonlocalspin}
-P.~Haney and T.~U. of~Texas~at Austin.~Physics.
-\newblock {\em Spintronics in Ferromagnets and Antiferromagnets from First
-  Principles}.
-\newblock University of Texas at Austin, 2007.
-
-\bibitem{physicsgpu}
-A.~Harju, T.~Siro, F.~Canova, S.~Hakala, and T.~Rantalaiho.
-\newblock Computational physics on graphics processing units.
-\newblock 7782:3--26, 2013.
-
-\bibitem{hoermanngpu}
-T.~H{\"{o}}rmann.
-\newblock Gpu-optimized implementation of high-dimensional tensor applications.
-\newblock Master's thesis, Institut f{\"{u}}r Informatik, Technische
-  Universit{\"{a}}t M{\"{u}}nchen, Dec. 2014.
-
-\bibitem{spinimg}
-IBM.
-\newblock The application of spintronics.
-\newblock
-  \url{http://www-03.ibm.com/ibm/history/ibm100/us/en/icons/spintronics/},
-  2013, Cited January 2015.
-
-\bibitem{dwwire}
-G.~Karapetrov and V.~Novosad.
-\newblock Domain walls riding the wave.
-\newblock {\em Physics}, 3:96, Nov 2010.
-
-\bibitem{hwu}
-D.~B. Kirk and W.-m.~W. Hwu.
-\newblock {\em Programming Massively Parallel Processors: A Hands-on Approach}.
+\bibitem[Kirk and Hwu(2010)]{hwu}
+David~B. Kirk and Wen-mei~W. Hwu.
+\newblock \emph{Programming Massively Parallel Processors: A Hands-on
+  Approach}.
 \newblock Morgan Kaufmann Publishers Inc., San Francisco, CA, USA, 1st edition,
   2010.
+\newblock ISBN 0123814723, 9780123814722.
 
-\bibitem{landaverde}
-R.~Landaverde, T.~Zhang, A.~K. Coskun, and M.~Herbordt.
-\newblock An investigation of unified memory access performance in cuda.
-\newblock 2014.
+\bibitem[Whitehead and Fit-florea()]{precision}
+Nathan Whitehead and Alex Fit-florea.
+\newblock Precision and performance: Floating point and ieee 754 compliance for
+  nvidia gpus.
 
-\bibitem{mag}
-K.-J. Lee, M.~Stiles, H.-W. Lee, J.-H. Moon, K.-W. Kim, and S.-W. Lee.
-\newblock Self-consistent calculation of spin transport and magnetization
-  dynamics.
-\newblock {\em Physics Reports}, 531(2):89 -- 113, 2013.
-\newblock Self-consistent calculation of spin transport and magnetization
-  dynamics.
+\bibitem[Wilt(2013)]{handbook}
+N.~Wilt.
+\newblock \emph{The CUDA Handbook: A Comprehensive Guide to GPU Programming}.
+\newblock Pearson Education, 2013.
+\newblock ISBN 9780133261509.
+\newblock URL \url{http://books.google.com.mx/books?id=ynydqKP225EC}.
 
-\bibitem{zhang2004}
+\bibitem[Sanders and Kandrot(2010)]{example}
+Jason Sanders and Edward Kandrot.
+\newblock \emph{CUDA by Example: An Introduction to General-Purpose GPU
+  Programming}.
+\newblock Addison-Wesley Professional, 1st edition, 2010.
+\newblock ISBN 0131387685, 9780131387683.
+
+\bibitem[Wang(2012)]{cornell}
+Chen Wang.
+\newblock Characterization of spin transfer torque and magnetization
+  manipulation in magnetic nanostructures, 2012.
+
+\bibitem[Zayets(2012)]{spinz}
+V.~Zayets.
+\newblock Spin and charge transport in materials with spin-dependent
+  conductivity.
+\newblock \emph{Phys. Rev. B}, 86:\penalty0 174415, Nov 2012.
+\newblock \doi{10.1103/PhysRevB.86.174415}.
+\newblock URL \url{http://link.aps.org/doi/10.1103/PhysRevB.86.174415}.
+
+\bibitem[Haney and of~Texas~at Austin.~Physics(2007)]{nonlocalspin}
+P.M. Haney and The~University of~Texas~at Austin.~Physics.
+\newblock \emph{Spintronics in Ferromagnets and Antiferromagnets from First
+  Principles}.
+\newblock University of Texas at Austin, 2007.
+\newblock ISBN 9780549821182.
+\newblock URL \url{https://books.google.com.mx/books?id=daYwK05fV2YC}.
+
+\bibitem[Ralph and Stiles(711)]{spintransfer}
+D.~C.~A Ralph and M.~D. Stiles.
+\newblock Spin transfer torques, 711.
+
+\bibitem[Tsymbal and Zutic(2011)]{handbookspin}
+E.Y. Tsymbal and I.~Zutic.
+\newblock \emph{Handbook of Spin Transport and Magnetism}.
+\newblock Taylor and Francis, 2011.
+\newblock ISBN 9781439803776.
+
+\bibitem[IBM(2013, Cited January 2015)]{spinimg}
+IBM.
+\newblock The application of spintronics, 2013, Cited January 2015.
+\newblock URL
+  \url{http://www-03.ibm.com/ibm/history/ibm100/us/en/icons/spintronics/}.
+
+\bibitem[Golovatski(2012)]{spindomain}
+E.A. Golovatski.
+\newblock \emph{Spin Torque and Interactions in Ferromagnetic Semiconductor
+  Domain Walls}.
+\newblock BiblioBazaar, 2012.
+\newblock ISBN 9781249867371.
+\newblock URL \url{http://books.google.com.mx/books?id=gxapNAEACAAJ}.
+
+\bibitem[Claudio-Gonzalez et~al.(2012)Claudio-Gonzalez, Thiaville, and
+  Miltat]{claudio}
+David Claudio-Gonzalez, Andr\'e Thiaville, and Jacques Miltat.
+\newblock Domain wall dynamics under nonlocal spin-transfer torque.
+\newblock \emph{Phys. Rev. Lett.}, 108:\penalty0 227208, Jun 2012.
+\newblock \doi{10.1103/PhysRevLett.108.227208}.
+\newblock URL \url{http://link.aps.org/doi/10.1103/PhysRevLett.108.227208}.
+
+\bibitem[Karapetrov and Novosad(2010)]{dwwire}
+Goran Karapetrov and Valentyn Novosad.
+\newblock Domain walls riding the wave.
+\newblock \emph{Physics}, 3:\penalty0 96, Nov 2010.
+\newblock \doi{10.1103/Physics.3.96}.
+\newblock URL \url{http://link.aps.org/doi/10.1103/Physics.3.96}.
+
+\bibitem[Richard et~al.(2012)Richard, Houzet, and Meyer]{ferro}
+Caroline Richard, Manuel Houzet, and Julia Meyer.
+\newblock Andreev current induced by ferromagnetic resonance.
+\newblock \emph{Phys. Rev. Lett.}, 109:\penalty0 057002, Jul 2012.
+\newblock \doi{10.1103/PhysRevLett.109.057002}.
+\newblock URL \url{http://link.aps.org/doi/10.1103/PhysRevLett.109.057002}.
+
+\bibitem[Parkin et~al.(2008)Parkin, Hayashi, and Thomas]{racetrack}
+Stuart~SP Parkin, Masamitsu Hayashi, and Luc Thomas.
+\newblock Magnetic domain-wall racetrack memory.
+\newblock \emph{Science}, 320\penalty0 (5873):\penalty0 190--194, 2008.
+
+\bibitem[Li and Zhang()]{zhang2004}
 Z.~Li and S.~Zhang.
 \newblock Domain-wall dynamics and spin-wave excitations with spin-transfer
   torques.
 
-\bibitem{Nickolls}
-J.~Nickolls and W.~J. Dally.
-\newblock The gpu computing era.
-\newblock {\em IEEE Micro}, 30(2):56--69, mar 2010.
-
-\bibitem{applications}
-NVIDIA.
-\newblock Popular gpu-accelerated applications.
-\newblock
-  \url{http://www.nvidia.com/docs/IO/64497/NV_GPU_Accelerated_Applications.pdf},
-  2012, Cited January 2015.
-
-\bibitem{practices}
-NVIDIA.
-\newblock {\em {CUDA C Best Practices Guide}}, 2014.
-
-\bibitem{tool}
-NVIDIA.
-\newblock Cuda documentation.
-\newblock \url{http://docs.nvidia.com/cuda/#axzz3ORV92FoV}, 2014, Cited January
-  2015.
-
-\bibitem{racetrack}
-S.~S. Parkin, M.~Hayashi, and L.~Thomas.
-\newblock Magnetic domain-wall racetrack memory.
-\newblock {\em Science}, 320(5873):190--194, 2008.
-
-\bibitem{quantitative}
-D.~A. Patterson and J.~L. Hennessy.
-\newblock {\em Computer Architecture: A Quantitative Approach}.
-\newblock Morgan Kaufmann Publishers Inc., San Francisco, CA, USA, 1990.
-
-\bibitem{spintransfer}
-D.~C.~A. Ralph and M.~D. Stiles.
-\newblock Spin transfer torques, 711.
-
-\bibitem{ferro}
-C.~Richard, M.~Houzet, and J.~Meyer.
-\newblock Andreev current induced by ferromagnetic resonance.
-\newblock {\em Phys. Rev. Lett.}, 109:057002, Jul 2012.
-
-\bibitem{whatexascale}
-F.~Robert.
-\newblock What it’ll take to go exascale.
-\newblock {\em Science}, 335(January):394--396, 2012.
-
-\bibitem{fortran}
-G.~Ruetsch and M.~Fatica.
-\newblock {\em CUDA Fortran for Scientists and Engineers: Best Practices for
-  Efficient CUDA Fortran Programming}.
-\newblock Elsevier Science, 2013.
-
-\bibitem{example}
-J.~Sanders and E.~Kandrot.
-\newblock {\em CUDA by Example: An Introduction to General-Purpose GPU
-  Programming}.
-\newblock Addison-Wesley Professional, 1st edition, 2010.
-
-\bibitem{ufdtd}
-J.~B. Schneider.
-\newblock Understanding the finite-difference time-domain method howpublished=
-  {\url{ www.eecs.wsu.edu/~schneidj/ufdtd}}, year = {2010}.
-
-\bibitem{handbookspin}
-E.~Tsymbal and I.~Zutic.
-\newblock {\em Handbook of Spin Transport and Magnetism}.
-\newblock Taylor and Francis, 2011.
-
-\bibitem{nonlocal}
-S.~O. Valenzuela.
-\newblock Nonlocal electronic spin detection, spin accumulation and the spin
-  hall effect.
-\newblock {\em International Journal of Modern Physics B}, 23(11):2413--2438,
-  2009.
-
-\bibitem{cornell}
-C.~Wang.
-\newblock Characterization of spin transfer torque and magnetization
-  manipulation in magnetic nanostructures, 2012.
-
-\bibitem{precision}
-N.~Whitehead and A.~Fit-florea.
-\newblock Precision and performance: Floating point and ieee 754 compliance for
-  nvidia gpus.
-
-\bibitem{handbook}
-N.~Wilt.
-\newblock {\em The CUDA Handbook: A Comprehensive Guide to GPU Programming}.
-\newblock Pearson Education, 2013.
-
-\bibitem{spinz}
-V.~Zayets.
-\newblock Spin and charge transport in materials with spin-dependent
-  conductivity.
-\newblock {\em Phys. Rev. B}, 86:174415, Nov 2012.
-
-\bibitem{zhang}
+\bibitem[Zhang and Li(2004)]{zhang}
 S.~Zhang and Z.~Li.
 \newblock Roles of nonequilibrium conduction electrons on the magnetization
   dynamics of ferromagnets.
-\newblock {\em Phys. Rev. Lett.}, 93:127204, Sep 2004.
+\newblock \emph{Phys. Rev. Lett.}, 93:\penalty0 127204, Sep 2004.
+\newblock \doi{10.1103/PhysRevLett.93.127204}.
+\newblock URL \url{http://link.aps.org/doi/10.1103/PhysRevLett.93.127204}.
+
+\bibitem[Schneider(2010)]{ufdtd}
+John~B. Schneider.
+\newblock Understanding the finite-difference time-domain method, 2010.
+\newblock URL \url{www.eecs.wsu.edu/~schneidj/ufdtd}.
+
+\bibitem[Fagerberg et~al.(2007)Fagerberg, Mowery, and Nelson]{methods}
+J.~Fagerberg, D.~C. Mowery, and R.~R. Nelson.
+\newblock \emph{Handbook of magnetism and advanced magnetic materials},
+  volume~2.
+\newblock Wiley-Interscience, Chichester, Sep 2007.
+
+\bibitem[H. et~al.(1992)H., Teukolsky, Vetterling, and Flannery]{numerical}
+William H., Saul~A. Teukolsky, William~T. Vetterling, and Brian~P. Flannery.
+\newblock \emph{Numerical Recipes in C (2Nd Ed.): The Art of Scientific
+  Computing}.
+\newblock Cambridge University Press, New York, NY, USA, 1992.
+\newblock ISBN 0-521-43108-5.
+
+\bibitem[Farber(2011)]{design}
+Rob Farber.
+\newblock \emph{CUDA Application Design and Development}.
+\newblock Morgan Kaufmann Publishers Inc., San Francisco, CA, USA, 1st edition,
+  2011.
+\newblock ISBN 0123884268, 9780123884268.
+
+\bibitem[NVIDIA(2014)]{practices}
+NVIDIA.
+\newblock \emph{{CUDA C Best Practices Guide}}, 2014.
+
+\bibitem[Ruetsch and Fatica(2013)]{fortran}
+G.~Ruetsch and M.~Fatica.
+\newblock \emph{CUDA Fortran for Scientists and Engineers: Best Practices for
+  Efficient CUDA Fortran Programming}.
+\newblock Elsevier Science, 2013.
+\newblock ISBN 9780124169722.
+\newblock URL \url{http://books.google.com.mx/books?id=yQwwAAAAQBAJ}.
+
+\bibitem[NVIDIA(2014, Cited January 2015)]{tool}
+NVIDIA.
+\newblock Cuda documentation, 2014, Cited January 2015.
+\newblock URL \url{http://docs.nvidia.com/cuda/#axzz3ORV92FoV}.
+
+\bibitem[CentOS(2015, Cited January 2015)]{centos}
+CentOS.
+\newblock Centos project, 2015, Cited January 2015.
+\newblock URL \url{http://www.centos.org/}.
+
+\bibitem[H{\"{o}}rmann(2014)]{hoermanngpu}
+Thomas H{\"{o}}rmann.
+\newblock Gpu-optimized implementation of high-dimensional tensor applications.
+\newblock Master's thesis, Institut f{\"{u}}r Informatik, Technische
+  Universit{\"{a}}t M{\"{u}}nchen, December 2014.
+\newblock URL \url{http://www5.in.tum.de/pub/hoermann2014.pdf}.
 
 \end{thebibliography}
