@@ -142,7 +142,7 @@ Shared memory & 16 * 16 & 32 * 32 \\
 
 \subsection{Initial Calculations}
 
-Before the evaluation of the RK4 terms, we need to evaluate static matrices that will not change over the course of the simulation \ref{log:rk4}. In The pre calculation stage only the term $ \delta \vec{m}$ of the Zhang-Li model is evaluated\ref{eq:zhang}. The $ \delta \vec{m}$ term is the non-equilibrium spin density domain wall at rest \cite{claudio}, see Listing \ref{lst:init}.
+Before the evaluation of the RK4 terms, we need to evaluate static matrices that will not change over the course of the simulation \ref{log:rk4}. In The pre calculation stage only the term $ \delta \vec{m}$ of the Zhang-Li model is evaluated \ref{eq:zhang}. The $ \delta \vec{m}$ term is the non-equilibrium spin density domain wall at rest \cite{claudio}, see Listing \ref{lst:init}.
 
 \begin{lstlisting}[language=C++, label={lst:init}, caption={Initial calculations.}]
 	//Compute x, y and z component of source term
